@@ -1,0 +1,102 @@
+.left-nav {
+    .fa-globe:before {
+        color: #05a9a9;
+        font-size: x-large;
+    }
+    position: fixed;
+    height: 100%;
+    // width: 50px;
+    left: 0;
+    bottom: 0;
+    top: $left-nav-top-pos;
+    margin-block-start: -1rem;
+    background-color: $left-nav-bg-color;
+    z-index: 1;
+    ul {
+        padding: 0;
+        li {
+            padding: 14px 10px;
+            height: 45px;
+            cursor: pointer;
+            a {
+                vertical-align: middle;
+            }
+            span {
+                &.icon {
+                    float: left;
+                    width: 23px;
+                }
+                &.title {
+                    display: none;
+                    float: left;
+                    width: 92px;
+                    margin-left: 10px;
+                    font-size: 15px;
+                    margin-top: 3px;
+                }
+                &.fa-icon {
+                    color: #fff;
+                    font-size: 22px;
+                }
+            }
+            &.selected {
+                background-color: $left-nav-active-bg-color;
+            }
+        }
+    }
+    &.menu-opened {
+        width: 150px;
+        transition: width 2s;
+        margin-block-start: -1rem;
+        ul {
+            li {
+                span {
+                    &.title {
+                        display: block;
+                        float: right;
+                        color: $cnetiz-white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .left-nav {
+        width: 0px;
+        ul {
+            li {
+                padding: 5px 0px 0;
+                &.selected {
+                    background-color: transparent;
+                }
+                img {
+                    visibility: hidden;
+                }
+            }
+        }
+        &.menu-opened {
+            ul {
+                li {
+                    padding: 5px 10px 0;
+                    span {
+                        &.title {
+                            display: block;
+                            float: right;
+                            color: $cnetiz-white;
+                        }
+                    }
+                    img {
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.fa-gears:before,
+.fa-cogs:before {
+    color: #029FB9;
+}

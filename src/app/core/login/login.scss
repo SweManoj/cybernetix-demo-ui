@@ -1,0 +1,21 @@
+.auth-main {
+    position: absolute;
+    display: flex;
+    width: calc(100% - 50px);
+    height: 100%;
+    align-items: center;
+    .auth-block {
+        width: 540px;
+        margin: 0 auto;
+        border-radius: 6px;
+        background-color: $auth-block-bg-color;
+        color: $text-white;
+        font-size: 18px;
+        box-shadow: $black-bg-box-shadow;
+        padding: 20px;
+    }
+}
+
+.btn {
+    margin-top: .5rem;
+}

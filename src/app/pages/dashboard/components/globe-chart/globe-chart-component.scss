@@ -1,0 +1,15 @@
+.globeBg {
+    // background-image: radial-gradient(circle, #003D6E, #041421);
+    background: $black-bg-color;
+}
+
+#chartGlobeDiv {
+    width: 100%;
+    height: 500px;
+}
+
+#chartDonutDiv {
+    width: 103%;
+    height: 500px;
+    background: $black-bg-color;
+}

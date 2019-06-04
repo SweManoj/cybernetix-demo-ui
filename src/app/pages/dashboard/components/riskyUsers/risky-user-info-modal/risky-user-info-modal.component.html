@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h4 class="modal-title">User Information</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+    <div class="row user-profile">
+        <div class="col-md-2">
+            <img src="../assets/images/user.png" alt="stack photo" class="profile-image" />
+        </div>
+        <div class="col-md-10">
+            <div style="border-bottom:2px solid lightgray">
+                <span class="user-title">{{userInfo.EmployeeName}}</span>
+            </div>
+            <div class="profile-info">
+                <div class="row">
+                    <div class="col-md-1"> <span class="user-icon"><i class="fa fa-envelope"></i></span></div>
+                    <div class="col-md-5">{{userInfo.Email}}</div>
+                    <div class="col-md-1"> <span class="user-icon"><i class="fa fa-phone-square"></i></span></div>
+                    <div class="col-md-5">{{userInfo.Mobile}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1"> <span class="user-icon"><i class="fa fa-map-marker"></i></span></div>
+                    <div class="col-md-5">{{userInfo.Address}}</div>
+                    <div class="col-md-1"> <span class="user-icon"><i class="fa fa-building"></i></span></div>
+                    <div class="col-md-5">{{userInfo['DepatmentName-level1']}}</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline btn-info" (click)="activeModal.close('Close click')">Close</button>
+</div>

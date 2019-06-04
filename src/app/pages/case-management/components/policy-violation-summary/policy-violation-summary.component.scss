@@ -1,0 +1,106 @@
+h3.title {
+    font-size  : 24px;
+    text-align : center !important;
+    color      : $header-text !important;
+    margin-top : 1rem !important;
+    font-weight: 550;
+}
+
+img.profile-image.img-round {
+    width: 45px;
+}
+
+button.btn.btn-sm {
+    padding: 3px 14px;
+}
+
+span.reply {
+    color      : #BDBDBD;
+    font-weight: 550;
+    cursor     : pointer;
+}
+
+textarea.form-control {
+    overflow     : hidden;
+    min-height   : 44px !important;
+    background   : unset;
+    border       : .6px solid #818181;
+    border-radius: 6px;
+}
+
+.row.user-item {
+    padding: inherit;
+}
+
+.buttonBg {
+    background: $button-bg !important;
+    color     : $button-color !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #1e364a;
+}
+
+.actionDropDown {
+    margin-top                : -2px;
+    border-radius             : 0;
+    border-top                : unset;
+    border-bottom-left-radius : 5px !important;
+    border-top-left-radius    : 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+hr {
+    border-bottom: 0.6px solid $hr-border;
+    width        : 105%;
+}
+
+.card {
+    background: #0d1a25;
+}
+
+.listedItem {
+    background    : #202c36;
+    padding-top   : 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius : 4px;
+}
+
+.dtList {
+    color    : #bdbdbd;
+    font-size: medium;
+}
+
+.dotSeperator {
+    color    : #bdbdbd;
+    font-size: large;
+}
+
+.fa-caret-right:before {
+    color: #5d5d5d;
+}
+
+.policyBg {
+    background: #0d1a25;
+}
+
+
+/* dt {
+    color       : #BDBDBD;
+    // font-size: larger;
+}
+
+dd {
+    color       : #BDBDBD;
+    // font-size: large;
+} */
+
+.sideButton {
+    .btn {
+        background-color: unset;
+        color           : #099bb5;
+        border          : 1px solid #099bb5;
+        border-radius   : 4px;
+    }
+}

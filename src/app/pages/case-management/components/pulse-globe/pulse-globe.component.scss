@@ -1,0 +1,30 @@
+.ui-table .ui-table-tbody>tr>td {
+    text-overflow: initial;
+}
+
+#globeChartDiv {
+    width : 100%;
+    height: 550px;
+}
+
+.globePulse .ui-table .ui-table-thead>tr>th {
+    background: black;
+    height    : auto;
+    font-size : unset;
+}
+
+.globePulse .ui-table .ui-table-tbody>tr>td {
+    background: #484c4e;
+    font-size : unset;
+    height: auto;
+    font-size: 10px;
+}
+
+ .globePulse .ui-table .ui-table-tbody>tr {
+    height: auto !important;
+}
+
+// table header
+.globePulse .ui-table .ui-table-thead>tr {
+    height: auto !important;
+}

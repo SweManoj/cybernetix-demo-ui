@@ -1,0 +1,38 @@
+<div class="container-fluid" style="background: aliceblue;">
+    <div class="row globeBg">
+        <div class="col-md-12">
+            <div id="globeChartDiv"></div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid globeBg pb-3 pt-2">
+    <div class="media-body offset-md-1 col-md-10 pl-4">
+        <p-table #attack class="globePulse" [value]="liveAttacks" [paginator]="false" [rows]="5">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:14%">TIMESTAMP</th>
+                    <th style="width:15%">ATTACKER</th>
+                    <th style="width:13%">ATTACKER IP</th>
+                    <th style="width:12%">TARGET IP</th>
+                    <th style="width:17%">ATTACKER GEO</th>
+                    <th style="width:17%">TARGET GEO</th>
+                    <th style="width:14%">ATTACK TYPE</th>
+                    <th style="width:8%">PORT</th>
+                </tr>
+            </ng-template>
+            <ng-template class="globePulse" pTemplate="body" let-rowData let-attack let-rowIndex="rowIndex"
+                style="margin-left:5px;margin-right:5px;padding:5px 5px;">
+                <tr [pSelectableRow]="rowData">
+                    <td><b>{{attack.timpestamp}}</b></td>
+                    <td><b>{{attack.attacker}}</b></td>
+                    <td><b>{{attack.attackIp}}</b></td>
+                    <td><b>{{attack.targetIp}}</b></td>
+                    <td><b>{{attack.attackerGeo}}</b></td>
+                    <td><b>{{attack.targetGeo}}</b></td>
+                    <td><b>{{attack.type}}</b></td>
+                    <td><b>{{attack.port}}</b></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

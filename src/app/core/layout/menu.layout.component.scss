@@ -1,0 +1,12 @@
+.content-container {
+    padding: 82px 0px 0px 34px;  // 100px 0 10px 50px;
+}
+
+.content-container-shrink {
+    padding: 66px 0px 0px 33px;  // 100px 0 10px 50px;
+}
+
+.content-container-spread {
+    padding: 66px 0px 0px 137px;  // 100px 0 10px 50px;
+    transition: padding .1s;
+}

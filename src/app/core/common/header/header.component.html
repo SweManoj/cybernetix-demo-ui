@@ -1,0 +1,44 @@
+<nav class="navbar row header-container">
+    <div> 
+        <a href (click)="toggleMenu()" class="menu ion-navicon" href="javascript:void(0)">
+            <span class="ion ion-md-menu"></span>
+        </a>
+        <!-- <a routerLink="/dashboard" class="al-logo clearfix">
+            <img src="../../../../assets/images/{{themeName}}-logo.png" alt="CyberNetiz Logo" />
+        </a> -->
+    </div>
+    <div class="user-profile">
+        <div class="dropdown al-user-profile">
+            <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
+                <img src="../assets/images/avatar.png">
+            </a>
+            <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
+                <!--<li class="dropdown-item"><a href><i class="fa fa-user m-r-sm"></i>{{'global.profile' | translate}}</a></li>-->
+                <li class="dropdown-item"><a (click)="showSettings(settingsModal)"><i class="fa fa-cog m-r-sm"></i>{{'global.settings' | translate}}</a></li>
+                <li class="dropdown-item"><a (click)="signout()" class="signout"><i class="fa fa-power-off m-r-sm"></i>{{'actions.signOut' | translate}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--User settings modal template-->
+<ng-template #settingsModal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{'global.settings' | translate}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="theme-selection">
+            <h6>{{'global.themeLabel' | translate}}</h6>
+            <label class="m-r-sm" (click)="themeName='black'">
+                <input type="radio" ([ngModal])="themeName" name="themeGroup" [checked]="themeName === 'black'">
+                {{'global.themes.dark' | translate}}
+            </label>
+            <label (click)="themeName='blue'">
+                <input type="radio" ([ngModal])="themeName" name="themeGroup" [checked]="themeName === 'blue'">
+                {{'global.themes.blue' | translate}}
+            </label>
+        </div>
+    </div>
+</ng-template>

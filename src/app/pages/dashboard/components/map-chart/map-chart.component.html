@@ -1,0 +1,35 @@
+<div *ngIf="componentType === 'g-map'" class="header row">
+    <div class="col-9 col-md-9 col-sm-9" style="margin: auto;padding:1px;">
+        {{'dashboard.feed' | translate}}
+    </div>
+    <div class="col-3 col-md-3 col-sm-3 settings-icon">
+        <span class="ion ion-md-settings"></span>
+    </div>
+</div>
+
+<div *ngIf="componentType === 'g-map'">
+    <ng-container>
+        <p-chart type="bar" [data]="data" (onDataSelect)="selectData($event)" [responsive]="true" [options]="options"></p-chart>
+    </ng-container>
+</div>
+
+<!-- ========================================================= -->
+
+<div *ngIf="componentType === 'line-chart'" class="header row">
+    <div class="col-11 col-md-11 col-sm-11" style="margin: auto;padding:1px;">
+        {{'dashboard.monthlyViolations' | translate}}
+    </div>
+    <div class="col-1 col-md-1 col-sm-1 settings-icon">
+        <span class="ion ion-md-settings"></span>
+    </div>
+</div>
+
+<div *ngIf="componentType === 'line-chart'" class="line-chart">
+    <ng-container>
+        <div id="chart">
+            <!-- ng2-chart  -->
+            <canvas baseChart [datasets]="barChartData" [options]="barChartOptions" [labels]="barChartLabels" [chartType]="barChartType">
+                </canvas>
+        </div>
+    </ng-container>
+</div>

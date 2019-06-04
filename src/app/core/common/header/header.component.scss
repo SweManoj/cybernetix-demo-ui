@@ -1,0 +1,78 @@
+.header-container {
+    background-color: $header-bg-color;
+    // border-bottom: 7px solid $header-border-bottom;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+
+    .menu {
+        color: $menu-color;
+        font-size: 30px;
+        vertical-align: middle;
+    }
+    .user-profile {
+        float: right;
+    }
+
+    .al-user-profile {
+        float: right;
+        transition: all .15s ease-in-out;
+        padding: 0;
+        width: 45px;
+        height: 45px;
+        border: 0;
+        opacity: 1;
+        position: relative;
+        ul.profile-dropdown:after {
+            bottom: 100%;
+            right: 0;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(255, 255, 255, 0);
+            border-bottom-color: $header-profile-dropdown-arrow;
+            border-width: 10px;
+            margin-right: 25px;
+        }
+        a {
+            display: block;
+        }
+        img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+    }
+    .profile-toggle-link {
+        &:after {
+            display: none;
+        }
+    }
+    .top-dropdown-menu {
+        right: -15px;
+        left: auto;
+        top: 55px;
+        .dropdown-item {
+            &:last-child {
+                a {
+                    border-top: 1px solid $cnetiz-gray-40;
+                }
+            }
+        }
+    }
+    .profile-dropdown {
+        a {
+            color: $cnetiz-gray-80;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    .al-logo {
+        display: inline-block;
+        margin-left: 25px;
+    }
+}

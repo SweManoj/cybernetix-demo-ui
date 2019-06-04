@@ -1,0 +1,138 @@
+.card-body {
+    padding: .4rem;
+}
+
+.imagePixelate {
+    image-rendering: pixelated;
+}
+
+.pie-chart-container {
+    .chart-inner-container {
+        width: 110px;
+        height: 110px;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        .pie-chart-percent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $brand-color;
+        }
+    }
+    .chart-info {
+        // width: calc(100% - 130px);
+        // margin-left: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        // letter-spacing: 0.62px;
+        text-align: center;
+        .count {
+            font-size: 22px;
+            letter-spacing: -0.45px;
+            color: $pie-card-text;
+        }
+        .title {
+            font-size: 20px;
+            letter-spacing: 0.7px;
+            font-weight: 300;
+            color: $pie-card-text;
+        }
+    }
+    .ico {
+        text-align: center;
+        img {
+            height: 75px;
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .pie-chart-container {
+        .chart-inner-container {
+            display: block;
+            margin: 0 auto;
+        }
+        .chart-info {
+            display: block;
+            width: 100%;
+            margin-left: 0;
+            // margin-top: 10px;
+            text-align: center;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .pie-chart-container {
+        .chart-inner-container {
+            display: block;
+            margin: 0 auto;
+        }
+        .chart-info {
+            display: block;
+            width: 100%;
+            margin-left: 0;
+            margin-top: 10px;
+            text-align: center;
+            .count {
+                font-size: 20px;
+            }
+            .title {
+                font-size: 12px;
+            }
+        }
+        .ico {
+            img {
+                height: 60px;
+                width: calc(100% - 50%);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+    .pie-chart-container {
+        .chart-inner-container {
+            display: inline-block;
+            margin: 0;
+        }
+        .chart-info {
+            display: inline-block;
+            // width: calc(100% - 130px);
+            // margin-left: 20px;
+            // margin-top: 0;
+            text-align: center;
+        }
+    }
+}
+
+.carousel-slide-container {
+    margin-bottom: 35px;
+     :focus {
+        border: none;
+    }
+}
+
+.carousel-control-next-icon {
+    margin-right: -90%;
+    margin-top: -22%;
+    background-image: none;
+}
+
+.carousel-control-prev-icon {
+    margin-left: -90%;
+    margin-top: -22%;
+    background-image: none;
+}
+
+.carousel {
+    outline: none;
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}

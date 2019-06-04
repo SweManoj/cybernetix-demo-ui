@@ -1,0 +1,366 @@
+<div class="row mt-4 ml-3 title-main">
+
+    <div><span class="h5">Case Management</span></div>
+
+    <div class="col-sm-4 ml-5">
+        <ul class="nav nav-pills btn-sm" id="pills-tab" role="tablist">
+            <li class="nav-item active">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                    aria-controls="pills-home" aria-selected="true">Policy Violations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                    aria-controls="pills-profile" aria-selected="false">Incident</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row ml-3 mr-2 mt-4 mb-3">
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="card">
+                <div class="card-header policy-filter-row row">
+                    <div class="col-md-12">
+                        <div class="col-md-2 input-group initialPadding">
+                            <input type="text" class="form-control" pInputText placeholder="Search By Keywords" (input)="policy.filterGlobal($event.target.value,'contains')">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search" style="font-size: initial;"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 ml-5">
+                            <div class="mr-5" style="margin-top:7px;font-size: initial;">
+                                <p-checkbox value="High" label="Show only High" (onChange)="selectPolicyClick($event)"></p-checkbox>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 d-flex m-auto initialPadding">
+                            <div class="mr-3 d-flex flex-row ml-auto">
+                                <div>
+                                    <span class="topStages High">{{highItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;High</span>
+                                </div>
+                                <div>
+                                    <span class="topStages Medium">{{mediumItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;Medium</span>
+                                </div>
+                                <div>
+                                    <span class="topStages Low">{{lowItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;Low</span>
+                                </div>
+                                <!-- <div>
+                                    <span class="topStages Low">{{lowItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;Low</span>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-0">
+                    <div class="media">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2 filterRow">
+                                    <p-table #day class="policy" [value]="myDays">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                <th style="width:5%"></th>
+                                                <th style="text-align: center;">Day</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template class="policy" pTemplate="body" let-rowData let-myDay let-rowIndex="rowIndex"
+                                            width="100%">
+                                            <tr [pSelectableRow]="rowData">
+                                                <td (click)="daySelected(rowIndex)" style="background:#041421;cursor: pointer;border-bottom: 1px solid #404040;"></td>
+
+                                                <td (click)="daySelected(rowIndex)" [ngStyle]="{'background-color':selectedIndex === rowIndex ? '#34434E' : '#041421' }"
+                                                    style="cursor: pointer;border-bottom: 1px solid #404040;">{{myDay}}
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+
+                                <div class="col-md-10" style="padding: inherit;background:rgb(52, 67, 78);">
+                                    <div class="media-body">
+                                        <p-table #policy class="policy" [value]="myPolicies" [(selection)]="selectedPolicyItems"
+                                            [globalFilterFields]="['srNo','time','policyViolation','entity','indicator','status','priority']"
+                                            (onRowSelect)="onPolicyRowSelect($event)" (onRowUnselect)="onPolicyRowUnselect($event)">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                    <th style="width:12%">Sr. No.</th>
+                                                    <th style="width:14%">Time</th>
+                                                    <th style="width:17%">Policy Violation</th>
+                                                    <th style="width:15%">Entity</th>
+                                                    <th style="width:14%">Indicator</th>
+                                                    <th style="width:15%">Status</th>
+                                                    <th style="width:14%">Priority</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template class="policy" pTemplate="body" let-rowData let-myPolicy
+                                                let-rowIndex="rowIndex" style="margin-left:5px;margin-right:5px;padding:5px 5px;">
+                                                <tr [pSelectableRow]="rowData">
+                                                    <td style="padding: 0px 50px;">{{myPolicy.srNo}}</td>
+                                                    <td>{{myPolicy.time}}</td>
+                                                    <td>{{myPolicy.policyViolation}}</td>
+                                                    <td>{{myPolicy.entity}}</td>
+                                                    <td>{{myPolicy.indicator}}</td>
+                                                    <td>{{myPolicy.status}}</td>
+                                                    <td>
+                                                        <div class="{{myPolicy.priority}} tableStages"></div>&nbsp;{{myPolicy.priority}}
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="col-md-12 mb-3">
+                <div class="row incident-filter-row">
+                    <div class="mr-4 mb-4">
+                        <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name" dropdownIcon="pi pi-caret-down"
+                            (onChange)="incident.filter($event.value.value, 'name','contains')"></p-dropdown>
+                    </div>
+
+                    <div class="mr-4 mb-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search by Incident ID" (keyup)="incident.filter($event.target.value, 'id','contains')">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mr-4 mb-4">
+                        <p-dropdown [options]="shows" placeholder="Categories" optionLabel="name" dropdownIcon="pi pi-caret-down"
+                            (onChange)="incident.filter($event.value.value, 'name','contains')"></p-dropdown>
+                    </div>
+
+                    <div class="mr-4 mb-4">
+                        <p-dropdown [options]="assignee" placeholder="Assignee" optionLabel="name" dropdownIcon="pi pi-caret-down"
+                            (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
+                    </div>
+
+                    <div class="mr-4 mb-4" style="margin-top:7px;">
+                        <p-checkbox value="NA" label="Show only Unassigned" (onChange)="selectIncidentClick($event)"></p-checkbox>
+                        <!-- <div class="form-check">
+                                          <input type="checkbox" class="form-check-input" id="Check1" (change)="selectClick($event.target.checked)">
+                                          <label class="form-check-label" for="Check1">Show only Unassigned</label>
+                                        </div> -->
+                    </div>
+
+                    <div class="mr-4 mb-4">
+                        <p-dropdown [options]="shows" placeholder="Date Range" optionLabel="name" (onChange)="incident.filter($event.value.value, 'date','contains')"></p-dropdown>
+                    </div>
+
+                    <div class="mr-4 mb-4">
+                        <p-dropdown [options]="priority" placeholder="Priority" optionLabel="name" (onChange)="incident.filter($event.value.value, 'priority','contains')"></p-dropdown>
+                    </div>
+
+                    <div class="mr-4 mb-4">
+                        <p-dropdown [options]="status" placeholder="Status" optionLabel="name" (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
+                    </div>
+
+                    <!-- <div class="no-border mr-2" style=" display: flex;align-items: flex-end;width:auto;">
+                                    <label class="switch" id="check" style="width:auto;">Manoj Kumar</label>
+                                </div>
+                                <div class="no-border mr-2" style="margin-top:4px;display: flex;align-items: flex-end;">
+                                    <label class="switch"> 
+                                                        <input type="checkbox" checked id="check">
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                </div> -->
+
+                    <!-- <div class="mr-4 mb-4">
+                        <label id="check">Send to Archer</label>
+                    </div>
+                    <div class="">
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="row ml-auto mr-auto">
+                <p-table #incident [resizableColumns]="true"
+                    [value]="data" [(selection)]="selectedItems" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3em;background:#000000">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                            <th>CREATED</th>
+                            <th>PRIORITY</th>
+                            <th>RISK SCORE</th>
+                            <th>ID</th>
+                            <th style="width:28em;">NAME</th>
+                            <th style="width:12em;">STATUS</th>
+                            <th>ASSIGNEE</th>
+                            <th>ALERTS</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-data>
+                        <tr [pSelectableRow]="rowData">
+                            <td>
+                                <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                            </td>
+                            <td>{{data.created}}</td>
+                            <td>
+                                <div class="{{data.priority}} tableStages"></div>&nbsp;{{data.priority}}
+                            </td>
+                            <td>{{data.riskscore}}</td>
+                            <td style="color:#4A90E2;">{{data.id}}</td>
+                            <td style="color:#4A90E2;">{{data.name}}</td>
+                            <td>{{data.status}}</td>
+                            <td>{{data.assignee}}</td>
+                            <td>{{data.alerts}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ngb-tabset type="pills">
+  <ngb-tab title="All Case">
+    <ng-template ngbTabContent>
+        <div class="case-management-container">
+            <div class="risky-users-list">
+                <div class="row header-row">
+                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">Case No.</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-sm">User Name</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-sm">Rule Id</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-sm">Rule Description</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-sm">Violation Occurrence</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-sm">Action</div>
+                </div>
+                <div class="row data-row" *ngFor="let user of allUsers; let i = index">
+                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{user.caseid}}</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-sm">
+                        <a *ngIf="user.userid" href="javascript:void(0);">{{user.userid}}</a>
+                        <a *ngIf="!user.userid" href="javascript:void(0);">{{user.sourceAddress}}</a>
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{user.ruleid}}</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{user.ruledesc}}</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{user.violationoccurence}}</div>
+                    <div class="col-2 col-sm-2 col-md-2 p-sm text-center">
+                          <div ngbDropdown class="d-inline-block">
+                            <button class="btn" id="action" ngbDropdownToggle>Action</button>
+                            <div ngbDropdownMenu aria-labelledby="action">
+                                <button class="dropdown-item" (click)="onActionClick('Assign', user)">Assign</button>
+                                <button class="dropdown-item" (click)="onActionClick('Block', user)">Block</button>
+                                <button class="dropdown-item" (click)="onActionClick('Close as Risk Accepted', user)">Close as Risk Accepted</button>
+                                <button class="dropdown-item" (click)="onActionClick('Close the Case', user)">Close the Case</button>
+                          </div>
+                          </div>
+                        </div>
+                </div>
+            </div>
+            <div class="load-more-link" *ngIf="recordsReturned < totalRecords">
+                <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
+            </div>
+          </div>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Process Case">
+        <ng-template ngbTabContent>
+            <div class="case-management-container">
+                <div class="risky-users-list">
+                    <div class="row header-row">
+                        <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{'global.sno' | translate}}</div>
+                        <div class="col-6 col-sm-6 col-md-6 p-sm">{{'global.userInfo' | translate}}</div>
+                        <div class="col-2 col-sm-2 col-md-2 p-sm">{{'global.bytes' | translate}}</div>
+                        <div class="col-2 col-sm-2 col-md-2 p-sm">Action</div>
+                    </div>
+                    <div class="row data-row" *ngFor="let user of allUsers; let i = index">
+                        <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{ i + 1}}</div>
+                        <div class="col-6 col-sm-6 col-md-6 p-sm">
+                            <a *ngIf="user.userid" href="javascript:void(0);"></a>
+                            <a *ngIf="!user.userid" href="javascript:void(0);"></a>
+                        </div>
+                        <div class="col-2 col-sm-2 col-md-2 p-sm"></div>
+                        <div class="col-2 col-sm-2 col-md-2 p-sm text-center">
+                              <div ngbDropdown class="d-inline-block">
+                                <button class="btn" id="action" ngbDropdownToggle>Action</button>
+                                <div ngbDropdownMenu aria-labelledby="action">
+                                  <button class="dropdown-item" (click)="onActionClick('Assign', user)">Assign</button>
+                                  <button class="dropdown-item" (click)="onActionClick('Block', user)">Block</button>
+                                  <button class="dropdown-item" (click)="onActionClick('Close as Risk Accepted', user)">Close as Risk Accepted</button>
+                                  <button class="dropdown-item" (click)="onActionClick('Close the Case', user)">Close the Case</button>
+                                </div>
+                              </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="load-more-link" *ngIf="recordsReturned < totalRecords">
+                    <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
+                </div>
+              </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Completed Case">
+            <ng-template ngbTabContent>
+                <div class="case-management-container">
+                    <div class="risky-users-list">
+                        <div class="row header-row">
+                            <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{'global.sno' | translate}}</div>
+                            <div class="col-6 col-sm-6 col-md-6 p-sm">{{'global.userInfo' | translate}}</div>
+                            <div class="col-2 col-sm-2 col-md-2 p-sm">{{'global.bytes' | translate}}</div>
+                            <div class="col-2 col-sm-2 col-md-2 p-sm">Action</div>
+                        </div>
+                        <div class="row data-row" *ngFor="let user of allUsers; let i = index">
+                            <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{ i + 1}}</div>
+                            <div class="col-6 col-sm-6 col-md-6 p-sm">
+                                <a *ngIf="user.userid" href="javascript:void(0);">{{user.userid}}</a>
+                                <a *ngIf="!user.userid" href="javascript:void(0);">{{user.sourceAddress}}</a>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 p-sm">{{user.riskscore}}</div>
+                            <div class="col-2 col-sm-2 col-md-2 p-sm text-center">
+                                  <div ngbDropdown class="d-inline-block">
+                                    <button class="btn" id="action" ngbDropdownToggle>Action</button>
+                                    <div ngbDropdownMenu aria-labelledby="action">
+                                        <button class="dropdown-item" (click)="onActionClick('Assign', user)">Assign</button>
+                                        <button class="dropdown-item" (click)="onActionClick('Block', user)">Block</button>
+                                        <button class="dropdown-item" (click)="onActionClick('Close as Risk Accepted', user)">Close as Risk Accepted</button>
+                                        <button class="dropdown-item" (click)="onActionClick('Close the Case', user)">Close the Case</button>
+                                          </div>
+                                  </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="load-more-link" *ngIf="recordsReturned < totalRecords">
+                        <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
+                    </div>
+                  </div>
+              </ng-template>
+            </ngb-tab>
+    </ngb-tabset> -->

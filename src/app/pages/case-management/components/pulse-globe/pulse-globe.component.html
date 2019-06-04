@@ -1,13 +1,22 @@
-<div class="container-fluid" style="background: aliceblue;">
+<!-- <div class="container-fluid" style="background: aliceblue;">
     <div class="row globeBg">
         <div class="col-md-12">
             <div id="globeChartDiv"></div>
         </div>
     </div>
+</div> -->
+
+<div class="container-fluid" style="background: aliceblue;">
+    <div class="row globeBg pt-4">
+        <div class="col-md-12">
+            <div id="mapChartDiv"></div>
+        </div>
+    </div>
 </div>
+
 <div class="container-fluid globeBg pb-3 pt-2">
     <div class="media-body offset-md-1 col-md-10 pl-4">
-        <p-table #attack class="globePulse" [value]="liveAttacks" [paginator]="false" [rows]="5">
+        <p-table #attack class="globePulse" [value]="datas"   [paginator]="true" [rows]="5">
             <ng-template pTemplate="header">
                 <tr>
                     <th style="width:14%">TIMESTAMP</th>

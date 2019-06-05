@@ -2,10 +2,9 @@
 
 <div class="mt-3 policyBg mr-2 ml-2">
     <div class="row">
-        <div class="col-md-6" style="border-right: .6px solid #4B5965;    margin-top: .6rem; margin-bottom: .6rem;">
-            <span ngbDropdown placement="bottom-right" class="float-sm-right" style="margin-top: .5rem;">
-                <button class="btn btn-sm buttonBg" id="dropdownBasic1" ngbDropdownToggle
-                    style="padding: 5px 12px;border-radius: 3px;">
+        <div class="col-md-6 action">
+            <span ngbDropdown placement="bottom-right" class="float-sm-right">
+                <button class="btn btn-sm buttonBg" id="dropdownBasic1" ngbDropdownToggle>
                     Actions
                 </button>
                 <div class="buttonBg actionDropDown" ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -24,21 +23,19 @@
                 </div>
             </span>
 
-            <dl style="padding-left: 1.5rem;">
+            <dl class="dlList">
                 <dt class="mt-5">
                     <i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description
                 </dt>
                 <dd class="mt-2">
-                    In this policy violation, user was trying to access machine
-                    which is restricted to access by group policy
+                    In this policy violation, user was trying to access machine which is restricted to access by group policy
                 </dd>
 
                 <dt class="mt-5">
                     <i class="fa fa-caret-right"></i>&nbsp;&nbsp;Recommendation
                 </dt>
                 <dd class="mt-2">
-                    In this policy violation, user was trying to access machine
-                    which is restricted to access by group policy
+                    In this policy violation, user was trying to access machine which is restricted to access by group policy
                 </dd>
             </dl>
         </div>
@@ -73,13 +70,12 @@
                     <dt>
                         <i class="fa fa-caret-right pb-3"></i>&nbsp;&nbsp;&nbsp;Threat Categorisation
                     </dt>
-                    <div class="row mt-2" *ngFor="let threatCategory of threatCategories"
-                        style="color: #8E8E8E;padding-left: 6rem;">
-                        <div class="col-md-3" style="font-size: 15px;padding: initial;">
+                    <div class="row mt-2 threat" *ngFor="let threatCategory of threatCategories">
+                        <div class="col-md-3 threatTitle">
                             {{ threatCategory.title }}
                         </div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-md-6" style="font-size: smaller;padding-top: 3px;">
+                        <div class="col-md-6 threatValue">
                             {{ threatCategory.value }}
                         </div>
                     </div>
@@ -93,8 +89,8 @@
                     </dt>
                 </div>
                 <span class="dotSeperator"><b>:</b></span>
-                <div class="col-md-5 pl-4 dtList d-flex" style="align-items:center;">
-                    <a href="#" style="text-decoration: underline;">PUN1020</a>
+                <div class="col-md-5 pl-4 dtList d-flex">
+                    <a href="#">PUN1020</a>
                 </div>
             </div>
             <div class="row mt-3 pl-4">
@@ -130,8 +126,7 @@
                 </div>
                 <div class="col-md-8 ml-3">
                     <div class="form-group">
-                        <textarea type="text" autosize class="form-control" id="comment" [(ngModel)]="comment.content"
-                            required name="content" placeholder="Enter your commnets here..."></textarea>
+                        <textarea type="text" autosize class="form-control" id="comment" [(ngModel)]="comment.content" required name="content" placeholder="Enter your commnets here..."></textarea>
                     </div>
                 </div>
                 <div class="col-2 col-md-2 pt-2">
@@ -146,21 +141,18 @@
                     <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
                 </div>
                 <div class="col-md-9 ml-4">
-                    <div class="row mt-2 mb-1" style="color: #8E8E8E;">
-                        <div class="col-md-12"><a href="#" style="padding-right: 3rem;">{{comment.userId}}</a>
-                            &emsp;&emsp; {{comment.timestamp | timeAgo}}
+                    <div class="row mt-2 mb-1">
+                        <div class="col-md-12 comment"><a href="#">{{comment.userId}}</a> &emsp;&emsp; {{comment.timestamp | timeAgo}}
                         </div>
                     </div>
-                    <div class="row" style="color: #8E8E8E;">
+                    <div class="row comment">
                         <span>{{comment.content}}</span>
                     </div>
                     <div class="row mt-1"><span class="reply" (click)="comment.reply= !comment.reply">Reply</span>
                     </div>
                     <div class="row mt-2" *ngIf="comment.reply">
                         <div class="col-md-10">
-                            <textarea type="text" autosize class="form-control" id="comment"
-                                [(ngModel)]="comment.content" required name="content"
-                                placeholder="Enter your commnets here..."></textarea>
+                            <textarea type="text" autosize class="form-control" id="comment" [(ngModel)]="comment.content" required name="content" placeholder="Enter your commnets here..."></textarea>
                         </div>
                         <div class="col-md-2 mt-2">
                             <button class="btn btn-sm" [disabled]="!commentForm.form.valid" type="submit" sty>

@@ -15,12 +15,13 @@
     font-weight: 500 !important;
 }
 
-.initialPadding{
+.initialPadding {
     padding: initial;
 }
 
 .dashboard-page {
     .top-details {
+        margin: auto;
         .col-4 {
             display: inline-block;
             vertical-align: top;
@@ -33,6 +34,7 @@
         text-transform: uppercase;
     }
     .chart-details {
+        margin: auto;
         .col-4 {
             display: inline-block;
             vertical-align: top;

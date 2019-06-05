@@ -1,6 +1,6 @@
 .card-body {
     padding: .4rem;
-    background:$card-bg-color;
+    background: $card-bg-color;
 }
 
 .imagePixelate {
@@ -30,14 +30,15 @@
         // letter-spacing: 0.62px;
         text-align: center;
         .count {
-            font-size: 22px;
+            font-size: 25px;
             letter-spacing: -0.45px;
             color: $pie-card-text;
+            font-weight: bold;
         }
         .title {
-            font-size: 20px;
+            font-size: 18px;
             letter-spacing: 0.7px;
-            font-weight: 300;
+            font-weight: 200;
             color: $pie-card-text;
         }
     }

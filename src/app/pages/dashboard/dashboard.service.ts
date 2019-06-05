@@ -20,40 +20,38 @@ export class DashboardService {
     private topInfoLight = [
         { total: "100 K", title: "Users", ico: "users@2x.png" },
         { total: "20 K", title: "IP Address", ico: "Ip@2x.png" },
+        { total: "78", title: "Hosts", ico: "hostname@2x.png" },
+        { total: "193", title: "High Risk Users", ico: "risky@2x.png" },
         {
             total: "1125",
-            title: "Previledges Users",
+            title: "Privileged Accounts",
             ico: "previledged users@2x.png"
         },
-        { total: "56,000", title: "Highest Risk Users", ico: "risky@2x.png" },
-        { total: "78", title: "Hostname", ico: "hostname@2x.png" },
-        { total: "17", title: "Service Account", ico: "service@2x.png" },
-
+        { total: "1153", title: "Service Accounts", ico: "service@2x.png" },
         { total: "12 M", title: "Raw Logs", ico: "logs@1x.png" },
         { total: "121 K", title: "Parsed Logs", ico: "noun_Check@1x.png" },
-        { total: "80 M", title: "Policy Violations", ico: "violations@2x.png" },
-        { total: "56,000", title: "Incidents", ico: "incident@2x.png" },
-        { total: "141 K", title: "Notable Entities", ico: "entities@1x.png" },
+        { total: "950", title: "Roles", ico: "entities@1x.png" },
+        { total: "156", title: "Policy Violations", ico: "violations@2x.png" },
+        { total: "85", title: "Incidents", ico: "incident@2x.png" },
         { total: "17", title: "Actions", ico: "actions@1x.png" }
     ];
 
     private topInfoDark = [
         { total: "100 K", title: "Users", ico: "users@2x.png" },
         { total: "20 K", title: "IP Address", ico: "Ip@2x.png" },
+        { total: "78", title: "Hosts", ico: "hostname@2x.png" },
+        { total: "193", title: "High Risk Users", ico: "risky@2x.png" },
         {
             total: "1125",
-            title: "Previledges Users",
+            title: "Privileged Accounts",
             ico: "previledged users@2x.png"
         },
-        { total: "56,000", title: "Highest Risk Users", ico: "risky@2x.png" },
-        { total: "78", title: "Hostname", ico: "hostname@2x.png" },
-        { total: "17", title: "Service Account", ico: "service@2x.png" },
-
+        { total: "1153", title: "Service Accounts", ico: "service@2x.png" },
         { total: "12 M", title: "Raw Logs", ico: "logs@1x.png" },
         { total: "121 K", title: "Parsed Logs", ico: "noun_Check@1x.png" },
-        { total: "80 M", title: "Policy Violations", ico: "violations@2x.png" },
-        { total: "56,000", title: "Incidents", ico: "incident@2x.png" },
-        { total: "141 K", title: "Notable Entities", ico: "entities@1x.png" },
+        { total: "950", title: "Roles", ico: "entities@1x.png" },
+        { total: "156", title: "Policy Violations", ico: "violations@2x.png" },
+        { total: "85", title: "Incidents", ico: "incident@2x.png" },
         { total: "17", title: "Actions", ico: "actions@1x.png" }
     ];
 

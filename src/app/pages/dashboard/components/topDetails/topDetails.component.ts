@@ -15,21 +15,21 @@ export class TopDetailsComponent implements AfterViewInit {
     @Input() componentType: string;
 
     riskyObjects = [
-        { type: 'user', value: 'ADittmer', score: 100, img: true },
+        { type: 'user', value: 'ADittmer', score: 250, img: true },
         { type: 'user', value: 'Adm-EMoor', score: 234, img: true },
-        { type: 'user', value: 'Adm-ADittmer', score: 123, img: true },
-        { type: 'user', value: 'AWendler', score: 452, img: true },
-        { type: 'user', value: 'Svc-ROpitz', score: 12, img: true },
-        { type: 'ip', value: '172.10.10.11', score: 2, img: false },
-        { type: 'ip', value: '172.10.10.11', score: 453, img: false },
-        { type: 'ip', value: '172.10.10.11', score: 12, img: false },
-        { type: 'ip', value: '172.10.10.11', score: 567, img: false },
-        { type: 'ip', value: '172.10.10.11', score: 23, img: false },
-        { type: 'host', value: 'India', score: 453, img: false },
-        { type: 'host', value: 'China', score: 23, img: false },
-        { type: 'host', value: 'America', score: 567, img: false },
-        { type: 'host', value: 'Japan', score: 34, img: false },
-        { type: 'host', value: 'London', score: 124, img: false }
+        { type: 'user', value: 'Adm-ADittmer', score: 180, img: true },
+        { type: 'user', value: 'AWendler', score: 96, img: true },
+        { type: 'user', value: 'Svc-ROpitz', score: 44, img: true },
+        { type: 'ip', value: '172.10.10.11', score: 200, img: false },
+        { type: 'ip', value: '172.10.10.11', score: 180, img: false },
+        { type: 'ip', value: '172.10.10.11', score: 125, img: false },
+        { type: 'ip', value: '172.10.10.11', score: 86, img: false },
+        { type: 'ip', value: '172.10.10.11', score: 25, img: false },
+        { type: 'host', value: 'India', score: 180, img: false },
+        { type: 'host', value: 'China', score: 89, img: false },
+        { type: 'host', value: 'America', score: 65, img: false },
+        { type: 'host', value: 'Japan', score: 49, img: false },
+        { type: 'host', value: 'London', score: 30, img: false }
     ];
 
     assignee = [{ name: 'User', value: 'user' }, { name: 'IP Address', value: 'ip' }, { name: 'Host', value: 'host' }];
@@ -84,6 +84,7 @@ export class TopDetailsComponent implements AfterViewInit {
         });
     }
     getViolations() {
+        debugger;
         this.topDetailsService.getTopViolations().subscribe((res: any) => {
             this.violationsList = res.data;
             this.violationsList.sort((a, b) => {

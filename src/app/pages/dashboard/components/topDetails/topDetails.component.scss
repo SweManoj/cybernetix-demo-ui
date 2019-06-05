@@ -33,6 +33,7 @@
     .header {
         font-size: 20px;
         height: 60px;
+        font-weight: bold;
         text-transform: uppercase;
         color: $top-details-header-text-color;
         margin: 0 0 15px;
@@ -75,9 +76,8 @@
         .user-info {
             a {
                 color: $text-white;
-                font-size: 19px;
+                font-size: 18px;
                 display: inline-block;
-                margin-top: 5px;
             }
         }
     }
@@ -89,7 +89,7 @@
         span {
             display: block;
             &.risk-type {
-                font-size: 16px;
+                font-size: 20px;
             }
         }
     }
@@ -103,12 +103,11 @@
         .threat-details {
             color: $text-white;
             a {
-                font-size: 19px;
+                font-size: 18px;
                 display: inline-block;
                 cursor: pointer;
                 text-transform: capitalize;
-                line-height: 1.2;
-                padding-top: 5px;
+                line-height: 1.1;
             }
             span {
                 font-size: 15px;
@@ -184,6 +183,7 @@
     .top-details-container {
         .header {
             font-size: 18px;
+            font-weight: bold;
             .settings {
                 font-size: 16px;
             }
@@ -198,7 +198,7 @@
             }
             .user-info {
                 a {
-                    font-size: 19px;
+                    font-size: 18px;
                 }
             }
             .risk-count {

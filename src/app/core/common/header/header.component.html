@@ -1,21 +1,53 @@
 <nav class="navbar row header-container">
-    <div> 
+    <div class="col-md-8 initialPadding">
         <a href (click)="toggleMenu()" class="menu ion-navicon" href="javascript:void(0)">
             <span class="ion ion-md-menu"></span>
         </a>
-        <!-- <a routerLink="/dashboard" class="al-logo clearfix">
-            <img src="../../../../assets/images/{{themeName}}-logo.png" alt="CyberNetiz Logo" />
-        </a> -->
+        <a routerLink="/dashboard" class="al-logo clearfix">
+            <!-- <img src="../../../../assets/images/{{themeName}}-logo.png" alt="CyberNetiz Logo" /> -->
+            <img src="../../../../assets/images/logo.png" alt="CyberNetiz Logo" />
+        </a>
     </div>
+
+    <div class="col-md-3 row">
+        <div class="col-md-10 input-group initialPadding">
+            <input type="text" class="form-control" [(ngModel)]="searchEntity" [ngbTypeahead]="search"
+                placeholder="Search By Entity Names">
+            <div class="input-group-append" (click)="searchingEntity()">
+                <span class="input-group-text">
+                    <i class="fa fa-search" style="font-size: initial;"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-1 input-group initialPadding" style="display: flex;align-items:center;">
+            <a routerLink="/dashboard" class="al-logo clearfix">
+                <img class="notify" src="../../../../assets/images/notification.png" alt="CyberNetiz Logo" />
+            </a>
+        </div>
+
+    </div>
+
+    <!-- <div class="col-md-1 input-group initialPadding">
+        <a routerLink="/dashboard" class="al-logo clearfix">
+            <img src="../../../../assets/images/notification.png" alt="CyberNetiz Logo" />
+        </a>
+    </div> -->
+
     <div class="user-profile">
-        <div class="dropdown al-user-profile">
-            <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
+
+
+        <div class="dropdown al-user-profile pl-3">
+            <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown"
+                aria-expanded="false">
                 <img src="../assets/images/avatar.png">
             </a>
             <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
                 <!--<li class="dropdown-item"><a href><i class="fa fa-user m-r-sm"></i>{{'global.profile' | translate}}</a></li>-->
-                <li class="dropdown-item"><a (click)="showSettings(settingsModal)"><i class="fa fa-cog m-r-sm"></i>{{'global.settings' | translate}}</a></li>
-                <li class="dropdown-item"><a (click)="signout()" class="signout"><i class="fa fa-power-off m-r-sm"></i>{{'actions.signOut' | translate}}</a></li>
+                <li class="dropdown-item"><a (click)="showSettings(settingsModal)"><i
+                            class="fa fa-cog m-r-sm"></i>{{'global.settings' | translate}}</a></li>
+                <li class="dropdown-item"><a (click)="signout()" class="signout"><i
+                            class="fa fa-power-off m-r-sm"></i>{{'actions.signOut' | translate}}</a></li>
             </ul>
         </div>
     </div>

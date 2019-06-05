@@ -14,6 +14,8 @@ import { PolicyViolationDetailViewComponent } from './pages/case-management/comp
 import { PolicyViolationSummaryComponent } from './pages/case-management/components/policy-violation-summary/policy-violation-summary.component';
 import { TestEsComponent } from './pages/case-management/components/test-es/test-es.component';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
 
 export const routes: Routes = [
     {
@@ -37,6 +39,10 @@ export const routes: Routes = [
             {
                 path: 'riskyUser/:selectedUser',
                 component: RiskyUsersComponent
+            },
+            {
+                path: 'filteredRiskyUsers/:riskyUser',
+                component: FilterRiskEntityComponent
             },
             {
                 path: 'caseManagement',
@@ -88,7 +94,7 @@ export const routes: Routes = [
         })
     ],
     exports: [
-        RouterModule, NgxChartsModule,TextareaAutosizeModule
+        RouterModule, NgxChartsModule, TextareaAutosizeModule, AutoCompleteModule
     ]
 })
 export class AppRoutingModule {

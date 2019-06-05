@@ -1,0 +1,120 @@
+<!-- <div class="col-md-6">
+    <div class="card border-success mb-3">
+        <div class="card-header bg-transparent border-success"></div>
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+        <div class="card-footer bg-transparent border-success">Footer</div>
+    </div>
+</div> -->
+
+<ng-container>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 pl-4">
+                    <img class="img-rounded" src='../assets/images/user.png' style="width:3.5rem;"/>
+                </div>
+                <div class="col-md-9 row pl-3">
+                    <div class="col-md-5">
+                        <span>Entity Name</span>
+                        <span style="float: right;">
+                            <b>:</b>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <span>{{entity.user}}</span>
+                    </div>
+                </div>
+                <div class="col-md-9 row pl-3">
+                    <div class="col-md-5">
+                        <span>Risk Score</span>
+                        <span style="float: right;">
+                            <b>:</b>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <span>{{entity.riskScore}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- <ng-container>
+    <div class="risky-user-container">
+        <div class="row" style="background: #041421;">
+            <div class="card" style="background: #2C4255;">
+                <div class="card-body">
+                    <div class="col-md-2" style="display: inline-block; text-align: center;background: #041421;">
+                        <img class="profile-image img-rounded mt-4" src='../assets/images/user.png' />
+                        <div class="user-info m-t-sm">
+                            <span style="font-family:Roboto-Medium;color:#D3D3D3;size:26px">{{entity.user}}</span>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="display: inline-block;margin-right: -6rem;">
+                        <p></p>
+                        <span
+                            style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Role</span>
+                        <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">
+                            {{entity.role}}</p>
+                        <p></p>
+                        <span
+                            style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Department</span>
+                        <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">
+                            {{entity.department}}
+                        </p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-2 ml-5" style="display: inline-block;">
+                        <p></p>
+                        <span
+                            style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Location</span>
+                        <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">
+                            {{entity.location}}
+                        </p>
+                        <p></p>
+                        <span
+                            style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Reporting
+                            Manager</span>
+                        <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">
+                            {{entity.reportingManager}}
+                        </p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-2 ml-3" style="display: inline-block;">
+                        <p></p>
+                        <span
+                            style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Creation
+                            Date</span>
+                        <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">
+                            {{entity.creationDate}}</p>
+                        <p></p>
+                        <span
+                            style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Last
+                            Working Day</span>
+                        <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">
+                            {{entity.lastWorkingDay}}</p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-1 ml-3" style="display: inline-block;padding: 0%;">
+                        <div class="display: flex;text-align: center;">
+                            <p style="font-family: Roboto-Light;font-size: 67.6px;color: #21FF0E;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px">{{entity.riskScore}}</p>
+                            <p style="font-family: Roboto-Regular;font-size: 20px;color: #A7A7A7;letter-spacing: -0.32px;padding-left: 7px;">Risk Score
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 ml-2" style="display: inline-block;">
+                        <div id="{{entity.img}}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container> -->

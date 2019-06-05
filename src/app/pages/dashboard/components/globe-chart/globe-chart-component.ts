@@ -380,6 +380,9 @@ export class GlobeChartComponent implements OnInit {
         chart.legend.position = "bottom";
         chart.legend.fill=am4core.color('red')
         chart.legend.fill.lightColor = am4core.color('white')
+
+        chart.legend.labels.template.text = "[bold {color}]{name}{/}[/]";
+        chart.legend.labels.template.fill=am4core.color('white')
     }
 
     ngAfterViewInit() {

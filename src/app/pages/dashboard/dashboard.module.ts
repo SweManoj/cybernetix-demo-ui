@@ -23,6 +23,8 @@ import { GlobeChartComponent } from './components/globe-chart/globe-chart-compon
 import { ChartModule } from 'primeng/chart'
 import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import { RiskScoreModalComponent } from './components/riskyUsers/risk-score-modal/risk-score-modal.component';
+import { FilterRiskEntityComponent } from './components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
+import { RiskyEntityViewComponent } from './components/riskyUsers/filter-risk-entity/risky-entity-view/risky-entity-view';
 
 @NgModule({
     declarations: [
@@ -34,7 +36,9 @@ import { RiskScoreModalComponent } from './components/riskyUsers/risk-score-moda
         RiskyUserInfoModalComponent,
         MapChartComponent,
         GlobeChartComponent,
-        RiskScoreModalComponent
+        RiskScoreModalComponent,
+        RiskyEntityViewComponent,
+        FilterRiskEntityComponent
     ],
     imports: [
         CommonModule,

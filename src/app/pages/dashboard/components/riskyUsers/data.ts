@@ -1,4 +1,4 @@
-export var bubbleDataMonth:any = [
+export var bubbleDataMonth: any = [
   {
     "hour": "12pm",
     "date": "2019-05-27",

@@ -1,0 +1,27 @@
+img.img-rounded {
+    width: 4rem !important;
+}
+
+
+
+
+.risky-user-container {
+    background-color: black;
+    color: $risky-users-text-color;
+    // padding-bottom: 15px;
+    border-radius: 0px;
+    // box-shadow: $risk-user-container-shadow;
+}
+
+#chartGuageDiv {
+    width: 100%;
+    padding-bottom: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+    .risky-users-container {
+        width: 60%;
+        margin-left: 20px;
+    }
+}
+

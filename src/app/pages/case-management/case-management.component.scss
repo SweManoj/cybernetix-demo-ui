@@ -171,10 +171,6 @@ tr {
         font-size: larger;
     }
 
-    .fa-search:before {
-        font-size: larger;
-    }
-
     .ui-chkbox-label {
         color: $case-alert-text-color !important;
         font-size: small;
@@ -620,6 +616,29 @@ input:checked+.slider:before {
     border-bottom: 1px solid #5F6E79;
 }
 
+.fa-search {
+    font-size: initial;
+}
+
+.highcheckbox {
+    margin-top: 7px;
+    font-size: initial;
+}
+
+.labels {
+    font-size: initial;
+}
+
+.policy .ui-table .ui-table-tbody>tr>td.rowdata {
+    background:#041421;
+    cursor: pointer;
+    border-bottom: 1px solid #404040;
+}
+
+.policy .ui-table .ui-table-tbody>tr>td.day {
+    cursor: pointer;
+    border-bottom: 1px solid #404040;
+}
 
 /* @media only screen and (min-width: 768px) {
     .case-management-container {

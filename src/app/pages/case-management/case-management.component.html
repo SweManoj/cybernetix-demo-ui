@@ -26,13 +26,13 @@
                             <input type="text" class="form-control" pInputText placeholder="Search By Keywords" (input)="policy.filterGlobal($event.target.value,'contains')">
                             <div class="input-group-append">
                                 <span class="input-group-text">
-                                    <i class="fa fa-search" style="font-size: initial;"></i>
+                                    <i class="fa fa-search"></i>
                                 </span>
                             </div>
                         </div>
 
                         <div class="col-md-3 ml-5">
-                            <div class="mr-5" style="margin-top:7px;font-size: initial;">
+                            <div class="mr-5 highcheckbox">
                                 <p-checkbox value="High" label="Show only High" (onChange)="selectPolicyClick($event)"></p-checkbox>
                             </div>
                         </div>
@@ -40,13 +40,13 @@
                         <div class="col-md-6 d-flex m-auto initialPadding">
                             <div class="mr-3 d-flex flex-row ml-auto">
                                 <div>
-                                    <span class="topStages High">{{highItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;High</span>
+                                    <span class="topStages High">{{highItem}}</span><span class="labels">&nbsp;&nbsp;High</span>
                                 </div>
                                 <div>
-                                    <span class="topStages Medium">{{mediumItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;Medium</span>
+                                    <span class="topStages Medium">{{mediumItem}}</span><span class="labels">&nbsp;&nbsp;Medium</span>
                                 </div>
                                 <div>
-                                    <span class="topStages Low">{{lowItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;Low</span>
+                                    <span class="topStages Low">{{lowItem}}</span><span class="labels">&nbsp;&nbsp;Low</span>
                                 </div>
                                 <!-- <div>
                                     <span class="topStages Low">{{lowItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;Low</span>
@@ -71,10 +71,9 @@
                                         <ng-template class="policy" pTemplate="body" let-rowData let-myDay let-rowIndex="rowIndex"
                                             width="100%">
                                             <tr [pSelectableRow]="rowData">
-                                                <td (click)="daySelected(rowIndex)" style="background:#041421;cursor: pointer;border-bottom: 1px solid #404040;"></td>
+                                                <td (click)="daySelected(rowIndex)" class="rowdata"></td>
 
-                                                <td (click)="daySelected(rowIndex)" [ngStyle]="{'background-color':selectedIndex === rowIndex ? '#34434E' : '#041421' }"
-                                                    style="cursor: pointer;border-bottom: 1px solid #404040;">{{myDay}}
+                                                <td (click)="daySelected(rowIndex)" class="day" [ngStyle]="{'background-color':selectedIndex === rowIndex ? '#34434E' : '#041421' }">{{myDay}}
                                             </tr>
                                         </ng-template>
                                     </p-table>

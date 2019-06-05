@@ -14,10 +14,10 @@ import { riskyUsers } from '../../services/util.data';
     templateUrl: './header.component.html'
 })
 export class HeaderComponent {
-    
+
     themeName: string;
     private prevThemeName: string;
-    
+
     constructor(private sessionStorage: SessionStorage, private userContext: UserContext, private router: Router,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal) {
         this.themeName = this.userContext.themeName;
@@ -61,7 +61,15 @@ export class HeaderComponent {
     allEntitiesNames: string[] = [];
 
     ngOnInit() {
-        riskyUsers.forEach(riskyUser => this.allEntitiesNames.push(riskyUser.user));
+        var uniqueEntityNames = new Set<String>();
+
+        riskyUsers.forEach(riskyUser => {
+            uniqueEntityNames.add(riskyUser.user);
+        });
+
+        Array.from(uniqueEntityNames).forEach(uniqueEntityName => {
+            this.allEntitiesNames.push(uniqueEntityName.toString());
+        });
     }
 
     searchingEntity() {

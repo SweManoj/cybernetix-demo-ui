@@ -9,15 +9,21 @@
         <div class="card-footer bg-transparent border-success">Footer</div>
     </div>
 </div> -->
-
+ 
 <ng-container>
     <div class="card">
+        <div class="card-header bg-transparent cardPadding">
+            <span class="font-weight-bold">{{entity.user}}</span>
+            <span class="font-weight-bold" style="float: right;">
+                Risk Score : {{entity.riskScore}}
+            </span>
+        </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-4 pl-4">
-                    <img class="img-rounded" src='../assets/images/user.png' style="width:3.5rem;"/>
+                <div class="col-md-3 pl-4">
+                    <img class="img-rounded  d-flex mx-auto" src='../assets/images/user.png' style="width:3.5rem;" />
                 </div>
-                <div class="col-md-9 row pl-3">
+                <!-- <div class="col-md-9 row pl-3">
                     <div class="col-md-5">
                         <span>Entity Name</span>
                         <span style="float: right;">
@@ -28,8 +34,8 @@
                     <div class="col-md-6">
                         <span>{{entity.user}}</span>
                     </div>
-                </div>
-                <div class="col-md-9 row pl-3">
+                </div> -->
+                <!-- <div class="col-md-9 row pl-3">
                     <div class="col-md-5">
                         <span>Risk Score</span>
                         <span style="float: right;">
@@ -40,9 +46,13 @@
                     <div class="col-md-6">
                         <span>{{entity.riskScore}}</span>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
+        <div class="card-footer bg-transparent cardPadding">
+            <span class="font-weight-bold">Last Violation : {{entity.user}}</span>
+        </div>
+
     </div>
 </ng-container>
 

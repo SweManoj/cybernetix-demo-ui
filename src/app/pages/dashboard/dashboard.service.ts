@@ -40,14 +40,14 @@ export class DashboardService {
     private topInfoDark = [
         { total: "100 K", title: "Users", ico: "users@2x.png" },
         { total: "20 K", title: "IP Address", ico: "Ip@2x.png" },
+        { total: "78", title: "Hostname", ico: "hostname@2x.png" },
         {
             total: "1125",
-            title: "Previledges Users",
+            title: "Previledged Accounts",
             ico: "previledged users@2x.png"
         },
-        { total: "56,000", title: "Highest Risk Users", ico: "risky@2x.png" },
-        { total: "78", title: "Hostname", ico: "hostname@2x.png" },
-        { total: "17", title: "Service Account", ico: "service@2x.png" },
+        { total: "17", title: "Service Accounts", ico: "service@2x.png" },
+        { total: "56,000", title: "Top Risky Users", ico: "risky@2x.png" },
 
         { total: "12 M", title: "Raw Logs", ico: "logs@1x.png" },
         { total: "121 K", title: "Parsed Logs", ico: "noun_Check@1x.png" },

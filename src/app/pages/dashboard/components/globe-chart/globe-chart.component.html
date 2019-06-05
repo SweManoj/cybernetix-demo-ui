@@ -5,7 +5,15 @@
         </div>
 
         <div class="col-md-5">
-                <div id="chartDonutDiv"></div>
+            <div style="display: block;">
+                <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [chartType]="barChartType">
+                </canvas>
+            </div>
             </div>
     </div>
 </div>

@@ -6,6 +6,8 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 am4core.useTheme(am4themes_animated);
 @Component({
@@ -16,6 +18,19 @@ export class GlobeChartComponent implements OnInit {
     private am4maps: am4maps.MapChart;
 
     constructor(private zone: NgZone) {}
+
+    public barChartOptions: ChartOptions = {
+        responsive: true,
+    };
+
+    public barChartLabels: Label[] = ['IT Security', 'Infrastructure', 'IT Support', 'Quality Testing', 'Development', 'Audit', 'Marketing'];
+    public barChartType: ChartType = 'bar';
+    public barChartLegend = true;
+    public barChartPlugins = [];
+
+    public barChartData: ChartDataSets[] = [
+        { data: [65, 59, 80, 81, 56, 55, 40, 30, 10, 100], label: 'Risky Entities' }
+    ];
 
     ngOnInit() {}
 
@@ -326,63 +341,7 @@ export class GlobeChartComponent implements OnInit {
     }
 
     initializeDonutChart() {
-        // Themes begin
-        am4core.useTheme(am4themes_animated);
-        // Themes end
 
-        // Create chart instance
-        var chart = am4core.create("chartDonutDiv", am4charts.PieChart);
-
-        // Add data
-        chart.data = [
-            {
-                country: "Lithuania",
-                litres: 501.9
-            },
-            {
-                country: "Czech Republic",
-                litres: 301.9
-            },
-            {
-                country: "Ireland",
-                litres: 201.1
-            },
-            {
-                country: "Germany",
-                litres: 165.8
-            },
-            {
-                country: "Australia",
-                litres: 139.9
-            },
-            {
-                country: "Austria",
-                litres: 128.3
-            }
-        ];
-
-        // Add and configure Series
-        var pieSeries = chart.series.push(new am4charts.PieSeries());
-        pieSeries.dataFields.value = "litres";
-        pieSeries.dataFields.category = "country";
-        pieSeries.innerRadius = am4core.percent(50);
-        pieSeries.ticks.template.disabled = true;
-        pieSeries.labels.template.disabled = true;
-
-        var rgm = new am4core.RadialGradientModifier();
-        rgm.brightnesses.push(-0.8, -0.8, -0.5, 0, -0.5);
-        pieSeries.slices.template.fillModifier = rgm;
-        pieSeries.slices.template.strokeModifier = rgm;
-        pieSeries.slices.template.strokeOpacity = 0.4;
-        pieSeries.slices.template.strokeWidth = 0;
-
-        chart.legend = new am4charts.Legend();
-        chart.legend.position = "bottom";
-        chart.legend.fill=am4core.color('red')
-        chart.legend.fill.lightColor = am4core.color('white')
-
-        chart.legend.labels.template.text = "[bold {color}]{name}{/}[/]";
-        chart.legend.labels.template.fill=am4core.color('white')
     }
 
     ngAfterViewInit() {

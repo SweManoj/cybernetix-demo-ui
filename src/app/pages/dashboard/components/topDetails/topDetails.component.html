@@ -1,6 +1,6 @@
 <!-- Risky Entities -->
 <div *ngIf="componentType === 'riskyUser'" class="header row">
-    <div class="col-6 col-md-6 col-sm-6" style="margin: auto;">
+    <div class="col-6 col-md-6 col-sm-6 heading">
         Risky Entities
     </div>
     <div class="col-4 col-md-4 col-sm-4">
@@ -14,7 +14,7 @@
 
 <div *ngIf="componentType === 'riskyUser'" class="top-riksy-users mt-3">
     <ng-container *ngFor="let selectedRisky of selectedRiskies">
-        <div class="row user-item" [ngStyle]="{'padding':riskyTypeSelected=='user'?'8px 4px':'15px 15px'}">
+        <div class="row user-item" [ngStyle]="{'padding':riskyTypeSelected=='user'?'12px 12px':'15px 15px'}">
             <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2">
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>
@@ -24,7 +24,6 @@
             </div>
             <div class="col-3 col-sm-3 col-md-3 risk-count">
                 <span> {{selectedRisky.score}}</span>
-                <span></span>
             </div>
         </div>
     </ng-container>
@@ -36,10 +35,10 @@
 
 <!-- Risky Entities -->
 <div *ngIf="componentType === 'topThreats'" class="header row">
-    <div class="col-8 col-md-8 col-sm-8" style="margin: auto;padding:4px;">
+    <div class="col-8 col-md-8 col-sm-8 heading">
         {{'global.topViolations' | translate}}
     </div>
-    <div class="col-4 col-md-4 col-sm-4 settings-icon" style="margin: auto;display: grid;padding-right: 18px;">
+    <div class="col-4 col-md-4 col-sm-4 settings-icon">
         <!--<a href="#">{{'global.viewAll' | translate}}</a>-->
         <span class="ion ion-md-settings"></span>
     </div>
@@ -60,10 +59,10 @@
 </div>
 
 <div *ngIf="componentType==='topViolations' " class="header row ">
-    <div class="col-8 col-md-8 col-sm-8 " style="margin: auto;padding:4px; ">
+    <div class="col-8 col-md-8 col-sm-8 heading ">
         {{'global.topThreats' | translate}}
     </div>
-    <div class="col-4 col-md-4 col-sm-4 settings-icon " style="margin: auto;display: grid;padding-right: 18px; ">
+    <div class="col-4 col-md-4 col-sm-4 settings-icon ">
         <!--<a href="# ">{{'global.viewAll' | translate}}</a>-->
         <span class="ion ion-md-settings "></span>
     </div>
@@ -82,7 +81,7 @@
             </div>
             <div class="col-6 col-sm-6 col-md-6 risk-count ">
                 <span>{{threat.count}}</span>
-                <p class="risk-type ">Policy Violations</p>
+                <span class="risk-type ">Policy Violations</span>
             </div>
         </div>
     </ng-container>

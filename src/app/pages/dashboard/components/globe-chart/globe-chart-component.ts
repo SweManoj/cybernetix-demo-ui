@@ -95,7 +95,7 @@ export class GlobeChartComponent implements OnInit {
         const measelsSeries = chart.series.push(new am4maps.MapPolygonSeries())
         measelsSeries.tooltip.background.fillOpacity = 0;
         measelsSeries.tooltip.background.cornerRadius = 20;
-        measelsSeries.tooltip.autoTextColor = false;
+        measelsSeries.tooltip.autoTextColor = true;
         measelsSeries.tooltip.label.fill = am4core.color("#000");
         measelsSeries.tooltip.dy = -5;
 

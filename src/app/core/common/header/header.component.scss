@@ -20,8 +20,13 @@ input.form-control::-webkit-input-placeholder {
     margin-left: 0;
     margin-right: 1rem;
     width: -webkit-fill-available;
-    background: dodgerblue;
+    background: #6185a4;
     font-size: 15px
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #05ACD3;
 }
 
 img.notify {
@@ -102,6 +107,7 @@ input.form-control:focus {
             &:last-child {
                 a {
                     border-top: 1px solid $cnetiz-gray-40;
+                    padding-top: inherit
                 }
             }
         }

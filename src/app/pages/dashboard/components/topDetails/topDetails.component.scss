@@ -40,6 +40,9 @@
         padding: 15px 15px 0;
         background-color: $top-details-header-bg-color;
         border-radius: 6px 6px 0 0;
+        .heading {
+            padding: 4px;
+        }
         .settings {
             text-align: right;
             font-size: 18px;
@@ -51,6 +54,9 @@
         .settings-icon {
             font-size: 30px;
             text-align: right;
+            margin: auto;
+            display: grid;
+            padding-right: 18px;
             span {
                 vertical-align: top;
                 color: $top-details-header-settings-icon-color;
@@ -78,18 +84,23 @@
                 color: $text-white;
                 font-size: 18px;
                 display: inline-block;
+                cursor: pointer;
+                text-transform: capitalize;
+                line-height: 1.1;
+                padding-top: 15px;
             }
         }
     }
     .risk-count {
         color: $brand-red;
-        font-size: 20px;
+        font-size: 19px;
         text-align: center;
-        padding-top: 8px;
+        padding-top: 2px;
+        padding-bottom: 2px;
         span {
             display: block;
             &.risk-type {
-                font-size: 20px;
+                font-size: 19px;
             }
         }
     }
@@ -108,6 +119,8 @@
                 cursor: pointer;
                 text-transform: capitalize;
                 line-height: 1.1;
+                padding-top: 8px;
+                padding-bottom: 4px;
             }
             span {
                 font-size: 15px;
@@ -190,7 +203,6 @@
         }
         .user-item {
             margin: 0 0 10px;
-            padding-bottom: 15px;
             border-bottom: 1px solid $top-details-border-color;
             .profile-image {
                 width: 35px;
@@ -199,10 +211,15 @@
             .user-info {
                 a {
                     font-size: 18px;
+                    display: inline-block;
+                    cursor: pointer;
+                    text-transform: capitalize;
+                    line-height: 1.1;
+                    padding-top: 15px
                 }
             }
             .risk-count {
-                font-size: 16px;
+                font-size: 19px;
             }
         }
         .top-threats {
@@ -215,10 +232,10 @@
                 }
             }
             .risk-count {
-                font-size: 16px;
+                font-size: 19px;
                 .risk-type {
-                    font-size: 12px;
-                    padding-bottom: 2px
+                    font-size: 19px;
+                    padding-bottom: 5px
                 }
             }
         }
@@ -233,9 +250,9 @@
                     }
                 }
                 .risk-count {
-                    font-size: 16px;
+                    font-size: 19px;
                     .risk-type {
-                        font-size: 12px;
+                        font-size: 19px;
                     }
                 }
             }

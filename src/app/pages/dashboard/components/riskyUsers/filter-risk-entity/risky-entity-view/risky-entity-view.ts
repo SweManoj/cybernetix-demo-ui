@@ -5,7 +5,8 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 @Component({
   selector: 'app-risky-entity-view',
-  templateUrl: './risky-entity-view.html'
+  templateUrl: './risky-entity-view.html',
+  styleUrls: ['./risky-entity-view.scss']
 })
 export class RiskyEntityViewComponent {
 

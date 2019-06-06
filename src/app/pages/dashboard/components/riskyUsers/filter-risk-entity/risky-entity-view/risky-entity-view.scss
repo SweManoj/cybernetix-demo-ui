@@ -1,39 +1,45 @@
 img.img-rounded {
-    width: 4rem !important;
+  width: 4rem !important;
+}
+span.cardHeading {
+  font-size: 13px;
+  font-weight: 600;
 }
 
-.card-body {
-    border-bottom-right-radius: inherit;
-    padding                   : .4rem;
-    background                : #3a4751;
-    border-bottom-left-radius : inherit;
+.cardText {
+  font-size: 10px;
+  /* font-weight: 600; */
+  margin-top: -2px;
+}
+
+.initialPadding {
+  padding: initial;
+}
+
+.rightPadding {
+  padding-right: initial;
+}
+
+.centerAlign {
+  display: flex;
+  align-items: center;
+}
+
+img.img-rounded {
+  width: 3rem !important;
+}
+
+.mainText {
+  font-size: smaller;
+  font-weight: 600;
 }
 
 .cardPadding {
-    padding: 10px 8px !important;
+  padding: 6px 8px;
 }
 
-.card-footer {
-    padding: 10px 8px !important;
-}
-
-
-.risky-user-container {
-    background-color : black;
-    color            : $risky-users-text-color;
-    // padding-bottom: 15px;
-    border-radius    : 0px;
-    // box-shadow    : $risk-user-container-shadow;
-}
-
-#chartGuageDiv {
-    width         : 100%;
-    padding-bottom: 50%;
-}
-
-@media only screen and (min-width: 768px) {
-    .risky-users-container {
-        width      : 60%;
-        margin-left: 20px;
-    }
+.anchor {
+  font-size: 13px;
+  margin-top: 2px;
+  margin-left: inherit;
 }

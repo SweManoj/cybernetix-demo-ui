@@ -118,7 +118,8 @@ export class GlobeChartComponent implements OnInit {
                 if (count > 0) {
                     let polygon = measelsSeries.mapPolygons.create();
                     polygon.multiPolygon = am4maps.getCircle(mapPolygon.visualLongitude, mapPolygon.visualLatitude, Math.max(0.2, Math.log(count) * Math.LN10 / 10));
-                    polygon.tooltipText = mapPolygon.dataItem.dataContext.name + ": " + count;
+                    debugger;
+                    polygon.tooltipText = mapPolygon.dataItem.dataContext['name'] + ": " + count;
                     mapPolygon.dummyData = polygon;
                     polygon.events.on("over", function () {
                         mapPolygon.isHover = true;
@@ -128,7 +129,7 @@ export class GlobeChartComponent implements OnInit {
                     })
                 }
                 else {
-                    mapPolygon.tooltipText = mapPolygon.dataItem.dataContext.name + ": no data";
+                    //mapPolygon.tooltipText = mapPolygon.dataItem.dataContext.name + ": no data";
                     mapPolygon.fillOpacity = 0.9;
                 }
 

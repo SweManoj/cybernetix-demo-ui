@@ -82,8 +82,8 @@ export class PulseGlobeComponent implements OnInit {
     
     initializePlainGlobe() {
         // Create map instance
-        var chart = am4core.create("mapChartDiv", am4maps.MapChart);
-
+        var chart = am4core.create("pulseGlobeChartDiv", am4maps.MapChart);
+        am4core.options.autoSetClassName = true;
         // Set map definition
         chart.geodata = am4geodata_worldLow; // am4geodata_worldHigh
 

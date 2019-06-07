@@ -7,7 +7,7 @@
     height: 550px;
 }
 
-#mapChartDiv {
+#pulseGlobeChartDiv {
     width : 100%;
     height: 550px;
 }
@@ -36,4 +36,25 @@
 
 .ui-table .ui-paginator-bottom {
     display: none;
+}
+
+#pulseGlobeChartDiv circle {
+    fill: #FCD94E;
+}
+#pulseGlobeChartDiv svg > circle:last-child {
+    fill: #35ffc3;
+    opacity: 1;
+}
+#pulseGlobeChartDiv .amcharts-Circle {
+    animation: ripple1 0.8s linear infinite;
+}
+@keyframes ripple1 {
+    0% {
+        transform: scale(1.5);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(3.0);
+        opacity: 0.6;
+    }
 }

@@ -1,15 +1,113 @@
-.globeBg {
-    // background-image: radial-gradient(circle, #003D6E, #041421);
-    background: $black-bg-color;
-}
 
 #chartGlobeDiv {
+    position: relative;
     width: 100%;
     height: 500px;
 }
 
-#chartDonutDiv {
-    width: 103%;
-    height: 500px;
-    background: $black-bg-color;
+.row.d-flex.justify-content-center {
+    color: #A0A0A0;
+    font-size: small;
 }
+
+.chart-details-container1 {
+    background-color: $top-details-bg-color;
+    border-radius: 6px;
+    box-shadow: $top-details-box-shadow;
+    display: block;
+    margin-bottom: 15px;
+    &:last-child {
+        margin-right: 0;
+    }
+    a {
+        color: $text-white;
+    }
+ 
+}
+
+@media only screen and (min-width: 992px) {
+    .chart-details-container1 {
+        width: 59%;
+        float: left;
+        margin-right: 2%;
+        height: auto;
+    }
+}
+
+.chart-details-container2 {
+
+    canvas{
+        display: block;
+        height:420px !important;
+        // width:480px !important;
+    }
+    background-color: $top-details-bg-color;
+    border-radius: 6px;
+    box-shadow: $top-details-box-shadow;
+    display: block;
+    margin-bottom: 15px;
+    &:last-child {
+        margin-right: 0;
+    }
+    a {
+        color: $text-white;
+    }
+    .header {
+        font-size: 18px;
+        line-height: 24px;
+        word-spacing: -0.3px;
+        text-transform: uppercase;
+        height: 60px;
+        color: $top-details-header-text-color;
+        margin: 0 0 15px;
+        padding: 15px 15px 0;
+        background-color: $top-details-header-bg-color;
+        border-radius: 6px 6px 0 0;
+        .settings {
+            text-align: right;
+            font-size: 18px;
+            a {
+                color: $top-details-header-text-color;
+                vertical-align: middle;
+            }
+        }
+        .settings-icon {
+            font-size: 30px;
+            text-align: right;
+            span {
+                vertical-align: top;
+                color: $top-details-header-settings-icon-color;
+            }
+        }
+        .title {
+            padding: 1px;
+        }
+    }
+    .base-chart {
+        text-align: center;
+        padding-bottom: 0%;
+    }
+    
+}
+
+@media only screen and (min-width: 992px) {
+    .chart-details-container2 {
+        width: 39%;
+        float: left;
+        margin-right: 2%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .chart-details-container2 {
+        .header {
+            font-size: 18px;
+            .settings {
+                font-size: 16px;
+            }
+        }
+     
+    }
+}
+

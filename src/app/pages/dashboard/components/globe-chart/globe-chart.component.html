@@ -1,19 +1,36 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-7 globeBg">
-            <div id="chartGlobeDiv"></div>
-        </div>
 
-        <div class="col-md-5">
-            <div style="display: block;">
-                <canvas baseChart
-                        [datasets]="barChartData"
-                        [labels]="barChartLabels"
-                        [options]="barChartOptions"
-                        [plugins]="barChartPlugins"
-                        [chartType]="barChartType">
-                </canvas>
-            </div>
-            </div>
+
+<div *ngIf="componentType === 'gl-map'" class="gl-map">
+    <div id="chartGlobeDiv"></div>
+</div>   
+
+<!-- <div class="col-md-5">
+        <div style="display: block;">
+            <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [chartType]="barChartType">
+            </canvas>
     </div>
+</div> -->
+
+<div *ngIf="componentType === 'base-chart'" class="header row">
+    <div class="col-11 col-md-11 col-sm-11 title">
+            Risks By Department
+    </div>
+    <div class="col-1 col-md-1 col-sm-1 settings-icon">
+        <span class="ion ion-md-settings"></span>
+    </div>
+</div>
+    
+<div *ngIf="componentType === 'base-chart'" class="base-chart">
+    <ng-container>
+        <div>
+            <!-- ng2-chart  -->
+            <canvas baseChart [datasets]="barChartData" [options]="barChartOptions" [labels]="barChartLabels" [chartType]="barChartType">
+            </canvas>
+        </div>
+    </ng-container>
 </div>

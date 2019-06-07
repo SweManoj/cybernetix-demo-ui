@@ -7,7 +7,7 @@ import { UtilService } from '../../services/util.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { riskyUsers } from '../../services/util.data';
+import { UtilDataService } from '../../services/util.data.service';
 
 @Component({
     selector: 'app-header',
@@ -19,7 +19,8 @@ export class HeaderComponent {
     private prevThemeName: string;
 
     constructor(private sessionStorage: SessionStorage, private userContext: UserContext, private router: Router,
-        private loginService: LoginService, private utilService: UtilService, public modal: NgbModal) {
+        private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
+        private utilDataService: UtilDataService) {
         this.themeName = this.userContext.themeName;
         this.prevThemeName = this.themeName;
     }
@@ -63,15 +64,18 @@ export class HeaderComponent {
     ngOnInit() {
         var uniqueEntityNames = new Set<String>();
 
+        /*  filtering risky users name
         riskyUsers.forEach(riskyUser => {
             uniqueEntityNames.add(riskyUser.user);
         });
 
+        // removing duplicacy of risky users name
         Array.from(uniqueEntityNames).forEach(uniqueEntityName => {
             this.allEntitiesNames.push(uniqueEntityName.toString());
-        });
+        }); */
     }
 
+    /*  search risky users
     searchingEntity() {
         console.log('event user is : ' + this.searchEntity);
         const filteredRiskyUsers: any[] = riskyUsers.filter(riskyUser => String(riskyUser.user).toLowerCase().includes(this.searchEntity.toLowerCase()));
@@ -80,7 +84,44 @@ export class HeaderComponent {
             console.log('users are available');
             this.router.navigate(['/filteredRiskyUsers', this.searchEntity.toString()]);
         }
+    } */
+
+    filterRiskEntities(searchString: string) {
+
+        if (searchString !== '') {
+            this.utilDataService.filteredRiskyUsers = [];
+
+            const riskyUsers = this.utilDataService.getAllRiskyUsers();
+
+            const forFilterDuplication = riskyUsers.filter(riskyUser =>
+                riskyUser.user.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)  // user name
+                .concat(riskyUsers.filter(riskyUser =>
+                    riskyUser.department.toLowerCase().indexOf(searchString.toLowerCase()) !== -1))  // department name
+                .concat(riskyUsers.filter(riskyUser =>
+                    riskyUser.role.toLowerCase().indexOf(searchString.toLowerCase()) !== -1))  // role name
+                .concat(riskyUsers.filter(riskyUser =>
+                    riskyUser.location.toLowerCase().indexOf(searchString.toLowerCase()) !== -1))  // location name
+                .concat(riskyUsers.filter(riskyUser =>
+                    riskyUser.reportingManager.toLowerCase().indexOf(searchString.toLowerCase()) !== -1))  // Reporting Manager name
+                .concat(riskyUsers.filter(riskyUser =>
+                    riskyUser.lastViolation.toLowerCase().indexOf(searchString.toLowerCase()) !== -1));  // last violation name
+
+            if (forFilterDuplication.length > 0) {
+                this.utilDataService.filteredRiskyUsers = this.removeDuplicates(forFilterDuplication, 'id');
+                this.router.navigate(['/filteredRiskyUsers', this.searchEntity.toString()]);
+            } else {
+
+            }
+        } else {
+
+        }
     }
+
+    removeDuplicates(myArr: any[], prop: string) {
+        return myArr.filter((obj: any, pos: number, arr: any[]) => {
+            return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+        });
+    };
 
     search = (text$: Observable<string>) =>
         text$

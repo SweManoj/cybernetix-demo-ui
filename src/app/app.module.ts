@@ -19,6 +19,7 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CaseManagementModule } from './pages/case-management/case-management.module';
+import { UtilDataService } from './core/services/util.data.service';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { CaseManagementModule } from './pages/case-management/case-management.mo
         AuthGuard,
         UserContext,
         SessionStorage,
-        UtilService
+        UtilService,
+        UtilDataService
     ],
     bootstrap: [AppComponent]
 })

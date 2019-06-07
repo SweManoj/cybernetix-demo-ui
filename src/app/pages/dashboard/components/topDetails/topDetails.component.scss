@@ -56,7 +56,7 @@
             text-align: right;
             margin: auto;
             display: grid;
-            padding-right: 18px;
+            padding-right: initial;
             span {
                 vertical-align: top;
                 color: $top-details-header-settings-icon-color;
@@ -69,7 +69,7 @@
         padding: 1px;
     }
     .user-item {
-        margin: 0 13px;
+        margin: 0 10px;
         padding-bottom: 15px;
         border-bottom: 1px solid $top-details-border-color;
         color: $text-white;
@@ -88,6 +88,7 @@
                 text-transform: capitalize;
                 line-height: 1.1;
                 padding-top: 15px;
+                padding-bottom: 0;
             }
         }
     }
@@ -96,11 +97,15 @@
         font-size: 19px;
         text-align: center;
         padding-top: 2px;
-        padding-bottom: 2px;
+        padding-bottom: 0;
         span {
             display: block;
             &.risk-type {
+                color: $brand-red;
                 font-size: 19px;
+                text-align: center;
+                padding-top: 2px;
+                padding-bottom: 0;
             }
         }
     }
@@ -143,7 +148,7 @@
         width: 32%;
         float: left;
         margin-right: 2%;
-        height: 450px;
+        height: 467px;
         .top-threats {
             .threat-details {
                 span {
@@ -170,6 +175,23 @@
                         }
                     }
                 }
+            }
+        }
+    }
+    .risk-count {
+        color: $brand-red;
+        font-size: 12px;
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 0;
+        span {
+            display: block;
+            &.risk-type {
+                color: $brand-red;
+                font-size: 12px;
+                text-align: center;
+                padding-top: 2px;
+                padding-bottom: 0;
             }
         }
     }

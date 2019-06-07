@@ -11,9 +11,9 @@
 
     <div class="col-md-3 row">
         <div class="col-md-10 input-group initialPadding">
-            <input type="text" class="form-control" [(ngModel)]="searchEntity" [ngbTypeahead]="search"
-                placeholder="Search By Entity Names">
-            <div class="input-group-append" (click)="searchingEntity()">
+            <input type="text" class="form-control" [(ngModel)]="searchEntity" placeholder="Search Risky Entities"
+                (keyup.enter)="filterRiskEntities(searchEntity)">
+            <div class="input-group-append" (click)="filterRiskEntities(searchEntity)">
                 <span class="input-group-text">
                     <i class="fa fa-search" style="font-size: initial;"></i>
                 </span>

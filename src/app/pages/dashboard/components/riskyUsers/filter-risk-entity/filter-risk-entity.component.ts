@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { riskyUsers } from '../../../../../core/services/util.data';
+import { UtilDataService } from '../../../../../core/services/util.data.service';
 
 @Component({
   selector: 'app-filter-risk-entity',
@@ -12,12 +12,12 @@ export class FilterRiskEntityComponent implements OnInit {
   foundEntityName = '';
   filteredRiskyEntities: any[] = [];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private utilDataService: UtilDataService) {
 
     this.route.params.subscribe((params: Params) => {
       this.foundEntityName = params['riskyUser'];
 
-      this.filteredRiskyEntities = riskyUsers.filter(riskyUser => riskyUser.user.toLocaleLowerCase() === this.foundEntityName.toLocaleLowerCase());
+      this.filteredRiskyEntities = this.utilDataService.getFilteredRiskyUsers();
     });
   }
 

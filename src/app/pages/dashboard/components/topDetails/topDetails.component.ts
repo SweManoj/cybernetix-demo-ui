@@ -25,11 +25,11 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'ip', value: '172.10.10.11', score: 125, img: false },
         { type: 'ip', value: '172.10.10.11', score: 86, img: false },
         { type: 'ip', value: '172.10.10.11', score: 25, img: false },
-        { type: 'host', value: 'India', score: 180, img: false },
-        { type: 'host', value: 'China', score: 89, img: false },
-        { type: 'host', value: 'America', score: 65, img: false },
-        { type: 'host', value: 'Japan', score: 49, img: false },
-        { type: 'host', value: 'London', score: 30, img: false }
+        { type: 'host', value: 'Primesoft NZ LTD', score: 180, img: false },
+        { type: 'host', value: 'Beijing Sanxin Shidai Co.Ltd', score: 89, img: false },
+        { type: 'host', value: 'CHINANET-HN Hengyang', score: 65, img: false },
+        { type: 'host', value: 'LLC Kvazar Telecom', score: 49, img: false },
+        { type: 'host', value: 'Webhosting.Net', score: 30, img: false }
     ];
 
     assignee = [{ name: 'User', value: 'user' }, { name: 'IP Address', value: 'ip' }, { name: 'Host', value: 'host' }];

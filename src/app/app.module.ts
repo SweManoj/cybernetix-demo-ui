@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CaseManagementModule } from './pages/case-management/case-management.module';
 import { UtilDataService } from './core/services/util.data.service';
+import { ModalUtilComponent } from './core/common/modal-util/modal.util.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { UtilDataService } from './core/services/util.data.service';
         HeaderComponent,
         LoginLayoutComponent,
         MenuLayoutComponent,
-        LeftNavComponent
+        LeftNavComponent,
+        ModalUtilComponent
     ],
     imports: [
         BrowserModule,
@@ -49,7 +51,8 @@ import { UtilDataService } from './core/services/util.data.service';
         UtilService,
         UtilDataService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [ModalUtilComponent]
 })
 export class AppModule {
 }

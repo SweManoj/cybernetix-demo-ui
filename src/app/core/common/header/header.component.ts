@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { UtilDataService } from '../../services/util.data.service';
+import { ModalUtilComponent } from '../modal-util/modal.util.component';
 
 @Component({
     selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent {
 
     constructor(private sessionStorage: SessionStorage, private userContext: UserContext, private router: Router,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
-        private utilDataService: UtilDataService) {
+        private utilDataService: UtilDataService, private ngbModal: NgbModal) {
         this.themeName = this.userContext.themeName;
         this.prevThemeName = this.themeName;
     }
@@ -58,7 +59,7 @@ export class HeaderComponent {
     }
 
     // searchEntityAvailable
-    searchEntity: any;
+    searchEntity: any='';
     allEntitiesNames: string[] = [];
 
     ngOnInit() {
@@ -86,34 +87,40 @@ export class HeaderComponent {
         }
     } */
 
-    filterRiskEntities(searchString: string) {
+    filterRiskEntities() {
 
-        if (searchString !== '') {
+        if (this.searchEntity !== '') {
             this.utilDataService.filteredRiskyUsers = [];
 
             const riskyUsers = this.utilDataService.getAllRiskyUsers();
 
             const forFilterDuplication = riskyUsers.filter(riskyUser =>
-                riskyUser.user.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)  // user name
+                riskyUser.user.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1)  // user name
                 .concat(riskyUsers.filter(riskyUser =>
-                    riskyUser.department.toLowerCase().indexOf(searchString.toLowerCase()) !== -1))  // department name
+                    riskyUser.department.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // department name
                 .concat(riskyUsers.filter(riskyUser =>
-                    riskyUser.role.toLowerCase().indexOf(searchString.toLowerCase()) !== -1))  // role name
+                    riskyUser.role.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // role name
                 .concat(riskyUsers.filter(riskyUser =>
-                    riskyUser.location.toLowerCase().indexOf(searchString.toLowerCase()) !== -1))  // location name
+                    riskyUser.location.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // location name
                 .concat(riskyUsers.filter(riskyUser =>
-                    riskyUser.reportingManager.toLowerCase().indexOf(searchString.toLowerCase()) !== -1))  // Reporting Manager name
+                    riskyUser.reportingManager.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // Reporting Manager name
                 .concat(riskyUsers.filter(riskyUser =>
-                    riskyUser.lastViolation.toLowerCase().indexOf(searchString.toLowerCase()) !== -1));  // last violation name
+                    riskyUser.lastViolation.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1));  // last violation name
 
             if (forFilterDuplication.length > 0) {
                 this.utilDataService.filteredRiskyUsers = this.removeDuplicates(forFilterDuplication, 'id');
                 this.router.navigate(['/filteredRiskyUsers', this.searchEntity.toString()]);
             } else {
-
+                const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
+                modalRef.componentInstance.modalHeader = 'Warning';
+                modalRef.componentInstance.modalMessage = 'No Records Found !';
+                modalRef.componentInstance.cancelFlag = false;
             }
         } else {
-
+            const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
+            modalRef.componentInstance.modalHeader = 'Warning';
+            modalRef.componentInstance.modalMessage = 'Please Enter Risky Entity Values !';
+            modalRef.componentInstance.cancelFlag = false;
         }
     }
 

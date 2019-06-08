@@ -40,13 +40,13 @@ export class GlobeChartComponent implements OnInit {
             },
         }
     };
-    public pieChartLabels: Label[] = ['IT Security', 'Infrastructure', 'IT Support', 'Quality Testing', 'Development', 'Audit'];
-    public pieChartData: number[] = [28, 15, 10, 12, 30, 15];
+    public pieChartLabels: Label[] = ['IT Security', 'Infrastructure', 'IT Support', 'Quality Testing', 'Development'];
+    public pieChartData: number[] = [28, 15, 10, 12, 30];
     public pieChartType: ChartType = 'pie';
     public pieChartLegend = true;
     public pieChartColors = [
         {
-            backgroundColor: ['#82ddaf', '#549fff', '#dda882', '#7ecac7', '#dd6b8f', '#f8ed5f'],
+            backgroundColor: ['#82ddaf', '#549fff', '#dda882', '#7ecac7', '#dd6b8f'],
         },
     ];
 

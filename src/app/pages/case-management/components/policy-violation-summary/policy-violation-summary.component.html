@@ -137,10 +137,10 @@
             </form>
 
             <div class="row user-item mt-3" *ngFor="let comment of policyComments">
-                <div class="col-1 col-md-1">
+                <div class="col-1 col-md-1 mr-4">
                     <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
                 </div>
-                <div class="col-md-9 ml-4">
+                <div class="col-md-10 ml-1">
                     <div class="row mt-2 mb-1">
                         <div class="col-md-12 comment"><a href="#">{{comment.userId}}</a> &emsp;&emsp; {{comment.timestamp | timeAgo}}
                         </div>

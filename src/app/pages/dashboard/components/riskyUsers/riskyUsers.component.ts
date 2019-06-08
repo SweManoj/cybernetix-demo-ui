@@ -31,6 +31,8 @@ export class RiskyUsersComponent {
 
     selectedUser: string = null;
     allUsers: any = [];
+    selectedDateRange: string;
+    dateRanges = ['1 Week', '2 Weeks', '1 Month', '3 Months', '6 Months', '1 Year'];
     totalRecords: number = 0;
     recordsReturned: number = 0;
     selectedUserDetails: any = {};
@@ -83,6 +85,7 @@ export class RiskyUsersComponent {
         private zone: NgZone) {
         this.offset = 0;
         this.recordsReturned = 0;
+        this.selectedDateRange = '1 Week';
     }
 
     ngAfterViewInit() {
@@ -221,10 +224,12 @@ export class RiskyUsersComponent {
         series.dataFields.value = "value";
         series.columns.template.disabled = true; // background color for the columns
         series.sequencedInterpolation = true;
+        series.tooltip.getFillFromObject = false;
+        series.tooltip.background.fill = am4core.color("#2D93AD");
         series.defaultState.transitionDuration = 1000;
 
         var bullet = series.bullets.push(new am4charts.CircleBullet());
-        bullet.tooltipText = "[black]{date.formatDate('MMM dd, yyyy')}, {hour}: {value}";
+        bullet.tooltipText = "{policyViolated} : {value}";
         bullet.background.fill = am4core.color("black");
         bullet.strokeWidth = 2;
         bullet.stroke = am4core.color("#ffffff");
@@ -260,6 +265,20 @@ export class RiskyUsersComponent {
         chart.cursor.behavior = "zoomXY"; */
 
         chart.data = bubbleDataMonth;
+
+
+        // Create vertical scrollbar and place it before the value axis
+        chart.scrollbarY = new am4core.Scrollbar();
+        chart.scrollbarY.parent = chart.leftAxesContainer;
+        chart.scrollbarY.toBack();
+        // Create a horizontal scrollbar with previe and place it underneath the date axis
+   /*     chart.scrollbarX = new am4charts.XYChartScrollbar();
+        chart.scrollbarX['series'].push(series);
+        chart.scrollbarX.parent = chart.bottomAxesContainer;*/
+
+        // Add cursor
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.behavior = "zoomXY";
     }
 
     ngOnInit() {
@@ -381,5 +400,9 @@ export class RiskyUsersComponent {
     openUserInfo(userInfo: any) {
         const modalRef = this.modalService.open(RiskyUserInfoModalComponent, { size: 'lg' });
         modalRef.componentInstance.userInfo = userInfo;
+    }
+
+    changeChartDateRange(dateRange: string) {
+        this.selectedDateRange = dateRange;
     }
 }

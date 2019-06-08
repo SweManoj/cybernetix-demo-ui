@@ -118,7 +118,6 @@ export class GlobeChartComponent implements OnInit {
                 if (count > 0) {
                     let polygon = measelsSeries.mapPolygons.create();
                     polygon.multiPolygon = am4maps.getCircle(mapPolygon.visualLongitude, mapPolygon.visualLatitude, Math.max(0.2, Math.log(count) * Math.LN10 / 10));
-                    debugger;
                     polygon.tooltipText = mapPolygon.dataItem.dataContext['name'] + ": " + count;
                     mapPolygon.dummyData = polygon;
                     polygon.events.on("over", function () {

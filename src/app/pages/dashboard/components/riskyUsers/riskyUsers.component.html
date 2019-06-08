@@ -106,20 +106,15 @@
 </ng-container>
 
 <div class="container-fluid showActivity">
-    <div class="row pt-3 pb-3">
+<!--    <div class="row pt-3 pb-3">
         <div class="col-md-2">
             <span class="pagetitle">Show Activity</span>
         </div>
         <div class="col-md-10 p-1">
-            <button type="button" class="btn">1 Week</button>&emsp;&nbsp;
-            <button type="button" class="btn">2 Weeks</button>&emsp;&nbsp;
-            <button type="button" class="btn">1 Month</button>&emsp;&nbsp;
-            <button type="button" class="btn">3 Months</button>&emsp;&nbsp;
-            <button type="button" class="btn">6 Months</button>&emsp;&nbsp;
-            <button type="button" class="btn">1 Year</button>&emsp;&nbsp;
+            <button type="button" class="btn" [ngClass]="{'active-btn' : selectedDateRange === dateRange}" (click)="changeChartDateRange(dateRange)" *ngFor="let dateRange of dateRanges">{{dateRange}}</button>
             <button type="button" class="btn">Date Range</button>
         </div>
-    </div>
+    </div>-->
 
     <!-- Show Activity Images With Values -->
     <div class="row">

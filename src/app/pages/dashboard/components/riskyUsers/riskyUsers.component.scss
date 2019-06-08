@@ -19,9 +19,13 @@ ngb-modal-window.modal.fade.show.d-block {
         border: .6px solid $risky-user-btn-text;
         border-radius: 15px;
         padding: 4px 24px;
-        margin-right: 16px;
+        margin-right: 16px !important;
         color: $risky-user-btn-text;
         font-size: small;
+    }
+    .active-btn{
+        background-color: #0aadc8;
+        color: #ffffff;
     }
     .row {
         margin: auto;

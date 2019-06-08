@@ -90,33 +90,9 @@ export var bubbleDataMonth: any = [
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
   {
-    "hour": "10pm",
-    "date": "2019-06-07",
-    "value": 0,
-      "policyViolated" : "Uploded More Data"
-  },
-  {
-    "hour": "11pm",
-    "date": "2019-06-06",
-    "value": 0,
-      "policyViolated" : "Uploded More Data"
-  },
-  {
-    "hour": "12pm",
-    "date": "2019-06-06",
-    "value": 0,
-      "policyViolated" : "Uploded More Data"
-  },
-  {
     "hour": "1am",
     "date": "2019-06-08",
     "value": 3,
-      "policyViolated" : "Uploded More Data"
-  },
-  {
-    "hour": "2am",
-    "date": "2019-06-10",
-    "value": 0,
       "policyViolated" : "Uploded More Data"
   },
   {
@@ -141,12 +117,6 @@ export var bubbleDataMonth: any = [
     "hour": "6am",
     "date": "2019-06-08",
     "value": 3,
-      "policyViolated" : "Uploded More Data"
-  },
-  {
-    "hour": "7am",
-    "date": "2019-05-28",
-    "value": 0,
       "policyViolated" : "Uploded More Data"
   },
   {
@@ -252,12 +222,6 @@ export var bubbleDataMonth: any = [
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
   {
-    "hour": "5am",
-    "date": "2019-04-30",
-    "value": 0,
-      "policyViolated" : "Downloding More Data From File Sharing Sites"
-  },
-  {
     "hour": "6am",
     "date": "2019-03-30",
     "value": 2,
@@ -279,12 +243,6 @@ export var bubbleDataMonth: any = [
     "hour": "9am",
     "date": "2019-03-30",
     "value": 2,
-      "policyViolated" : "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "2pm",
-    "date": "2019-05-30",
-    "value": 0,
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
   {
@@ -327,12 +285,6 @@ export var bubbleDataMonth: any = [
     "hour": "2pm",
     "date": "2019-05-31",
     "value": 1,
-      "policyViolated" : "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "3pm",
-    "date": "2019-04-22",
-    "value": 0,
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
   {

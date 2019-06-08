@@ -250,13 +250,11 @@ export class RiskyUsersComponent {
         hoverState.properties.strokeOpacity = 1;
 
         for (var x in bubbleDataMonth) {
-            if (bubbleDataMonth[x].value <= 0)
-                bubbleDataMonth[x].color = '#0F2231';
             if (bubbleDataMonth[x].value > 0 && bubbleDataMonth[x].value <= 1)
                 bubbleDataMonth[x].color = '#FFFF00';
-            else if (bubbleDataMonth[x].value > 1 && bubbleDataMonth[x].value <= 2)
+            else if (bubbleDataMonth[x].value > 1 && bubbleDataMonth[x].value <= 3)
                 bubbleDataMonth[x].color = '#FFA500';
-            else if (bubbleDataMonth[x].value > 2 && bubbleDataMonth[x].value <= 3)
+            else if (bubbleDataMonth[x].value > 3)
                 bubbleDataMonth[x].color = '#f00';
         }
 

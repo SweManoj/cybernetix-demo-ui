@@ -20,6 +20,36 @@ export class GlobeChartComponent implements OnInit {
 
     constructor(private zone: NgZone) {}
 
+    public pieChartOptions: ChartOptions = {
+        responsive: true,
+        legend: {
+            position: 'top',
+            labels: {
+                fontFamily : 'Calibri',
+                fontSize : 10,
+                fontColor : '#007ad9',
+                fontStyle : 'bold',
+            },
+        },
+        plugins: {
+            datalabels: {
+                formatter: (value, ctx) => {
+                    const label = ctx.chart.data.labels[ctx.dataIndex];
+                    return label;
+                },
+            },
+        }
+    };
+    public pieChartLabels: Label[] = ['IT Security', 'Infrastructure', 'IT Support', 'Quality Testing', 'Development', 'Audit'];
+    public pieChartData: number[] = [28, 15, 10, 12, 30, 15];
+    public pieChartType: ChartType = 'pie';
+    public pieChartLegend = true;
+    public pieChartColors = [
+        {
+            backgroundColor: ['#82ddaf', '#549fff', '#dda882', '#7ecac7', '#dd6b8f', '#f8ed5f'],
+        },
+    ];
+
     public barChartOptions: ChartOptions = {
         responsive: true,
         
@@ -63,13 +93,13 @@ export class GlobeChartComponent implements OnInit {
           }
     };
 
-    public barChartLabels: Label[] = ['IT Security', 'Infrastructure', 'IT Support', 'Quality Testing', 'Development', 'Audit', 'Marketing'];
+    public barChartLabels: Label[] = ['VP-Sales', 'Sr. Software Engineer', 'Sr. Tester', 'Project Manager', 'Product Owner'];
     public barChartType: ChartType = 'bar';
     public barChartLegend = true;
     public barChartPlugins = [];
      
     public barChartData: ChartDataSets[] = [
-        { data: [65, 59, 80, 81, 56, 55, 40, 30, 10, 100], label: 'Risks by Departments' }
+        { data: [65, 59, 80, 81, 56, 55, 40, 30, 10, 100], label: 'Risks by Titles' }
     ];
 
     ngOnInit() {}

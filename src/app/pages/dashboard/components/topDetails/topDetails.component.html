@@ -3,7 +3,7 @@
     <div class="col-6 col-md-6 col-sm-6 heading">
         Risky Entities
     </div>
-    <div class="col-4 col-md-4 col-sm-4">
+    <div class="col-4 col-md-4 col-sm-4 pr-4">
         <p-dropdown [options]="assignee" placeholder="USER" optionLabel="name" dropdownIcon="pi pi-caret-down" (onChange)="SelectedRiskyType($event)"></p-dropdown>
     </div>
     <div class="col-2 col-md-2 col-sm-2 settings-icon">
@@ -12,17 +12,18 @@
     </div>
 </div>
 
-<div *ngIf="componentType === 'riskyUser'" class="top-riksy-users mt-3">
+<div *ngIf="componentType === 'riskyUser'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let selectedRisky of selectedRiskies">
-        <div class="row user-item" [ngStyle]="{'padding':riskyTypeSelected=='user'?'12px 12px':'15px 15px'}">
-            <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2">
+        <div class="row user-item" [ngStyle]="{'padding':riskyTypeSelected=='user'?'13px 13px':'13px 13px'}">
+            <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>
-            <div class="col-7 col-sm-7 col-md-7 user-info">
+            <div class="col-8 col-sm-8 col-md-8 user-info">
                 <a *ngIf="selectedRisky.value" [routerLink]="['/riskyUser', selectedRisky.value]">{{selectedRisky.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
-            <div class="col-3 col-sm-3 col-md-3 risk-count">
+            <div class="col-2 col-sm-2 col-md-2 risk-count">
+                <p></p>
                 <span> {{selectedRisky.score}}</span>
             </div>
         </div>
@@ -43,7 +44,7 @@
         <span class="ion ion-md-settings"></span>
     </div>
 </div>
-<div *ngIf="componentType === 'topThreats'" class="top-threats">
+<div *ngIf="componentType === 'topThreats'" class="top-threats ">
     <ng-container *ngFor="let threat of threatsList">
         <div class="threat-item row">
             <div class="col-9 col-sm-9 col-md-9 threat-details">
@@ -67,7 +68,7 @@
         <span class="ion ion-md-settings "></span>
     </div>
 </div>
-<div *ngIf="componentType==='topViolations' " class="top-violations ">
+<div *ngIf="componentType==='topViolations' " class="top-violations  mt-3">
     <ng-container *ngFor="let threat of violationsList ">
         <div class="threat-item row pt-1 pb-2 " *ngIf="threat._id ">
             <!--<div class="col-sm-3 col-md-3 time-details ">-->
@@ -75,11 +76,11 @@
             <!--<span>{{threat.date}}</span>-->
             <!--<span>{{threat.time}}</span>-->
             <!--</div>-->
-            <div class="col-6 col-sm-6 col-md-6 threat-details ">
+            <div class="col-5 col-sm-5 col-md-5 threat-details ">
                 <a routerLink="/pages/details/violation ">{{threat._id}} </a>
                 <!--<span>{{threat.description}}</span>-->
             </div>
-            <div class="col-6 col-sm-6 col-md-6 risk-count ">
+            <div class="col-7 col-sm-7 col-md-7 risk-count ">
                 <span>{{threat.count}}</span>
                 <span class="risk-type ">Policy Violations</span>
             </div>

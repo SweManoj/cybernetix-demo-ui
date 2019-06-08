@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from "@angular/core";
+import { Component, OnInit, NgZone, Input } from "@angular/core";
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -16,20 +16,60 @@ am4core.useTheme(am4themes_animated);
 })
 export class GlobeChartComponent implements OnInit {
     private am4maps: am4maps.MapChart;
+    @Input() componentType: string;
 
     constructor(private zone: NgZone) {}
 
     public barChartOptions: ChartOptions = {
         responsive: true,
+        
+        
+        scales: {
+            yAxes: [
+              {
+                display: true,
+                ticks: {
+                  beginAtZero: true,
+                  fontFamily : 'Calibri',
+                  fontSize : 10,
+                  fontColor : '#007ad9',
+                  fontStyle : 'bold'
+                },
+                
+              }
+              
+            ],
+            xAxes: [{
+                gridLines: {
+                    offsetGridLines: true
+                },
+                ticks:{
+                    fontFamily : 'Calibri',
+                    fontSize : 10,
+                    fontColor : '#007ad9',
+                    fontStyle : 'bold',
+                    maxRotation: 0
+                },  
+            }]
+          },
+          legend: {
+            display: false,
+            labels: {
+                fontFamily : 'Calibri',
+                fontSize : 10,
+                fontColor : '#007ad9',
+                fontStyle : 'bold',           
+            },            
+          }
     };
 
     public barChartLabels: Label[] = ['IT Security', 'Infrastructure', 'IT Support', 'Quality Testing', 'Development', 'Audit', 'Marketing'];
     public barChartType: ChartType = 'bar';
     public barChartLegend = true;
     public barChartPlugins = [];
-
+     
     public barChartData: ChartDataSets[] = [
-        { data: [65, 59, 80, 81, 56, 55, 40, 30, 10, 100], label: 'Risky Entities' }
+        { data: [65, 59, 80, 81, 56, 55, 40, 30, 10, 100], label: 'Risks by Departments' }
     ];
 
     ngOnInit() {}

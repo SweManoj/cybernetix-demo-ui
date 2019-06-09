@@ -4,7 +4,8 @@
         Risky Entities
     </div>
     <div class="col-4 col-md-4 col-sm-4 pr-4">
-        <p-dropdown [options]="assignee" placeholder="USER" optionLabel="name" dropdownIcon="pi pi-caret-down" (onChange)="SelectedRiskyType($event)"></p-dropdown>
+        <p-dropdown [options]="assignee" placeholder="USER" optionLabel="name" dropdownIcon="pi pi-caret-down"
+            (onChange)="SelectedRiskyType($event)"></p-dropdown>
     </div>
     <div class="col-2 col-md-2 col-sm-2 settings-icon">
         <!-- <a routerLink="/allRiskyUsers">{{'global.viewAll' | translate}}</a> -->
@@ -14,15 +15,16 @@
 
 <div *ngIf="componentType === 'riskyUser'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let selectedRisky of selectedRiskies">
-        <div class="row user-item" [ngStyle]="{'padding':riskyTypeSelected=='user'?'13px 13px':'13px 13px'}">
+        <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
             <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 user-info">
-                <a *ngIf="selectedRisky.value" [routerLink]="['/riskyUser', selectedRisky.value]">{{selectedRisky.value}}</a>
+            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+                <a *ngIf="selectedRisky.value"
+                    [routerLink]="['/riskyUser', selectedRisky.value]">{{selectedRisky.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
-            <div class="col-2 col-sm-2 col-md-2 risk-count">
+            <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <p></p>
                 <span> {{selectedRisky.score}}</span>
             </div>
@@ -36,10 +38,10 @@
 
 <!-- Risky Entities -->
 <div *ngIf="componentType === 'topThreats'" class="header row">
-    <div class="col-8 col-md-8 col-sm-8 heading">
+    <div class="col-9 col-md-9 heading">
         {{'global.topViolations' | translate}}
     </div>
-    <div class="col-4 col-md-4 col-sm-4 settings-icon">
+    <div class="col-3 col-md-3 settings-icon">
         <!--<a href="#">{{'global.viewAll' | translate}}</a>-->
         <span class="ion ion-md-settings"></span>
     </div>
@@ -47,23 +49,23 @@
 <div *ngIf="componentType === 'topThreats'" class="top-threats ">
     <ng-container *ngFor="let threat of threatsList">
         <div class="threat-item row">
-            <div class="col-9 col-sm-9 col-md-9 threat-details">
+            <div class="col-10 col-md-10 threat-details centerAlign">
                 <a routerLink="/pages/details/threats">{{threat.title}}</a>
                 <!--<span>{{threat.description}}</span>-->
             </div>
-            <div class="col-3 col-sm-3 col-md-3 risk-count">
+            <div class="col-2 col-md-2 risk-count centerAlign">
                 <span>{{threat.count}}</span>
-                <span class=" risk-type ">Entities</span>
+                <!-- <span class=" risk-type ">Entities</span> -->
             </div>
         </div>
     </ng-container>
 </div>
 
-<div *ngIf="componentType==='topViolations' " class="header row ">
-    <div class="col-8 col-md-8 col-sm-8 heading ">
+<div *ngIf="componentType==='topViolations' " class="header row">
+    <div class="col-9 col-md-9 heading ">
         {{'global.topThreats' | translate}}
     </div>
-    <div class="col-4 col-md-4 col-sm-4 settings-icon ">
+    <div class="col-3 col-md-3 settings-icon ">
         <!--<a href="# ">{{'global.viewAll' | translate}}</a>-->
         <span class="ion ion-md-settings "></span>
     </div>
@@ -76,13 +78,13 @@
             <!--<span>{{threat.date}}</span>-->
             <!--<span>{{threat.time}}</span>-->
             <!--</div>-->
-            <div class="col-5 col-sm-5 col-md-5 threat-details ">
+            <div class="col-9 col-md-9 centerAlign p-3">
                 <a routerLink="/pages/details/violation ">{{threat._id}} </a>
                 <!--<span>{{threat.description}}</span>-->
             </div>
-            <div class="col-7 col-sm-7 col-md-7 risk-count ">
+            <div class="col-3 col-md-3 risk-count centerAlign" style="place-content: center;">
                 <span>{{threat.count}}</span>
-                <span class="risk-type ">Policy Violations</span>
+                <!-- <span class="risk-type ">Policy Violations</span> -->
             </div>
         </div>
     </ng-container>

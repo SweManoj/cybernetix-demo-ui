@@ -42,7 +42,7 @@
                 <div class="col-md-2" style="display: inline-block; text-align: center;background: #041421;">
                     <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image img-rounded mt-4" src='../assets/images/user.png' />
                     <div class="user-info m-t-sm">
-                        <span style="color:#D3D3D3;size:26px">{{selectedUserDetails.userInfo?.EmployeeName}}</span>
+                        <span style="color:#D3D3D3;size:26px;font-weight: 600">{{selectedUserDetails.userInfo?.EmployeeName}}</span>
                         <p></p>
                     </div>
                 </div>
@@ -90,8 +90,8 @@
 
                 <div class="col-md-1 ml-3" style="display: inline-block;padding: 0%;">
                     <div class="display: flex;text-align: center;">
-                        <p style="font-family: Roboto-Light;font-size: 67.6px;color: #21FF0E;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px">180</p>
-                        <p style="font-size: 20px;color: #A7A7A7;letter-spacing: -0.32px;padding-left: 7px;">Risk Score
+                        <p style="font-size: 67.6px;color: #21FF0E;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">180</p>
+                        <p style="font-size: 20px;color: #A7A7A7;letter-spacing: -0.32px;padding-left: 16px;">Risk Score
                         </p>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
     <div class="risky-user-container">
         <div class="risky-user-details">
             <div class="timeline-view" *ngIf="selectedView === 'timeline'">
-                <div class="row" *ngFor="let item of selectedUserDetails.data" style="padding: 0px 34px;margin-left: -95px;">
+                <div class="row" *ngFor="let item of selectedUserDetails.data" style="margin-left: -95px;">
                     <div class="col-md-2">
                         <div class="offset-md-1 col-10 col-sm-10 col-md-10 risk-time-stamp">
                             <span>&emsp;{{item.generatedTimestamp}}</span>
@@ -212,8 +212,8 @@
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
                                         class="fa fa-angle-down"></i>
                                 </span>
-                                <span class="pointerCursor" (click)="item.accord = !item.accord" style="color:red;font-size: 19px;letter-spacing: -0.31px;">&emsp;{{item.pv}}&emsp;</span>
-                                <span class="pointerCursor" (click)="item.accord = !item.accord" style="font-size: 19px;letter-spacing: -0.31px;">
+                                <span class="pointerCursor" (click)="item.accord = !item.accord" style="color:red;font-size: 17px;letter-spacing: -0.31px;">&emsp;{{item.pv}}&emsp;</span>
+                                <span class="pointerCursor" (click)="item.accord = !item.accord" style="font-size: 17px;letter-spacing: -0.31px;">
                                     &emsp;{{item.ruleInfo.title}}</span>
 
                                 <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)" class="risk-score">{{item.riskScore}}</span>

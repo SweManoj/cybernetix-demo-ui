@@ -1,9 +1,8 @@
-
-#chartGlobeDiv {
-    position: relative;
+/* #chartGlobeDiv {
+    position: block;
     width: 100%;
     height: 500px;
-}
+} */
 
 .row.d-flex.justify-content-center {
     color: #A0A0A0;
@@ -15,14 +14,13 @@
     border-radius: 6px;
     box-shadow: $top-details-box-shadow;
     display: block;
-    margin-bottom: 15px;
+    //margin-bottom: 15px;
     &:last-child {
         margin-right: 0;
     }
     a {
         color: $text-white;
     }
- 
 }
 
 @media only screen and (min-width: 992px) {
@@ -35,17 +33,15 @@
 }
 
 .chart-details-container2 {
-
-    canvas{
+    canvas {
         display: block;
-        height:420px !important;
-        // width:480px !important;
+        height: 300px !important;
+        padding-bottom: 5% //width: 410px !important;
     }
     background-color: $top-details-bg-color;
     border-radius: 6px;
     box-shadow: $top-details-box-shadow;
     display: block;
-    margin-bottom: 15px;
     &:last-child {
         margin-right: 0;
     }
@@ -87,7 +83,11 @@
         text-align: center;
         padding-bottom: 0%;
     }
-    
+    .globe {
+        display: block;
+        height: 300px;
+        padding-bottom: 5%
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -101,13 +101,18 @@
 
 @media only screen and (max-width: 600px) {
     .chart-details-container2 {
+        canvas.pie {
+            display: block;
+            height: 350px !important;
+            width: 450px !important;
+            border-radius: 20;
+            padding: 0%
+        }
         .header {
             font-size: 18px;
             .settings {
                 font-size: 16px;
             }
         }
-     
     }
 }
-

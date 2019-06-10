@@ -26,10 +26,12 @@ export class GlobeChartComponent implements OnInit {
             position: 'top',
             labels: {
                 fontFamily : 'Calibri',
-                fontSize : 10,
-                fontColor : '#007ad9',
+                fontSize : 12,
+                fontColor : '#a0a0a0',
                 fontStyle : 'bold',
+                padding:22,
             },
+            
         },
         plugins: {
             datalabels: {
@@ -52,8 +54,6 @@ export class GlobeChartComponent implements OnInit {
 
     public barChartOptions: ChartOptions = {
         responsive: true,
-        
-        
         scales: {
             yAxes: [
               {
@@ -62,8 +62,8 @@ export class GlobeChartComponent implements OnInit {
                   beginAtZero: true,
                   fontFamily : 'Calibri',
                   fontSize : 10,
-                  fontColor : '#007ad9',
-                  fontStyle : 'bold'
+                  fontColor : '#a0a0a0',
+                  //fontStyle : 'bold'
                 },
                 
               }
@@ -76,8 +76,8 @@ export class GlobeChartComponent implements OnInit {
                 ticks:{
                     fontFamily : 'Calibri',
                     fontSize : 10,
-                    fontColor : '#007ad9',
-                    fontStyle : 'bold',
+                    fontColor : '#a0a0a0',
+                    //fontStyle : 'bold',
                     maxRotation: 0
                 },  
             }]
@@ -87,7 +87,7 @@ export class GlobeChartComponent implements OnInit {
             labels: {
                 fontFamily : 'Calibri',
                 fontSize : 10,
-                fontColor : '#007ad9',
+                fontColor : '#a0a0a0',
                 fontStyle : 'bold',           
             },            
           }
@@ -95,7 +95,7 @@ export class GlobeChartComponent implements OnInit {
 
     public barChartLabels: Label[] = ['VP-Sales', 'Sr. Software Engineer', 'Sr. Tester', 'Project Manager', 'Product Owner'];
     public barChartType: ChartType = 'bar';
-    public barChartLegend = true;
+    public barChartLegend = false;
     public barChartPlugins = [];
      
     public barChartData: ChartDataSets[] = [
@@ -107,7 +107,7 @@ export class GlobeChartComponent implements OnInit {
     initializePlainGlobe() {
         // Create map instance
         var chart = am4core.create("chartGlobeDiv", am4maps.MapChart);
-
+        am4core.Responsive
         // Set map definition
         chart.geodata = am4geodata_worldLow; // am4geodata_worldHigh
 

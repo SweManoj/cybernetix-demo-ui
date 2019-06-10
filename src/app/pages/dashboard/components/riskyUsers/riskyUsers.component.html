@@ -42,18 +42,18 @@
                 <div class="col-md-2" style="display: inline-block; text-align: center;background: #041421;">
                     <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image img-rounded mt-4" src='../assets/images/user.png' />
                     <div class="user-info m-t-sm">
-                        <span style="font-family:Roboto-Medium;color:#D3D3D3;size:26px">{{selectedUserDetails.userInfo?.EmployeeName}}</span>
+                        <span style="color:#D3D3D3;size:26px">{{selectedUserDetails.userInfo?.EmployeeName}}</span>
                         <p></p>
                     </div>
                 </div>
 
                 <div class="col-md-3" style="display: inline-block;margin-right: -6rem;">
                     <p></p>
-                    <span style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Role</span>
-                    <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">VP Business Development</p>
+                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Role</span>
+                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">VP Business Development</p>
                     <p></p>
-                    <span style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Department</span>
-                    <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">IT Security
+                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Department</span>
+                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">IT Security
                     </p>
                     <p></p>
                 </div>
@@ -62,26 +62,26 @@
                 <!-- <div class="col-md-4"> -->
                 <div class="col-md-2 ml-5" style="display: inline-block;">
                     <p></p>
-                    <span style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Location</span>
-                    <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">Los Angles
+                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Location</span>
+                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">Los Angles
                     </p>
                     <p></p>
-                    <span style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Reporting
+                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Reporting
                         Manager</span>
-                    <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">Paul Smith
+                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">Paul Smith
                     </p>
                     <p></p>
                 </div>
 
                 <div class="col-md-2 ml-3" style="display: inline-block;">
                     <p></p>
-                    <span style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Creation
+                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Creation
                         Date</span>
-                    <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">12 Dec 2018</p>
+                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">12 Dec 2018</p>
                     <p></p>
-                    <span style="font-family: Roboto-Regular;font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Last
+                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Last
                         Working Day</span>
-                    <p style="font-family: Roboto-Medium;font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">25 Jan 2019</p>
+                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">25 Jan 2019</p>
                     <p></p>
                 </div>
                 <!-- </div> -->
@@ -91,7 +91,7 @@
                 <div class="col-md-1 ml-3" style="display: inline-block;padding: 0%;">
                     <div class="display: flex;text-align: center;">
                         <p style="font-family: Roboto-Light;font-size: 67.6px;color: #21FF0E;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px">180</p>
-                        <p style="font-family: Roboto-Regular;font-size: 20px;color: #A7A7A7;letter-spacing: -0.32px;padding-left: 7px;">Risk Score
+                        <p style="font-size: 20px;color: #A7A7A7;letter-spacing: -0.32px;padding-left: 7px;">Risk Score
                         </p>
                     </div>
                 </div>
@@ -213,7 +213,7 @@
                                         class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor" (click)="item.accord = !item.accord" style="color:red;font-size: 19px;letter-spacing: -0.31px;">&emsp;{{item.pv}}&emsp;</span>
-                                <span class="pointerCursor" (click)="item.accord = !item.accord" style="font-family: Roboto-Medium;font-size: 19px;letter-spacing: -0.31px;">
+                                <span class="pointerCursor" (click)="item.accord = !item.accord" style="font-size: 19px;letter-spacing: -0.31px;">
                                     &emsp;{{item.ruleInfo.title}}</span>
 
                                 <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)" class="risk-score">{{item.riskScore}}</span>

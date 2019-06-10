@@ -197,7 +197,7 @@ export class RiskyUsersComponent {
         chart.maskBullets = false;
 
         let xAxis = chart.xAxes.push(new am4charts.DateAxis());
-        xAxis.dataFields.category = "date";
+        //xAxis.dataFields.category = "date";
 
         let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
         yAxis.dataFields.category = "hour";

@@ -188,7 +188,6 @@ export class RiskyUsersComponent {
 
         // Apply chart themes
         am4core.useTheme(am4themes_animated);
-        // am4core.useTheme(material);
 
         var chart = am4core.create("bubbleChartdiv", am4charts.XYChart);
 
@@ -197,14 +196,16 @@ export class RiskyUsersComponent {
 
         chart.maskBullets = false;
 
-        var xAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-        var yAxis = chart.yAxes.push(new am4charts.DateAxis());
-        yAxis.dateFormats.setKey("day", "MMM dd, yyyy");
-        yAxis.periodChangeDateFormats.setKey("day", "MMM dd, yyyy");
+        let xAxis = chart.xAxes.push(new am4charts.DateAxis());
+        xAxis.dataFields.category = "date";
 
-        // yAxis.dataFields.category = "date";
-        xAxis.renderer.minGridDistance = 5;
-        xAxis.dataFields.category = "hour";
+        let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+        yAxis.dataFields.category = "hour";
+
+
+        xAxis.dateFormats.setKey("day", "MMM dd, yyyy");
+        xAxis.periodChangeDateFormats.setKey("day", "MMM dd, yyyy");
+
 
         xAxis.renderer.grid.template.disabled = false; // vertical line middle on the bubbles
         yAxis.renderer.grid.template.disabled = false; // Horizontal border line for the bubbles
@@ -213,14 +214,10 @@ export class RiskyUsersComponent {
         yAxis.renderer.ticks.template.disabled = true;
         xAxis.renderer.ticks.template.disabled = true;
 
-        xAxis.renderer.axisFills.template.fill = am4core.color('red');
-        yAxis.renderer.axisFills.template.fill = am4core.color('red')
-
-        yAxis.renderer.inversed = true;
 
         var series = chart.series.push(new am4charts.ColumnSeries());
-        series.dataFields.dateY = "date";
-        series.dataFields.categoryX = "hour";
+        series.dataFields.categoryY = "hour";
+        series.dataFields.dateX = "date";
         series.dataFields.value = "value";
         series.columns.template.disabled = true; // background color for the columns
         series.sequencedInterpolation = true;
@@ -258,21 +255,12 @@ export class RiskyUsersComponent {
                 bubbleDataMonth[x].color = '#f00';
         }
 
-        // hovering x , y axis
-        /* chart.cursor = new am4charts.XYCursor();
-        chart.cursor.behavior = "zoomXY"; */
-
         chart.data = bubbleDataMonth;
 
 
-        // Create vertical scrollbar and place it before the value axis
-        chart.scrollbarY = new am4core.Scrollbar();
-        chart.scrollbarY.parent = chart.leftAxesContainer;
-        chart.scrollbarY.toBack();
-        // Create a horizontal scrollbar with previe and place it underneath the date axis
-   /*     chart.scrollbarX = new am4charts.XYChartScrollbar();
-        chart.scrollbarX['series'].push(series);
-        chart.scrollbarX.parent = chart.bottomAxesContainer;*/
+        // Add scrollbars
+        chart.scrollbarX = new am4core.Scrollbar();
+        //chart.scrollbarY = new am4core.Scrollbar();
 
         // Add cursor
         chart.cursor = new am4charts.XYCursor();

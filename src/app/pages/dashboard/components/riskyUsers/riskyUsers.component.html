@@ -193,13 +193,13 @@
                 <div class="risky-user-container">
                     <div class="risky-user-details">
                         <div class="timeline-view" *ngIf="selectedView === 'timeline'">
-                            <div class="row" *ngFor="let item of hardCodeItemData" style="margin-left: -95px;">
+                            <div class="row" *ngFor="let item of hardCodeItemData" >
                                 <div class="col-md-2">
-                                    <div class="offset-md-1 col-10 col-sm-10 col-md-10 risk-time-stamp">
+                                    <div class="risk-time-stamp">
                                         <span>&emsp;{{item.generatedTimestamp}}</span>
                                     </div>
             
-                                    <div class="col-1 col-sm-1 col-md-1 col-separator" style="display: inline;">
+                                    <div class="col-md-1 col-separator" style="display: inline;">
                                         <div class="risky-separator">
                                             <span class="risk-dot">&nbsp;</span>
                                         </div>

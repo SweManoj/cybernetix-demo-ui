@@ -425,7 +425,9 @@ dd {
                 position: relative;
                 top: 45px;
                 // right: 0;
+                left: -30px;
                 color: $risk-time-stamp-color;
+                float: left;
             }
         }
         .col-separator {
@@ -438,7 +440,9 @@ dd {
             height: 100%;
             width: 3px;
             margin: 0 auto;
-            float: right;
+            // float: left;
+            margin-top: 20px;
+            margin-right: 35px;
             background-color: $risky-separator-bg-color;
             .risk-dot {
                 display: inline-block;

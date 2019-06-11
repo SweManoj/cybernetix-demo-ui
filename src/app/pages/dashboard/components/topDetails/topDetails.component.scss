@@ -7,6 +7,18 @@
   padding-bottom: unset !important;
 }
 
+.high {
+  color: red;
+}
+
+.medium {
+  color: yellow;
+}
+
+.low {
+  color: orange;
+}
+
 .centerAlign {
   display: flex;
   align-items: center;
@@ -102,11 +114,9 @@
     }
   }
   .risk-count {
+    place-content: center;
     color: $brand-red;
     font-size: 19px;
-    text-align: center;
-    padding-top: 2px;
-    padding-bottom: 0;
     span {
       //   display: block;
       font-weight: 600;

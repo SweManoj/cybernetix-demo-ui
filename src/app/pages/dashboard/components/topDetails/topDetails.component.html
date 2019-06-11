@@ -14,7 +14,7 @@
 </div>
 
 <div *ngIf="componentType === 'riskyUser'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let selectedRisky of selectedRiskies">
+    <ng-container *ngFor="let selectedRisky of selectedRiskies;let i=index;">
         <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
             <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
@@ -26,7 +26,7 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <p></p>
-                <span> {{selectedRisky.score}}</span>
+                <span [ngClass]="{'high': i<=2, 'medium':i==3, 'low':i==4}"> {{selectedRisky.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -108,7 +108,7 @@
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
                 <a *ngIf="privilegedUser.value"
-                   [routerLink]="['/riskyUser', privilegedUser.value]">{{privilegedUser.value}}</a>
+                    [routerLink]="['/riskyUser', privilegedUser.value]">{{privilegedUser.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -139,8 +139,7 @@
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a *ngIf="dormantUser.value"
-                   [routerLink]="['/riskyUser', dormantUser.value]">{{dormantUser.value}}</a>
+                <a *ngIf="dormantUser.value" [routerLink]="['/riskyUser', dormantUser.value]">{{dormantUser.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -170,8 +169,7 @@
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a *ngIf="serviceAcnt.value"
-                   [routerLink]="['/riskyUser', serviceAcnt.value]">{{serviceAcnt.value}}</a>
+                <a *ngIf="serviceAcnt.value" [routerLink]="['/riskyUser', serviceAcnt.value]">{{serviceAcnt.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -203,7 +201,7 @@
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
                 <a *ngIf="watchlistedUser.value"
-                   [routerLink]="['/riskyUser', watchlistedUser.value]">{{watchlistedUser.value}}</a>
+                    [routerLink]="['/riskyUser', watchlistedUser.value]">{{watchlistedUser.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">

@@ -1,5 +1,11 @@
 <!-- Risky Entities -->
 <div *ngIf="componentType === 'riskyUser'" class="header row">
+
+    <!-- <div class="col-md-12">
+        <span>Risky Entities</span>
+        <span class="float-right high">Entities</span>
+    </div> -->
+
     <div class="col-6 col-md-6 col-sm-6 heading">
         Risky Entities
     </div>
@@ -37,14 +43,18 @@
 
 
 <!-- Risky Entities -->
-<div *ngIf="componentType === 'topThreats'" class="header row">
-    <div class="col-9 col-md-9 heading">
+<div *ngIf="componentType === 'topThreats'" class="header">
+    <div class="col-md-12">
+        <span>{{'global.topViolations' | translate}}</span>
+        <span class="float-right high">Entities</span>
+    </div>
+    <!-- <div class="col-9 col-md-9 centerAlign">
         {{'global.topViolations' | translate}}
     </div>
-    <div class="col-3 col-md-3 settings-icon">
-        <!--<a href="#">{{'global.viewAll' | translate}}</a>-->
-        <span class="ion ion-md-settings"></span>
-    </div>
+    <div class="col-3 col-md-3 centerAlign high">
+        <a href="#">{{'global.viewAll' | translate}}</a>
+        <span class="">Entities</span>
+    </div> -->
 </div>
 <div *ngIf="componentType === 'topThreats'" class="top-threats ">
     <ng-container *ngFor="let threat of threatsList">
@@ -61,14 +71,18 @@
     </ng-container>
 </div>
 
-<div *ngIf="componentType==='topViolations' " class="header row">
-    <div class="col-9 col-md-9 heading ">
+<div *ngIf="componentType==='topViolations' " class="header">
+    <div class="col-md-12">
+        <span>{{'global.topThreats' | translate}}</span>
+        <span class="float-right high">Violations</span>
+    </div>
+    <!-- <div class="col-9 col-md-9 heading ">
         {{'global.topThreats' | translate}}
     </div>
-    <div class="col-3 col-md-3 settings-icon ">
-        <!--<a href="# ">{{'global.viewAll' | translate}}</a>-->
-        <span class="ion ion-md-settings "></span>
-    </div>
+    <div class="col-3 col-md-3 centerAlign high">
+        <a href="# ">{{'global.viewAll' | translate}}</a>
+        <span class="">Violations</span>
+    </div> -->
 </div>
 <div *ngIf="componentType==='topViolations' " class="top-violations  mt-3">
     <ng-container *ngFor="let threat of violationsList ">

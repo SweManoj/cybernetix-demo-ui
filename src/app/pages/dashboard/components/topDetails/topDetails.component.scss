@@ -10,6 +10,7 @@
 .centerAlign {
   display: flex;
   align-items: center;
+  padding-left: 20px;
 }
 
 .ui-dropdown label.ui-dropdown-label {
@@ -225,6 +226,278 @@
 
 @media only screen and (max-width: 600px) {
   .top-details-container {
+    .header {
+      font-size: 18px;
+      font-weight: bold;
+      .settings {
+        font-size: 16px;
+      }
+    }
+    .user-item {
+      margin: 0 0 10px;
+      border-bottom: 1px solid $top-details-border-color;
+      .profile-image {
+        width: 35px;
+        height: 35px;
+      }
+      .user-info {
+        a {
+          font-size: 18px;
+          display: inline-block;
+          cursor: pointer;
+          text-transform: capitalize;
+          line-height: 1.1;
+          padding-top: 15px;
+        }
+      }
+      .risk-count {
+        font-size: 19px;
+      }
+    }
+    .top-threats {
+      .threat-details {
+        a {
+          font-size: 16px;
+        }
+        span {
+          display: none;
+        }
+      }
+      .risk-count {
+        font-size: 19px;
+        .risk-type {
+          font-size: 19px;
+          padding-bottom: 5px;
+        }
+      }
+    }
+    .top-violations {
+      .threat-item {
+        .threat-details {
+          a {
+            font-size: 16px;
+          }
+          span {
+            display: none;
+          }
+        }
+        .risk-count {
+          font-size: 19px;
+          .risk-type {
+            font-size: 19px;
+          }
+        }
+      }
+    }
+  }
+}
+
+///// last row container
+
+.top-details-container4 {
+  background-color: $top-details-bg-color;
+  border-radius: 6px;
+  box-shadow: $top-details-box-shadow;
+  display: block;
+  margin-bottom: 15px;
+  &:last-child {
+    margin-right: 0;
+  }
+  a {
+    color: $text-white;
+  }
+  .header {
+    font-size: 20px;
+    height: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $top-details-header-text-color;
+    margin: 0 0 15px;
+    padding: 15px 15px 0;
+    background-color: $top-details-header-bg-color;
+    border-radius: 6px 6px 0 0;
+    .heading {
+      padding: 4px;
+      place-content: center;
+      display: flex;
+    }
+    .settings {
+      text-align: right;
+      font-size: 18px;
+      a {
+        color: $top-details-header-text-color;
+        vertical-align: middle;
+      }
+    }
+    .settings-icon {
+      font-size: 30px;
+      text-align: right;
+      margin: auto;
+      display: grid;
+      padding-right: initial;
+      span {
+        vertical-align: top;
+        color: $top-details-header-settings-icon-color;
+      }
+    }
+  }
+  .top-riksy-users,
+  .top-threats,
+  .top-violations {
+    padding: 1px;
+    a {
+      font-size: 18px;
+    }
+  }
+  .user-item {
+    margin: 0 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $top-details-border-color;
+    color: $text-white;
+    &:last-child {
+      border-bottom: none;
+    }
+    .profile-image {
+      height: 46px;
+    }
+    .user-info {
+      a {
+        color: $text-white;
+        font-size: 18px;
+        display: inline-block;
+        cursor: pointer;
+        text-transform: capitalize;
+        line-height: 1.1;
+        padding-top: 15px;
+        padding-bottom: 0;
+      }
+    }
+  }
+  .risk-count {
+    color: $brand-red;
+    font-size: 19px;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 0;
+    span {
+      //   display: block;
+      font-weight: 600;
+      &.risk-type {
+        color: $brand-red;
+        font-size: 19px;
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 0;
+      }
+    }
+  }
+  .threat-item {
+    border-bottom: 1px solid $top-details-border-color;
+    padding-bottom: 6px;
+    margin: 0 10px;
+    &:last-child {
+      border-bottom: none;
+    }
+    .threat-details {
+      color: $text-white;
+      a {
+        font-size: 18px;
+        display: inline-block;
+        cursor: pointer;
+        text-transform: capitalize;
+        // line-height: 1.1;
+        padding-top: 8px;
+        padding-bottom: 4px;
+      }
+      span {
+        font-size: 15px;
+      }
+    }
+  }
+  .top-violations {
+    .threat-item {
+      .threat-details {
+        a {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .top-details-container4 {
+    width: 23.5%;
+    float: left;
+    margin-right: 2%;
+    // height: 467px;
+    .top-threats {
+      .threat-details {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1248px) {
+  .top-details-container4 {
+    .top-threats {
+      .threat-details {
+        span {
+          display: block;
+        }
+      }
+      .threat-item {
+        &:last-child {
+          .threat-details {
+            span {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  .risk-count {
+    color: $brand-red;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 0;
+    span {
+      display: block;
+      &.risk-type {
+        color: $brand-red;
+        font-size: 12px;
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1450px) {
+  .top-details-container4 {
+    height: auto;
+    .top-threats {
+      .threat-item {
+        &:last-child {
+          .threat-details {
+            span {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .top-details-container4 {
     .header {
       font-size: 18px;
       font-weight: bold;

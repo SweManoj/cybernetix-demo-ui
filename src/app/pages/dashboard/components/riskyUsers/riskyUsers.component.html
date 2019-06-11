@@ -1,367 +1,369 @@
-<ng-container *ngIf="selectedUser === null">
-    <div class="risky-users-container">
-        <h5 class="page-heading">{{'global.riskyUser.allUsers' | translate}}</h5>
-        <div class="risky-users-list">
-            <div class="row header-row">
-                <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{'global.sno' | translate}}</div>
-                <div class="col-8 col-sm-8 col-md-8 p-sm">{{'global.userInfo' | translate}}</div>
-                <div class="col-2 col-sm-2 col-md-2 p-sm">{{'global.bytes' | translate}}</div>
-            </div>
-            <div class="row data-row" *ngFor="let user of allUsers; let i = index">
-                <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{ i + 1}}</div>
-                <div class="col-8 col-sm-8 col-md-8 p-sm">
-                    <a *ngIf="user.userid" [routerLink]="['/riskyUser', user.userid]">{{user.userid}}</a>
-                    <a *ngIf="!user.userid" [routerLink]="['/riskyUser', user.sourceAddress]">{{user.sourceAddress}}</a>
-                </div>
-                <div class="col-2 col-sm-2 col-md-2 p-sm">{{user.riskscore}}</div>
-            </div>
-        </div>
-        <div class="load-more-link" *ngIf="recordsReturned < totalRecords">
-            <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
-        </div>
-    </div>
-</ng-container>
-
-<ng-container *ngIf="selectedUser">
-    <!--<h5 class="page-heading">{{'global.riskyUser.user' | translate}}: {{selectedUser}}</h5>-->
-    <div class="risky-user-container">
-        <div class="risky-user-header">
-            <!--<div class="row">
-                            <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeId' | translate}}: {{selectedUserDetails.userInfo?.EmployeeID}}</label>
-                            <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeName' | translate}}: {{selectedUserDetails.userInfo?.EmployeeName}}</label>
-                            <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeUserId' | translate}}: {{selectedUserDetails.userInfo?.UserId}}</label>
-                            <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeDepartment' | translate}}: Infrastructure Operations</label>
+<div class="custom-container">
+        <ng-container *ngIf="selectedUser === null">
+                <div class="risky-users-container">
+                    <h5 class="page-heading">{{'global.riskyUser.allUsers' | translate}}</h5>
+                    <div class="risky-users-list">
+                        <div class="row header-row">
+                            <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{'global.sno' | translate}}</div>
+                            <div class="col-8 col-sm-8 col-md-8 p-sm">{{'global.userInfo' | translate}}</div>
+                            <div class="col-2 col-sm-2 col-md-2 p-sm">{{'global.bytes' | translate}}</div>
                         </div>
-                        <div class="row">
-                            <label class="col-3 col-sm-3 col-md-3">Manager Name: Ron Conway</label>
-                            <label class="col-3 col-sm-3 col-md-3">Manager Employee ID: 78679</label>
-                            <label class="col-3 col-sm-3 col-md-3">Manager UserId: Roconwy</label>
-                        </div>-->
-            <div class="row" style="background: #2C4255;">
-                <!-- <div class="col-md-5" style="padding:initial;display: flex"> -->
-                <div class="col-md-2" style="display: inline-block; text-align: center;background: #041421;">
-                    <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image img-rounded mt-4" src='../assets/images/user.png' />
-                    <div class="user-info m-t-sm">
-                        <span style="color:#D3D3D3;size:26px;font-weight: 600">{{selectedUserDetails.userInfo?.EmployeeName}}</span>
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="col-md-3" style="display: inline-block;margin-right: -6rem;">
-                    <p></p>
-                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Role</span>
-                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">VP Business Development</p>
-                    <p></p>
-                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Department</span>
-                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">IT Security
-                    </p>
-                    <p></p>
-                </div>
-                <!-- </div> -->
-
-                <!-- <div class="col-md-4"> -->
-                <div class="col-md-2 ml-5" style="display: inline-block;">
-                    <p></p>
-                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Location</span>
-                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">Los Angles
-                    </p>
-                    <p></p>
-                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Reporting
-                        Manager</span>
-                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">Paul Smith
-                    </p>
-                    <p></p>
-                </div>
-
-                <div class="col-md-2 ml-3" style="display: inline-block;">
-                    <p></p>
-                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Creation
-                        Date</span>
-                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">12 Dec 2018</p>
-                    <p></p>
-                    <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Last
-                        Working Day</span>
-                    <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">25 Jan 2019</p>
-                    <p></p>
-                </div>
-                <!-- </div> -->
-
-                <!-- <div class="col-3 col-md-3" style="display:flex;align-items: center;"> -->
-
-                <div class="col-md-1 ml-3" style="display: inline-block;padding: 0%;">
-                    <div class="display: flex;text-align: center;">
-                        <p style="font-size: 67.6px;color: #21FF0E;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">180</p>
-                        <p style="font-size: 18px;color: #A7A7A7;letter-spacing: -0.32px;padding-left: 16px;">Risk Score
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-2 ml-3" style="display: inline-block;">
-                    <div id="chartGuageDiv"></div>
-                </div>
-                <!-- </div> -->
-            </div>
-        </div>
-    </div>
-</ng-container>
-
-<div class="container-fluid showActivity">
-<!--    <div class="row pt-3 pb-3">
-        <div class="col-md-2">
-            <span class="pagetitle">Show Activity</span>
-        </div>
-        <div class="col-md-10 p-1">
-            <button type="button" class="btn" [ngClass]="{'active-btn' : selectedDateRange === dateRange}" (click)="changeChartDateRange(dateRange)" *ngFor="let dateRange of dateRanges">{{dateRange}}</button>
-            <button type="button" class="btn">Date Range</button>
-        </div>
-    </div>-->
-
-    <!-- Show Activity Images With Values -->
-    <div class="row">
-        <div class="col-sm">
-            <div class="media">
-                <div class="media-left">
-                    <p></p>
-                    <img src='../assets/images/falg@1x.png' />
-                </div>
-                <div class="media-body pl-3">
-                    <p class="value">17</p>
-                    <p class="title">Events</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="media">
-                <div class="media-left">
-                    <p></p>
-                    <img src='../assets/images/resources@1x.png' />
-                </div>
-                <div class="media-body pl-2">
-                    <p class="value">23</p>
-                    <p class="title">Resources</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="media">
-                <div class="media-left">
-                    <p></p>
-                    <img src='../assets/images/Shape@1x.png' />
-                </div>
-                <div class="media-body pl-3">
-                    <p class="value">06</p>
-                    <p class="title">Locations</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="media">
-                <div class="media-left">
-                    <p></p>
-                    <img src='../assets/images/violations@1x.png' />
-                </div>
-                <div class="media-body pl-3">
-                    <p class="value">23</p>
-                    <p class="title">Violations</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="media">
-                <div class="media-left">
-                    <p></p>
-                    <img src='../assets/images/incident@1x.png' />
-                </div>
-                <div class="media-body pl-3">
-                    <p class="value">57</p>
-                    <p class="title">Incidents</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- chart -->
-<div class="container-fluid chartBg">
-    <div class="row pr-3 pl-3 pb-3">
-        <div #bubbleChartdiv id="bubbleChartdiv" class="mt-3"></div>
-    </div>
-</div>
-
-<ng-container>
-    <div class="risky-user-container">
-        <div class="risky-user-details">
-            <div class="timeline-view" *ngIf="selectedView === 'timeline'">
-                <div class="row" *ngFor="let item of selectedUserDetails.data" style="margin-left: -95px;">
-                    <div class="col-md-2">
-                        <div class="offset-md-1 col-10 col-sm-10 col-md-10 risk-time-stamp">
-                            <span>&emsp;{{item.generatedTimestamp}}</span>
-                        </div>
-
-                        <div class="col-1 col-sm-1 col-md-1 col-separator" style="display: inline;">
-                            <div class="risky-separator">
-                                <span class="risk-dot">&nbsp;</span>
+                        <div class="row data-row" *ngFor="let user of allUsers; let i = index">
+                            <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{ i + 1}}</div>
+                            <div class="col-8 col-sm-8 col-md-8 p-sm">
+                                <a *ngIf="user.userid" [routerLink]="['/riskyUser', user.userid]">{{user.userid}}</a>
+                                <a *ngIf="!user.userid" [routerLink]="['/riskyUser', user.sourceAddress]">{{user.sourceAddress}}</a>
                             </div>
+                            <div class="col-2 col-sm-2 col-md-2 p-sm">{{user.riskscore}}</div>
                         </div>
                     </div>
-
-                    <div class="col-10 col-sm-10 col-md-10 risk-info">
-                        <div class="risk-title">
-                            <div class="col">
-                                <span class="p-2 pointerCursor" (click)="item.accord = !item.accord">
-                                    &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                        class="fa fa-angle-down"></i>
-                                </span>
-                                <span class="pointerCursor" (click)="item.accord = !item.accord" style="color:red;font-size: 17px;letter-spacing: -0.31px;">&emsp;{{item.pv}}&emsp;</span>
-                                <span class="pointerCursor" (click)="item.accord = !item.accord" style="font-size: 17px;letter-spacing: -0.31px;">
-                                    &emsp;{{item.ruleInfo.title}}</span>
-
-                                <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)" class="risk-score">{{item.riskScore}}</span>
-
-                                <!-- <div style="margin-right: inherit;margin-left: 45px;" class="risk-score">
-                                        <span style="margin-right: 5px;font-size: large;border: 1px solid #FF0000;padding: 3px 8px;border-radius: 20px;height: 35px;background: #FF0000;color:#000000;">{{item.riskScore}}</span>
-                                    </div> -->
-
-                                <span *ngIf="item.accord" ngbDropdown placement="bottom-right" class="float-sm-right" style="margin-top: .8rem;">
-                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle
-                                        style="background:#6185A4;margin-top: -5px;margin-right: 25px;border-radius: 3px;">Actions</button>
-                                    <div class="greyBackground risky-actionDropDown" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground">Investigate</button>
-                                        <button ngbDropdownItem class="greyBackground">Accept as Risk</button>
-                                        <button ngbDropdownItem class="greyBackground">Create an Incident</button>
-                                        <button ngbDropdownItem class="greyBackground">Perform Remediaion</button>
+                    <div class="load-more-link" *ngIf="recordsReturned < totalRecords">
+                        <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
+                    </div>
+                </div>
+            </ng-container>
+            
+            <ng-container *ngIf="selectedUser">
+                <!--<h5 class="page-heading">{{'global.riskyUser.user' | translate}}: {{selectedUser}}</h5>-->
+                <div class="risky-user-container">
+                    <div class="risky-user-header">
+                        <!--<div class="row">
+                                        <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeId' | translate}}: {{selectedUserDetails.userInfo?.EmployeeID}}</label>
+                                        <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeName' | translate}}: {{selectedUserDetails.userInfo?.EmployeeName}}</label>
+                                        <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeUserId' | translate}}: {{selectedUserDetails.userInfo?.UserId}}</label>
+                                        <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeDepartment' | translate}}: Infrastructure Operations</label>
                                     </div>
-                                </span>
-                            </div>
-
-                            <div *ngIf="item.accord" class="container-fluid" style="margin-top:6px;">
-                                <div class="row">
-                                    <div class="col-3 col-sm-3 riskAccordBorder">
-                                        <dl>
-                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                            <dd class="mt-2">In this policy violation, user was trying to access machine which is restricted to access by group policy</dd>
-                                            <!-- <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Historical Analysis</dt> -->
-                                            <dd> </dd>
-                                        </dl>
-                                        <!-- <div class="table-responsive-sm">
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <th class="mainTh" colspan="2">DNS Query from DGA domain from
-                                                            Host</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Confidence</th>
-                                                        <td>98%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="mainTh" colspan="2">Domain Access Within Org</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>google.com</th>
-                                                        <td>80%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>yahoo.com</th>
-                                                        <td>10%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="mainTh" colspan="2">Threshold</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>godaddy.com</th>
-                                                        <td>0.0000%</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div> -->
-                                    </div>
-                                    <div class="col-5 col-sm-5 riskAccordBorder">
-
-                                        <dl>
-                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat
-                                                Categorisation</dt>
-                                        </dl>
-
-                                        <div class="row mt-1" *ngFor="let threatCategory of threatCategories" style="color: #8E8E8E;">
-                                            <div class="col-md-5">
-                                                {{threatCategory.title}}
-                                            </div>
-                                            <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-6">
-                                                {{threatCategory.value}}
-                                            </div>
-                                        </div>
-
-                                        <!-- <ul class="nav nav-pills mb-3 btn-sm" id="pills-tab" role="tablist" style="background: #099BB5;border: 1px solid #099BB5;border-radius:4px;padding: initial;width: fit-content;">
-                                            <li class="nav-item active">
-                                                <a class="nav-link active" style="font-size: inherit;border-radius: 2px;"
-                                                    id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                                                    aria-controls="pills-home" aria-selected="true">&emsp;Threat
-                                                    Intel&emsp;</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" style="font-size: inherit;border-radius: 2px;" id="pills-profile-tab"
-                                                    data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
-                                                    aria-selected="false">&emsp;Vurnability&emsp;</a>
-                                            </li>
-                                        </ul> -->
-
-                                        <!-- <div class="tab-content mt-4" id="pills-tabContent">
-                                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                                aria-labelledby="pills-home-tab">
-                                                <p>source IP was found in our database</p>
-                                                <div class="table-responsive-sm">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>ISP</th>
-                                                                <td>APN1C</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Host Name</th>
-                                                                <td>Host Name here</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Country</th>
-                                                                <td>China</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Categorized As</th>
-                                                                <td>Malware</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                                aria-labelledby="pills-profile-tab">
-                                                <p>Second Nav Pill</p>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                    <div class="col-4 col-sm-4">
-                                        <dl>
-                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
-                                        </dl>
-                                        <div class="row mt-1" *ngFor="let dummyData of dummyDatas" style="color: #8E8E8E;">
-                                            <div class="col-md-5">
-                                                {{dummyData.title}}
-                                            </div>
-                                            <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-6">
-                                                {{dummyData.value}}
-                                            </div>
-                                        </div>
-                                        <br />
-                                    </div>
+                                    <div class="row">
+                                        <label class="col-3 col-sm-3 col-md-3">Manager Name: Ron Conway</label>
+                                        <label class="col-3 col-sm-3 col-md-3">Manager Employee ID: 78679</label>
+                                        <label class="col-3 col-sm-3 col-md-3">Manager UserId: Roconwy</label>
+                                    </div>-->
+                        <div class="row" style="background: #2C4255;">
+                            <!-- <div class="col-md-5" style="padding:initial;display: flex"> -->
+                            <div class="col-md-2" style="display: inline-block; text-align: center;background: #041421;">
+                                <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image img-rounded mt-4" src='../assets/images/user.png' />
+                                <div class="user-info m-t-sm">
+                                    <span style="color:#D3D3D3;size:26px;font-weight: 600">{{selectedUserDetails.userInfo?.EmployeeName}}</span>
+                                    <p></p>
                                 </div>
+                            </div>
+            
+                            <div class="col-md-3" style="display: inline-block;margin-right: -6rem;">
+                                <p></p>
+                                <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Role</span>
+                                <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">VP Business Development</p>
+                                <p></p>
+                                <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Department</span>
+                                <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">IT Security
+                                </p>
                                 <p></p>
                             </div>
+                            <!-- </div> -->
+            
+                            <!-- <div class="col-md-4"> -->
+                            <div class="col-md-2 ml-5" style="display: inline-block;">
+                                <p></p>
+                                <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Location</span>
+                                <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">Los Angles
+                                </p>
+                                <p></p>
+                                <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Reporting
+                                    Manager</span>
+                                <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">Paul Smith
+                                </p>
+                                <p></p>
+                            </div>
+            
+                            <div class="col-md-2 ml-3" style="display: inline-block;">
+                                <p></p>
+                                <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Creation
+                                    Date</span>
+                                <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">12 Dec 2018</p>
+                                <p></p>
+                                <span style="font-size: 16px;color: #A7A7A7;letter-spacing: -0.26px;">Last
+                                    Working Day</span>
+                                <p style="font-size: 18px;color: #D3D3D3;letter-spacing: -0.29px;">25 Jan 2019</p>
+                                <p></p>
+                            </div>
+                            <!-- </div> -->
+            
+                            <!-- <div class="col-3 col-md-3" style="display:flex;align-items: center;"> -->
+            
+                            <div class="col-md-1 ml-3" style="display: inline-block;padding: 0%;">
+                                <div class="display: flex;text-align: center;">
+                                    <p style="font-size: 67.6px;color: #21FF0E;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">180</p>
+                                    <p style="font-size: 18px;color: #A7A7A7;letter-spacing: -0.32px;padding-left: 16px;">Risk Score
+                                    </p>
+                                </div>
+                            </div>
+            
+                            <div class="col-md-2 ml-3" style="display: inline-block;">
+                                <div id="chartGuageDiv"></div>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            
+            <div class="container-fluid showActivity">
+            <!--    <div class="row pt-3 pb-3">
+                    <div class="col-md-2">
+                        <span class="pagetitle">Show Activity</span>
+                    </div>
+                    <div class="col-md-10 p-1">
+                        <button type="button" class="btn" [ngClass]="{'active-btn' : selectedDateRange === dateRange}" (click)="changeChartDateRange(dateRange)" *ngFor="let dateRange of dateRanges">{{dateRange}}</button>
+                        <button type="button" class="btn">Date Range</button>
+                    </div>
+                </div>-->
+            
+                <!-- Show Activity Images With Values -->
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="media">
+                            <div class="media-left">
+                                <p></p>
+                                <img src='../assets/images/falg@1x.png' />
+                            </div>
+                            <div class="media-body pl-3">
+                                <p class="value">17</p>
+                                <p class="title">Events</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="media">
+                            <div class="media-left">
+                                <p></p>
+                                <img src='../assets/images/resources@1x.png' />
+                            </div>
+                            <div class="media-body pl-2">
+                                <p class="value">23</p>
+                                <p class="title">Resources</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="media">
+                            <div class="media-left">
+                                <p></p>
+                                <img src='../assets/images/Shape@1x.png' />
+                            </div>
+                            <div class="media-body pl-3">
+                                <p class="value">06</p>
+                                <p class="title">Locations</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="media">
+                            <div class="media-left">
+                                <p></p>
+                                <img src='../assets/images/violations@1x.png' />
+                            </div>
+                            <div class="media-body pl-3">
+                                <p class="value">23</p>
+                                <p class="title">Violations</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="media">
+                            <div class="media-left">
+                                <p></p>
+                                <img src='../assets/images/incident@1x.png' />
+                            </div>
+                            <div class="media-body pl-3">
+                                <p class="value">57</p>
+                                <p class="title">Incidents</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</ng-container>
+            
+            <!-- chart -->
+            <div class="container-fluid chartBg">
+                <div class="row pr-3 pl-3 pb-3">
+                    <div #bubbleChartdiv id="bubbleChartdiv" class="mt-3"></div>
+                </div>
+            </div>
+            
+            <ng-container>
+                <div class="risky-user-container">
+                    <div class="risky-user-details">
+                        <div class="timeline-view" *ngIf="selectedView === 'timeline'">
+                            <div class="row" *ngFor="let item of hardCodeItemData" style="margin-left: -95px;">
+                                <div class="col-md-2">
+                                    <div class="offset-md-1 col-10 col-sm-10 col-md-10 risk-time-stamp">
+                                        <span>&emsp;{{item.generatedTimestamp}}</span>
+                                    </div>
+            
+                                    <div class="col-1 col-sm-1 col-md-1 col-separator" style="display: inline;">
+                                        <div class="risky-separator">
+                                            <span class="risk-dot">&nbsp;</span>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="col-10 col-sm-10 col-md-10 risk-info">
+                                    <div class="risk-title">
+                                        <div class="col">
+                                            <span class="p-2 pointerCursor" (click)="item.accord = !item.accord">
+                                                &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
+                                                    class="fa fa-angle-down"></i>
+                                            </span>
+                                            <span class="pointerCursor" (click)="item.accord = !item.accord" style="color:red;font-size: 17px;letter-spacing: -0.31px;">&emsp;{{item.pv}}&emsp;</span>
+                                            <span class="pointerCursor" (click)="item.accord = !item.accord" style="font-size: 17px;letter-spacing: -0.31px;">
+                                                &emsp;{{item.ruleInfo.title}}</span>
+            
+                                            <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)" class="risk-score">{{item.riskScore}}</span>
+            
+                                            <!-- <div style="margin-right: inherit;margin-left: 45px;" class="risk-score">
+                                                    <span style="margin-right: 5px;font-size: large;border: 1px solid #FF0000;padding: 3px 8px;border-radius: 20px;height: 35px;background: #FF0000;color:#000000;">{{item.riskScore}}</span>
+                                                </div> -->
+            
+                                            <span *ngIf="item.accord" ngbDropdown placement="bottom-right" class="float-sm-right" style="margin-top: .8rem;">
+                                                <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle
+                                                    style="background:#6185A4;margin-top: -5px;margin-right: 25px;border-radius: 3px;">Actions</button>
+                                                <div class="greyBackground risky-actionDropDown" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                                    <button ngbDropdownItem class="greyBackground">Investigate</button>
+                                                    <button ngbDropdownItem class="greyBackground">Accept as Risk</button>
+                                                    <button ngbDropdownItem class="greyBackground">Create an Incident</button>
+                                                    <button ngbDropdownItem class="greyBackground">Perform Remediaion</button>
+                                                </div>
+                                            </span>
+                                        </div>
+            
+                                        <div *ngIf="item.accord" class="container-fluid" style="margin-top:6px;">
+                                            <div class="row">
+                                                <div class="col-3 col-sm-3 riskAccordBorder">
+                                                    <dl>
+                                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
+                                                        <dd class="mt-2">In this policy violation, user was trying to access machine which is restricted to access by group policy</dd>
+                                                        <!-- <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Historical Analysis</dt> -->
+                                                        <dd> </dd>
+                                                    </dl>
+                                                    <!-- <div class="table-responsive-sm">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th class="mainTh" colspan="2">DNS Query from DGA domain from
+                                                                        Host</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Confidence</th>
+                                                                    <td>98%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="mainTh" colspan="2">Domain Access Within Org</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>google.com</th>
+                                                                    <td>80%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>yahoo.com</th>
+                                                                    <td>10%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="mainTh" colspan="2">Threshold</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>godaddy.com</th>
+                                                                    <td>0.0000%</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div> -->
+                                                </div>
+                                                <div class="col-5 col-sm-5 riskAccordBorder">
+            
+                                                    <dl>
+                                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat
+                                                            Categorisation</dt>
+                                                    </dl>
+            
+                                                    <div class="row mt-1" *ngFor="let threatCategory of threatCategories" style="color: #8E8E8E;">
+                                                        <div class="col-md-5">
+                                                            {{threatCategory.title}}
+                                                        </div>
+                                                        <b>&nbsp;:&nbsp;</b>
+                                                        <div class="col-md-6">
+                                                            {{threatCategory.value}}
+                                                        </div>
+                                                    </div>
+            
+                                                    <!-- <ul class="nav nav-pills mb-3 btn-sm" id="pills-tab" role="tablist" style="background: #099BB5;border: 1px solid #099BB5;border-radius:4px;padding: initial;width: fit-content;">
+                                                        <li class="nav-item active">
+                                                            <a class="nav-link active" style="font-size: inherit;border-radius: 2px;"
+                                                                id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                                                                aria-controls="pills-home" aria-selected="true">&emsp;Threat
+                                                                Intel&emsp;</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" style="font-size: inherit;border-radius: 2px;" id="pills-profile-tab"
+                                                                data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
+                                                                aria-selected="false">&emsp;Vurnability&emsp;</a>
+                                                        </li>
+                                                    </ul> -->
+            
+                                                    <!-- <div class="tab-content mt-4" id="pills-tabContent">
+                                                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                                            aria-labelledby="pills-home-tab">
+                                                            <p>source IP was found in our database</p>
+                                                            <div class="table-responsive-sm">
+                                                                <table class="table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th>ISP</th>
+                                                                            <td>APN1C</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Host Name</th>
+                                                                            <td>Host Name here</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Country</th>
+                                                                            <td>China</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Categorized As</th>
+                                                                            <td>Malware</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                                            aria-labelledby="pills-profile-tab">
+                                                            <p>Second Nav Pill</p>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                                <div class="col-4 col-sm-4">
+                                                    <dl>
+                                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
+                                                    </dl>
+                                                    <div class="row mt-1" *ngFor="let dummyData of dummyDatas" style="color: #8E8E8E;">
+                                                        <div class="col-md-5">
+                                                            {{dummyData.title}}
+                                                        </div>
+                                                        <b>&nbsp;:&nbsp;</b>
+                                                        <div class="col-md-6">
+                                                            {{dummyData.value}}
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+</div>

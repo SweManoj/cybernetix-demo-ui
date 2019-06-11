@@ -52,8 +52,7 @@ ngb-modal-window.modal.fade.show.d-block {
 
 .container-fluid.chartBg {
     background: $risky-chart-bg;
-    padding: 0px 55px 0px 55px;
-
+    padding: 0px 55px 0px 45px;
 }
 
 #heatMapChart {
@@ -512,8 +511,6 @@ dd {
     }
 }
 
-
 .custom-container {
-    padding: 0px 75px 0px 100px !important;
+    padding: 0px 75px 0px 80px !important;
 }
-

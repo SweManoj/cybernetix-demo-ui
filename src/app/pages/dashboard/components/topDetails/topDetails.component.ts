@@ -46,7 +46,7 @@ export class TopDetailsComponent implements AfterViewInit {
     constructor(private topDetailsService: TopDetailsService) {
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
 
-        this.riskyObjects.sort((a, b) => a.score - b.score); // desending order
+        this.riskyObjects.sort((a, b) => -(a.score - b.score)); // desending order
     }
 
     SelectedRiskyType($event) {
@@ -93,22 +93,22 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getPrivilegedUsers() {
         this.privilegedUsers = this.riskyObjects.filter(risky => risky.type == 'user');
-        this.privilegedUsers.sort((a, b) => a.score - b.score);
+        this.privilegedUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getDormantUsers() {
         this.dormantUsers = this.riskyObjects.filter(risky => risky.type == 'user');
-        this.dormantUsers.sort((a, b) => a.score - b.score);
+        this.dormantUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getServiceAccounts() {
         this.serviceAccount = this.riskyObjects.filter(risky => risky.type == 'user');
-        this.serviceAccount.sort((a, b) => a.score - b.score);
+        this.serviceAccount.sort((a, b) => -(a.score - b.score));
     }
 
     getWatchlistedUsers() {
         this.watchlistedUsers = this.riskyObjects.filter(risky => risky.type == 'user');
-        this.watchlistedUsers.sort((a, b) => a.score - b.score);
+        this.watchlistedUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getThreats() {

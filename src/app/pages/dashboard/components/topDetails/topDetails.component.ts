@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
-import { TopDetailsService } from './topDetails.service';
-import { Table } from 'primeng/table';
+import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
+import {TopDetailsService} from './topDetails.service';
+import {Table} from 'primeng/table';
 
 @Component({
     selector: 'top-details',
@@ -35,6 +35,10 @@ export class TopDetailsComponent implements AfterViewInit {
     assignee = [{ name: 'User', value: 'user' }, { name: 'IP Address', value: 'ip' }, { name: 'Host', value: 'host' }];
     
     selectedRiskies: any[];
+    privilegedUsers: any[];
+    dormantUsers: any[];
+    serviceAccount: any[];
+    watchlistedUsers: any[];
     
     @ViewChild('selectedRiskyType') riskyTypeTable: Table;
     riskyTypeSelected = 'user';
@@ -50,14 +54,28 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        if (this.componentType === 'riskyUser') {
-            this.getRiskyUser();
-        }
-        if (this.componentType === 'topThreats') {
-            this.getThreats();
-        }
-        if (this.componentType === 'topViolations') {
-            this.getViolations();
+        switch (this.componentType) {
+            case 'riskyUser' :
+                this.getRiskyUser();
+                break;
+            case 'topThreats' :
+                this.getThreats();
+                break;
+            case 'topViolations' :
+                this.getViolations();
+                break;
+            case 'privilegedUsers' :
+                this.getPrivilegedUsers();
+                break;
+            case 'dormantUsers' :
+                this.getDormantUsers();
+                break;
+            case 'serviceAccount' :
+                this.getServiceAccounts();
+                break;
+            case 'watchlistedUsers' :
+                this.getWatchlistedUsers();
+                break;
         }
     }
 
@@ -71,6 +89,24 @@ export class TopDetailsComponent implements AfterViewInit {
 
         this.selectedRiskies = this.riskyObjects.filter(risky => risky.type == 'user');
     }
+
+    getPrivilegedUsers() {
+        this.privilegedUsers = this.riskyObjects.filter(risky => risky.type == 'user');
+    }
+
+    getDormantUsers() {
+        this.dormantUsers = this.riskyObjects.filter(risky => risky.type == 'user');
+    }
+
+    getServiceAccounts() {
+        this.serviceAccount = this.riskyObjects.filter(risky => risky.type == 'user');
+    }
+
+    getWatchlistedUsers() {
+        this.watchlistedUsers = this.riskyObjects.filter(risky => risky.type == 'user');
+    }
+
+
     
     getThreats() {
         this.topDetailsService.getTopThreats().subscribe((res: any) => {
@@ -84,7 +120,6 @@ export class TopDetailsComponent implements AfterViewInit {
         });
     }
     getViolations() {
-        debugger;
         this.topDetailsService.getTopViolations().subscribe((res: any) => {
             this.violationsList = res.data;
             this.violationsList.sort((a, b) => {

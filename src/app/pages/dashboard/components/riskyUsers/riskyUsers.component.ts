@@ -260,7 +260,7 @@ export class RiskyUsersComponent {
 
         // Add scrollbars
         chart.scrollbarX = new am4core.Scrollbar();
-        //chart.scrollbarY = new am4core.Scrollbar();
+        chart.scrollbarY = new am4core.Scrollbar();
 
         // Add cursor
         chart.cursor = new am4charts.XYCursor();

@@ -79,7 +79,70 @@ export class RiskyUsersComponent {
             title: 'Priority',
             value: 'Be sure to add aria-expanded to the control element. This attribute explicitly conveys the current state of the collapsible'
         } */
-    ]
+    ];
+
+    hardCodeItemData = [
+        {
+            generatedTimestamp: '03:22:00 am',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
+            }
+        },
+        {
+            generatedTimestamp: '05:30:00 am',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 483,
+            ruleInfo: {
+                ruleId: 2,
+                title: 'Successful Logon from Rare Machine - Windows'
+            }
+        },
+        {
+            generatedTimestamp: '07:10:00 am',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 451,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Unusual Data Exfiltration By Service Account - Proxy'
+            }
+        },
+        {
+            generatedTimestamp: '09:22:00 am',
+            accord: false,
+            pv: 'PV 041',
+            riskScore: 398,
+            ruleInfo: {
+                ruleId: 4,
+                title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
+            }
+        },
+        {
+            generatedTimestamp: '14:45:00 am',
+            accord: false,
+            pv: 'PV 069',
+            riskScore: 243,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Abnormal Process Executed - Windows'
+            }
+        },
+        {
+            generatedTimestamp: '17:14:00 am',
+            accord: false,
+            pv: 'PV 094',
+            riskScore: 149,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Multiple Users Logged-In Successfully From Same IP'
+            }
+        }
+    ];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone) {
@@ -283,13 +346,13 @@ export class RiskyUsersComponent {
                     userDataFromModel = results[1];
                 this.selectedUserDetails.userInfo = userData.userInfo && userData.userInfo[0] || {};
                 this.selectedUserDetails.totalScore = userData.totalScore && userData.totalScore.total_riskscore || 0;
-                this.selectedUserDetails.data = [];
+                /* this.selectedUserDetails.data = [];
 
                 let data = userData && userData.data,
                     len = data && data.length, date;
 
                 let j = 1;
-                for (let i = 0; i < len / 2; i++) {
+                for (let i = 0; i < len; i++) {
                     const item = data[i];
                     date = moment(item.isotimestamp);
                     let pv = 'PV000';
@@ -319,7 +382,7 @@ export class RiskyUsersComponent {
                         ruleInfo: item.ruleInfo[0]
                     };
                     this.selectedUserDetails.data.push(info);
-                }
+                } */
             });
             /*this.riskyUserService.getSelectedUserData(this.selectedUser, isResource).subscribe((res: any) => {
                 const data = res.data,

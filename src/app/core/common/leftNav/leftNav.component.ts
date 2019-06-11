@@ -33,6 +33,11 @@ export class LeftNavComponent {
             }
         ];
     }
+
+    changeMenuOpen() {
+        this.util.isMenuOpened = !this.util.isMenuOpened;
+    }
+
     isMenuOpened() {
         return this.util.isMenuOpened;
     }

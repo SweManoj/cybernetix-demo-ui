@@ -1,4 +1,5 @@
-<div class="nav left-nav pt-1" [ngClass]="{'menu-opened': isMenuOpened()}">
+<div class="nav left-nav pt-1" [ngClass]="{'menu-opened': isMenuOpened()}" (mouseover)="changeMenuOpen()"
+    (mouseout)="changeMenuOpen()">
     <ul>
         <li>
             <a [routerLink]="['/dashboard']">

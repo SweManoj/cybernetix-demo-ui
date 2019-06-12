@@ -387,9 +387,10 @@
   .risk-count {
     color: crimson;
     font-size: 28px;
-    text-align: center;
+    // text-align: center;
     padding-top: 2px;
     padding-bottom: 0;
+    place-content: center;
     span {
       //   display: block;
       font-weight: 600;

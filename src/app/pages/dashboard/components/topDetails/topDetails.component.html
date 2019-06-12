@@ -1,16 +1,24 @@
 <!-- Risky Entities -->
 <div *ngIf="componentType === 'riskyUser'" class="header row">
-    <div class="col-6 col-md-6 col-sm-6 heading">
+    <div class="col-md-12">
+        <span class="col-md-7 initialPadding">Top Risky Entities</span>
+        <span class="float-right">
+            <p-dropdown [options]="assignee" placeholder="USER" optionLabel="name" dropdownIcon="pi pi-caret-down"
+                (onChange)="SelectedRiskyType($event)"></p-dropdown>
+        </span>
+    </div>
+
+    <!-- <div class="col-7 col-md-7 heading">
         Top Risky Entities
     </div>
-    <div class="col-md-4 pr-4">
+    <div class="col-md-5">
         <p-dropdown [options]="assignee" placeholder="USER" optionLabel="name" dropdownIcon="pi pi-caret-down"
             (onChange)="SelectedRiskyType($event)"></p-dropdown>
-    </div>
-    <div class="col-2 col-md-2 col-sm-2 settings-icon">
-        <!-- <a routerLink="/allRiskyUsers">{{'global.viewAll' | translate}}</a> -->
+    </div> -->
+    <!-- <div class="col-2 col-md-2 col-sm-2 settings-icon">
+        <a routerLink="/allRiskyUsers">{{'global.viewAll' | translate}}</a> -- comment
         <span class="ion ion-md-settings"></span>
-    </div>
+    </div> -->
 </div>
 <div *ngIf="componentType === 'riskyUser'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let selectedRisky of selectedRiskies;let i=index;">

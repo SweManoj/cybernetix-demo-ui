@@ -2,6 +2,10 @@
   padding: 0.8rem !important;
 }
 
+.initialPadding{
+  padding: initial;
+}
+
 .ui-dropdown {
   background: unset !important;
   width: -webkit-fill-available;
@@ -32,7 +36,9 @@
 .ui-dropdown label.ui-dropdown-label {
   color: #f9f9f9 !important;
   background: unset !important;
-  font-size: medium !important;
+  font-size: larger !important;
+  padding: 6px !important;
+  margin-top: -7px !important;
 }
 
 .ui-dropdown .ui-dropdown-trigger {
@@ -138,6 +144,7 @@
     border-bottom: 1px solid $top-details-border-color;
     padding-bottom: 6px;
     margin: 0 10px;
+    min-height: 4.55rem;
     &:last-child {
       border-bottom: none;
     }

@@ -14,7 +14,7 @@
 </div>
 <div *ngIf="componentType === 'riskyUser'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let selectedRisky of selectedRiskies;let i=index;">
-        <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
+        <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'0.9rem'}">
             <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>

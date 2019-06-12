@@ -18,7 +18,6 @@
         <span class="ion ion-md-settings"></span>
     </div>
 </div>
-
 <div *ngIf="componentType === 'riskyUser'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let selectedRisky of selectedRiskies;let i=index;">
         <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
@@ -41,8 +40,7 @@
         </div>-->
 </div>
 
-
-<!-- Risky Entities -->
+<!-- Top Threats -->
 <div *ngIf="componentType === 'topThreats'" class="header">
     <div class="col-md-12">
         <span>{{'global.topViolations' | translate}}</span>
@@ -104,30 +102,116 @@
     </ng-container>
 </div>
 
-
-<div *ngIf="componentType==='privilegedUsers' " class="header row">
+<div *ngIf="componentType==='terminatedUsers' " class="header row">
     <div class="col-9 col-md-12 heading ">
-        {{'global.topPrivilegedUsers' | translate}}
+        {{'global.topTerminatedUsers' | translate}}
     </div>
     <!-- <div class="col-3 col-md-3 settings-icon ">
         <span class="ion ion-md-settings "></span>
     </div> -->
 </div>
-
-<div *ngIf="componentType === 'privilegedUsers'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let privilegedUser of privilegedUsers">
+<div *ngIf="componentType === 'terminatedUsers'" class="top-riksy-users mt-2">
+    <ng-container *ngFor="let terminatedUser of terminatedUsers">
         <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
             <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a *ngIf="privilegedUser.value"
-                    [routerLink]="['/riskyUser', privilegedUser.value]">{{privilegedUser.value}}</a>
+                <a *ngIf="terminatedUser.value"
+                    [routerLink]="['/riskyUser', terminatedUser.value]">{{terminatedUser.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <p></p>
-                <span> {{privilegedUser.score}}</span>
+                <span> {{terminatedUser.score}}</span>
+            </div>
+        </div>
+    </ng-container>
+    <!--<div class="text-right pull-right view-all-link">
+            <a routerLink="/pages/details/riskyUser/all">View All</a>
+        </div>-->
+</div>
+
+<div *ngIf="componentType==='orphanUsers' " class="header row">
+    <div class="col-9 col-md-12 heading ">
+        {{'global.topOrphanUsers' | translate}}
+    </div>
+    <!-- <div class="col-3 col-md-3 settings-icon ">
+        <span class="ion ion-md-settings "></span>
+    </div> -->
+</div>
+<div *ngIf="componentType === 'orphanUsers'" class="top-riksy-users mt-2">
+    <ng-container *ngFor="let orphanUser of orphanUsers">
+        <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
+            <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
+                <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
+            </div>
+            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+                <a *ngIf="orphanUser.value" [routerLink]="['/riskyUser', orphanUser.value]">{{orphanUser.value}}</a>
+                <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
+            </div>
+            <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
+                <p></p>
+                <span> {{orphanUser.score}}</span>
+            </div>
+        </div>
+    </ng-container>
+    <!--<div class="text-right pull-right view-all-link">
+            <a routerLink="/pages/details/riskyUser/all">View All</a>
+        </div>-->
+</div>
+
+<div *ngIf="componentType==='externalUsers' " class="header row">
+    <div class="col-9 col-md-12 heading ">
+        {{'global.topExternalUsers' | translate}}
+    </div>
+    <!-- <div class="col-3 col-md-3 settings-icon ">
+        <span class="ion ion-md-settings "></span>
+    </div> -->
+</div>
+<div *ngIf="componentType === 'externalUsers'" class="top-riksy-users mt-2">
+    <ng-container *ngFor="let externalUser of externalUsers">
+        <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
+            <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
+                <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
+            </div>
+            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+                <a *ngIf="externalUser.value" [routerLink]="['/riskyUser', externalUser.value]">{{externalUser.value}}</a>
+                <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
+            </div>
+            <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
+                <p></p>
+                <span> {{externalUser.score}}</span>
+            </div>
+        </div>
+    </ng-container>
+    <!--<div class="text-right pull-right view-all-link">
+            <a routerLink="/pages/details/riskyUser/all">View All</a>
+        </div>-->
+</div>
+
+<div *ngIf="componentType==='riskyCloud' " class="header row">
+    <div class="col-9 col-md-12 heading ">
+        {{'global.topRiskyCloud' | translate}}
+    </div>
+    <!-- <div class="col-3 col-md-3 settings-icon ">
+        <span class="ion ion-md-settings "></span>
+    </div> -->
+</div>
+<div *ngIf="componentType === 'riskyCloud'" class="top-riksy-users mt-2">
+    <ng-container *ngFor="let riskyCloudUser of riskyCloudUsers">
+        <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
+            <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
+                <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
+            </div>
+            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+                <a *ngIf="riskyCloudUser.value"
+                    [routerLink]="['/riskyUser', riskyCloudUser.value]">{{riskyCloudUser.value}}</a>
+                <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
+            </div>
+            <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
+                <p></p>
+                <span> {{riskyCloudUser.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -144,8 +228,6 @@
         <span class="ion ion-md-settings "></span>
     </div> -->
 </div>
-
-
 <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let dormantUser of dormantUsers">
         <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
@@ -166,6 +248,7 @@
             <a routerLink="/pages/details/riskyUser/all">View All</a>
         </div>-->
 </div>
+
 <div *ngIf="componentType==='serviceAccount' " class="header row">
     <div class="col-9 col-md-12 heading ">
         {{'global.topServiceAcoount' | translate}}
@@ -174,8 +257,6 @@
         <span class="ion ion-md-settings "></span>
     </div> -->
 </div>
-
-
 <div *ngIf="componentType === 'serviceAccount'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let serviceAcnt of serviceAccount">
         <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
@@ -205,8 +286,6 @@
         <span class="ion ion-md-settings "></span>
     </div> -->
 </div>
-
-
 <div *ngIf="componentType === 'watchlistedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let watchlistedUser of watchlistedUsers">
         <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
@@ -215,12 +294,42 @@
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
                 <a *ngIf="watchlistedUser.value"
-                    [routerLink]="['/riskyUser', watchlistedUser.value]">{{watchlistedUser.value}}</a>
+                   [routerLink]="['/riskyUser', watchlistedUser.value]">{{watchlistedUser.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <p></p>
                 <span> {{watchlistedUser.score}}</span>
+            </div>
+        </div>
+    </ng-container>
+    <!--<div class="text-right pull-right view-all-link">
+            <a routerLink="/pages/details/riskyUser/all">View All</a>
+        </div>-->
+</div>
+
+<div *ngIf="componentType==='privilegedUsers' " class="header row">
+    <div class="col-9 col-md-12 heading ">
+        {{'global.topPrivilegedUsers' | translate}}
+    </div>
+    <!-- <div class="col-3 col-md-3 settings-icon ">
+        <span class="ion ion-md-settings "></span>
+    </div> -->
+</div>
+<div *ngIf="componentType === 'privilegedUsers'" class="top-riksy-users mt-2">
+    <ng-container *ngFor="let privilegedUser of privilegedUsers">
+        <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'1.3rem'}">
+            <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
+                <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
+            </div>
+            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+                <a *ngIf="privilegedUser.value"
+                   [routerLink]="['/riskyUser', privilegedUser.value]">{{privilegedUser.value}}</a>
+                <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
+            </div>
+            <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
+                <p></p>
+                <span> {{privilegedUser.score}}</span>
             </div>
         </div>
     </ng-container>

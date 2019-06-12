@@ -39,6 +39,10 @@ export class TopDetailsComponent implements AfterViewInit {
     dormantUsers: any[];
     serviceAccount: any[];
     watchlistedUsers: any[];
+    terminatedUsers: any[];
+    orphanUsers: any[];
+    externalUsers: any[];
+    riskyCloudUsers: any[];
 
     @ViewChild('selectedRiskyType') riskyTypeTable: Table;
     riskyTypeSelected = 'user';
@@ -78,6 +82,18 @@ export class TopDetailsComponent implements AfterViewInit {
             case 'watchlistedUsers':
                 this.getWatchlistedUsers();
                 break;
+            case 'terminatedUsers':
+                this.getTerminatedUsers();
+                break;
+            case 'orphanUsers':
+                this.getOrphanUsers();
+                break;
+            case 'externalUsers':
+                this.getExternalUsers();
+                break;
+            case 'riskyCloud':
+                this.getRiskyCloudUsers();
+                break;
         }
     }
 
@@ -94,6 +110,26 @@ export class TopDetailsComponent implements AfterViewInit {
     getPrivilegedUsers() {
         this.privilegedUsers = this.riskyObjects.filter(risky => risky.type == 'user');
         this.privilegedUsers.sort((a, b) => -(a.score - b.score));
+    }
+
+    getTerminatedUsers() {
+        this.terminatedUsers = this.riskyObjects.filter(risky => risky.type == 'user');
+        this.terminatedUsers.sort((a, b) => -(a.score - b.score));
+    }
+
+    getOrphanUsers() {
+        this.orphanUsers = this.riskyObjects.filter(risky => risky.type == 'user');
+        this.orphanUsers.sort((a, b) => -(a.score - b.score));
+    }
+
+    getExternalUsers() {
+        this.externalUsers = this.riskyObjects.filter(risky => risky.type == 'user');
+        this.externalUsers.sort((a, b) => -(a.score - b.score));
+    }
+
+    getRiskyCloudUsers() {
+        this.riskyCloudUsers = this.riskyObjects.filter(risky => risky.type == 'user');
+        this.riskyCloudUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getDormantUsers() {

@@ -18,7 +18,8 @@
             <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+            <div class="centerAlign"
+                [ngClass]="{'col-md-8': riskyTypeSelected=='user', 'col-md-10':riskyTypeSelected!='user'}">
                 <a *ngIf="selectedRisky.value"
                     [routerLink]="['/riskyUser', selectedRisky.value]">{{selectedRisky.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
@@ -170,7 +171,8 @@
                 <img class="profile-image img-round" src='./../../../../../assets/images/user.png' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a *ngIf="externalUser.value" [routerLink]="['/riskyUser', externalUser.value]">{{externalUser.value}}</a>
+                <a *ngIf="externalUser.value"
+                    [routerLink]="['/riskyUser', externalUser.value]">{{externalUser.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -288,7 +290,7 @@
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
                 <a *ngIf="watchlistedUser.value"
-                   [routerLink]="['/riskyUser', watchlistedUser.value]">{{watchlistedUser.value}}</a>
+                    [routerLink]="['/riskyUser', watchlistedUser.value]">{{watchlistedUser.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -318,7 +320,7 @@
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
                 <a *ngIf="privilegedUser.value"
-                   [routerLink]="['/riskyUser', privilegedUser.value]">{{privilegedUser.value}}</a>
+                    [routerLink]="['/riskyUser', privilegedUser.value]">{{privilegedUser.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">

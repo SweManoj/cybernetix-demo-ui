@@ -97,7 +97,7 @@
                                             </ng-template>
                                             <ng-template class="policy" pTemplate="body" let-rowData let-myPolicy
                                                 let-rowIndex="rowIndex" style="margin-left:5px;margin-right:5px;padding:5px 5px;">
-                                                <tr [pSelectableRow]="rowData">
+                                                <tr [pSelectableRow]="rowData" (click) = "goToPolicyViolationSummaryPage()">
                                                     <td style="padding: 0px 50px;">{{myPolicy.srNo}}</td>
                                                     <td>{{myPolicy.time}}</td>
                                                     <td>{{myPolicy.policyViolation}}</td>

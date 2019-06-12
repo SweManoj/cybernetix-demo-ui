@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CaseModalComponent } from './components/case-modal/case-modal.component';
 import { CaseManagementService } from './case-management.service';
 import { Table } from 'primeng/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-case-management',
@@ -174,7 +175,7 @@ export class CaseManagementComponent implements OnInit {
   highItem = 0;
   lowItem = 0;
 
-  constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService) {
+  constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService, private router: Router) {
     this.offset = 0;
     this.recordsReturned = 0;
 
@@ -253,4 +254,7 @@ export class CaseManagementComponent implements OnInit {
     event ? this.policy.filter('High', 'priority', 'contains') : this.policy.filter('', 'priority', 'contains'); // value, field, matchMode
   }
 
+    goToPolicyViolationSummaryPage() {
+      this.router.navigateByUrl('/policyViolationSummary');
+    }
 }

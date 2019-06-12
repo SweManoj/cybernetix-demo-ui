@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, OnInit, NgZone } from '@angular/core';
 import { RiskyUserService } from './riskyUser.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from "rxjs/internal/observable/forkJoin";
 import * as moment from 'moment';
 import * as d3 from 'd3';
@@ -145,7 +145,7 @@ export class RiskyUsersComponent {
     ];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-        private zone: NgZone) {
+        private zone: NgZone, private router: Router) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
@@ -432,6 +432,10 @@ export class RiskyUsersComponent {
             });
             this.recordsReturned = this.allUsers.length;
         });
+    }
+
+    goToSummaryPage() {
+        this.router.navigateByUrl('/policyViolationSummary');
     }
 
     loadMoreUsers() {

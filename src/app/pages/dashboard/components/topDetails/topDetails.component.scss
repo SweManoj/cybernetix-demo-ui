@@ -8,15 +8,15 @@
 }
 
 .high {
-  color: red;
+  color: crimson;
 }
 
 .medium {
-  color: yellow;
+  color: darkorange;
 }
 
 .low {
-  color: orange;
+  color: mediumseagreen;
 }
 
 .centerAlign {
@@ -60,6 +60,7 @@
     border-radius: 6px 6px 0 0;
     .heading {
       padding: 4px;
+      display: contents;
     }
     .settings {
       text-align: right;
@@ -115,8 +116,8 @@
   }
   .risk-count {
     place-content: center;
-    color: $brand-red;
-    font-size: 19px;
+    color: crimson;
+    font-size: 28px;
     span {
       //   display: block;
       font-weight: 600;
@@ -261,7 +262,7 @@
         }
       }
       .risk-count {
-        font-size: 19px;
+        font-size: 28px;
       }
     }
     .top-threats {
@@ -384,8 +385,8 @@
     }
   }
   .risk-count {
-    color: $brand-red;
-    font-size: 19px;
+    color: crimson;
+    font-size: 28px;
     text-align: center;
     padding-top: 2px;
     padding-bottom: 0;

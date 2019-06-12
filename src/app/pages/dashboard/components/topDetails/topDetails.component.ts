@@ -19,7 +19,7 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'user', value: 'Adm-EMoor', score: 89, img: true },
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true },
         { type: 'user', value: 'AWendler', score: 72, img: true },
-        { type: 'user', value: 'Svc-ROpitz', score: 65, img: true },
+        { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
         { type: 'ip', value: '172.10.10.11', score: 200, img: false },
         { type: 'ip', value: '172.10.10.11', score: 180, img: false },
         { type: 'ip', value: '172.10.10.11', score: 125, img: false },

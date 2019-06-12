@@ -97,9 +97,17 @@ export class GlobeChartComponent implements OnInit {
     public barChartType: ChartType = 'bar';
     public barChartLegend = false;
     public barChartPlugins = [];
+
      
     public barChartData: ChartDataSets[] = [
-        { data: [65, 59, 80, 81, 56, 55, 40, 30, 10, 100], label: 'Risks by Titles' }
+        { data: [65, 59, 80, 81, 56, 55, 40, 30, 10, 100], label: 'Risks by Titles' , backgroundColor : [
+            "cadetblue", "deepskyblue", "palegreen", "darkcyan", "lightcoral"
+          ],
+          borderColor : [
+            "#111", "#111", "#111", "#111", "#111"
+          ],
+          borderWidth : 1
+        }
     ];
 
     ngOnInit() {}

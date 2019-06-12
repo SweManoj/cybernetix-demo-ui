@@ -32,69 +32,64 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'host', value: 'AUSLAP4873', score: 30, img: false }
     ];
 
-    terminatedUsersObjects = [
-        { score: 119, image: 'Yamasaki' },
-        { score: 91, image: 'Shaquita' },
-        { score: 79, image: 'Tandy' },
-        { score: 62, image: 'Alysa' },
-        { score: 59, image: 'Beth Gee' }
-    ];
-
-    orphanUsersObjects = [
-        { score: 97, image: 'Brunilda' },
-        { score: 91, image: 'Adella Morrow' },
-        { score: 85, image: 'Drusilla' },
-        { score: 76, image: 'Stella' },
-        { score: 63, image: 'Juliann Chadwell' }
-    ];
-
-    externalUsersObjects = [
-        { score: 133, image: 'Coral' },
-        { score: 95, image: 'Tina' },
-        { score: 86, image: 'Maile' },
-        { score: 75, image: 'Sarah Carmichael' },
-        { score: 69, image: 'Kylie Mier' }
-    ];
-
-    riskyCloudUsersObjects = [
-        { score: 131, image: 'Heidy' },
-        { score: 91, image: 'Sondra Hildebrand' },
-        { score: 69, image: 'Kylie Mier' },
-        { score: 79, image: 'Maragret' },
-        { score: 45, image: 'Hazel' }
-    ];
-
-    privilegedUsersObjects = [
-        { score: 104, image: 'Maile' },
-        { score: 71, image: 'Stella' },
-        { score: 62, image: 'Shayla Simo' },
-        { score: 57, image: 'Tina' },
-        { score: 49, image: 'Coral' }
-    ];
-
-    dormantUsersObjects = [
-        { score: 124, image: 'Charlotte' },
-        { score: 96, image: 'Mendelson' },
-        { score: 84, image: 'Kazuko' },
-        { score: 67, image: 'Nita' },
-        { score: 51, image: 'Nada Scheerer' }
-    ];
-
-    serviceAccountObjects = [
-        { score: 112, image: 'Drusilla' },
-        { score: 98, image: 'Juliann Chadwell' },
-        { score: 76, image: 'Kylie Mier' },
-        { score: 65, image: 'Coral' },
-        { score: 59, image: 'Tina' }
-    ];
-
-    watchlistedUsersObjects = [
-        { score: 137, image: 'Drusilla' },
-        { score: 107, image: 'Alysa' },
-        { score: 93, image: 'Brunilda' },
-        { score: 72, image: 'Yamasaki' },
-        { score: 68, image: 'Stella' }
-    ];
+    topRiskyObjects = {
+        terminatedUsersObjects: [
+            { score: 119, image: 'Yamasaki' },
+            { score: 91, image: 'Shaquita' },
+            { score: 79, image: 'Tandy' },
+            { score: 62, image: 'Alysa' },
+            { score: 59, image: 'Beth Gee' }
+        ],
+        orphanUsersObjects: [
+            { score: 97, image: 'Brunilda' },
+            { score: 91, image: 'Adella Morrow' },
+            { score: 85, image: 'Drusilla' },
+            { score: 76, image: 'Stella' },
+            { score: 63, image: 'Juliann Chadwell' }
+        ],
+        externalUsersObjects: [
+            { score: 133, image: 'Coral' },
+            { score: 95, image: 'Tina' },
+            { score: 86, image: 'Maile' },
+            { score: 75, image: 'Sarah Carmichael' },
+            { score: 69, image: 'Kylie Mier' }
+        ],
+        riskyCloudUsersObjects: [
+            { score: 131, image: 'Heidy' },
+            { score: 91, image: 'Sondra Hildebrand' },
+            { score: 69, image: 'Kylie Mier' },
+            { score: 79, image: 'Maragret' },
+            { score: 45, image: 'Hazel' }
+        ],
+        privilegedUsersObjects: [
+            { score: 104, image: 'Maile' },
+            { score: 71, image: 'Stella' },
+            { score: 62, image: 'Shayla Simo' },
+            { score: 57, image: 'Tina' },
+            { score: 49, image: 'Coral' }
+        ],
+        dormantUsersObjects: [
+            { score: 124, image: 'Charlotte' },
+            { score: 96, image: 'Mendelson' },
+            { score: 84, image: 'Kazuko' },
+            { score: 67, image: 'Nita' },
+            { score: 51, image: 'Nada Scheerer' }
+        ],
+        serviceAccountObjects: [
+            { score: 112, image: 'Drusilla' },
+            { score: 98, image: 'Juliann Chadwell' },
+            { score: 76, image: 'Kylie Mier' },
+            { score: 65, image: 'Coral' },
+            { score: 59, image: 'Tina' }
+        ],
+        watchlistedUsersObjects: [
+            { score: 137, image: 'Drusilla' },
+            { score: 107, image: 'Alysa' },
+            { score: 93, image: 'Brunilda' },
+            { score: 72, image: 'Yamasaki' },
+            { score: 68, image: 'Stella' }
+        ]
+    }
 
     assignee = [{ name: 'User', value: 'user' }, { name: 'IP Address', value: 'ip' }, { name: 'Host', value: 'host' }];
 
@@ -172,42 +167,42 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     getPrivilegedUsers() {
-        this.privilegedUsers = this.privilegedUsersObjects;
+        this.privilegedUsers = this.topRiskyObjects.privilegedUsersObjects;
         this.privilegedUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getTerminatedUsers() {
-        this.terminatedUsers = this.terminatedUsersObjects;
+        this.terminatedUsers = this.topRiskyObjects.terminatedUsersObjects;
         this.terminatedUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getOrphanUsers() {
-        this.orphanUsers = this.orphanUsersObjects;
+        this.orphanUsers = this.topRiskyObjects.orphanUsersObjects;
         this.orphanUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getExternalUsers() {
-        this.externalUsers = this.externalUsersObjects;
+        this.externalUsers = this.topRiskyObjects.externalUsersObjects;
         this.externalUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getRiskyCloudUsers() {
-        this.riskyCloudUsers = this.riskyCloudUsersObjects;
+        this.riskyCloudUsers = this.topRiskyObjects.riskyCloudUsersObjects;
         this.riskyCloudUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getDormantUsers() {
-        this.dormantUsers = this.dormantUsersObjects;
+        this.dormantUsers = this.topRiskyObjects.dormantUsersObjects;
         this.dormantUsers.sort((a, b) => -(a.score - b.score));
     }
 
     getServiceAccounts() {
-        this.serviceAccount = this.serviceAccountObjects;
+        this.serviceAccount = this.topRiskyObjects.serviceAccountObjects;
         this.serviceAccount.sort((a, b) => -(a.score - b.score));
     }
 
     getWatchlistedUsers() {
-        this.watchlistedUsers = this.watchlistedUsersObjects;
+        this.watchlistedUsers = this.topRiskyObjects.watchlistedUsersObjects;
         this.watchlistedUsers.sort((a, b) => -(a.score - b.score));
     }
 

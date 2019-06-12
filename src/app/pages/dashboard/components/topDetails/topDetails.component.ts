@@ -160,11 +160,11 @@ export class TopDetailsComponent implements AfterViewInit {
 
         this.threatsList = [
             {
-                title: 'Multiple users logged-in  successfully from same IP',
+                title: 'Abnormal Beaconing from Host - Proxy',
                 count: 47
             },
             {
-                title: 'Same IP is used for failed login attempts by 4 or more accounts',
+                title: 'Failed Login Attempts On Same IP By Multiple Users',
                 count: 93
             },
             {
@@ -172,11 +172,11 @@ export class TopDetailsComponent implements AfterViewInit {
                 count: 18
             },
             {
-                title: 'Failed interactive login attempts by users without proper username',
+                title: 'Abnormal Outbound Connections From Host',
                 count: 3
             },
             {
-                title: 'Same user tried to login from 4 or more IP addresses',
+                title: 'Rare Host Usage',
                 count: 11
             }
         ];

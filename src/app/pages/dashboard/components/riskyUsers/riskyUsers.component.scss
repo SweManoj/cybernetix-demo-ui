@@ -423,7 +423,7 @@ dd {
             span {
                 display: inline-block;
                 position: relative;
-                top: 45px;
+                top: 22px;
                 // right: 0;
                 left: -30px;
                 color: $risk-time-stamp-color;
@@ -439,6 +439,7 @@ dd {
         .risky-separator {
             height: 100%;
             width: 3px;
+            
             margin: 0 auto;
             // float: left;
             margin-top: 20px;
@@ -475,6 +476,7 @@ dd {
             padding-right: initial;
             padding-bottom: 15px;
             font-size: 14px;
+            margin-left: -16px;
             .risk-title {
                 color: $risk-title-text-color;
                 width: 100%;

@@ -194,8 +194,8 @@
                     <div class="risky-user-details">
                         <div class="timeline-view" *ngIf="selectedView === 'timeline'">
                             <div class="row" *ngFor="let item of hardCodeItemData" >
-                                <div class="col-md-2">
-                                    <div class="risk-time-stamp">
+                                <div class="col-md-12">
+                                    <div class="col-md-1 risk-time-stamp">
                                         <span>&emsp;{{item.generatedTimestamp}}</span>
                                     </div>
             
@@ -206,7 +206,7 @@
                                     </div>
                                 </div>
             
-                                <div class="col-10 col-sm-10 col-md-10 risk-info">
+                                <div class="col-md-11 risk-info">
                                     <div class="risk-title">
                                         <div class="col">
                                             <span class="p-2 pointerCursor" (click)="item.accord = !item.accord">

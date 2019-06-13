@@ -42,3 +42,24 @@
         }
     }
 }
+
+/* carousel */
+
+.carousel-slide-container {
+    margin-bottom: 35px;
+     :focus {
+        border: none;
+    }
+  }
+  
+  .carousel-control-next-icon {
+    margin-right: -90%;
+    margin-top: -22%;
+    background-image: none;
+  }
+  
+  .carousel-control-prev-icon {
+    margin-left: -90%;
+    margin-top: -22%;
+    background-image: none;
+  }

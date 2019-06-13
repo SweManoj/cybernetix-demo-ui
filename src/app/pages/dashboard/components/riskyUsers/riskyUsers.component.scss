@@ -1,74 +1,74 @@
 ngb-modal-window.modal.fade.show.d-block {
-    background: #a9b9c708;
-    margin-top: 5rem;
+  background: #a9b9c708;
+  margin-top: 5rem;
 }
 
 .container-fluid.showActivity {
-    background: $black-bg-color;
-    margin-top: 5px;
-    .media {
-        margin: auto;
-        place-content: center;
+  background: $black-bg-color;
+  margin-top: 5px;
+  .media {
+    margin: auto;
+    place-content: center;
+  }
+  .pagetitle {
+    color: $risky-user-text-color;
+    font-size: 22px;
+  }
+  .btn {
+    background: transparent;
+    border: 0.6px solid $risky-user-btn-text;
+    border-radius: 15px;
+    padding: 4px 24px;
+    margin-right: 16px !important;
+    color: $risky-user-btn-text;
+    font-size: small;
+  }
+  .active-btn {
+    background-color: #0aadc8;
+    color: #ffffff;
+  }
+  .row {
+    margin: auto;
+  }
+  .media-body {
+    max-width: fit-content;
+    .value {
+      text-align: center;
+      // font-family: Roboto-Light;
+      font-size: 2.2rem;
+      color: #d3d3d3;
+      margin-bottom: -2px;
+      margin-top: 4px;
+      font-weight: 300;
     }
-    .pagetitle {
-        color: $risky-user-text-color;
-        font-size: 22px;
+    .title {
+      text-align: center;
+      font-size: 20px;
+      // font-family: Roboto-Medium;
+      color: #d3d3d3;
     }
-    .btn {
-        background: transparent;
-        border: .6px solid $risky-user-btn-text;
-        border-radius: 15px;
-        padding: 4px 24px;
-        margin-right: 16px !important;
-        color: $risky-user-btn-text;
-        font-size: small;
-    }
-    .active-btn{
-        background-color: #0aadc8;
-        color: #ffffff;
-    }
-    .row {
-        margin: auto;
-    }
-    .media-body {
-        max-width: fit-content;
-        .value {
-            text-align: center;
-            // font-family: Roboto-Light;
-            font-size: 2.2rem;
-            color: #D3D3D3;
-            margin-bottom: -2px;
-            margin-top: 4px;
-            font-weight: 300;
-        }
-        .title {
-            text-align: center;
-            font-size: 20px;
-            // font-family: Roboto-Medium;
-            color: #D3D3D3;
-        }
-    }
+  }
 }
 
 .container-fluid.chartBg {
-    background: $risky-chart-bg;
-    padding: 0px 55px 0px 45px;
+  background: $risky-chart-bg;
+  padding: 0px 55px 0px 45px;
 }
 
 #heatMapChart {
-    width: 100%;
-    height: 500px;
+  width: 100%;
+  height: 500px;
 }
 
 #zoomableBubbleChart {
-    width: 100%;
-    height: 500px;
+  width: 100%;
+  height: 500px;
 }
 
-.guageChartBlock{
-    padding-right: initial;
-    overflow: hidden;
-    height: 8rem;
+.guageChartBlock {
+  padding-right: initial;
+  overflow: hidden;
+  height: 8rem;
 }
 
 /* #chartGuageDiv {
@@ -91,176 +91,176 @@ ngb-modal-window.modal.fade.show.d-block {
 }
 
 #bubbleChartdiv {
-    width: 100%;
-    height: 60vh;
-    tspan {
-        fill: #6E6E6E;
-        font-size: 16px;
-        letter-spacing: -0.26px;
-    }
-    /* circle {
+  width: 100%;
+  height: 65vh;
+  tspan {
+    fill: #6e6e6e;
+    font-size: 16px;
+    letter-spacing: -0.26px;
+  }
+  /* circle {
         r: 8px; // make all bubble size same
     } */
-    path {
-        stroke: #cac0c0;
-    }
+  path {
+    stroke: #cac0c0;
+  }
 }
 
 h6 {
-    font-size: large;
+  font-size: large;
 }
 
 .greyBackground {
-    background: $buttonBackGround;
-    color: $brand-white;
+  background: $buttonBackGround;
+  color: $brand-white;
 }
 
 .btn:focus {
-    border: none;
+  border: none;
 }
 
 .risky-actionDropDown {
-    /* top: -2px !important;
+  /* top: -2px !important;
     left: 1.1px !important;
     border-radius: 0px;
     border-top: aliceblue;
     border-bottom-left-radius: 5px !important;
     border-top-left-radius: 5px !important;
     border-bottom-right-radius: 5px !important; */
-    margin-top: -2px;
-    border-radius: 0;
-    border-top: 1px solid $buttonBackGround;
-    border-bottom-left-radius: 5px !important;
-    border-top-left-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
-    left: 1.1px !important;
-    top: -2px !important;
+  margin-top: -2px;
+  border-radius: 0;
+  border-top: 1px solid $buttonBackGround;
+  border-bottom-left-radius: 5px !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  left: 1.1px !important;
+  top: -2px !important;
 }
 
 .btn:active {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 .greyBackground:hover {
-    background: $buttonBackGround;
+  background: $buttonBackGround;
 }
 
 button.greyBackground.dropdown-item:hover {
-    color: $brand-white;
+  color: $brand-white;
 }
 
 .heatMapChart {
-    background: $ngxChart;
+  background: $ngxChart;
 }
 
 .ngx-charts {
-    text {
-        fill: $ngxChart-text-color;
-    }
-    rect {
-        stroke: $ngxChart-border-color;
-    }
+  text {
+    fill: $ngxChart-text-color;
+  }
+  rect {
+    stroke: $ngxChart-border-color;
+  }
 }
 
 .amcharts-main-div {
-    .amcharts-chart-div {
-        a {
-            display: none !important;
-        }
-        text {
-            fill: #6E6E6E !important;
-        }
-        path {
-            stroke: #0c202f !important; //$ngxChart-border-color;
-            stroke-width: unset;
-            stroke-opacity: initial;
-        }
+  .amcharts-chart-div {
+    a {
+      display: none !important;
     }
+    text {
+      fill: #6e6e6e !important;
+    }
+    path {
+      stroke: #0c202f !important; //$ngxChart-border-color;
+      stroke-width: unset;
+      stroke-opacity: initial;
+    }
+  }
 }
 
 #zoomableBubbleChart {
-    text {
-        fill: #6E6E6E !important;
-    }
-    /* rect {
+  text {
+    fill: #6e6e6e !important;
+  }
+  /* rect {
         stroke: #6FA8DD !important;
     } */
-    path {
-        stroke: #6E6E6E !important; // zoom border line
-        fill: #b78868 !important; // zoom border inside
-    }
+  path {
+    stroke: #6e6e6e !important; // zoom border line
+    fill: #b78868 !important; // zoom border inside
+  }
 }
 
 table {
-    border-collapse: separate;
-    border: solid .1px #6C6C6C;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    background: #cecccc40;
+  border-collapse: separate;
+  border: solid 0.1px #6c6c6c;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  background: #cecccc40;
 }
 
 .table td {
-    border-top: none;
-    background: $black-bg-color;
-    width: 50%;
-    word-wrap: break-word;
-    color: $case-alert-text-color;
+  border-top: none;
+  background: $black-bg-color;
+  width: 50%;
+  word-wrap: break-word;
+  color: $case-alert-text-color;
 }
 
 table td,
 table th {
-    padding: 10px;
-    /* Apply cell padding */
+  padding: 10px;
+  /* Apply cell padding */
 }
 
 .table th {
-    border-top: none;
-    background: $risk-accord-th-color;
-    border-radius: 2px;
-    color: $case-alert-text-color;
-    width: 50%;
-    word-wrap: break-word;
+  border-top: none;
+  background: $risk-accord-th-color;
+  border-radius: 2px;
+  color: $case-alert-text-color;
+  width: 50%;
+  word-wrap: break-word;
 }
 
 .table th.mainTh {
-    background: #000000;
+  background: #000000;
 }
 
 .tableBlackBackGround {
-    background: #041421;
-    color: $riksy-user-detail-dd;
+  background: #041421;
+  color: $riksy-user-detail-dd;
 }
 
 .nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-    background-color: $nav-pills-active-bg;
+.nav-pills .show > .nav-link {
+  background-color: $nav-pills-active-bg;
 }
 
 .nav-pills .nav-link {
-    border-radius: 0;
-    background: $nav-pills-bg;
-    color: $nav-pills-color;
+  border-radius: 0;
+  background: $nav-pills-bg;
+  color: $nav-pills-color;
 }
 
 .btn:focus {
-    box-shadow: none;
-    outline: 0;
+  box-shadow: none;
+  outline: 0;
 }
 
 .btn-row {
-    margin: 10px 0 15px -15px;
-    .btn {
-        background-color: transparent;
-        color: $case-btn-text-color;
-        padding: 6px 25px;
-        outline: none;
-        border: 1px solid $case-btn-text-color;
-        border-radius: 20px;
-        font-size: 11px;
-        margin-left: 25px;
-    }
-    /* .btn:focus {
+  margin: 10px 0 15px -15px;
+  .btn {
+    background-color: transparent;
+    color: $case-btn-text-color;
+    padding: 6px 25px;
+    outline: none;
+    border: 1px solid $case-btn-text-color;
+    border-radius: 20px;
+    font-size: 11px;
+    margin-left: 25px;
+  }
+  /* .btn:focus {
         box-shadow: none;
         border-radius: 0%;
         outline: 0px;
@@ -268,275 +268,274 @@ table th {
 }
 
 .media {
-    padding: inherit;
+  padding: inherit;
 }
 
 .fa-angle-up:before {
-    font-size: x-large;
-    color: $risky-separator-bg-color;
+  font-size: x-large;
+  color: $risky-separator-bg-color;
 }
 
 .fa-angle-down:before {
-    font-size: x-large;
-    color: $risky-separator-bg-color;
+  font-size: x-large;
+  color: $risky-separator-bg-color;
 }
 
 .pointerCursor {
-    cursor: pointer;
-    color: $case-alert-text-color;
-    font-weight: 500;
+  cursor: pointer;
+  color: $case-alert-text-color;
+  font-weight: 500;
 }
 
 .risky-users-list {
-    background-color: $risky-users-bg-color;
-    border-radius: 6px;
-    box-shadow: $black-bg-box-shadow;
-    color: $risky-users-text-color;
-    .row {
-        margin: 0;
-        >div {
-            border-right: 1px solid $cnetiz-gray-70;
-            &:last-child {
-                border-right: none;
-            }
-        }
+  background-color: $risky-users-bg-color;
+  border-radius: 6px;
+  box-shadow: $black-bg-box-shadow;
+  color: $risky-users-text-color;
+  .row {
+    margin: 0;
+    > div {
+      border-right: 1px solid $cnetiz-gray-70;
+      &:last-child {
+        border-right: none;
+      }
     }
-    .header-row {
-        background-color: $risky-user-header-bg-color;
-        border-radius: 6px 6px 0 0;
+  }
+  .header-row {
+    background-color: $risky-user-header-bg-color;
+    border-radius: 6px 6px 0 0;
+  }
+  .data-row {
+    border-bottom: 1px solid $cnetiz-gray-70;
+    color: $text-white;
+    &:last-child {
+      border-bottom: none;
     }
-    .data-row {
-        border-bottom: 1px solid $cnetiz-gray-70;
-        color: $text-white;
-        &:last-child {
-            border-bottom: none;
-        }
-    }
-    a {
-        color: $risky-user-link-color;
-    }
+  }
+  a {
+    color: $risky-user-link-color;
+  }
 }
 
 .load-more-link {
-    margin-top: 10px;
-    a {
-        color: $brand-color;
-    }
+  margin-top: 10px;
+  a {
+    color: $brand-color;
+  }
 }
 
 dt {
-    color: $case-alert-text-color;
+  color: $case-alert-text-color;
 }
 
 dd {
-    padding-left: 12px;
-    padding-top: 5px;
-    color: $riksy-user-detail-dd;
+  padding-left: 12px;
+  padding-top: 5px;
+  color: $riksy-user-detail-dd;
 }
 
 .riskAccordBorder {
-    border-right: 1px solid $risk-accord-border-color;
+  border-right: 1px solid $risk-accord-border-color;
 }
 
 .tab-content p {
-    color: $riksy-user-detail-dd;
+  color: $riksy-user-detail-dd;
 }
 
 .risky-user-container {
-    //background-color: $risky-users-bg-color;
-    color: $risky-users-text-color;
-    // padding-bottom: 15px;
-    border-radius: 6px;
-    // box-shadow: $risk-user-container-shadow;
-    .row {
-        margin: 0;
-        // background-color: $black-bg-color;
-        /* .timeline-view {
+  //background-color: $risky-users-bg-color;
+  color: $risky-users-text-color;
+  // padding-bottom: 15px;
+  border-radius: 6px;
+  // box-shadow: $risk-user-container-shadow;
+  .row {
+    margin: 0;
+    // background-color: $black-bg-color;
+    /* .timeline-view {
             background-color: #435D73;
         } */
+  }
+  .showActivity {
+    background-color: $black-bg-color;
+  }
+  .risky-user-header {
+    background-color: $risky-user-bg-color;
+    color: $risky-users-text-color;
+    // border-radius: 9px;
+    // padding: 15px;
+    font-size: 18px;
+    box-shadow: $risky-user-header-box-shadow;
+    .profile-image {
+      width: 70px;
+      height: 70px;
+      border-radius: 35px;
+      margin-right: 10px;
+      cursor: pointer;
     }
-    .showActivity {
-        background-color: $black-bg-color;
+    .user-info {
+      span {
+        display: block;
+        &.risk-score {
+          color: #ffb730;
+          font-size: 30px;
+        }
+      }
     }
-    .risky-user-header {
-        background-color: $risky-user-bg-color;
-        color: $risky-users-text-color;
-        // border-radius: 9px;
-        // padding: 15px;
-        font-size: 18px;
-        box-shadow: $risky-user-header-box-shadow;
-        .profile-image {
-            width: 70px;
-            height: 70px;
-            border-radius: 35px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        .user-info {
-            span {
-                display: block;
-                &.risk-score {
-                    color: #FFB730;
-                    font-size: 30px;
-                }
-            }
-        }
-        .right-border {
-            border-right: 1px solid $risky-users-header-separator;
-        }
+    .right-border {
+      border-right: 1px solid $risky-users-header-separator;
     }
-    .timeline-switch {
-        padding: 7px 0;
-        background-color: unset;
-        span {
-            padding: 10px;
-            font-size: 20px;
-            background-color: #fff;
-            border-radius: 5px 5px 0 0;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            &:first-child {
-                margin-right: 1px;
-            }
-            &.selected {
-                background-color: #6FA8DD;
-                border: none;
-                color: #fff;
-            }
-        }
+  }
+  .timeline-switch {
+    padding: 7px 0;
+    background-color: unset;
+    span {
+      padding: 10px;
+      font-size: 20px;
+      background-color: #fff;
+      border-radius: 5px 5px 0 0;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      &:first-child {
+        margin-right: 1px;
+      }
+      &.selected {
+        background-color: #6fa8dd;
+        border: none;
+        color: #fff;
+      }
     }
-    .risky-user-details {
-        margin-top: 10px;
-        color: $text-white;
-        .log-date-info {
-            background-color: $risky-users-log-date-bg-color;
-            padding: 15px;
-            color: $brand-white;
-            font-weight: bold;
+  }
+  .risky-user-details {
+    margin-top: 10px;
+    color: $text-white;
+    .log-date-info {
+      background-color: $risky-users-log-date-bg-color;
+      padding: 15px;
+      color: $brand-white;
+      font-weight: bold;
+    }
+    .sub-header {
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: $risky-users-sub-header-bg-color;
+      border: 1px solid $risky-users-sub-header-border-color;
+      span {
+        display: block;
+        &:first-child {
+          font-size: 34px;
         }
-        .sub-header {
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: $risky-users-sub-header-bg-color;
-            border: 1px solid $risky-users-sub-header-border-color;
-            span {
-                display: block;
-                &:first-child {
-                    font-size: 34px;
-                }
-                &:last-child {
-                    font-size: 22px;
-                    font-weight: bold;
-                }
-                &.risk-score {
-                    color: $riksy-users-sub-header-risk-score;
-                }
-            }
-            .right-border {
-                padding: 10px 0;
-                border-right: 1px solid $risky-users-sub-header-separator;
-            }
+        &:last-child {
+          font-size: 22px;
+          font-weight: bold;
         }
-        .risk-time-stamp {
-            text-align: right;
-            span {
-                display: inline-block;
-                position: relative;
-                top: 22px;
-                // right: 0;
-                left: -30px;
-                color: $risk-time-stamp-color;
-                float: left;
-            }
+        &.risk-score {
+          color: $riksy-users-sub-header-risk-score;
         }
-        .col-separator {
-            width: 15px;
-            max-width: 15px;
-            flex: 0;
-            padding: 0;
-        }
-        .risky-separator {
-            height: 100%;
-            width: 3px;
-            
-            margin: 0 auto;
-            // float: left;
-            margin-top: 20px;
-            margin-right: 35px;
-            background-color: $risky-separator-bg-color;
-            .risk-dot {
-                display: inline-block;
-                position: relative;
-                width: 15px;
-                height: 15px;
-                top: 26px;
-                border: 1.5px solid $risk-dot-border-color;
-                border-radius: 35px;
-                background-color: $risk-dot-bg-color;
-                left: -6px;
-                box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.26);
-            }
-        }
-        .row {
-            &:first-child {
-                .risky-separator {
-                    border-radius: 6px 6px 0 0;
-                }
-            }
-            &:last-child {
-                .risky-separator {
-                    border-radius: 0 0 6px 6px;
-                }
-            }
-        }
-        .risk-info {
-            padding-top: 30px;
-            padding-left: 20px !important;
-            padding-right: initial;
-            padding-bottom: 15px;
-            font-size: 14px;
-            margin-left: -16px;
-            .risk-title {
-                color: $risk-title-text-color;
-                width: 100%;
-                border-radius: 10px;
-                border: $riksy-user-detail-risk-title-border;
-                background-color: $risk-dot-border-color;
-                span {
-                    display: inline-block;
-                }
-                .risk-score {
-                    background-color: #6185A4;
-                    min-width: 32px;
-                    min-height: 30px;
-                    border-radius: 25px;
-                    color:  #21FF0E;
-                    font-size: 16px;
-                    text-align: center;
-                    padding-top: 4px;
-                    margin-bottom: .5rem;
-                    margin-left: 1.2rem;
-                    font-weight: 500;
-                    cursor: pointer;
+      }
+      .right-border {
+        padding: 10px 0;
+        border-right: 1px solid $risky-users-sub-header-separator;
+      }
+    }
+    .risk-time-stamp {
+      text-align: right;
+      span {
+        display: inline-block;
+        position: relative;
+        top: 22px;
+        // right: 0;
+        left: -30px;
+        color: $risk-time-stamp-color;
+        float: left;
+      }
+    }
+    .col-separator {
+      width: 15px;
+      max-width: 15px;
+      flex: 0;
+      padding: 0;
+    }
+    .risky-separator {
+      height: 100%;
+      width: 3px;
 
-                }
-                .riksy-accord {
-                    background-color: $risk-dot-border-color;
-                    border-right: 1px solid #3F596C;
-                }
-            }
-        }
+      margin: 0 auto;
+      // float: left;
+      margin-top: 20px;
+      margin-right: 35px;
+      background-color: $risky-separator-bg-color;
+      .risk-dot {
+        display: inline-block;
+        position: relative;
+        width: 15px;
+        height: 15px;
+        top: 26px;
+        border: 1.5px solid $risk-dot-border-color;
+        border-radius: 35px;
+        background-color: $risk-dot-bg-color;
+        left: -6px;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.26);
+      }
     }
+    .row {
+      &:first-child {
+        .risky-separator {
+          border-radius: 6px 6px 0 0;
+        }
+      }
+      &:last-child {
+        .risky-separator {
+          border-radius: 0 0 6px 6px;
+        }
+      }
+    }
+    .risk-info {
+      padding-top: 30px;
+      padding-left: 20px !important;
+      padding-right: initial;
+      padding-bottom: 15px;
+      font-size: 14px;
+      margin-left: -16px;
+      .risk-title {
+        color: $risk-title-text-color;
+        width: 100%;
+        border-radius: 10px;
+        border: $riksy-user-detail-risk-title-border;
+        background-color: $risk-dot-border-color;
+        span {
+          display: inline-block;
+        }
+        .risk-score {
+          background-color: #6185a4;
+          min-width: 32px;
+          min-height: 30px;
+          border-radius: 25px;
+          color: #21ff0e;
+          font-size: 16px;
+          text-align: center;
+          padding-top: 4px;
+          margin-bottom: 0.5rem;
+          margin-left: 1.2rem;
+          font-weight: 500;
+          cursor: pointer;
+        }
+        .riksy-accord {
+          background-color: $risk-dot-border-color;
+          border-right: 1px solid #3f596c;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 768px) {
-    .risky-users-container {
-        width: 60%;
-        margin-left: 20px;
-    }
+  .risky-users-container {
+    width: 60%;
+    margin-left: 20px;
+  }
 }
 
 .custom-container {
-    padding: 0px 75px 0px 80px !important;
+  padding: 0px 75px 0px 80px !important;
 }

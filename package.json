@@ -74,7 +74,6 @@
     "mongoose": "^5.3.11",
     "ng2-charts": "^2.2.2",
     "ng2modules-easypiechart": "0.0.4",
-    "ngx-textarea-autosize": "^2.0.3",
     "nodemon": "^1.18.10",
     "primeicons": "^1.0.0",
     "primeng": "^7.1.0",

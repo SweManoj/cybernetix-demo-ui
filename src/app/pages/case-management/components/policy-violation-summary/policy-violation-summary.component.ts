@@ -1,14 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Comment } from './comment';
+import { FormGroup, AbstractControl, FormBuilder, Validators } from "@angular/forms";
+import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 
 @Component({
     selector: "app-policy-violation-summary",
     templateUrl: "./policy-violation-summary.component.html"
 })
 export class PolicyViolationSummaryComponent implements OnInit {
-    comment;
+
+    @ViewChild('autosize') autosize: CdkTextareaAutosize;
+
     d = new Date();
-    policyComments = [{
+    policyComments: Comment[] = [{
         userId: "abhishek@123",
         content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
             " when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -50,16 +54,28 @@ export class PolicyViolationSummaryComponent implements OnInit {
         }
     ];
 
-    submitted = false;
+    commentFormGroup: FormGroup;
+    commentValue: AbstractControl;
+
+    constructor(private formBuilder: FormBuilder) {
+        this.initForm();
+    }
+
+    initForm() {
+        this.commentFormGroup = this.formBuilder.group({
+            commentValue: ['', Validators.compose([Validators.required])]
+        });
+
+        this.commentValue = this.commentFormGroup.controls['commentValue'];
+    }
 
     submitComment() {
-        console.log(this.comment);
-        this.submitted = true;
-        this.policyComments.unshift(this.comment);
-        this.comment = new Comment('abhishek@123', '', new Date());
+        console.log(this.commentValue.value);
+        const comment = new Comment('abhishek@123', this.commentValue.value, new Date(), this.policyComments.length + 1);
+        this.policyComments.unshift(comment);
+        this.commentValue.setValue('');
     };
 
     ngOnInit() {
-        this.comment = new Comment('abhishek@123', '', new Date());
     }
 }

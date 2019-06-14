@@ -139,8 +139,8 @@
     <ng-container *ngFor="let orphanUser of orphanUsers">
         <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
-                <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{orphanUser.image}}.jpg' />
+                <img class="profile-image rounded-circle" src='./../../../../../assets/images/users/unknown_user.jpeg'
+                    style="width: 2.9rem;height: 2.9rem;" />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
                 <a [routerLink]="['/riskyUser', orphanUser.image]">{{orphanUser.image}}</a>
@@ -232,10 +232,10 @@
         <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{serviceAcnt.image}}.jpg' />
+                    src="./../../../../../assets/images/users/{{serviceAcnt.image}}.jpg" />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', serviceAcnt.image]">{{serviceAcnt.image}}</a>
+                <a [routerLink]="['/riskyUser', serviceAcnt.image]">{{'svc_'+serviceAcnt.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span> {{serviceAcnt.score}}</span>

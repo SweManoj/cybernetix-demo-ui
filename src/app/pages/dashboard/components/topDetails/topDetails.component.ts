@@ -41,11 +41,11 @@ export class TopDetailsComponent implements AfterViewInit {
             { score: 59, image: 'Beth Gee' }
         ],
         orphanUsersObjects: [
-            { score: 97, image: 'Brunilda' },
-            { score: 91, image: 'Adella Morrow' },
-            { score: 85, image: 'Drusilla' },
-            { score: 76, image: 'Stella' },
-            { score: 63, image: 'Juliann Chadwell' }
+            { score: 97, image: 'agga787' },
+            { score: 91, image: ' philip392' },
+            { score: 85, image: 'sibi025' },
+            { score: 76, image: 'mahi521' },
+            { score: 63, image: 'abhi035' }
         ],
         externalUsersObjects: [
             { score: 133, image: 'Coral' },
@@ -77,7 +77,7 @@ export class TopDetailsComponent implements AfterViewInit {
         ],
         serviceAccountObjects: [
             { score: 112, image: 'Drusilla' },
-            { score: 98, image: 'Juliann Chadwell' },
+            { score: 98, image: 'Heidy' },
             { score: 76, image: 'Kylie Mier' },
             { score: 65, image: 'Coral' },
             { score: 59, image: 'Tina' }

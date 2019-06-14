@@ -10,13 +10,13 @@ export class LeftNavComponent {
     menuList = [];
     constructor(private translateService: TranslateService, private util: UtilService) {
         this.menuList = [
-            /* {
+            {
                 ionIcon: '',
                 faIcon: '',
-                img: 'dashboard.png',
+                img: 'dashboard_active.png',
                 title: 'Dashboard', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/dashboard'
-            }, */
+            },
             {
                 ionIcon: '',
                 faIcon: 'fa fa-cogs',
@@ -30,7 +30,14 @@ export class LeftNavComponent {
                 img: '',
                 title: 'CN Pulse', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/cyberNetizPulse'
-            }
+            },
+            {
+                ionIcon: '',
+                faIcon: '',
+                img: 'calendar.png',
+                title: 'Summary', // this.translateService.instant('general.menu.dashboard')
+                navLink: '/policyViolationSummary'
+            },
         ];
     }
 

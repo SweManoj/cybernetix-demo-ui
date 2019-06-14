@@ -1,12 +1,12 @@
 <div class="nav left-nav pt-1" [ngClass]="{'menu-opened': isMenuOpened()}" (mouseover)="changeMenuOpen()"
     (mouseout)="changeMenuOpen()">
     <ul>
-        <li>
+        <!-- <li>
             <a [routerLink]="['/dashboard']">
                 <img src="../../../../assets/images/dashboard_active.png" />
                 <span class="title">Dashboard</span>
             </a>
-        </li>
+        </li> -->
         <li *ngFor="let menuItem of menuList">
             <a [routerLink]="[menuItem.navLink]">
                 <span *ngIf="menuItem.ionIcon" class="icon ion" ngClass="{{menuItem.ionIcon}}"></span>
@@ -27,11 +27,11 @@
                 <span class="title">ALerts</span>
             </a>
         </li> -->
-        <li>
+        <!-- <li>
             <a [routerLink]="['/policyViolationSummary']">
                 <img src="../../../../assets/images/calendar.png" />
                 <span class="title">Summary</span>
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>

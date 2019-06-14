@@ -20,4 +20,4 @@ import { LoginService } from './login.service';
         LoginService
     ]
 })
-export class LoginModule {}
+export class LoginModule { }

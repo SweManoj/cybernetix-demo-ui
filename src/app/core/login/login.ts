@@ -14,6 +14,7 @@ export class LoginComponent {
     username: AbstractControl;
     password: AbstractControl;
     themeName: string;
+    isError: boolean = false;
 
     constructor(private fb: FormBuilder, private loginService: LoginService, private userContext: UserContext,
         private sessionStorage: SessionStorage, private router: Router) {
@@ -27,7 +28,6 @@ export class LoginComponent {
     }
     onSubmit(): void {
         if (this.form.valid) {
-            debugger
             this.loginService.login(this.form.value).subscribe((res: any) => {
                 if (res.status == 'true') {
                     const authInfo = {
@@ -37,6 +37,9 @@ export class LoginComponent {
                     this.sessionStorage.setItem(null, authInfo);
                     this.loginService.loggedIn.next(true);
                     this.router.navigate(['/dashboard']);
+                }
+                else {
+                    this.isError = true;
                 }
             });
         }

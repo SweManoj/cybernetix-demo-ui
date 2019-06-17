@@ -1,44 +1,111 @@
-img.img-rounded {
-  width: 4rem !important;
-}
-span.cardHeading {
-  font-size: 13px;
-  font-weight: 600;
-}
 
-.cardText {
-  font-size: 11px;
-  font-weight: 600;
-}
+.mat-card{
+  text-align: center;
+  background: #2C4255;
+  border-radius: 10px;
+  padding: 0;
 
-.initialPadding {
-  padding: initial;
-}
+  .mat-card-header{
+    border-radius: 10px 10px 0 0;
+    background: #041421;
+    display: block;
+    padding: 15px 10px;
 
-.rightPadding {
-  padding-right: initial;
-}
+    .user-img{
+      width: 4rem;
+      margin: 5px 0 5px;
+    }
+    .user-name-text{
+      font-size: 18px;
+      font-family: 'Roboto';
+      color: #D3D3D3;
+      margin: 0;
+    }
+    .risk-box{
+      width: 100px;
+      margin: 0 auto;
+      text-align: center;
+      .left-block{
+        float: left;
+        width: 50%;
 
-.centerAlign {
-  display: flex;
-  align-items: center;
-}
+        .risk-score-value{
+          color: #21FF0E;
+          font-size: 21px;
+          display: block;
+          line-height: 1;
+          margin: 5px 0px 0;
+        }
+        .risk-score-text{
+          color: #D3D3D3;
+          font-size: 9px;
+          display: block;
+          line-height: 1;
+        }
+      }
+      .right-block{
+        .meter-img{
+          width: 35px;
+          margin: 5px 0 0;
+        }
+        .chart-meter{
+          position: absolute;
+          top: 55px;
+          right: 30px;
+          width: 90px;
+        }
+      }
+    }
+  }
+  .mat-card-content{
+    background: #2C4255;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Roboto';
+    padding: 10px 20px; 
+    margin-bottom: 0;
 
-img.img-rounded {
-  width: 3rem !important;
-}
+    .text-style-1{
+      color: #A7A7A7;
+      margin: 0;
+    }
+    .text-style-2{
+      color: #D3D3D3;
+      margin: 0 0 10px;
+      font-weight: 500;
+    }
 
-.mainText {
-  font-size: smaller;
-  font-weight: 600;
-}
+  }
+  .mat-card-actions{
+    text-align: left;
+    font-size: 14px;
+    border: none;
+    padding: 0 20px 15px;
+    border-radius: 0 0 10px 10px;
 
-.cardPadding {
-  padding: 6px 8px;
-}
+    p{
+      color: #FF8700;
+      margin: 0 0 10px;
+      line-height: 1.3;
+      display: table-row;
 
-.anchor {
-  font-size: 13px;
-  margin-top: 2px;
-  margin-left: inherit;
+      .warning-img{
+        display: table-cell;
+        vertical-align: middle;
+        //float: left;
+        width: 35px;
+        img{
+          margin-top: 5px;
+        }
+      }
+      .violation-text{
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .clear{
+    clear: both;
+  }
 }

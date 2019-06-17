@@ -13,9 +13,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PolicyViolationDetailViewComponent } from './pages/case-management/components/policy-violation-detail-view/policy-violation-detail-view.component';
 import { PolicyViolationSummaryComponent } from './pages/case-management/components/policy-violation-summary/policy-violation-summary.component';
 import { TestEsComponent } from './pages/case-management/components/test-es/test-es.component';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
-import {TextFieldModule} from '@angular/cdk/text-field';
 
 export const routes: Routes = [
     {
@@ -94,7 +94,7 @@ export const routes: Routes = [
         })
     ],
     exports: [
-        RouterModule, NgxChartsModule, AutoCompleteModule,TextFieldModule
+        RouterModule, NgxChartsModule, TextareaAutosizeModule, AutoCompleteModule
     ]
 })
 export class AppRoutingModule {

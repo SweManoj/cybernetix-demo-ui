@@ -1,14 +1,15 @@
-<div class="container-fluid ml-2 mr-2 mt-3">
-  <div class="row mb-3">
+<div class="container-fluid mt-3 padding-lr-20">
+  <div class="mb-3">
     <span class="recordInfo h4">{{filteredRiskyEntities.length}} records found for your keyword
       <b>"{{foundEntityName}}"</b></span>
-  </div>
+  </div> 
 </div>
 
-<div class="container-fluid ml-2 mt-3 initialPadding">  
+<div class="container-fluid padding-lr-20">  
     <div class="row mr-0">
-      <app-risky-entity-view class="col-md-4 mt-3" *ngFor="let filteredRiskyEntity of filteredRiskyEntities;"
-        [filteredRiskyEntity]="filteredRiskyEntity">
+
+      <app-risky-entity-view class="col-md-2-5 mt-3" *ngFor="let filteredRiskyEntity of filteredRiskyEntities;  let i = index"
+        [filteredRiskyEntity]="filteredRiskyEntity" [index]="i">
       </app-risky-entity-view>
     </div>
   </div>

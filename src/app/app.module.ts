@@ -22,6 +22,9 @@ import { CaseManagementModule } from './pages/case-management/case-management.mo
 import { UtilDataService } from './core/services/util.data.service';
 import { ModalUtilComponent } from './core/common/modal-util/modal.util.component';
 
+import { MaterialModule } from './material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -42,7 +45,12 @@ import { ModalUtilComponent } from './core/common/modal-util/modal.util.componen
         LoginModule,
         DashboardModule,
         NgbModule,
-        CaseManagementModule
+        CaseManagementModule,
+        BrowserAnimationsModule,
+        MaterialModule
+    ],
+    exports:[
+        MaterialModule
     ],
     providers: [
         AuthGuard,

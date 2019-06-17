@@ -26,7 +26,9 @@ import { RiskScoreModalComponent } from './components/riskyUsers/risk-score-moda
 import { FilterRiskEntityComponent } from './components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
 import { RiskyEntityViewComponent } from './components/riskyUsers/filter-risk-entity/risky-entity-view/risky-entity-view';
 
-@NgModule({
+import { MaterialModule } from './../../material';
+
+@NgModule({ 
     declarations: [
         DashboardComponent,
         PieChartComponent,
@@ -52,6 +54,7 @@ import { RiskyEntityViewComponent } from './components/riskyUsers/filter-risk-en
         CheckboxModule,
         RadioButtonModule,
         ChartModule,
+        MaterialModule,
         AmChartsModule
     ],
     entryComponents: [

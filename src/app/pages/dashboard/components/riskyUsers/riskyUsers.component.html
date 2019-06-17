@@ -28,17 +28,21 @@
         <!--<h5 class="page-heading">{{'global.riskyUser.user' | translate}}: {{selectedUser}}</h5>-->
         <div class="risky-user-container">
             <div class="risky-user-header">
-                <!--<div class="row">
-                                                    <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeId' | translate}}: {{selectedUserDetails.userInfo?.EmployeeID}}</label>
-                                                    <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeName' | translate}}: {{selectedUserDetails.userInfo?.EmployeeName}}</label>
-                                                    <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeUserId' | translate}}: {{selectedUserDetails.userInfo?.UserId}}</label>
-                                                    <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeDepartment' | translate}}: Infrastructure Operations</label>
-                                                </div>
-                                                <div class="row">
-                                                    <label class="col-3 col-sm-3 col-md-3">Manager Name: Ron Conway</label>
-                                                    <label class="col-3 col-sm-3 col-md-3">Manager Employee ID: 78679</label>
-                                                    <label class="col-3 col-sm-3 col-md-3">Manager UserId: Roconwy</label>
-                                                </div>-->
+                <!-- <div class="row">
+                    <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeId' | translate}}:
+                        {{selectedUserDetails.userInfo?.EmployeeID}}</label>
+                    <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeName' | translate}}:
+                        {{selectedUserDetails.userInfo?.EmployeeName}}</label>
+                    <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeUserId' | translate}}:
+                        {{selectedUserDetails.userInfo?.UserId}}</label>
+                    <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeDepartment' | translate}}:
+                        Infrastructure Operations</label>
+                </div>
+                <div class="row">
+                    <label class="col-3 col-sm-3 col-md-3">Manager Name: Ron Conway</label>
+                    <label class="col-3 col-sm-3 col-md-3">Manager Employee ID: 78679</label>
+                    <label class="col-3 col-sm-3 col-md-3">Manager UserId: Roconwy</label>
+                </div> -->
                 <div class="row" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
                         <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image img-rounded mt-4"
@@ -112,7 +116,7 @@
         </div>
     </ng-container>
 
-    <div class="container-fluid showActivity">
+    <div class="container-fluid showActivity initialPadding">
         <!-- <div class="row pt-3 pb-3">
             <div class="col-md-2">
                 <span class="pagetitle">Show Activity</span>
@@ -126,64 +130,49 @@
         </div> -->
 
         <!-- Show Activity Images With Values -->
-        <div class="row pt-2">
+        <div class="row pt-3 pb-3">
             <div class="col-sm">
                 <div class="media">
-                    <div class="media-left">
-                        <p></p>
-                        <img src='../assets/images/falg@1x.png' />
-                    </div>
+                    <img class="align-self-center" src='../assets/images/falg@1x.png' />
                     <div class="media-body pl-3">
                         <p class="value">17</p>
-                        <p class="title">Events</p>
+                        <span class="title">Events</span>
                     </div>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="media">
-                    <div class="media-left">
-                        <p></p>
-                        <img src='../assets/images/resources@1x.png' />
-                    </div>
+                    <img class="align-self-center" src='../assets/images/resources@1x.png' />
                     <div class="media-body pl-2">
                         <p class="value">23</p>
-                        <p class="title">Resources</p>
+                        <span class="title">Resources</span>
                     </div>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="media">
-                    <div class="media-left">
-                        <p></p>
-                        <img src='../assets/images/Shape@1x.png' />
-                    </div>
+                    <img class="align-self-center" src='../assets/images/Shape@1x.png' />
                     <div class="media-body pl-3">
                         <p class="value">06</p>
-                        <p class="title">Locations</p>
+                        <span class="title">Locations</span>
                     </div>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="media">
-                    <div class="media-left">
-                        <p></p>
-                        <img src='../assets/images/violations@1x.png' />
-                    </div>
+                    <img class="align-self-center" src='../assets/images/violations@1x.png' />
                     <div class="media-body pl-3">
                         <p class="value">23</p>
-                        <p class="title">Violations</p>
+                        <span class="title">Violations</span>
                     </div>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="media">
-                    <div class="media-left">
-                        <p></p>
-                        <img src='../assets/images/incident@1x.png' />
-                    </div>
+                    <img class="align-self-center" src='../assets/images/incident@1x.png' />
                     <div class="media-body pl-3">
                         <p class="value">57</p>
-                        <p class="title">Incidents</p>
+                        <span class="title">Incidents</span>
                     </div>
                 </div>
             </div>
@@ -191,11 +180,9 @@
     </div>
 
     <!--zoomable bubble chart -->
-    <div class="container-fluid chartBg">
+    <div class="container-fluid chartBg pb-4">
         <div class="row pr-3 pl-3 pb-3" style="height: 64vh;overflow:hidden;">
             <div #bubbleChartdiv id="bubbleChartdiv" class="mt-3"></div>
-        </div>
-        <div class="row" style="height: 1.5rem;">
         </div>
     </div>
 

@@ -187,68 +187,66 @@
     </div>
 
     <ng-container>
-        <div class="risky-user-container">
-            <div class="risky-user-details">
-                <div class="timeline-view" *ngIf="selectedView === 'timeline'">
-                    <div class="row" *ngFor="let item of hardCodeItemData">
-                        <div class="col-md-12">
-                            <div class="col-md-1 risk-time-stamp">
-                                <span>&emsp;{{item.generatedTimestamp}}</span>
-                            </div>
-
-                            <div class="col-md-1 col-separator" style="display: inline;">
-                                <div class="risky-separator">
-                                    <span class="risk-dot">&nbsp;</span>
-                                </div>
+        <div class="risky-user-container container-fluid initialPadding mt-3">
+            <div class="risky-user-details" *ngIf="selectedView === 'timeline'">
+                <div class="row" *ngFor="let item of hardCodeItemData">
+                    <div class="col-md-2 initialPadding">
+                        <div class="col-md-10 risk-time-stamp">
+                            <span class="timestamp">&emsp;{{item.generatedTimestamp}}</span>
+                        </div>
+                        <div class="col-md-2 col-separator d-inline" style="display: inline;">
+                            <div class="risky-separator d-inline-block">
+                                <span class="risk-dot">&nbsp;</span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-md-11 risk-info">
-                            <div class="risk-title">
-                                <div class="col">
-                                    <span class="p-2 pointerCursor" (click)="item.accord = !item.accord">
-                                        &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                            class="fa fa-angle-down"></i>
-                                    </span>
-                                    <span class="pointerCursor" (click)="item.accord = !item.accord"
-                                        style="color:red;font-size: 17px;letter-spacing: -0.31px;">&emsp;{{item.pv}}&emsp;</span>
-                                    <span class="pointerCursor" (click)="item.accord = !item.accord"
-                                        style="font-size: 17px;letter-spacing: -0.31px;">
-                                        &emsp;{{item.ruleInfo.title}}</span>
+                    <div class="col-md-10 risk-info initialPadding">
+                        <div class="risk-title">
+                            <div class="col">
+                                <span class="p-2 pointerCursor" (click)="item.accord = !item.accord">
+                                    &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
+                                        class="fa fa-angle-down"></i>
+                                </span>
+                                <span class="pointerCursor" (click)="item.accord = !item.accord"
+                                    style="color:red;font-size: 17px;letter-spacing: -0.31px;">&emsp;{{item.pv}}&emsp;</span>
+                                <span class="pointerCursor" (click)="item.accord = !item.accord"
+                                    style="font-size: 17px;letter-spacing: -0.31px;">
+                                    &emsp;{{item.ruleInfo.title}}</span>
 
-                                    <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
-                                        class="risk-score">{{item.riskScore}}</span>
+                                <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                    class="risk-score">{{item.riskScore}}</span>
 
-                                    <!-- <div style="margin-right: inherit;margin-left: 45px;" class="risk-score">
+                                <!-- <div style="margin-right: inherit;margin-left: 45px;" class="risk-score">
                                                     <span style="margin-right: 5px;font-size: large;border: 1px solid #FF0000;padding: 3px 8px;border-radius: 20px;height: 35px;background: #FF0000;color:#000000;">{{item.riskScore}}</span>
                                                 </div> -->
 
-                                    <span *ngIf="item.accord" ngbDropdown placement="bottom-right"
-                                        class="float-sm-right" style="margin-top: .8rem;">
-                                        <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle
-                                            style="background:#6185A4;margin-top: -5px;margin-right: 25px;border-radius: 3px;">Actions</button>
-                                        <div class="greyBackground risky-actionDropDown" ngbDropdownMenu
-                                            aria-labelledby="dropdownBasic1">
-                                            <button ngbDropdownItem class="greyBackground">Investigate</button>
-                                            <button ngbDropdownItem class="greyBackground">Accept as Risk</button>
-                                            <button ngbDropdownItem class="greyBackground">Create an Incident</button>
-                                            <button ngbDropdownItem class="greyBackground"
-                                                (click)="goToSummaryPage()">View Summary</button>
-                                        </div>
-                                    </span>
-                                </div>
+                                <span *ngIf="item.accord" ngbDropdown placement="bottom-right" class="float-sm-right"
+                                    style="margin-top: .8rem;">
+                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle
+                                        style="background:#6185A4;margin-top: -5px;margin-right: 25px;border-radius: 3px;">Actions</button>
+                                    <div class="greyBackground risky-actionDropDown" ngbDropdownMenu
+                                        aria-labelledby="dropdownBasic1">
+                                        <button ngbDropdownItem class="greyBackground">Investigate</button>
+                                        <button ngbDropdownItem class="greyBackground">Accept as Risk</button>
+                                        <button ngbDropdownItem class="greyBackground">Create an Incident</button>
+                                        <button ngbDropdownItem class="greyBackground" (click)="goToSummaryPage()">View
+                                            Summary</button>
+                                    </div>
+                                </span>
+                            </div>
 
-                                <div *ngIf="item.accord" class="container-fluid" style="margin-top:6px;">
-                                    <div class="row">
-                                        <div class="col-3 col-sm-3 riskAccordBorder">
-                                            <dl>
-                                                <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                                <dd class="mt-2">In this policy violation, user was trying to access
-                                                    machine which is restricted to access by group policy</dd>
-                                                <!-- <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Historical Analysis</dt> -->
-                                                <dd> </dd>
-                                            </dl>
-                                            <!-- <div class="table-responsive-sm">
+                            <div *ngIf="item.accord" class="container-fluid" style="margin-top:6px;">
+                                <div class="row">
+                                    <div class="col-3 col-sm-3 riskAccordBorder">
+                                        <dl>
+                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
+                                            <dd class="mt-2">In this policy violation, user was trying to access
+                                                machine which is restricted to access by group policy</dd>
+                                            <!-- <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Historical Analysis</dt> -->
+                                            <dd> </dd>
+                                        </dl>
+                                        <!-- <div class="table-responsive-sm">
                                                         <table class="table">
                                                             <tbody>
                                                                 <tr>
@@ -280,26 +278,26 @@
                                                             </tbody>
                                                         </table>
                                                     </div> -->
-                                        </div>
-                                        <div class="col-5 col-sm-5 riskAccordBorder">
+                                    </div>
+                                    <div class="col-5 col-sm-5 riskAccordBorder">
 
-                                            <dl>
-                                                <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat
-                                                    Categorisation</dt>
-                                            </dl>
+                                        <dl>
+                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat
+                                                Categorisation</dt>
+                                        </dl>
 
-                                            <div class="row mt-1" *ngFor="let threatCategory of threatCategories"
-                                                style="color: #8E8E8E;">
-                                                <div class="col-md-5">
-                                                    {{threatCategory.title}}
-                                                </div>
-                                                <b>&nbsp;:&nbsp;</b>
-                                                <div class="col-md-6">
-                                                    {{threatCategory.value}}
-                                                </div>
+                                        <div class="row mt-1" *ngFor="let threatCategory of threatCategories"
+                                            style="color: #8E8E8E;">
+                                            <div class="col-md-5">
+                                                {{threatCategory.title}}
                                             </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-6">
+                                                {{threatCategory.value}}
+                                            </div>
+                                        </div>
 
-                                            <!-- <ul class="nav nav-pills mb-3 btn-sm" id="pills-tab" role="tablist" style="background: #099BB5;border: 1px solid #099BB5;border-radius:4px;padding: initial;width: fit-content;">
+                                        <!-- <ul class="nav nav-pills mb-3 btn-sm" id="pills-tab" role="tablist" style="background: #099BB5;border: 1px solid #099BB5;border-radius:4px;padding: initial;width: fit-content;">
                                                         <li class="nav-item active">
                                                             <a class="nav-link active" style="font-size: inherit;border-radius: 2px;"
                                                                 id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -313,7 +311,7 @@
                                                         </li>
                                                     </ul> -->
 
-                                            <!-- <div class="tab-content mt-4" id="pills-tabContent">
+                                        <!-- <div class="tab-content mt-4" id="pills-tabContent">
                                                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                                             aria-labelledby="pills-home-tab">
                                                             <p>source IP was found in our database</p>
@@ -345,26 +343,25 @@
                                                             <p>Second Nav Pill</p>
                                                         </div>
                                                     </div> -->
-                                        </div>
-                                        <div class="col-4 col-sm-4">
-                                            <dl>
-                                                <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
-                                            </dl>
-                                            <div class="row mt-1" *ngFor="let dummyData of dummyDatas"
-                                                style="color: #8E8E8E;">
-                                                <div class="col-md-5">
-                                                    {{dummyData.title}}
-                                                </div>
-                                                <b>&nbsp;:&nbsp;</b>
-                                                <div class="col-md-6">
-                                                    {{dummyData.value}}
-                                                </div>
-                                            </div>
-                                            <br />
-                                        </div>
                                     </div>
-                                    <p></p>
+                                    <div class="col-4 col-sm-4">
+                                        <dl>
+                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
+                                        </dl>
+                                        <div class="row mt-1" *ngFor="let dummyData of dummyDatas"
+                                            style="color: #8E8E8E;">
+                                            <div class="col-md-5">
+                                                {{dummyData.title}}
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-6">
+                                                {{dummyData.value}}
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </div>
                                 </div>
+                                <p></p>
                             </div>
                         </div>
                     </div>

@@ -407,7 +407,7 @@ dd {
     }
   }
   .risky-user-details {
-    margin-top: 10px;
+    // margin-top: 10px;
     color: $text-white;
     .log-date-info {
       background-color: $risky-users-log-date-bg-color;
@@ -440,6 +440,9 @@ dd {
     }
     .risk-time-stamp {
       text-align: right;
+      .timestamp {
+        margin-top: 1.3rem;
+      }
       span {
         display: inline-block;
         position: relative;
@@ -491,18 +494,22 @@ dd {
       }
     }
     .risk-info {
-      padding-top: 30px;
+      /* padding-top: 30px;
       padding-left: 20px !important;
       padding-right: initial;
       padding-bottom: 15px;
       font-size: 14px;
       margin-left: -16px;
+      font-size: 14px; */
       .risk-title {
         color: $risk-title-text-color;
-        width: 100%;
+        width: 103%;
         border-radius: 10px;
         border: $riksy-user-detail-risk-title-border;
         background-color: $risk-dot-border-color;
+        margin-top: 2rem;
+        margin-left: -2rem;
+        margin-right: 2rem;
         span {
           display: inline-block;
         }

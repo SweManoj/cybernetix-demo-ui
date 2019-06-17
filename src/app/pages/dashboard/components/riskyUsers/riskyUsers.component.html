@@ -217,26 +217,30 @@
                                 <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                     class="risk-score">{{item.riskScore}}</span>
 
-                                <!-- <div style="margin-right: inherit;margin-left: 45px;" class="risk-score">
-                                                    <span style="margin-right: 5px;font-size: large;border: 1px solid #FF0000;padding: 3px 8px;border-radius: 20px;height: 35px;background: #FF0000;color:#000000;">{{item.riskScore}}</span>
-                                                </div> -->
-
-                                <span *ngIf="item.accord" ngbDropdown placement="bottom-right" class="float-sm-right"
-                                    style="margin-top: .8rem;">
-                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle
-                                        style="background:#6185A4;margin-top: -5px;margin-right: 25px;border-radius: 3px;">Actions</button>
-                                    <div class="greyBackground risky-actionDropDown" ngbDropdownMenu
+                                <span ngbDropdown placement="bottom-right" class="float-sm-right mt-2"
+                                    *ngIf="item.accord">
+                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
+                                        Actions
+                                    </button>
+                                    <div class="greyBackground actionDropDown" ngbDropdownMenu
                                         aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground">Investigate</button>
-                                        <button ngbDropdownItem class="greyBackground">Accept as Risk</button>
-                                        <button ngbDropdownItem class="greyBackground">Create an Incident</button>
-                                        <button ngbDropdownItem class="greyBackground" (click)="goToSummaryPage()">View
-                                            Summary</button>
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Investigate
+                                        </button>
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Accept as Risk
+                                        </button>
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Create an Incident
+                                        </button>
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Perform Remediaion
+                                        </button>
                                     </div>
                                 </span>
                             </div>
 
-                            <div *ngIf="item.accord" class="container-fluid" style="margin-top:6px;">
+                            <div *ngIf="item.accord" class="container-fluid mt-3">
                                 <div class="row">
                                     <div class="col-3 col-sm-3 riskAccordBorder">
                                         <dl>
@@ -350,11 +354,11 @@
                                         </dl>
                                         <div class="row mt-1" *ngFor="let dummyData of dummyDatas"
                                             style="color: #8E8E8E;">
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 {{dummyData.title}}
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-6">
+                                            <div class="col-md-5">
                                                 {{dummyData.value}}
                                             </div>
                                         </div>

@@ -8,9 +8,10 @@ import { Table } from 'primeng/table';
 })
 export class TopDetailsComponent implements AfterViewInit {
 
+    selectRiskyType = 'USER';
     riskUsersList;
     threatsList: any[];
-    violationsList;
+    violationsList: any[];
 
     @Input() componentType: string;
 
@@ -20,11 +21,11 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true },
         { type: 'user', value: 'AWendler', score: 72, img: true },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
-        { type: 'ip', value: '172.10.10.11', score: 200, img: false },
-        { type: 'ip', value: '82.102.21.217', score: 180, img: false },
-        { type: 'ip', value: '95.181.116.77', score: 125, img: false },
-        { type: 'ip', value: '23.94.213.6', score: 86, img: false },
-        { type: 'ip', value: '69.249.19.217', score: 25, img: false },
+        { type: 'ip address', value: '172.10.10.11', score: 200, img: false },
+        { type: 'ip address', value: '82.102.21.217', score: 180, img: false },
+        { type: 'ip address', value: '95.181.116.77', score: 125, img: false },
+        { type: 'ip address', value: '23.94.213.6', score: 86, img: false },
+        { type: 'ip address', value: '69.249.19.217', score: 25, img: false },
         { type: 'host', value: 'PUNDESK001', score: 180, img: false },
         { type: 'host', value: 'USADESK25', score: 89, img: false },
         { type: 'host', value: 'CHNLAP963', score: 65, img: false },
@@ -112,10 +113,12 @@ export class TopDetailsComponent implements AfterViewInit {
         // this.riskyObjects.sort((a, b) => -(a.score - b.score)); -- desending order
     }
 
-    SelectedRiskyType($event) {
-        this.riskyTypeSelected = $event.value.value;
+    SelectedRiskyType(val:any) {
+        debugger
+        this.riskyTypeSelected = val;
 
-        this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == this.riskyTypeSelected)
+        this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == this.riskyTypeSelected);
+        this.selectRiskyType =  String(val).toUpperCase();;
     }
 
     ngAfterViewInit() {

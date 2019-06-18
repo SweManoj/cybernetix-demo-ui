@@ -20,6 +20,7 @@ import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { DatePipe } from '@angular/common';
 import { RiskScoreModalComponent } from './risk-score-modal/risk-score-modal.component';
+import { TopDetailsService } from '../topDetails/topDetails.service';
 
 @Component({
     selector: 'risky-users',
@@ -36,6 +37,8 @@ export class RiskyUsersComponent {
     selectedUserDetails: any = {};
     selectedView = 'timeline';
     private offset: number = 0;
+    selectedUserInfo: any [];
+    userData: any ;
 
     threatCategories = [
         {
@@ -143,10 +146,11 @@ export class RiskyUsersComponent {
     ];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-        private zone: NgZone, private router: Router) {
+        private zone: NgZone, private router: Router,private topDetailsService: TopDetailsService) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
+        
     }
 
     ngAfterViewInit() {
@@ -232,7 +236,7 @@ export class RiskyUsersComponent {
         range2.axisFill.zIndex = -1;
 
         var hand = chart.hands.push(new am4charts.ClockHand());
-        // hand.value(65);
+        hand.value = this.userData.score;
         hand.fill = am4core.color("#2D93AD");   // hand color
         hand.stroke = am4core.color("#2D93AD");
 
@@ -240,7 +244,7 @@ export class RiskyUsersComponent {
         chart.setTimeout(randomValue, 2000);
 
         function randomValue() {
-            hand.showValue(65, 1000, am4core.ease.cubicOut);
+            hand.showValue(this.userData.score, 1000, am4core.ease.cubicOut);
             chart.setTimeout(randomValue, 2000);
         }
     }
@@ -332,8 +336,16 @@ export class RiskyUsersComponent {
         debugger
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
-        });
+        
 
+        this.selectedUserInfo = this.topDetailsService.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
+        this.selectedUserInfo.forEach(res => {
+            debugger
+            if(res.value == this.selectedUser) {
+                this.userData = res;
+            }
+        })
+    
         if (this.selectedUser) {
             const dotIndex = this.selectedUser.indexOf('.');
             const isResource = dotIndex !== -1;
@@ -415,6 +427,7 @@ export class RiskyUsersComponent {
         } else {
             this.getAllUsers();
         }
+    });
     }
 
     switchView(view) {

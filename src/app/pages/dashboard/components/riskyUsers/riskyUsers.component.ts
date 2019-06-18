@@ -157,7 +157,6 @@ export class RiskyUsersComponent {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
-        
     }
 
     ngAfterViewInit() {
@@ -207,7 +206,6 @@ export class RiskyUsersComponent {
         axis.strictMinMax = true;
         axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
         axis.renderer.grid.template.strokeOpacity = 0.3;
-
 
         // axis.fontSize = 0;
         /* axis.hidden = false;
@@ -274,10 +272,8 @@ export class RiskyUsersComponent {
         let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
         yAxis.dataFields.category = "hour";
 
-
         xAxis.dateFormats.setKey("day", "MMM dd, yyyy");
         xAxis.periodChangeDateFormats.setKey("day", "MMM dd, yyyy");
-
 
         xAxis.renderer.grid.template.disabled = false; // vertical line middle on the bubbles
         yAxis.renderer.grid.template.disabled = false; // Horizontal border line for the bubbles
@@ -285,7 +281,6 @@ export class RiskyUsersComponent {
         yAxis.renderer.axisFills.template.disabled = true; // horizontal border - one by one column , not for all
         yAxis.renderer.ticks.template.disabled = true;
         xAxis.renderer.ticks.template.disabled = true;
-
 
         var series = chart.series.push(new am4charts.ColumnSeries());
         series.dataFields.categoryY = "hour";
@@ -298,7 +293,7 @@ export class RiskyUsersComponent {
         series.defaultState.transitionDuration = 1000;
 
         var bullet = series.bullets.push(new am4charts.CircleBullet());
-        bullet.tooltipText = "{policyViolated} : {value}";
+        bullet.tooltipText = "[bold, black]{policyViolated} : {value}";
         bullet.background.fill = am4core.color("black");
         bullet.strokeWidth = 2;
         bullet.stroke = am4core.color("#ffffff");
@@ -329,7 +324,6 @@ export class RiskyUsersComponent {
 
         chart.data = bubbleDataMonth;
 
-
         // Add scrollbars
         chart.scrollbarX = new am4core.Scrollbar();
         chart.scrollbarY = new am4core.Scrollbar();
@@ -344,7 +338,6 @@ export class RiskyUsersComponent {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
         
-
         this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
         this.selectedUserInfo.forEach(res => {
             debugger

@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild,  } from '@angular/core';
 import { TopDetailsService } from './topDetails.service';
 import { Table } from 'primeng/table';
+import {ActivatedRoute, Router} from '@angular/router';
+// import {routerTransition} from '../../router.animations';
 
 @Component({
     selector: 'top-details',
@@ -107,7 +109,9 @@ export class TopDetailsComponent implements AfterViewInit {
     @ViewChild('selectedRiskyType') riskyTypeTable: Table;
     riskyTypeSelected = 'user';
 
-    constructor(private topDetailsService: TopDetailsService) {
+    constructor(private topDetailsService: TopDetailsService,
+        private router: Router
+    ) {
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
 
         // this.riskyObjects.sort((a, b) => -(a.score - b.score)); -- desending order
@@ -251,5 +255,10 @@ export class TopDetailsComponent implements AfterViewInit {
             this.violationsList = res.data;
             this.violationsList.sort((a, b) => b.count - a.count);
         });
+    }
+
+    riskyUserTimeline(selectedUser: any) {
+        debugger
+        this.router.navigateByUrl('/riskyUser/' + selectedUser);
     }
 }

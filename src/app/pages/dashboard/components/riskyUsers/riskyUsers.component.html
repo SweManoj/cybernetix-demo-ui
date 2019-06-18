@@ -46,10 +46,10 @@
                 <div class="row" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
                         <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image img-rounded mt-4"
-                            src='../assets/images/user.png' />
+                            src='./../../../../../assets/images/users/{{userData.value}}.jpg' />
                         <div class="user-info m-t-sm">
                             <span
-                                style="color:#D3D3D3;size:26px;font-weight: 600">{{selectedUserDetails.userInfo?.EmployeeName}}</span>
+                                style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.value}}</span>
                             <p></p>
                         </div>
                     </div>
@@ -58,12 +58,12 @@
                         <div class="col-md-5 mr-1">
                             <div class="mt-2">
                                 <span class="captionTitle">Role</span>
-                                <p class="captionData">VP Business Development
+                                <p class="captionData">{{userData.role}}
                                 </p>
                             </div>
                             <div>
                                 <span class="captionTitle">Department</span>
-                                <p class="captionData">IT Security
+                                <p class="captionData">{{userData.department}}
                                 </p>
                             </div>
                         </div>
@@ -71,14 +71,14 @@
                             <div class="col-md-7">
                                 <div class="mt-2">
                                     <span class="captionTitle">Location</span>
-                                    <p class="captionData">Los Angles
+                                    <p class="captionData">{{userData.location}}
                                     </p>
                                 </div>
 
                                 <div>
                                     <span class="captionTitle">Reporting
                                         Manager</span>
-                                    <p class="captionData">Paul Smith
+                                    <p class="captionData">{{userData.reportingManager}}
                                     </p>
                                 </div>
                             </div>
@@ -86,13 +86,13 @@
                                 <div class="mt-2">
                                     <span class="captionTitle">Creation
                                         Date</span>
-                                    <p class="captionData">12 Dec 2018</p>
+                                    <p class="captionData">{{userData.creationDate}}</p>
                                 </div>
 
                                 <div>
                                     <span class="captionTitle">Last
                                         Working Day</span>
-                                    <p class="captionData">25 Jan 2019</p>
+                                    <p class="captionData">{{userData.lastWorkDay}}</p>
                                 </div>
                             </div>
                         </div>
@@ -100,10 +100,10 @@
 
                     <div class="col-md-1" style="margin-left: -1rem;">
                         <p [ngStyle]="{'color':getRiskScoreColor(userData.score)}"
-                        style="font-size: 67.6px;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">
+                            style="font-size: 67.6px;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">
                             {{userData.score}}
-                    </p>
-                     <p style="font-size: 18px;color: #A7A7A7;font-weight: 550;">
+                        </p>
+                        <p style="font-size: 18px;color: #A7A7A7;font-weight: 550;">
                             RiskScore
                         </p>
                     </div>

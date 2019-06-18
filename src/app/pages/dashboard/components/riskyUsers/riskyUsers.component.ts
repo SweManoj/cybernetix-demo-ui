@@ -40,23 +40,13 @@ export class RiskyUsersComponent {
     selectedUserInfo: any [];
     userData: any ;
     riskyObjects = [
-        { type: 'user', value: 'ADittmer', score: 94, img: true },
-        { type: 'user', value: 'Adm-EMoor', score: 89, img: true },
-        { type: 'user', value: 'Adm-ADittmer', score: 81, img: true },
-        { type: 'user', value: 'AWendler', score: 72, img: true },
-        { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
-        { type: 'ip address', value: '172.10.10.11', score: 200, img: false },
-        { type: 'ip address', value: '82.102.21.217', score: 180, img: false },
-        { type: 'ip address', value: '95.181.116.77', score: 125, img: false },
-        { type: 'ip address', value: '23.94.213.6', score: 86, img: false },
-        { type: 'ip address', value: '69.249.19.217', score: 25, img: false },
-        { type: 'host', value: 'PUNDESK001', score: 180, img: false },
-        { type: 'host', value: 'USADESK25', score: 89, img: false },
-        { type: 'host', value: 'CHNLAP963', score: 65, img: false },
-        { type: 'host', value: 'LONDESK588', score: 49, img: false },
-        { type: 'host', value: 'AUSLAP4873', score: 30, img: false }
+        { type: 'user', value: 'ADittmer', score: 94, img: true ,role: 'Sr. Tester',department:'Quality Testing',location:'Los Angles',reportingManager:'Paul Smith',creationDate:'12 Dec 2018', lastWorkDay: '25 Jan 2019' },
+        { type: 'user', value: 'Adm-EMoor', score: 89, img: true ,role: 'Sales Manager',department:'Sales and Marketing',location:'Beijing',reportingManager:'John ',creationDate:'11 Jan 2016', lastWorkDay: '02 Mar 2019' },
+        { type: 'user', value: 'Adm-ADittmer', score: 81, img: true ,role: 'Sr. Software Engineer',department:'Development',location:'Banglore',reportingManager:'Scott Henry',creationDate:'22 May 2017', lastWorkDay: '26 Feb 2019' },
+        { type: 'user', value: 'AWendler', score: 72, img: true ,role: 'Product Specialist',department:'Product Development',location:'Berlin',reportingManager:'Peter ',creationDate:'13 Jun 2018', lastWorkDay: '12 Feb 2019' },
+        { type: 'user', value: 'Svc-ROpitz', score: 54, img: true ,role: 'Project Manager',department:'Production',location:'Paris',reportingManager:'Alex Gee',creationDate:'23 Aug 2018', lastWorkDay: '24 May 2019' }
     ];
-    
+
     threatCategories = [
         {
             title: 'Kill Chain',

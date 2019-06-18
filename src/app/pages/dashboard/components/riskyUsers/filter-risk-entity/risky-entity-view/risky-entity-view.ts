@@ -19,7 +19,7 @@ export class RiskyEntityViewComponent {
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
       // Initialize Guage meter chart
-      this.initializeGuageMeterChart();
+      //this.initializeGuageMeterChart();
     });
   }
 

@@ -7,6 +7,11 @@
   height: 100%;
   left: 0;
   top: 0;
+
+  @media (max-width: 767px) {
+    overflow-y: auto;
+  }
+
   /*
   &:before {
     content: "";
@@ -29,6 +34,7 @@
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
   }
 
   .overlay {
@@ -58,6 +64,10 @@
       @media (max-width: 1449px){
         font-size: 28px;
       }
+
+      @media (max-width: 767px) {
+        font-size: 22px;
+      }
     }
     .font-style-2{
       color: #B5B5B5;
@@ -67,14 +77,17 @@
       @media (max-width: 1449px){
         font-size: 20px;
       }
+
+      @media (max-width: 767px) {
+        font-size: 18px;
+      }
     }
   }
 
   .content{
     
     position: absolute;
-    display: flex;
-    //width: calc(100% - 50px);
+    display: flex;    
     height: 100%;
     align-items: center;
     width: 100%;
@@ -155,6 +168,10 @@
 
         @media (max-width: 1449px){
           font-size: 18px;
+        }
+
+        @media (max-width: 767px) {
+          font-size: 16px;
         }
 
         &::-webkit-input-placeholder { 

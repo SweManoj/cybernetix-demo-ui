@@ -2,10 +2,10 @@
 
     <div class="overlay"></div>
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="../../../assets/video/login_bg.m4v" type="video/mp4">
+        <source src="../../../assets/video/login_bg.mp4" type="video/mp4">
     </video>
 
-    <div class="content">
+    <div class="content row">
         <div class="col-md-7 col-xs-12">
             <div class="text-block">
                 <p class="font-style-1">"The biggest problem in incident response is understanding how the business is
@@ -36,21 +36,6 @@
                     <mat-icon color="white" matPrefix>lock</mat-icon>
                     <mat-error *ngIf="(!password.valid && password.touched)">Enter valid password</mat-error>
                 </mat-form-field>
-
-                <!--div class="input-group"
-                    [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched)}">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input [formControl]="username" type="text" class="form-control" id="username"
-                        placeholder="{{'login.username' | translate}}">
-                </div>
-
-
-                <div class="input-group"
-                    [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input [formControl]="password" type="password" class="form-control" id="inputPassword3"
-                        placeholder="{{'login.password' | translate}}" autocomplete="off">
-                </div-->
 
                 <div class="form-group btn-container mt-4">
                     <button mat-raised-button type="submit" class="btn- btn-default- btn-auth">

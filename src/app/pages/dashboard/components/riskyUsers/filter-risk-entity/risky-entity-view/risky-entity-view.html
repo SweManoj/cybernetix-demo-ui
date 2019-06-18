@@ -1,22 +1,30 @@
 <ng-container>
     <mat-card>
         <mat-card-header>
-            <div class="centerAlign">
-                <img class="user-img img-rounded" src='../assets/images/user.png' />
-            </div>
-            <p class="user-name-text">{{entity.user}}</p>
-            <div class="risk-box">
-                <div class="left-block">
-                    <span class="risk-score-value">{{entity.riskScore}}</span>
-                    <span class="risk-score-text">Risk Score</span>
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <div class="pl-2">
+                        <img class="user-img img-rounded" src='../assets/images/user.png' />
+                    </div>
                 </div>
-                <div class="right-block">
-                    <!--img class="meter-img" src='../assets/images/meter.png' /-->
-
-                    <div class="chart-meter" id="chartGuageDiv{{indexVal}}"></div>
+                <div class="col-sm-7 col-lg-8 text-left">
+                    <p class="user-name-text">{{entity.user}}</p>
+                    <div class="left-block">
+                        <span class="risk-score-value">{{entity.riskScore}}</span>
+                        <span class="risk-score-text">Risk Score</span>
+                    </div>
                 </div>
-                <div class="clear"></div>
             </div>
+            
+            <!-- <div class="float-right">
+                
+                <div class="risk-box">
+                    
+                    <div class="right-block"> 
+                        <div class="chart-meter" id="chartGuageDiv{{indexVal}}"></div>
+                    </div>                    
+                </div>
+            </div> -->
 
         </mat-card-header>
         <mat-card-content>

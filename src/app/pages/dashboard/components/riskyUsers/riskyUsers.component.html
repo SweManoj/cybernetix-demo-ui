@@ -99,11 +99,11 @@
                     </div>
 
                     <div class="col-md-1" style="margin-left: -1rem;">
-                        <p
-                            style="font-size: 67.6px;color: #21FF0E;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">
-                            {{userData.score}}</p>
-                        <p
-                            style="font-size: 18px;color: #A7A7A7;font-weight: 550;">
+                        <p [ngStyle]="{'color':getRiskScoreColor(userData.score)}"
+                        style="font-size: 67.6px;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">
+                            {{userData.score}}
+                    </p>
+                     <p style="font-size: 18px;color: #A7A7A7;font-weight: 550;">
                             RiskScore
                         </p>
                     </div>

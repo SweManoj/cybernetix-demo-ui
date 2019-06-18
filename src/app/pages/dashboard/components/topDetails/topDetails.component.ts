@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, Input, ViewChild,  } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild, } from '@angular/core';
 import { TopDetailsService } from './topDetails.service';
 import { Table } from 'primeng/table';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import {routerTransition} from '../../router.animations';
 
 @Component({
@@ -17,62 +17,86 @@ export class TopDetailsComponent implements AfterViewInit {
 
     @Input() componentType: string;
 
-   
+    threatVectors = [
+        { id: 'Beaconing', count: 85 },
+        { id: 'Phishing', count: 69 },
+        { id: 'Data Exfiltration', count: 54 },
+        { id: 'Cyber Threat', count: 12 },
+        { id: 'Flight Risk', count: 9 }
+    ];
+
+    riskyObjects = [
+        { type: 'user', value: 'ADittmer', score: 94, img: true },
+        { type: 'user', value: 'Adm-EMoor', score: 89, img: true },
+        { type: 'user', value: 'Adm-ADittmer', score: 81, img: true },
+        { type: 'user', value: 'AWendler', score: 72, img: true },
+        { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
+        { type: 'ip address', value: '172.10.10.11', score: 200, img: false },
+        { type: 'ip address', value: '82.102.21.217', score: 180, img: false },
+        { type: 'ip address', value: '95.181.116.77', score: 125, img: false },
+        { type: 'ip address', value: '23.94.213.6', score: 86, img: false },
+        { type: 'ip address', value: '69.249.19.217', score: 25, img: false },
+        { type: 'host', value: 'PUNDESK001', score: 180, img: false },
+        { type: 'host', value: 'USADESK25', score: 89, img: false },
+        { type: 'host', value: 'CHNLAP963', score: 65, img: false },
+        { type: 'host', value: 'LONDESK588', score: 49, img: false },
+        { type: 'host', value: 'AUSLAP4873', score: 30, img: false }
+    ];
 
     topRiskyObjects = {
         terminatedUsersObjects: [
-            { score: 119, image: 'Yamasaki' },
+            { score: 97, image: 'Yamasaki' },
             { score: 91, image: 'Shaquita' },
             { score: 79, image: 'Tandy' },
             { score: 62, image: 'Alysa' },
             { score: 59, image: 'Beth Gee' }
         ],
         orphanUsersObjects: [
-            { score: 97, image: 'agga787' },
-            { score: 91, image: ' philip392' },
-            { score: 85, image: 'sibi025' },
-            { score: 76, image: 'mahi521' },
+            { score: 94, image: 'agga787' },
+            { score: 88, image: ' philip392' },
+            { score: 80, image: 'sibi025' },
+            { score: 75, image: 'mahi521' },
             { score: 63, image: 'abhi035' }
         ],
         externalUsersObjects: [
-            { score: 133, image: 'Coral' },
+            { score: 54, image: 'Coral' },
             { score: 95, image: 'Tina' },
             { score: 86, image: 'Maile' },
             { score: 75, image: 'Sarah Carmichael' },
             { score: 69, image: 'Kylie Mier' }
         ],
         riskyCloudUsersObjects: [
-            { score: 131, image: 'Heidy' },
+            { score: 83, image: 'Heidy' },
             { score: 91, image: 'Sondra Hildebrand' },
             { score: 69, image: 'Kylie Mier' },
             { score: 79, image: 'Maragret' },
             { score: 45, image: 'Hazel' }
         ],
         privilegedUsersObjects: [
-            { score: 104, image: 'Maile' },
+            { score: 98, image: 'Maile' },
             { score: 71, image: 'Stella' },
             { score: 62, image: 'Shayla Simo' },
             { score: 57, image: 'Tina' },
             { score: 49, image: 'Coral' }
         ],
         dormantUsersObjects: [
-            { score: 124, image: 'Charlotte' },
+            { score: 72, image: 'Charlotte' },
             { score: 96, image: 'Mendelson' },
             { score: 84, image: 'Kazuko' },
             { score: 67, image: 'Nita' },
             { score: 51, image: 'Nada Scheerer' }
         ],
         serviceAccountObjects: [
-            { score: 112, image: 'Drusilla' },
+            { score: 70, image: 'Drusilla' },
             { score: 98, image: 'Heidy' },
             { score: 76, image: 'Steven' },
             { score: 65, image: 'Coral' },
             { score: 59, image: 'Tina' }
         ],
         watchlistedUsersObjects: [
-            { score: 137, image: 'Tina' },
-            { score: 107, image: 'Alysa' },
-            { score: 93, image: 'Brunilda' },
+            { score: 93, image: 'Tina' },
+            { score: 82, image: 'Alysa' },
+            { score: 78, image: 'Brunilda' },
             { score: 72, image: 'Yamasaki' },
             { score: 68, image: 'Stella' }
         ]
@@ -94,19 +118,27 @@ export class TopDetailsComponent implements AfterViewInit {
     riskyTypeSelected = 'user';
 
     constructor(private topDetailsService: TopDetailsService,
-        private router: Router
-    ) {
-        this.selectedRiskies = this.topDetailsService.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
+        private router: Router) {
+        this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
 
         // this.riskyObjects.sort((a, b) => -(a.score - b.score)); -- desending order
     }
 
-    SelectedRiskyType(val:any) {
+    getRiskScoreColor(riskScore: number) {
+        if (riskScore <= 65)
+            return "mediumseagreen";
+        else if (riskScore > 65 && riskScore <= 79)
+            return "darkorange";
+        else
+            return "crimson";
+    }
+
+    SelectedRiskyType(val: any) {
         debugger
         this.riskyTypeSelected = val;
 
-        this.selectedRiskies = this.topDetailsService.riskyObjects.filter(riskyObj => riskyObj.type == this.riskyTypeSelected);
-        this.selectRiskyType =  String(val).toUpperCase();;
+        this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == this.riskyTypeSelected);
+        this.selectRiskyType = String(val).toUpperCase();;
     }
 
     ngAfterViewInit() {
@@ -154,7 +186,7 @@ export class TopDetailsComponent implements AfterViewInit {
                 return b.riskscore - a.riskscore;
             });
         }); */
-        this.selectedRiskies = this.topDetailsService.riskyObjects.filter(risky => risky.type == 'user');
+        this.selectedRiskies = this.riskyObjects.filter(risky => risky.type == 'user');
     }
 
     getPrivilegedUsers() {
@@ -235,10 +267,11 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     getViolations() {
-        this.topDetailsService.getTopViolations().subscribe((res: any) => {
+        /* this.topDetailsService.getTopViolations().subscribe((res: any) => {
             this.violationsList = res.data;
             this.violationsList.sort((a, b) => b.count - a.count);
-        });
+        }); */
+        // this.threatVectors.sort((a, b) => a.count - b.count);
     }
 
     riskyUserTimeline(selectedUser: any) {

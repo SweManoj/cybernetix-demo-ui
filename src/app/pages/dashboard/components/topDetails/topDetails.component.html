@@ -3,15 +3,15 @@
     <div class="col-md-12">
         <span class="col-md-8 initialPadding">Top Risky Entities</span>
         <span ngbDropdown placement="bottom-right" class="col-md-4 float-sm-right">
-                <button class="btn btn-sm buttonBg" id="dropdownBasic1" ngbDropdownToggle>
-                    {{selectRiskyType}}
-                </button>
-                <div class="buttonBg actionDropDown" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem (click)="SelectedRiskyType('user')" class="buttonBg">USER</button>
-                    <button ngbDropdownItem (click)="SelectedRiskyType('ip address')" class="buttonBg">IP ADDRESS</button>
-                    <button ngbDropdownItem (click)="SelectedRiskyType('host')" class="buttonBg">HOST</button>
-                </div>
-            </span>
+            <button class="btn btn-sm buttonBg" id="dropdownBasic1" ngbDropdownToggle>
+                {{selectRiskyType}}
+            </button>
+            <div class="buttonBg actionDropDown" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="SelectedRiskyType('user')" class="buttonBg">USER</button>
+                <button ngbDropdownItem (click)="SelectedRiskyType('ip address')" class="buttonBg">IP ADDRESS</button>
+                <button ngbDropdownItem (click)="SelectedRiskyType('host')" class="buttonBg">HOST</button>
+            </div>
+        </span>
     </div>
 
     <!-- <div class="col-7 col-md-7 heading">
@@ -41,7 +41,8 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <p></p>
-                <span [ngClass]="{'high': i<=2, 'medium':i==3, 'low':i==4}"> {{selectedRisky.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(selectedRisky.score)}">
+                    {{selectedRisky.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -72,16 +73,16 @@
                 <!--<span>{{threat.description}}</span>-->
             </div>
             <div class="col-2 col-md-2 risk-count centerAlign">
-                <span>{{threat.count}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(threat.count)}">{{threat.count}}</span>
                 <!-- <span class=" risk-type ">Entities</span> -->
             </div>
         </div>
     </ng-container>
 </div>
 
-<div *ngIf="componentType==='topViolations' " class="header">
+<div *ngIf="componentType==='topViolations'" class="header">
     <div class="col-md-12">
-        <span>{{'global.topViolations' | translate}}</span>
+        <span>TOP THREAT VECTORS</span>
         <span class="float-right">Violations</span>
     </div>
     <!-- <div class="col-9 col-md-9 heading ">
@@ -93,19 +94,19 @@
     </div> -->
 </div>
 <div *ngIf="componentType==='topViolations' " class="top-violations  mt-3">
-    <ng-container *ngFor="let threat of violationsList ">
-        <div class="threat-item row pt-1 pb-2 " *ngIf="threat._id ">
+    <ng-container *ngFor="let threat of threatVectors">
+        <div class="threat-item row pt-1 pb-2 " *ngIf="threat.id ">
             <!--<div class="col-sm-3 col-md-3 time-details ">-->
             <!--<span class="duration ">{{threat.duration}}</span>-->
             <!--<span>{{threat.date}}</span>-->
             <!--<span>{{threat.time}}</span>-->
             <!--</div>-->
             <div class="col-9 col-md-9 centerAlign p-3">
-                <a routerLink="/pages/details/violation ">{{threat._id}} </a>
+                <a routerLink="/pages/details/violation ">{{threat.id}} </a>
                 <!--<span>{{threat.description}}</span>-->
             </div>
             <div class="col-3 col-md-3 risk-count centerAlign" style="place-content: center;">
-                <span>{{threat.count}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(threat.count)}">{{threat.count}}</span>
                 <!-- <span class="risk-type ">Policy Violations</span> -->
             </div>
         </div>
@@ -129,7 +130,7 @@
                 <a [routerLink]="['/riskyUser', terminatedUser.image]">{{terminatedUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span> {{terminatedUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(terminatedUser.score)}"> {{terminatedUser.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -152,7 +153,7 @@
                 <a [routerLink]="['/riskyUser', orphanUser.image]">{{orphanUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span> {{orphanUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(orphanUser.score)}"> {{orphanUser.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -175,7 +176,7 @@
                 <a [routerLink]="['/riskyUser', externalUser.image]">{{externalUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span> {{externalUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(externalUser.score)}"> {{externalUser.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -198,7 +199,7 @@
                 <a [routerLink]="['/riskyUser', riskyCloudUser.image]">{{riskyCloudUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span> {{riskyCloudUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(riskyCloudUser.score)}"> {{riskyCloudUser.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -221,7 +222,7 @@
                 <a [routerLink]="['/riskyUser', dormantUser.image]">{{dormantUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span> {{dormantUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(dormantUser.score)}"> {{dormantUser.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -244,7 +245,7 @@
                 <a [routerLink]="['/riskyUser', serviceAcnt.image]">{{'svc_'+serviceAcnt.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span> {{serviceAcnt.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(serviceAcnt.score)}"> {{serviceAcnt.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -267,7 +268,7 @@
                 <a [routerLink]="['/riskyUser', watchlistedUser.image]">{{watchlistedUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span> {{watchlistedUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(watchlistedUser.score)}"> {{watchlistedUser.score}}</span>
             </div>
         </div>
     </ng-container>
@@ -290,7 +291,7 @@
                 <a [routerLink]="['/riskyUser', privilegedUser.image]">{{privilegedUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span> {{privilegedUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(privilegedUser.score)}"> {{privilegedUser.score}}</span>
             </div>
         </div>
     </ng-container>

@@ -9,7 +9,7 @@
     left: 0;
     bottom: 0;
     top: $left-nav-top-pos;
-    margin-block-start: -1rem;
+    margin-block-start: -1.5rem;
     background-color: $left-nav-bg-color;
     z-index: 1;
     ul {
@@ -46,7 +46,7 @@
     &.menu-opened {
         width: 150px;
         transition: width 2s;
-        margin-block-start: -1rem;
+        margin-block-start: -1.5rem;
         ul {
             li {
                 span {

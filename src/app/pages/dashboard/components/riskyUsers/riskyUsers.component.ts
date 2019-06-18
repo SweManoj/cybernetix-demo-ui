@@ -21,8 +21,6 @@ import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { DatePipe } from '@angular/common';
 import { RiskScoreModalComponent } from './risk-score-modal/risk-score-modal.component';
 
-
-
 @Component({
     selector: 'risky-users',
     templateUrl: './riskyUsers.component.html'
@@ -83,7 +81,7 @@ export class RiskyUsersComponent {
 
     hardCodeItemData = [
         {
-            generatedTimestamp: '03:22:00 am',
+            generatedTimestamp: '03:22:00',
             accord: false,
             pv: 'PV 083',
             riskScore: 579,
@@ -93,7 +91,7 @@ export class RiskyUsersComponent {
             }
         },
         {
-            generatedTimestamp: '05:30:00 am',
+            generatedTimestamp: '05:30:00',
             accord: false,
             pv: 'PV 061',
             riskScore: 483,
@@ -103,7 +101,7 @@ export class RiskyUsersComponent {
             }
         },
         {
-            generatedTimestamp: '07:10:00 am',
+            generatedTimestamp: '07:10:00',
             accord: false,
             pv: 'PV 039',
             riskScore: 451,
@@ -113,7 +111,7 @@ export class RiskyUsersComponent {
             }
         },
         {
-            generatedTimestamp: '09:22:00 am',
+            generatedTimestamp: '09:22:00',
             accord: false,
             pv: 'PV 041',
             riskScore: 398,
@@ -123,7 +121,7 @@ export class RiskyUsersComponent {
             }
         },
         {
-            generatedTimestamp: '14:45:00 am',
+            generatedTimestamp: '14:45:00',
             accord: false,
             pv: 'PV 069',
             riskScore: 243,
@@ -133,7 +131,7 @@ export class RiskyUsersComponent {
             }
         },
         {
-            generatedTimestamp: '17:14:00 am',
+            generatedTimestamp: '17:14:00',
             accord: false,
             pv: 'PV 094',
             riskScore: 149,

@@ -79,12 +79,12 @@ export class TopDetailsComponent implements AfterViewInit {
         serviceAccountObjects: [
             { score: 112, image: 'Drusilla' },
             { score: 98, image: 'Heidy' },
-            { score: 76, image: 'Kylie Mier' },
+            { score: 76, image: 'Steven' },
             { score: 65, image: 'Coral' },
             { score: 59, image: 'Tina' }
         ],
         watchlistedUsersObjects: [
-            { score: 137, image: 'Drusilla' },
+            { score: 137, image: 'Tina' },
             { score: 107, image: 'Alysa' },
             { score: 93, image: 'Brunilda' },
             { score: 72, image: 'Yamasaki' },

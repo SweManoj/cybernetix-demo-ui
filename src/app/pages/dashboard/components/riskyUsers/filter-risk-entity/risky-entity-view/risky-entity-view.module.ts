@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { RiskyEntityViewComponent } from './risky-entity-view';
 import { MaterialModule } from './../../../../../../material';
 

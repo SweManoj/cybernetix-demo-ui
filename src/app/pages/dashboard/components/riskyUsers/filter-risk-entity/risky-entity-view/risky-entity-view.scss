@@ -1,55 +1,54 @@
-
-.mat-card{
+.mat-card {
   text-align: center;
-  background: #2C4255;
+  background: #2c4255;
   border-radius: 10px;
   padding: 0;
 
-  .mat-card-header{
+  .mat-card-header {
     border-radius: 10px 10px 0 0;
     background: #041421;
     display: block;
     padding: 15px 10px;
 
-    .user-img{
-      width: 4rem;
-      margin: 5px 0 5px;
+    .user-img {
+      width: 53px;
+      margin: 0;
       float: left;
     }
-    .user-name-text{
+    .user-name-text {
       font-size: 18px;
-      font-family: 'Roboto';
-      color: #D3D3D3;
+      font-family: "Roboto";
+      color: #d3d3d3;
       margin: 0;
+      line-height: 1;
     }
 
-    .risk-score-value{
-      color: #21FF0E;
+    .risk-score-value {
+      color: #21ff0e;
       font-size: 21px;
       display: block;
       line-height: 1;
       margin: 5px 0px 0;
     }
-    .risk-score-text{
-      color: #D3D3D3;
+    .risk-score-text {
+      color: #d3d3d3;
       font-size: 9px;
       display: block;
       line-height: 1;
     }
 
-    .risk-box{
-      
-      .left-block{
+    .risk-box {
+      .left-block {
         float: left;
-        width: 50%;        
+        width: 50%;
       }
-      
-      .right-block{
-        .meter-img{
+
+      .right-block {
+        .meter-img {
           width: 35px;
           margin: 5px 0 0;
         }
-        .chart-meter{
+        .chart-meter {
           position: absolute;
           top: 55px;
           right: 30px;
@@ -58,55 +57,61 @@
       }
     }
   }
-  .mat-card-content{
-    background: #2C4255;
+  .mat-card-content {
+    background: #2c4255;
     text-align: left;
     font-size: 14px;
-    font-family: 'Roboto';
-    padding: 10px 20px; 
+    font-family: "Roboto";
+    padding: 10px 20px;
     margin-bottom: 0;
 
-    .text-style-1{
-      color: #A7A7A7;
+    .text-style-1 {
+      color: #a7a7a7;
       margin: 0;
     }
-    .text-style-2{
-      color: #D3D3D3;
+    .text-style-2 {
+      color: #d3d3d3;
       margin: 0 0 10px;
       font-weight: 500;
     }
-
   }
-  .mat-card-actions{
+  .mat-card-actions {
     text-align: left;
     font-size: 14px;
     border: none;
     padding: 0 20px 15px;
     border-radius: 0 0 10px 10px;
-
-    p{
-      color: #FF8700;
-      margin: 0 0 10px;
+    p.text-style-1 {
+      color: #a7a7a7;
+      margin: 0;
+      display: block;
+    }
+    .violation-box {
+      color: #ff8700;
+      margin: 0;
       line-height: 1.3;
-      display: table-row;
-
-      .warning-img{
+      min-height: 60px;
+      display: block;
+      padding: 5px 0 0;
+      cursor: pointer;
+      .warning-img {
         display: table-cell;
         vertical-align: middle;
         //float: left;
         width: 35px;
-        img{
+        img {
           margin-top: 5px;
+          width: 28px;
         }
       }
-      .violation-text{
+      .violation-text {
         display: table-cell;
         vertical-align: middle;
       }
     }
   }
 
-  .clear{
+  .clear {
     clear: both;
   }
 }

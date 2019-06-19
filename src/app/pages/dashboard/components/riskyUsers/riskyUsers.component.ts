@@ -92,6 +92,7 @@ export class RiskyUsersComponent {
 
     hardCodeItemData = [
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
             pv: 'PV 083',
@@ -102,6 +103,7 @@ export class RiskyUsersComponent {
             }
         },
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '05:30:00',
             accord: false,
             pv: 'PV 061',
@@ -112,6 +114,7 @@ export class RiskyUsersComponent {
             }
         },
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '07:10:00',
             accord: false,
             pv: 'PV 039',
@@ -122,6 +125,7 @@ export class RiskyUsersComponent {
             }
         },
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '09:22:00',
             accord: false,
             pv: 'PV 041',
@@ -132,6 +136,7 @@ export class RiskyUsersComponent {
             }
         },
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '14:45:00',
             accord: false,
             pv: 'PV 069',
@@ -142,6 +147,7 @@ export class RiskyUsersComponent {
             }
         },
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '17:14:00',
             accord: false,
             pv: 'PV 094',
@@ -155,6 +161,7 @@ export class RiskyUsersComponent {
 
     flightUserHardCodeItemData = [
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '04:42:00',
             accord: false,
             pv: 'PV 072',
@@ -165,6 +172,7 @@ export class RiskyUsersComponent {
             }
         },
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '06:37:00',
             accord: false,
             pv: 'PV 062',
@@ -175,6 +183,7 @@ export class RiskyUsersComponent {
             }
         },
         {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '08:21:00',
             accord: false,
             pv: 'PV 047',
@@ -386,10 +395,10 @@ export class RiskyUsersComponent {
                 if (res.value == this.selectedUser) {
                     this.userData = res;
                 }
-                if (res.value == 'Alysa') {
-                    this.hardCodeItemData = this.flightUserHardCodeItemData;
-                }
             })
+            if (this.selectedUser == 'Alysa') {
+                this.hardCodeItemData = this.flightUserHardCodeItemData;
+            }
 
             if (this.selectedUser) {
                 const dotIndex = this.selectedUser.indexOf('.');

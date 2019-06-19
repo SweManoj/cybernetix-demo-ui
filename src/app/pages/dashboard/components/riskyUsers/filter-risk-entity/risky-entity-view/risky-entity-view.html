@@ -10,7 +10,7 @@
                 <div class="col-sm-7 col-lg-8 text-center">
                     <p class="user-name-text">{{entity.user}}</p>
                     <div class="left-block">
-                        <span class="risk-score-value">{{entity.riskScore}}</span>
+                        <span class="risk-score-value" [ngStyle]="{'color':getRiskScoreColor(entity.riskScore)}">{{entity.riskScore}}</span>
                         <span class="risk-score-text">Risk Score</span>
                     </div>
                 </div>

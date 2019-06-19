@@ -153,6 +153,39 @@ export class RiskyUsersComponent {
         }
     ];
 
+    flightUserHardCodeItemData = [
+        {
+            generatedTimestamp: '04:42:00',
+            accord: false,
+            pv: 'PV 072',
+            riskScore: 479,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'High Amount of Documents Printed'
+            }
+        },
+        {
+            generatedTimestamp: '06:37:00',
+            accord: false,
+            pv: 'PV 062',
+            riskScore: 523,
+            ruleInfo: {
+                ruleId: 2,
+                title: 'Abnormal Self Email to Personal Domains - DLP '
+            }
+        },
+        {
+            generatedTimestamp: '08:21:00',
+            accord: false,
+            pv: 'PV 047',
+            riskScore: 291,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Abnormal Visit to Job Sites'
+            }
+        }
+    ];
+
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router,private topDetailsService: TopDetailsService) {
         this.offset = 0;
@@ -344,6 +377,9 @@ export class RiskyUsersComponent {
             debugger
             if(res.value == this.selectedUser) {
                 this.userData = res;
+            }
+            if(res.value == 'Alysa') {
+                this.hardCodeItemData = this.flightUserHardCodeItemData;
             }
         })
     

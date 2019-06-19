@@ -1,30 +1,119 @@
 <div class="container-fluid">
-    <h3 class="title">PV1001 - Multiple acount lockedout detected - PUNCEF101</h3>
+    <div class="row">
+        <div class="col-md-9">
+            <h3 class="title">PV1001 <span>- Multiple acount lockedout detected - PUNCEF101</span></h3>
+        </div>
+        <div class="col-md-3 btn-block text-right">
+            <button class="assign-btn" mat-raised-button>Assign to Me</button>
+            <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i
+                    class="fa fa-angle-up"></i></button>
+            <mat-menu #menu="matMenu">
+                <button class="action-menu-item" mat-menu-item>Investigate</button>
+                <button class="action-menu-item" mat-menu-item>Accept as Risk</button>
+                <button class="action-menu-item" mat-menu-item>Create an Incident</button>
+                <button class="action-menu-item" mat-menu-item>Perform Remediaion</button>
+            </mat-menu>
+        </div>
+    </div>
+
 </div>
+
+<div class="container-fluid">
+    <div class="page-content summary-page">
+        <div class="row">
+            <div class="col-md-6 left-block">
+                <div class="block-content">
+                    <div class="block-title"><i class="fa fa-caret-right"></i> <span>Description</span></div>
+                    <div class="block-description">
+                        In this policy violation, user was trying to access machine which is restricted to access by
+                        group policy
+                    </div>
+                </div>
+                <div class="block-content mb-4">
+                    <div class="block-title "><i class="fa fa-caret-right"></i> <span
+                            class="recommendation-text">Recommendation</span></div>
+                </div>
+
+                <div class="data-list mb-4">
+                    <div class="row mt-2">
+                        <div class="col-md-3 dataTitle">Date Created</div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-md-6 dataValue">09/05/2019 11:23:00</div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3 dataTitle">Priority</div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-md-6 dataValue">High</div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3 dataTitle">Affected Entity </div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-md-6 dataValue"><a href="#">PUN1020</a></div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3 dataTitle">Number Of Indicators</div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-md-6 dataValue">5</div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3 dataTitle">Status</div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-md-6 dataValue"></div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3 dataTitle">Case Owner</div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-md-6 dataValue"></div>
+                    </div>
+                </div>
+
+                <div class="block-content mt-2">
+                    <div class="block-title "><i class="fa fa-caret-right"></i> <span>News Feed</span></div>
+                    <div class="block-description">
+                        <ul class="feed-list">
+                            <li>
+                                <span class="time">2 days ago</span>
+                                <span>Denis created this incident <a href="#">help</a></span>
+                            </li>
+                            <li>
+                                <span class="time">2 days ago</span>
+                                <span>Denis created this incident <a href="#">help</a></span>
+                            </li>
+                            <li>
+                                <span class="time">2 days ago</span>
+                                <span>Bill changed status on incident created this <a href="#">Bee Lee Test</a> to be
+                                    closed</span>
+                            </li>
+                            <li>
+                                <span class="time">2 days ago</span>
+                                <span>Denis created this incident <a href="#">help</a></span>
+                            </li>
+                            <li>
+                                <span class="time">2 days ago</span>
+                                <span>Denis created this incident <a href="#">help</a></span>
+                            </li>
+                            <li>
+                                <span class="time">2 days ago</span>
+                                <span>Bill changed status on incident created this <a href="#">Bee Lee Test</a> to be
+                                    closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 right-block">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="container-fluid">
     <div class="mt-3 policyBg">
         <div class="row">
             <div class="col-md-6 action">
-                <span ngbDropdown placement="bottom-right" class="float-sm-right">
-                    <button class="btn btn-sm buttonBg" id="dropdownBasic1" ngbDropdownToggle>
-                        Actions
-                    </button>
-                    <div class="buttonBg actionDropDown" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem class="buttonBg">
-                            Investigate
-                        </button>
-                        <button ngbDropdownItem class="buttonBg">
-                            Accept as Risk
-                        </button>
-                        <button ngbDropdownItem class="buttonBg">
-                            Create an Incident
-                        </button>
-                        <button ngbDropdownItem class="buttonBg">
-                            Perform Remediaion
-                        </button>
-                    </div>
-                </span>
 
                 <dl class="dlList">
                     <dt class="mt-5">
@@ -148,23 +237,23 @@
                 </form>
 
                 <!-- <form name="form" #commentForm="ngForm" (ngSubmit)="submitComment()" novalidate
-                    class="row user-item mt-3">
-                    <div class="col-1 col-sm-1 col-md-1">
-                        <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
-                    </div>
-                    <div class="col-md-8 ml-3">
-                        <div class="form-group">
-                            <textarea type="text" autosize class="form-control" id="comment"
-                                [(ngModel)]="comment.content" required name="content"
-                                placeholder="Enter your commnets here..."></textarea>
+                        class="row user-item mt-3">
+                        <div class="col-1 col-sm-1 col-md-1">
+                            <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
                         </div>
-                    </div>
-                    <div class="col-2 col-md-2 pt-2">
-                        <button class="btn btn-sm" [disabled]="!commentForm.form.valid" type="submit" sty>
-                            &emsp;Post&emsp;
-                        </button>
-                    </div>
-                </form> -->
+                        <div class="col-md-8 ml-3">
+                            <div class="form-group">
+                                <textarea type="text" autosize class="form-control" id="comment"
+                                    [(ngModel)]="comment.content" required name="content"
+                                    placeholder="Enter your commnets here..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-2 col-md-2 pt-2">
+                            <button class="btn btn-sm" [disabled]="!commentForm.form.valid" type="submit" sty>
+                                &emsp;Post&emsp;
+                            </button>
+                        </div>
+                    </form> -->
 
                 <div class="row user-item mt-3" *ngFor="let comment of policyComments">
                     <div class="col-1 col-md-1 mr-4">

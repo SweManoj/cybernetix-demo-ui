@@ -19,6 +19,8 @@ import { TestEsComponent } from './components/test-es/test-es.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimeAgoPipe } from 'time-ago-pipe';
 
+import { MaterialModule } from './../../material';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     CheckboxModule,
     RadioButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   declarations: [
     CaseManagementComponent,

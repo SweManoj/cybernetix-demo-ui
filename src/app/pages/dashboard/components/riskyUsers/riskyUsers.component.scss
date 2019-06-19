@@ -421,45 +421,6 @@ button.btn.btn-sm {
   margin-top: 0.2rem;
 }
 
-.risk-title {
-  color: $risk-title-text-color;
-  width: 100%;
-  border-radius: 10px;
-  border: $riksy-user-detail-risk-title-border;
-  background-color: $risk-dot-border-color;
-  /* margin-top: 2rem;
-  margin-left: -2rem;
-  margin-right: 2rem; */
-  span {
-    display: inline-block;
-  }
-  .risk-score {
-    background-color: #6185a4;
-    min-width: 32px;
-    min-height: 30px;
-    border-radius: 25px;
-    color: #21ff0e;
-    font-size: 16px;
-    text-align: center;
-    padding-top: 4px;
-    margin-bottom: 0.5rem;
-    margin-left: 1.2rem;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  .riksy-accord {
-    background-color: $risk-dot-border-color;
-    border-right: 1px solid #3f596c;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .risky-users-container {
-    width: 60%;
-    margin-left: 20px;
-  }
-}
-
 .custom-container {
   margin-right: 6%;
   margin-left: 6%;

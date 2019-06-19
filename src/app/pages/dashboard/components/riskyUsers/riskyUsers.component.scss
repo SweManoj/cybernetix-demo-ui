@@ -115,7 +115,7 @@ h6 {
 }
 
 .greyBackground {
-  background: #1E364A!important;
+  background: #1e364a !important;
   color: $brand-white;
 }
 
@@ -443,7 +443,7 @@ dd {
       }
     }
     .risk-time-stamp {
-      text-align: right;
+      // text-align: right;
       .timestamp {
         margin-top: 1.3rem;
       }
@@ -452,7 +452,7 @@ dd {
         position: relative;
         top: 22px;
         // right: 0;
-        left: -30px;
+        // left: -30px;
         color: $risk-time-stamp-color;
         float: left;
       }
@@ -507,13 +507,13 @@ dd {
       font-size: 14px; */
       .risk-title {
         color: $risk-title-text-color;
-        width: 103%;
+        width: 100%;
         border-radius: 10px;
         border: $riksy-user-detail-risk-title-border;
         background-color: $risk-dot-border-color;
-        margin-top: 2rem;
+        /* margin-top: 2rem;
         margin-left: -2rem;
-        margin-right: 2rem;
+        margin-right: 2rem; */
         span {
           display: inline-block;
         }
@@ -540,6 +540,98 @@ dd {
   }
 }
 
+button.btn.btn-sm {
+  padding: 0.25rem 0.5rem !important;
+  width: auto !important;
+}
+
+.risky-user-violations {
+  .risk-time-stamp {
+    margin-top: 1.5rem;
+    margin-right: 2rem;
+    color: $risk-time-stamp-color;
+  }
+  .risky-separator {
+    height: 100%;
+    width: 3px;
+    margin-right: 2.5rem;
+    background-color: #0891a9;
+    .risk-dot {
+      display: inline-block;
+      position: relative;
+      width: 15px;
+      height: 15px;
+      border: 1.5px solid #041421;
+      background-color: #0891a9;
+      left: -6.5px;
+    }
+  }
+  .violationTitle {
+    color: $risk-title-text-color;
+    width: inherit;
+    border-radius: 10px;
+    border: $riksy-user-detail-risk-title-border;
+    background-color: $risk-dot-border-color;
+    margin-top: 1rem;
+    height: auto;
+    .pvValue {
+      color: red;
+      font-size: 17px;
+      margin-right: 0.8rem;
+      margin-left: 0.8rem;
+    }
+    .pvText {
+      font-size: 17px;
+    }
+    .risk-score {
+      background-color: #6185a4;
+      min-width: 34px;
+      min-height: 32px;
+      // border-radius: 25px;
+      color: #21ff0e;
+      font-size: 16px;
+      text-align: center;
+      padding-top: 4px;
+      margin-bottom: 0.5rem;
+      margin-left: 1.2rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+}
+
+.risk-title {
+  color: $risk-title-text-color;
+  width: 100%;
+  border-radius: 10px;
+  border: $riksy-user-detail-risk-title-border;
+  background-color: $risk-dot-border-color;
+  /* margin-top: 2rem;
+  margin-left: -2rem;
+  margin-right: 2rem; */
+  span {
+    display: inline-block;
+  }
+  .risk-score {
+    background-color: #6185a4;
+    min-width: 32px;
+    min-height: 30px;
+    border-radius: 25px;
+    color: #21ff0e;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 4px;
+    margin-bottom: 0.5rem;
+    margin-left: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .riksy-accord {
+    background-color: $risk-dot-border-color;
+    border-right: 1px solid #3f596c;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .risky-users-container {
     width: 60%;
@@ -548,7 +640,6 @@ dd {
 }
 
 .custom-container {
-  // padding: 0px 75px 0px 80px !important;
   margin-right: 6%;
   margin-left: 6%;
   margin-top: 1%;

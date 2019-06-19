@@ -27,7 +27,7 @@ export class RiskyEntityViewComponent {
     //console.log('Chart Init');
     am4core.useTheme(am4themes_animated);
     // create chart
-    var chart = am4core.create("chartGuageDiv"+this.indexVal, am4charts.GaugeChart);
+    var chart = am4core.create("chartGuageDiv" + this.indexVal, am4charts.GaugeChart);
     chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
     chart.innerRadius = 20;

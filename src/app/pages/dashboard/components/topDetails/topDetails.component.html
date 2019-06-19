@@ -35,7 +35,7 @@
             </div>
             <div class="centerAlign"
                 [ngClass]="{'col-md-8': riskyTypeSelected=='user', 'col-md-10':riskyTypeSelected!='user'}">
-                <a *ngIf="selectedRisky.value"
+                <a *ngIf="selectedRisky.value" class="cursorPointer"
                     (click)="riskyUserTimeline(selectedRisky.value)">{{selectedRisky.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
@@ -73,7 +73,7 @@
                 <!--<span>{{threat.description}}</span>-->
             </div>
             <div class="col-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':getRiskScoreColor(threat.count)}">{{threat.count}}</span>
+                <span [ngStyle]="{'color':'crimson'}">{{threat.count}}</span>
                 <!-- <span class=" risk-type ">Entities</span> -->
             </div>
         </div>
@@ -95,7 +95,7 @@
 </div>
 <div *ngIf="componentType==='topViolations' " class="top-violations  mt-3">
     <ng-container *ngFor="let threat of threatVectors">
-        <div class="threat-item row pt-1 pb-2 " *ngIf="threat.id ">
+        <div class="threat-item row pt-1 pb-2" *ngIf="threat.id ">
             <!--<div class="col-sm-3 col-md-3 time-details ">-->
             <!--<span class="duration ">{{threat.duration}}</span>-->
             <!--<span>{{threat.date}}</span>-->
@@ -106,7 +106,7 @@
                 <!--<span>{{threat.description}}</span>-->
             </div>
             <div class="col-3 col-md-3 risk-count centerAlign" style="place-content: center;">
-                <span [ngStyle]="{'color':getRiskScoreColor(threat.count)}">{{threat.count}}</span>
+                <span [ngStyle]="{'color':'crimson'}">{{threat.count}}</span>
                 <!-- <span class="risk-type ">Policy Violations</span> -->
             </div>
         </div>

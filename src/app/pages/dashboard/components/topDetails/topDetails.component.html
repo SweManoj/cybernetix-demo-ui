@@ -259,13 +259,13 @@
 </div>
 <div *ngIf="componentType === 'watchlistedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let watchlistedUser of watchlistedUsers">
-        <div class="row user-item blockPadding">
+        <div  [routerLink]="['/riskyUser', watchlistedUser.image]" class="row user-item blockPadding pointerCursor">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/{{watchlistedUser.image}}.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', watchlistedUser.image]">{{watchlistedUser.image}}</a>
+                <a>{{watchlistedUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(watchlistedUser.score)}"> {{watchlistedUser.score}}</span>

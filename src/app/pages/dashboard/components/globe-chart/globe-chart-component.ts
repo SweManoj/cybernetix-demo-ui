@@ -23,13 +23,13 @@ export class GlobeChartComponent implements OnInit {
     public pieChartOptions: ChartOptions = {
         responsive: true,
         legend: {
-            position: 'top',
+            position: 'right',
             labels: {
                 fontFamily : 'Calibri',
                 fontSize : 12,
                 fontColor : '#a0a0a0',
                 fontStyle : 'bold',
-                padding:22,
+                padding: 24,
             },
             
         },

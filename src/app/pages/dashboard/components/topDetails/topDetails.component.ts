@@ -34,13 +34,13 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'ip address', value: '172.10.10.11', score: 45, img: false },
         { type: 'ip address', value: '82.102.21.217', score: 60, img: false },
         { type: 'ip address', value: '95.181.116.77', score: 85, img: false },
-        { type: 'ip address', value: '23.94.213.6', score: 86, img: false },
-        { type: 'ip address', value: '69.249.19.217', score: 25, img: false },
+        { type: 'ip address', value: '23.94.213.6', score: 89, img: false },
+        { type: 'ip address', value: '69.249.19.217', score: 76, img: false },
         { type: 'host', value: 'PUNDESK001', score: 30, img: false },
         { type: 'host', value: 'USADESK25', score: 89, img: false },
-        { type: 'host', value: 'CHNLAP963', score: 65, img: false },
+        { type: 'host', value: 'CHNLAP963', score: 66, img: false },
         { type: 'host', value: 'LONDESK588', score: 49, img: false },
-        { type: 'host', value: 'AUSLAP4873', score: 30, img: false }
+        { type: 'host', value: 'AUSLAP4873', score: 70, img: false }
     ];
 
     topRiskyObjects = {
@@ -121,7 +121,8 @@ export class TopDetailsComponent implements AfterViewInit {
         private router: Router) {
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
 
-        // this.riskyObjects.sort((a, b) => -(a.score - b.score)); -- desending order
+        this.riskyObjects.sort((a, b) => -(a.score - b.score)); // desending order
+        
     }
 
     getRiskScoreColor(riskScore: number) {

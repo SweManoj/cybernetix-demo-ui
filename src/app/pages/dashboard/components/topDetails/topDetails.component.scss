@@ -2,7 +2,7 @@
   padding: 0.8rem !important;
 }
 
-.initialPadding{
+.initialPadding {
   padding: initial;
 }
 
@@ -13,10 +13,10 @@
   border: none;
   border-radius: 0;
   padding-bottom: unset !important;
-  border-bottom: 1px solid  #a0a0a0 !important;
+  border-bottom: 1px solid #a0a0a0 !important;
 }
 
-.cursorPointer{
+.cursorPointer {
   cursor: pointer;
 }
 
@@ -44,7 +44,7 @@ button.btn.btn-sm {
   font-size: 20px !important;
   padding: 6px !important;
   margin-top: -7px !important;
-  font-family: 'roboto';
+  font-family: "roboto";
   font-weight: 500;
 }
 
@@ -54,7 +54,7 @@ button.btn.btn-sm {
   font-size: 20px;
 
   .ui-dropdown-trigger-icon {
-    margin-top: -.7em;
+    margin-top: -0.7em;
   }
 }
 
@@ -172,12 +172,19 @@ button.btn.btn-sm {
         padding-bottom: 4px;
       }
       span {
-        font-size: 15px;
+        font-size: 18px;
+        color: #a0a0a0;
       }
     }
   }
   .top-violations {
     .threat-item {
+      span {
+        font-size: 18px;
+        color: #a0a0a0;
+      }
+      .risk-count {
+      }
       .threat-details {
         a {
           margin-top: 15px;
@@ -588,12 +595,17 @@ button.btn.btn-sm {
             display: none;
           }
         }
-        .risk-count {
+        /* .risk-count {
+          span {
+            color: crimson;
+            font-size: 28px;
+            font-weight: 600;
+          }
           font-size: 19px;
           .risk-type {
             font-size: 19px;
           }
-        }
+        } */
       }
     }
   }

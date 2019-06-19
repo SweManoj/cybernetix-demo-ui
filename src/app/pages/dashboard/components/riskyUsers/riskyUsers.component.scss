@@ -346,200 +346,6 @@ dd {
   color: $riksy-user-detail-dd;
 }
 
-.risky-user-container {
-  //background-color: $risky-users-bg-color;
-  color: $risky-users-text-color;
-  // padding-bottom: 15px;
-  border-radius: 6px;
-  // box-shadow: $risk-user-container-shadow;
-  .row {
-    margin: 0;
-    // background-color: $black-bg-color;
-    /* .timeline-view {
-            background-color: #435D73;
-        } */
-  }
-  .showActivity {
-    background-color: $black-bg-color;
-  }
-  .risky-user-header {
-    background-color: $risky-user-bg-color;
-    color: $risky-users-text-color;
-    // border-radius: 9px;
-    // padding: 15px;
-    font-size: 18px;
-    box-shadow: $risky-user-header-box-shadow;
-    .profile-image {
-      width: 70px;
-      height: 70px;
-      border-radius: 35px;
-      margin-right: 10px;
-      cursor: pointer;
-    }
-    .user-info {
-      span {
-        display: block;
-        &.risk-score {
-          color: #ffb730;
-          font-size: 30px;
-        }
-      }
-    }
-    .right-border {
-      border-right: 1px solid $risky-users-header-separator;
-    }
-  }
-  .timeline-switch {
-    padding: 7px 0;
-    background-color: unset;
-    span {
-      padding: 10px;
-      font-size: 20px;
-      background-color: #fff;
-      border-radius: 5px 5px 0 0;
-      cursor: pointer;
-      border: 1px solid #ccc;
-      border-bottom: none;
-      &:first-child {
-        margin-right: 1px;
-      }
-      &.selected {
-        background-color: #6fa8dd;
-        border: none;
-        color: #fff;
-      }
-    }
-  }
-  .risky-user-details {
-    // margin-top: 10px;
-    color: $text-white;
-    .log-date-info {
-      background-color: $risky-users-log-date-bg-color;
-      padding: 15px;
-      color: $brand-white;
-      font-weight: bold;
-    }
-    .sub-header {
-      padding: 10px;
-      margin-bottom: 10px;
-      background-color: $risky-users-sub-header-bg-color;
-      border: 1px solid $risky-users-sub-header-border-color;
-      span {
-        display: block;
-        &:first-child {
-          font-size: 34px;
-        }
-        &:last-child {
-          font-size: 22px;
-          font-weight: bold;
-        }
-        &.risk-score {
-          color: $riksy-users-sub-header-risk-score;
-        }
-      }
-      .right-border {
-        padding: 10px 0;
-        border-right: 1px solid $risky-users-sub-header-separator;
-      }
-    }
-    .risk-time-stamp {
-      // text-align: right;
-      .timestamp {
-        margin-top: 1.3rem;
-      }
-      span {
-        display: inline-block;
-        position: relative;
-        top: 22px;
-        // right: 0;
-        // left: -30px;
-        color: $risk-time-stamp-color;
-        float: left;
-      }
-    }
-    .col-separator {
-      width: 15px;
-      max-width: 15px;
-      flex: 0;
-      padding: 0;
-    }
-    .risky-separator {
-      height: 100%;
-      width: 3px;
-
-      margin: 0 auto;
-      // float: left;
-      margin-top: 20px;
-      margin-right: 35px;
-      background-color: $risky-separator-bg-color;
-      .risk-dot {
-        display: inline-block;
-        position: relative;
-        width: 15px;
-        height: 15px;
-        top: 26px;
-        border: 1.5px solid $risk-dot-border-color;
-        border-radius: 35px;
-        background-color: $risk-dot-bg-color;
-        left: -6px;
-        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.26);
-      }
-    }
-    .row {
-      &:first-child {
-        .risky-separator {
-          border-radius: 6px 6px 0 0;
-        }
-      }
-      &:last-child {
-        .risky-separator {
-          border-radius: 0 0 6px 6px;
-        }
-      }
-    }
-    .risk-info {
-      /* padding-top: 30px;
-      padding-left: 20px !important;
-      padding-right: initial;
-      padding-bottom: 15px;
-      font-size: 14px;
-      margin-left: -16px;
-      font-size: 14px; */
-      .risk-title {
-        color: $risk-title-text-color;
-        width: 100%;
-        border-radius: 10px;
-        border: $riksy-user-detail-risk-title-border;
-        background-color: $risk-dot-border-color;
-        /* margin-top: 2rem;
-        margin-left: -2rem;
-        margin-right: 2rem; */
-        span {
-          display: inline-block;
-        }
-        .risk-score {
-          background-color: #6185a4;
-          min-width: 32px;
-          min-height: 30px;
-          border-radius: 25px;
-          color: #21ff0e;
-          font-size: 16px;
-          text-align: center;
-          padding-top: 4px;
-          margin-bottom: 0.5rem;
-          margin-left: 1.2rem;
-          font-weight: 500;
-          cursor: pointer;
-        }
-        .riksy-accord {
-          background-color: $risk-dot-border-color;
-          border-right: 1px solid #3f596c;
-        }
-      }
-    }
-  }
-}
-
 button.btn.btn-sm {
   padding: 0.25rem 0.5rem !important;
   width: auto !important;
@@ -547,7 +353,7 @@ button.btn.btn-sm {
 
 .risky-user-violations {
   .risk-time-stamp {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     margin-right: 2rem;
     color: $risk-time-stamp-color;
   }
@@ -564,6 +370,7 @@ button.btn.btn-sm {
       border: 1.5px solid #041421;
       background-color: #0891a9;
       left: -6.5px;
+      margin-top: 2rem;
     }
   }
   .violationTitle {
@@ -579,15 +386,16 @@ button.btn.btn-sm {
       font-size: 17px;
       margin-right: 0.8rem;
       margin-left: 0.8rem;
+      margin-top: .2rem;
     }
     .pvText {
       font-size: 17px;
+      margin-top: .2rem;
     }
     .risk-score {
       background-color: #6185a4;
       min-width: 34px;
       min-height: 32px;
-      // border-radius: 25px;
       color: #21ff0e;
       font-size: 16px;
       text-align: center;
@@ -596,8 +404,21 @@ button.btn.btn-sm {
       margin-left: 1.2rem;
       font-weight: 500;
       cursor: pointer;
+      margin-right: calc(100%-10%);
+    }
+    .violationInfo {
+      .riskAccordBorder {
+        border-right: 1px solid $risk-accord-border-color;
+      }
+      .details{
+        color: #8E8E8E;
+      }
     }
   }
+}
+
+.fa {
+  margin-top: 0.2rem;
 }
 
 .risk-title {

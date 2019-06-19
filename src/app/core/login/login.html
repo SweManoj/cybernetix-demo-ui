@@ -32,7 +32,7 @@
 
                 <mat-form-field appearance="outline"
                     [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
-                    <input matInput type="password" [formControl]="password" placeholder="{{'login.password' | translate}}" autocomplete="off">
+                    <input type="password" matInput [formControl]="password" placeholder="{{'login.password' | translate}}" autocomplete="off">
                     <mat-icon color="white" matPrefix>lock</mat-icon>
                     <mat-error *ngIf="(!password.valid && password.touched)">Enter valid password</mat-error>
                 </mat-form-field>

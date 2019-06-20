@@ -15,6 +15,7 @@ import { PolicyViolationSummaryComponent } from './pages/case-management/compone
 import { TestEsComponent } from './pages/case-management/components/test-es/test-es.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
+import {RiskyIPComponent} from './pages/dashboard/components/risky-ip/risky-ip.component';
 
 export const routes: Routes = [
     {
@@ -38,6 +39,10 @@ export const routes: Routes = [
             {
                 path: 'riskyUser/:selectedUser',
                 component: RiskyUsersComponent
+            },
+            {
+                path: 'riskyIP/:selectedIP',
+                component: RiskyIPComponent
             },
             {
                 path: 'filteredRiskyUsers/:riskyUser',

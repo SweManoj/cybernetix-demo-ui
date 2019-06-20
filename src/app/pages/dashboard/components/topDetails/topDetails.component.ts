@@ -275,8 +275,12 @@ export class TopDetailsComponent implements AfterViewInit {
         // this.threatVectors.sort((a, b) => a.count - b.count);
     }
 
-    riskyUserTimeline(selectedUser: any) {
-        debugger
-        this.router.navigateByUrl('/riskyUser/' + selectedUser);
+    riskyUserTimeline(selectedEntity: any) {
+        switch (this.selectRiskyType) {
+            case 'IP ADDRESS' : this.router.navigateByUrl('/riskyIP/' + selectedEntity);
+            break;
+            case 'USER' : this.router.navigateByUrl('/riskyUser/' + selectedEntity);
+            break;
+        }
     }
 }

@@ -1,32 +1,32 @@
 h3.title {
   font-size: 21px;
   text-align: left !important;
-  color: #a0a0a0 !important;
+  color: #A0A0A0 !important;
   margin-top: 1rem !important;
   font-weight: 500;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 
-  span {
-    color: #ff5a5a;
+  span{
+    color: #FF5A5A
   }
 }
 
 .summary-page a {
-  color: #099bb5;
+  color: #099BB5;  
 }
 
-.btn-block {
+.btn-block{
   display: block;
   width: 100%;
 
-  .assign-btn {
-    background-color: #099bb5;
-    color: #fff;
+  .assign-btn{
+    background-color: #099BB5;
+    color: #FFF;
     margin: 10px 5px 0;
   }
 
-  .action-btn {
-    color: #fff;
+  .action-btn{
+    color: #FFF;
     border: 1px solid #2a465e;
     background-color: #1e3449;
     margin: 10px 5px 0;
@@ -34,7 +34,7 @@ h3.title {
     line-height: 1;
 
     .fa {
-      color: #50e3c2;
+      color: #50E3C2;
       line-height: 0.5;
       display: inline-block;
       margin-left: 10px;
@@ -42,72 +42,61 @@ h3.title {
   }
 }
 
-.action-menu-item {
+.action-menu-item{
   height: 35px;
   line-height: 1;
 }
 
-.page-content {
+.page-content{
   background: #0d1925;
   padding: 10px 15px;
   margin: 20px 0;
 
-  .left-block {
-    border-right: 2px solid #4b5965;
+  .left-block{
+    border-right: 2px solid #4B5965;
     padding: 20px 15px;
+  }
 
-    .block-content {
-      margin: 10px 0;
+  .block-content{
+    margin: 10px 0;
 
-      .block-title {
-        color: #bdbdbd;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 1;
+    .block-title{
+      color: #BDBDBD;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1;
 
-        .fa {
-          color: #5f5e5c;
-          font-size: 22px;
-        }
-
-        span {
-          margin-left: 7px;
-        }
-
-        span.recommendation-text {
-          color: #099bb5;
-          text-decoration: underline;
-        }
+      .fa{
+        color: #5f5e5c;
+        font-size: 22px;
+        margin-right: 7px;
       }
 
-      .block-description {
-        font-weight: 400;
-        font-size: 16px;
-        color: #8e8e8e;
-        padding: 5px 15px;
-        line-height: 1.3em;
+      span.recommendation-text{
+        color: #099BB5;
+        text-decoration: underline;
       }
     }
 
-    .block-table {
-      margin: 30px 0;
+    .block-description{
+      font-weight: 400;
+      font-size: 16px;
+      color: #8E8E8E;
+      padding: 5px 15px;
+      line-height: 1.3em;
 
-      padding: 20px 15px;
-      .table {
-        tr {
-          td {
-          }
-          td.title-text {
-          }
-        }
+      hr {
+        border-bottom-color: #fff;
+        width: 100%;
       }
     }
   }
+  
 
   .data-list {
-    border-top: 1px solid #ffff;
-    border-bottom: 1px solid #ffff;
-    color: #bdbdbd;
+    border-top: 1px solid #FFFF;
+    border-bottom: 1px solid #FFFF;
+    color: #BDBDBD;
     padding: 20px 15px;
 
     .dataTitle {
@@ -124,23 +113,199 @@ h3.title {
 
   .feed-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    color: #BDBDBD;
+    padding: 20px 10px ;
+    margin: 20px 0;
+    position: relative;
+    height: 475px;
+    overflow-y: auto;    
 
     li {
       font-size: 18px;
-      display: block;
-      margin-bottom: 10px;
+      display: flex;
+      padding: 18px 0;
+      flex-wrap: wrap;
+      align-items: flex-start;     
+      position: relative;
+      z-index: 1;
+
+      &:first-child {
+        padding-top: 30px;
+
+        &::before {
+          border-radius: 10px 10px 0 0;
+        }
+      }
+      &:last-child {
+        padding-bottom: 30px;
+
+        &::before {
+          border-radius: 0 0 10px 10px;
+        }
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        background: #0891A9;
+        width: 3px;
+        height: 100%;
+        left: 116px;
+        z-index: -1;
+      }
+
+      a:hover {
+        text-decoration: underline;        
+      }
 
       .time {
         font-size: 14px;
+        display: inline-block;
+        width: 80px;
+      }
+      img {
+        margin: -5px 20px 0;
+      }
+
+      .news-title {
+        width: calc(100% - 155px);
+      }
+    }    
+  }
+
+  .attachments {
+    font-size: 18px;
+    a{
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .attachBox {
+      background: #000;
+      color: rgba(189,189,189,0.68);
+      font-size: 16px;
+      padding: 20px;      
+      margin-top: 20px;
+    }
+    .file-drag-wrap{
+      position: relative;
+      padding-left: 55px;
+
+      img {
+        position: absolute;
+        left: 0;
+        top: -6px;
       }
     }
   }
 
-  .right-block {
+  .file-input-custom {
+    color: transparent;
+    width: 110px;
+    height: 38px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .file-input-custom::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .file-input-custom::before {
+    content: 'Browse';
+    color: #099BB5;
+    display: inline-block;
+    background: transparent;
+    border: 1.2px solid #099BB5;
+    border-radius: 6px;
+    padding: 7px 25px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;    
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .file-input-custom:hover::before {
+    background: #099BB5;
+    color: #fff;
+  }
+  .file-input-custom:active {
+    outline: 0;
+  }
+  .file-input-custom:active::before {
+    background: #099BB5;
+    color: #fff; 
+  }
+
+  .right-block{
+    .listedItem {
+      background: #000;
+      padding: 22px 20px;
+
+      .threatRow {
+        font-size: 16px;
+        color:#8E8E8E;
+      }
+
+      .threatTitle {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .threatValue {
+        font-size: 16px;
+      }
+    }
+
+    .killChain {
+      background: #000;
+      padding: 22px 20px;
+
+      .block-title {
+        font-size: 25px;
+      }
+    }
+
+    img.profile-image.img-round {
+      width: 50px;
+    }
+    textarea.form-control {
+      border: 1px solid #818181;
+      border-radius: 0 !important;
+      background: #050F17;
+      height: 90px !important;
+    }
+
+    .btn-sm {
+      background: #099BB5;
+      border-color: #099BB5;
+      padding: 7px 10px;
+      width: 75px;
+      color: #fff;
+      font-size: 16px;
+
+      &:hover {
+        background: transparent;
+        color: #099BB5;
+      }
+    }
+    .user-info {
+      font-size: 18px;
+
+      a {
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
+
+
 
 /*****************************************************************************************/
 img.profile-image.img-round {

@@ -1,0 +1,158 @@
+<div class="custom-container">
+
+    <ng-container>
+        <div class="risky-user-container">
+            <div class="risky-user-header">
+                <div class="row m-auto" style="background: #2C4255;">
+                    <div class="col-md-2" style="text-align: center;background: #041421;">
+                        <div class="user-info m-t-sm">
+                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{ipDetails.value}}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 mt-1 d-flex initialPadding">
+                        <div class="col-md-5 mr-1">
+                            <div class="mt-2">
+                                <span class="captionTitle">Last Seen</span>
+                                <p class="captionData">{{ipDetails.lastSeen}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-7 d-flex" style="margin-left: -1.5rem;">
+                            <div class="col-md-7">
+                                <div class="mt-2">
+                                    <span class="captionTitle">Location</span>
+                                    <p class="captionData">{{ipDetails.location}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1" style="margin-left: -1rem;">
+                        <p [ngStyle]="{'color':getRiskScoreColor(ipDetails.score)}"
+                           style="font-size: 67.6px;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">
+                            {{ipDetails.score}}
+                        </p>
+                        <p style="font-size: 18px;color: #A7A7A7;font-weight: 550;">
+                            RiskScore
+                        </p>
+                    </div>
+
+                    <div class="col-md-2 mt-1 guageChartBlock">
+                        <div id="chartGuageDiv"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--line chart -->
+    <div class="container-fluid chartBg pb-4">
+        <div class="row pr-3 pl-3 pb-3" style="height: 64vh;overflow:hidden;">
+            <div #lineChartDiv id="lineChartDiv" class="mt-3"></div>
+        </div>
+    </div>
+
+    <ng-container>
+        <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4">
+            <div class="row initialPadding" *ngFor="let item of hardCodeItemData">
+                <div class="col-md-12 d-flex">
+                    <div class="risk-time-stamp">
+                        <span>{{item.generatedTimestamp}}</span>
+                    </div>
+
+                    <div class="risky-separator mt-1">
+                        <span class="risk-dot rounded-circle">&nbsp;</span>
+                    </div>
+
+                    <div class="violationTitle">
+                        <div class="row mt-2 ml-3">
+                            <div class="col-md-12">
+                                <span class="pointerCursor" (click)="item.accord = !item.accord">
+                                    &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
+                                                                                                class="fa fa-angle-down"></i>
+                                </span>
+                                <span class="pointerCursor pvValue"
+                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
+                                    {{item.ruleInfo.title}}</span>
+
+                                <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                      class="risk-score rounded-circle mr-5">{{item.riskScore}}</span>
+
+                                <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
+                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
+                                        Actions
+                                    </button>
+                                    <div class="greyBackground actionDropDown" ngbDropdownMenu
+                                         aria-labelledby="dropdownBasic1">
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Investigate
+                                        </button>
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Accept as Risk
+                                        </button>
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Create an Incident
+                                        </button>
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Perform Remediaion
+                                        </button>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row col-md-12 violationInfo " *ngIf="item.accord">
+                            <div class="mt-3 d-flex mb-3">
+                                <div class="col-md-3 riskAccordBorder">
+                                    <dl>
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
+                                        <dd class="mt-2">In this policy violation, user was trying to access
+                                            machine which is restricted to access by group policy</dd>
+                                    </dl>
+                                </div>
+
+                                <div class="col-5 col-sm-5 riskAccordBorder">
+                                    <dl>
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
+                                    </dl>
+
+                                    <div class="ml-4">
+                                        <div class="row mt-1 details" *ngFor="let threatCategory of threatCategories">
+                                            <div class="col-md-5">
+                                                {{threatCategory.title}}
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-6">
+                                                {{threatCategory.value}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-4 col-sm-4">
+                                    <dl>
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
+                                    </dl>
+                                    <div class="ml-4">
+                                        <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
+                                            <div class="col-md-6">
+                                                {{dummyData.title}}
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-5">
+                                                {{dummyData.value}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

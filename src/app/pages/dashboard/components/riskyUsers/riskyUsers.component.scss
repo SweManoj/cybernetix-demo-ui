@@ -110,6 +110,19 @@ ngb-modal-window.modal.fade.show.d-block {
   }
 }
 
+#lineChartDiv {
+    width: 100%;
+    height: 55vh;
+    tspan {
+        fill: #6e6e6e;
+        font-size: 16px;
+        letter-spacing: -0.26px;
+    }
+    path {
+        stroke: #cac0c0;
+    }
+}
+
 h6 {
   font-size: large;
 }

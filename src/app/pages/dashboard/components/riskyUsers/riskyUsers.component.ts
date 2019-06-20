@@ -162,6 +162,17 @@ export class RiskyUsersComponent {
     flightUserHardCodeItemData = [
         {
             generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '01:08:00',
+            accord: false,
+            pv: 'PV 051',
+            riskScore: 479,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Rare Appliations Accessed'
+            }
+        },
+        {
+            generatedDateFormat: '10 May 2019',
             generatedTimestamp: '04:42:00',
             accord: false,
             pv: 'PV 072',

@@ -272,20 +272,20 @@ export class RiskyUsersComponent {
 
         var range0 = axis.axisRanges.create();
         range0.value = 0;
-        range0.endValue = 45;
+        range0.endValue = 65;
         range0.axisFill.fillOpacity = 1;
         range0.axisFill.fill = am4core.color('#ADFF2F')
         range0.axisFill.zIndex = - 1;
 
         var range1 = axis.axisRanges.create();
-        range1.value = 45;
-        range1.endValue = 75;
+        range1.value = 65;
+        range1.endValue = 79;
         range1.axisFill.fillOpacity = 1;
         range1.axisFill.fill = am4core.color('#FFA500')
         range1.axisFill.zIndex = -1;
 
         var range2 = axis.axisRanges.create();
-        range2.value = 75;
+        range2.value = 79;
         range2.endValue = 100;
         range2.axisFill.fillOpacity = 1;
         range2.axisFill.fill = am4core.color('#f00')

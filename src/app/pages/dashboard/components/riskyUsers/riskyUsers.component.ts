@@ -45,7 +45,7 @@ export class RiskyUsersComponent {
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true, role: 'Sr. Software Engineer', department: 'Development', location: 'Banglore', reportingManager: 'Scott Henry', creationDate: '22 May 2017', lastWorkDay: '26 Feb 2019' },
         { type: 'user', value: 'AWendler', score: 72, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter ', creationDate: '13 Jun 2018', lastWorkDay: '12 Feb 2019' },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true, role: 'Project Manager', department: 'Production', location: 'Paris', reportingManager: 'Alex Gee', creationDate: '23 Aug 2018', lastWorkDay: '24 May 2019' },
-        { type: 'user', value: 'Alysa', score: 62, img: true, role: 'Project Manager', department: 'Production', location: 'Stuttgart', reportingManager: 'Rolf Dobelli', creationDate: '21 Nov 2017', lastWorkDay: '24 Apr 2019' }
+        { type: 'user', value: 'Alysa', score: 82, img: true, role: 'Project Manager', department: 'Production', location: 'Stuttgart', reportingManager: 'Rolf Dobelli', creationDate: '21 Nov 2017', lastWorkDay: '24 Apr 2019' }
     ];
 
     threatCategories = [

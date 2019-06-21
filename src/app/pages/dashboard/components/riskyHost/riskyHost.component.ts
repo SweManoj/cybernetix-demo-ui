@@ -130,7 +130,8 @@ export class RiskyHostComponent implements OnInit {
             // Initialize Guage meter chart
             this.initializeGuageMeterChart();
 
-            // this.initializeLineChart();
+            // Initialize Bubble chart
+            this.initializeLineChart();
         });
     }
 

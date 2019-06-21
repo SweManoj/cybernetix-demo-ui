@@ -28,6 +28,7 @@ import { RiskyEntityViewComponent } from './components/riskyUsers/filter-risk-en
 
 import { MaterialModule } from './../../material';
 import { RiskyIPComponent } from './components/risky-ip/risky-ip.component';
+import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
 
 @NgModule({ 
     declarations: [
@@ -42,7 +43,8 @@ import { RiskyIPComponent } from './components/risky-ip/risky-ip.component';
         RiskScoreModalComponent,
         RiskyEntityViewComponent,
         FilterRiskEntityComponent,
-        RiskyIPComponent
+        RiskyIPComponent,
+        RiskyHostComponent
     ],
     imports: [
         CommonModule,

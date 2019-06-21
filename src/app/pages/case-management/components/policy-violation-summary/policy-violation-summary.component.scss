@@ -119,10 +119,6 @@ h3.title {
     }
   }
 
-  .ng-scrollbar-thumb {
-    background-color: #353f48;
-  }
-
   .feed-list {
     list-style: none;
     color: #BDBDBD;
@@ -454,4 +450,12 @@ textarea.form-control {
       font-size: 35px;
     }
   }
+}
+
+
+.ng-scrollbar-thumb {
+  background-color: #353f48;
+}
+.ng-scroll-view {
+  width: calc(100% + 30px) !important;
 }

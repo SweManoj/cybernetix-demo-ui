@@ -281,6 +281,8 @@ export class TopDetailsComponent implements AfterViewInit {
             break;
             case 'USER' : this.router.navigateByUrl('/riskyUser/' + selectedEntity);
             break;
+            case 'HOST' : this.router.navigateByUrl('/riskyHost/' + selectedEntity);
+            break;
         }
     }
 }

@@ -72,15 +72,22 @@ h3.title {
         margin-right: 7px;
       }
 
-      span.recommendation-text{
+      span.recommendation-text {
         color: #099BB5;
-        text-decoration: underline;
+        a {
+        	color: #099BB5;
+        	text-decoration: underline;
+
+        	&:hover {
+        		text-decoration: none;
+        	}
+        }
       }
     }
 
     .block-description{
       font-weight: 400;
-      font-size: 16px;
+      font-size: 15px;
       color: #8E8E8E;
       padding: 5px 15px;
       line-height: 1.3em;
@@ -98,6 +105,7 @@ h3.title {
     border-bottom: 1px solid #FFFF;
     color: #BDBDBD;
     padding: 20px 15px;
+    font-size: 15px;
 
     .dataTitle {
       font-weight: bold;
@@ -111,26 +119,30 @@ h3.title {
     }
   }
 
+  .ng-scrollbar-thumb {
+    background-color: #353f48;
+  }
+
   .feed-list {
     list-style: none;
     color: #BDBDBD;
-    padding: 20px 10px ;
+    padding: 10px;
     margin: 20px 0;
     position: relative;
-    height: 475px;
-    overflow-y: auto;    
+    height: 405px;
+    // overflow-y: auto;    
 
     li {
-      font-size: 18px;
+      font-size: 14px;
       display: flex;
-      padding: 18px 0;
+      padding: 15px 0;
       flex-wrap: wrap;
       align-items: flex-start;     
       position: relative;
-      z-index: 1;
+      z-index: 0;
 
       &:first-child {
-        padding-top: 30px;
+        padding-top: 25px;
 
         &::before {
           border-radius: 10px 10px 0 0;
@@ -151,7 +163,7 @@ h3.title {
         background: #0891A9;
         width: 3px;
         height: 100%;
-        left: 116px;
+        left: 104px;
         z-index: -1;
       }
 
@@ -160,9 +172,9 @@ h3.title {
       }
 
       .time {
-        font-size: 14px;
+        font-size: 13px;
         display: inline-block;
-        width: 80px;
+        width: 70px;
       }
       img {
         margin: -5px 20px 0;
@@ -186,9 +198,11 @@ h3.title {
     .attachBox {
       background: #000;
       color: rgba(189,189,189,0.68);
+      border: 2px dashed rgba(75, 89, 101, 0.6);
       font-size: 16px;
-      padding: 20px;      
+      padding: 30px;  
       margin-top: 20px;
+      position: relative;
     }
     .file-drag-wrap{
       position: relative;
@@ -201,7 +215,22 @@ h3.title {
       }
     }
   }
-
+  .custom-upload{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .custom-upload-btn{
+    border-radius: 6px;
+    border: 1.2px solid #099BB5;
+    color: #099BB5;
+    padding: 0 30px;
+  }
   .file-input-custom {
     color: transparent;
     width: 110px;
@@ -250,12 +279,12 @@ h3.title {
       }
 
       .threatTitle {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: bold;
       }
 
       .threatValue {
-        font-size: 16px;
+        font-size: 15px;
       }
     }
 
@@ -276,6 +305,7 @@ h3.title {
       border-radius: 0 !important;
       background: #050F17;
       height: 90px !important;
+      color: #bdbdbd;
     }
 
     .btn-sm {
@@ -292,7 +322,7 @@ h3.title {
       }
     }
     .user-info {
-      font-size: 18px;
+      font-size: 16px;
 
       a {
         font-weight: 500;
@@ -300,6 +330,42 @@ h3.title {
         &:hover {
           text-decoration: underline;
         }
+      }
+    }
+
+    .comment-wrap {
+    	padding: 0 15px;
+	    height: 280px;
+      
+      @media (max-width: 576px) {
+        padding: 0;
+      }
+
+      .user-item {
+        display: flex;
+        flex-wrap: wrap;
+
+        @media (max-width: 576px) {
+          flex-direction: column;
+        }
+      }
+    }
+
+    .comment-action {
+    	color: #bdbdbd;
+    }
+
+    .profile-pic {
+      width: 50px;
+      margin-right: 20px;
+    }
+
+    .comment-content {
+      width: calc(100% - 80px);
+      padding: 0 20px;
+
+      @media (max-width: 576px) {
+        width: 100%;
       }
     }
   }
@@ -312,14 +378,27 @@ img.profile-image.img-round {
   width: 45px;
 }
 
-button.btn.btn-sm {
-  padding: 3px 14px;
+.btn-main{
+  background: #099BB5;
+  color: #FFF;
 }
 
-span.reply {
+span.reply, span.delete {
   color: #bdbdbd;
-  font-weight: 550;
+  font-weight: 500;
   cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 14px;
+
+  &:hover {
+  	text-decoration: underline;
+  }
+}
+
+span.delete {
+	margin-left: 10px;
+	color: #FF5A5A;
 }
 
 textarea.form-control {
@@ -334,96 +413,45 @@ textarea.form-control {
   padding: inherit;
 }
 
-.buttonBg {
-  background: $button-bg !important;
-  color: $button-color !important;
-}
-
-.dropdown-item:hover,
-.dropdown-item:focus {
-  background-color: #05acd3;
-}
-
-.actionDropDown {
-  margin-top: -2px;
-  border-radius: 0;
-  border-top: unset;
-  border-bottom-left-radius: 5px !important;
-  border-top-left-radius: 5px !important;
-  border-bottom-right-radius: 5px !important;
-}
-
-hr {
-  border-bottom: 0.6px solid $hr-border;
-  width: 105%;
-}
-
-.listedItem {
-  background: #202c36;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-radius: 4px;
-  .threat {
-    color: #8e8e8e;
-    padding-left: 6rem;
-  }
-  .threatTitle {
-    font-size: 15px;
-    padding: initial;
-  }
-  .threatValue {
-    font-size: smaller;
-    padding-top: 3px;
-  }
-}
 
 .comment {
   color: #8e8e8e;
+  font-size: 14px;
   a {
     padding-right: 3rem;
   }
 }
 
-.dtList {
-  color: #bdbdbd;
-  font-size: medium;
-  a {
-    text-decoration: underline;
-  }
-}
 
-.dlList {
-  padding-left: 1.5rem;
-}
+.page-footer {
+  color: #BDBDBD;
+  font-size: 18px;
 
-.dotSeperator {
-  color: #bdbdbd;
-  font-size: large;
-}
+  .page-viewer {
+    &:after {
+      content: "";
+      background: #bdbdbd;
+      width: 1px;
+      height: 90%;
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
 
-.fa-caret-right:before {
-  color: #5d5d5d;
-}
-
-.policyBg {
-  background: #0d1a25;
-}
-
-.sideButton {
-  .btn {
-    background-color: unset;
-    color: #099bb5;
-    border: 1px solid #099bb5;
-    border-radius: 4px;
-  }
-}
-
-.action {
-  border-right: 0.6px solid #4b5965;
-  margin-top: 0.6rem;
-  margin-bottom: 0.6rem;
-  .btn {
-    padding: 5px 12px;
-    border-radius: 3px;
+    img {
+      float: left;
+      margin-right: 20px;
+    }
+    .viewer-info {
+      font-size: 18px;
+      line-height: 1;
+      padding-top: 7px;
+    }
+    .view-count {
+      display: block;
+      color: #099BB5;
+      font-size: 35px;
+    }
   }
 }

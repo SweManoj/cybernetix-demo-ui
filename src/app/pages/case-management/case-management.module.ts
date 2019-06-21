@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimeAgoPipe } from 'time-ago-pipe';
 
 import { MaterialModule } from './../../material';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { MaterialModule } from './../../material';
     RadioButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    NgScrollbarModule
   ],
   declarations: [
     CaseManagementComponent,

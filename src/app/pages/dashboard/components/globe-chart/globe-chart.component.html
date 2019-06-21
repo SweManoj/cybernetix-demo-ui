@@ -1,4 +1,4 @@
-<div *ngIf="componentType === 'pie-chart'" class="header row">
+<div *ngIf="componentType === 'pie-chart'" class="header row mb-4">
     <div class="col-11 col-md-11 col-sm-11 title">
         Risk By Department
     </div>
@@ -8,8 +8,9 @@
 </div>
 <div *ngIf="componentType === 'pie-chart'">
     <div>
-        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [options]="pieChartOptions" [colors]="pieChartColors" [legend]="pieChartLegend">
-            </canvas>
+        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+            [options]="pieChartOptions" [colors]="pieChartColors" [legend]="pieChartLegend">
+        </canvas>
     </div>
 </div>
 <div *ngIf="componentType === 'gl-map'" class="header row">
@@ -21,9 +22,11 @@
     </div>
 </div>
 <div *ngIf="componentType === 'gl-map'">
-    <div class="globe" id="chartGlobeDiv"></div>
+    <!-- <div class="col-md-4"> -->
+        <app-plain-globe-chart></app-plain-globe-chart>
+    <!-- </div> -->
 </div>
-<div *ngIf="componentType === 'base-chart'" class="header row">
+<div *ngIf="componentType === 'base-chart'" class="header row mb-4">
     <div class="col-11 col-md-11 col-sm-11 title">
         Risk By Title
     </div>
@@ -35,7 +38,8 @@
 <div *ngIf="componentType === 'base-chart'" class="base-chart">
     <ng-container>
         <div>
-            <canvas baseChart [datasets]="barChartData" [options]="barChartOptions" [labels]="barChartLabels" [chartType]="barChartType">
+            <canvas baseChart [datasets]="barChartData" [options]="barChartOptions" [labels]="barChartLabels"
+                [chartType]="barChartType">
             </canvas>
         </div>
     </ng-container>

@@ -29,6 +29,7 @@ import { RiskyEntityViewComponent } from './components/riskyUsers/filter-risk-en
 import { MaterialModule } from './../../material';
 import { RiskyIPComponent } from './components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
+import { PlainGlobeChartComponent } from './components/plain-globe-chart/plain-globe-chart.component';
 
 @NgModule({ 
     declarations: [
@@ -44,7 +45,8 @@ import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
         RiskyEntityViewComponent,
         FilterRiskEntityComponent,
         RiskyIPComponent,
-        RiskyHostComponent
+        RiskyHostComponent,
+        PlainGlobeChartComponent
     ],
     imports: [
         CommonModule,
@@ -64,7 +66,8 @@ import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
     entryComponents: [
         ContentModalComponent,
         RiskyUserInfoModalComponent,
-        RiskScoreModalComponent
+        RiskScoreModalComponent,
+        PlainGlobeChartComponent
     ],
     providers: [
         DashboardService,

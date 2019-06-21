@@ -127,7 +127,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getRiskScoreColor(riskScore: number) {
         if (riskScore <= 65)
-            return "mediumseagreen";
+            return "limegreen";
         else if (riskScore > 65 && riskScore <= 79)
             return "darkorange";
         else

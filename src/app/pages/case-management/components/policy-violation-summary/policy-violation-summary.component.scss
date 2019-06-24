@@ -115,24 +115,24 @@ app-policy-violation-summary{
         }
       }
     }
-
     .feed-list {
       list-style: none;
       color: #BDBDBD;
       padding: 10px;
       margin: 20px 0;
       position: relative;
-      height: 405px;
+      height: 500px;
       // overflow-y: auto;    
 
       li {
-        font-size: 14px;
+        font-size: 15px;
         display: flex;
         padding: 15px 0;
         flex-wrap: wrap;
         align-items: flex-start;     
         position: relative;
         z-index: 0;
+        height: 60px;
 
         &:first-child {
           padding-top: 25px;
@@ -177,6 +177,10 @@ app-policy-violation-summary{
           width: calc(100% - 155px);
         }
       }    
+    }
+    
+    .feed-list.m-h-400{
+      height: 390 !important;
     }
 
     .attachments {
@@ -472,6 +476,7 @@ app-policy-violation-summary{
     }
     .mat-select-value {
         color: #BDBDBD;
+        height: 20px;
     }
   }
   .case-owner-box {
@@ -506,4 +511,75 @@ button.btn.btn-sm.buttonBg {
 .buttonBg {
   background: $button-bg !important;
   color: $button-color !important;
+}
+
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+	color: #099BB5;
+}
+.mat-select-panel {
+	background-color: #050F17;
+	border-radius: 0;
+
+	.mat-option.mat-selected:not(.mat-option-multiple) {
+	    background: rgba(0,0,0,0);
+	}
+
+	.mat-option.mat-selected:not(.mat-option-disabled) {
+	    color: #099BB5;
+	}
+	.mat-option {
+		color: #bdbdbd;
+		height: 2.5em;
+
+		&:hover {
+			color: #099BB5;
+		}
+	}
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #099BB5;
+}
+.mat-autocomplete-panel {
+	border-radius: 0;
+    background: #050F17;
+    color: #bdbdbd;
+
+    .mat-option.mat-selected:not(.mat-active):not(:hover) {
+    	background: #050F17;
+    }
+
+    .mat-option-text {
+    	color: #bdbdbd;
+    }
+
+    .mat-option:hover .mat-option-text {
+    	color: #099BB5;
+    }    
+}
+
+/*Pagination*/
+.page-link {
+	border-color: #4B5965;
+    color: #bdbdbd;
+    background-color: rgba(0,0,0,0.6);
+    font-size: 15px;
+
+    &:hover {
+    	border-color: #4B5965;
+	    color: #099BB5;
+	    background-color: rgba(0,0,0,0.9);
+    }
+}
+
+.page-item {
+	&.disabled .page-link{
+		background-color: rgba(0,0,0,0.3);
+		border-color: #4B5965;
+		color: #bdbdbd;
+	}
+	&.active .page-link {
+		background-color: #099BB5;
+	    border-color: #099BB5;
+	}
 }

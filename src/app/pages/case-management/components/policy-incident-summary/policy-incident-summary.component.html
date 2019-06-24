@@ -9,10 +9,10 @@
             <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i class="fa fa-angle-up"></i></button>
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
+                <button class="action-menu-item" mat-menu-item>Perfect Remediation</button>
                 <button class="action-menu-item" mat-menu-item>False Positive - Wrong Detection</button>
                 <button class="action-menu-item" mat-menu-item>False Positive - True Detection</button>
                 <button class="action-menu-item" mat-menu-item>True Positive</button>
-                <button class="action-menu-item" mat-menu-item>Perfect Remediation</button>
             </mat-menu>
         </div>
     </div>
@@ -59,19 +59,26 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Affected Entity	</div>
-                        <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue"><a href="#">PUN1020</a></div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Number Of Indicators</div>
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Indicators of attack</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">5</div>
                     </div>
-                    <div class="row mt-2">
+                    <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue"></div>
+                        <div class="col-sm-6 dataValue">
+                            <mat-form-field  class="dropdown-priority">
+                                <mat-label>Choose</mat-label>
+                                <mat-select [(value)]="selected">
+                                    <mat-option value="New">New</mat-option>
+                                    <mat-option value="In Progress">In Progress</mat-option>
+                                    <mat-option value="Perform Remediation">Perform Remediation</mat-option>
+                                    <mat-option value="Closed False Positive - Wrong Detection">Closed False Positive - Wrong Detection</mat-option>
+                                    <mat-option value="Closed False Positive - True Detection">Closed False Positive - True Detection</mat-option>
+                                    <mat-option value="True Positive">True Positive</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Case Owner</div>
@@ -240,17 +247,35 @@
     </div>
 
     <div class="page-footer">
-        <div class="row">        
-            <div class="col-md-4 page-viewer">
+        <div class="row align-items-center">        
+            <div class="col-md-3 page-viewer">
                 <img src="../../../../../assets/images/circle.png" />
                 <div class="viewer-info">
                     <span class="view-count">52</span>
                     viewing this page now
                 </div>
             </div>
-            <div class="col-md-7 ml-md-5">
-                <h3>Tagged People</h3>
-                <p>#chetanp, #abhishek, #manish</p>
+            <div class="col-md-4">
+                <div class="ml-md-5">
+                    <h3>Tagged People</h3>
+                    <p>#chetanp, #abhishek, #manish</p>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">Next</a>
+                    </li>
+                  </ul>
+                </nav>
             </div>           
         </div>
     </div>

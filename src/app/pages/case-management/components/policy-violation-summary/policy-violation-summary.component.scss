@@ -299,6 +299,7 @@ app-policy-violation-summary{
         background: #050F17;
         height: 90px !important;
         color: #bdbdbd;
+        padding: 10px 15px;
       }
 
       .btn-sm {
@@ -449,6 +450,39 @@ app-policy-violation-summary{
     }
   }
 
+  .update-btn{
+    background: #000;
+    border: 1.2px solid #099BB5;
+    color: #099BB5;
+  }
+  .dropdown-priority{
+    color: #BDBDBD;
+    height: 30px;
+    width: 100px;
+    margin-top: -5px;
+    .mat-form-field-label,
+    .mat-select-arrow {
+      color: #BDBDBD;
+    }
+    .mat-form-field-infix {
+      border-top: none;
+    }
+    .mat-form-field-underline {
+      display: none;
+    }
+    .mat-select-value {
+        color: #BDBDBD;
+    }
+  }
+  .case-owner-box {
+    margin-top: -20px;
+    .mat-form-field-label {
+        color: #BDBDBD;
+    }
+    .mat-form-field-underline {
+        background-color: #BDBDBD;
+    }
+  }
 
   .ng-scrollbar-thumb {
     background-color: #353f48;
@@ -457,7 +491,11 @@ app-policy-violation-summary{
     width: calc(100% + 30px) !important;
   }
 }
-
+.case-owner-text{
+  font-size: 15px;
+  line-height: 1;
+  height: 35px;
+}
 .action-menu-item{
   height: 35px;
   line-height: 1;

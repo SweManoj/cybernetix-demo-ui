@@ -12,6 +12,7 @@ import { PulseGlobeComponent } from './pages/case-management/components/pulse-gl
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PolicyViolationDetailViewComponent } from './pages/case-management/components/policy-violation-detail-view/policy-violation-detail-view.component';
 import { PolicyViolationSummaryComponent } from './pages/case-management/components/policy-violation-summary/policy-violation-summary.component';
+import { policyIncidentSummaryComponent } from './pages/case-management/components/policy-incident-summary/policy-incident-summary.component';
 import { TestEsComponent } from './pages/case-management/components/test-es/test-es.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
@@ -68,6 +69,10 @@ export const routes: Routes = [
             {
                 path: 'policyViolationSummary',
                 component: PolicyViolationSummaryComponent
+            },
+            {
+                path: 'policyIncidentSummary',
+                component: policyIncidentSummaryComponent
             },
             {
                 path: 'cyberNetizPulse',

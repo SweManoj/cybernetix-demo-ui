@@ -7,13 +7,13 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 export interface User {
-    name: string;
-}
+    name: string; 
+} 
 @Component({
     selector: "app-policy-violation-summary",
-    templateUrl: "./policy-violation-summary.component.html"
+    templateUrl: "./policy-incident-summary.component.html"
 })
-export class PolicyViolationSummaryComponent implements OnInit {
+export class policyIncidentSummaryComponent implements OnInit {
     myControl = new FormControl();
     options: User[] = [
       {name: 'Maile'},

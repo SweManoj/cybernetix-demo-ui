@@ -12,8 +12,9 @@ import { CaseModalComponent } from './components/case-modal/case-modal.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { PolicyViolationDetailViewComponent } from './components/policy-violation-detail-view/policy-violation-detail-view.component';
+import { PolicyViolationDetailViewComponent } from './components/policy-violation-detail-view/policy-violation-detail-view.component'; 
 import { PolicyViolationSummaryComponent } from './components/policy-violation-summary/policy-violation-summary.component';
+import { policyIncidentSummaryComponent } from './components/policy-incident-summary/policy-incident-summary.component';
 import { PulseGlobeComponent } from './components/pulse-globe/pulse-globe.component';
 import { TestEsComponent } from './components/test-es/test-es.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -44,6 +45,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     AlertsComponent,
     PolicyViolationDetailViewComponent,
     PolicyViolationSummaryComponent,
+    policyIncidentSummaryComponent,
     PulseGlobeComponent,
     TimeAgoPipe,
     TestEsComponent

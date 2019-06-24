@@ -5,11 +5,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
-  imports: [MatButtonModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule],
-  exports: [MatButtonModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule]
+  imports: [MatButtonModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatSelectModule, MatAutocompleteModule],
+  exports: [MatButtonModule, MatCheckboxModule, MatGridListModule, MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatSelectModule, MatAutocompleteModule]
 })
 
 export class MaterialModule {

@@ -5,42 +5,68 @@
             <div class="risky-user-header">
                 <div class="row m-auto" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
+                        <!-- <div class="user-info m-t-sm">
+                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{ipDetails.value}}</span>
+                        </div> -->
+                        <img  class="profile-image mt-4"
+                            src='./../../../../../assets/images/dashboard_icons/Ip@2x.png' style="width: 4rem;"/>
                         <div class="user-info m-t-sm">
                             <span style="color:#D3D3D3;size:26px;font-weight: 600">{{ipDetails.value}}</span>
+                            <p></p>
                         </div>
                     </div>
-
-                    <div class="col-md-7 mt-1 d-flex initialPadding">
-                        <div class="col-md-5 mr-1">
-                            <div class="mt-2">
-                                <span class="captionTitle">Last Seen</span>
-                                <p class="captionData">{{ipDetails.lastSeen}}
-                                </p>
+                    
+                    <div class="col-md-8 mt-1 d-flex initialPadding">
+                        <div class="col-md-3" style="text-align: center;">
+                            <div class="info m-t-sm">
+                                <span style="color:#a0a0a0;size:30px;font-weight: 500">Last Seen Timestamp</span>
+                                <p></p>
+                            </div>
+                            <div class="user-info m-t-sm">
+                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.lastSeen}}</span>
+                                <p></p>
                             </div>
                         </div>
-                        <div class="col-md-7 d-flex" style="margin-left: -1.5rem;">
-                            <div class="col-md-7">
-                                <div class="mt-2">
-                                    <span class="captionTitle">Location</span>
-                                    <p class="captionData">{{ipDetails.location}}
-                                    </p>
-                                </div>
+                        <div class="col-md-3" style="text-align: center;">
+                            <div class="info m-t-sm">
+                                <span style="color:#a0a0a0;size:30px;font-weight: 500">Last Seen User</span>
+                                <p></p>
+                            </div>
+                            <div class="user-info m-t-sm">
+                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.lastSeenUser}}</span>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="text-align: center;">
+                            <div class="info m-t-sm">
+                                <span style="color:#a0a0a0;size:30px;font-weight: 500">Location</span>
+                                <p></p>
+                            </div>
+                            <div class="user-info m-t-sm">
+                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.location}}</span>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3"  style="text-align: center;">
+                            <div class="info m-t-sm">
+                                <span style="color:#a0a0a0;size:30px;font-weight: 500">Peers</span>
+                                <p></p>
+                            </div>
+                            <div class="user-info m-t-sm">
+                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.peer}}</span>
+                                <p></p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-1" style="margin-left: -1rem;">
+                    <div class="col-md-2" style="text-align: center;background: #041421;">
                         <p [ngStyle]="{'color':getRiskScoreColor(ipDetails.score)}"
-                           style="font-size: 67.6px;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">
-                            {{ipDetails.score}}
+                            style="font-size: 67.6px;letter-spacing: -0.47px;margin-bottom: -20px;font-weight: 500">
+                             {{ipDetails.score}}
                         </p>
-                        <p style="font-size: 18px;color: #A7A7A7;font-weight: 550;">
-                            RiskScore
-                        </p>
-                    </div>
-
-                    <div class="col-md-2 mt-1 guageChartBlock">
-                        <div id="chartGuageDiv"></div>
+                        <div class="user-info m-t-sm">
+                            <span style="color:#D3D3D3;size:30px;font-weight: 600">Risk Score</span>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
             </div>

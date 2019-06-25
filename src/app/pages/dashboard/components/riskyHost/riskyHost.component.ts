@@ -20,11 +20,11 @@ export class RiskyHostComponent implements OnInit {
     hostDetails: any;
 
     hostAddressData = [
-        { type: 'host', value: 'PUNDESK001', score: 30, img: false, location : 'Munich', lastSeen : '23 Jan 2019' },
-        { type: 'host', value: 'USADESK25', score: 89, img: false, location : 'Amsterdam', lastSeen : '24 Feb 2019' },
-        { type: 'host', value: 'CHNLAP963', score: 66, img: false, location : 'Banglore', lastSeen: '02 Nov 2018' },
-        { type: 'host', value: 'LONDESK588', score: 49, img: false, location : 'Beijing', lastSeen: '20 Jan 2019' },
-        { type: 'host', value: 'AUSLAP4873', score: 70, img: false, location : 'Los Angles', lastSeen : '12 Dec 2018' }];
+        { type: 'host', value: 'PUNDESK001', score: 30, img: false, location : 'Munich, Germany', lastSeen : '23 Jun 2019 03:22:00', peer : 2, lastSeenUser : 'PAV58329'},
+        { type: 'host', value: 'USADESK25', score: 89, img: false, location : 'Amsterdam, Netherlands ', lastSeen: '21 Jun 2019 17:10:00', peer : 3, lastSeenUser : 'NEI89321'},
+        { type: 'host', value: 'CHNLAP963', score: 66, img: false, location : 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer : 1, lastSeenUser : 'CAI67248'},
+        { type: 'host', value: 'LONDESK588', score: 49, img: false, location : 'Beijing, China', lastSeen: '23 Jun 2019 13:09:00', peer : 2, lastSeenUser : 'SAU76518'},
+        { type: 'host', value: 'AUSLAP4873', score: 70, img: false, location : 'Paris, France', lastSeen : '24 Jun 2019 18:38:00', peer : 3, lastSeenUser : 'JRU87122'}];
 
     hardCodeItemData = [
         {

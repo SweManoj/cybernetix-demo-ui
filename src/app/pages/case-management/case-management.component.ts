@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class CaseManagementComponent implements OnInit {
 
   @ViewChild('incident') incident: Table;
+  policyRangeDates:any;
   selectedItems: any;
   selectedPolicyItems: any;
   allUsers: any = [];
@@ -37,34 +38,42 @@ export class CaseManagementComponent implements OnInit {
     { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2 },
   ];
 
-  shows = [];
+  shows = [{ name: 'Last 1 week', value: 'week' }, { name: 'Last 1 month', value: 'month' }];
   assignee = [{ name: 'Admin', value: 'admin' }, { name: 'User', value: 'user' }, { name: 'Not Assign', value: 'NA' }];
   status = [{ name: 'Task Requested', value: 'Task Requested' }, { name: 'Completed', value: 'Completed' }, { name: 'Pending', value: 'Pending' }];
   priority = [{ name: 'Critical', value: 'Critical' }, { name: 'Medium', value: 'Medium' }, { name: 'High', value: 'High' }, { name: 'Low', value: 'Low' }];
 
   @ViewChild('policy') policy: Table;
   myObjects = {
-    'Monday 04/01/2019': [
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
+    'Monday 01/01/2019': [
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '1', status: 'Unreviewed', priority: 'High' },
       { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '3', status: 'Unreviewed', priority: 'Medium' },
       { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '4', status: 'Unreviewed', priority: 'High' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '7', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
+    ],
+    'Tuesday 02/01/2019': [
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
-    'Tuesday 05/01/2019': [
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Wednesday 06/01/2019': [
+    'Wednesday 03/01/2019': [
       { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
@@ -74,7 +83,7 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
-    'Thursday 07/01/2019': [
+    'Thursday 04/01/2019': [
       { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
@@ -84,7 +93,7 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
-    'Friday 08/01/2019': [
+    'Friday 05/01/2019': [
       { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
@@ -94,7 +103,7 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
-    'Saturday 09/01/2019': [
+    'Saturday 06/01/2019': [
       { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
@@ -104,7 +113,7 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
-    'Sunday 10/01/2019': [
+    'Sunday 07/01/2019': [
       { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
@@ -114,7 +123,7 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
-    'Monday 11/01/2019': [
+    'Monday 08/01/2019': [
       { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
@@ -124,7 +133,7 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
-    'Tuesday 12/01/2019': [
+    'Tuesday 09/01/2019': [
       { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
@@ -134,7 +143,7 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
-    'Wednesday 13/01/2019': [
+    'Wednesday 10/01/2019': [
       { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
       { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
@@ -143,32 +152,12 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
       { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Thursday 14/01/2019': [
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Friday 15/01/2019': [
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ]
   };
   @ViewChild('day') day: Table;
   myDays: string[] = [];
   myPolicies: any[] = [];
-  selectedIndex = 1;
+  selectedIndex = 0;
 
   criticalItem = 0;
   mediumItem = 0;
@@ -254,7 +243,11 @@ export class CaseManagementComponent implements OnInit {
     event ? this.policy.filter('High', 'priority', 'contains') : this.policy.filter('', 'priority', 'contains'); // value, field, matchMode
   }
 
-    goToPolicyViolationSummaryPage() {
-      this.router.navigateByUrl('/policyViolationSummary');
-    }
+  goToPolicyViolationSummaryPage() {
+    this.router.navigateByUrl('/policyViolationSummary');
+  }
+
+  goToIncidentSummaryPage() {
+    this.router.navigateByUrl('/incidentSummary');
+  }
 }

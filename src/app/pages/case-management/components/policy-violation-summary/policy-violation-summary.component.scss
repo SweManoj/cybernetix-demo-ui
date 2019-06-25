@@ -462,7 +462,6 @@ app-policy-violation-summary{
   .dropdown-priority{
     color: #BDBDBD;
     height: 30px;
-    width: 100px;
     margin-top: -5px;
     .mat-form-field-label,
     .mat-select-arrow {
@@ -536,9 +535,14 @@ button.btn.btn-sm.buttonBg {
 		}
 	}
 }
-
+.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: none !important;
+}
 .mat-form-field.mat-focused .mat-form-field-ripple {
     background-color: #099BB5;
+}
+.width-100{
+  width: 100%
 }
 .mat-autocomplete-panel {
 	border-radius: 0;

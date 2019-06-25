@@ -37,14 +37,7 @@ export class LeftNavComponent {
                 img: 'calendar.png',
                 title: 'Summary', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/policyViolationSummary'
-            },
-            {
-                ionIcon: '',
-                faIcon: '',
-                img: 'calendar.png',
-                title: 'Incident Summary', // this.translateService.instant('general.menu.dashboard')
-                navLink: '/policyIncidentSummary'
-            },
+            }
         ];
     }
 

@@ -14,6 +14,9 @@ export interface User {
     templateUrl: "./policy-violation-summary.component.html"
 })
 export class PolicyViolationSummaryComponent implements OnInit {
+    priority:any;
+    status:any;
+
     myControl = new FormControl();
     options: User[] = [
       {name: 'Maile'},

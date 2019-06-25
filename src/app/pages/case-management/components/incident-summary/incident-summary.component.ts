@@ -11,9 +11,11 @@ export interface User {
 } 
 @Component({
     selector: "app-policy-violation-summary",
-    templateUrl: "./policy-incident-summary.component.html"
+    templateUrl: "./incident-summary.component.html"
 })
-export class policyIncidentSummaryComponent implements OnInit {
+export class IncidentSummaryComponent implements OnInit {
+    priority:any;
+    status:any;
     myControl = new FormControl();
     options: User[] = [
       {name: 'Maile'},

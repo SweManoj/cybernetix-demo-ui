@@ -1,18 +1,16 @@
 <!-- Risky Entities -->
-<div *ngIf="componentType === 'riskyUser'" class="header row">
-    <div class="col-md-12">
-        <span class="col-md-8 initialPadding">Top Risky Entities</span>
-        <span ngbDropdown placement="bottom-right" class="col-md-4 float-sm-right">
-            <button class="btn btn-sm buttonBg" id="dropdownBasic1" ngbDropdownToggle>
-                {{selectRiskyType}}
-            </button>
-            <div class="buttonBg actionDropDown" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="SelectedRiskyType('user')" class="buttonBg">USER</button>
-                <button ngbDropdownItem (click)="SelectedRiskyType('ip address')" class="buttonBg">IP ADDRESS</button>
-                <button ngbDropdownItem (click)="SelectedRiskyType('host')" class="buttonBg">HOST</button>
-            </div>
-        </span>
-    </div>
+<div *ngIf="componentType === 'riskyUser'" class="header row d-block">
+    <span>Top Risky Entities</span>
+    <span ngbDropdown placement="bottom-right" class="float-sm-right">
+        <button class="btn btn-sm buttonBg" id="dropdownBasic1" ngbDropdownToggle>
+            {{selectRiskyType}}
+        </button>
+        <div class="buttonBg actionDropDown" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="SelectedRiskyType('user')" class="buttonBg">USER</button>
+            <button ngbDropdownItem (click)="SelectedRiskyType('ip address')" class="buttonBg">IP ADDRESS</button>
+            <button ngbDropdownItem (click)="SelectedRiskyType('host')" class="buttonBg">HOST</button>
+        </div>
+    </span>
 
     <!-- <div class="col-7 col-md-7 heading">
         Top Risky Entities
@@ -34,12 +32,10 @@
                     src='./../../../../../assets/images/users/{{selectedRisky.value}}.jpg' />
             </div>
             <div *ngIf="riskyTypeSelected=='ip address'" class="col-2 col-sm-2 col-md-2 pl-2">
-                <img class="profile-image"
-                    src='./../../../../../assets/images/dashboard_icons/Ip@2x.png' />
+                <img class="profile-image" src='./../../../../../assets/images/dashboard_icons/Ip@2x.png' />
             </div>
             <div *ngIf="riskyTypeSelected=='host'" class="col-2 col-sm-2 col-md-2 pl-2">
-                <img class="profile-image"
-                    src='./../../../../../assets/images/dashboard_icons/hostname@2x.png' />
+                <img class="profile-image" src='./../../../../../assets/images/dashboard_icons/hostname@2x.png' />
             </div>
             <div class="centerAlign col-md-8">
                 <a *ngIf="selectedRisky.value" class="cursorPointer"
@@ -266,7 +262,7 @@
 </div>
 <div *ngIf="componentType === 'watchlistedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let watchlistedUser of watchlistedUsers">
-        <div  [routerLink]="['/riskyUser', watchlistedUser.image]" class="row user-item blockPadding pointerCursor">
+        <div [routerLink]="['/riskyUser', watchlistedUser.image]" class="row user-item blockPadding pointerCursor">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/{{watchlistedUser.image}}.jpg' />

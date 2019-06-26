@@ -135,9 +135,7 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     SelectedRiskyType(val: any) {
-        debugger
         this.riskyTypeSelected = val;
-
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == this.riskyTypeSelected);
         this.selectRiskyType = String(val).toUpperCase();;
     }
@@ -181,12 +179,6 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     getRiskyUser() {
-        /* this.topDetailsService.getUploadExceedData().subscribe((res: any) => {
-            this.riskUsersList = res.data;
-            this.riskUsersList.sort((a, b) => {
-                return b.riskscore - a.riskscore;
-            });
-        }); */
         this.selectedRiskies = this.riskyObjects.filter(risky => risky.type == 'user');
     }
 

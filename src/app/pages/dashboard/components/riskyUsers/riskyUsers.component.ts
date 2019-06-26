@@ -396,13 +396,12 @@ export class RiskyUsersComponent {
     }
 
     ngOnInit() {
-        debugger
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
 
             this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
             this.selectedUserInfo.forEach(res => {
-                debugger
+                
                 if (res.value == this.selectedUser) {
                     this.userData = res;
                 }

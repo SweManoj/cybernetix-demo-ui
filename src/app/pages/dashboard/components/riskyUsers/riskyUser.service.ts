@@ -55,7 +55,6 @@ export class RiskyUserService {
     }
 
     getViolationSummary(ruleId, userId,isotimestamp) {
-        debugger
         const url = `${this.basepath}/api/dashboard/getViolationSummary?ruleId=${ruleId}&userId=${userId}&timeStamp=${isotimestamp}`;
         return this.http.get(url);
     }

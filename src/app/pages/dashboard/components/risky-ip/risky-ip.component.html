@@ -5,9 +5,6 @@
             <div class="risky-user-header">
                 <div class="row m-auto" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
-                        <!-- <div class="user-info m-t-sm">
-                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{ipDetails.value}}</span>
-                        </div> -->
                         <img  class="profile-image mt-4"
                             src='./../../../../../assets/images/dashboard_icons/Ip@2x.png' style="width: 4rem;"/>
                         <div class="user-info m-t-sm">
@@ -59,12 +56,11 @@
                         </div>
                     </div>
                     <div class="col-md-2" style="text-align: center;background: #041421;">
-                        <p [ngStyle]="{'color':getRiskScoreColor(ipDetails.score)}"
-                            style="font-size: 67.6px;letter-spacing: -0.47px;margin-bottom: -20px;font-weight: 500">
+                        <p [ngStyle]="{'color':getRiskScoreColor(ipDetails.score)}" class="rscore">
                              {{ipDetails.score}}
                         </p>
                         <div class="user-info m-t-sm">
-                            <span style="color:#D3D3D3;size:30px;font-weight: 600">Risk Score</span>
+                            <span class="riskscore">Risk Score</span>
                             <p></p>
                         </div>
                     </div>

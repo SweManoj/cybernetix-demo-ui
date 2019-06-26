@@ -43,8 +43,6 @@
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/easy-pie-chart/dist/easypiechart.js",
               "node_modules/chart.js/dist/Chart.js",
-              "node_modules/amcharts3/amcharts/serial.js",
-              "node_modules/amcharts3/amcharts/themes/light.js",
               "node_modules/amcharts3/amcharts/amcharts.js",
               "node_modules/amcharts3/amcharts/serial.js",
               "node_modules/amcharts3/amcharts/themes/light.js",

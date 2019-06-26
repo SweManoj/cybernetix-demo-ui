@@ -138,8 +138,11 @@ export class TopDetailsComponent implements AfterViewInit {
         this.riskyTypeSelected = val;
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == this.riskyTypeSelected);
         this.selectRiskyType = String(val).toUpperCase();;
-    }
+    } 
+    
+    ngAfterViewInit(){
 
+    }
     ngOnInit() {
         switch (this.componentType) {
             case 'riskyUser':

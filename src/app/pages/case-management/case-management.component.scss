@@ -6,32 +6,35 @@
     font-size: 18px;
     padding: 6px;
 }
-.policy-violation-table .ui-table  {
-    .ui-paginator-bottom{
-        display: block !important;
-    }
-
-    .ui-paginator {
-	    background-color: rgba(0, 0, 0, 0.6);
-	    border: 1px solid #4B5965;	    
-        margin-top: 15px;
-        width: auto;
-        float: right;
-        margin-right: 10px;
-
-	    .ui-paginator-pages .ui-paginator-page.ui-state-active {
-		    background-color: #099BB5;
-		    color: #ffffff;
-		}
-
-		.ui-paginator-pages .ui-paginator-page:not(.ui-state-active):hover,
-        .ui-paginator-first:not(.ui-state-disabled):not(.ui-state-active):hover, .ui-paginator-prev:not(.ui-state-disabled):not(.ui-state-active):hover, .ui-paginator-next:not(.ui-state-disabled):not(.ui-state-active):hover, .ui-paginator-last:not(.ui-state-disabled):not(.ui-state-active):hover {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: #099BB5;
+.policy-violation-date-table, 
+.policy-incident-table, 
+.policy-violation-table   {
+    .ui-table{
+        .ui-paginator-bottom{
+            display: block !important;
         }
-	}
-}
 
+        .ui-paginator {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid #4B5965;	    
+            width: auto;
+            float: left;
+            margin: 15px 10px;
+            font-size: 14px;
+
+            .ui-paginator-pages .ui-paginator-page.ui-state-active {
+                background-color: #099BB5;
+                color: #ffffff;
+            }
+
+            .ui-paginator-pages .ui-paginator-page:not(.ui-state-active):hover,
+            .ui-paginator-first:not(.ui-state-disabled):not(.ui-state-active):hover, .ui-paginator-prev:not(.ui-state-disabled):not(.ui-state-active):hover, .ui-paginator-next:not(.ui-state-disabled):not(.ui-state-active):hover, .ui-paginator-last:not(.ui-state-disabled):not(.ui-state-active):hover {
+                background-color: rgba(0, 0, 0, 0.9);
+                color: #099BB5;
+            }
+        }
+    }
+}
 
 .ui-table .ui-sortable-column:not(.ui-state-highlight):hover {
     color: inherit;
@@ -178,10 +181,17 @@ tr {
 .topStages {
     margin-right: 1px;
     margin-left: 2.5rem;
-    font-size: large;
+    font-size: 14px;
     padding: 3.5px 10px;
     border-radius: 50%;
     color: $case-table-head-bg;
+}
+
+.Total {
+    background: #099bb5;
+    border: 2px solid #099bb5;
+    color: #FFF;
+    border-radius: 5px;
 }
 
 .Medium {
@@ -219,7 +229,8 @@ tr {
         padding: 6px;
         font-size: 14px;
         border-bottom: 1px solid $case-filters-border-color;
-        border-radius: 0;
+        border-radius: 0;    
+        height: 35px;
     }
 
     .input-group-text {
@@ -258,15 +269,27 @@ tr {
         color: $drop-down-aero;
         font-size: larger;
     }
+    .width-250{
+        width: 250px;
+    }
 
     .ui-chkbox-label {
         color: $case-alert-text-color !important;
         font-size: small;
     }
-
+    .ui-dropdown {
+        height: 35px !important;
+    }
     .ui-dropdown .ui-dropdown-label {
-        font-size: small !important;
+        font-size: 12px !important;
+        height: 100%;
+        line-height: 2em;
+        font-weight: 400;
         color: $case-alert-text-color !important;
+    }
+    .ui-dropdown-trigger .ui-dropdown-trigger-icon {
+        font-size: 14px;    
+        margin-top: -7px;
     }
 
     input[type="text"] {
@@ -275,13 +298,14 @@ tr {
         border: none;
         padding: 5px;
         margin-top: 0;
-        font-size: small;
+        font-size: 12px;
         border-bottom: 1px solid $case-filters-border-color;
         border-radius: 0;
+        height: 35px;
     }
 
     .input-group-text {
-        font-size: 11px;
+        font-size: 12px;
         color: $case-check-bg-color;
         background-color: unset;
         border: none;
@@ -290,7 +314,7 @@ tr {
     }
 
     .form-control {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .form-check {
@@ -542,6 +566,7 @@ input[type="text"] {
     place-content: center;
     color: #7D7D7D;
 }
+
 
 
 /* .ui-chkbox .ui-chkbox.ui-state-active.ui-state-focus {

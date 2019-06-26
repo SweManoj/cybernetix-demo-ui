@@ -247,7 +247,7 @@
                     [resizableColumns]="true"
                     [value]="data" 
                     [(selection)]="selectedItems"
-                    [paginator]="true" [rows]="10"
+                    [paginator]="true" [rows]="12"
                     (onRowSelect)="onRowSelect($event)" 
                     (onRowUnselect)="onRowUnselect($event)">
                         <ng-template pTemplate="header">
@@ -264,14 +264,14 @@
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-data>
-                            <tr [pSelectableRow]="rowData" 
-                            (click)="goToIncidentSummaryPage()">
+                            <tr [pSelectableRow]="rowData" >
                                 <td>
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
                                 <td>{{data.id}}</td>
                                 <td>{{data.created}}</td>
-                                <td style="color:#4A90E2;">{{data.name}}</td>
+                                <td style="color:#4A90E2;" 
+                                (click)="goToIncidentSummaryPage()">{{data.name}}</td>
                                 <td>
                                     <div class="{{data.priority}} tableStages"></div>&nbsp;{{data.priority}}
                                 </td>

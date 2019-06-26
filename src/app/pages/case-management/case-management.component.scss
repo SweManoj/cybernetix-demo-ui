@@ -36,6 +36,19 @@
     }
 }
 
+.policy-violation-table,
+.policy-incident-table  {
+    .ui-table{
+        .ui-table-tbody{
+            tr.ui-selectable-row:hover{
+                background-color: rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+                color: #FFF;
+            }
+        }
+    }
+}
+
 .ui-table .ui-sortable-column:not(.ui-state-highlight):hover {
     color: inherit;
 }

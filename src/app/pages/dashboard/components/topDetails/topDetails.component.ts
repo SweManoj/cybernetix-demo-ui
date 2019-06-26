@@ -12,7 +12,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     selectRiskyType = 'USER';
     riskUsersList;
-    threatsList: any[];
+    threatsList: any;
     violationsList: any[];
 
     @Input() componentType: string;
@@ -140,7 +140,7 @@ export class TopDetailsComponent implements AfterViewInit {
         this.selectRiskyType = String(val).toUpperCase();;
     }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         switch (this.componentType) {
             case 'riskyUser':
                 this.getRiskyUser();

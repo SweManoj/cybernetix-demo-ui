@@ -35,7 +35,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 ml-5">
+                            <div class="col-md-2 ml-5">
                                 <div class="mr-5 highcheckbox">
                                     <p-checkbox value="High" label="Show only High"
                                         (onChange)="selectPolicyClick($event)">
@@ -43,7 +43,19 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 d-flex m-auto initialPadding">
+                            <div class="col-md-3 ml-5">
+                                <div class="mr-5  input-group">
+                                    <p-calendar [(ngModel)]="policyRangeDates" placeholder="Date Range" selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="col-md-4 d-flex m-auto initialPadding">
                                 <div class="mr-3 d-flex flex-row ml-auto">
                                     <div>
                                         <span class="topStages High">{{highItem}}</span><span
@@ -91,21 +103,30 @@
                                     </div>
 
                                     <div class="col-md-10" style="padding: inherit;background:rgb(52, 67, 78);">
-                                        <div class="media-body">
+                                        <div class="media-body policy-violation-table">
                                             <p-table #policy class="policy" [value]="myPolicies"
                                                 [(selection)]="selectedPolicyItems"
                                                 [globalFilterFields]="['srNo','time','policyViolation','entity','indicator','status','priority']"
+                                                sortMode="multiple"
+                                                [paginator]="true" [rows]="8"
                                                 (onRowSelect)="onPolicyRowSelect($event)"
                                                 (onRowUnselect)="onPolicyRowUnselect($event)">
                                                 <ng-template pTemplate="header">
                                                     <tr>
-                                                        <th style="width:12%">Sr. No.</th>
-                                                        <th style="width:14%">Time</th>
-                                                        <th style="width:17%">Policy Violation</th>
-                                                        <th style="width:15%">Entity</th>
-                                                        <th style="width:14%">Indicator</th>
-                                                        <th style="width:15%">Status</th>
-                                                        <th style="width:14%">Priority</th>
+                                                        <th style="width:10%" [pSortableColumn]="'srNo'">PV ID 
+                                                            <p-sortIcon [field]="'srNo'"></p-sortIcon></th>
+                                                        <th style="width:10%" [pSortableColumn]="'time'">Time 
+                                                            <p-sortIcon [field]="'time'"></p-sortIcon></th>
+                                                        <th style="width:20%" [pSortableColumn]="'policyViolation'">Policy Violation Name
+                                                            <p-sortIcon [field]="'policyViolation'"></p-sortIcon></th>
+                                                        <th style="width:15%" [pSortableColumn]="'entity'">Entity
+                                                            <p-sortIcon [field]="'entity'"></p-sortIcon></th>
+                                                        <th style="width:20%" [pSortableColumn]="'indicator'">Indicators of attack 
+                                                            <p-sortIcon [field]="'indicator'"></p-sortIcon></th>
+                                                        <th style="width:12%" [pSortableColumn]="'status'">Status
+                                                            <p-sortIcon [field]="'status'"></p-sortIcon></th>
+                                                        <th style="width:12%" [pSortableColumn]="'priority'">Priority
+                                                            <p-sortIcon [field]="'priority'"></p-sortIcon></th>
                                                     </tr>
                                                 </ng-template>
                                                 <ng-template class="policy" pTemplate="body" let-rowData let-myPolicy
@@ -140,24 +161,17 @@
                     <div class="row incident-filter-row">
                         <div class="mr-4 mb-4">
                             <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name"
-                                dropdownIcon="pi pi-caret-down"
-                                (onChange)="incident.filter($event.value.value, 'name','contains')"></p-dropdown>
+                                dropdownIcon="pi pi-caret-down"></p-dropdown>
                         </div>
 
                         <div class="mr-4 mb-4">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search by Incident ID"
-                                    (keyup)="incident.filter($event.target.value, 'id','contains')">
+                                <input type="text" class="form-control" placeholder="Search by Keyword"
+                                    (keyup)="incident.filterGlobal($event.target.value, 'contains')">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-search"></i></span>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="mr-4 mb-4">
-                            <p-dropdown [options]="shows" placeholder="Categories" optionLabel="name"
-                                dropdownIcon="pi pi-caret-down"
-                                (onChange)="incident.filter($event.value.value, 'name','contains')"></p-dropdown>
                         </div>
 
                         <div class="mr-4 mb-4">
@@ -214,38 +228,36 @@
                 </div>
 
                 <div class="row ml-auto mr-auto">
-                    <p-table #incident [resizableColumns]="true" [value]="data" [(selection)]="selectedItems"
+                    <p-table #incident 
+                    [globalFilterFields]="['id','created','name','priority','status','assignee']" [resizableColumns]="true" [value]="data" [(selection)]="selectedItems"
                         (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width: 3em;background:#000000">
                                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                                 </th>
+                                <th>Incident ID</th>
                                 <th>CREATED</th>
+                                <th style="width:28em;">Incident Name</th>
                                 <th>PRIORITY</th>
-                                <th>RISK SCORE</th>
-                                <th>ID</th>
-                                <th style="width:28em;">NAME</th>
                                 <th style="width:12em;">STATUS</th>
                                 <th>ASSIGNEE</th>
-                                <th>ALERTS</th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-data>
-                            <tr [pSelectableRow]="rowData">
+                            <tr [pSelectableRow]="rowData" 
+                            (click)="goToIncidentSummaryPage()">
                                 <td>
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
+                                <td>{{data.id}}</td>
                                 <td>{{data.created}}</td>
+                                <td style="color:#4A90E2;">{{data.name}}</td>
                                 <td>
                                     <div class="{{data.priority}} tableStages"></div>&nbsp;{{data.priority}}
                                 </td>
-                                <td>{{data.riskscore}}</td>
-                                <td style="color:#4A90E2;">{{data.id}}</td>
-                                <td style="color:#4A90E2;">{{data.name}}</td>
                                 <td>{{data.status}}</td>
                                 <td>{{data.assignee}}</td>
-                                <td>{{data.alerts}}</td>
                             </tr>
                         </ng-template>
                     </p-table>

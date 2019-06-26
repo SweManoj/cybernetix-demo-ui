@@ -5,7 +5,6 @@
         </div>
         <div class="col-md-3 btn-block text-right">
             <button class="assign-btn" mat-raised-button>Assign to Me</button>
-            <button class="update-btn" mat-raised-button>Update</button>
             <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i class="fa fa-angle-up"></i></button>
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
@@ -49,8 +48,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-label>Choose</mat-label>
-                                <mat-select [(value)]="selected">
+                                <mat-select [(ngModel)]="priority" name="priority" placeholder="Select Priority">
                                     <mat-option value="High">High</mat-option>
                                     <mat-option value="Medium">Medium</mat-option>
                                     <mat-option value="Low">Low</mat-option>
@@ -67,9 +65,8 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            <mat-form-field  class="dropdown-priority">
-                                <mat-label>Choose</mat-label>
-                                <mat-select [(value)]="selected">
+                            <mat-form-field  class="dropdown-priority width-100">
+                                <mat-select [(ngModel)]="status" name="status" placeholder="Select Status">
                                     <mat-option value="New">New</mat-option>
                                     <mat-option value="In Progress">In Progress</mat-option>
                                     <mat-option value="Perform Remediation">Perform Remediation</mat-option>
@@ -94,6 +91,12 @@
                                 </mat-autocomplete>
                             </mat-form-field>
 
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">&nbsp;</div>
+                        <div class="col-sm-6 dataValue">
+                            <button class="update-btn" mat-raised-button>Update</button>
                         </div>
                     </div>
                 </div>

@@ -20,11 +20,11 @@ export class RiskyIPComponent implements OnInit {
     ipDetails: any;
 
     ipaddressesData = [
-        { value: '172.10.10.11', score: 45, location : 'Los Angles', lastSeen : '12 Dec 2018'},
-        {value: '82.102.21.217', score: 60, location : 'Beijing', lastSeen: '20 Jan 2019'},
-        {value: '95.181.116.77', score: 85, location : 'Banglore', lastSeen: '02 Nov 2018'},
-        {value: '23.94.213.6', score: 89, location : 'Berlin', lastSeen : '23 Feb 2019'},
-        {value: '69.249.19.217', score: 76, location : 'Los Angles', lastSeen : '23 Jan 2019'}];
+        { value: '172.10.10.11', score: 45, location : 'Budapest, Hungary', lastSeen : '23 Jun 2019 03:22:00', peer : 2, lastSeenUser : 'PAV58329'},
+        {value: '82.102.21.217', score: 60, location : 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer : 3, lastSeenUser : 'NEI89321'},
+        {value: '95.181.116.77', score: 85, location : 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer : 1, lastSeenUser : 'CAI67248'},
+        {value: '23.94.213.6', score: 89, location : 'Berlin, Germany', lastSeen : '23 Jun 2019 13:09:00', peer : 2, lastSeenUser : 'SAU76518'},
+        {value: '69.249.19.217', score: 76, location : 'Paris, France ', lastSeen : '24 Jun 2019 18:38:00', peer : 3, lastSeenUser : 'JRU87122'}];
 
     hardCodeItemData = [
         {
@@ -153,7 +153,7 @@ export class RiskyIPComponent implements OnInit {
     ngAfterViewInit() {
         this.zone.runOutsideAngular(() => {
             // Initialize Guage meter chart
-            this.initializeGuageMeterChart();
+            // this.initializeGuageMeterChart();
 
             // Initialize Bubble chart
             this.initializeLineChart();

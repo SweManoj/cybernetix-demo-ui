@@ -336,10 +336,7 @@ export class GlobeChartComponent implements OnInit {
     ngAfterViewInit() {
         this.zone.runOutsideAngular(() => {
             this.initializePlainGlobe();
-
             this.initializeDonutChart();
-
-            // this.intializeOrthographicGlobe();
         });
     }
 

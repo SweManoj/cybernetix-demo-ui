@@ -40,7 +40,7 @@ export class DashboardService {
         { total: "100 K", title: "Users", ico: "users@2x.png" },
         { total: "20 K", title: "IP Address", ico: "Ip@2x.png" },
         { total: "78", title: "Hosts", ico: "hostname@2x.png" },
-        { total: "193", title: "High Risk Users", ico: "risky@2x.png" },
+
         {
             total: "1125",
             title: "Privileged Accounts",
@@ -49,6 +49,8 @@ export class DashboardService {
         { total: "1153", title: "Service Accounts", ico: "service@2x.png" },
         { total: "12 M", title: "Event Imported", ico: "logs@1x.png" },
         { total: "950", title: "High Risk IPs", ico: "entities@1x.png" },
+        { total: "193", title: "High Risk Users", ico: "risky@2x.png" },
+        { total: "160", title: "High Risk Hostnames", ico: "hostname@2x.png" },
         { total: "156", title: "Policy Violations", ico: "violations@2x.png" },
         { total: "85", title: "Incidents", ico: "incident@2x.png" },
         { total: "17", title: "Actions", ico: "actions@1x.png" }

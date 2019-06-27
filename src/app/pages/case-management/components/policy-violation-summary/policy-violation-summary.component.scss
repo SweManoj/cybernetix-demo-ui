@@ -587,3 +587,81 @@ button.btn.btn-sm.buttonBg {
 	    border-color: #099BB5;
 	}
 }
+
+.wizard {
+  margin: 30px 0;
+}
+
+.wizard div.item {
+  margin-top: 10px;
+  padding: 0px 10px 0px 35px;
+  position: relative;
+  display: inline-flex;
+  text-decoration: none;
+  margin-left: 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  background: #005D5A;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  cursor: pointer;
+  word-break: normal;
+  width: auto;
+  max-width: 130px;
+  height: 51px;
+  line-height: 1.1;
+  align-items: center;
+  vertical-align: top;
+  justify-content: center;
+  letter-spacing: 0.05em;
+}
+
+.wizard div.item:hover {
+  text-decoration: none;
+}
+
+.wizard div.item:first-child {
+  margin-left: 0;
+}
+
+.wizard:not(.left-arrow) div.item:before {
+  width: 0;
+  height: 0;
+  border-top: 25px inset transparent;
+  border-bottom: 26px inset transparent;
+  border-left: 30px solid #000;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+}
+
+.wizard:not(.left-arrow) div.item:after {
+  width: 0;
+  height: 0;
+  border-top: 25px inset transparent;
+  border-bottom: 26px inset transparent;
+  border-left: 30px solid #005D5A;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -30px;
+  z-index: 2;
+}
+
+.wizard div.item:first-child:before,
+.wizard div.item:last-child:after {
+  border: none;
+}
+.wizard div.item:first-child {
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+  padding-left: 10px;
+}
+.wizard div.item:last-child {
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+}

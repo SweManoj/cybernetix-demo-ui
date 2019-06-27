@@ -28,7 +28,7 @@ export class LeftNavComponent {
                 ionIcon: '',
                 faIcon: 'fa fa-globe',
                 img: '',
-                title: 'CN Pulse', // this.translateService.instant('general.menu.dashboard')
+                title: 'Pulse', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/cyberNetizPulse'
             },
             {

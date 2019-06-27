@@ -5,6 +5,7 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { html } from "d3";
 
 export interface User {
     name: string;
@@ -14,8 +15,9 @@ export interface User {
     templateUrl: "./policy-violation-summary.component.html"
 })
 export class PolicyViolationSummaryComponent implements OnInit {
-    priority:any;
-    status:any;
+    priority:any = "";
+    status:any = "";
+    isUpdate: boolean  = false;
 
     myControl = new FormControl();
     options: User[] = [
@@ -95,6 +97,12 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder) {
         this.initForm();
+    }
+    
+    policyDataChange(){
+        if(this.priority != "" || this.status != "" || this.myControl.value.name != null){
+            this.isUpdate = true;
+        }
     }
 
     initForm() {

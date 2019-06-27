@@ -8,7 +8,6 @@
             <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i class="fa fa-angle-up"></i></button>
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
-                <button class="action-menu-item" mat-menu-item>Perfect Remediation</button>
             </mat-menu>
         </div>
     </div>
@@ -45,7 +44,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="priority" name="priority" placeholder="Select Priority">
+                                <mat-select [(ngModel)]="priority" (ngModelChange)="incidentDataChange($event)" name="priority" placeholder="Select Priority">
                                     <mat-option value="High">High</mat-option>
                                     <mat-option value="Medium">Medium</mat-option>
                                     <mat-option value="Low">Low</mat-option>
@@ -62,14 +61,25 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            <mat-form-field  class="dropdown-priority width-100">
-                                <mat-select [(ngModel)]="status" name="status" placeholder="Select Status">
+                            <mat-form-field  class="dropdown-priority">
+                                <mat-select [(ngModel)]="status" (ngModelChange)="incidentDataChange($event)" name="status" placeholder="Select Status">
                                     <mat-option value="New">New</mat-option>
                                     <mat-option value="In Progress">In Progress</mat-option>
                                     <mat-option value="Perform Remediation">Perform Remediation</mat-option>
-                                    <mat-option value="Closed False Positive - Wrong Detection">Closed False Positive - Wrong Detection</mat-option>
-                                    <mat-option value="Closed False Positive - True Detection">Closed False Positive - True Detection</mat-option>
+                                    <mat-option value="Closed">Closed</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Outcome</div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-sm-6 dataValue">
+                            <mat-form-field  class="dropdown-priority">
+                                <mat-select [(ngModel)]="outcome" (ngModelChange)="incidentDataChange($event)" name="outcome" placeholder="Select Outcome">
                                     <mat-option value="True Positive">True Positive</mat-option>
+                                    <mat-option value="Being Positive">Being Positive</mat-option>
+                                    <mat-option value="False Positive">False Positive</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -81,7 +91,7 @@
                             
                             <mat-form-field class="case-owner-box">
                                 <input type="text" placeholder="Case Owner" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='incidentDataChange($event.option.value)'>
                                     <mat-option class="case-owner-text" *ngFor="let option of filteredOptions | async" [value]="option">
                                     {{option.name}}
                                     </mat-option>
@@ -93,7 +103,7 @@
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">&nbsp;</div>
                         <div class="col-sm-6 dataValue">
-                            <button class="update-btn" mat-raised-button>Update</button>
+                            <button class="update-btn" *ngIf="isUpdate" mat-raised-button>Update</button>
                         </div>
                     </div>
                 </div>
@@ -102,7 +112,7 @@
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>News Feed</span></div>
                     <div class="block-description">
                         <ng-scrollbar trackY="true" barClass="custom-scroll">
-                        <ul class="feed-list">
+                        <ul class="feed-list" style="height: 300px">
                             <li>
                                 <span class="time">2 days ago</span>
                                 <img src='../../../../../assets/images/plus.png' width="30" />
@@ -154,7 +164,20 @@
                     </div>
                     
                 </div>
+                
+                <div class="block-content mb-1">
+                    <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
+                    <div class="block-description mt-3 attachments">
+                        <a href="#">file name 219284</a>&nbsp;|&nbsp;<a href="#">file name 219284</a>
 
+                        <div class="attachBox text-center">
+                            <input type="file" class="custom-upload">
+                            <img src="../../../../../assets/images/upload.png" alt="Upload Icon" class="mb-3"/><br/>
+                            Drop files here to upload &nbsp;&nbsp;  OR &nbsp;&nbsp;  Browse from your computer<br/>
+                            <button mat-stroked-button  class="custom-upload-btn mt-3">Browse</button>                  
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-6 right-block pb-4">
@@ -175,19 +198,19 @@
                     </div>                        
                 </div>
                 
-                <div class="block-content mb-4">
-                        <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
-                        <div class="block-description mt-3 attachments">
-                            <a href="#">file name 219284</a>&nbsp;|&nbsp;<a href="#">file name 219284</a>
-    
-                            <div class="attachBox text-center">
-                                <input type="file" class="custom-upload">
-                                <img src="../../../../../assets/images/upload.png" alt="Upload Icon" class="mb-3"/><br/>
-                                Drop files here to upload &nbsp;&nbsp;  OR &nbsp;&nbsp;  Browse from your computer<br/>
-                                <button mat-stroked-button  class="custom-upload-btn mt-3">Browse</button>                  
-                            </div>
+                <div class="block-content mb-5">
+                    <div class="killChain">
+                        <div class="block-title"><span>Kill Chain</span></div>
+                        <div class="wizard">
+                            <div class="item"> Recon </div>
+                            <div class="item"> Initial Delivery </div>
+                            <div class="item"> Exploitation </div>
+                            <div class="item"> Persistence </div>
+                            <div class="item"> Objective </div>
                         </div>
-                    </div>
+                    </div>                   
+                   
+                </div>
 
                 <form [formGroup]="commentFormGroup" class="row user-item pt-2">
                     <div class="col-2 col-sm-1 col-md-2 col-lg-1 pl-0">
@@ -207,7 +230,7 @@
                     </div>
                 </form>
 
-                <div class="comment-wrap">
+                <div class="comment-wrap" style="height: 600px; ">
                     
                     <ng-scrollbar trackY="true" barClass="custom-scroll">
                     <div class="user-item mt-3" *ngFor="let comment of policyComments">                        

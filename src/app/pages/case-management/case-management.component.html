@@ -25,26 +25,28 @@
                 <div class="card">
                     <div class="card-header policy-filter-row row">
                         <div class="col-md-12">
-                            <div class="col-md-2 input-group initialPadding">
-                                <input type="text" class="form-control" pInputText placeholder="Search By Keywords"
-                                    (input)="policy.filterGlobal($event.target.value,'contains')">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-search"></i>
-                                    </span>
+                            <div class="col-md-2 initialPadding">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" pInputText placeholder="Search By Keywords"
+                                        (input)="policy.filterGlobal($event.target.value,'contains')">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-2 ml-5">
-                                <div class="mr-5 highcheckbox">
+                            <div class="col-md-2 ml-2">
+                                <div class="highcheckbox">
                                     <p-checkbox value="High" label="Show only High"
                                         (onChange)="selectPolicyClick($event)">
                                     </p-checkbox>
                                 </div>
                             </div>
 
-                            <div class="col-md-3 ml-5">
-                                <div class="mr-5  input-group">
+                            <div class="col-md-3">
+                                <div class="input-group">
                                     <p-calendar [(ngModel)]="policyRangeDates" placeholder="Date Range" selectionMode="range" [readonlyInput]="true"></p-calendar>
                                     <div class="input-group-append">
                                         <span class="input-group-text">
@@ -56,7 +58,11 @@
                             
 
                             <div class="col-md-4 d-flex m-auto initialPadding">
-                                <div class="mr-3 d-flex flex-row ml-auto">
+                                <div class="d-flex flex-row ml-auto">
+                                    <div>
+                                        <span class="topStages Total">{{totalItem}}</span><span
+                                            class="labels">&nbsp;&nbsp;Total</span>
+                                    </div>
                                     <div>
                                         <span class="topStages High">{{highItem}}</span><span
                                             class="labels">&nbsp;&nbsp;High</span>
@@ -81,8 +87,10 @@
                         <div class="media">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-md-2 filterRow">
-                                        <p-table #day class="policy" [value]="myDays">
+                                    <div class="col-md-2 filterRow policy-violation-date-table">
+                                        <p-table 
+                                        #day 
+                                        [paginator]="true" [rows]="10" class="policy" [value]="myDays">
                                             <ng-template pTemplate="header">
                                                 <tr>
                                                     <th style="width:5%"></th>
@@ -108,7 +116,7 @@
                                                 [(selection)]="selectedPolicyItems"
                                                 [globalFilterFields]="['srNo','time','policyViolation','entity','indicator','status','priority']"
                                                 sortMode="multiple"
-                                                [paginator]="true" [rows]="8"
+                                                [paginator]="true" [rows]="12"
                                                 (onRowSelect)="onPolicyRowSelect($event)"
                                                 (onRowUnselect)="onPolicyRowUnselect($event)">
                                                 <ng-template pTemplate="header">
@@ -164,7 +172,7 @@
                                 dropdownIcon="pi pi-caret-down"></p-dropdown>
                         </div>
 
-                        <div class="mr-4 mb-4">
+                        <div class="mr-4 mb-4 width-250">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search by Keyword"
                                     (keyup)="incident.filterGlobal($event.target.value, 'contains')">
@@ -191,8 +199,14 @@
                         </div>
 
                         <div class="mr-4 mb-4">
-                            <p-dropdown [options]="shows" placeholder="Date Range" optionLabel="name"
-                                (onChange)="incident.filter($event.value.value, 'date','contains')"></p-dropdown>
+                            <div class="mr-5  input-group">
+                                <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range" selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mr-4 mb-4">
@@ -227,10 +241,15 @@
                     </div>
                 </div>
 
-                <div class="row ml-auto mr-auto">
+                <div class="row ml-auto mr-auto policy-incident-table">
                     <p-table #incident 
-                    [globalFilterFields]="['id','created','name','priority','status','assignee']" [resizableColumns]="true" [value]="data" [(selection)]="selectedItems"
-                        (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+                    [globalFilterFields]="['id','created','name','priority','status','assignee']" 
+                    [resizableColumns]="true"
+                    [value]="data" 
+                    [(selection)]="selectedItems"
+                    [paginator]="true" [rows]="12"
+                    (onRowSelect)="onRowSelect($event)" 
+                    (onRowUnselect)="onRowUnselect($event)">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width: 3em;background:#000000">
@@ -238,21 +257,21 @@
                                 </th>
                                 <th>Incident ID</th>
                                 <th>CREATED</th>
-                                <th style="width:28em;">Incident Name</th>
+                                <th style="width:33em;">Incident Name</th>
                                 <th>PRIORITY</th>
                                 <th style="width:12em;">STATUS</th>
                                 <th>ASSIGNEE</th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-data>
-                            <tr [pSelectableRow]="rowData" 
-                            (click)="goToIncidentSummaryPage()">
+                            <tr [pSelectableRow]="rowData" >
                                 <td>
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
                                 <td>{{data.id}}</td>
                                 <td>{{data.created}}</td>
-                                <td style="color:#4A90E2;">{{data.name}}</td>
+                                <td style="color:#4A90E2;" 
+                                (click)="goToIncidentSummaryPage()">{{data.name}}</td>
                                 <td>
                                     <div class="{{data.priority}} tableStages"></div>&nbsp;{{data.priority}}
                                 </td>

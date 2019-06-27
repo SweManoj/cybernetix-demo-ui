@@ -308,12 +308,12 @@ export class RiskyUsersComponent {
         hand.stroke = am4core.color("#2D93AD");
 
         // using chart.setTimeout method as the timeout will be disposed together with a chart
-        chart.setTimeout(randomValue, 2000);
+        /* chart.setTimeout((randomValue), 2000);
 
         function randomValue() {
             hand.showValue(this.userData.score, 1000, am4core.ease.cubicOut);
             chart.setTimeout(randomValue, 2000);
-        }
+        } */
     }
 
     initializeBubbleChart() {
@@ -396,13 +396,12 @@ export class RiskyUsersComponent {
     }
 
     ngOnInit() {
-        debugger
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
 
             this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
             this.selectedUserInfo.forEach(res => {
-                debugger
+                
                 if (res.value == this.selectedUser) {
                     this.userData = res;
                 }

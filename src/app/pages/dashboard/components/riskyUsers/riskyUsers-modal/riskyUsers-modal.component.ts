@@ -24,12 +24,9 @@ export class ContentModalComponent implements OnInit{
 
    }
 
-  
   ngOnInit() {
-    debugger
     // this.demoTableData = this.riskyUserService.getData();
     this.riskyUserService.getViolationSummary(this.ruilId, this.userId, this.isotimestamp).subscribe(val => {
-      debugger
       this.violationSummary = val;
       this.dtOption = 
       {
@@ -57,8 +54,8 @@ export class ContentModalComponent implements OnInit{
       });
      
   }
-  switchViolationView(view) {
-    debugger
+
+  switchViolationView(view)   {
     this.selectedView = view;
-}
+  }
 }

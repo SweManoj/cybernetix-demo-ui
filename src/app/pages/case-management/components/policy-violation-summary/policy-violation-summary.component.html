@@ -9,8 +9,7 @@
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
                 <button class="action-menu-item" mat-menu-item>Create an Incident</button>
-                <button class="action-menu-item" mat-menu-item>False Positive - Wrong Detection</button>
-                <button class="action-menu-item" mat-menu-item>False Positive - True Detection</button>
+                <button class="action-menu-item" mat-menu-item>Perform Remedidation</button>
             </mat-menu>
         </div>
     </div>
@@ -64,13 +63,11 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            <mat-form-field  class="dropdown-priority width-100">
+                            <mat-form-field  class="dropdown-priority">
                                 <mat-select [(ngModel)]="status" name="status" placeholder="Select Status">
                                     <mat-option value="Unreviewed">Unreviewed</mat-option>
                                     <mat-option value="Reviewed">Reviewed</mat-option>
-                                    <mat-option value="Closed False Positive - Wrong Detection">Closed False Positive - Wrong Detection</mat-option>
-                                    <mat-option value="Closed False Positive - True Detection">Closed False Positive - True Detection</mat-option>
-                                </mat-select>
+                               </mat-select>
                             </mat-form-field>
                         </div>
                     </div>

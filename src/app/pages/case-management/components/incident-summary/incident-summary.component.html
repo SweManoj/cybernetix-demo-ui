@@ -201,12 +201,11 @@
                 <div class="block-content mb-5">
                     <div class="killChain">
                         <div class="block-title"><span>Kill Chain</span></div>
-                        <div class="wizard">
-                            <div class="item"> Recon </div>
-                            <div class="item"> Initial Delivery </div>
-                            <div class="item"> Exploitation </div>
-                            <div class="item"> Persistence </div>
-                            <div class="item"> Objective </div>
+                        <div class="wizard"> 
+                            <div class="item" [ngClass]="{'kill-chain': killchain.isKill === 1 }" *ngFor="let killchain of killChainProcess" >
+                                <div class="chain-reaction" *ngIf="killchain.isKill" ></div>
+                                {{killchain.title}}
+                            </div>
                         </div>
                     </div>                   
                    

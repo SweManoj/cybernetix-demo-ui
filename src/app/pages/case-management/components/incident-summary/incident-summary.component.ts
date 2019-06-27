@@ -128,6 +128,29 @@ export class IncidentSummaryComponent implements OnInit {
         }
     ];
 
+    killChainProcess = [
+        {
+            title: "Recon",
+            isKill: 0
+        },
+        {
+            title: "Initial Delivery",
+            isKill: 1
+        },
+        {
+            title: "Exploitation",
+            isKill: 1
+        },
+        {
+            title: "Persistence",
+            isKill: 1
+        },
+        {
+            title: "Objective",
+            isKill: 0
+        }
+    ];
+
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
 

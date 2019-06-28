@@ -48,7 +48,7 @@ export class GlobeChartComponent implements OnInit {
     public pieChartLegend = true;
     public pieChartColors = [
         {
-            backgroundColor: ['#82ddaf', '#549fff', '#dda882', '#7ecac7', '#dd6b8f'],
+            backgroundColor: ['#581845', '#ffc305', '#c70039', '#ff5733', '#900c3f'],
         },
     ];
 

@@ -263,6 +263,9 @@ export class RiskyIPComponent implements OnInit {
         let visits = 10;
         let previousValue;
 
+        // Set input format for the dates
+        chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
+
         for (var i = 0; i < 100; i++) {
             visits = Math.round(i * Math.random());
 
@@ -291,6 +294,8 @@ export class RiskyIPComponent implements OnInit {
         dateAxis.renderer.grid.template.location = 0;
         dateAxis.renderer.axisFills.template.disabled = true;
         dateAxis.renderer.ticks.template.disabled = true;
+        dateAxis.dateFormats.setKey("day", "MMM dd, yyyy");
+        dateAxis.periodChangeDateFormats.setKey("day", "MMM dd, yyyy");
 
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.tooltip.disabled = true;
@@ -302,13 +307,16 @@ export class RiskyIPComponent implements OnInit {
         series.dataFields.dateX = "date";
         series.dataFields.valueY = "value";
         series.strokeWidth = 2;
-        series.tooltipText = "value: {valueY}, date: {dateX}";
+        series.tooltipText = "Risk Score : {valueY}";
+       // series.tooltip.getFillFromObject = false;
+        series.tooltip.background.fill = am4core.color("#2D93AD");
+        series.tooltip.autoTextColor = false;
+        series.tooltip.label.fill = am4core.color("black");
 
 // set stroke property field
         series.propertyFields.stroke = "color";
 
         chart.cursor = new am4charts.XYCursor();
-
         let scrollbarX = new am4core.Scrollbar();
         chart.scrollbarX = scrollbarX;
 

@@ -3,6 +3,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+import * as Highcharts from 'highcharts';
 
 am4core.useTheme(am4themes_animated);
 @Component({
@@ -11,6 +12,85 @@ am4core.useTheme(am4themes_animated);
 })
 export class GlobeChartComponent implements OnInit {
     @Input() componentType: string;
+    Highcharts: typeof Highcharts = Highcharts; // required
+    chartConstructor: string = 'chart'; // optional string, defaults to 'chart'
+    chartOptions: Highcharts.Options = {
+        credits : {
+            enabled : false
+        },
+        colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
+            '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+        chart: {
+            backgroundColor: '#041421',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            style : { color : '#a0a0a0'},
+            text: 'RISK BY DEPARTMENT'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.0f}</b>',
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            style: {
+                color: '#F0F0F0'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true,
+                series: {
+                    dataLabels: {
+                        color: '#B0B0B3'
+                    },
+                    marker: {
+                        lineColor: '#333'
+                    }
+                },
+                boxplot: {
+                    fillColor: '#505053'
+                },
+                candlestick: {
+                    lineColor: 'white'
+                },
+                errorbar: {
+                    color: 'white'
+                }
+            }
+        },
+        legend: {
+            itemStyle: {
+                color: '#E0E0E3'
+            },
+            itemHoverStyle: {
+                color: '#FFF'
+            },
+            itemHiddenStyle: {
+                color: '#606063'
+            }
+        },
+        series: [{
+            name: 'Risk Score',
+            colorByPoint: true,
+            data: [
+                { name: 'IT Security', y: 61, sliced: true,
+                    selected: true },
+                { name: 'Infrastructure', y: 12 },
+                { name: 'IT Support', y: 11 },
+                { name: 'Quality Testing', y: 5 },
+                { name: 'Development', y: 5 },
+                { name: 'HR', y: 7 }
+            ]
+        }]
+    }; // required
+
 
     constructor(private zone: NgZone) { }
 

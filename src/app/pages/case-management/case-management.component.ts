@@ -235,7 +235,7 @@ export class CaseManagementComponent implements OnInit {
     // });
 
     this.caseManagmentService.getAllCases().subscribe((res: any) => {
-      debugger
+      //debugger
       this.allUsers = res.data;
       console.log(res)
     });

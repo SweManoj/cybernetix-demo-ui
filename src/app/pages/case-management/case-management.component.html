@@ -165,8 +165,7 @@
                 <div class="col-md-12 mb-3">
                     <div class="row incident-filter-row">
                         <div class="mr-4 mb-4">
-                            <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name"
-                                dropdownIcon="pi pi-caret-down"></p-dropdown>
+                            <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name"></p-dropdown>
                         </div>
 
                         <div class="mr-4 mb-4 width-250">
@@ -190,7 +189,7 @@
                         </div> -->
 
                         <div class="mr-4 mb-4">
-                            <div class="mr-5  input-group">
+                            <div class="input-group">
                                 <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range" selectionMode="range" [readonlyInput]="true"></p-calendar>
                                 <div class="input-group-append">
                                     <span class="input-group-text">
@@ -210,10 +209,15 @@
                                 (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
                         </div>
 
-                        <div class="mr-4 mb-4">
+                        <div class=" mb-4">
                             <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
-                                dropdownIcon="pi pi-caret-down"
                                 (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
+                        </div>
+
+                        
+                        <div class="mb-4 mt-2">
+                            <span class="topStages Total">{{incident.totalRecords }}</span>
+                            <span class="labels">&nbsp;&nbsp;Record found</span>
                         </div>
 
                         <!-- <div class="no-border mr-2" style=" display: flex;align-items: flex-end;width:auto;">

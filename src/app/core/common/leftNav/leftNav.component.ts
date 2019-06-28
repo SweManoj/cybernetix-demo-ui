@@ -30,13 +30,6 @@ export class LeftNavComponent {
                 img: '',
                 title: 'Pulse', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/cyberNetizPulse'
-            },
-            {
-                ionIcon: '',
-                faIcon: '',
-                img: 'calendar.png',
-                title: 'Summary', // this.translateService.instant('general.menu.dashboard')
-                navLink: '/policyViolationSummary'
             }
         ];
     }

@@ -149,8 +149,8 @@
                     </div>
 
                     <div class="violationTitle">
-                        <div class="row mt-2 ml-3">
-                            <div class="col-md-12">
+                        <div class="row mt-1 mb-2 ml-3 mr-1">
+                            <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
                                         class="fa fa-angle-down"></i>
@@ -161,7 +161,7 @@
                                     {{item.ruleInfo.title}}</span>
 
                                 <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
-                                    class="risk-score rounded-circle mr-5">{{item.riskScore}}</span>
+                                    class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>

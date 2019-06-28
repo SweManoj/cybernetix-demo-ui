@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, Input } from "@angular/core";
+import {Component, OnInit, NgZone, Input, AfterViewInit} from '@angular/core';
 import * as am4core from "@amcharts/amcharts4/core";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
@@ -10,11 +10,16 @@ am4core.useTheme(am4themes_animated);
     selector: "globe-chart",
     templateUrl: "./globe-chart.component.html"
 })
-export class GlobeChartComponent implements OnInit {
+export class GlobeChartComponent implements AfterViewInit {
     @Input() componentType: string;
     /*Highcharts: typeof Highcharts = Highcharts; // required
-    chartConstructor: string = 'chart'; // optional string, defaults to 'chart'
-    chartOptions: Highcharts.Options = {
+    chartConstructor: string = 'chart'; // optional string, defaults to 'chart'*/
+    public options: any = {
+        credits: {
+            enabled: false
+        },
+        colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
+            '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
         chart: {
             backgroundColor: '#041421',
             plotBackgroundColor: null,
@@ -39,6 +44,17 @@ export class GlobeChartComponent implements OnInit {
                 showInLegend: true
             }
         },
+        legend: {
+            itemStyle: {
+                color: '#E0E0E3'
+            },
+            itemHoverStyle: {
+                color: '#FFF'
+            },
+            itemHiddenStyle: {
+                color: '#606063'
+            }
+        },
         series: [{
             name: 'Risk Score',
             colorByPoint: true,
@@ -52,7 +68,7 @@ export class GlobeChartComponent implements OnInit {
                 { name: 'HR', y: 7 }
             ]
         }]
-    }; // required*/
+    }; // required
 
 
     constructor(private zone: NgZone) { }
@@ -148,6 +164,8 @@ export class GlobeChartComponent implements OnInit {
         }
     ];
 
-    ngOnInit() { }
+    ngAfterViewInit() {
+        Highcharts.chart('container', this.options);
+    }
 
 }

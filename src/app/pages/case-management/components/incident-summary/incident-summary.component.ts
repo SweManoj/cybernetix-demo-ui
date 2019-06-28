@@ -14,8 +14,11 @@ export interface User {
     templateUrl: "./incident-summary.component.html"
 })
 export class IncidentSummaryComponent implements OnInit {
-    priority:any;
-    status:any;
+    priority:any = "";
+    status:any = "";
+    outcome:any = "";
+    isUpdate: boolean = false;
+
     myControl = new FormControl();
     options: User[] = [
       {name: 'Maile'},
@@ -68,6 +71,42 @@ export class IncidentSummaryComponent implements OnInit {
         userId: "chetan@123",
         content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
             " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+        timestamp: this.d.setHours(this.d.getHours() - 3),
+        commentId: 3,
+        parentId: 2,
+        reply: false
+    },
+    {
+        userId: "chetan@123",
+        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
+            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+        timestamp: this.d.setHours(this.d.getHours() - 1),
+        commentId: 4,
+        parentId: 2,
+        reply: false
+    },
+    {
+        userId: "chetan@123",
+        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
+            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+        timestamp: this.d.setHours(this.d.getHours() - 3),
+        commentId: 3,
+        parentId: 2,
+        reply: false
+    },
+    {
+        userId: "chetan@123",
+        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
+            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+        timestamp: this.d.setHours(this.d.getHours() - 1),
+        commentId: 4,
+        parentId: 2,
+        reply: false
+    },
+    {
+        userId: "chetan@123",
+        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
+            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
         timestamp: this.d.setHours(this.d.getHours() - 5),
         commentId: 5,
         parentId: 2,
@@ -89,6 +128,29 @@ export class IncidentSummaryComponent implements OnInit {
         }
     ];
 
+    killChainProcess = [
+        {
+            title: "Recon",
+            isKill: 0
+        },
+        {
+            title: "Initial Delivery",
+            isKill: 1
+        },
+        {
+            title: "Exploitation",
+            isKill: 1
+        },
+        {
+            title: "Persistence",
+            isKill: 1
+        },
+        {
+            title: "Objective",
+            isKill: 0
+        }
+    ];
+
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
 
@@ -96,7 +158,14 @@ export class IncidentSummaryComponent implements OnInit {
         this.initForm();
     }
 
+    incidentDataChange(){
+        if(this.priority != "" || this.status != "" || this.outcome != "" || this.myControl.value.name != null){
+            this.isUpdate = true;
+        }
+    }
+
     initForm() {
+
         this.commentFormGroup = this.formBuilder.group({
             commentValue: ['', Validators.compose([Validators.required])]
         });

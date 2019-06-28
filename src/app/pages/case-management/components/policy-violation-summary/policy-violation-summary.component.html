@@ -41,7 +41,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="priority" name="priority" placeholder="Select Priority">
+                                <mat-select [(ngModel)]="priority" (ngModelChange)="policyDataChange($event)" name="priority" placeholder="Select Priority">
                                     <mat-option value="High">High</mat-option>
                                     <mat-option value="Medium">Medium</mat-option>
                                     <mat-option value="Low">Low</mat-option>
@@ -63,8 +63,8 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            <mat-form-field  class="dropdown-priority width-100">
-                                <mat-select [(ngModel)]="status" name="status" placeholder="Select Status">
+                            <mat-form-field  class="dropdown-priority">
+                                <mat-select [(ngModel)]="status" (ngModelChange)="policyDataChange($event)" name="status" placeholder="Select Status">
                                     <mat-option value="Unreviewed">Unreviewed</mat-option>
                                     <mat-option value="Reviewed">Reviewed</mat-option>
                                </mat-select>
@@ -78,7 +78,7 @@
                             
                             <mat-form-field class="case-owner-box">
                                 <input type="text" placeholder="Reviewer" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='policyDataChange($event.option.value)'>
                                     <mat-option class="case-owner-text" *ngFor="let option of filteredOptions | async" [value]="option">
                                     {{option.name}}
                                     </mat-option>
@@ -90,7 +90,7 @@
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">&nbsp;</div>
                         <div class="col-sm-6 dataValue">
-                            <button class="update-btn" mat-raised-button>Update</button>
+                            <button class="update-btn" *ngIf="isUpdate" mat-raised-button>Update</button>
                         </div>
                     </div>
                 </div>

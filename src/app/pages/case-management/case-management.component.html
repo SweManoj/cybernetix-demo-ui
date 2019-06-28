@@ -60,24 +60,21 @@
                             <div class="col-md-4 d-flex m-auto initialPadding">
                                 <div class="d-flex flex-row ml-auto">
                                     <div>
-                                        <span class="topStages Total">{{totalItem}}</span><span
-                                            class="labels">&nbsp;&nbsp;Total</span>
+                                        <span class="topStages Total">{{totalItem}}</span>
+                                        <span class="labels">&nbsp;&nbsp;Total</span>
                                     </div>
                                     <div>
-                                        <span class="topStages High">{{highItem}}</span><span
-                                            class="labels">&nbsp;&nbsp;High</span>
+                                        <span class="topStages High">{{highItem}}</span>
+                                        <span class="labels">&nbsp;&nbsp;High</span>
                                     </div>
                                     <div>
-                                        <span class="topStages Medium">{{mediumItem}}</span><span
-                                            class="labels">&nbsp;&nbsp;Medium</span>
+                                        <span class="topStages Medium">{{mediumItem}}</span>
+                                        <span class="labels">&nbsp;&nbsp;Medium</span>
                                     </div>
                                     <div>
-                                        <span class="topStages Low">{{lowItem}}</span><span
-                                            class="labels">&nbsp;&nbsp;Low</span>
-                                    </div>
-                                    <!-- <div>
-                                                <span class="topStages Low">{{lowItem}}</span><span style="font-size: initial;">&nbsp;&nbsp;Low</span>
-                                            </div> -->
+                                        <span class="topStages Low">{{lowItem}}</span>
+                                        <span class="labels">&nbsp;&nbsp;Low</span>
+                                    </div>=
                                 </div>
                             </div>
                         </div>
@@ -182,21 +179,15 @@
                             </div>
                         </div>
 
-                        <div class="mr-4 mb-4">
-                            <p-dropdown [options]="assignee" placeholder="Assignee" optionLabel="name"
-                                dropdownIcon="pi pi-caret-down"
-                                (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
-                        </div>
-
-                        <div class="mr-4 mb-4" style="margin-top:7px;">
+                        <!-- <div class="mr-4 mb-4" style="margin-top:7px;">
                             <p-checkbox value="NA" label="Show only Unassigned"
                                 (onChange)="selectIncidentClick($event)">
                             </p-checkbox>
-                            <!-- <div class="form-check">
-                                                      <input type="checkbox" class="form-check-input" id="Check1" (change)="selectClick($event.target.checked)">
-                                                      <label class="form-check-label" for="Check1">Show only Unassigned</label>
-                                                    </div> -->
-                        </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="Check1" (change)="selectClick($event.target.checked)">
+                                <label class="form-check-label" for="Check1">Show only Unassigned</label>
+                            </div>
+                        </div> -->
 
                         <div class="mr-4 mb-4">
                             <div class="mr-5  input-group">
@@ -219,35 +210,42 @@
                                 (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
                         </div>
 
+                        <div class="mr-4 mb-4">
+                            <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
+                                dropdownIcon="pi pi-caret-down"
+                                (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
+                        </div>
+
                         <!-- <div class="no-border mr-2" style=" display: flex;align-items: flex-end;width:auto;">
-                                                <label class="switch" id="check" style="width:auto;">Manoj Kumar</label>
-                                            </div>
-                                            <div class="no-border mr-2" style="margin-top:4px;display: flex;align-items: flex-end;">
-                                                <label class="switch"> 
-                                                                    <input type="checkbox" checked id="check">
-                                                                    <span class="slider round"></span>
-                                                                </label>
-                                            </div> -->
+                            <label class="switch" id="check" style="width:auto;">Manoj Kumar</label>
+                        </div>
+                        <div class="no-border mr-2" style="margin-top:4px;display: flex;align-items: flex-end;">
+                            <label class="switch"> 
+                                <input type="checkbox" checked id="check">
+                                <span class="slider round"></span>
+                            </label>
+                        </div> -->
 
                         <!-- <div class="mr-4 mb-4">
-                                    <label id="check">Send to Archer</label>
-                                </div>
-                                <div class="">
-                                    <label class="switch">
-                                        <input type="checkbox" checked>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div> -->
+                            <label id="check">Send to Archer</label>
+                        </div>
+                        <div class="">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div> -->
                     </div>
                 </div>
 
                 <div class="row ml-auto mr-auto policy-incident-table">
                     <p-table #incident 
-                    [globalFilterFields]="['id','created','name','priority','status','assignee']" 
+                    [globalFilterFields]="['id', 'created', 'name', 'priority', 'status', 'assignee', 'entity']" 
                     [resizableColumns]="true"
                     [value]="data" 
+                    sortMode="multiple"
                     [(selection)]="selectedItems"
-                    [paginator]="true" [rows]="10"
+                    [paginator]="true" [rows]="12"
                     (onRowSelect)="onRowSelect($event)" 
                     (onRowUnselect)="onRowUnselect($event)">
                         <ng-template pTemplate="header">
@@ -255,23 +253,26 @@
                                 <th style="width: 3em;background:#000000">
                                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                                 </th>
-                                <th>Incident ID</th>
-                                <th>CREATED</th>
-                                <th style="width:33em;">Incident Name</th>
-                                <th>PRIORITY</th>
-                                <th style="width:12em;">STATUS</th>
-                                <th>ASSIGNEE</th>
+                                
+                                <th [pSortableColumn]="'id'">Incident ID <p-sortIcon [field]="'id'"></p-sortIcon></th>
+                                <th [pSortableColumn]="'created'">CREATED <p-sortIcon [field]="'created'"></p-sortIcon></th>
+                                <th style="width:33em;" [pSortableColumn]="'name'">Incident Name <p-sortIcon [field]="'name'"></p-sortIcon></th>
+                                <th [pSortableColumn]="'entity'">Entity <p-sortIcon [field]="'entity'"></p-sortIcon></th>
+                                <th [pSortableColumn]="'priority'">PRIORITY <p-sortIcon [field]="'priority'"></p-sortIcon></th>
+                                <th style="width:12em;" [pSortableColumn]="'status'">STATUS <p-sortIcon [field]="'status'"></p-sortIcon></th>
+                                <th [pSortableColumn]="'assignee'">Case Owner <p-sortIcon [field]="'assignee'"></p-sortIcon></th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-data>
-                            <tr [pSelectableRow]="rowData" 
-                            (click)="goToIncidentSummaryPage()">
+                            <tr [pSelectableRow]="rowData" >
                                 <td>
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
                                 <td>{{data.id}}</td>
                                 <td>{{data.created}}</td>
-                                <td style="color:#4A90E2;">{{data.name}}</td>
+                                <td style="color:#4A90E2;" 
+                                (click)="goToIncidentSummaryPage()">{{data.name}}</td>
+                                <td>{{data.entity}}</td>
                                 <td>
                                     <div class="{{data.priority}} tableStages"></div>&nbsp;{{data.priority}}
                                 </td>

@@ -28,21 +28,6 @@
         <!--<h5 class="page-heading">{{'global.riskyUser.user' | translate}}: {{selectedUser}}</h5>-->
         <div class="risky-user-container">
             <div class="risky-user-header">
-                <!-- <div class="row">
-                        <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeId' | translate}}:
-                            {{selectedUserDetails.userInfo?.EmployeeID}}</label>
-                        <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeName' | translate}}:
-                            {{selectedUserDetails.userInfo?.EmployeeName}}</label>
-                        <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeUserId' | translate}}:
-                            {{selectedUserDetails.userInfo?.UserId}}</label>
-                        <label class="col-3 col-sm-3 col-md-3">{{'global.riskyUser.employeeDepartment' | translate}}:
-                            Infrastructure Operations</label>
-                    </div>
-                    <div class="row">
-                        <label class="col-3 col-sm-3 col-md-3">Manager Name: Ron Conway</label>
-                        <label class="col-3 col-sm-3 col-md-3">Manager Employee ID: 78679</label>
-                        <label class="col-3 col-sm-3 col-md-3">Manager UserId: Roconwy</label>
-                    </div> -->
                 <div class="row m-auto" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
                         <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image rounded-circle mt-4"
@@ -98,11 +83,10 @@
                     </div>
 
                     <div class="col-md-1" style="margin-left: -1rem;">
-                        <p [ngStyle]="{'color':getRiskScoreColor(userData.score)}"
-                            style="font-size: 67.6px;letter-spacing: -0.47px;margin-bottom: -20px;margin-top: 10px;font-weight: 300">
+                        <p [ngStyle]="{'color':getRiskScoreColor(userData.score)}" class="rscore">
                             {{userData.score}}
                         </p>
-                        <p style="font-size: 18px;color: #A7A7A7;font-weight: 550;">
+                        <p class="riskscore">
                             RiskScore
                         </p>
                     </div>

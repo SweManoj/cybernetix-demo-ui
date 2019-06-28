@@ -1,11 +1,11 @@
-<!--<div *ngIf="componentType === 'pie-chart'" class="header row mb-4">
+<div *ngIf="componentType === 'pie-chart'" class="header row mb-4">
     <div class="col-11 col-md-11 col-sm-11 title">
         Risk By Department
     </div>
     <div class="col-1 col-md-1 col-sm-1 settings-icon">
         <span class="ion ion-md-settings"></span>
     </div>
-</div>-->
+</div>
 <div *ngIf="componentType === 'pie-chart'">
     <div>
         <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"

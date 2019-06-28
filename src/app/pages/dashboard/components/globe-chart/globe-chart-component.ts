@@ -12,14 +12,9 @@ am4core.useTheme(am4themes_animated);
 })
 export class GlobeChartComponent implements OnInit {
     @Input() componentType: string;
-    Highcharts: typeof Highcharts = Highcharts; // required
+    /*Highcharts: typeof Highcharts = Highcharts; // required
     chartConstructor: string = 'chart'; // optional string, defaults to 'chart'
     chartOptions: Highcharts.Options = {
-        credits : {
-            enabled : false
-        },
-        colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
-            '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
         chart: {
             backgroundColor: '#041421',
             plotBackgroundColor: null,
@@ -29,14 +24,10 @@ export class GlobeChartComponent implements OnInit {
         },
         title: {
             style : { color : '#a0a0a0'},
-            text: 'RISK BY DEPARTMENT'
+            text: 'Risk By Department'
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.0f}</b>',
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            style: {
-                color: '#F0F0F0'
-            }
+            pointFormat: '{series.name}: <b>{point.percentage:.0f}</b>'
         },
         plotOptions: {
             pie: {
@@ -45,35 +36,7 @@ export class GlobeChartComponent implements OnInit {
                 dataLabels: {
                     enabled: false
                 },
-                showInLegend: true,
-                series: {
-                    dataLabels: {
-                        color: '#B0B0B3'
-                    },
-                    marker: {
-                        lineColor: '#333'
-                    }
-                },
-                boxplot: {
-                    fillColor: '#505053'
-                },
-                candlestick: {
-                    lineColor: 'white'
-                },
-                errorbar: {
-                    color: 'white'
-                }
-            }
-        },
-        legend: {
-            itemStyle: {
-                color: '#E0E0E3'
-            },
-            itemHoverStyle: {
-                color: '#FFF'
-            },
-            itemHiddenStyle: {
-                color: '#606063'
+                showInLegend: true
             }
         },
         series: [{
@@ -89,7 +52,7 @@ export class GlobeChartComponent implements OnInit {
                 { name: 'HR', y: 7 }
             ]
         }]
-    }; // required
+    }; // required*/
 
 
     constructor(private zone: NgZone) { }

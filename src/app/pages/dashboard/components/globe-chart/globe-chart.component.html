@@ -7,16 +7,16 @@
     </div>
 </div>-->
 <div *ngIf="componentType === 'pie-chart'">
-   <!-- <div>
+    <div>
         <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
             [options]="pieChartOptions" [colors]="pieChartColors" [legend]="pieChartLegend">
         </canvas>
-    </div>-->
-    <highcharts-chart [Highcharts]="Highcharts"
+    </div>
+    <!--<highcharts-chart [Highcharts]="Highcharts"
 
                       [constructorType]="chartConstructor"
                       [options]="chartOptions"
-                      style="width: 100%; height: 400px; display: block;"></highcharts-chart>
+                      style="width: 100%; height: 400px; display: block;"></highcharts-chart>-->
 </div>
 <div *ngIf="componentType === 'gl-map'" class="header row">
     <div class="col-11 col-md-11 col-sm-11 title">

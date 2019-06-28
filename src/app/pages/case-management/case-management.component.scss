@@ -10,6 +10,26 @@
 .policy-incident-table, 
 .policy-violation-table   {
     .ui-table{
+        .ui-table-tbody > tr {
+            color: #a0a0a0;
+            background-color: #34434E;
+
+            &:nth-child(2n) {
+                background-color: #34434E;
+            }
+
+            &:hover td {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            td {
+                border-bottom: 1px solid #5F6E79;
+            }
+        }
+        .ui-sortable-column:not(.ui-state-highlight):hover {
+            background-color: #74838E;
+        }
+
         .ui-paginator-bottom{
             display: block !important;
         }
@@ -199,7 +219,11 @@ tr {
     font-size: 14px;
     padding: 3.5px 10px;
     border-radius: 50%;
-    color: $case-table-head-bg;
+    color: #fff;
+
+    &.Low {
+        color: $case-table-head-bg;
+    }
 }
 
 .Total {
@@ -759,7 +783,7 @@ input:checked+.slider:before {
 }
 
 .policy .ui-table .ui-table-tbody > tr:hover td {
-    background: #5F6E79;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .fa-search {

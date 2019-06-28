@@ -216,4 +216,7 @@ export class RiskyHostComponent implements OnInit {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
+    gotoSummery(){
+        window.open("#/policyViolationSummary", '_blank');
+    }
 }

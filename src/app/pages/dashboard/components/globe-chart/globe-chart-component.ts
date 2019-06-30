@@ -27,7 +27,8 @@ export class GlobeChartComponent implements AfterViewInit {
             type: 'pie'
         },
         title: {
-            style : { color : '#a0a0a0'},
+            align: 'left',
+            style : { color : '#a0a0a0', fontWeight : 'bold'},
             text: 'RISK BY DEPARTMENT'
         },
         tooltip: {
@@ -80,7 +81,8 @@ export class GlobeChartComponent implements AfterViewInit {
             type: 'column'
           },
           title: {
-            style : { color : '#a0a0a0'},
+            align: 'left',
+            style : { color : '#a0a0a0', fontWeight : 'bold'},
             text: 'RISK BY TITLE'
           },
           xAxis: {
@@ -93,6 +95,9 @@ export class GlobeChartComponent implements AfterViewInit {
           },
           yAxis: {
             min: 0,
+            lineWidth: 0,
+            minorGridLineWidth: 0,
+            gridLineColor: 'transparent',
             title: {
               style : { color : '#fff'},
               text: 'Risk Score'

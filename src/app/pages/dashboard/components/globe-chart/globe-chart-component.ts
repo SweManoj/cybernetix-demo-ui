@@ -90,7 +90,7 @@ export class GlobeChartComponent implements AfterViewInit {
               'VP-Sales', 'Software Engineer', 'Sr. Tester', 'Project Manager', 'Product Owner'
             ],
             labels : {
-              style : { color : '#fff', fontSize : '13px'},
+              style : { color : '#fff'},
             }
           },
           yAxis: {
@@ -103,7 +103,7 @@ export class GlobeChartComponent implements AfterViewInit {
               text: 'Risk Score'
             },
             labels : {
-              style : { color : '#fff', fontSize : '13px'},
+              style : { color : '#fff'},
             }
           },
           tooltip: {
@@ -131,7 +131,11 @@ export class GlobeChartComponent implements AfterViewInit {
           series: [{
             showInLegend: false,   
             name: 'Risk Score',
-            data: [{ y : 65, color : '#2b908f'},{y: 80, color : '#90ee7e'},{y: 75, color : '#7798BF', {y : 35, color : '#55BF3B'},{y : 65, color : '#DF5353'}]
+            data: [{ y : 65, color : '#2b908f'},
+            {y: 80, color : '#90ee7e'},
+            {y: 75, color : '#7798BF'}, 
+            {y : 35, color : '#55BF3B'},
+            {y : 65, color : '#DF5353'}]
 
           }]
     }

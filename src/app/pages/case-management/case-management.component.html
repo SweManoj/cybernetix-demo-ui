@@ -74,7 +74,7 @@
                                     <div>
                                         <span class="topStages Low">{{lowItem}}</span>
                                         <span class="labels">&nbsp;&nbsp;Low</span>
-                                    </div>=
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -277,8 +277,9 @@
                                 <td style="color:#099bb5;" 
                                 (click)="goToIncidentSummaryPage()">{{data.name}}</td>
                                 <td>{{data.entity}}</td>
-                                <td>
-                                    <div class="{{data.priority}} tableStages"></div>&nbsp;{{data.priority}}
+                                <td style="padding-left: 20px">
+                                    <div class="{{data.priority}} tableStages"></div>
+                                    <span class="priority1">{{data.priority}}</span>
                                 </td>
                                 <td>{{data.status}}</td>
                                 <td>{{data.assignee}}</td>

@@ -249,8 +249,8 @@ tr {
 }
 
 .tableStages.Critical{
-    width: 0; 
-    height: 0; 
+    // width: 10px; 
+    // height: 10px; 
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-bottom: 10px solid #F00;
@@ -271,6 +271,12 @@ tr {
     padding-left: 10px;
     display: flex;
 }
+
+// .priority1 {
+//     position: relative;
+//     float: left;
+//     padding-left: 20px;
+// }
 
 // policy-filter row
 .policy-filter-row {

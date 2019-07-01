@@ -261,7 +261,15 @@ tr {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    display: inline-block;
+    display: flex;
+    float: left;
+    position: relative;
+    top: 5px;
+}
+
+.priority{
+    padding-left: 10px;
+    display: flex;
 }
 
 // policy-filter row

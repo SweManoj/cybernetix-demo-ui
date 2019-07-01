@@ -12,8 +12,7 @@ am4core.useTheme(am4themes_animated);
 })
 export class GlobeChartComponent implements AfterViewInit {
     @Input() componentType: string;
-    /*Highcharts: typeof Highcharts = Highcharts; // required
-    chartConstructor: string = 'chart'; // optional string, defaults to 'chart'*/
+ 
     public options: any = {
         credits: {
             enabled: false
@@ -28,8 +27,9 @@ export class GlobeChartComponent implements AfterViewInit {
             type: 'pie'
         },
         title: {
-            style : { color : '#a0a0a0'},
-            text: 'Risk By Department'
+            align: 'left',
+            style : { color : '#a0a0a0', fontWeight : 'bold'},
+            text: 'RISK BY DEPARTMENT'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.0f}</b>'
@@ -46,7 +46,8 @@ export class GlobeChartComponent implements AfterViewInit {
         },
         legend: {
             itemStyle: {
-                color: '#E0E0E3'
+                color: '#E0E0E3',
+                fontWeight: 'none'
             },
             itemHoverStyle: {
                 color: '#FFF'
@@ -70,6 +71,75 @@ export class GlobeChartComponent implements AfterViewInit {
         }]
     }; // required
 
+    public riskByTitleOptions : any = {
+        credits : {
+            enabled : false
+        },
+
+        chart: {
+            backgroundColor: '#041421',
+            type: 'column'
+          },
+          title: {
+            align: 'left',
+            style : { color : '#a0a0a0', fontWeight : 'bold'},
+            text: 'RISK BY TITLE'
+          },
+          xAxis: {
+            categories: [
+              'VP-Sales', 'Software Engineer', 'Sr. Tester', 'Project Manager', 'Product Owner'
+            ],
+            labels : {
+              style : { color : '#fff'},
+            }
+          },
+          yAxis: {
+            min: 0,
+            lineWidth: 0,
+            minorGridLineWidth: 0,
+            gridLineColor: 'transparent',
+            title: {
+              style : { color : '#fff'},
+              text: 'Risk Score'
+            },
+            labels : {
+              style : { color : '#fff'},
+            }
+          },
+          tooltip: {
+            pointFormat: '{series.name}: <b>{point.y:.1f}</b>'
+          },
+          legend: {
+            itemStyle: {
+                color: '#E0E0E3',
+                fontWeight: 'none'
+            },
+            itemHoverStyle: {
+                color: '#FFF'
+            },
+            itemHiddenStyle: {
+                color: '#606063'
+            }
+        },
+          plotOptions: {
+            column: {
+              pointPadding: 0.2,
+              borderWidth: 0
+            },
+            showInLegend: false
+          },
+          series: [{
+            showInLegend: false,   
+            name: 'Risk Score',
+            data: [{ y : 65, color : '#2b908f'},
+            {y: 80, color : '#90ee7e'},
+            {y: 75, color : '#7798BF'}, 
+            {y : 35, color : '#55BF3B'},
+            {y : 65, color : '#DF5353'}]
+
+          }]
+    }
+    
 
     constructor(private zone: NgZone) { }
 
@@ -166,6 +236,7 @@ export class GlobeChartComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         Highcharts.chart('container', this.options);
+        Highcharts.chart('riskByTitleContainer', this.riskByTitleOptions);
     }
 
 }

@@ -66,6 +66,7 @@
                             <mat-form-field  class="dropdown-priority">
                                 <mat-select [(ngModel)]="status" (ngModelChange)="policyDataChange($event)" name="status" placeholder="Select Status">
                                     <mat-option value="Unreviewed">Unreviewed</mat-option>
+                                    <mat-option value="InProgress">In Progress</mat-option>
                                     <mat-option value="Reviewed">Reviewed</mat-option>
                                </mat-select>
                             </mat-form-field>
@@ -147,7 +148,6 @@
                             </li>
                         </ul>
                         </ng-scrollbar>
-                        <hr class="mt-4"/>
                     </div>
                     
                 </div>

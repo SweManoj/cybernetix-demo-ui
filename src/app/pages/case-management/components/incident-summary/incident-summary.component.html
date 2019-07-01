@@ -78,7 +78,7 @@
                             <mat-form-field  class="dropdown-priority">
                                 <mat-select [(ngModel)]="outcome" (ngModelChange)="incidentDataChange($event)" name="outcome" placeholder="Select Outcome">
                                     <mat-option value="True Positive">True Positive</mat-option>
-                                    <mat-option value="Being Positive">Being Positive</mat-option>
+                                    <mat-option value="Benign Positive">Benign Positive</mat-option>
                                     <mat-option value="False Positive">False Positive</mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -200,13 +200,22 @@
                 
                 <div class="block-content mb-5">
                     <div class="killChain">
-                        <div class="block-title"><span>Kill Chain</span></div>
-                        <div class="wizard"> 
+                        <div class="block-title text-left"><span>Kill Chain</span></div>
+                        <ul class="kill-chain-list">
+                            <li *ngFor="let killchain of killChainProcess" [style.background-image]="'url(../../../../../assets/images/kill-arrow.png)'">
+                                <div class="img-wrap">
+                                    <img src="../../../../../assets/images/{{killchain.icon}}" alt="Complete Mission"/>
+                                </div>
+                                <span>{{killchain.title}}</span>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <!-- <div class="wizard"> 
                             <div class="item" [ngClass]="{'kill-chain': killchain.isKill === 1 }" *ngFor="let killchain of killChainProcess" >
                                 <div class="chain-reaction" *ngIf="killchain.isKill" ></div>
                                 {{killchain.title}}
                             </div>
-                        </div>
+                        </div> -->
                     </div>                   
                    
                 </div>

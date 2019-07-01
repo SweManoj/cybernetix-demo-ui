@@ -254,4 +254,8 @@ export class RiskyIPComponent implements OnInit {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
+    gotoSummery(){
+        window.open("#/policyViolationSummary", '_blank');
+    }
+
 }

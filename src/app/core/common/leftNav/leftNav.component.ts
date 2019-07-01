@@ -29,7 +29,7 @@ export class LeftNavComponent {
                 faIcon: 'fa fa-globe',
                 img: '',
                 title: 'Pulse', // this.translateService.instant('general.menu.dashboard')
-                navLink: '/cyberNetizPulse'
+                navLink: '/cyberNetixPulse'
             }
         ];
     }

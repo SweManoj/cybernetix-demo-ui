@@ -714,3 +714,55 @@ div.wizard :nth-child(1) .chain-reaction{
 .wizard .item:nth-last-child(2) > .chain-reaction{
   border-right: 3px dashed #d91e18;
 }
+
+.kill-chain-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: right;
+
+  li {   
+    background-repeat: no-repeat;
+    background-position: right 80%;
+    padding-right: 35px;
+    margin-right: 5px;
+    text-align: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+    flex-direction: column;
+    margin-top: 20px;
+
+    &:last-child {
+      background: none !important;
+      padding-right: 0;
+    }
+
+    .img-wrap {
+      min-height: 35px;
+    }
+
+    span {
+      display: block;
+      background-color: #099BB5;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.2;
+      border-radius: 5px;
+      text-align: center;
+      width: 70px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 5px;
+    }
+  }
+}
+.clear{
+  clear: both;
+}

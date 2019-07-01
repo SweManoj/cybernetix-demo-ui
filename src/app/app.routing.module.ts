@@ -75,7 +75,7 @@ export const routes: Routes = [
                 component: IncidentSummaryComponent
             },
             {
-                path: 'cyberNetizPulse',
+                path: 'cyberNetixPulse',
                 component: PulseGlobeComponent
             },
             {

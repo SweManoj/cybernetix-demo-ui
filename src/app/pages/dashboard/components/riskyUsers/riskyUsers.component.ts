@@ -524,6 +524,11 @@ export class RiskyUsersComponent {
         modalRef.componentInstance.userId = userId;
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
+    
+
+    gotoSummery(){
+        window.open("#/policyViolationSummary", '_blank');
+    }
 
     openUserInfo(userInfo: any) {
         const modalRef = this.modalService.open(RiskyUserInfoModalComponent, { size: 'lg' });

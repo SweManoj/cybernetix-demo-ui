@@ -17,7 +17,8 @@ export class GlobeChartComponent implements AfterViewInit {
     riskScoreByDepartments = [];
     riskScoreByTitles = [];
     riskScoreByTitleCount = [];
- 
+    color = ["cadetblue", "deepskyblue", "palegreen", "darkcyan", "lightcoral"];
+    
     public options: any = {
         credits: {
             enabled: false
@@ -156,10 +157,11 @@ export class GlobeChartComponent implements AfterViewInit {
         });
 
          this.dashboardService.getRiskCountByTitle().subscribe((res: any) => {
-           
+           let i = 0
             res.forEach(riskScoreByTitleObj => {
               this.riskScoreByTitles.push(riskScoreByTitleObj.title);
-              this.riskScoreByTitleCount.push({ y : riskScoreByTitleObj.riskScoreCount})
+              this.riskScoreByTitleCount.push({ y : riskScoreByTitleObj.riskScoreCount, color : this.color[i]})
+              i++
             })
              this.riskByTitleOptions.xAxis.categories = this.riskScoreByTitles;
              this.riskByTitleOptions.series[0].data = this.riskScoreByTitleCount;

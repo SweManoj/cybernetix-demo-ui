@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../dashboard.service';
+import { ShortNumberPipe } from '../../../../shared/pipes/filters/filter.pipe';
 
 @Component({
     selector: 'pie-chart',
@@ -17,7 +18,7 @@ export class PieChartComponent implements OnInit {
         this.dashboardService.getPieChartsSummary().subscribe((res: any) => {
             res.actions = 17;
             res.privilegedUserCount = 1125;
-            res.serviceAccountsCount = 1153;
+            res.serviceAccountsCount = 11530;
             this.dashboardCounts = res;
 
         });      

@@ -15,7 +15,11 @@ export class PieChartComponent implements OnInit {
     ngOnInit() {
         const defaultPieChart = this.dashboardService.defaultPieChart;
         this.dashboardService.getPieChartsSummary().subscribe((res: any) => {
+            res.actions = 17;
+            res.privilegedUserCount = 1125;
+            res.serviceAccountsCount = 1153;
             this.dashboardCounts = res;
+
         });      
     }
 }

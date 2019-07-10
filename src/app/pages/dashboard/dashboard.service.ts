@@ -81,6 +81,16 @@ export class DashboardService {
         return this.http.get(url);
     }
 
+    getRiskCountByDepartment() {
+        const url = `${this.basePath}/dashboard/riskscountbydepartment/0`;
+        return this.http.get(url);
+    }
+
+    getRiskCountByTitle() {
+        const url = `${this.basePath}/dashboard/riskscountbytitle/0`;
+        return this.http.get(url);
+    }
+
     updateDefaultPie() {
         switch (this.theme) {
             case "black-theme": {

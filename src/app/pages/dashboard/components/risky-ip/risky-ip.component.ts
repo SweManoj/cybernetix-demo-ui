@@ -97,48 +97,15 @@ export class RiskyIPComponent implements OnInit {
 
 
     hardCodeItemForDemo = [
-        {
+    {
             generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '03:22:00',
+            generatedTimestamp: '14:45:00',
             accord: false,
-            pv: 'PV 083',
-            riskScore: 87,
+            pv: 'PV 069',
+            riskScore: 82,
             ruleInfo: {
-                ruleId: 1,
-                title: "Inbound Telnet Traffic From Blacklisted IP's"
-            }
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 061',
-            riskScore: 64,
-            ruleInfo: {
-                ruleId: 2,
-                title: "Inbound Spam Traffic From OFAC Countries"
-            }
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 061',
-            riskScore: 11,
-            ruleInfo: {
-                ruleId: 2,
-                title: "Inbound Uncategorized Traffic From Multiple URL's"
-            }
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '07:10:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 4,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Outbound P2P File Sharing Traffic to Rare Host'
+                ruleId: 5,
+                title: 'Excessive Bytes Sent to Suspicious External Host via FTP'
             }
         },
         {
@@ -152,17 +119,53 @@ export class RiskyIPComponent implements OnInit {
                 title: 'Outbound Malicious Traffic from Multiple Ports'
             }
         },
+         {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '07:10:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 4,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Outbound P2P File Sharing Traffic to Rare Host'
+            }
+        },
+         {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 11,
+            ruleInfo: {
+                ruleId: 2,
+                title: "Inbound Uncategorized Traffic From Multiple URL's"
+            }
+        },
+         {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 64,
+            ruleInfo: {
+                ruleId: 2,
+                title: "Inbound Spam Traffic From OFAC Countries"
+            }
+        },
         {
             generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '14:45:00',
+            generatedTimestamp: '03:22:00',
             accord: false,
-            pv: 'PV 069',
-            riskScore: 82,
+            pv: 'PV 083',
+            riskScore: 87,
             ruleInfo: {
-                ruleId: 5,
-                title: 'Excessive Bytes Sent to Suspicious External Host via FTP'
+                ruleId: 1,
+                title: "Inbound Telnet Traffic From Blacklisted IP's"
             }
         }
+       
+        
+    
     ];
 
     threatCategories = [

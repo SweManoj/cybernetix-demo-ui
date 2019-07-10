@@ -25,7 +25,7 @@ export var bubbleDataMonth: any = [
   },
   {
     "hour": "4am",
-    "date": "2019-05-03",
+    "date": "2019-05-07",
     "value": 4,
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
@@ -151,7 +151,7 @@ export var bubbleDataMonth: any = [
   },
   {
     "hour": "4am",
-    "date": "2019-03-23",
+    "date": "2019-07-23",
     "value": 2,
       "policyViolated" : "Multiple users logged-in successfully from same IP",
   },
@@ -223,7 +223,7 @@ export var bubbleDataMonth: any = [
   },
   {
     "hour": "6am",
-    "date": "2019-03-30",
+    "date": "2019-07-30",
     "value": 2,
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
@@ -241,7 +241,7 @@ export var bubbleDataMonth: any = [
   },
   {
     "hour": "9am",
-    "date": "2019-03-30",
+    "date": "2019-07-30",
     "value": 2,
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
@@ -396,55 +396,55 @@ export var bubbleDataMonth: any = [
     },
     {
         "hour": "6am",
-        "date": "2019-03-03",
+        "date": "2019-07-03",
         "value": 8,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "7am",
-        "date": "2019-03-06",
+        "date": "2019-07-06",
         "value": 4,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "8am",
-        "date": "2019-03-05",
+        "date": "2019-07-05",
         "value": 18,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "9am",
-        "date": "2019-03-01",
+        "date": "2019-07-01",
         "value": 12,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "10am",
-        "date": "2019-03-11",
+        "date": "2019-07-11",
         "value": 2,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "12am",
-        "date": "2019-03-13",
+        "date": "2019-07-13",
         "value": 3,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "1pm",
-        "date": "2019-03-15",
+        "date": "2019-07-15",
         "value": 10,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "2pm",
-        "date": "2019-03-25",
+        "date": "2019-07-25",
         "value": 7,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "3pm",
-        "date": "2019-03-05",
+        "date": "2019-07-05",
         "value": 3,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },

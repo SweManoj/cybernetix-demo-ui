@@ -43,7 +43,7 @@ export class RiskyUsersComponent {
         { type: 'user', value: 'ADittmer', score: 94, img: true, role: 'Sr. Tester', department: 'Quality Testing', location: 'Los Angles', reportingManager: 'Paul Smith', creationDate: '12 Dec 2018', lastWorkDay: '25 Jan 2019' },
         { type: 'user', value: 'Adm-EMoor', score: 89, img: true, role: 'Sales Manager', department: 'Sales and Marketing', location: 'Beijing', reportingManager: 'John ', creationDate: '11 Jan 2016', lastWorkDay: '02 Mar 2019' },
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true, role: 'Sr. Software Engineer', department: 'Development', location: 'Banglore', reportingManager: 'Scott Henry', creationDate: '22 May 2017', lastWorkDay: '26 Feb 2019' },
-        { type: 'user', value: 'AWendler', score: 97, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter ', creationDate: '13 Jun 2018', lastWorkDay: '12 Feb 2019' },
+        { type: 'user', value: 'AWendler', score: 97, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter Moore', creationDate: '13 Jun 2018', lastWorkDay: '9 Jul 2019' },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true, role: 'Project Manager', department: 'Production', location: 'Paris', reportingManager: 'Alex Gee', creationDate: '23 Aug 2018', lastWorkDay: '24 May 2019' },
         { type: 'user', value: 'Alysa', score: 82, img: true, role: 'Project Manager', department: 'Production', location: 'Stuttgart', reportingManager: 'Rolf Dobelli', creationDate: '21 Nov 2017', lastWorkDay: '24 Apr 2019' }
     ];
@@ -329,11 +329,11 @@ export class RiskyUsersComponent {
     ];
 
     activities = [
-        { image: 'falg@1x.png', value: '17', title: 'Events' },
-        { image: 'resources@1x.png', value: '23', title: 'Resources' },
-        { image: 'Shape@1x.png', value: '06', title: 'Locations' },
-        { image: 'violations@1x.png', value: 23, title: 'Violations' },
-        { image: 'incident@1x.png', value: 57, title: 'Incidents' },
+        { image: 'falg@1x.png', value: '1.2K', title: 'Events' },
+        { image: 'resources@1x.png', value: '09', title: 'Resources' },
+        { image: 'Shape@1x.png', value: '02', title: 'Locations' },
+        { image: 'violations@1x.png', value: '08', title: 'Violations' },
+        { image: 'incident@1x.png', value: '02', title: 'Incidents' },
     ];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,

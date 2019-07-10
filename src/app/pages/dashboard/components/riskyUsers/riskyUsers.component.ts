@@ -13,7 +13,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import material from "@amcharts/amcharts4/themes/material";
-import am4themes_dark from "@amcharts/amcharts4/themes/amchartsdark"
+import am4themes_dark from "@amcharts/amcharts4/themes/amchartsdark";
 import * as am4maps from "@amcharts/amcharts4/maps"
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
@@ -160,7 +160,7 @@ export class RiskyUsersComponent {
     ];
 
     hardCodeItemDataForDemo1 = [
-    {
+        {
             generatedDateFormat: '13 June 2019',
             generatedTimestamp: '01:14:00',
             accord: false,
@@ -214,9 +214,9 @@ export class RiskyUsersComponent {
                 ruleId: 1,
                 title: 'Successful Login From Unusual Location - VPN'
             }
-        }       
-        
-        
+        }
+
+
     ];
 
     hardCodeItemDataForDemo2 = [
@@ -230,15 +230,15 @@ export class RiskyUsersComponent {
                 ruleId: 1,
                 title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
             },
-            description : 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-            threatCategories : [{title : 'Kill Chain', value : '-'},
-            {title : 'Threat Category', value : 'Account Compromise'},
-            {title : 'Sub Category', value : 'Account Compromise'}],
-            dummyDatas : [{title : 'Affected Entity', value : 'AWendler'},
-            {title : 'Locations', value : 'Ukraine'},
-            {title : 'Status', value : 'Risk: 57'},
-            {title : 'Resources', value : 'VPN'},
-            {title : 'Indicators', value : 'Location'}]
+            description: 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Ukraine' },
+            { title: 'Status', value: 'Risk: 57' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }]
         },
         {
             generatedDateFormat: '12 June 2019',
@@ -250,16 +250,16 @@ export class RiskyUsersComponent {
                 ruleId: 2,
                 title: 'Abnormal VPN Activities after BadgeIN'
             },
-            description : 'In this Statistcal ML Algorithm, VPN Activities from User after he/she has physical BadgeIN',
-                                               threatCategories : 
-                                               [{title : 'Kill Chain', value : 'Actions/Maintain'},
-            {title : 'Threat Category', value : 'Access Authentication'},
-            {title : 'Sub Category', value : 'Bruce Force Attack'}],
-            dummyDatas :  [{title : 'Affected Entity', value : 'AWendler'},
-            {title : 'Locations', value : 'Berlin, Ukraine'},
-            {title : 'Status', value : 'Risk: 74'},
-            {title : 'Resources', value : 'Physical, VPN'},
-            {title : 'Indicators', value : 'Location'}]
+            description: 'In this Statistcal ML Algorithm, VPN Activities from User after he/she has physical BadgeIN',
+            threatCategories:
+                [{ title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Access Authentication' },
+                { title: 'Sub Category', value: 'Bruce Force Attack' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin, Ukraine' },
+            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Resources', value: 'Physical, VPN' },
+            { title: 'Indicators', value: 'Location' }]
 
         }
     ];
@@ -275,15 +275,15 @@ export class RiskyUsersComponent {
                 ruleId: 1,
                 title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
             },
-            description : 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-            threatCategories : [{title : 'Kill Chain', value : '-'},
-            {title : 'Threat Category', value : 'Account Compromise'},
-            {title : 'Sub Category', value : 'Account Compromise'}],
-            dummyDatas : [{title : 'Affected Entity', value : 'AWendler'},
-            {title : 'Locations', value : 'Ukraine'},
-            {title : 'Status', value : 'Risk: 57'},
-            {title : 'Resources', value : 'VPN'},
-            {title : 'Indicators', value : 'Location'}]
+            description: 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Ukraine' },
+            { title: 'Status', value: 'Risk: 57' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }]
         }
     ];
 
@@ -297,14 +297,14 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 1,
                 title: 'Outbound Traffic to Spyware URL’s from Privileged User'
-            }
-            Description : 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware', 
+            },
+            Description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
 
-            threatCategories : [
-            { title : 'Kill Chain', 'value': '-'},
-            { title : 'Threat Category', 'value': 'Malicious Behavior'},
-            { title : 'SubCategory', 'value': 'Malicious Behavior'}
-            ]
+            threatCategories: [
+                { title: 'Kill Chain', 'value': '-' },
+                { title: 'Threat Category', 'value': 'Malicious Behavior' },
+                { title: 'SubCategory', 'value': 'Malicious Behavior' }
+            ],
             AffectedEntity: 'AWendler',
             Locations: 'Ukraine',
             Risk: 42,
@@ -555,7 +555,7 @@ export class RiskyUsersComponent {
 
             this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
             this.selectedUserInfo.forEach(res => {
-                
+
                 if (res.value == this.selectedUser) {
                     this.userData = res;
                 }
@@ -678,9 +678,9 @@ export class RiskyUsersComponent {
         modalRef.componentInstance.userId = userId;
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
-    
 
-    gotoSummery(){
+
+    gotoSummery() {
         window.open("#/policyViolationSummary", '_blank');
     }
 

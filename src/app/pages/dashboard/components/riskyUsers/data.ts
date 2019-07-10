@@ -335,28 +335,58 @@ export var bubbleDataMonth: any = [
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
     {
-        "hour": "1am",
+        "hour": "5am",
         "date": "2019-06-11",
-        "value": 7,
-        "policyViolated" : "Downloding More Data From File Sharing Sites"
+        "value": 17,
+        "policyViolated" : "Outbound Traffic to Spyware URL’s from Privileged User"
     },
     {
-        "hour": "2am",
+        "hour": "6am",
         "date": "2019-06-13",
         "value": 6,
-        "policyViolated" : "Downloding More Data From File Sharing Sites"
+        "policyViolated" : "Successful Login From Unusual Location - VPN"
+    },
+       {
+        "hour": "5am",
+        "date": "2019-06-13",
+        "value": 17,
+        "policyViolated" : "Abnormal Remote Access Tools Usage"
+    },
+       {
+        "hour": "4am",
+        "date": "2019-06-13",
+        "value": 23,
+        "policyViolated" : "Suspicious RDP to Multiple Hosts from Privileged User"
+    },
+       {
+        "hour": "3am",
+        "date": "2019-06-13",
+        "value": 118,
+        "policyViolated" : "Abnormal Objects Accessed on Fileshare"
+    },
+       {
+        "hour": "2am",
+        "date": "2019-06-13",
+        "value": 19,
+        "policyViolated" : "Data Exfiltration to Cloud via HTTPS"
     },
     {
-        "hour": "3am",
+        "hour": "8am",
         "date": "2019-06-12",
-        "value": 10,
-        "policyViolated" : "Downloding More Data From File Sharing Sites"
+        "value": 9,
+        "policyViolated" : "Multiple Failed Login Attempts From Unusual Location - VPN"
+    },
+     {
+        "hour": "7am",
+        "date": "2019-06-12",
+        "value": 13,
+        "policyViolated" : "Abnormal VPN Activities after BadgeIN"
     },
     {
         "hour": "4am",
         "date": "2019-06-10",
-        "value": 3,
-        "policyViolated" : "Downloding More Data From File Sharing Sites"
+        "value": 83,
+        "policyViolated" : "Outbound Traffic to Spyware URL’s from Privileged User"
     },
     {
         "hour": "5am",

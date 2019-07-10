@@ -20,7 +20,7 @@ export class RiskyIPComponent implements OnInit {
     ipDetails: any;
 
     ipaddressesData = [
-        { value: '172.10.10.11', score: 45, location: 'Budapest, Hungary', lastSeen: '23 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'PAV58329' },
+        { value: '10.82.32.212', score: 45, location: 'London, UK', lastSeen: '27 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'LONDESK588' },
         { value: '82.102.21.217', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
         { value: '95.181.116.77', score: 85, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { value: '23.94.213.6', score: 89, location: 'Berlin, Germany', lastSeen: '23 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
@@ -95,6 +95,65 @@ export class RiskyIPComponent implements OnInit {
         }
     ];
 
+
+    hardCodeItemForDemo = [
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 87,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Inbound Telnet Traffic From Blacklisted IP's"
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 11,
+            ruleInfo: {
+                ruleId: 2,
+                title: "Inbound Uncategorized Traffic From Multiple URL's"
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '07:10:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 4,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Outbound P2P File Sharing Traffic to Rare Host'
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '09:22:00',
+            accord: false,
+            pv: 'PV 041',
+            riskScore: 36,
+            ruleInfo: {
+                ruleId: 4,
+                title: 'Outbound Malicious Traffic from Multiple Ports'
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '14:45:00',
+            accord: false,
+            pv: 'PV 069',
+            riskScore: 82,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Excessive Bytes Sent to Suspicious External Host via FTP'
+            }
+        }
+    ];
+
     threatCategories = [
         {
             title: 'Kill Chain',
@@ -161,6 +220,9 @@ export class RiskyIPComponent implements OnInit {
 
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedIP = params.get('selectedIP');
+            if(this.selectedIP === '10.82.32.212'){
+                this.hardCodeItemData = this.hardCodeItemForDemo;
+            }
         });
 
         this.getDataByIP();

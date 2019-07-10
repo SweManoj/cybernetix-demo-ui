@@ -29,9 +29,9 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'user', value: 'ADittmer', score: 94, img: true },
         { type: 'user', value: 'Adm-EMoor', score: 89, img: true },
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true },
-        { type: 'user', value: 'AWendler', score: 72, img: true },
+        { type: 'user', value: 'AWendler', score: 97, img: true },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
-        { type: 'ip address', value: '172.10.10.11', score: 45, img: false },
+        { type: 'ip address', value: '10.82.32.212', score: 95, img: false },
         { type: 'ip address', value: '82.102.21.217', score: 60, img: false },
         { type: 'ip address', value: '95.181.116.77', score: 85, img: false },
         { type: 'ip address', value: '23.94.213.6', score: 89, img: false },
@@ -39,7 +39,7 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'host', value: 'PUNDESK001', score: 30, img: false },
         { type: 'host', value: 'USADESK25', score: 89, img: false },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false },
-        { type: 'host', value: 'LONDESK588', score: 49, img: false },
+        { type: 'host', value: 'LONDESK588', score: 95, img: false },
         { type: 'host', value: 'AUSLAP4873', score: 70, img: false }
     ];
 

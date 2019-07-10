@@ -126,7 +126,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             startWith(''),
             map(value => typeof value === 'string' ? value : value.name),
             map(name => name ? this._filter(name) : this.options.slice())
-            );
+            );    
     }
 
     displayFn(user?: User): string | undefined {

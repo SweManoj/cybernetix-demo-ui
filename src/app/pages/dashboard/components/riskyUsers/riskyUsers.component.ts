@@ -43,7 +43,7 @@ export class RiskyUsersComponent {
         { type: 'user', value: 'ADittmer', score: 94, img: true, role: 'Sr. Tester', department: 'Quality Testing', location: 'Los Angles', reportingManager: 'Paul Smith', creationDate: '12 Dec 2018', lastWorkDay: '25 Jan 2019' },
         { type: 'user', value: 'Adm-EMoor', score: 89, img: true, role: 'Sales Manager', department: 'Sales and Marketing', location: 'Beijing', reportingManager: 'John ', creationDate: '11 Jan 2016', lastWorkDay: '02 Mar 2019' },
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true, role: 'Sr. Software Engineer', department: 'Development', location: 'Banglore', reportingManager: 'Scott Henry', creationDate: '22 May 2017', lastWorkDay: '26 Feb 2019' },
-        { type: 'user', value: 'AWendler', score: 72, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter ', creationDate: '13 Jun 2018', lastWorkDay: '12 Feb 2019' },
+        { type: 'user', value: 'AWendler', score: 97, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter ', creationDate: '13 Jun 2018', lastWorkDay: '12 Feb 2019' },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true, role: 'Project Manager', department: 'Production', location: 'Paris', reportingManager: 'Alex Gee', creationDate: '23 Aug 2018', lastWorkDay: '24 May 2019' },
         { type: 'user', value: 'Alysa', score: 82, img: true, role: 'Project Manager', department: 'Production', location: 'Stuttgart', reportingManager: 'Rolf Dobelli', creationDate: '21 Nov 2017', lastWorkDay: '24 Apr 2019' }
     ];
@@ -155,6 +155,128 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 6,
                 title: 'Multiple Users Logged-In Successfully From Same IP'
+            }
+        }
+    ];
+
+    hardCodeItemDataForDemo1 = [
+        {
+            generatedDateFormat: '13 June 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Successful Login From Unusual Location - VPN'
+            }
+        },
+        {
+            generatedDateFormat: '13 June 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 17,
+            ruleInfo: {
+                ruleId: 2,
+                title: 'Abnormal Remote Access Tools Usage'
+            }
+        },
+        {
+            generatedDateFormat: '13 June 2019',
+            generatedTimestamp: '07:10:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 451,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Unusual Data Exfiltration By Service Account - Proxy'
+            }
+        },
+        {
+            generatedDateFormat: '13 June 2019',
+            generatedTimestamp: '09:22:00',
+            accord: false,
+            pv: 'PV 041',
+            riskScore: 23,
+            ruleInfo: {
+                ruleId: 4,
+                title: 'Suspicious RDP to Multiple Hosts from Privileged User'
+            }
+        },
+        {
+            generatedDateFormat: '13 June 2019',
+            generatedTimestamp: '14:45:00',
+            accord: false,
+            pv: 'PV 069',
+            riskScore: 118,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Abnormal Objects Accessed on Fileshare'
+            }
+        },
+        {
+            generatedDateFormat: '13 June 2019',
+            generatedTimestamp: '17:14:00',
+            accord: false,
+            pv: 'PV 094',
+            riskScore: 19,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Data Exfiltration to Cloud via HTTPS'
+            }
+        }
+    ];
+
+    hardCodeItemDataForDemo2 = [
+        {
+            generatedDateFormat: '12 June 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 9,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
+            }
+        },
+        {
+            generatedDateFormat: '12 June 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 13,
+            ruleInfo: {
+                ruleId: 2,
+                title: 'Abnormal VPN Activities after BadgeIN'
+            }
+        }
+    ];
+
+    hardCodeItemDataForDemo3 = [
+        {
+            generatedDateFormat: '11 June 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 17,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
+            }
+        }
+    ];
+
+    hardCodeItemDataForDemo4 = [
+        {
+            generatedDateFormat: '10 June 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 83,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Outbound Traffic to Spyware URL’s from Privileged User'
             }
         }
     ];

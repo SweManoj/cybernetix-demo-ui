@@ -1,24 +1,28 @@
-span.recordInfo{
-    font-size: 24px;
-    // font-weight: 550;
-    color: #A7A7A7;
+span.recordInfo {
+  font-size: 24px;
+  // font-weight: 550;
+  color: #a7a7a7;
 }
 
-.initialPadding{
-    padding: initial;
+.initialPadding {
+  padding: initial;
 }
 
-.col-md-2-5{
-    width: 20%;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.padding-lr-20{
-    padding: 0 20px; 
+.rightIntialPadding {
+  padding-right: initial;
 }
 
-@media screen and (max-width: 768px){
-    .col-md-2-5{
-        width: 100%;
-    }
+.col-md-2-5 {
+  width: 20%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.padding-lr-20 {
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .col-md-2-5 {
+    width: 100%;
+  }
 }

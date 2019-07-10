@@ -403,8 +403,7 @@
                                     <div class="col-md-3 riskAccordBorder">
                                         <dl>
                                             <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                            <dd class="mt-2">In this policy violation, user was trying to access
-                                                machine which is restricted to access by group policy</dd>
+                                            <dd class="mt-2">{{item.description}}dd>
                                         </dl>
                                     </div>
 
@@ -414,7 +413,7 @@
                                         </dl>
 
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let threatCategory of threatCategories">
+                                            <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
                                                 <div class="col-md-5">
                                                     {{threatCategory.title}}
                                                 </div>
@@ -431,7 +430,7 @@
                                             <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                         </dl>
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
+                                            <div class="row mt-1 details" *ngFor="let dummyData of item.dummyDatas">
                                                 <div class="col-md-6">
                                                     {{dummyData.title}}
                                                 </div>
@@ -610,8 +609,7 @@
                                     <div class="col-md-3 riskAccordBorder">
                                         <dl>
                                             <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                            <dd class="mt-2">In this policy violation, user was trying to access
-                                                machine which is restricted to access by group policy</dd>
+                                            <dd class="mt-2">{{item.Description}}</dd>
                                         </dl>
                                     </div>
 
@@ -621,13 +619,31 @@
                                         </dl>
 
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let threatCategory of threatCategories">
+                                            <div class="row mt-1 details">
                                                 <div class="col-md-5">
-                                                    {{threatCategory.title}}
+                                                   Kill Chain
                                                 </div>
                                                 <b>&nbsp;:&nbsp;</b>
                                                 <div class="col-md-6">
-                                                    {{threatCategory.value}}
+                                                   -
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 details">
+                                                <div class="col-md-5">
+                                                    Threat Category
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-6">
+                                                    Malicious Behavior
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 details">
+                                                <div class="col-md-5">
+                                                    Sub Category
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-6">
+                                                    Malicious Behavior
                                                 </div>
                                             </div>
                                         </div>
@@ -638,13 +654,49 @@
                                             <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                         </dl>
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
+                                            <div class="row mt-1 details" >
                                                 <div class="col-md-6">
-                                                    {{dummyData.title}}
+                                                    Affected Entity
                                                 </div>
                                                 <b>&nbsp;:&nbsp;</b>
                                                 <div class="col-md-5">
-                                                    {{dummyData.value}}
+                                                    AWendler
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 details" >
+                                                <div class="col-md-6">
+                                                    Locations
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-5">
+                                                    Ukraine
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 details" >
+                                                <div class="col-md-6">
+                                                    Status
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-5">
+                                                   Risk: 42
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 details" >
+                                                <div class="col-md-6">
+                                                    Resources
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-5">
+                                                   Proxy
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 details" >
+                                                <div class="col-md-6">
+                                                    Indicators
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-5">
+                                                   Category
                                                 </div>
                                             </div>
                                         </div>

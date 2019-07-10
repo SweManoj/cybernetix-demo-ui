@@ -506,8 +506,7 @@
                                     <div class="col-md-3 riskAccordBorder">
                                         <dl>
                                             <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                            <dd class="mt-2">In this policy violation, user was trying to access
-                                                machine which is restricted to access by group policy</dd>
+                                            <dd class="mt-2">{{item.description}}</dd>
                                         </dl>
                                     </div>
 
@@ -517,7 +516,7 @@
                                         </dl>
 
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let threatCategory of threatCategories">
+                                            <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
                                                 <div class="col-md-5">
                                                     {{threatCategory.title}}
                                                 </div>
@@ -534,7 +533,7 @@
                                             <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                         </dl>
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
+                                            <div class="row mt-1 details" *ngFor="let dummyData of item.dummyDatas">
                                                 <div class="col-md-6">
                                                     {{dummyData.title}}
                                                 </div>

@@ -274,7 +274,16 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 1,
                 title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
-            }
+            },
+            description : 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+            threatCategories : [{title : 'Kill Chain', value : '-'},
+            {title : 'Threat Category', value : 'Account Compromise'},
+            {title : 'Sub Category', value : 'Account Compromise'}],
+            dummyDatas : [{title : 'Affected Entity', value : 'AWendler'},
+            {title : 'Locations', value : 'Ukraine'},
+            {title : 'Status', value : 'Risk: 57'},
+            {title : 'Resources', value : 'VPN'},
+            {title : 'Indicators', value : 'Location'}]
         }
     ];
 

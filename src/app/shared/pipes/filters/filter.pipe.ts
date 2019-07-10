@@ -18,10 +18,14 @@ export class ShortNumberPipe implements PipeTransform {
             {key: 'Q', value: Math.pow(10, 15)},
             {key: 'T', value: Math.pow(10, 12)},
             {key: 'B', value: Math.pow(10, 9)},
-            {key: 'M', value: 10000}
+            {key: 'M', value: Math.pow(10, 6)},
+            {key: 'K', value: 1000}
         ];
 
         for (let i = 0; i < powers.length; i++) {
+           if (abs < 10000) {
+               break;
+           }
             let reduced = abs / powers[i].value;
             reduced = Math.round(reduced * rounder) / rounder;
             if (reduced >= 1) {

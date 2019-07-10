@@ -86,6 +86,17 @@ export class RiskyHostComponent implements OnInit {
             generatedTimestamp: '05:30:00',
             accord: false,
             pv: 'PV 061',
+            riskScore: 64,
+            ruleInfo: {
+                ruleId: 2,
+                title: "Inbound Spam Traffic From OFAC Countries"
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
             riskScore: 11,
             ruleInfo: {
                 ruleId: 2,

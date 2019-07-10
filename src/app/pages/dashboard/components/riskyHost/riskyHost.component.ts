@@ -253,9 +253,6 @@ export class RiskyHostComponent implements OnInit {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedHost = params.get('selectedHost');
-            if(this.selectedHost === 'LONDESK588'){
-                this.hardCodeItemData = this.hardCodeItemForDemo;
-            }
         });
 
         this.getDataByHost();

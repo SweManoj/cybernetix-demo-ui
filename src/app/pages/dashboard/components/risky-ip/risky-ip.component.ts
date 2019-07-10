@@ -220,9 +220,6 @@ export class RiskyIPComponent implements OnInit {
 
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedIP = params.get('selectedIP');
-            if(this.selectedIP === '10.82.32.212'){
-                this.hardCodeItemData = this.hardCodeItemForDemo;
-            }
         });
 
         this.getDataByIP();

@@ -169,7 +169,16 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 6,
                 title: 'Data Exfiltration to Cloud via HTTPS'
-            }
+            },
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Data Exfiltration' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 97' },
+            { title: 'Resources', value: 'DLP' },
+            { title: 'Indicators', value: 'URL, Attachment' }],
+            description : 'In this Statistcal ML Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -180,7 +189,16 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 5,
                 title: 'Abnormal Objects Accessed on Fileshare'
-            }
+            },
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Abnormal Pattern' },
+            { title: 'Sub Category', value: 'Abnormal Pattern' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 91' },
+            { title: 'Resources', value: 'Fileshare' },
+            { title: 'Indicators', value: 'FileName' }],
+            description : 'In this Statistcal ML Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -191,7 +209,16 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 4,
                 title: 'Suspicious RDP to Multiple Hosts from Privileged User'
-            }
+            },
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'EventID' }],
+            description : 'In this Statistcal ML Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -202,7 +229,18 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 2,
                 title: 'Abnormal Remote Access Tools Usage'
-            }
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Suspicious Behavior' },
+                { title: 'Sub Category', value: 'Suspicious Behavior' }
+            ],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 84' },
+            { title: 'Resources', value: 'Proxy' },
+            { title: 'Indicators', value: 'Category' }],
+            description : 'In this Statistcal ML Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -213,7 +251,17 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 1,
                 title: 'Successful Login From Unusual Location - VPN'
-            }
+            },
+
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Ukraine' },
+            { title: 'Status', value: 'Risk: 75' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }],
+            description : 'In this Statistcal ML Algorithm, Successful Login Attempts on VPN from Unusual Location'
         }
 
 

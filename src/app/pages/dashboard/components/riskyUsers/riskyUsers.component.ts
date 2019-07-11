@@ -236,7 +236,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
-            { title: 'Status', value: 'Risk: 57' },
+            { title: 'Status', value: 'Risk: 75' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }]
         },

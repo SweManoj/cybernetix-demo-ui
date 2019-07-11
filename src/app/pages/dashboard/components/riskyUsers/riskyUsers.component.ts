@@ -13,7 +13,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import material from "@amcharts/amcharts4/themes/material";
-import am4themes_dark from "@amcharts/amcharts4/themes/amchartsdark"
+import am4themes_dark from "@amcharts/amcharts4/themes/amchartsdark";
 import * as am4maps from "@amcharts/amcharts4/maps"
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
@@ -43,7 +43,7 @@ export class RiskyUsersComponent {
         { type: 'user', value: 'ADittmer', score: 94, img: true, role: 'Sr. Tester', department: 'Quality Testing', location: 'Los Angles', reportingManager: 'Paul Smith', creationDate: '12 Dec 2018', lastWorkDay: '25 Jan 2019' },
         { type: 'user', value: 'Adm-EMoor', score: 89, img: true, role: 'Sales Manager', department: 'Sales and Marketing', location: 'Beijing', reportingManager: 'John ', creationDate: '11 Jan 2016', lastWorkDay: '02 Mar 2019' },
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true, role: 'Sr. Software Engineer', department: 'Development', location: 'Banglore', reportingManager: 'Scott Henry', creationDate: '22 May 2017', lastWorkDay: '26 Feb 2019' },
-        { type: 'user', value: 'AWendler', score: 97, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter ', creationDate: '13 Jun 2018', lastWorkDay: '12 Feb 2019' },
+        { type: 'user', value: 'AWendler', score: 97, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter Moore', creationDate: '13 Jun 2018', lastWorkDay: '9 Jul 2019' },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true, role: 'Project Manager', department: 'Production', location: 'Paris', reportingManager: 'Alex Gee', creationDate: '23 Aug 2018', lastWorkDay: '24 May 2019' },
         { type: 'user', value: 'Alysa', score: 82, img: true, role: 'Project Manager', department: 'Production', location: 'Stuttgart', reportingManager: 'Rolf Dobelli', creationDate: '21 Nov 2017', lastWorkDay: '24 Apr 2019' }
     ];
@@ -162,13 +162,35 @@ export class RiskyUsersComponent {
     hardCodeItemDataForDemo1 = [
         {
             generatedDateFormat: '13 June 2019',
+            generatedTimestamp: '01:14:00',
+            accord: false,
+            pv: 'PV 094',
+            riskScore: 19,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Data Exfiltration to Cloud via HTTPS'
+            }
+        },
+        {
+            generatedDateFormat: '13 June 2019',
+            generatedTimestamp: '02:45:00',
+            accord: false,
+            pv: 'PV 069',
+            riskScore: 118,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Abnormal Objects Accessed on Fileshare'
+            }
+        },
+        {
+            generatedDateFormat: '13 June 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
-            pv: 'PV 083',
-            riskScore: 2,
+            pv: 'PV 041',
+            riskScore: 23,
             ruleInfo: {
-                ruleId: 1,
-                title: 'Successful Login From Unusual Location - VPN'
+                ruleId: 4,
+                title: 'Suspicious RDP to Multiple Hosts from Privileged User'
             }
         },
         {
@@ -184,86 +206,84 @@ export class RiskyUsersComponent {
         },
         {
             generatedDateFormat: '13 June 2019',
-            generatedTimestamp: '07:10:00',
+            generatedTimestamp: '06:22:00',
             accord: false,
-            pv: 'PV 039',
-            riskScore: 451,
+            pv: 'PV 083',
+            riskScore: 2,
             ruleInfo: {
-                ruleId: 3,
-                title: 'Unusual Data Exfiltration By Service Account - Proxy'
-            }
-        },
-        {
-            generatedDateFormat: '13 June 2019',
-            generatedTimestamp: '09:22:00',
-            accord: false,
-            pv: 'PV 041',
-            riskScore: 23,
-            ruleInfo: {
-                ruleId: 4,
-                title: 'Suspicious RDP to Multiple Hosts from Privileged User'
-            }
-        },
-        {
-            generatedDateFormat: '13 June 2019',
-            generatedTimestamp: '14:45:00',
-            accord: false,
-            pv: 'PV 069',
-            riskScore: 118,
-            ruleInfo: {
-                ruleId: 5,
-                title: 'Abnormal Objects Accessed on Fileshare'
-            }
-        },
-        {
-            generatedDateFormat: '13 June 2019',
-            generatedTimestamp: '17:14:00',
-            accord: false,
-            pv: 'PV 094',
-            riskScore: 19,
-            ruleInfo: {
-                ruleId: 6,
-                title: 'Data Exfiltration to Cloud via HTTPS'
+                ruleId: 1,
+                title: 'Successful Login From Unusual Location - VPN'
             }
         }
+
+
     ];
 
     hardCodeItemDataForDemo2 = [
         {
             generatedDateFormat: '12 June 2019',
-            generatedTimestamp: '03:22:00',
+            generatedTimestamp: '08:02:00',
             accord: false,
             pv: 'PV 083',
             riskScore: 9,
             ruleInfo: {
                 ruleId: 1,
                 title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
-            }
+            },
+            description: 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Ukraine' },
+            { title: 'Status', value: 'Risk: 57' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }]
         },
         {
             generatedDateFormat: '12 June 2019',
-            generatedTimestamp: '05:30:00',
+            generatedTimestamp: '07:30:00',
             accord: false,
             pv: 'PV 061',
             riskScore: 13,
             ruleInfo: {
                 ruleId: 2,
                 title: 'Abnormal VPN Activities after BadgeIN'
-            }
+            },
+            description: 'In this Statistcal ML Algorithm, VPN Activities from User after he/she has physical BadgeIN',
+            threatCategories:
+                [{ title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Access Authentication' },
+                { title: 'Sub Category', value: 'Bruce Force Attack' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin, Ukraine' },
+            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Resources', value: 'Physical, VPN' },
+            { title: 'Indicators', value: 'Location' }]
+
         }
     ];
 
     hardCodeItemDataForDemo3 = [
         {
             generatedDateFormat: '11 June 2019',
-            generatedTimestamp: '03:22:00',
+            generatedTimestamp: '05:20:00',
             accord: false,
             pv: 'PV 083',
             riskScore: 17,
             ruleInfo: {
                 ruleId: 1,
                 title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
-            }
+            },
+            description: 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Ukraine' },
+            { title: 'Status', value: 'Risk: 57' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }]
         }
     ];
 
@@ -277,7 +297,19 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 1,
                 title: 'Outbound Traffic to Spyware URL’s from Privileged User'
-            }
+            },
+            Description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
+
+            threatCategories: [
+                { title: 'Kill Chain', 'value': '-' },
+                { title: 'Threat Category', 'value': 'Malicious Behavior' },
+                { title: 'SubCategory', 'value': 'Malicious Behavior' }
+            ],
+            AffectedEntity: 'AWendler',
+            Locations: 'Ukraine',
+            Risk: 42,
+            Resources: 'Proxy',
+            Indicators: 'Category'
         }
     ];
 
@@ -329,11 +361,11 @@ export class RiskyUsersComponent {
     ];
 
     activities = [
-        { image: 'falg@1x.png', value: '17', title: 'Events' },
-        { image: 'resources@1x.png', value: '23', title: 'Resources' },
-        { image: 'Shape@1x.png', value: '06', title: 'Locations' },
-        { image: 'violations@1x.png', value: 23, title: 'Violations' },
-        { image: 'incident@1x.png', value: 57, title: 'Incidents' },
+        { image: 'falg@1x.png', value: '1.2K', title: 'Events' },
+        { image: 'resources@1x.png', value: '09', title: 'Resources' },
+        { image: 'Shape@1x.png', value: '02', title: 'Locations' },
+        { image: 'violations@1x.png', value: '08', title: 'Violations' },
+        { image: 'incident@1x.png', value: '02', title: 'Incidents' },
     ];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
@@ -523,7 +555,7 @@ export class RiskyUsersComponent {
 
             this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
             this.selectedUserInfo.forEach(res => {
-                
+
                 if (res.value == this.selectedUser) {
                     this.userData = res;
                 }
@@ -646,9 +678,9 @@ export class RiskyUsersComponent {
         modalRef.componentInstance.userId = userId;
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
-    
 
-    gotoSummery(){
+
+    gotoSummery() {
         window.open("#/policyViolationSummary", '_blank');
     }
 

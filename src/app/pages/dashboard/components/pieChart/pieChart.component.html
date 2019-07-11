@@ -31,10 +31,23 @@
                 <div class="card-body">
                     <div class="pie-chart-container">
                         <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/logs@1x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">650 K</div>
+                            <div class="title">Event Imported</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/users@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.importedUserCount | shortNumber }}</div>
+                            <div class="count">24 K</div>
                             <div class="title">Users</div>
                         </div>
                     </div>
@@ -47,7 +60,7 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/Ip@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.importedIpAddressCount | shortNumber }}</div>
+                            <div class="count">20 K</div>
                             <div class="title">IP Address</div>
                         </div>
                     </div>
@@ -60,7 +73,7 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/hostname@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.importedHostCount | shortNumber }}</div>
+                            <div class="count">78</div>
                             <div class="title">Hosts</div>
                         </div>
                     </div>
@@ -73,7 +86,7 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/previledged users@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.privilegedUserCount | shortNumber }}</div>
+                            <div class="count">1125</div>
                             <div class="title">Priviledged Accounts</div>
                         </div>
                     </div>
@@ -86,25 +99,13 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/service@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.serviceAccountsCount  | shortNumber}}</div>
+                            <div class="count">1153</div>
                             <div class="title">Service Accounts</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/logs@1x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.eventImported | shortNumber }}</div>
-                            <div class="title">Event Imported</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+   
         </div>
     </ng-template>
     <ng-template ngbSlide>
@@ -116,7 +117,7 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/entities@1x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.highRiskyIPCount | shortNumber }}</div>
+                            <div class="count">950</div>
                             <div class="title">High Risky IPs</div>
                         </div>
                     </div>
@@ -129,7 +130,7 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/risky@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.highRiskyUserCount | shortNumber}}</div>
+                            <div class="count">193</div>
                             <div class="title">High Risky Users</div>
                         </div>
                     </div>
@@ -142,7 +143,7 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/hostname@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.highRiskyHostnameCount | shortNumber}}</div>
+                            <div class="count">160</div>
                             <div class="title">High Risky Hostnames</div>
                         </div>
                     </div>
@@ -155,7 +156,7 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/violations@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.policyViolation | shortNumber }}</div>
+                            <div class="count">156</div>
                             <div class="title">Policy Violations</div>
                         </div>
                     </div>
@@ -168,7 +169,7 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/incident@2x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ dashboardCounts.incidents | shortNumber }}</div>
+                            <div class="count">85</div>
                             <div class="title">Incidents</div>
                         </div>
                     </div>
@@ -179,7 +180,7 @@
                     <div class="pie-chart-container">
                         <div class="ico mt-2 mb-3"><img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/actions@1x.png">
                         </div>
-                    <div class="chart-info mt-2 mb-1"><div class="count">{{ dashboardCounts.actions | shortNumber}}</div>
+                    <div class="chart-info mt-2 mb-1"><div class="count">0</div>
                     <div class="title">Actions</div>
                 </div>
             </div></div></div>

@@ -103,7 +103,9 @@
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
-                                <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                      class="risk-score mr-5">{{item.riskScore}}</span> -->
+                                      <span 
                                       class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
@@ -208,7 +210,9 @@
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
-                                <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                               <!--  <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                      class="risk-score mr-5">{{item.riskScore}}</span> -->
+                                       <span
                                       class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">

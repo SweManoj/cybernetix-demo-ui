@@ -119,7 +119,8 @@
                     <img class="align-self-center" src='../assets/images/{{activity.image}}' />
                     <div class="media-body pl-3">
                         <p class="value">{{activity.value}}</p>
-                        <span class="title">{{activity.title}}</span>
+                        <span *ngIf = "selectedUser !== 'AWendler'" class="title">{{activity.title}}</span>
+                        <span *ngIf = "selectedUser == 'AWendler'" class="title">Applications</span>
                     </div>
                 </div>
             </div>

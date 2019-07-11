@@ -362,7 +362,7 @@ export class RiskyUsersComponent {
 
     activities = [
         { image: 'falg@1x.png', value: '1.2K', title: 'Events' },
-        { image: 'resources@1x.png', value: '09', title: 'Applications' },
+        { image: 'resources@1x.png', value: '09', title: 'Resources' },
         { image: 'Shape@1x.png', value: '02', title: 'Locations' },
         { image: 'violations@1x.png', value: '08', title: 'Violations' },
         { image: 'incident@1x.png', value: '02', title: 'Incidents' },

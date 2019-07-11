@@ -162,7 +162,7 @@ export class RiskyUsersComponent {
     hardCodeItemDataForDemo1 = [
         {
             generatedDateFormat: '13 June 2019',
-            generatedTimestamp: '01:14:00',
+            generatedTimestamp: '06:22:00',
             accord: false,
             pv: 'PV 094',
             riskScore: 19,
@@ -182,7 +182,7 @@ export class RiskyUsersComponent {
         },
         {
             generatedDateFormat: '13 June 2019',
-            generatedTimestamp: '02:45:00',
+            generatedTimestamp: '05:30:00',
             accord: false,
             pv: 'PV 069',
             riskScore: 118,
@@ -222,7 +222,7 @@ export class RiskyUsersComponent {
         },
         {
             generatedDateFormat: '13 June 2019',
-            generatedTimestamp: '05:30:00',
+            generatedTimestamp: '02:45:00',
             accord: false,
             pv: 'PV 061',
             riskScore: 17,
@@ -244,7 +244,7 @@ export class RiskyUsersComponent {
         },
         {
             generatedDateFormat: '13 June 2019',
-            generatedTimestamp: '06:22:00',
+            generatedTimestamp: '01:14:00',
             accord: false,
             pv: 'PV 083',
             riskScore: 2,

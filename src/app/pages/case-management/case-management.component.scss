@@ -3,13 +3,33 @@
     color: #eaeaea;
     text-align: center;
     border: 1px solid $active-nav-pills-bg;
-    font-size: 18px;
+    font-size: 16px;
     padding: 6px;
 }
 .policy-violation-date-table, 
 .policy-incident-table, 
 .policy-violation-table   {
     .ui-table{
+        .ui-table-tbody > tr {
+            color: #a0a0a0;
+            background-color: #34434E;
+
+            &:nth-child(2n) {
+                background-color: #34434E;
+            }
+
+            &:hover td {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            td {
+                border-bottom: 1px solid #5F6E79;
+            }
+        }
+        .ui-sortable-column:not(.ui-state-highlight):hover {
+            background-color: #74838E;
+        }
+
         .ui-paginator-bottom{
             display: block !important;
         }
@@ -149,6 +169,7 @@ li.nav-item {
     text-overflow: ellipsis;
     height: 45px;
     font-size: small;
+    text-align: center;
 }
 
 .ui-table .ui-table-thead>tr>th {
@@ -160,6 +181,7 @@ li.nav-item {
     background-color: $case-table-head-bg;
     color: $case-alert-text-color;
     height: 45px;
+    text-align: center
 }
 
 .ui-table .ui-table-tbody>tr {
@@ -197,7 +219,11 @@ tr {
     font-size: 14px;
     padding: 3.5px 10px;
     border-radius: 50%;
-    color: $case-table-head-bg;
+    color: #fff;
+
+    &.Low {
+        color: $case-table-head-bg;
+    }
 }
 
 .Total {
@@ -222,12 +248,35 @@ tr {
     border: 2px solid $case-low;
 }
 
+.tableStages.Critical{
+    // width: 10px; 
+    // height: 10px; 
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid #F00;
+    border-radius: 0
+}
+
 .tableStages {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    display: inline-block;
+    display: flex;
+    float: left;
+    position: relative;
+    top: 5px;
 }
+
+.priority{
+    padding-left: 10px;
+    display: flex;
+}
+
+// .priority1 {
+//     position: relative;
+//     float: left;
+//     padding-left: 20px;
+// }
 
 // policy-filter row
 .policy-filter-row {
@@ -294,7 +343,7 @@ tr {
         height: 35px !important;
     }
     .ui-dropdown .ui-dropdown-label {
-        font-size: 12px !important;
+        font-size: 14px !important;
         height: 100%;
         line-height: 2em;
         font-weight: 400;
@@ -311,7 +360,7 @@ tr {
         border: none;
         padding: 5px;
         margin-top: 0;
-        font-size: 12px;
+        font-size: 14px;
         border-bottom: 1px solid $case-filters-border-color;
         border-radius: 0;
         height: 35px;
@@ -748,7 +797,7 @@ input:checked+.slider:before {
 }
 
 .policy .ui-table .ui-table-tbody > tr:hover td {
-    background: #5F6E79;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .fa-search {

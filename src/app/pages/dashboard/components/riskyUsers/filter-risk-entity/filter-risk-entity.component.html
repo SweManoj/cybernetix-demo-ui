@@ -1,11 +1,11 @@
-<div class="container-fluid mt-3 padding-lr-20">
+<div class="container-fluid mt-3 rightIntialPadding">
     <div class="mb-3">
       <span class="recordInfo h4">{{filteredRiskyEntities.length}} records found for your keyword
         <b>"{{foundEntityName}}"</b></span>
     </div> 
   </div>
   
-  <div class="container-fluid padding-lr-20">  
+  <div class="container-fluid rightIntialPadding">  
       <div class="row mr-0">
   
         <app-risky-entity-view class="col-md-2-5 mt-3" *ngFor="let filteredRiskyEntity of filteredRiskyEntities;  let i = index"

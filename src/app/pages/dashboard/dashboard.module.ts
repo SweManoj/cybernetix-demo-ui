@@ -30,6 +30,8 @@ import { MaterialModule } from './../../material';
 import { RiskyIPComponent } from './components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
 import { PlainGlobeChartComponent } from './components/plain-globe-chart/plain-globe-chart.component';
+import {HighchartsChartModule} from 'highcharts-angular';
+import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
 
 @NgModule({ 
     declarations: [
@@ -46,7 +48,8 @@ import { PlainGlobeChartComponent } from './components/plain-globe-chart/plain-g
         FilterRiskEntityComponent,
         RiskyIPComponent,
         RiskyHostComponent,
-        PlainGlobeChartComponent
+        PlainGlobeChartComponent,
+        ShortNumberPipe
     ],
     imports: [
         CommonModule,
@@ -61,7 +64,8 @@ import { PlainGlobeChartComponent } from './components/plain-globe-chart/plain-g
         RadioButtonModule,
         ChartModule,
         MaterialModule,
-        AmChartsModule
+        AmChartsModule,
+        HighchartsChartModule
     ],
     entryComponents: [
         ContentModalComponent,

@@ -3,7 +3,19 @@
     width: 100%;
     height: 500px;
 } */
+#container {
+    width: 100%;
+    height: 400px;
+    display: block;
+    border-radius: 6px;
+}
 
+#riskByTitleContainer {
+    width: 100%; 
+    height: 400px; 
+    display: block;
+    border-radius: 6px;
+}
 .row.d-flex.justify-content-center {
     color: #A0A0A0;
     font-size: small;

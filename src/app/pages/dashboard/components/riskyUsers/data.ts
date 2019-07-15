@@ -25,7 +25,7 @@ export var bubbleDataMonth: any = [
   },
   {
     "hour": "4am",
-    "date": "2019-05-03",
+    "date": "2019-05-07",
     "value": 4,
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
@@ -151,7 +151,7 @@ export var bubbleDataMonth: any = [
   },
   {
     "hour": "4am",
-    "date": "2019-03-23",
+    "date": "2019-07-23",
     "value": 2,
       "policyViolated" : "Multiple users logged-in successfully from same IP",
   },
@@ -223,7 +223,7 @@ export var bubbleDataMonth: any = [
   },
   {
     "hour": "6am",
-    "date": "2019-03-30",
+    "date": "2019-07-30",
     "value": 2,
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
@@ -241,7 +241,7 @@ export var bubbleDataMonth: any = [
   },
   {
     "hour": "9am",
-    "date": "2019-03-30",
+    "date": "2019-07-30",
     "value": 2,
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
@@ -335,28 +335,58 @@ export var bubbleDataMonth: any = [
       "policyViolated" : "Downloding More Data From File Sharing Sites"
   },
     {
-        "hour": "1am",
+        "hour": "5am",
         "date": "2019-06-11",
-        "value": 7,
-        "policyViolated" : "Downloding More Data From File Sharing Sites"
+        "value": 17,
+        "policyViolated" : "Outbound Traffic to Spyware URL’s from Privileged User"
     },
     {
-        "hour": "2am",
+        "hour": "6am",
         "date": "2019-06-13",
         "value": 6,
-        "policyViolated" : "Downloding More Data From File Sharing Sites"
+        "policyViolated" : "Successful Login From Unusual Location - VPN"
+    },
+       {
+        "hour": "5am",
+        "date": "2019-06-13",
+        "value": 17,
+        "policyViolated" : "Abnormal Remote Access Tools Usage"
+    },
+       {
+        "hour": "4am",
+        "date": "2019-06-13",
+        "value": 23,
+        "policyViolated" : "Suspicious RDP to Multiple Hosts from Privileged User"
+    },
+       {
+        "hour": "3am",
+        "date": "2019-06-13",
+        "value": 118,
+        "policyViolated" : "Abnormal Objects Accessed on Fileshare"
+    },
+       {
+        "hour": "2am",
+        "date": "2019-06-13",
+        "value": 19,
+        "policyViolated" : "Data Exfiltration to Cloud via HTTPS"
     },
     {
-        "hour": "3am",
+        "hour": "8am",
         "date": "2019-06-12",
-        "value": 10,
-        "policyViolated" : "Downloding More Data From File Sharing Sites"
+        "value": 9,
+        "policyViolated" : "Multiple Failed Login Attempts From Unusual Location - VPN"
+    },
+     {
+        "hour": "7am",
+        "date": "2019-06-12",
+        "value": 13,
+        "policyViolated" : "Abnormal VPN Activities after BadgeIN"
     },
     {
         "hour": "4am",
         "date": "2019-06-10",
-        "value": 3,
-        "policyViolated" : "Downloding More Data From File Sharing Sites"
+        "value": 83,
+        "policyViolated" : "Outbound Traffic to Spyware URL’s from Privileged User"
     },
     {
         "hour": "5am",
@@ -366,55 +396,55 @@ export var bubbleDataMonth: any = [
     },
     {
         "hour": "6am",
-        "date": "2019-03-03",
+        "date": "2019-07-03",
         "value": 8,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "7am",
-        "date": "2019-03-06",
+        "date": "2019-07-06",
         "value": 4,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "8am",
-        "date": "2019-03-05",
+        "date": "2019-07-05",
         "value": 18,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "9am",
-        "date": "2019-03-01",
+        "date": "2019-07-01",
         "value": 12,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "10am",
-        "date": "2019-03-11",
+        "date": "2019-07-11",
         "value": 2,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "12am",
-        "date": "2019-03-13",
+        "date": "2019-07-13",
         "value": 3,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "1pm",
-        "date": "2019-03-15",
+        "date": "2019-07-15",
         "value": 10,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "2pm",
-        "date": "2019-03-25",
+        "date": "2019-07-25",
         "value": 7,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },
     {
         "hour": "3pm",
-        "date": "2019-03-05",
+        "date": "2019-07-05",
         "value": 3,
         "policyViolated" : "Downloding More Data From File Sharing Sites"
     },

@@ -59,7 +59,7 @@ export class DashboardService {
     private theme: string;
     basePath: string = null;
     constructor(private userContext: UserContext, private http: HttpClient) {
-        this.basePath = this.userContext.getBasePath();
+        this.basePath = "http://3.130.138.106:9090/v1";
         this.theme = this.userContext.getTheme();
         this.updateDefaultPie();
     }
@@ -77,7 +77,17 @@ export class DashboardService {
     }
 
     getPieChartsSummary() {
-        const url = `${this.basePath}/api/dashboard/getSummary`;
+        const url = `${this.basePath}/dashboard/counts/all`;
+        return this.http.get(url);
+    }
+
+    getRiskCountByDepartment() {
+        const url = `${this.basePath}/dashboard/riskscountbydepartment/0`;
+        return this.http.get(url);
+    }
+
+    getRiskCountByTitle() {
+        const url = `${this.basePath}/dashboard/riskscountbytitle/0`;
         return this.http.get(url);
     }
 

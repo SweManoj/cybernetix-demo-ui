@@ -27,40 +27,163 @@
 <ngb-carousel>
     <ng-template ngbSlide>
         <div class="carousel-slide-container">
-            <div class="card" *ngFor="let chart of pieChartList1">
+            <div class="card">
                 <div class="card-body">
                     <div class="pie-chart-container">
                         <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/{{
-                        chart.ico
-                    }}" />
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/logs@1x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ chart.total }}</div>
-                            <div class="title">{{ chart.title }}</div>
+                            <div class="count">650 K</div>
+                            <div class="title">Event Imported</div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/users@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">24 K</div>
+                            <div class="title">Users</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/Ip@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">20 K</div>
+                            <div class="title">IP Address</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/hostname@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">23.7 K</div>
+                            <div class="title">Hosts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/previledged users@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">1125</div>
+                            <div class="title">Priviledged Accounts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/service@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">1153</div>
+                            <div class="title">Service Accounts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   
         </div>
     </ng-template>
     <ng-template ngbSlide>
         <div class="carousel-slide-container">
-            <div class="card" *ngFor="let chart of pieChartList2">
+                        <div class="card">
                 <div class="card-body">
                     <div class="pie-chart-container">
                         <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/{{
-                        chart.ico
-                    }}" />
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/entities@1x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{ chart.total }}</div>
-                            <div class="title">{{ chart.title }}</div>
+                            <div class="count">250</div>
+                            <div class="title">High Risky IPs</div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/risky@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">193</div>
+                            <div class="title">High Risky Users</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/hostname@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">160</div>
+                            <div class="title">High Risky Hostnames</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/violations@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">156</div>
+                            <div class="title">Policy Violations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3">
+                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/incident@2x.png" />
+                        </div>
+                        <div class="chart-info mt-2 mb-1">
+                            <div class="count">85</div>
+                            <div class="title">Incidents</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pie-chart-container">
+                        <div class="ico mt-2 mb-3"><img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/actions@1x.png">
+                        </div>
+                    <div class="chart-info mt-2 mb-1"><div class="count">0</div>
+                    <div class="title">Actions</div>
+                </div>
+            </div></div></div>
         </div>
     </ng-template>
 </ngb-carousel>

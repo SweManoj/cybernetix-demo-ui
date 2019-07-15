@@ -28,15 +28,8 @@ export class LeftNavComponent {
                 ionIcon: '',
                 faIcon: 'fa fa-globe',
                 img: '',
-                title: 'CN Pulse', // this.translateService.instant('general.menu.dashboard')
-                navLink: '/cyberNetizPulse'
-            },
-            {
-                ionIcon: '',
-                faIcon: '',
-                img: 'calendar.png',
-                title: 'Summary', // this.translateService.instant('general.menu.dashboard')
-                navLink: '/policyViolationSummary'
+                title: 'Pulse', // this.translateService.instant('general.menu.dashboard')
+                navLink: '/cyberNetixPulse'
             }
         ];
     }

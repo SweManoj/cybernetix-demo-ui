@@ -1,46 +1,49 @@
-<div *ngIf="componentType === 'pie-chart'" class="header row mb-4">
+<!--<div *ngIf="componentType === 'pie-chart'" class="header row mb-4">
     <div class="col-11 col-md-11 col-sm-11 title">
         Risk By Department
     </div>
     <div class="col-1 col-md-1 col-sm-1 settings-icon">
         <span class="ion ion-md-settings"></span>
     </div>
-</div>
+</div>-->
 <div *ngIf="componentType === 'pie-chart'">
-    <div>
-        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-            [options]="pieChartOptions" [colors]="pieChartColors" [legend]="pieChartLegend">
-        </canvas>
-    </div>
-</div>
-<div *ngIf="componentType === 'gl-map'" class="header row">
-    <div class="col-11 col-md-11 col-sm-11 title">
-        Risk By Location
-    </div>
-    <div class="col-1 col-md-1 col-sm-1 settings-icon">
-        <span class="ion ion-md-settings"></span>
-    </div>
-</div>
-<div *ngIf="componentType === 'gl-map'">
-    <!-- <div class="col-md-4"> -->
-        <app-plain-globe-chart></app-plain-globe-chart>
-    <!-- </div> -->
-</div>
-<div *ngIf="componentType === 'base-chart'" class="header row mb-4">
-    <div class="col-11 col-md-11 col-sm-11 title">
-        Risk By Title
-    </div>
-    <div class="col-1 col-md-1 col-sm-1 settings-icon">
-        <span class="ion ion-md-settings"></span>
-    </div>
-</div>
-
-<div *ngIf="componentType === 'base-chart'" class="base-chart">
-    <ng-container>
-        <div>
-            <canvas baseChart [datasets]="barChartData" [options]="barChartOptions" [labels]="barChartLabels"
-                [chartType]="barChartType">
-            </canvas>
-        </div>
-    </ng-container>
-</div>
+        <!-- <div>
+             <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                 [options]="pieChartOptions" [colors]="pieChartColors" [legend]="pieChartLegend">
+             </canvas>
+         </div>-->
+         <div id="container"></div>
+     </div>
+     <div *ngIf="componentType === 'gl-map'" class="header row">
+         <div class="col-11 col-md-11 col-sm-11 title">
+             Risk By Location
+         </div>
+         <div class="col-1 col-md-1 col-sm-1 settings-icon">
+             <span class="ion ion-md-settings"></span>
+         </div>
+     </div>
+     <div *ngIf="componentType === 'gl-map'">
+         <!-- <div class="col-md-4"> -->
+             <app-plain-globe-chart></app-plain-globe-chart>
+         <!-- </div> -->
+     </div>
+     <!-- <div *ngIf="componentType === 'base-chart'" class="header row mb-4">
+         <div class="col-11 col-md-11 col-sm-11 title">
+             Risk By Title
+         </div>
+         <div class="col-1 col-md-1 col-sm-1 settings-icon">
+             <span class="ion ion-md-settings"></span>
+         </div>
+     </div> -->
+     
+     <div *ngIf="componentType === 'base-chart'" class="base-chart">
+         <ng-container>
+            <!--  <div>
+                 <canvas baseChart [datasets]="barChartData" [options]="barChartOptions" [labels]="barChartLabels"
+                     [chartType]="barChartType">
+                 </canvas>
+             </div> -->
+             <div id="riskByTitleContainer"></div>
+         </ng-container>
+     </div>
+     

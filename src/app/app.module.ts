@@ -24,6 +24,8 @@ import { ModalUtilComponent } from './core/common/modal-util/modal.util.componen
 
 import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
 
 @NgModule({
     declarations: [
@@ -47,7 +49,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         NgbModule,
         CaseManagementModule,
         BrowserAnimationsModule,
-        MaterialModule
+        MaterialModule,
+        HighchartsChartModule,
+        SharedPipesModule
     ],
     exports:[
         MaterialModule

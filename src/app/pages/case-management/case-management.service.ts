@@ -15,7 +15,7 @@ export class CaseManagementService {
   }
 
   getAllCases(){
-    debugger
+    //debugger
     const url = `${this.basepath}/api/dashboard/getAllCases`;
     return this.http.get(url);
   }

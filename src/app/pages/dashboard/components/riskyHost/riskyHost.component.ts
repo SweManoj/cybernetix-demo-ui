@@ -22,7 +22,7 @@ export class RiskyHostComponent implements OnInit {
         { type: 'host', value: 'PUNDESK001', score: 30, img: false, location: 'Munich, Germany', lastSeen: '23 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'PAV58329' },
         { type: 'host', value: 'USADESK25', score: 89, img: false, location: 'Amsterdam, Netherlands ', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
-        { type: 'host', value: 'LONDESK588', score: 49, img: false, location: 'Beijing, China', lastSeen: '23 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
+        { type: 'host', value: 'LONDESK588', score: 95, img: false, location: 'Beijing, China', lastSeen: '27 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
         { type: 'host', value: 'AUSLAP4873', score: 70, img: false, location: 'Paris, France', lastSeen: '24 Jun 2019 18:38:00', peer: 3, lastSeenUser: 'JRU87122' }];
 
     hardCodeItemData = [
@@ -67,6 +67,75 @@ export class RiskyHostComponent implements OnInit {
             }
         },
 
+    ];
+
+    hardCodeItemForDemo = [
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 87,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Inbound Telnet Traffic From Blacklisted IP's"
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 64,
+            ruleInfo: {
+                ruleId: 2,
+                title: "Inbound Spam Traffic From OFAC Countries"
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 11,
+            ruleInfo: {
+                ruleId: 2,
+                title: "Inbound Uncategorized Traffic From Multiple URL's"
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '07:10:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 4,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Outbound P2P File Sharing Traffic to Rare Host'
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '09:22:00',
+            accord: false,
+            pv: 'PV 041',
+            riskScore: 36,
+            ruleInfo: {
+                ruleId: 4,
+                title: 'Outbound Malicious Traffic from Multiple Ports'
+            }
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '14:45:00',
+            accord: false,
+            pv: 'PV 069',
+            riskScore: 82,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Excessive Bytes Sent to Suspicious External Host via FTP'
+            }
+        }
     ];
 
     threatCategories = [
@@ -216,4 +285,7 @@ export class RiskyHostComponent implements OnInit {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
+    gotoSummery(){
+        window.open("#/policyViolationSummary", '_blank');
+    }
 }

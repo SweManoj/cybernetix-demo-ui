@@ -156,7 +156,7 @@ export class GlobeChartComponent implements AfterViewInit {
     constructor(private zone: NgZone,private dashboardService: DashboardService) { }
 
     ngAfterViewInit() {
-        /*this.dashboardService.getRiskCountByDepartment().subscribe((res: any) => {
+        this.dashboardService.getRiskCountByDepartment().subscribe((res: any) => {
            
             res.forEach(riskScoreByDept => {
               this.riskScoreByDepartments.push({'name' : riskScoreByDept.departName, 'y' : riskScoreByDept.riskScoreCount})
@@ -175,10 +175,10 @@ export class GlobeChartComponent implements AfterViewInit {
              this.riskByTitleOptions.xAxis.categories = this.riskScoreByTitles;
              this.riskByTitleOptions.series[0].data = this.riskScoreByTitleCount;
              Highcharts.chart('riskByTitleContainer', this.riskByTitleOptions);
-        });*/
+        });
        
-         Highcharts.chart('container', this.options);
-          Highcharts.chart('riskByTitleContainer', this.riskByTitleOptions);
+         /*Highcharts.chart('container', this.options);
+          Highcharts.chart('riskByTitleContainer', this.riskByTitleOptions);*/
     }
 
 }

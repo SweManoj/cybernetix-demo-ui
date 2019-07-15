@@ -8,7 +8,7 @@ export class TopDetailsService {
     basePath: string;
 
     constructor(private http: HttpClient, private userContext: UserContext) {
-        this.basePath = this.userContext.getBasePath();
+        this.basePath = "http://3.130.138.106:9090/v1";
     }
 
     getUploadExceedData() {
@@ -17,12 +17,13 @@ export class TopDetailsService {
     }
 
     getTopThreats() {
-        const url = `${this.basePath}/api/dashboard/getThreats?records=5`;
+        const url = `${this.basePath}/dashboard/topThreats/0`;
         return this.http.get(url);
-    }
+    }  
+
 
     getTopViolations() {
-        const url = `${this.basePath}/api/dashboard/getViolations?records=4`;
+        const url = `${this.basePath}/dashboard/violations/0?offset=0&size=6`;
         return this.http.get(url);
     }
 

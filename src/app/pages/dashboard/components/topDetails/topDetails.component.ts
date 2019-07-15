@@ -12,8 +12,8 @@ export class TopDetailsComponent implements AfterViewInit {
 
     selectRiskyType = 'USER';
     riskUsersList;
-    threatsList: any;
-    violationsList: any[];
+    threats: any;
+    violations: any[];
 
     @Input() componentType: string;
 
@@ -226,17 +226,11 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     getThreats() {
-        /* this.topDetailsService.getTopThreats().subscribe((res: any) => {
-            for (const threat of res.data) {
-                const genDate = threat.displaytimestamp.generatedTimestampISODate;
-                threat.daysFromNow = moment(genDate,'YYYYMMDD').fromNow();
-                threat.days = moment(genDate).format('ddd, DD MMM YY');
-                threat.time = moment(genDate).format('hh:mm:ss');
-            }
-            this.threatsList = res.data;  - dynamic value from db
-        }); */
+        this.topDetailsService.getTopThreats().subscribe((res: any) => {
+            this.threats = res;
+        });
 
-        this.threatsList = [
+        /*this.threatsList = [
             {
                 title: 'Abnormal Beaconing from Host - Proxy',
                 count: 47
@@ -259,14 +253,13 @@ export class TopDetailsComponent implements AfterViewInit {
             }
         ];
 
-        this.threatsList.sort((a, b) => b.count - a.count);
+        this.threatsList.sort((a, b) => b.count - a.count);*/
     }
 
     getViolations() {
-        /* this.topDetailsService.getTopViolations().subscribe((res: any) => {
-            this.violationsList = res.data;
-            this.violationsList.sort((a, b) => b.count - a.count);
-        }); */
+        this.topDetailsService.getTopViolations().subscribe((res: any) => {
+            this.violations = res;
+        });
         // this.threatVectors.sort((a, b) => a.count - b.count);
     }
 

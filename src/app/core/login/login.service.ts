@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { RequestOptions, Headers, } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class LoginService {
@@ -9,9 +11,8 @@ export class LoginService {
     constructor(private http: HttpClient) {
     }
 
-    login(loginData) {
-        const url = `/api/auth/authLog`;
-        return this.http.post(url, loginData);
+    login(loginData) : Observable<any> {
+        return this.http.post(`http://localhost:9090/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`,null,{headers:{"Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0"}});
     }
 
     get isLoggedIn() {

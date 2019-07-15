@@ -28,8 +28,8 @@ export class LoginComponent {
     }
     onSubmit(): void {
         if (this.form.valid) {
-            this.loginService.login(this.form.value).subscribe((res: any) => {
-                if (res.status == 'true') {
+            this.loginService.login(this.form.value).subscribe(res => {
+                if (res) {
                     const authInfo = {
                         authToken: res.authToken
                     };
@@ -38,10 +38,9 @@ export class LoginComponent {
                     this.loginService.loggedIn.next(true);
                     this.router.navigate(['/dashboard']);
                 }
-                else{
+            },error => {
                     this.isError = true;
-                }
-            });
+                })
         }
     }
 }

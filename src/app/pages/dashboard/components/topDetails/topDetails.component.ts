@@ -24,23 +24,24 @@ export class TopDetailsComponent implements AfterViewInit {
         { id: 'Cyber Threat', count: 12 },
         { id: 'Flight Risk', count: 9 }
     ];
-
-    riskyObjects = [
-        { type: 'user', value: 'ADittmer', score: 94, img: true },
+    /* { type: 'user', value: 'ADittmer', score: 94, img: true },
         { type: 'user', value: 'Adm-EMoor', score: 89, img: true },
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true },
         { type: 'user', value: 'AWendler', score: 97, img: true },
-        { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
-        { type: 'ip address', value: '10.82.32.212', score: 95, img: false },
-        { type: 'ip address', value: '82.102.21.217', score: 60, img: false },
-        { type: 'ip address', value: '95.181.116.77', score: 85, img: false },
-        { type: 'ip address', value: '23.94.213.6', score: 89, img: false },
-        { type: 'ip address', value: '69.249.19.217', score: 76, img: false },
-        { type: 'host', value: 'PUNDESK001', score: 30, img: false },
-        { type: 'host', value: 'USADESK25', score: 89, img: false },
-        { type: 'host', value: 'CHNLAP963', score: 66, img: false },
-        { type: 'host', value: 'LONDESK588', score: 95, img: false },
-        { type: 'host', value: 'AUSLAP4873', score: 70, img: false }
+        { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },*/
+
+    riskyObjects = [
+       
+        { type: 'ip address', value: '10.82.32.212', score: 95, img: false, entityId : '10.82.32.212' },
+        { type: 'ip address', value: '82.102.21.217', score: 60, img: false, entityId : '82.102.21.217'  },
+        { type: 'ip address', value: '95.181.116.77', score: 85, img: false, entityId : '95.181.116.77'  },
+        { type: 'ip address', value: '23.94.213.6', score: 89, img: false, entityId : '23.94.213.6'  },
+        { type: 'ip address', value: '69.249.19.217', score: 76, img: false, entityId : '69.249.19.217'  },
+        { type: 'host', value: 'PUNDESK001', score: 30, img: false, entityId : 'PUNDESK001'  },
+        { type: 'host', value: 'USADESK25', score: 89, img: false, entityId : 'USADESK25'  },
+        { type: 'host', value: 'CHNLAP963', score: 66, img: false , entityId : 'CHNLAP963' },
+        { type: 'host', value: 'LONDESK588', score: 95, img: false , entityId : 'LONDESK588' },
+        { type: 'host', value: 'AUSLAP4873', score: 70, img: false , entityId : 'AUSLAP4873' }
     ];
 
     topRiskyObjects = {
@@ -119,9 +120,14 @@ export class TopDetailsComponent implements AfterViewInit {
 
     constructor(private topDetailsService: TopDetailsService,
         private router: Router) {
+        this.topDetailsService.getTopRiskyUsers().subscribe((res: any) => {
+            res.forEach(data => {
+               this.riskyObjects.push({type: 'user', entityId: data.entityId, score: data.riskScore, img: true, value : data.user.u_firstName + ' ' + data.user.u_lastName });
+            });
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
-
         this.riskyObjects.sort((a, b) => -(a.score - b.score)); // desending order
+        });
+        
         
     }
 

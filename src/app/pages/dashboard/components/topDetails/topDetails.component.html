@@ -28,8 +28,8 @@
     <ng-container *ngFor="let selectedRisky of selectedRiskies;let i=index;">
         <div class="row user-item" [ngStyle]="{'padding': riskyTypeSelected=='user'?'0.8rem':'0.9rem'}">
             <div *ngIf="riskyTypeSelected=='user'" class="col-2 col-sm-2 col-md-2 pl-2">
-                <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{selectedRisky.value}}.jpg' />
+           <img class="profile-image rounded-circle"
+                    src="./../../../../../assets/images/users/service_user.jpeg" />
             </div>
             <div *ngIf="riskyTypeSelected=='ip address'" class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image" src='./../../../../../assets/images/dashboard_icons/Ip@2x.png' />
@@ -39,7 +39,7 @@
             </div>
             <div class="centerAlign col-md-8">
                 <a *ngIf="selectedRisky.value" class="cursorPointer"
-                    (click)="riskyUserTimeline(selectedRisky.value)">{{selectedRisky.value}}</a>
+                    (click)="riskyUserTimeline(selectedRisky.entityId)">{{selectedRisky.value}}</a>
                 <!-- <a *ngIf="!user.userid" [routerLink]="['/riskyUser', selectedRisky.sourceAddress]">{{selectedRisky.sourceAddress}}</a> -->
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">

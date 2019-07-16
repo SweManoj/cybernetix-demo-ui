@@ -408,13 +408,13 @@ export class RiskyUsersComponent {
         }
     ];
 
-    activities = [
-        { image: 'falg@1x.png', value: '1.2K', title: 'Events' },
-        { image: 'resources@1x.png', value: '09', title: 'Resources' },
-        { image: 'Shape@1x.png', value: '02', title: 'Locations' },
-        { image: 'violations@1x.png', value: '08', title: 'Violations' },
-        { image: 'incident@1x.png', value: '02', title: 'Incidents' },
-    ];
+    activities = [];/*[
+        { image: 'falg@1x.png', title: 'Events' },
+        { image: 'resources@1x.png', title: 'Resources' },
+        { image: 'Shape@1x.png', title: 'Locations' },
+        { image: 'violations@1x.png', title: 'Violations' },
+        { image: 'incident@1x.png', title: 'Incidents' },
+    ];*/
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService) {
@@ -600,14 +600,26 @@ export class RiskyUsersComponent {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
+            this.riskyUserService.getRiskyUserDetails(this.selectedUser).subscribe((res: any) => {
+                res.score = Math.round(res.score);
+                this.userData = res;
+            });
 
-            this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
+            this.riskyUserService.getRiskyUserCountDetails(this.selectedUser).subscribe((res: any) => {
+                this.activities.push({ image: 'falg@1x.png', title: 'Events', value: res.events});
+                this.activities.push({ image: 'resources@1x.png', title: 'Resources', value: res.resources});
+                this.activities.push({ image: 'Shape@1x.png', title: 'Locations', value: res.locations });
+                this.activities.push({ image: 'violations@1x.png', title: 'Violations', value: res.violations });
+                this.activities.push({ image: 'incident@1x.png', title: 'Incidents', value : res.incidents });
+            });
+
+        /*    this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
             this.selectedUserInfo.forEach(res => {
 
                 if (res.value == this.selectedUser) {
                     this.userData = res;
                 }
-            })
+            })*/
             if (this.selectedUser == 'Alysa') {
                 this.hardCodeItemData = this.flightUserHardCodeItemData;
             }

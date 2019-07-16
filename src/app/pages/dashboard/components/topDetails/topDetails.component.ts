@@ -122,7 +122,7 @@ export class TopDetailsComponent implements AfterViewInit {
         private router: Router) {
         this.topDetailsService.getTopRiskyUsers().subscribe((res: any) => {
             res.forEach(data => {
-               this.riskyObjects.push({type: 'user', entityId: data.entityId, score: data.riskScore, img: true, value : data.user.u_firstName + ' ' + data.user.u_lastName });
+               this.riskyObjects.push({type: 'user', entityId: data.entityId, score: Math.round(data.riskScore), img: true, value : data.user.u_firstName + ' ' + data.user.u_lastName });
             });
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
         this.riskyObjects.sort((a, b) => -(a.score - b.score)); // desending order

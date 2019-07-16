@@ -45,6 +45,16 @@ export class RiskyUserService {
         return this.http.get(url);
     }
 
+    getRiskyUserDetails(entityId) {
+        const url = `http://3.130.138.106:9090/v1/entity/${entityId}`;
+        return this.http.get(url);
+    }
+
+    getRiskyUserCountDetails(entityId) {
+        const url = `http://3.130.138.106:9090/v1/entity/counts/${entityId}`;
+        return this.http.get(url);
+    }
+
     getSelectedUserData(sourceId, isResource) {
         const url = `${this.basepath}/api/dashboard/get_Userdata_by_Source?source=${sourceId}&resource=${isResource}`;
         return this.http.get(url);

@@ -31,9 +31,9 @@
                 <div class="row m-auto" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
                         <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image rounded-circle mt-4"
-                            src='./../../../../../assets/images/users/{{userData.value}}.jpg' style="width: 4rem;"/>
+                            src='./../../../../../assets/images/users/service_user.jpeg' style="width: 4rem;"/>
                         <div class="user-info m-t-sm">
-                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.value}}</span>
+                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.user.u_firstName}} {{userData.user.u_lastName}}</span>
                             <p></p>
                         </div>
                     </div>
@@ -42,12 +42,12 @@
                         <div class="col-md-5 mr-1">
                             <div class="mt-2">
                                 <span class="captionTitle">Role</span>
-                                <p class="captionData">{{userData.role}}
+                                <p class="captionData">{{userData.user.u_title}}
                                 </p>
                             </div>
                             <div>
                                 <span class="captionTitle">Department</span>
-                                <p class="captionData">{{userData.department}}
+                                <p class="captionData">{{userData.user.u_departmentName}}
                                 </p>
                             </div>
                         </div>
@@ -55,14 +55,14 @@
                             <div class="col-md-7">
                                 <div class="mt-2">
                                     <span class="captionTitle">Location</span>
-                                    <p class="captionData">{{userData.location}}
+                                    <p class="captionData">{{userData.user.u_country}}
                                     </p>
                                 </div>
 
                                 <div>
                                     <span class="captionTitle">Reporting
                                         Manager</span>
-                                    <p class="captionData">{{userData.reportingManager}}
+                                    <p class="captionData">
                                     </p>
                                 </div>
                             </div>
@@ -70,13 +70,13 @@
                                 <div class="mt-2">
                                     <span class="captionTitle">Creation
                                         Date</span>
-                                    <p class="captionData">{{userData.creationDate}}</p>
+                                    <p class="captionData">{{userData.user.u_startDate}}</p>
                                 </div>
 
                                 <div>
                                     <span class="captionTitle">Last
                                         Working Day</span>
-                                    <p class="captionData">{{userData.lastWorkDay}}</p>
+                                    <p class="captionData">{{userData.user.u_employeeTerminationDate}}</p>
                                 </div>
                             </div>
                         </div>

@@ -55,6 +55,11 @@ export class RiskyUserService {
         return this.http.get(url);
     }
 
+    getPolicyViolationForEntity(entityId) {
+        const url = `http://3.130.138.106:9090/v1/entity/policiesViolation/${entityId}`;
+        return this.http.get(url);
+    }
+
     getSelectedUserData(sourceId, isResource) {
         const url = `${this.basepath}/api/dashboard/get_Userdata_by_Source?source=${sourceId}&resource=${isResource}`;
         return this.http.get(url);

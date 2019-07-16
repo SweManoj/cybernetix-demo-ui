@@ -37,6 +37,7 @@ export class RiskyUsersComponent {
     selectedUserDetails: any = {};
     selectedView = 'timeline';
     private offset: number = 0;
+    policyViolations = [];
     selectedUserInfo: any[];
     userData: any;
     riskyObjects = [
@@ -611,6 +612,13 @@ export class RiskyUsersComponent {
                 this.activities.push({ image: 'Shape@1x.png', title: 'Locations', value: res.locations });
                 this.activities.push({ image: 'violations@1x.png', title: 'Violations', value: res.violations });
                 this.activities.push({ image: 'incident@1x.png', title: 'Incidents', value : res.incidents });
+            });
+
+            this.riskyUserService.getPolicyViolationForEntity(this.selectedUser).subscribe((res: any) => {
+                res.forEach(data => {
+                   data.accord = false;
+                });
+                this.policyViolations = res;
             });
 
         /*    this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');

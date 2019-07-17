@@ -91,6 +91,11 @@ export class DashboardService {
         return this.http.get(url);
     }
 
+    getRiskCountByLocation() {
+        const url = `${this.basePath}/dashboard/riskscountbycountry/0`;
+        return this.http.get(url);
+    }
+
     updateDefaultPie() {
         switch (this.theme) {
             case "black-theme": {

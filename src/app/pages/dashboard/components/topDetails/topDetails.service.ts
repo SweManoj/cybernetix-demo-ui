@@ -27,8 +27,8 @@ export class TopDetailsService {
         return this.http.get(url);
     }
 
-    getTopRiskyUsers() {
-        const url = `${this.basePath}/dashboard/violators/0/NULL?offset=0&size=5`;
+    getTopRiskyUsers(entityType) {
+        const url = `${this.basePath}/dashboard/violators/0/${entityType}?offset=0&size=5`;
         return this.http.get(url);
     }
 

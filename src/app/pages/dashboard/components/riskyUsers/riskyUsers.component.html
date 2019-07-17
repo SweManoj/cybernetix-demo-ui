@@ -137,7 +137,7 @@
     <ng-container *ngIf = "selectedUser !== 'AWendler'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
-                <span>{{policyViolations[0].latestViolationTime | date: 'dd MMM yyyy'}}</span>
+                <span *ngIf="policyViolations.length > 0">{{policyViolations[0].latestViolationTime | date: 'dd MMM yyyy'}}</span>
             </div>
             <div class="row initialPadding" *ngFor="let item of policyViolations">
                 <div class="col-md-12 d-flex">

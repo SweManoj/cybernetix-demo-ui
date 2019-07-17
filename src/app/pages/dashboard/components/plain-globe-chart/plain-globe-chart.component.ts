@@ -5,22 +5,37 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
+import { DashboardService } from '../../dashboard.service';
 
 @Component({
   selector: 'app-plain-globe-chart',
   templateUrl: './plain-globe-chart.component.html'
 })
-export class PlainGlobeChartComponent {
+export class PlainGlobeChartComponent implements OnInit{
 
-  constructor(private zone: NgZone) { }
+  private riskCountByLocation = {};
+
+  constructor(private zone: NgZone,private dashboardService: DashboardService) { }
 
   ngAfterViewInit() {
-    this.zone.runOutsideAngular(() => {
+   /* this.zone.runOutsideAngular(() => {
       this.initializeChart();
+    });*/
+  }
+
+  ngOnInit(){
+    this.dashboardService.getRiskCountByLocation().subscribe((res: any) =>{
+        res.forEach(countryData => {
+          this.riskCountByLocation[countryData.countryCode.toUpperCase()] = countryData.riskScoreCount;
+        });
+        this.zone.runOutsideAngular(() => {
+          this.initializeChart();
+        });
     });
   }
 
   initializeChart() {
+    var that = this;
     // Create map instance
     var chart = am4core.create("plainGlobeChart", am4maps.MapChart);
 
@@ -96,7 +111,7 @@ export class PlainGlobeChartComponent {
 
     polygonSeries.events.on("inited", function () {
       polygonSeries.mapPolygons.each(function (mapPolygon) {
-        let count = data[mapPolygon.id];
+        let count = that.riskCountByLocation[mapPolygon.id];
 
         if (count > 0) {
           let polygon = measelsSeries.mapPolygons.create();

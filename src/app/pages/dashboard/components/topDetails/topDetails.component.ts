@@ -120,7 +120,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     constructor(private topDetailsService: TopDetailsService,
         private router: Router) {
-        this.topDetailsService.getTopRiskyUsers().subscribe((res: any) => {
+        this.topDetailsService.getTopRiskyUsers('USER').subscribe((res: any) => {
             res.forEach(data => {
                this.riskyObjects.push({type: 'user', entityId: data.entityId, score: Math.round(data.riskScore), img: true, value : data.user.u_firstName + ' ' + data.user.u_lastName });
             });

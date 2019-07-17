@@ -18,6 +18,7 @@ export class CaseManagementComponent implements OnInit {
   selectedItems: any;
   selectedPolicyItems: any;
   allUsers: any = [];
+  incidents = [];
   totalRecords: number = 0;
   recordsReturned: number = 0;
   private offset: number = 0;
@@ -176,7 +177,8 @@ export class CaseManagementComponent implements OnInit {
     ]
   };
   @ViewChild('day') day: Table;
-  myDays: string[] = [];
+  myDays = [];
+  policyViolations = [];
   myPolicies: any[] = [];
   selectedIndex = 0;
 
@@ -185,37 +187,72 @@ export class CaseManagementComponent implements OnInit {
   highItem = 0;
   lowItem = 0;
   totalItem = 0;
+  todayDate = new Date();
 
   constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService, private router: Router) {
     this.offset = 0;
     this.recordsReturned = 0;
 
     // Use `key` and `value` - read key value pairs from an object
-    for (let key in this.myObjects)
+/*    for (let key in this.myObjects)
       this.myDays.push(key);
 
     if (this.myDays[0]) {
       this.myPolicies = this.myObjects[this.myDays[0]];
       this.getStageValues();
+    }*/
+
+    this.myDays.push(this.todayDate);
+
+    for (let dayIndex = 1; dayIndex < 14 ; dayIndex ++) {
+        const date = new Date();
+        date.setDate(date.getDate() - dayIndex);
+        this.myDays.push(date);
     }
   }
 
   getStageValues() {
-    this.criticalItem = this.myPolicies.filter(myPolicy => myPolicy.priority == 'Critical').length;
-    this.mediumItem = this.myPolicies.filter(myPolicy => myPolicy.priority == 'Medium').length;
-    this.highItem = this.myPolicies.filter(myPolicy => myPolicy.priority == 'High').length;
-    this.lowItem = this.myPolicies.filter(myPolicy => myPolicy.priority == 'Low').length;
+    this.criticalItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'CRITICAL').length;
+    this.mediumItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'MEDIUM').length;
+    this.highItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'HIGH').length;
+    this.lowItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'LOW').length;
     this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
   }
 
   ngOnInit() {
-    this.getAllUsers();
+    //this.getAllUsers();
+      this.getPolicyViolations();
+      this.getAllIncidents();
   }
 
-  daySelected(rowIndex: number) {
+  getPolicyViolations() {
+      const selectedDate = new Date(this.todayDate);
+      const endDate = new Date(this.todayDate);
+      selectedDate.setHours(0,0,0,0);
+      endDate.setHours(23,59,59,999);
+    this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe( (res: any) => {
+        this.policyViolations = res;
+    });
+  }
+
+    getAllIncidents() {
+      this.caseManagmentService.getAllIncidents(0, 1000).subscribe((response: any) =>{
+           this.incidents = response;
+      });
+    }
+
+  daySelected(date, rowIndex) {
     this.selectedIndex = rowIndex;
-    this.myPolicies = this.myObjects[this.myDays[rowIndex]];
-    this.getStageValues();
+    const selectedDate = new Date(date);
+    const endDate = new Date(date);
+    //this.myPolicies = this.myObjects[this.myDays[rowIndex]];
+      selectedDate.setHours(0,0,0,0);
+      endDate.setHours(23,59,59,999);
+      this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe( (res: any) => {
+          this.policyViolations = res;
+          this.getStageValues();
+      });
+
   }
 
   onPolicyRowSelect(event: any) {

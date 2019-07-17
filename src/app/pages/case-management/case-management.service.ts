@@ -9,8 +9,11 @@ export class CaseManagementService {
 
   private theme: string;
   basepath: string;
+  apiPath: string;
+
   constructor(private http: HttpClient, private userContext: UserContext) {
       this.basepath = this.userContext.getBasePath();
+      this.apiPath = 'http://3.130.138.106:9090/caseMgmt';
       this.theme = this.userContext.getTheme();
   }
 
@@ -19,4 +22,17 @@ export class CaseManagementService {
     const url = `${this.basepath}/api/dashboard/getAllCases`;
     return this.http.get(url);
   }
+
+    getAllPolicyViolations(startDateTime, endDateTime, offset, size) {
+        const url = `${this.apiPath}/entity/${startDateTime}/${endDateTime}/?offset=${offset}&size=${size}`;
+        return this.http.get(url);
+    }
+
+
+    getAllIncidents(offset, size) {
+        const url = `${this.apiPath}/entity/getIncidents/${offset}/${size}`;
+        return this.http.get(url);
+    }
+
+
 }

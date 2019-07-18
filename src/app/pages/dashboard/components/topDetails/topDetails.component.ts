@@ -240,7 +240,7 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     getServiceAccounts() {
-        this.topDetailsService.getTopUsers('ServiceAccount').subscribe((users: any) => {
+        this.topDetailsService.getTopUsers('Service').subscribe((users: any) => {
             this.serviceAccount = users;
         });
 

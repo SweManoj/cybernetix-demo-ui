@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   login(loginData): Observable<any> {
-    return this.http.post(`http://localhost:9090/cybernetix/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
+    return this.http.post(`${environment.serverUrl}/cybernetix/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
   }
 
   get isLoggedIn() {
@@ -28,7 +28,7 @@ export class LoginService {
   }
 
   refreshAuthToken(refreshtoken): Observable<any> {
-    return this.http.post(`http://localhost:9090/cybernetix/oauth/token?grant_type=refresh_token&refresh_token=${refreshtoken}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
+    return this.http.post(`${environment.serverUrl}/cybernetix/oauth/token?grant_type=refresh_token&refresh_token=${refreshtoken}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
   }
 
 }

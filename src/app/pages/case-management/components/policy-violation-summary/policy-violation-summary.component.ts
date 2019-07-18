@@ -6,6 +6,8 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { ActivatedRoute, Router} from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { html } from "d3";
 
 export interface User {
@@ -19,6 +21,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
     priority:any = "";
     status:any = "";
     isUpdate: boolean  = false;
+    selectedPolicy: any;
+    policyDetails = {};
 
     myControl = new FormControl();
     options: User[] = [
@@ -96,7 +100,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
 
-    constructor(private formBuilder: FormBuilder, private policyViolationSummaryService: PolicyViolationSummaryService) {
+    constructor(private formBuilder: FormBuilder, private policyViolationSummaryService: PolicyViolationSummaryService,
+                private routeParam: ActivatedRoute, private router: Router,private _snackBar: MatSnackBar) {
         this.initForm();
     }
     
@@ -128,6 +133,24 @@ export class PolicyViolationSummaryComponent implements OnInit {
             map(value => typeof value === 'string' ? value : value.name),
             map(name => name ? this._filter(name) : this.options.slice())
             );
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedPolicy = params.get('violationId');
+            this.getViolatedPolicy(this.selectedPolicy);
+        });
+    }
+
+    getViolatedPolicy(violationId) {
+        this.policyViolationSummaryService.getPolicyDetails(violationId).subscribe((res: any) => {
+            this.policyDetails = res;
+        });
+    }
+
+    assignPolicy(violationId) {
+        this.policyViolationSummaryService.assignPolicyToUser(violationId).subscribe((response: any) => {
+                this._snackBar.open('Assigned to you successfully', null, {
+                    duration: 2000,
+                });
+        });
     }
 
     displayFn(user?: User): string | undefined {

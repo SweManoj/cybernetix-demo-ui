@@ -309,7 +309,7 @@ export class CaseManagementComponent implements OnInit {
   }
 
   goToPolicyViolationSummaryPage() {
-    window.open("#/policyViolationSummary", '_blank');
+   // window.open("#/policyViolationSummary", '_blank');
     //this.router.navigate([]).then(result => {  window.open("#/policyViolationSummary", '_blank'); });
     //this.router.navigateByUrl('/policyViolationSummary');
   }

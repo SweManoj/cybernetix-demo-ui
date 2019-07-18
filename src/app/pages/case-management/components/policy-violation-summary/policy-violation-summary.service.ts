@@ -14,9 +14,19 @@ export class PolicyViolationSummaryService {
         this.apiPath = this.userContext.getServerUrl();
     }
 
+    getPolicyDetails(violationId) {
+        const url = `${this.apiPath}/pvCasemgmt/findOrAddPolicyViolationSummary/${violationId}`;
+        return this.http.post(url, {}, {});
+    }
+
     updatePolicy(policyData, violationId) {
         const url = `${this.apiPath}/pvCasemgmt/updatepolicyViolation/${violationId}`;
         return this.http.post(url, policyData, {});
+    }
+
+    assignPolicyToUser(violationId){
+        const url = `${this.apiPath}/pvCasemgmt/assigntoMePolicy/${violationId}`;
+        return this.http.patch(url, {}, {});
     }
 
 

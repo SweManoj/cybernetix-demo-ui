@@ -286,6 +286,6 @@ export class RiskyHostComponent implements OnInit {
     }
 
     gotoSummery(){
-        window.open("#/policyViolationSummary", '_blank');
+        //window.open("#/policyViolationSummary", '_blank');
     }
 }

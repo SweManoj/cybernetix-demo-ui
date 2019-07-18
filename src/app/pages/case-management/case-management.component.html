@@ -106,7 +106,7 @@
                                         </p-table>
                                     </div>
                                     <mat-spinner *ngIf="fetchingPolicyViolationsInProgress" style="margin: 15% 35%;"></mat-spinner>
-                                    <div class="col-md-10" style="padding: inherit; text-align: center; margin-top: 10%; font-size: 20px;" *ngIf="policyViolations.length == 0">
+                                    <div class="col-md-10" style="padding: inherit; text-align: center; margin-top: 10%; font-size: 20px;" *ngIf="policyViolations.length == 0 && !fetchingPolicyViolationsInProgress">
                                         <p>No Policy Violations found</p>
                                     </div>
 
@@ -140,8 +140,10 @@
                                                 <ng-template class="policy" pTemplate="body" let-rowData let-myPolicy
                                                     let-rowIndex="rowIndex"
                                                     style="margin-left:5px;margin-right:5px;padding:5px 5px;">
+                                                 <!--   <tr [pSelectableRow]="rowData"
+                                                        (click)="goToPolicyViolationSummaryPage()">-->
                                                     <tr [pSelectableRow]="rowData"
-                                                        (click)="goToPolicyViolationSummaryPage()">
+                                                        [routerLink]="['/policyViolationSummary', myPolicy.violationId]">
                                                         <td style="padding: 0px 50px;">{{myPolicy.policyId}}</td>
                                                         <td>{{myPolicy.generationTime | date : 'hh:mm:ss'}} Hrs</td>
                                                         <td  style="color:#099bb5;" >{{myPolicy.policyName}}</td>

@@ -22,7 +22,7 @@ import { TestEsComponent } from './components/test-es/test-es.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TimeAgoPipe } from 'time-ago-pipe';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MaterialModule } from './../../material';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -42,7 +42,9 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     ReactiveFormsModule,
     MaterialModule,
     NgScrollbarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
+
   ],
   declarations: [
     CaseManagementComponent,

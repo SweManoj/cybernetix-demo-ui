@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <h3 class="title">PV1001 <span>- Multiple acount lockedout detected - PUNCEF101</span></h3>
+            <h3 class="title">{{policyDetails.violation.id}} <span>- {{policyDetails.violation.policyName}} - {{policyDetails.violation.violator | uppercase}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
-            <button class="assign-btn" mat-raised-button>Assign to Me</button>
+            <button class="assign-btn" mat-raised-button (click) = "assignPolicy(policyDetails.violation.id)">Assign to Me</button>
             <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i class="fa fa-angle-up"></i></button>
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
@@ -23,7 +23,6 @@
                 <div class="block-content">
                     <div class="block-title"><i class="fa fa-caret-right"></i> <span>Description</span></div>
                     <div class="block-description">
-                        In this policy violation, user was trying to access machine which is restricted to access by group policy
                     </div>
                 </div>
                 <div class="block-content mb-4">
@@ -34,17 +33,17 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">09/05/2019 11:23:00</div>
+                        <div class="col-sm-6 dataValue">{{policyDetails.violation_date | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="priority" (ngModelChange)="policyDataChange($event)" name="priority" placeholder="Select Priority">
-                                    <mat-option value="High">High</mat-option>
-                                    <mat-option value="Medium">Medium</mat-option>
-                                    <mat-option value="Low">Low</mat-option>
+                                <mat-select [(ngModel)]="policyDetails.violation.priority" (ngModelChange)="policyDataChange($event)" name="priority" placeholder="Select Priority">
+                                    <mat-option value="HIGH">High</mat-option>
+                                    <mat-option value="MEDIUM">Medium</mat-option>
+                                    <mat-option value="LOW">Low</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -52,22 +51,22 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Affected Entity	</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue"><a href="#">PUN1020</a></div>
+                        <div class="col-sm-6 dataValue"><a [routerLink]="['/riskyUser', policyDetails.violation.violator]">{{policyDetails.violation.violator | uppercase}}</a></div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Indicators of Attack</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">5</div>
+                        <div class="col-sm-6 dataValue"></div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="status" (ngModelChange)="policyDataChange($event)" name="status" placeholder="Select Status">
-                                    <mat-option value="Unreviewed">Unreviewed</mat-option>
-                                    <mat-option value="InProgress">In Progress</mat-option>
-                                    <mat-option value="Reviewed">Reviewed</mat-option>
+                                <mat-select [(ngModel)]="policyDetails.violation.violationStatus" (ngModelChange)="policyDataChange($event)" name="status" placeholder="Select Status">
+                                    <mat-option value="UNREVIEWED">Unreviewed</mat-option>
+                                    <mat-option value="INPROGRESS">In Progress</mat-option>
+                                    <mat-option value="REVIEWED">Reviewed</mat-option>
                                </mat-select>
                             </mat-form-field>
                         </div>

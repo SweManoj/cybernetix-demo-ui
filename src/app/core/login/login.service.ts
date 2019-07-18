@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { RequestOptions, Headers, } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { config } from '../../../config';
-import { Tokens } from '../../auth/models/token';
+// import { config } from '../../../config';
+// import { Tokens } from '../../auth/models/token';
 import { tap } from 'rxjs/internal/operators/tap';
 import { environment } from '../../../environments/environment'
 @Injectable({

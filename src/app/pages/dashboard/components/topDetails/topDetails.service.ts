@@ -6,9 +6,11 @@ import { HttpClient } from '@angular/common/http';
 export class TopDetailsService {
 
     basePath: string;
+    apiPath: string;
 
     constructor(private http: HttpClient, private userContext: UserContext) {
-        this.basePath = "http://3.130.138.106:9090/v1";
+        this.basePath = this.userContext.getBasePath();
+        this.apiPath = this.userContext.getServerUrl();
     }
 
     getUploadExceedData() {
@@ -17,23 +19,22 @@ export class TopDetailsService {
     }
 
     getTopThreats() {
-        const url = `${this.basePath}/dashboard/topThreats/0`;
+        const url = `${this.apiPath}/v1/dashboard/topThreats/0`;
         return this.http.get(url);
-    }  
-
+    }
 
     getTopViolations() {
-        const url = `${this.basePath}/dashboard/violations/0?offset=0&size=6`;
+        const url = `${this.apiPath}/v1/dashboard/violations/0?offset=0&size=6`;
         return this.http.get(url);
     }
 
     getTopRiskyUsers(entityType) {
-        const url = `${this.basePath}/dashboard/violators/0/${entityType}?offset=0&size=5`;
+        const url = `${this.apiPath}/v1/dashboard/violators/0/${entityType}?offset=0&size=5`;
         return this.http.get(url);
     }
 
     getTopUsers(userType) {
-        const url = `${this.basePath}/dashboard/topusersbygroup/0?grp=${userType}`;
+        const url = `${this.apiPath}/v1/dashboard/topusersbygroup/0?grp=${userType}`;
         return this.http.get(url);
     }
 }

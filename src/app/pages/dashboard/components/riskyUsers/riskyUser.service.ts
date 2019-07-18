@@ -5,8 +5,11 @@ import { UserContext } from '../../../../core/services/userContext';
 @Injectable()
 export class RiskyUserService {
     basepath: string;
+    apiPath: string;
+
     constructor(private http: HttpClient, private userContext: UserContext) {
         this.basepath = this.userContext.getBasePath();
+        this.apiPath = this.userContext.getServerUrl();
     }
 
     getData() {
@@ -46,17 +49,17 @@ export class RiskyUserService {
     }
 
     getRiskyUserDetails(entityId) {
-        const url = `http://3.130.138.106:9090/v1/entity/${entityId}`;
+        const url = `${this.apiPath}/v1/entity/${entityId}`;
         return this.http.get(url);
     }
 
     getRiskyUserCountDetails(entityId) {
-        const url = `http://3.130.138.106:9090/v1/entity/counts/${entityId}`;
+        const url = `${this.apiPath}/v1/entity/counts/${entityId}`;
         return this.http.get(url);
     }
 
     getPolicyViolationForEntity(entityId) {
-        const url = `http://3.130.138.106:9090/v1/entity/policiesViolation/${entityId}`;
+        const url = `${this.apiPath}/v1/entity/policiesViolation/${entityId}`;
         return this.http.get(url);
     }
 

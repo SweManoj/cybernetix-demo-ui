@@ -13,7 +13,7 @@ export class CaseManagementService {
 
   constructor(private http: HttpClient, private userContext: UserContext) {
       this.basepath = this.userContext.getBasePath();
-      this.apiPath = 'http://3.130.138.106:9090/caseMgmt';
+      this.apiPath = this.userContext.getServerUrl();
       this.theme = this.userContext.getTheme();
   }
 
@@ -24,13 +24,13 @@ export class CaseManagementService {
   }
 
     getAllPolicyViolations(startDateTime, endDateTime, offset, size) {
-        const url = `${this.apiPath}/entity/${startDateTime}/${endDateTime}/?offset=${offset}&size=${size}`;
+        const url = `${this.apiPath}/caseMgmt/entity/${startDateTime}/${endDateTime}/?offset=${offset}&size=${size}`;
         return this.http.get(url);
     }
 
 
     getAllIncidents(offset, size) {
-        const url = `${this.apiPath}/entity/getIncidents/${offset}/${size}`;
+        const url = `${this.apiPath}/caseMgmt/entity/getIncidents/${offset}/${size}`;
         return this.http.get(url);
     }
 

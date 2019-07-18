@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserContext } from '../../../../core/services/userContext';
 
 @Injectable({
     providedIn: 'root'
@@ -7,15 +8,14 @@ import { HttpClient } from '@angular/common/http';
 export class PolicyViolationSummaryService {
 
     private theme: string;
-    basepath: string;
     apiPath: string;
 
-    constructor(private http: HttpClient) {
-        this.apiPath = 'http://3.130.138.106:9090/pvCasemgmt';
+    constructor(private http: HttpClient, private userContext: UserContext) {
+        this.apiPath = this.userContext.getServerUrl();
     }
 
     updatePolicy(policyData, violationId) {
-        const url = `${this.apiPath}/updatepolicyViolation/${violationId}`;
+        const url = `${this.apiPath}/pvCasemgmt/updatepolicyViolation/${violationId}`;
         return this.http.post(url, policyData, {});
     }
 

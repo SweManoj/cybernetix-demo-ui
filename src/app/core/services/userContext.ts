@@ -30,6 +30,10 @@ export class UserContext {
         return '';
     }
 
+    getServerUrl() {
+        return 'http://3.130.138.106:9090/cybernetix';
+    }
+
     get themeName() {
         return this.theme;
     }

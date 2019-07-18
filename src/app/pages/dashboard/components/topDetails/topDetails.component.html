@@ -243,10 +243,10 @@
         <div [routerLink]="['/riskyUser', watchlistedUser.image]" class="row user-item blockPadding pointerCursor">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{watchlistedUser.image}}.jpg' />
+                    src='./../../../../../assets/images/users/service_user.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{watchlistedUser.image}}</a>
+                <a> {{watchlistedUser.user.u_firstName}} {{watchlistedUser.user.u_lastName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(watchlistedUser.score)}"> {{watchlistedUser.score}}</span>

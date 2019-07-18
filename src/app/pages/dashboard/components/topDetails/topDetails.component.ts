@@ -193,7 +193,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getPrivilegedUsers() {
         this.topDetailsService.getTopUsers('Privileged').subscribe((users: any) => {
-            this.privilegedUsers = users
+            this.privilegedUsers = users;
         });
         /*this.privilegedUsers = this.topRiskyObjects.privilegedUsersObjects;
         this.privilegedUsers.sort((a, b) => -(a.score - b.score));*/
@@ -201,7 +201,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getTerminatedUsers() {
         this.topDetailsService.getTopUsers('Terminated').subscribe((users: any) => {
-            this.terminatedUsers = users
+            this.terminatedUsers = users;
         });
         /*this.terminatedUsers = this.topRiskyObjects.terminatedUsersObjects;
         this.terminatedUsers.sort((a, b) => -(a.score - b.score));*/
@@ -209,7 +209,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getOrphanUsers() {
         this.topDetailsService.getTopUsers('Orphan').subscribe((users: any) => {
-            this.externalUsers = users
+            this.externalUsers = users;
         });
        /* this.orphanUsers = this.topRiskyObjects.orphanUsersObjects;
         this.orphanUsers.sort((a, b) => -(a.score - b.score));*/
@@ -217,7 +217,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getExternalUsers() {
         this.topDetailsService.getTopUsers('External').subscribe((users: any) => {
-            this.externalUsers = users
+            this.externalUsers = users;
         });
        /* this.externalUsers = this.topRiskyObjects.externalUsersObjects;
         this.externalUsers.sort((a, b) => -(a.score - b.score));*/
@@ -225,7 +225,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getRiskyCloudUsers() {
         this.topDetailsService.getTopUsers('Cloud').subscribe((users: any) => {
-            this.riskyCloudUsers = users
+            this.riskyCloudUsers = users;
         });
         /*this.riskyCloudUsers = this.topRiskyObjects.riskyCloudUsersObjects;
         this.riskyCloudUsers.sort((a, b) => -(a.score - b.score));*/
@@ -233,7 +233,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getDormantUsers() {
         this.topDetailsService.getTopUsers('Dormant').subscribe((users: any) => {
-            this.dormantUsers = users
+            this.dormantUsers = users;
         });
        /* this.dormantUsers = this.topRiskyObjects.dormantUsersObjects;
         this.dormantUsers.sort((a, b) => -(a.score - b.score));*/
@@ -241,7 +241,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     getServiceAccounts() {
         this.topDetailsService.getTopUsers('ServiceAccount').subscribe((users: any) => {
-            this.serviceAccount = users
+            this.serviceAccount = users;
         });
 
         /*this.serviceAccount = this.topRiskyObjects.serviceAccountObjects;
@@ -249,8 +249,11 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     getWatchlistedUsers() {
-        this.watchlistedUsers = this.topRiskyObjects.watchlistedUsersObjects;
-        this.watchlistedUsers.sort((a, b) => -(a.score - b.score));
+        this.topDetailsService.getTopUsers('Flight').subscribe((users: any) => {
+            this.watchlistedUsers = users;
+        });
+        /*this.watchlistedUsers = this.topRiskyObjects.watchlistedUsersObjects;
+        this.watchlistedUsers.sort((a, b) => -(a.score - b.score));*/
     }
 
     getThreats() {

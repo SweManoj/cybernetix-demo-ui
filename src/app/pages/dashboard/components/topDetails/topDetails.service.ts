@@ -32,4 +32,8 @@ export class TopDetailsService {
         return this.http.get(url);
     }
 
+    getTopUsers(userType) {
+        const url = `${this.basePath}/dashboard/topusersbygroup/0?grp=${userType}`;
+        return this.http.get(url);
+    }
 }

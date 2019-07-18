@@ -104,13 +104,13 @@
         <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{terminatedUser.image}}.jpg' />
+                    src='./../../../../../assets/images/users/service_user.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', terminatedUser.image]">{{terminatedUser.image}}</a>
+                <a [routerLink]="['/riskyUser', terminatedUser.user.u_employeeId]">{{terminatedUser.user.u_firstName}} {{terminatedUser.user.u_lastName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':getRiskScoreColor(terminatedUser.score)}"> {{terminatedUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(terminatedUser.riskscorebygrp)}"> {{terminatedUser.riskscorebygrp}}</span>
             </div>
         </div>
     </ng-container>
@@ -130,10 +130,10 @@
                     style="width: 2.9rem;height: 2.9rem;" />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', orphanUser.image]">{{orphanUser.image}}</a>
+                <a [routerLink]="['/riskyUser',orphanUser.user.u_employeeId]">{{orphanUser.user.u_firstName}} {{orphanUser.user.u_lastName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':getRiskScoreColor(orphanUser.score)}"> {{orphanUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(orphanUser.riskscorebygrp)}"> {{orphanUser.riskscorebygrp}}</span>
             </div>
         </div>
     </ng-container>
@@ -150,13 +150,13 @@
         <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{externalUser.image}}.jpg' />
+                    src='./../../../../../assets/images/users/service_user.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', externalUser.image]">{{externalUser.image}}</a>
+                <a [routerLink]="['/riskyUser', externalUser.user.u_employeeId]">{{externalUser.user.u_firstName}} {{externalUser.user.u_lastName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':getRiskScoreColor(externalUser.score)}"> {{externalUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(externalUser.riskscorebygrp)}"> {{externalUser.riskscorebygrp}}</span>
             </div>
         </div>
     </ng-container>
@@ -173,13 +173,13 @@
         <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{riskyCloudUser.image}}.jpg' />
+                    src='./../../../../../assets/images/users/service_user.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', riskyCloudUser.image]">{{riskyCloudUser.image}}</a>
+                <a [routerLink]="['/riskyUser', riskyCloudUser.user.u_employeeId]">{{riskyCloudUser.user.u_firstName}} {{riskyCloudUser.user.u_lastName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':getRiskScoreColor(riskyCloudUser.score)}"> {{riskyCloudUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(riskyCloudUser.riskscorebygrp)}"> {{riskyCloudUser.riskscorebygrp}}</span>
             </div>
         </div>
     </ng-container>
@@ -196,13 +196,13 @@
         <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{dormantUser.image}}.jpg' />
+                    src='./../../../../../assets/images/users/service_user.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', dormantUser.image]">{{dormantUser.image}}</a>
+                <a [routerLink]="['/riskyUser', dormantUser.user.u_employeeId]">{{dormantUser.user.u_firstName}} {{dormantUser.user.u_lastName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':getRiskScoreColor(dormantUser.score)}"> {{dormantUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(dormantUser.riskscorebygrp)}"> {{dormantUser.riskscorebygrp}}</span>
             </div>
         </div>
     </ng-container>
@@ -222,10 +222,11 @@
                     src="./../../../../../assets/images/users/service_user.jpeg" />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', serviceAcnt.image]">{{'svc_'+serviceAcnt.image}}</a>
+                <a [routerLink]="['/riskyUser',  serviceAcnt.user.u_employeeId]">
+                {{serviceAcnt.user.u_firstName}} {{serviceAcnt.user.u_lastName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':getRiskScoreColor(serviceAcnt.score)}"> {{serviceAcnt.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(serviceAcnt.riskscorebygrp)}"> {{serviceAcnt.riskscorebygrp}}</span>
             </div>
         </div>
     </ng-container>
@@ -265,13 +266,13 @@
         <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
-                    src='./../../../../../assets/images/users/{{privilegedUser.image}}.jpg' />
+                    src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', privilegedUser.image]">{{privilegedUser.image}}</a>
+                <a [routerLink]="['/riskyUser', privilegedUser.user.u_employeeId]">{{privilegedUser.user.u_firstName}} {{privilegedUser.user.u_lastName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':getRiskScoreColor(privilegedUser.score)}"> {{privilegedUser.score}}</span>
+                <span [ngStyle]="{'color':getRiskScoreColor(privilegedUser.riskscorebygrp)}"> {{privilegedUser.riskscorebygrp}}</span>
             </div>
         </div>
     </ng-container>

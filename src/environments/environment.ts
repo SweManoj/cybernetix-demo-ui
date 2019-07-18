@@ -9,5 +9,6 @@ export const environment = {
     blackThemePieChartTrackColor: '#252c32',
 
     blueThemeBrandColor: '#252c32',
-    blueThemePieChartTrackColor: '#eeeeee'
+    blueThemePieChartTrackColor: '#eeeeee',
+    serverUrl: 'http://3.130.138.106:9090/cybernetix'
 };

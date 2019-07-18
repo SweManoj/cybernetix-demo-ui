@@ -249,7 +249,7 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     getWatchlistedUsers() {
-        this.topDetailsService.getTopUsers('Flight').subscribe((users: any) => {
+        this.topDetailsService.getTopUsers('flight').subscribe((users: any) => {
             this.watchlistedUsers = users;
         });
         /*this.watchlistedUsers = this.topRiskyObjects.watchlistedUsersObjects;

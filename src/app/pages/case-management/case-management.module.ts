@@ -7,18 +7,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
-import { CheckboxModule } from 'primeng/checkbox'
+import { CheckboxModule } from 'primeng/checkbox';
 import { CaseManagementService } from './case-management.service';
 import { CaseModalComponent } from './components/case-modal/case-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { PolicyViolationSummaryService } from './components/policy-violation-summary/policy-violation-summary.service';
 import { PolicyViolationDetailViewComponent } from './components/policy-violation-detail-view/policy-violation-detail-view.component'; 
 import { PolicyViolationSummaryComponent } from './components/policy-violation-summary/policy-violation-summary.component';
 import { IncidentSummaryComponent } from './components/incident-summary/incident-summary.component';
 import { PulseGlobeComponent } from './components/pulse-globe/pulse-globe.component';
 import { TestEsComponent } from './components/test-es/test-es.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TimeAgoPipe } from 'time-ago-pipe';
 
 import { MaterialModule } from './../../material';
@@ -39,7 +41,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     CaseManagementComponent,
@@ -56,7 +59,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     CaseModalComponent
   ],
   providers: [
-    CaseManagementService
+    CaseManagementService,
+     PolicyViolationSummaryService
   ]
 })
 export class CaseManagementModule { }

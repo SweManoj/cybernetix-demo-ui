@@ -105,6 +105,7 @@
                                             </ng-template>
                                         </p-table>
                                     </div>
+                                    <mat-spinner *ngIf="fetchingPolicyViolationsInProgress" style="margin: 15% 35%;"></mat-spinner>
                                     <div class="col-md-10" style="padding: inherit; text-align: center; margin-top: 10%; font-size: 20px;" *ngIf="policyViolations.length == 0">
                                         <p>No Policy Violations found</p>
                                     </div>

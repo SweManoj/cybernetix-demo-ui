@@ -22,6 +22,7 @@ export class CaseManagementComponent implements OnInit {
   totalRecords: number = 0;
   recordsReturned: number = 0;
   private offset: number = 0;
+  fetchingPolicyViolationsInProgress = true;
   data = [
     { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
     { created: '03/02/2018', priority: 'Medium', riskscore: 90, id: 'INC-21', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Pending', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
@@ -232,6 +233,7 @@ export class CaseManagementComponent implements OnInit {
       endDate.setHours(23,59,59,999);
     this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe( (res: any) => {
         this.policyViolations = res;
+        this.fetchingPolicyViolationsInProgress = false;
     });
   }
 
@@ -242,13 +244,16 @@ export class CaseManagementComponent implements OnInit {
     }
 
   daySelected(date, rowIndex) {
+    this.fetchingPolicyViolationsInProgress = true;
     this.selectedIndex = rowIndex;
     const selectedDate = new Date(date);
     const endDate = new Date(date);
+
     //this.myPolicies = this.myObjects[this.myDays[rowIndex]];
       selectedDate.setHours(0,0,0,0);
       endDate.setHours(23,59,59,999);
       this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe( (res: any) => {
+          this.fetchingPolicyViolationsInProgress = false;
           this.policyViolations = res;
           this.getStageValues();
       });

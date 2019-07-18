@@ -82,12 +82,12 @@ export class DashboardService {
     }
 
     getRiskCountByDepartment() {
-        const url = `${this.basePath}/dashboard/riskscountbydepartment/0`;
+        const url = `${this.basePath}/dashboard/riskscountbydepartment/0/10`;
         return this.http.get(url);
     }
 
     getRiskCountByTitle() {
-        const url = `${this.basePath}/dashboard/riskscountbytitle/0`;
+        const url = `${this.basePath}/dashboard/riskscountbytitle/0/10`;
         return this.http.get(url);
     }
 

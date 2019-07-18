@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Comment } from './comment';
+import { PolicyViolationSummaryService } from './policy-violation-summary.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from "@angular/forms";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import {FormControl} from '@angular/forms';
@@ -95,7 +96,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private policyViolationSummaryService: PolicyViolationSummaryService) {
         this.initForm();
     }
     
@@ -131,6 +132,13 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     displayFn(user?: User): string | undefined {
      return user ? user.name : undefined;
+    }
+
+    updatePolicy(violationId) {
+        const policyData = {};
+        this.policyViolationSummaryService.updatePolicy(policyData, violationId).subscribe((res: any) => {
+
+        });
     }
 
     private _filter(name: string): User[] {

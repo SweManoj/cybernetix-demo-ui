@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <h3 class="title">{{policyDetails.violation.id}} <span>- {{policyDetails.violation.policyName}} - {{policyDetails.violation.violator | uppercase}}</span></h3>
+            <h3 class="title">{{policyDetails.pv_ID}} <span>- {{policyDetails.violationName}} - {{policyDetails.violatorId | uppercase}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
-            <button class="assign-btn" mat-raised-button (click) = "assignPolicy(policyDetails.violation.id)">Assign to Me</button>
+            <button class="assign-btn" mat-raised-button (click) = "assignPolicy(policyDetails.pv_ID)">Assign to Me</button>
             <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i class="fa fa-angle-up"></i></button>
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
@@ -23,6 +23,7 @@
                 <div class="block-content">
                     <div class="block-title"><i class="fa fa-caret-right"></i> <span>Description</span></div>
                     <div class="block-description">
+                        {{policyDetails.elasticPolicyDescription}}
                     </div>
                 </div>
                 <div class="block-content mb-4">
@@ -40,7 +41,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="policyDetails.violation.priority" (ngModelChange)="policyDataChange($event)" name="priority" placeholder="Select Priority">
+                                <mat-select [(ngModel)]="policyDetails.priority" (ngModelChange)="policyDataChange($event)" name="priority" placeholder="Select Priority">
                                     <mat-option value="HIGH">High</mat-option>
                                     <mat-option value="MEDIUM">Medium</mat-option>
                                     <mat-option value="LOW">Low</mat-option>
@@ -51,7 +52,7 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Affected Entity	</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue"><a [routerLink]="['/riskyUser', policyDetails.violation.violator]">{{policyDetails.violation.violator | uppercase}}</a></div>
+                        <div class="col-sm-6 dataValue"><a [routerLink]="['/riskyUser', policyDetails.violatorId]">{{policyDetails.violatorId | uppercase}}</a></div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Indicators of Attack</div>
@@ -63,7 +64,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="policyDetails.violation.violationStatus" (ngModelChange)="policyDataChange($event)" name="status" placeholder="Select Status">
+                                <mat-select [(ngModel)]="policyDetails.status" (ngModelChange)="policyDataChange($event)" name="status" placeholder="Select Status">
                                     <mat-option value="UNREVIEWED">Unreviewed</mat-option>
                                     <mat-option value="INPROGRESS">In Progress</mat-option>
                                     <mat-option value="REVIEWED">Reviewed</mat-option>
@@ -158,13 +159,27 @@
                     <div class="listedItem">
                         <div class="block-title"><span>Threat Categorisation</span></div>
                         <div class="block-description mt-3">
-                            <div class="row mt-2 threatRow" *ngFor="let threatCategory of threatCategories">
+                            <div class="row mt-2 threatRow">
                                 <div class="col-11 col-sm-5 col-lg-3 threatTitle">
-                                    {{ threatCategory.title }}
+                                    Kill Chain
                                 </div>
                                 <b>&nbsp;:&nbsp;</b>
                                 <div class="col-sm-6 threatValue">
-                                    {{ threatCategory.value }}
+                                    {{ policyDetails.elasticKillChainName }}
+                                </div>
+                                <div class="col-11 col-sm-5 col-lg-3 threatTitle">
+                                    Threat Category
+                                </div>
+                                <b>&nbsp;:&nbsp;</b>
+                                <div class="col-sm-6 threatValue">
+                                    {{ policyDetails.elasticCategory }}
+                                </div>
+                                <div class="col-11 col-sm-5 col-lg-3 threatTitle">
+                                    Sub Category
+                                </div>
+                                <b>&nbsp;:&nbsp;</b>
+                                <div class="col-sm-6 threatValue">
+                                    {{ policyDetails.elasticSubCategory }}
                                 </div>
                             </div>
                         </div>

@@ -3,10 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { RequestOptions, Headers, } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { config } from '../../../config';
-import { Tokens } from '../../auth/models/token';
-import { tap } from 'rxjs/internal/operators/tap';
-import { environment } from '../../../environments/environment'
+import { environment } from '../../../environments/environment';
+// import { config } from '../../../config';
+// import { Tokens } from '../../auth/models/token';
+// import { tap } from 'rxjs/internal/operators/tap';
+// import { environment } from '../../../environments/environment'
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class LoginService {
   }
 
   login(loginData): Observable<any> {
-    return this.http.post(`${environment.serverUrl}/cybernetix/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
+    return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
   }
 
   get isLoggedIn() {
@@ -28,7 +29,7 @@ export class LoginService {
   }
 
   refreshAuthToken(refreshtoken): Observable<any> {
-    return this.http.post(`${environment.serverUrl}/cybernetix/oauth/token?grant_type=refresh_token&refresh_token=${refreshtoken}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
+    return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshtoken}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
   }
 
 }

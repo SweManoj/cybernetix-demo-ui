@@ -147,7 +147,7 @@
                                                         <td style="padding: 0px 50px;">{{myPolicy.policyId}}</td>
                                                         <td>{{myPolicy.generationTime | date : 'hh:mm:ss'}} Hrs</td>
                                                         <td  style="color:#099bb5;" >{{myPolicy.policyName}}</td>
-                                                        <td>{{myPolicy.entity}}</td>
+                                                        <td>{{myPolicy.entity | uppercase}}</td>
                                                         <td>{{myPolicy.indicatorsOfAttack}}</td>
                                                         <td>{{myPolicy.status}}</td>
                                                         <td>
@@ -278,7 +278,7 @@
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
                                 <td>INC {{incident.incId}}</td>
-                                <td>{{incident.incidentCreatedTime | date : 'dd/MM/yyyy'}}</td>
+                                <td>{{incident.incidentCreatedTime | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
                                 <td style="color:#099bb5;" 
                                 (click)="goToIncidentSummaryPage()">{{incident.incidentName}}</td>
                                 <td>{{incident.entity}}</td>

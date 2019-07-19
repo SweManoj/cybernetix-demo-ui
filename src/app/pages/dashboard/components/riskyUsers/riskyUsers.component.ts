@@ -42,6 +42,8 @@ export class RiskyUsersComponent {
     userData: any;
     riskyObjects = [];
     activities = [];
+    hardCodeItemData = [];
+    flightUserHardCodeItemData = [];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService) {
@@ -269,10 +271,10 @@ export class RiskyUsersComponent {
                     this.selectedUserDetails.userInfo = userData.userInfo && userData.userInfo[0] || {};
                     this.selectedUserDetails.totalScore = userData.totalScore && userData.totalScore.total_riskscore || 0;
                     /* this.selectedUserDetails.data = [];
-    
+
                     let data = userData && userData.data,
                         len = data && data.length, date;
-    
+
                     let j = 1;
                     for (let i = 0; i < len; i++) {
                         const item = data[i];
@@ -290,7 +292,7 @@ export class RiskyUsersComponent {
                         this.selectedUserDetails.data.push(info);
                         j++;
                     }
-    
+
                     if (userDataFromModel.totalScore && userDataFromModel.totalScore.total_riskscore) {
                         this.selectedUserDetails.totalScore = userDataFromModel.totalScore.total_riskscore + this.selectedUserDetails.totalScore;
                     }

@@ -54,8 +54,6 @@ export class RiskyUsersComponent {
 
     ngAfterViewInit() {
         this.zone.runOutsideAngular(() => {
-            // Initialize Guage meter chart
-            this.initializeGuageMeterChart();
 
             // Initialize Bubble chart
             this.initializeBubbleChart();
@@ -232,6 +230,11 @@ export class RiskyUsersComponent {
             this.riskyUserService.getRiskyUserDetails(this.selectedUser).subscribe((res: any) => {
                 res.score = Math.round(res.score);
                 this.userData = res;
+
+                this.zone.runOutsideAngular(() => {
+                    // Initialize Guage meter chart
+                    this.initializeGuageMeterChart();
+                });
             });
 
             this.riskyUserService.getRiskyUserCountDetails(this.selectedUser).subscribe((res: any) => {
@@ -249,97 +252,8 @@ export class RiskyUsersComponent {
                 this.policyViolations = res;
             });
 
-        /*    this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
-            this.selectedUserInfo.forEach(res => {
-
-                if (res.value == this.selectedUser) {
-                    this.userData = res;
-                }
-            })*/
             if (this.selectedUser == 'Alysa') {
                 this.hardCodeItemData = this.flightUserHardCodeItemData;
-            }
-
-            if (this.selectedUser) {
-                const dotIndex = this.selectedUser.indexOf('.');
-                const isResource = dotIndex !== -1;
-                const selectedUserData = this.riskyUserService.getSelectedUserData(this.selectedUser, isResource);
-                const selectedUserDataFromModel = this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource);
-                forkJoin([selectedUserData, selectedUserDataFromModel]).subscribe((results: any) => {
-                    const userData = results[0],
-                        userDataFromModel = results[1];
-                    this.selectedUserDetails.userInfo = userData.userInfo && userData.userInfo[0] || {};
-                    this.selectedUserDetails.totalScore = userData.totalScore && userData.totalScore.total_riskscore || 0;
-                    /* this.selectedUserDetails.data = [];
-
-                    let data = userData && userData.data,
-                        len = data && data.length, date;
-
-                    let j = 1;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        date = moment(item.isotimestamp);
-                        let pv = 'PV000';
-                        const info = {
-                            generatedTimestamp: date.utc().format('HH:mm:ss a'), // item.isotimestamp
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0],
-                            userId: item.userid,
-                            isotimestamp: item.isotimestamp,
-                            accord: false,
-                            pv: pv + j
-                        };
-                        this.selectedUserDetails.data.push(info);
-                        j++;
-                    }
-
-                    if (userDataFromModel.totalScore && userDataFromModel.totalScore.total_riskscore) {
-                        this.selectedUserDetails.totalScore = userDataFromModel.totalScore.total_riskscore + this.selectedUserDetails.totalScore;
-                    }
-                    data = userDataFromModel && userDataFromModel.data;
-                    len = data && data.length;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: moment(item.isotimestamp).utc().format('HH:mm:ss a'), //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    } */
-                });
-                /*this.riskyUserService.getSelectedUserData(this.selectedUser, isResource).subscribe((res: any) => {
-                    const data = res.data,
-                        len = data.length;
-                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
-                    this.selectedUserDetails.data = [];
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    }
-                });*/
-                /*this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource).subscribe((res: any) => {
-                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
-                    this.selectedUserDetails.data = [];
-                    const data = res && res.data,
-                        len = data && data.length;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    }
-                });*/
-            } else {
-                this.getAllUsers();
             }
         });
     }
@@ -348,16 +262,6 @@ export class RiskyUsersComponent {
         this.selectedView = view;
     }
 
-    getAllUsers() {
-        this.riskyUserService.getUploadExceedData(this.offset).subscribe((res: any) => {
-            this.totalRecords = res._totalRecords;
-            this.allUsers = this.allUsers.concat(res.data);
-            this.allUsers.sort((a, b) => {
-                return b.riskscore - a.riskscore;
-            });
-            this.recordsReturned = this.allUsers.length;
-        });
-    }
 
     goToSummaryPage() {
         this.router.navigateByUrl('/policyViolationSummary');

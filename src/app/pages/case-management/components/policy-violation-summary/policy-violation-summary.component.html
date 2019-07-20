@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <h3 class="title">{{policyDetails.pv_ID}} <span>- {{policyDetails.violationName}} - {{policyDetails.violatorId | uppercase}}</span></h3>
+            <h3 class="title">{{policyDetails.violation_id}} <span>- {{policyDetails.violationName}} - {{policyDetails.violatorId | uppercase}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
             <button class="assign-btn" mat-raised-button (click) = "assignPolicy(policyDetails.pv_ID)">Assign to Me</button>
@@ -57,7 +57,7 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Indicators of Attack</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue"></div>
+                        <div class="col-sm-6 dataValue">{{policyDetails.indicatorsCount}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
@@ -91,7 +91,7 @@
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">&nbsp;</div>
                         <div class="col-sm-6 dataValue">
-                            <button class="update-btn" *ngIf="isUpdate" mat-raised-button (click)="updatePolicy()">Update</button>
+                            <button class="update-btn" *ngIf="isUpdate" mat-raised-button (click)="updatePolicy(policyDetails.violation_id)">Update</button>
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                         <a href="#">file name 219284</a>&nbsp;|&nbsp;<a href="#">file name 219284</a>
 
                         <div class="attachBox text-center">
-                            <input type="file" class="custom-upload">
+                            <input type="file" class="custom-upload" (change)="handleFileInput($event.target.files)">
                             <img src="../../../../../assets/images/upload.png" alt="Upload Icon" class="mb-3"/><br/>
                             Drop files here to upload &nbsp;&nbsp;  OR &nbsp;&nbsp;  Browse from your computer<br/>
                             <button mat-stroked-button  class="custom-upload-btn mt-3">Browse</button>                     

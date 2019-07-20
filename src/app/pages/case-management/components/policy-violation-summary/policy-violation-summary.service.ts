@@ -21,12 +21,21 @@ export class PolicyViolationSummaryService {
 
     updatePolicy(policyData, violationId) {
         const url = `${this.apiPath}/pvCasemgmt/updatepolicyViolation/${violationId}`;
-        return this.http.post(url, policyData, {});
+        return this.http.patch(url, policyData, {});
     }
 
     assignPolicyToUser(violationId){
         const url = `${this.apiPath}/pvCasemgmt/assigntoMePolicy/${violationId}`;
         return this.http.patch(url, {}, {});
+    }
+
+    uploadPolicyViolationSummaryAttachment(fileData,attachedFileDetails){
+            const uploadUrl = '/uploadPolicyViolationSummaryAttachment';
+            const url = `${this.apiPath}/uploadPolicyViolationSummaryAttachment`;
+            const formData: FormData = new FormData();
+            formData.append('attachFile', fileData);
+            formData.append('attachFileDetails', attachedFileDetails);
+            return this.http.post(url, formData, {});
     }
 
 

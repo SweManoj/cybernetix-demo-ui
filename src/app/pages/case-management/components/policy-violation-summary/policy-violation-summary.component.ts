@@ -23,14 +23,15 @@ export class PolicyViolationSummaryComponent implements OnInit {
     isUpdate: boolean  = false;
     selectedPolicy: any;
     policyDetails = {};
+    fileToUpload = [];
 
     myControl = new FormControl();
     options: User[] = [
-      {name: 'Maile'},
-      {name: 'Stella'},
-      {name: 'Tina'},
-      {name: 'Coral'},
-      {name: 'Shayla Simo'}
+      {name: 'Anil Erla', value : 'anil_erla'},
+      {name: 'Stella', value : 'stella'},
+      {name: 'Tina', value : 'tina'},
+      {name: 'Coral', value : 'coral'},
+      {name: 'Shayla Simo', value : 'shayla'}
     ];
     filteredOptions: Observable<User[]>;
 
@@ -106,7 +107,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     }
     
     policyDataChange(){
-        if(this.priority != "" || this.status != "" || this.myControl.value.name != null){
+        if(this.priority != "" || this.status != "" || this.myControl.value != null){
             this.isUpdate = true;
         }
     }
@@ -157,11 +158,26 @@ export class PolicyViolationSummaryComponent implements OnInit {
      return user ? user.name : undefined;
     }
 
-    updatePolicy(violationId) {
-        const policyData = {};
-        this.policyViolationSummaryService.updatePolicy(policyData, violationId).subscribe((res: any) => {
+    handleFileInput(files: FileList) {
+        this.fileToUpload = files.item(0);
+        const policyStringifiedData = JSON.stringify({'pvId' : this.policyDetails.pv_ID});
+        this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(  this.fileToUpload,policyStringifiedData).subscribe((res: any){
+            
+            })
+    }
 
+    updatePolicy(violationId) {
+        const policyData = {
+          "priority": this.policyDetails.priority,
+          "reviewerUsrName": "anil_erla",
+          "status": this.policyDetails.status
+        };
+        this.policyViolationSummaryService.updatePolicy(policyData, violationId).subscribe((response: any) => {
+               
         });
+         this._snackBar.open('Updated successfully', null, {
+                    duration: 2000,
+                });
     }
 
     private _filter(name: string): User[] {

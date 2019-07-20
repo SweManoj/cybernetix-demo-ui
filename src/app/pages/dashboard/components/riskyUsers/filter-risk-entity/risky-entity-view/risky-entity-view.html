@@ -8,9 +8,9 @@
                     </div>
                 </div>
                 <div class="col-sm-7 col-lg-8 text-center">
-                    <p class="user-name-text">{{entity.user}}</p>
+                    <p class="user-name-text">{{entity.user.u_firstName}} {{entity.user.u_lastName}}</p>
                     <div class="left-block">
-                        <span class="risk-score-value" [ngStyle]="{'color':getRiskScoreColor(entity.riskScore)}">{{entity.riskScore}}</span>
+                        <span class="risk-score-value" [ngStyle]="{'color':getRiskScoreColor(entity.riskScore)}">{{entity.score}}</span>
                         <span class="risk-score-text">Risk Score</span>
                     </div>
                 </div>
@@ -20,12 +20,12 @@
         <mat-card-content>
             <div class="row-block">
                 <p class="text-style-1">Role</p>
-                <p class="text-style-2">{{entity.role}}</p>
+                <p class="text-style-2">{{entity.user.u_title}}</p>
             </div>
 
             <div class="row-block">
                 <p class="text-style-1">Location</p>
-                <p class="text-style-2">{{entity.location}}</p>
+                <p class="text-style-2">{{entity.user.u_country}}</p>
             </div>
         </mat-card-content>
         

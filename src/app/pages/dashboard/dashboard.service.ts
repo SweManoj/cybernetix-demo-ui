@@ -99,6 +99,11 @@ export class DashboardService {
         return this.http.get(url);
     }
 
+    searchUserByName(entityName) {
+        const url = `${this.apiPath}/v1/dashboard/searchRiskyEntities/${entityName}`;
+        return this.http.get(url);
+    }
+
     updateDefaultPie() {
         switch (this.theme) {
             case "black-theme": {

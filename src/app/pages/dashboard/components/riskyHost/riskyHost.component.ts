@@ -17,11 +17,7 @@ export class RiskyHostComponent implements OnInit {
 
     selectedHost: string;
     hostDetails: any;
-
-    hostAddressData = [
-        { type: 'host', value: 'WORKSTATION', score: 77, img: false, location: 'Munich, Germany', lastSeen: '23 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'PAV58329' },
-        { type: 'host', value: 'brsaopww7020.global.publicisgroupe.net', score: 3, img: false, location: 'Amsterdam, Netherlands ', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
-        { type: 'host', value: 'USCHISMG2302', score: 1, img: false, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' }];
+    policyViolations: any;
 
     hardCodeItemData = [
         {
@@ -182,13 +178,6 @@ export class RiskyHostComponent implements OnInit {
         private zone: NgZone, private router: Router) {
     }
 
-    getDataByHost() {
-        this.hostAddressData.forEach(hostData => {
-            if (hostData.value === this.selectedHost) {
-                this.hostDetails = hostData;
-            }
-        });
-    }
 
     initializeLineChart() {
 
@@ -262,9 +251,20 @@ export class RiskyHostComponent implements OnInit {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedHost = params.get('selectedHost');
+            this.getRiskyHostDetails();
         });
+    }
 
-        this.getDataByHost();
+    getRiskyHostDetails(){
+        this.riskyUserService.getRiskyUserDetails(this.selectedHost).subscribe((res: any) => {
+            this.hostDetails = res;
+        });
+         this.riskyUserService.getPolicyViolationForEntity(this.selectedHost).subscribe((res: any) => {
+                res.forEach(data => {
+                   data.accord = false;
+                });
+                this.policyViolations = res;
+            });
     }
 
     getRiskScoreColor(riskScore: number) {

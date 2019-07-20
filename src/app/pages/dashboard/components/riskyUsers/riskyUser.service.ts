@@ -49,7 +49,7 @@ export class RiskyUserService {
     }
 
     getRiskyUserDetails(entityId) {
-        const url = `${this.apiPath}/v1/entity/${entityId}`;
+        const url = `${this.apiPath}/v1/entity/{entityId}?entityId=${entityId}`;
         return this.http.get(url);
     }
 
@@ -75,5 +75,10 @@ export class RiskyUserService {
     getViolationSummary(ruleId, userId,isotimestamp) {
         const url = `${this.basepath}/api/dashboard/getViolationSummary?ruleId=${ruleId}&userId=${userId}&timeStamp=${isotimestamp}`;
         return this.http.get(url);
+    }
+
+    getPolicyViolationForGivenPeriod(entityId,startDate,endDate){
+         const url = `${this.apiPath}/v1/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
+          return this.http.get(url);
     }
 }

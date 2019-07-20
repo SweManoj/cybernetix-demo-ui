@@ -27,76 +27,14 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     myControl = new FormControl();
     options: User[] = [
-      {name: 'Anil Erla', value : 'anil_erla'},
-      {name: 'Stella', value : 'stella'},
-      {name: 'Tina', value : 'tina'},
-      {name: 'Coral', value : 'coral'},
-      {name: 'Shayla Simo', value : 'shayla'}
+      {name: 'Anil Erla', value : 'anil_erla'}
     ];
     filteredOptions: Observable<User[]>;
 
     @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
     d = new Date();
-    policyComments: Comment[] = [{
-        userId: "abhishek@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
-            " when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        timestamp: this.d.setHours(this.d.getHours() - 2),
-        commentId: 1,
-        parentId: 0,
-        reply: false
-    }, {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 4),
-        commentId: 2,
-        parentId: 0,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 3),
-        commentId: 3,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 1),
-        commentId: 4,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 5),
-        commentId: 5,
-        parentId: 2,
-        reply: false
-    }];
-
-    threatCategories = [
-        {
-            title: "Kill Chain",
-            value: "Actions/Maintain"
-        },
-        {
-            title: "Threat Category",
-            value: "Access Authentication"
-        },
-        {
-            title: "Sub Category",
-            value: "Bruce Force Attack"
-        }
-    ];
+    policyComments: Comment[] = [];
 
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;

@@ -44,6 +44,7 @@ export class RiskyUsersComponent {
     activities = [];
     hardCodeItemData = [];
     flightUserHardCodeItemData = [];
+    policyViolationData = [];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService) {
@@ -53,11 +54,7 @@ export class RiskyUsersComponent {
     }
 
     ngAfterViewInit() {
-        this.zone.runOutsideAngular(() => {
-
-            // Initialize Bubble chart
-            this.initializeBubbleChart();
-        });
+        
     }
 
     initializeGuageMeterChart() {
@@ -161,7 +158,7 @@ export class RiskyUsersComponent {
         //xAxis.dataFields.category = "date";
 
         let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-        yAxis.dataFields.category = "hour";
+        yAxis.dataFields.category = "hourOfDay";
 
         xAxis.dateFormats.setKey("day", "MMM dd, yyyy");
         xAxis.periodChangeDateFormats.setKey("day", "MMM dd, yyyy");
@@ -174,9 +171,9 @@ export class RiskyUsersComponent {
         xAxis.renderer.ticks.template.disabled = true;
 
         var series = chart.series.push(new am4charts.ColumnSeries());
-        series.dataFields.categoryY = "hour";
+        series.dataFields.categoryY = "hourOfDay";
         series.dataFields.dateX = "date";
-        series.dataFields.value = "value";
+        series.dataFields.value = "violationsCount";
         series.columns.template.disabled = true; // background color for the columns
         series.sequencedInterpolation = true;
         series.tooltip.getFillFromObject = false;
@@ -184,7 +181,7 @@ export class RiskyUsersComponent {
         series.defaultState.transitionDuration = 1000;
 
         var bullet = series.bullets.push(new am4charts.CircleBullet());
-        bullet.tooltipText = "[bold, black]{policyViolated} : {value}";
+        bullet.tooltipText = "[bold, black]{policyName} : {violationsCount}";
         bullet.background.fill = am4core.color("black");
         bullet.strokeWidth = 2;
         bullet.stroke = am4core.color("#ffffff");
@@ -204,16 +201,16 @@ export class RiskyUsersComponent {
         var hoverState = bullet.states.create("hover");
         hoverState.properties.strokeOpacity = 1;
 
-        for (var x in bubbleDataMonth) {
-            if (bubbleDataMonth[x].value > 0 && bubbleDataMonth[x].value <= 1)
-                bubbleDataMonth[x].color = '#FFFF00';
-            else if (bubbleDataMonth[x].value > 1 && bubbleDataMonth[x].value <= 3)
-                bubbleDataMonth[x].color = '#FFA500';
-            else if (bubbleDataMonth[x].value > 3)
-                bubbleDataMonth[x].color = '#f00';
+        for (var x in this.policyViolationData) {
+            if (this.policyViolationData[x].violationsCount > 0 && this.policyViolationData[x].violationsCount <= 100)
+                this.policyViolationData[x].color = '#FFFF00';
+            else if (this.policyViolationData[x].violationsCount > 100 && this.policyViolationData[x].violationsCount <= 500)
+                this.policyViolationData[x].color = '#FFA500';
+            else if (this.policyViolationData[x].violationsCount > 500)
+                this.policyViolationData[x].color = '#f00';
         }
 
-        chart.data = bubbleDataMonth;
+        chart.data = this.policyViolationData;
 
         // Add scrollbars
         chart.scrollbarX = new am4core.Scrollbar();
@@ -256,6 +253,20 @@ export class RiskyUsersComponent {
                 this.hardCodeItemData = this.flightUserHardCodeItemData;
             }
         });
+        const startDate =0;
+        const endDate = new Date();
+        this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser,startDate,endDate.getTime()).subscribe((res: any) => {
+            this.policyViolationData = res;
+            this.policyViolationData.forEach(data => {
+
+    data.hourOfDay = (data.hourOfDay < 12) ? (data.hourOfDay) + ' AM' : (data.hourOfDay % 12)  + ' PM';
+                })
+            this.zone.runOutsideAngular(() => {
+
+            // Initialize Bubble chart
+            this.initializeBubbleChart();
+        });
+        })
     }
 
     switchView(view) {

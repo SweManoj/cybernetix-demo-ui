@@ -222,21 +222,21 @@
                 <div class="comment-wrap">
                     
                     <ng-scrollbar trackY="true" barClass="custom-scroll">
-                    <div class="user-item mt-3" *ngFor="let comment of policyComments">                        
+                    <div class="user-item mt-3" *ngFor="let comment of policyDetails.policyCommentsEntities">                        
                         <div class="profile-pic">
                             <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
                         </div>
                         <div class="comment-content">
                             <div class="row mb-1">
-                                <div class="col-md-12 comment user-info"><a href="#">{{comment.userId}}</a> &emsp;&emsp;
-                                    {{comment.timestamp | timeAgo}}
+                                <div class="col-md-12 comment user-info"><a href="#">{{comment.commentorUsrId.userName}}</a> &emsp;&emsp;
+                                    {{comment.commentTime | timeAgo}}
                                 </div>
                             </div>
                             <div class="row comment">
-                                <span>{{comment.content}}</span>
+                                <span>{{comment.comment}}</span>
                             </div>
                             <div class="row mt-1 comment-action"><span class="reply" (click)="comment.reply= !comment.reply">Reply</span>
-                               &nbsp;|&nbsp; <span class="delete" (click)="comment.delete= !comment.delete">Delete</span>
+                               &nbsp;|&nbsp; <span class="delete" (click)="deleteComment(comment);">Delete</span>
                             </div>
                             <div class="row mt-2" *ngIf="comment.reply">
                                 <div class="col-md-10">
@@ -245,7 +245,7 @@
                                         placeholder="Enter your commnets here..."></textarea>
                                 </div>
                                 <div class="col-md-2 mt-2">
-                                    <button class="btn btn-sm" [disabled]="!commentForm.form.valid" type="submit" sty>
+                                    <button class="btn btn-sm" [disabled]="!commentForm.form.valid" type="submit" (click)="submitComment(0)">
                                         &emsp;Post&emsp;
                                     </button>
                                 </div>

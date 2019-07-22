@@ -77,7 +77,7 @@
     <ng-container>
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4">
             <div class="risk-date-stamp">
-                <span ng-if="policyViolations.length > 0">{{policyViolations[0].latestViolationTime | date : 'dd/mm/yyyy'}}</span>
+                <span *ngIf="policyViolations.length > 0">{{policyViolations[0].latestViolationTime | date : 'dd/mm/yyyy'}}</span>
             </div>
             <div class="row initialPadding" *ngFor="let item of policyViolations">
                 <div class="col-md-12 d-flex">

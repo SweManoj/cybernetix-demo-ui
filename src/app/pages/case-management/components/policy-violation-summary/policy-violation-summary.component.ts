@@ -129,6 +129,13 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 });
     }
 
+    deleteComment(comment) {
+       comment.delete= !comment.delete;
+       this.policyViolationSummaryService.deleteComment(comment.cmtId).subscribe((res: any) => {
+       
+       });
+    }
+
     private _filter(name: string): User[] {
         const filterValue = name.toLowerCase();
 

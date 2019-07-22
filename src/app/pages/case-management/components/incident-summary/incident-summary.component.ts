@@ -5,6 +5,9 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { ActivatedRoute, Router} from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { IncidentSummaryService } from './incident-summary.service';
 
 export interface User {
     name: string; 
@@ -112,59 +115,10 @@ export class IncidentSummaryComponent implements OnInit {
         parentId: 2,
         reply: false
     }];
-
-    threatCategories = [
-        {
-            title: "Kill Chain",
-            value: "Actions/Maintain"
-        },
-        {
-            title: "Threat Category",
-            value: "Access Authentication"
-        },
-        {
-            title: "Sub Category",
-            value: "Bruce Force Attack"
-        }
-    ];
-
-    killChainProcess = [
-        {
-            title: "Initial Recon",
-            icon: "binary-search.png",
-            isKill: 0
-        },
-        {
-            title: "Delivery",
-            icon: "delivery.png",
-            isKill: 1
-        },
-        {
-            title: "Establish Foothold",
-            icon: "foothold.png",
-            isKill: 1
-        },
-        {
-            title: "Initial Recon",
-            icon: "monitor-code.png",
-            isKill: 1
-        },
-        {
-            title: "Move Literally",
-            icon: "connection.png",
-            isKill: 0
-        },
-        {
-            title: "Complete Mission",
-            icon: "document-approval.png",
-            isKill: 0
-        }
-    ];
-
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder,private routeParam: ActivatedRoute, private router: Router,private _snackBar: MatSnackBar,private incidentSummaryService: IncidentSummaryService) {
         this.initForm();
     }
 
@@ -197,10 +151,21 @@ export class IncidentSummaryComponent implements OnInit {
             map(value => typeof value === 'string' ? value : value.name),
             map(name => name ? this._filter(name) : this.options.slice())
             );
+
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedPolicy = params.get('policyViolationId');
+            this.getIncident(this.selectedPolicy);
+        });
     }
 
     displayFn(user?: User): string | undefined {
      return user ? user.name : undefined;
+    }
+
+    getIncident(pvId) {
+        this.incidentSummaryService.getIncident().subscribe((res: any) => {
+      
+        });
     }
 
     private _filter(name: string): User[] {

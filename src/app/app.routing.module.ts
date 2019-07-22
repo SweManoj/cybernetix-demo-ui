@@ -71,7 +71,7 @@ export const routes: Routes = [
                 component: PolicyViolationSummaryComponent
             },
             {
-                path: 'incidentSummary',
+                path: 'incidentSummary/:policyViolationId',
                 component: IncidentSummaryComponent
             },
             {

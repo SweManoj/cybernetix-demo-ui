@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { PolicyViolationSummaryService } from './components/policy-violation-summary/policy-violation-summary.service';
+import { IncidentSummaryService } from './components/incident-summary/incident-summary.service';
 import { PolicyViolationDetailViewComponent } from './components/policy-violation-detail-view/policy-violation-detail-view.component'; 
 import { PolicyViolationSummaryComponent } from './components/policy-violation-summary/policy-violation-summary.component';
 import { IncidentSummaryComponent } from './components/incident-summary/incident-summary.component';
@@ -62,7 +63,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
   ],
   providers: [
     CaseManagementService,
-     PolicyViolationSummaryService
+     PolicyViolationSummaryService,
+     IncidentSummaryService
   ]
 })
 export class CaseManagementModule { }

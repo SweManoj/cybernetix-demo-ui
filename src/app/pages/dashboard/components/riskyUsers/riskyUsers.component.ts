@@ -291,13 +291,13 @@ export class RiskyUsersComponent {
     }
 
 
-    goToSummaryPage() {
+    goToPolicyViolationSummary() {
         this.router.navigateByUrl('/policyViolationSummary');
     }
 
     loadMoreUsers() {
         this.offset++;
-        this.getAllUsers();
+        //this.getAllUsers();
     }
 
     open(ruilId, userId, isotimestamp) {

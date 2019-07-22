@@ -307,16 +307,4 @@ export class CaseManagementComponent implements OnInit {
   selectPolicyClick(event) {
     event ? this.policy.filter('High', 'priority', 'contains') : this.policy.filter('', 'priority', 'contains'); // value, field, matchMode
   }
-
-  goToPolicyViolationSummaryPage() {
-   // window.open("#/policyViolationSummary", '_blank');
-    //this.router.navigate([]).then(result => {  window.open("#/policyViolationSummary", '_blank'); });
-    //this.router.navigateByUrl('/policyViolationSummary');
-  }
-
-  goToIncidentSummaryPage() {
-    window.open("#/incidentSummary", '_blank');
-    //this.router.navigate([]).then(result => {  window.open("#/incidentSummary", '_blank'); });
-    //this.router.navigateByUrl('/incidentSummary');
-  }
 }

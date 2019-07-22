@@ -5,7 +5,7 @@ import { UserContext } from '../../../../core/services/userContext';
 @Injectable({
     providedIn: 'root'
 })
-export class PolicyViolationSummaryService {
+export class IncidentSummaryService {
 
     private theme: string;
     apiPath: string;
@@ -14,8 +14,8 @@ export class PolicyViolationSummaryService {
         this.apiPath = this.userContext.getServerUrl();
     }
 
-    getPolicyDetails(violationId) {
-        const url = `${this.apiPath}/pvCasemgmt/findOrAddPolicyViolationSummary/${violationId}`;
+    getIncidentDetials(violationId) {
+        const url = `${this.apiPath}/incident/getIncidentSummary/${violationId}`;
         return this.http.post(url, {}, {});
     }
 

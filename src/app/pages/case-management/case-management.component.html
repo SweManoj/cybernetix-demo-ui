@@ -273,14 +273,13 @@
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-incident>
-                            <tr [pSelectableRow]="rowData" >
+                            <tr [pSelectableRow]="rowData" [routerLink]="['/incidentSummary', incident.pvID]">
                                 <td>
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
                                 <td>INC {{incident.incId}}</td>
                                 <td>{{incident.incidentCreatedTime | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
-                                <td style="color:#099bb5;" 
-                                (click)="goToIncidentSummaryPage()">{{incident.incidentName}}</td>
+                                <td style="color:#099bb5;">{{incident.incidentName}}</td>
                                 <td>{{incident.entity}}</td>
                                 <td style="padding-left: 40px">
                                     <div class="{{incident.entity}} tableStages"></div>

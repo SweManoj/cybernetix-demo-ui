@@ -39,6 +39,12 @@ export class PolicyViolationSummaryService {
     }
 
 
+    addComment(comment) {
+        const url = `${this.apiPath}/pvCasemgmt/save/policycomments`;
+        return this.http.post(url, comment, {});
+    }
+
+
 
 
 }

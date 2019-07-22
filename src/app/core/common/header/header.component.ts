@@ -94,7 +94,7 @@ export class HeaderComponent {
         if (this.searchEntity !== '') {
             this.utilDataService.filteredRiskyUsers = [];
 
-        this.dashboardService.searchUserByName(this.searchEntity).subscribe((res: any){
+        this.dashboardService.searchUserByName(this.searchEntity).subscribe((res: any) => {
                 this.riskyUsers = res;
 
             const forFilterDuplication = this.riskyUsers.filter(riskyUser =>

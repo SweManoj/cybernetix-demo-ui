@@ -12,6 +12,7 @@ import { html } from "d3";
 
 export interface User {
     name: string;
+    value: string;
 }
 @Component({
     selector: "app-policy-violation-summary",
@@ -22,8 +23,13 @@ export class PolicyViolationSummaryComponent implements OnInit {
     status:any = "";
     isUpdate: boolean  = false;
     selectedPolicy: any;
-    policyDetails = {};
-    fileToUpload = [];
+    policyDetails = {
+        pv_ID : 0,
+        attachedFiles : [],
+        priority: '',
+        status: ''
+    };
+    fileToUpload = {};
 
     myControl = new FormControl();
     options: User[] = [
@@ -58,10 +64,12 @@ export class PolicyViolationSummaryComponent implements OnInit {
         this.commentValue = this.commentFormGroup.controls['commentValue'];
     }
 
-    submitComment() {
+    submitComment(parentId) {
         console.log(this.commentValue.value);
-        const comment = new Comment('abhishek@123', this.commentValue.value, new Date(), this.policyComments.length + 1);
-        this.policyComments.unshift(comment);
+        const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId);
+        this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
+            const y = res;
+        });
         this.commentValue.setValue('');
     };
 
@@ -99,7 +107,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     handleFileInput(files: FileList) {
         this.fileToUpload = files.item(0);
         const policyStringifiedData = JSON.stringify({'pvId' : this.policyDetails.pv_ID});
-        this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(  this.fileToUpload,policyStringifiedData).subscribe((res: any){
+        this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(  this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
             this.policyDetails.attachedFiles.push(res.policyViolationSummaryAttachmentName);
             this._snackBar.open('File uploaded successfully', null, {
                 duration: 2000,

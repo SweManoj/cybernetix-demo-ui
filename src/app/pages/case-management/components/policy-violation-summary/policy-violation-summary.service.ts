@@ -29,7 +29,7 @@ export class PolicyViolationSummaryService {
         return this.http.patch(url, {}, {});
     }
 
-    uploadPolicyViolationSummaryAttachment(fileData,attachedFileDetails){
+    uploadPolicyViolationSummaryAttachment(fileData, attachedFileDetails){
             const uploadUrl = '/uploadPolicyViolationSummaryAttachment';
             const url = `${this.apiPath}/uploadPolicyViolationSummaryAttachment`;
             const formData: FormData = new FormData();

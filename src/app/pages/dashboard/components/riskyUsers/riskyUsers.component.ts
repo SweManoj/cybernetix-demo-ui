@@ -188,6 +188,21 @@ export class RiskyUsersComponent {
         bullet.propertyFields.fill = "color"; // provide dynamic color for bubbles
         bullet.strokeOpacity = 0;
 
+        series.bullets.template.interactionsEnabled = true;
+        bullet.events.on(
+            "hit",
+            ev => {
+                const item = ev.target.dataItem['dataContext'];
+                this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item.startDateTime, item.endDateTime, 0).subscribe((res: any) => {
+                    res.forEach(data => {
+                        data.accord = false;
+                    });
+                    this.policyViolations = res;
+                });
+            },
+            this
+        );
+
         // tooltip rendering on the bubble
         bullet.adapter.add("tooltipY", (tooltipY, target) => {
             return 1; // -target.circle.radius + 1;
@@ -202,11 +217,11 @@ export class RiskyUsersComponent {
         hoverState.properties.strokeOpacity = 1;
 
         for (var x in this.policyViolationData) {
-            if (this.policyViolationData[x].violationsCount > 0 && this.policyViolationData[x].violationsCount <= 100)
+            if (this.policyViolationData[x].violationsCount > 0 && this.policyViolationData[x].violationsCount <= 10)
                 this.policyViolationData[x].color = '#FFFF00';
-            else if (this.policyViolationData[x].violationsCount > 100 && this.policyViolationData[x].violationsCount <= 500)
+            else if (this.policyViolationData[x].violationsCount > 10 && this.policyViolationData[x].violationsCount <= 50)
                 this.policyViolationData[x].color = '#FFA500';
-            else if (this.policyViolationData[x].violationsCount > 500)
+            else if (this.policyViolationData[x].violationsCount > 50)
                 this.policyViolationData[x].color = '#f00';
         }
 
@@ -242,7 +257,7 @@ export class RiskyUsersComponent {
                 this.activities.push({ image: 'incident@1x.png', title: 'Incidents', value : res.incidents });
             });
 
-            this.riskyUserService.getPolicyViolationForEntity(this.selectedUser).subscribe((res: any) => {
+            this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, 0, 0).subscribe((res: any) => {
                 res.forEach(data => {
                    data.accord = false;
                 });
@@ -253,11 +268,13 @@ export class RiskyUsersComponent {
                 this.hardCodeItemData = this.flightUserHardCodeItemData;
             }
         });
-        const startDate =0;
+        const startDate = 0;
         const endDate = new Date();
-        this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser,startDate,endDate.getTime()).subscribe((res: any) => {
+        this.riskyUserService.getPolicyViolationsForEntity(this.selectedUser, startDate, endDate.getTime()).subscribe((res: any) => {
             this.policyViolationData = res;
             this.policyViolationData.forEach(data => {
+                const date = new Date(data.endDateTime);
+                data.hourOfDay = date.getHours();
 
     data.hourOfDay = (data.hourOfDay < 12) ? (data.hourOfDay) + ' AM' : (data.hourOfDay % 12)  + ' PM';
                 })

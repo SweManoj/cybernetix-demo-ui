@@ -188,8 +188,8 @@
 
                 <div class="block-content mb-4">
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
-                    <div class="block-description mt-3 attachments">
-                        <a href="#">file name 219284</a>&nbsp;|&nbsp;<a href="#">file name 219284</a>
+                    <div class="block-description mt-3 attachments" *ngFor="let attachedFile of policyDetails.attachedFiles">
+                        <a href="#">{{attachedFile}}</a>&nbsp;
 
                         <div class="attachBox text-center">
                             <input type="file" class="custom-upload" (change)="handleFileInput($event.target.files)">

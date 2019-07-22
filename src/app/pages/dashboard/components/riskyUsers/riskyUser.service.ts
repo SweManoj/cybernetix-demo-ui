@@ -58,8 +58,8 @@ export class RiskyUserService {
         return this.http.get(url);
     }
 
-    getPolicyViolationForEntity(entityId) {
-        const url = `${this.apiPath}/v1/entity/policiesViolation/${entityId}`;
+    getPolicyViolationsForEntity(entityId, startDate, endDate) {
+        const url = `${this.apiPath}/v1/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
         return this.http.get(url);
     }
 
@@ -77,8 +77,8 @@ export class RiskyUserService {
         return this.http.get(url);
     }
 
-    getPolicyViolationForGivenPeriod(entityId,startDate,endDate){
-         const url = `${this.apiPath}/v1/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
+    getPolicyViolationForGivenPeriod(entityId,startDate,endDate,offset){
+         const url = `${this.apiPath}/v1/entity/policiesViolationsummaryDetails/${entityId}/${startDate}/${endDate}?offset=${offset}`;
           return this.http.get(url);
     }
 }

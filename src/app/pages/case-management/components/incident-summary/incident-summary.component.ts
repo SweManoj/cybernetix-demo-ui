@@ -204,6 +204,14 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
+    assignIncident(incidentId) {
+        this.incidentSummaryService.assignIncidentToUser(incidentId).subscribe((response: any) => {
+            this._snackBar.open('Assigned to you successfully', null, {
+                duration: 2000,
+            });
+        });
+    }
+
     uploadIncidentSummaryFile(files: FileList) {
         this.fileToUpload = files.item(0);
         const policyStringifiedData = JSON.stringify({'pvId' : this.incidentDetails.pvID});

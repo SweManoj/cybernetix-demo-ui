@@ -49,7 +49,7 @@ export class RiskyUserService {
     }
 
     getRiskyUserDetails(entityId) {
-        const url = `${this.apiPath}/v1/entity/{entityId}?entityId=${entityId}`;
+        const url = `${this.apiPath}/v1/entity?entityId=${entityId}`;
         return this.http.get(url);
     }
 

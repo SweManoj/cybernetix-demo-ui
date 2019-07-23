@@ -24,9 +24,9 @@ export class IncidentSummaryService {
         return this.http.patch(url, policyData, {});
     }
 
-    assignPolicyToUser(violationId){
-        const url = `${this.apiPath}/pvCasemgmt/assigntoMePolicy/${violationId}`;
-        return this.http.patch(url, {}, {});
+    assignIncidentToUser(incidentId) {
+        const url = `${this.apiPath}/incident/assigntoMeIncident/${incidentId}`;
+        return this.http.patch(url, {}, {responseType: 'text'});
     }
 
     uploadIncidentSummaryAttachment(fileData, attachedFileDetails) {

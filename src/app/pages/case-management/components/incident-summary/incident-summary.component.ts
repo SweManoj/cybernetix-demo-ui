@@ -21,6 +21,8 @@ export class IncidentSummaryComponent implements OnInit {
     status:any = "";
     outcome:any = "";
     isUpdate: boolean = false;
+    selectedPolicy: any;
+    incidentDetails: any;
 
     myControl = new FormControl();
     options: User[] = [
@@ -163,8 +165,8 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     getIncident(pvId) {
-        this.incidentSummaryService.getIncident().subscribe((res: any) => {
-      
+        this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
+                this.incidentDetails = res;
         });
     }
 

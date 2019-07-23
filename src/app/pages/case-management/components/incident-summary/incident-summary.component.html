@@ -21,7 +21,7 @@
                 <div class="block-content">
                     <div class="block-title"><i class="fa fa-caret-right"></i> <span>Description</span></div>
                     <div class="block-description">
-                        In this incident page, user was trying to access machine which is restricted to access by group policy
+                        {{incidentDetails.elasticPolicyDescription}}
                     </div>
                 </div>
                 <div class="block-content mb-4">
@@ -32,22 +32,22 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">09/05/2019 11:23:00</div>
+                        <div class="col-sm-6 dataValue"></div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Incident Created Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">09/05/2019 10:30:00</div>
+                        <div class="col-sm-6 dataValue">{{incidentDetails.incidentCreatedTime | date: 'HH:mm:ss'}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="priority" (ngModelChange)="incidentDataChange($event)" name="priority" placeholder="Select Priority">
-                                    <mat-option value="High">High</mat-option>
-                                    <mat-option value="Medium">Medium</mat-option>
-                                    <mat-option value="Low">Low</mat-option>
+                                <mat-select [(ngModel)]="incidentDetails.priority" (ngModelChange)="incidentDataChange($event)" name="priority" placeholder="Select Priority">
+                                    <mat-option value="HIGH">High</mat-option>
+                                    <mat-option value="MEDIUM">Medium</mat-option>
+                                    <mat-option value="LOW">Low</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -55,18 +55,18 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Indicators of attack</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">5</div>
+                        <div class="col-sm-6 dataValue">{{incidentDetails.indicatorsCount}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="status" (ngModelChange)="incidentDataChange($event)" name="status" placeholder="Select Status">
-                                    <mat-option value="New">New</mat-option>
+                                <mat-select [(ngModel)]="incidentDetails.status" (ngModelChange)="incidentDataChange($event)" name="status" placeholder="Select Status">
+                                    <mat-option value="NEW">New</mat-option>
                                     <mat-option value="In Progress">In Progress</mat-option>
                                     <mat-option value="Perform Remediation">Perform Remediation</mat-option>
-                                    <mat-option value="Closed">Closed</mat-option>
+                                    <mat-option value="CLOSED">Closed</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -183,15 +183,33 @@
             <div class="col-md-6 right-block pb-4">
                 <div class="block-content mb-3">
                     <div class="listedItem">
-                        <div class="block-title"><span>Threat Categorisation</span></div>
+                        <div class="block-title"><span>Threat Categorization</span></div>
                         <div class="block-description mt-3">
-                            <div class="row mt-2 threatRow" *ngFor="let threatCategory of threatCategories">
+                            <div class="row mt-2 threatRow">
                                 <div class="col-11 col-sm-5 col-lg-3 threatTitle">
-                                    {{ threatCategory.title }}
+                                    Kill Chain
                                 </div>
                                 <b>&nbsp;:&nbsp;</b>
                                 <div class="col-sm-6 threatValue">
-                                    {{ threatCategory.value }}
+                                    {{ incidentDetails.elasticKillChainName }}
+                                </div>
+                            </div>
+                            <div class="row mt-2 threatRow">
+                                <div class="col-11 col-sm-5 col-lg-3 threatTitle">
+                                    Threat Category
+                                </div>
+                                <b>&nbsp;:&nbsp;</b>
+                                <div class="col-sm-6 threatValue">
+                                    {{ incidentDetails.elasticCategory }}
+                                </div>
+                            </div>
+                            <div class="row mt-2 threatRow">
+                                <div class="col-11 col-sm-5 col-lg-3 threatTitle">
+                                    Sub Category
+                                </div>
+                                <b>&nbsp;:&nbsp;</b>
+                                <div class="col-sm-6 threatValue">
+                                    {{ incidentDetails.elasticSubCategory }}
                                 </div>
                             </div>
                         </div>

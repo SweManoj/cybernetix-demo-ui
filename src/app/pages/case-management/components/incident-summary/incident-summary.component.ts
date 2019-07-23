@@ -23,6 +23,7 @@ export class IncidentSummaryComponent implements OnInit {
     isUpdate: boolean = false;
     selectedPolicy: any;
     incidentDetails: any;
+    fileToUpload: any;
 
     myControl = new FormControl();
     options: User[] = [
@@ -117,6 +118,39 @@ export class IncidentSummaryComponent implements OnInit {
         parentId: 2,
         reply: false
     }];
+
+    killChainProcess = [
+        {
+            title: "Initial Recon",
+            icon: "binary-search.png",
+            isKill: 0
+        },
+        {
+            title: "Delivery",
+            icon: "delivery.png",
+            isKill: 1
+        },
+        {
+            title: "Establish Foothold",
+            icon: "foothold.png",
+            isKill: 1
+        },
+        {
+            title: "Initial Recon",
+            icon: "monitor-code.png",
+            isKill: 1
+        },
+        {
+            title: "Move Literally",
+            icon: "connection.png",
+            isKill: 0
+        },
+        {
+            title: "Complete Mission",
+            icon: "document-approval.png",
+            isKill: 0
+        }
+    ];
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
 
@@ -167,6 +201,16 @@ export class IncidentSummaryComponent implements OnInit {
     getIncident(pvId) {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
                 this.incidentDetails = res;
+        });
+    }
+
+    uploadIncidentSummaryFile(files: FileList) {
+        this.fileToUpload = files.item(0);
+        const policyStringifiedData = JSON.stringify({'pvId' : this.incidentDetails.pvID});
+        this.incidentSummaryService.uploadIncidentSummaryAttachment(this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
+            this._snackBar.open('File uploaded successfully', null, {
+                duration: 2000,
+            });
         });
     }
 

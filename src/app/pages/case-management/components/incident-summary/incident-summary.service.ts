@@ -29,9 +29,8 @@ export class IncidentSummaryService {
         return this.http.patch(url, {}, {});
     }
 
-    uploadPolicyViolationSummaryAttachment(fileData, attachedFileDetails){
-            const uploadUrl = '/uploadPolicyViolationSummaryAttachment';
-            const url = `${this.apiPath}/uploadPolicyViolationSummaryAttachment`;
+    uploadIncidentSummaryAttachment(fileData, attachedFileDetails) {
+            const url = `${this.apiPath}/uploadIncidentSummaryAttachment`;
             const formData: FormData = new FormData();
             formData.append('attachFile', fileData);
             formData.append('attachFileDetails', attachedFileDetails);
@@ -44,7 +43,7 @@ export class IncidentSummaryService {
         return this.http.post(url, comment, {});
     }
 
-    deleteComment(commentId){
+    deleteComment(commentId) {
         const url = `${this.apiPath}/pvCasemgmt/deletePolicyComment/${commentId}`;
         return this.http.delete(url, {});
     }

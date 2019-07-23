@@ -104,10 +104,10 @@ export class PolicyViolationSummaryComponent implements OnInit {
      return user ? user.name : undefined;
     }
 
-    handleFileInput(files: FileList) {
+    uploadPolicyViolationFile(files: FileList) {
         this.fileToUpload = files.item(0);
         const policyStringifiedData = JSON.stringify({'pvId' : this.policyDetails.pv_ID});
-        this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(  this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
+        this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
             this.policyDetails.attachedFiles.push(res.policyViolationSummaryAttachmentName);
             this._snackBar.open('File uploaded successfully', null, {
                 duration: 2000,

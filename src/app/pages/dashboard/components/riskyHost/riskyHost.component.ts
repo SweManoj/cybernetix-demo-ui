@@ -100,16 +100,16 @@ export class RiskyHostComponent implements OnInit {
         });
     }
 
-    getRiskyHostDetails(){
+    getRiskyHostDetails() {
         this.riskyUserService.getRiskyUserDetails(this.selectedHost).subscribe((res: any) => {
             this.hostDetails = res;
         });
-         this.riskyUserService.getPolicyViolationsForEntity(this.selectedHost,0,0).subscribe((res: any) => {
+         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, 0, 0).subscribe((res: any) => {
                 res.forEach(data => {
                    data.accord = false;
                 });
                 this.policyViolations = res;
-            });
+         });
     }
 
     getRiskScoreColor(riskScore: number) {

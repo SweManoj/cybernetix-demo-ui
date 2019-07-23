@@ -18,207 +18,10 @@ export class RiskyIPComponent implements OnInit {
 
     selectedIP: string;
     ipDetails: any;
-
-    ipaddressesData = [
-        { value: '10.196.84.240', score: 16, location: 'London, UK', lastSeen: '27 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'LONDESK588' },
-        { value: '10.196.84.244', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
-        { value: '10.196.84.246', score: 1, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' }];
-
-    hardCodeItemData = [
-        {
-            generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '03:22:00',
-            accord: false,
-            pv: 'PV 083',
-            riskScore: 579,
-            ruleInfo: {
-                ruleId: 1,
-                title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
-            }
-        },
-        {
-            generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 061',
-            riskScore: 483,
-            ruleInfo: {
-                ruleId: 2,
-                title: 'Successful Logon from Rare Machine - Windows'
-            }
-        },
-        {
-            generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '07:10:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 451,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Unusual Data Exfiltration By Service Account - Proxy'
-            }
-        },
-        {
-            generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '09:22:00',
-            accord: false,
-            pv: 'PV 041',
-            riskScore: 398,
-            ruleInfo: {
-                ruleId: 4,
-                title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
-            }
-        },
-        {
-            generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '14:45:00',
-            accord: false,
-            pv: 'PV 069',
-            riskScore: 243,
-            ruleInfo: {
-                ruleId: 5,
-                title: 'Abnormal Process Executed - Windows'
-            }
-        },
-        {
-            generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '17:14:00',
-            accord: false,
-            pv: 'PV 094',
-            riskScore: 149,
-            ruleInfo: {
-                ruleId: 6,
-                title: 'Multiple Users Logged-In Successfully From Same IP'
-            }
-        }
-    ];
-
-
-    hardCodeItemForDemo = [
-    {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '14:45:00',
-            accord: false,
-            pv: 'PV 069',
-            riskScore: 82,
-            ruleInfo: {
-                ruleId: 5,
-                title: 'Excessive Bytes Sent to Suspicious External Host via FTP'
-            }
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '09:22:00',
-            accord: false,
-            pv: 'PV 041',
-            riskScore: 36,
-            ruleInfo: {
-                ruleId: 4,
-                title: 'Outbound Malicious Traffic from Multiple Ports'
-            }
-        },
-         {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '07:10:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 4,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Outbound P2P File Sharing Traffic to Rare Host'
-            }
-        },
-         {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 061',
-            riskScore: 11,
-            ruleInfo: {
-                ruleId: 2,
-                title: "Inbound Uncategorized Traffic From Multiple URL's"
-            }
-        },
-         {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 061',
-            riskScore: 64,
-            ruleInfo: {
-                ruleId: 2,
-                title: "Inbound Spam Traffic From OFAC Countries"
-            }
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '03:22:00',
-            accord: false,
-            pv: 'PV 083',
-            riskScore: 87,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Inbound Telnet Traffic From Blacklisted IP's"
-            }
-        }
-       
-        
-    
-    ];
-
-    threatCategories = [
-        {
-            title: 'Kill Chain',
-            value: 'Actions/Maintain'
-        },
-        {
-            title: 'Threat Category',
-            value: 'Access Authentication'
-        },
-        {
-            title: 'Sub Category',
-            value: 'Bruce Force Attack'
-        }
-    ]
-
-    dummyDatas = [
-        {
-            title: 'Affected Entity',
-            value: ''
-        },
-        {
-            title: 'Locations',
-            value: ''
-        },
-        {
-            title: 'Status',
-            value: ''
-        },
-        {
-            title: 'Resources',
-            value: ''
-        },
-        {
-            title: 'Indicators',
-            value: ''
-        },
-        /* {
-            title: 'Priority',
-            value: 'Be sure to add aria-expanded to the control element. This attribute explicitly conveys the current state of the collapsible'
-        } */
-    ];
-
+    policyViolations: any;
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router) {
-    }
-
-    getDataByIP() {
-        this.ipaddressesData.forEach(ipData => {
-            if (ipData.value === this.selectedIP) {
-                this.ipDetails = ipData;
-            }
-        });
     }
 
     ngAfterViewInit() {
@@ -234,8 +37,20 @@ export class RiskyIPComponent implements OnInit {
             this.selectedIP = params.get('selectedIP');
         });
 
-        this.getDataByIP();
+        this.getRiskyIPDetails();
 
+    }
+
+    getRiskyIPDetails() {
+        this.riskyUserService.getRiskyUserDetails(this.selectedIP).subscribe((res: any) => {
+            this.ipDetails = res;
+        });
+        this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedIP, 0, 0, 0).subscribe((res: any) => {
+            res.forEach(data => {
+                data.accord = false;
+            });
+            this.policyViolations = res;
+        });
     }
 
     getRiskScoreColor(riskScore: number) {
@@ -325,8 +140,8 @@ export class RiskyIPComponent implements OnInit {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
-    gotoSummery(){
-        window.open("#/policyViolationSummary", '_blank');
+    gotoSummery() {
+        //window.open("#/policyViolationSummary", '_blank');
     }
 
 }

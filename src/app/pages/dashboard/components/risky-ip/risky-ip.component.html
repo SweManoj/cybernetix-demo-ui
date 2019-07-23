@@ -8,7 +8,7 @@
                         <img  class="profile-image mt-4"
                             src='./../../../../../assets/images/dashboard_icons/Ip@2x.png' style="width: 4rem;"/>
                         <div class="user-info m-t-sm">
-                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{ipDetails.value}}</span>
+                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{ipDetails.entityid}}</span>
                             <p></p>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                                 <p></p>
                             </div>
                             <div class="user-info m-t-sm">
-                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.lastSeen}}</span>
+                                <span style="color:#D3D3D3;size:30px;"></span>
                                 <p></p>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                 <p></p>
                             </div>
                             <div class="user-info m-t-sm">
-                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.lastSeenUser}}</span>
+                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.user.u_firstName}} {{ipDetails.user.u_lastName}}</span>
                                 <p></p>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                 <p></p>
                             </div>
                             <div class="user-info m-t-sm">
-                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.location}}</span>
+                                <span style="color:#D3D3D3;size:30px;"></span>
                                 <p></p>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                 <p></p>
                             </div>
                             <div class="user-info m-t-sm">
-                                <span style="color:#D3D3D3;size:30px;">{{ipDetails.peer}}</span>
+                                <span style="color:#D3D3D3;size:30px;"></span>
                                 <p></p>
                             </div>
                         </div>
@@ -76,15 +76,15 @@
         </div>
     </div>
 
-    <ng-container *ngIf = "selectedIP !== '10.82.32.212'">
+    <ng-container>
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4">
             <div class="risk-date-stamp">
-                <span>20 June 2019</span>
+                <span *ngIf="policyViolations.length > 0">{{policyViolations[0].latestViolationTime | date : 'dd/mm/yyyy'}}</span>
             </div>
-            <div class="row initialPadding" *ngFor="let item of hardCodeItemData">
+            <div class="row initialPadding" *ngFor="let item of policyViolations">
                 <div class="col-md-12 d-flex">
                     <div class="risk-time-stamp">
-                        <span>{{item.generatedTimestamp}}</span>
+                        <span>{{item.latestViolationTime | date : 'HH:mm:ss'}}</span>
                     </div>
 
                     <div class="risky-separator mt-1">
@@ -99,14 +99,14 @@
                                                                                                 class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                      (click)="item.accord = !item.accord">PV_{{item.policyId}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
-                                    {{item.ruleInfo.title}}</span>
-
-                                <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
-                                      class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                      <span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                    {{item.policyName}}</span>
+                                <!--
+                                                                <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                                                      class="risk-score  mr-5">{{item.riskScore}}</span> -->
+                                <span
+                                    class="risk-score mr-5">{{item.entityViolationCountbyID}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
@@ -136,24 +136,41 @@
                                 <div class="col-md-3 riskAccordBorder">
                                     <dl>
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                        <dd class="mt-2">In this policy violation, user was trying to access
-                                            machine which is restricted to access by group policy</dd>
+                                        <dd class="mt-2">{{item.elasticPolicyDescription}}</dd>
                                     </dl>
                                 </div>
 
                                 <div class="col-5 col-sm-5 riskAccordBorder">
                                     <dl>
-                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorization</dt>
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of threatCategories">
+                                        <div class="row mt-1 details">
                                             <div class="col-md-5">
-                                                {{threatCategory.title}}
+                                                Kill Chain
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
                                             <div class="col-md-6">
-                                                {{threatCategory.value}}
+                                                {{item.elasticKillChainName}}
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1 details">
+                                            <div class="col-md-5">
+                                                Threat Category
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-6">
+                                                {{item.category}}
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1 details">
+                                            <div class="col-md-5">
+                                                Sub Category
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-6">
+                                                {{item.elasticSubCategory}}
                                             </div>
                                         </div>
                                     </div>
@@ -164,13 +181,48 @@
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                     </dl>
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
+                                        <div class="row mt-1 details">
                                             <div class="col-md-6">
-                                                {{dummyData.title}}
+                                                Affected Entity
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
                                             <div class="col-md-5">
-                                                {{dummyData.value}}
+                                                {{item.violatorFname}} {{item.violatorLname}}
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1 details">
+                                            <div class="col-md-6">
+                                                Locations
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-5">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1 details">
+                                            <div class="col-md-6">
+                                                Status
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-5">
+                                                {{item.status}}
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1 details">
+                                            <div class="col-md-6">
+                                                Resources
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-5">
+                                                {{item.elasticDataSourceName}}
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1 details">
+                                            <div class="col-md-6">
+                                                Indicators
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-5">
+                                                {{item.indicators}}
                                             </div>
                                         </div>
                                     </div>
@@ -183,110 +235,4 @@
         </div>
     </ng-container>
 
-    <ng-container *ngIf = "selectedIP === '10.82.32.212'">
-        <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4">
-            <div class="risk-date-stamp">
-                <span>27 June 2019</span>
-            </div>
-            <div class="row initialPadding" *ngFor="let item of hardCodeItemForDemo">
-                <div class="col-md-12 d-flex">
-                    <div class="risk-time-stamp">
-                        <span>{{item.generatedTimestamp}}</span>
-                    </div>
-
-                    <div class="risky-separator mt-1">
-                        <span class="risk-dot rounded-circle">&nbsp;</span>
-                    </div>
-
-                    <div class="violationTitle">
-                        <div class="row mt-1 mb-2 ml-3 mr-1">
-                            <div class="col-sm-12">
-                                <span class="pointerCursor" (click)="item.accord = !item.accord">
-                                    &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
-                                </span>
-                                <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
-                                <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
-                                    {{item.ruleInfo.title}}</span>
-
-                               <!--  <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
-                                      class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                       <span
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
-
-                                <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
-                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
-                                        Actions
-                                    </button>
-                                    <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground">
-                                            Investigate
-                                        </button>
-                                        <button ngbDropdownItem class="greyBackground">
-                                            Create an Incident
-                                        </button>
-                                        <button ngbDropdownItem class="greyBackground">
-                                            Perform Remediaion
-                                        </button>
-                                        <button (click) = "gotoSummery()" ngbDropdownItem class="greyBackground">
-                                            View Summery
-                                        </button>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="row col-md-12 violationInfo " *ngIf="item.accord">
-                            <div class="mt-3 d-flex mb-3">
-                                <div class="col-md-3 riskAccordBorder">
-                                    <dl>
-                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                        <dd class="mt-2">In this policy violation, user was trying to access
-                                            machine which is restricted to access by group policy</dd>
-                                    </dl>
-                                </div>
-
-                                <div class="col-5 col-sm-5 riskAccordBorder">
-                                    <dl>
-                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
-                                    </dl>
-
-                                    <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of threatCategories">
-                                            <div class="col-md-5">
-                                                {{threatCategory.title}}
-                                            </div>
-                                            <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-6">
-                                                {{threatCategory.value}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-4 col-sm-4">
-                                    <dl>
-                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
-                                    </dl>
-                                    <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
-                                            <div class="col-md-6">
-                                                {{dummyData.title}}
-                                            </div>
-                                            <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-5">
-                                                {{dummyData.value}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </ng-container>
 </div>

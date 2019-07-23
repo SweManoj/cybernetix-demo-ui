@@ -21,12 +21,12 @@ export class PolicyViolationSummaryService {
 
     updatePolicy(policyData, violationId) {
         const url = `${this.apiPath}/pvCasemgmt/updatepolicyViolation/${violationId}`;
-        return this.http.patch(url, policyData, {});
+        return this.http.patch(url, policyData, {responseType: 'text'});
     }
 
-    assignPolicyToUser(violationId){
+    assignPolicyToUser(violationId) {
         const url = `${this.apiPath}/pvCasemgmt/assigntoMePolicy/${violationId}`;
-        return this.http.patch(url, {}, {});
+        return this.http.patch(url, {}, {responseType: 'text'});
     }
 
     uploadPolicyViolationSummaryAttachment(fileData, attachedFileDetails){
@@ -41,12 +41,12 @@ export class PolicyViolationSummaryService {
 
     addComment(comment) {
         const url = `${this.apiPath}/pvCasemgmt/save/policycomments`;
-        return this.http.post(url, comment, {});
+        return this.http.post(url, comment, {responseType: 'text'});
     }
 
     deleteComment(commentId){
         const url = `${this.apiPath}/pvCasemgmt/deletePolicyComment/${commentId}`;
-        return this.http.delete(url, {});
+        return this.http.delete(url, {responseType: 'text'});
     }
 
 

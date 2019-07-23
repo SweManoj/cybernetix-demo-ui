@@ -29,7 +29,7 @@ export class IncidentSummaryService {
             const formData: FormData = new FormData();
             formData.append('attachFile', fileData);
             formData.append('attachFileDetails', attachedFileDetails);
-            return this.http.post(url, formData, {});
+            return this.http.post(url, formData, {responseType: 'text'});
     }
 
 }

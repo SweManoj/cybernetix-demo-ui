@@ -41,6 +41,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
+    replyComment: AbstractControl;
 
     constructor(private formBuilder: FormBuilder, private policyViolationSummaryService: PolicyViolationSummaryService,
                 private routeParam: ActivatedRoute, private router: Router,
@@ -55,19 +56,28 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     initForm() {
         this.commentFormGroup = this.formBuilder.group({
-            commentValue: ['', Validators.compose([Validators.required])]
+            commentValue: ['', Validators.compose([Validators.required])],
+            replyComment: ['', Validators.compose([Validators.required])]
         });
 
         this.commentValue = this.commentFormGroup.controls['commentValue'];
+        this.replyComment = this.commentFormGroup.controls['replyComment'];
     }
 
     submitComment(parentId) {
-        console.log(this.commentValue.value);
         const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId);
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
             const y = res;
         });
         this.commentValue.setValue('');
+    }
+
+    submitReply(parentId) {
+        const comment = new Comment(this.replyComment.value, this.policyDetails.pv_ID, parentId);
+        this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
+            const y = res;
+        });
+        this.replyComment.setValue('');
     }
 
     ngOnInit() {
@@ -141,6 +151,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     }
 
     deleteComment(comment) {
+       comment.deleted = true;
        this.policyViolationSummaryService.deleteComment(comment.cmtId).subscribe((res: any) => {});
     }
 

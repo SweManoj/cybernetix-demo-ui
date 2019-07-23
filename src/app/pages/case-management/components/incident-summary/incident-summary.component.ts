@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Comment } from './comment';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from "@angular/forms";
-import { CdkTextareaAutosize } from "@angular/cdk/text-field";
+import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -10,16 +10,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { IncidentSummaryService } from './incident-summary.service';
 
 export interface User {
-    name: string; 
-} 
+    name: string;
+}
+
 @Component({
-    selector: "app-policy-violation-summary",
-    templateUrl: "./incident-summary.component.html"
+    selector: 'app-policy-violation-summary',
+    templateUrl: './incident-summary.component.html'
 })
 export class IncidentSummaryComponent implements OnInit {
-    priority:any = "";
-    status:any = "";
-    outcome:any = "";
+    priority: any = '';
+    status: any = '';
+    outcome: any = '';
     isUpdate: boolean = false;
     selectedPolicy: any;
     incidentDetails: any;
@@ -38,128 +39,49 @@ export class IncidentSummaryComponent implements OnInit {
     @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
     d = new Date();
-    policyComments: Comment[] = [{
-        userId: "abhishek@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
-            " when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        timestamp: this.d.setHours(this.d.getHours() - 2),
-        commentId: 1,
-        parentId: 0,
-        reply: false
-    }, {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 4),
-        commentId: 2,
-        parentId: 0,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 3),
-        commentId: 3,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 1),
-        commentId: 4,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 3),
-        commentId: 3,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 1),
-        commentId: 4,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 3),
-        commentId: 3,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 1),
-        commentId: 4,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: "chetan@123",
-        content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            " printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
-        timestamp: this.d.setHours(this.d.getHours() - 5),
-        commentId: 5,
-        parentId: 2,
-        reply: false
-    }];
 
     killChainProcess = [
         {
-            title: "Initial Recon",
-            icon: "binary-search.png",
+            title: 'Initial Recon',
+            icon: 'binary-search.png',
             isKill: 0
         },
         {
-            title: "Delivery",
-            icon: "delivery.png",
+            title: 'Delivery',
+            icon: 'delivery.png',
             isKill: 1
         },
         {
-            title: "Establish Foothold",
-            icon: "foothold.png",
+            title: 'Establish Foothold',
+            icon: 'foothold.png',
             isKill: 1
         },
         {
-            title: "Initial Recon",
-            icon: "monitor-code.png",
+            title: 'Initial Recon',
+            icon: 'monitor-code.png',
             isKill: 1
         },
         {
-            title: "Move Literally",
-            icon: "connection.png",
+            title: 'Move Literally',
+            icon: 'connection.png',
             isKill: 0
         },
         {
-            title: "Complete Mission",
-            icon: "document-approval.png",
+            title: 'Complete Mission',
+            icon: 'document-approval.png',
             isKill: 0
         }
     ];
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
 
-    constructor(private formBuilder: FormBuilder,private routeParam: ActivatedRoute, private router: Router,private _snackBar: MatSnackBar,private incidentSummaryService: IncidentSummaryService) {
+    constructor(private formBuilder: FormBuilder, private routeParam: ActivatedRoute,
+                private router: Router, private _snackBar: MatSnackBar, private incidentSummaryService: IncidentSummaryService) {
         this.initForm();
     }
 
-    incidentDataChange(){
-        if(this.priority != "" || this.status != "" || this.outcome != "" || this.myControl.value.name != null){
+    incidentDataChange() {
+        if (this.priority !== '' || this.status !== '' || this.outcome !== '' || this.myControl.value.name != null) {
             this.isUpdate = true;
         }
     }
@@ -169,16 +91,11 @@ export class IncidentSummaryComponent implements OnInit {
         this.commentFormGroup = this.formBuilder.group({
             commentValue: ['', Validators.compose([Validators.required])]
         });
-
         this.commentValue = this.commentFormGroup.controls['commentValue'];
     }
 
     submitComment() {
-        console.log(this.commentValue.value);
-        const comment = new Comment('abhishek@123', this.commentValue.value, new Date(), this.policyComments.length + 1);
-        this.policyComments.unshift(comment);
-        this.commentValue.setValue('');
-    };
+    }
 
     ngOnInit() {
         this.filteredOptions = this.myControl.valueChanges
@@ -206,7 +123,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     assignIncident(incidentId) {
         this.incidentSummaryService.assignIncidentToUser(incidentId).subscribe((response: any) => {
-            this._snackBar.open('Assigned to you successfully', null, {
+            this._snackBar.open(response, null, {
                 duration: 2000,
             });
         });

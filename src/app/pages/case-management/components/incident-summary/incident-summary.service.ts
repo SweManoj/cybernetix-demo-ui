@@ -19,11 +19,6 @@ export class IncidentSummaryService {
         return this.http.get(url, {});
     }
 
-    updatePolicy(policyData, violationId) {
-        const url = `${this.apiPath}/pvCasemgmt/updatepolicyViolation/${violationId}`;
-        return this.http.patch(url, policyData, {});
-    }
-
     assignIncidentToUser(incidentId) {
         const url = `${this.apiPath}/incident/assigntoMeIncident/${incidentId}`;
         return this.http.patch(url, {}, {responseType: 'text'});
@@ -36,17 +31,5 @@ export class IncidentSummaryService {
             formData.append('attachFileDetails', attachedFileDetails);
             return this.http.post(url, formData, {});
     }
-
-
-    addComment(comment) {
-        const url = `${this.apiPath}/pvCasemgmt/save/policycomments`;
-        return this.http.post(url, comment, {});
-    }
-
-    deleteComment(commentId) {
-        const url = `${this.apiPath}/pvCasemgmt/deletePolicyComment/${commentId}`;
-        return this.http.delete(url, {});
-    }
-
 
 }

@@ -76,16 +76,14 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Reviewer</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            
-                            <mat-form-field class="case-owner-box">
-                                <input type="text" placeholder="Reviewer" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='policyDataChange($event.option.value)'>
-                                    <mat-option class="case-owner-text" *ngFor="let option of filteredOptions | async" [value]="option">
-                                    {{option.name}}
+                            <mat-form-field>
+                                <input type="text" placeholder="Select reviewer" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option.name}}
                                     </mat-option>
                                 </mat-autocomplete>
                             </mat-form-field>
-
                         </div>
                     </div>
                     <div class="row mt-3">

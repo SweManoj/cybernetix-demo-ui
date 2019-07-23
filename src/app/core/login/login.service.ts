@@ -32,4 +32,9 @@ export class LoginService {
     return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshtoken}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
   }
 
+    getUsers() {
+        const url = `${environment.serverUrl}/user/getUsers`;
+        return this.http.get(url);
+    }
+
 }

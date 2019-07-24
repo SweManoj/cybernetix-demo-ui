@@ -133,6 +133,7 @@ export class IncidentSummaryComponent implements OnInit {
         this.fileToUpload = files.item(0);
         const policyStringifiedData = JSON.stringify({'pvId' : this.incidentDetails.pvID});
         this.incidentSummaryService.uploadIncidentSummaryAttachment(this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
+            this.incidentDetails.attachFiles.push(res);
             this._snackBar.open('File uploaded successfully', null, {
                 duration: 2000,
             });

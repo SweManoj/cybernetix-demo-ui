@@ -64,8 +64,8 @@
                             <mat-form-field  class="dropdown-priority">
                                 <mat-select [(ngModel)]="incidentDetails.status" (ngModelChange)="incidentDataChange($event)" name="status" placeholder="Select Status">
                                     <mat-option value="NEW">New</mat-option>
-                                    <mat-option value="In Progress">In Progress</mat-option>
-                                    <mat-option value="Perform Remediation">Perform Remediation</mat-option>
+                                    <mat-option value="IN_PROGRESS">In Progress</mat-option>
+                                    <mat-option value="PERFORM_REMIDIATION">Perform Remediation</mat-option>
                                     <mat-option value="CLOSED">Closed</mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -77,9 +77,9 @@
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
                                 <mat-select [(ngModel)]="outcome" (ngModelChange)="incidentDataChange($event)" name="outcome" placeholder="Select Outcome">
-                                    <mat-option value="True Positive">True Positive</mat-option>
-                                    <mat-option value="Benign Positive">Benign Positive</mat-option>
-                                    <mat-option value="False Positive">False Positive</mat-option>
+                                    <mat-option value="True_POSITIVE">True Positive</mat-option>
+                                    <mat-option value="BENIGN_POSITIVE">Benign Positive</mat-option>
+                                    <mat-option value="FALSE_POSITIVE">False Positive</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -168,7 +168,7 @@
                 <div class="block-content mb-1">
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
                     <div class="block-description mt-3 attachments">
-                        <a href="#">file name 219284</a>&nbsp;|&nbsp;<a href="#">file name 219284</a>
+                        <div *ngFor="let attachedFile of incidentDetails.attachFiles"><a href="#">{{attachedFile.uploadFile}}</a>&nbsp;</div>
 
                         <div class="attachBox text-center">
                             <input type="file" class="custom-upload" (change)="uploadIncidentSummaryFile($event.target.files)">

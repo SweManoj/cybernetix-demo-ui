@@ -34,7 +34,7 @@
                 <p class="text-style-1">Last Violation</p>
                 <div class="violation-box">
                     <span class="warning-img"><img src='../../../../../../../assets/images/warning.png' /></span>
-                    <span class="violation-text">{{entity.lastViolation}}</span>
+                    <span class="violation-text" [routerLink]="['/policyViolationSummary', entity.lastViolatedViolationId]">{{entity.policyName}}</span>
                 </div>
             </div>
         </mat-card-actions>

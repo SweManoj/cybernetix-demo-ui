@@ -28,6 +28,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         attachedFiles : [],
         priority: '',
         status: '',
+        policyCommentsEntities :[],
         reviewer : {userName : '', firstName: '', lastName: ''}
     };
     fileToUpload = {};
@@ -67,7 +68,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     submitComment(parentId) {
         const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId);
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
-            const y = res;
+            this.policyDetails.policyCommentsEntities.push(res);
         });
         this.commentValue.setValue('');
     }
@@ -131,7 +132,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         const policyStringifiedData = JSON.stringify({'pvId' : this.policyDetails.pv_ID});
         this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(this.fileToUpload, policyStringifiedData)
             .subscribe((res: any) => {
-                this.policyDetails.attachedFiles.push(res.policyViolationSummaryAttachmentName);
+                this.policyDetails.attachedFiles.push(res);
                 this._snackBar.open('File uploaded successfully', null, {
                     duration: 2000,
                 });

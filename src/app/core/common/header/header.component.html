@@ -13,7 +13,7 @@
         <div class="col-md-10 input-group initialPadding">
             <input type="text" class="form-control" [(ngModel)]="searchEntity" placeholder="Search Risky Entities"
                 (keyup.enter)="filterRiskEntities()">
-            <div class="input-group-append" (click)="filterRiskEntities(searchEntity)">
+            <div class="input-group-append" (click)="filterRiskEntities()">
                 <span class="input-group-text">
                     <i class="fa fa-search" style="font-size: initial;"></i>
                 </span>

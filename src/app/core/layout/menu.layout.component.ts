@@ -8,7 +8,7 @@ import { UtilService } from '../services/util.service';
 })
 export class MenuLayoutComponent {
 
-    constructor(private utilService:UtilService){
+    constructor(public utilService:UtilService){
         
     }
 }

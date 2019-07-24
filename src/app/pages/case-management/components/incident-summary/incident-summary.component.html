@@ -76,7 +76,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="incidentDetails.outcome" (ngModelChange)="incidentDataChange($event)" name="outcome" placeholder="Select Outcome">
+                                <mat-select [(ngModel)]="incidentDetails.outcome" (ngModelChange)="incidentDataChange()" name="outcome" placeholder="Select Outcome">
                                     <mat-option value="True_POSITIVE">True Positive</mat-option>
                                     <mat-option value="BENIGN_POSITIVE">Benign Positive</mat-option>
                                     <mat-option value="FALSE_POSITIVE">False Positive</mat-option>

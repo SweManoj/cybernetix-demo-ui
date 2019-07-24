@@ -23,7 +23,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     status: any = '';
     isUpdate: boolean  = false;
     selectedPolicy: any;
-    policyDetails = {
+    policyDetails: any = {
         pv_ID : 0,
         attachedFiles : [],
         priority: '',

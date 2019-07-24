@@ -193,7 +193,7 @@ export class RiskyUsersComponent {
             "hit",
             ev => {
                 const item = ev.target.dataItem['dataContext'];
-                this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item.startDateTime, item.endDateTime, 0).subscribe((res: any) => {
+                this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item['startDateTime'], item['endDateTime'], 0).subscribe((res: any) => {
                     res.forEach(data => {
                         data.accord = false;
                     });

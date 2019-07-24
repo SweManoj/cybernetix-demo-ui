@@ -85,22 +85,22 @@ export class DashboardService {
     }
 
     getRiskCountByDepartment() {
-        const url = `${this.apiPath}/v1/dashboard/riskscountbydepartment/0/10`;
+        const url = `${this.apiPath}/dashboard/riskscountbydepartment/0/10`;
         return this.http.get(url);
     }
 
     getRiskCountByTitle() {
-        const url = `${this.apiPath}/v1/dashboard/riskscountbytitle/0/10`;
+        const url = `${this.apiPath}/dashboard/riskscountbytitle/0/10`;
         return this.http.get(url);
     }
 
     getRiskCountByLocation() {
-        const url = `${this.apiPath}/v1/dashboard/riskscountbycountry/0`;
+        const url = `${this.apiPath}/dashboard/riskscountbycountry/0`;
         return this.http.get(url);
     }
 
     searchUserByName(entityName) {
-        const url = `${this.apiPath}/v1/dashboard/searchRiskyEntities/${entityName}`;
+        const url = `${this.apiPath}/dashboard/searchRiskyEntities/${entityName}`;
         return this.http.get(url);
     }
 

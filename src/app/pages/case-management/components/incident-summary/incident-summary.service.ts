@@ -42,4 +42,9 @@ export class IncidentSummaryService {
         return this.http.patch(url, incidentData, {responseType: 'text'});
     }
 
+    saveIncidentActivity(activity) {
+        const url = `${this.apiPath}/incident/save/incidentactivity`;
+        return this.http.post(url, activity);
+    }
+
 }

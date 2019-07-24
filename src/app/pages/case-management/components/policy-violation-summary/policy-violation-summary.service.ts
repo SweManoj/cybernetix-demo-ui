@@ -54,5 +54,8 @@ export class PolicyViolationSummaryService {
         return this.http.delete(url, {responseType: 'text'});
     }
 
-
+    savePolicyViolationActivity(activity) {
+        const url = `${this.apiPath}/pvCasemgmt/save/policyViolationactivity`;
+        return this.http.post(url, activity);
+    }
 }

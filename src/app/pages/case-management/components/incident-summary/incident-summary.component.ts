@@ -32,7 +32,6 @@ export class IncidentSummaryComponent implements OnInit {
         attachFiles: [],
         owner: {
             firstName: '',
-            lastName: '',
             userName: ''
         }
     };
@@ -117,7 +116,7 @@ export class IncidentSummaryComponent implements OnInit {
         this.loginService.getUsers().subscribe((users: any) => {
             users.forEach(user => {
                 if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
-                    this.caseowners.push({ name: user.firstName + ' ' + user.lastName, value: user.userName});
+                    this.caseowners.push({ name: user.firstName, value: user.userName});
                 }
             });
             this.filteredOptions = this.myControl.valueChanges
@@ -138,8 +137,7 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
                 this.incidentDetails = res;
             if (this.incidentDetails.owner) {
-                this.myControl.setValue({ name: this.incidentDetails.owner.firstName + ' ' +
-                        + this.incidentDetails.owner.lastName, value: this.incidentDetails.owner.userName});
+                this.myControl.setValue({ name: this.incidentDetails.owner.firstName, value: this.incidentDetails.owner.userName});
             }
         });
     }
@@ -195,5 +193,16 @@ export class IncidentSummaryComponent implements OnInit {
         const filterValue = name.toLowerCase();
 
         return this.caseowners.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+    }
+
+    saveIncidentActivity(feed,action) {
+        const activityData = {
+            "feed": feed,
+            "actionType": action,
+            "incID":this.incidentDetails.incId
+        }
+        this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any){
+            console.log(res);
+        });
     }
 }

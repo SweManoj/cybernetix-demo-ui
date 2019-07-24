@@ -117,6 +117,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     assignPolicy(violationId) {
         this.policyViolationSummaryService.assignPolicyToUser(violationId).subscribe((response: any) => {
+               /* this.savePolicyViolationActivity("assigned this policy to himself","ASSIGNMENT") */
                 this._snackBar.open('Assigned to you successfully', null, {
                     duration: 2000,
                 });
@@ -175,5 +176,16 @@ export class PolicyViolationSummaryComponent implements OnInit {
         const filterValue = name.toLowerCase();
 
         return this.reviewers.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+    }
+
+    savePolicyViolationActivity(feed,action) {
+        const activityData = {
+            "feed": feed,
+            "actionType": action,
+            "pvId":this.policyDetails.pv_ID
+        }
+        this.policyViolationSummaryService.savePolicyViolationActivity(activityData).subscribe((res: any){
+            console.log(res);
+        });
     }
 }

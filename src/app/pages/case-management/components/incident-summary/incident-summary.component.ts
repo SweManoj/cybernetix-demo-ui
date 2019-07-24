@@ -25,6 +25,7 @@ export class IncidentSummaryComponent implements OnInit {
     selectedPolicy: any;
     incidentDetails: any;
     fileToUpload: any;
+    policyComments: any[] = [];
 
     myControl = new FormControl();
     options: User[] = [

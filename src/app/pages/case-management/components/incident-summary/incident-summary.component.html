@@ -44,7 +44,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="incidentDetails.priority" (ngModelChange)="incidentDataChange($event)" name="priority" placeholder="Select Priority">
+                                <mat-select [(ngModel)]="incidentDetails.priority" (ngModelChange)="incidentDataChange()" name="priority" placeholder="Select Priority">
                                     <mat-option value="HIGH">High</mat-option>
                                     <mat-option value="MEDIUM">Medium</mat-option>
                                     <mat-option value="LOW">Low</mat-option>
@@ -62,7 +62,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="incidentDetails.status" (ngModelChange)="incidentDataChange($event)" name="status" placeholder="Select Status">
+                                <mat-select [(ngModel)]="incidentDetails.status" (ngModelChange)="incidentDataChange()" name="status" placeholder="Select Status">
                                     <mat-option value="NEW">New</mat-option>
                                     <mat-option value="IN_PROGRESS">In Progress</mat-option>
                                     <mat-option value="PERFORM_REMIDIATION">Perform Remediation</mat-option>
@@ -76,7 +76,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="outcome" (ngModelChange)="incidentDataChange($event)" name="outcome" placeholder="Select Outcome">
+                                <mat-select [(ngModel)]="outcome" (ngModelChange)="incidentDataChange()" name="outcome" placeholder="Select Outcome">
                                     <mat-option value="True_POSITIVE">True Positive</mat-option>
                                     <mat-option value="BENIGN_POSITIVE">Benign Positive</mat-option>
                                     <mat-option value="FALSE_POSITIVE">False Positive</mat-option>
@@ -91,7 +91,7 @@
                             
                             <mat-form-field class="case-owner-box">
                                 <input type="text" placeholder="Case Owner" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='incidentDataChange($event.option.value)'>
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='incidentDataChange()'>
                                     <mat-option class="case-owner-text" *ngFor="let option of filteredOptions | async" [value]="option">
                                     {{option.name}}
                                     </mat-option>

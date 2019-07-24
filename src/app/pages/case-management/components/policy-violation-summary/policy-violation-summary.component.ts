@@ -139,6 +139,21 @@ export class PolicyViolationSummaryComponent implements OnInit {
         });
     }
 
+    downloadFile(data) {
+        const binaryData = [];
+        binaryData.push(data);
+        const blob = new Blob(binaryData, { type: 'application/octet-stream' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+    }
+
+    getPolicyAttachmentFile(attachementId) {
+        this.policyViolationSummaryService.downloadPolicyViolationSummaryAttachment(attachementId)
+                .subscribe(data => this.downloadFile(data)), //console.log(data),
+                error => console.log('Error downloading the file.'),
+                () => console.log('Completed file download.');
+    }
+
     updatePolicy(violationId) {
         const policyData = {
           'priority': this.policyDetails.priority,

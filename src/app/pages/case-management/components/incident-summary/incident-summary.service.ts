@@ -32,4 +32,14 @@ export class IncidentSummaryService {
             return this.http.post(url, formData, {responseType: 'text'});
     }
 
+    downloadIncidentSummaryAttachment(attachementId) {
+        const url = `${this.apiPath}/downloadIncidentUploadedFileByAttachId/${attachementId}`;
+        return this.http.get(url, {responseType: 'blob'});
+    }
+
+    updateIncident(incidentData, incId) {
+        const url = `${this.apiPath}/incident/updateIncident/${incId}`;
+        return this.http.patch(url, incidentData, {responseType: 'text'});
+    }
+
 }

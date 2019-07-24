@@ -32,12 +32,12 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue"></div>
+                        <div class="col-sm-6 dataValue">{{incidentDetails.violationTime | date: 'dd/mm/yyy HH:mm:ss'}}</div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Incident Created Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">{{incidentDetails.incidentCreatedTime | date: 'HH:mm:ss'}}</div>
+                        <div class="col-sm-6 dataValue">{{incidentDetails.incidentCreatedTime | date: 'dd/mm/yyyy HH:mm:ss'}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>
@@ -76,7 +76,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="outcome" (ngModelChange)="incidentDataChange($event)" name="outcome" placeholder="Select Outcome">
+                                <mat-select [(ngModel)]="incidentDetails.outcome" (ngModelChange)="incidentDataChange($event)" name="outcome" placeholder="Select Outcome">
                                     <mat-option value="True_POSITIVE">True Positive</mat-option>
                                     <mat-option value="BENIGN_POSITIVE">Benign Positive</mat-option>
                                     <mat-option value="FALSE_POSITIVE">False Positive</mat-option>
@@ -88,12 +88,12 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Case Owner</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            
-                            <mat-form-field class="case-owner-box">
-                                <input type="text" placeholder="Case Owner" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='incidentDataChange($event.option.value)'>
-                                    <mat-option class="case-owner-text" *ngFor="let option of filteredOptions | async" [value]="option">
-                                    {{option.name}}
+
+                            <mat-form-field>
+                                <input type="text" placeholder="Select owner" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option.name}}
                                     </mat-option>
                                 </mat-autocomplete>
                             </mat-form-field>
@@ -103,7 +103,7 @@
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">&nbsp;</div>
                         <div class="col-sm-6 dataValue">
-                            <button class="update-btn" *ngIf="isUpdate" mat-raised-button>Update</button>
+                            <button class="update-btn" *ngIf="isUpdate" mat-raised-button (click)="updateIncident()">Update</button>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                 <div class="block-content mb-1">
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
                     <div class="block-description mt-3 attachments">
-                        <div *ngFor="let attachedFile of incidentDetails.attachFiles"><a href="#">{{attachedFile.uploadFile}}</a>&nbsp;</div>
+                        <div *ngFor="let attachedFile of incidentDetails.attachFiles" (click)="getIncidentAttachmentFile(attachedFile.incidentSummaryAttachmentId)">{{attachedFile.uploadFile}}</div>
 
                         <div class="attachBox text-center">
                             <input type="file" class="custom-upload" (change)="uploadIncidentSummaryFile($event.target.files)">

@@ -24,6 +24,11 @@ export class PolicyViolationSummaryService {
         return this.http.patch(url, policyData, {responseType: 'text'});
     }
 
+    downloadPolicyViolationSummaryAttachment(attachementId) {
+        const url = `${this.apiPath}/downloadPolicyUploadedFileByAttachId/${attachementId}`;
+        return this.http.get(url, {responseType: 'blob'});
+    }
+
     assignPolicyToUser(violationId) {
         const url = `${this.apiPath}/pvCasemgmt/assigntoMePolicy/${violationId}`;
         return this.http.patch(url, {}, {responseType: 'text'});

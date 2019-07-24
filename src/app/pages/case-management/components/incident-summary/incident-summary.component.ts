@@ -8,6 +8,7 @@ import {map, startWith} from 'rxjs/operators';
 import { ActivatedRoute, Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IncidentSummaryService } from './incident-summary.service';
+import {LoginService} from '../../../../core/login/login.service';
 
 export interface User {
     name: string;
@@ -18,22 +19,25 @@ export interface User {
     templateUrl: './incident-summary.component.html'
 })
 export class IncidentSummaryComponent implements OnInit {
-    priority: any = '';
     status: any = '';
     outcome: any = '';
     isUpdate: boolean = false;
     selectedPolicy: any;
-    incidentDetails: any;
+    caseowners = [];
+    incidentDetails: {
+        incId: 0,
+        priority: '',
+        status: '',
+        outcome: '',
+        attachFiles: any
+        owner: {
+            firstName: '',
+            lastName: '',
+            userName: ''
+        }
+    };
     fileToUpload: any;
-
     myControl = new FormControl();
-    options: User[] = [
-      {name: 'Maile'},
-      {name: 'Stella'},
-      {name: 'Tina'},
-      {name: 'Coral'},
-      {name: 'Shayla Simo'}
-    ];
     filteredOptions: Observable<User[]>;
 
     @ViewChild('autosize') autosize: CdkTextareaAutosize;
@@ -76,12 +80,14 @@ export class IncidentSummaryComponent implements OnInit {
     commentValue: AbstractControl;
 
     constructor(private formBuilder: FormBuilder, private routeParam: ActivatedRoute,
-                private router: Router, private _snackBar: MatSnackBar, private incidentSummaryService: IncidentSummaryService) {
+                private router: Router, private _snackBar: MatSnackBar, private incidentSummaryService: IncidentSummaryService,
+                private loginService: LoginService) {
         this.initForm();
     }
 
     incidentDataChange() {
-        if (this.priority !== '' || this.status !== '' || this.outcome !== '' || this.myControl.value.name != null) {
+        if (this.incidentDetails.priority !== '' || this.incidentDetails.status !== '' || this.incidentDetails.outcome !== ''
+            || this.myControl.value.name != null) {
             this.isUpdate = true;
         }
     }
@@ -98,26 +104,41 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.filteredOptions = this.myControl.valueChanges
-            .pipe(
-            startWith(''),
-            map(value => typeof value === 'string' ? value : value.name),
-            map(name => name ? this._filter(name) : this.options.slice())
-            );
-
+        this.getUsers();
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedPolicy = params.get('policyViolationId');
             this.getIncident(this.selectedPolicy);
         });
     }
 
+    getUsers() {
+        this.loginService.getUsers().subscribe((users: any) => {
+            users.forEach(user => {
+                if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
+                    this.caseowners.push({ name: user.firstName + ' ' + user.lastName, value: user.userName});
+                }
+            });
+            this.filteredOptions = this.myControl.valueChanges
+                .pipe(
+                    startWith(''),
+                    map(value => typeof value === 'string' ? value : value.name),
+                    map(name => name ? this._filter(name) : this.caseowners.slice())
+                );
+        });
+    }
+
+
     displayFn(user?: User): string | undefined {
-     return user ? user.name : undefined;
+        return user ? user.name : undefined;
     }
 
     getIncident(pvId) {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
                 this.incidentDetails = res;
+            if (this.incidentDetails.owner) {
+                this.myControl.setValue({ name: this.incidentDetails.owner.firstName + ' ' +
+                        + this.incidentDetails.owner.lastName, value: this.incidentDetails.owner.userName});
+            }
         });
     }
 
@@ -131,18 +152,46 @@ export class IncidentSummaryComponent implements OnInit {
 
     uploadIncidentSummaryFile(files: FileList) {
         this.fileToUpload = files.item(0);
-        const policyStringifiedData = JSON.stringify({'pvId' : this.incidentDetails.pvID});
+        const policyStringifiedData = JSON.stringify({'incidentEntityId' : this.incidentDetails.incId});
         this.incidentSummaryService.uploadIncidentSummaryAttachment(this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
-            this.incidentDetails.attachFiles.push(res);
+            this.incidentDetails.attachFiles.push(JSON.parse(res));
             this._snackBar.open('File uploaded successfully', null, {
                 duration: 2000,
             });
         });
     }
 
+    updateIncident() {
+        const policyData = {
+            'priority': this.incidentDetails.priority,
+            'incOwnerUsrName': this.myControl.value.value,
+            'status': this.incidentDetails.status,
+            'outcome': this.incidentDetails.outcome
+        };
+        this.incidentSummaryService.updateIncident(policyData, this.incidentDetails.incId).subscribe((response: any) => {});
+        this._snackBar.open('Updated successfully', null, {
+            duration: 2000,
+        });
+    }
+
+    downloadFile(data) {
+        const binaryData = [];
+        binaryData.push(data);
+        const blob = new Blob(binaryData, { type: 'application/octet-stream' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+    }
+
+    getIncidentAttachmentFile(attachementId) {
+        this.incidentSummaryService.downloadIncidentSummaryAttachment(attachementId)
+            .subscribe(data => this.downloadFile(data)),
+            error => console.log('Error downloading the file.'),
+            () => console.log('Completed file download.');
+    }
+
     private _filter(name: string): User[] {
         const filterValue = name.toLowerCase();
 
-        return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+        return this.caseowners.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
     }
 }

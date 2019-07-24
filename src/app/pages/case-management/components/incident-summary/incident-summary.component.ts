@@ -24,12 +24,12 @@ export class IncidentSummaryComponent implements OnInit {
     isUpdate: boolean = false;
     selectedPolicy: any;
     caseowners = [];
-    incidentDetails: {
+    incidentDetails: any = {
         incId: 0,
         priority: '',
         status: '',
         outcome: '',
-        attachFiles: any
+        attachFiles: [],
         owner: {
             firstName: '',
             lastName: '',

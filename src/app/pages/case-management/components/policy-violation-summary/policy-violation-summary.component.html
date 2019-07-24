@@ -41,7 +41,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="policyDetails.priority" (ngModelChange)="policyDataChange($event)" name="priority" placeholder="Select Priority">
+                                <mat-select [(ngModel)]="policyDetails.priority" (ngModelChange)="policyDataChange()" name="priority" placeholder="Select Priority">
                                     <mat-option value="HIGH">High</mat-option>
                                     <mat-option value="MEDIUM">Medium</mat-option>
                                     <mat-option value="LOW">Low</mat-option>
@@ -64,7 +64,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="policyDetails.status" (ngModelChange)="policyDataChange($event)" name="status" placeholder="Select Status">
+                                <mat-select [(ngModel)]="policyDetails.status" (ngModelChange)="policyDataChange()" name="status" placeholder="Select Status">
                                     <mat-option value="UNREVIEWED">Unreviewed</mat-option>
                                     <mat-option value="INPROGRESS">In Progress</mat-option>
                                     <mat-option value="REVIEWED">Reviewed</mat-option>

@@ -44,7 +44,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="incidentDetails.priority" (ngModelChange)="incidentDataChange($event)" name="priority" placeholder="Select Priority">
+                                <mat-select [(ngModel)]="incidentDetails.priority" (ngModelChange)="incidentDataChange()" name="priority" placeholder="Select Priority">
                                     <mat-option value="HIGH">High</mat-option>
                                     <mat-option value="MEDIUM">Medium</mat-option>
                                     <mat-option value="LOW">Low</mat-option>
@@ -62,7 +62,7 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="incidentDetails.status" (ngModelChange)="incidentDataChange($event)" name="status" placeholder="Select Status">
+                                <mat-select [(ngModel)]="incidentDetails.status" (ngModelChange)="incidentDataChange()" name="status" placeholder="Select Status">
                                     <mat-option value="NEW">New</mat-option>
                                     <mat-option value="IN_PROGRESS">In Progress</mat-option>
                                     <mat-option value="PERFORM_REMIDIATION">Perform Remediation</mat-option>
@@ -88,16 +88,14 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Case Owner</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-
                             <mat-form-field>
-                                <input type="text" placeholder="Select owner" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                <input type="text" placeholder="Select reviewer" matInput [formControl]="myControl" [matAutocomplete]="auto">
                                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                                         {{option.name}}
                                     </mat-option>
                                 </mat-autocomplete>
                             </mat-form-field>
-
                         </div>
                     </div>
                     <div class="row mt-3">

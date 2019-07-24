@@ -37,6 +37,8 @@ export class IncidentSummaryComponent implements OnInit {
         }
     };
     fileToUpload: any;
+    policyComments: any[] = [];
+
     myControl = new FormControl();
     filteredOptions: Observable<User[]>;
 

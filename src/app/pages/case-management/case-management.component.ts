@@ -4,7 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CaseModalComponent } from './components/case-modal/case-modal.component';
 import { CaseManagementService } from './case-management.service';
 import { Table } from 'primeng/table';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { path } from 'd3';
 
 @Component({
   selector: 'app-case-management',
@@ -21,6 +22,7 @@ export class CaseManagementComponent implements OnInit {
   totalRecords: number = 0;
   recordsReturned: number = 0;
   private offset: number = 0;
+  path : any;
   data = [
     { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
     { created: '03/02/2018', priority: 'Medium', riskscore: 90, id: 'INC-21', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Pending', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
@@ -186,7 +188,9 @@ export class CaseManagementComponent implements OnInit {
   lowItem = 0;
   totalItem = 0;
 
-  constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService, private router: Router) {
+  constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService,
+    private router: Router,		private route: ActivatedRoute,
+    ) {
     this.offset = 0;
     this.recordsReturned = 0;
 
@@ -207,8 +211,15 @@ export class CaseManagementComponent implements OnInit {
     this.lowItem = this.myPolicies.filter(myPolicy => myPolicy.priority == 'Low').length;
     this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
   }
-
   ngOnInit() {
+
+  // Current Path:  company 
+  this.route.url.subscribe(url => {
+    this.path = (url[0].path);
+    // if (this.path = 'policyViolation') 
+
+  });
+   
     this.getAllUsers();
   }
 

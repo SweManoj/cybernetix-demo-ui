@@ -59,6 +59,10 @@ export const routes: Routes = [
                 component: CaseManagementComponent
             },
             {
+                path: 'policyViolation',
+                component: CaseManagementComponent
+            },
+            {
                 path: 'policyViolationDetailView',
                 component: PolicyViolationDetailViewComponent
             },

@@ -71,7 +71,7 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row mt-3" [hidden] = "incidentDetails.status !== 'CLOSED'">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Outcome</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">

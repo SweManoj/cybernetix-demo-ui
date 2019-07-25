@@ -162,14 +162,23 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
-    updateIncident() {
-        const policyData = {
-            'priority': this.incidentDetails.priority,
-            'incOwnerUsrName': this.myControl.value.value,
-            'status': this.incidentDetails.status,
+    updateOutcome() {
+        const outcomeData = {
+            'incID': this.incidentDetails.incId,
             'outcome': this.incidentDetails.outcome
         };
-        this.incidentSummaryService.updateIncident(policyData, this.incidentDetails.incId).subscribe((response: any) => {});
+        this.incidentSummaryService.setIncidentOutcome(outcomeData).subscribe((res: any) => {});
+    }
+    updateIncident() {
+        if (this.incidentDetails.status === 'CLOSED') {
+            this.updateOutcome();
+        }
+        const incidentData = {
+            'priority': this.incidentDetails.priority,
+            'incOwnerUsrName': this.myControl.value.value,
+            'status': this.incidentDetails.status
+        };
+        this.incidentSummaryService.updateIncident(incidentData, this.incidentDetails.incId).subscribe((response: any) => {});
         this._snackBar.open('Updated successfully', null, {
             duration: 2000,
         });

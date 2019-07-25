@@ -47,4 +47,9 @@ export class IncidentSummaryService {
         return this.http.post(url, activity);
     }
 
+    setIncidentOutcome(outcomeData) {
+        const url = `${this.apiPath}/incident/setoutcome`;
+        return this.http.patch(url, outcomeData);
+    }
+
 }

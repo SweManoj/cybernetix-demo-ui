@@ -93,15 +93,21 @@ export class IncidentSummaryComponent implements OnInit {
         }
     }
 
+    submitComment(parentId) {
+        const comment = new Comment(this.commentValue.value, this.incidentDetails.incId, parentId);
+        this.incidentSummaryService.addComment(comment).subscribe((res: any) => {
+            this.incidentDetails.incidentComments.unshift(res);
+            this.saveIncidentActivity('added a comment', 'COMMENT_POSTED');
+        });
+        this.commentValue.setValue('');
+    }
+
     initForm() {
 
         this.commentFormGroup = this.formBuilder.group({
             commentValue: ['', Validators.compose([Validators.required])]
         });
         this.commentValue = this.commentFormGroup.controls['commentValue'];
-    }
-
-    submitComment() {
     }
 
     ngOnInit() {
@@ -214,13 +220,13 @@ export class IncidentSummaryComponent implements OnInit {
             'incID': this.incidentDetails.incId
         }
         this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) =>{
-            console.log(res);
+            this.incidentDetails.incidentactivities.unshift(res);
         });
     }
 
     deleteComment(comment) {
         comment.deleted = true;
-        this.incidentSummaryService.deleteComment(comment.cmtId).subscribe((res: any) => {
+        this.incidentSummaryService.deleteComment(comment.incCmtId).subscribe((res: any) => {
             this.saveIncidentActivity('deleted a comment', 'COMMENT_DELETED');
         });
     }

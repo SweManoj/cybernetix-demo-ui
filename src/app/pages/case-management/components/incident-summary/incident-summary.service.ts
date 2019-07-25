@@ -59,7 +59,7 @@ export class IncidentSummaryService {
 
     deleteComment(commentId) {
         const url = `${this.apiPath}/incident/deletePolicyComment/${commentId}`;
-        return this.http.delete(url);
+        return this.http.delete(url,{responseType: 'text'});
     }
 
 }

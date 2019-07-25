@@ -51,7 +51,7 @@ export class PolicyViolationSummaryService {
 
     deleteComment(commentId) {
         const url = `${this.apiPath}/pvCasemgmt/deletePolicyComment/${commentId}`;
-        return this.http.delete(url);
+        return this.http.delete(url, {responseType: 'text'});
     }
 
     savePolicyViolationActivity(activity) {

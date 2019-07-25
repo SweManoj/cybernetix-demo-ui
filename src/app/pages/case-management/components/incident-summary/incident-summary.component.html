@@ -196,7 +196,7 @@
                    
                 </div>
 
-                <form [formGroup]="commentFormGroup" class="row user-item pt-2">
+               <form [formGroup]="commentFormGroup" class="row user-item pt-2">
                     <div class="col-2 col-sm-1 col-md-2 col-lg-1 pl-0">
                         <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
                     </div>
@@ -210,37 +210,37 @@
                     <div class="col-12 text-right">
                         <button color="primary" class="btn-main" mat-raised-button
                             [disabled]="commentFormGroup.invalid || commentValue.value.trim()==''" type="submit"
-                            (click)="submitComment()">Post</button>
+                            (click)="submitComment(0)">Post</button>
                     </div>
-                </form>
 
-                <div class="comment-wrap" style="height: 600px; ">
+
+                <div class="comment-wrap">
                     
                     <ng-scrollbar trackY="true" barClass="custom-scroll">
-                    <div class="user-item mt-3" *ngFor="let comment of policyComments">                        
+                    <div class="user-item mt-3" *ngFor="let comment of incidentDetails.incidentComments" [hidden] = "comment.deleted">
                         <div class="profile-pic">
                             <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
                         </div>
                         <div class="comment-content">
                             <div class="row mb-1">
-                                <div class="col-md-12 comment user-info"><a href="#">{{comment.userId}}</a> &emsp;&emsp;
-                                    {{comment.timestamp | timeAgo}}
+                                <div class="col-md-12 comment user-info"><a href="#">{{comment.commentorUsrId.userName}}</a> &emsp;&emsp;
+                                    {{comment.commentTime | timeAgo}}
                                 </div>
                             </div>
                             <div class="row comment">
-                                <span>{{comment.content}}</span>
+                                <span>{{comment.comment}}</span>
                             </div>
                             <div class="row mt-1 comment-action"><span class="reply" (click)="comment.reply= !comment.reply">Reply</span>
-                               &nbsp;|&nbsp; <span class="delete" (click)="comment.delete= !comment.delete">Delete</span>
+                               &nbsp;|&nbsp; <span class="delete" (click)="deleteComment(comment);">Delete</span>
                             </div>
                             <div class="row mt-2" *ngIf="comment.reply">
                                 <div class="col-md-10">
-                                    <textarea type="text" autosize class="form-control" id="comment"
+                                    <textarea type="text" autosize class="form-control" formControlName="replyComment" id="replyComment"
                                         [(ngModel)]="comment.content" required name="content"
                                         placeholder="Enter your commnets here..."></textarea>
                                 </div>
                                 <div class="col-md-2 mt-2">
-                                    <button class="btn btn-sm" [disabled]="!commentForm.form.valid" type="submit" sty>
+                                    <button class="btn btn-sm" [disabled]="replyComment.value.trim()==''" type="submit" (click)="submitReply(comment.cmtId)">
                                         &emsp;Post&emsp;
                                     </button>
                                 </div>
@@ -249,6 +249,7 @@
                     </div>
                     </ng-scrollbar>
                 </div>
+                </form>
             </div><!-- End Right Block -->
         </div>
     </div>

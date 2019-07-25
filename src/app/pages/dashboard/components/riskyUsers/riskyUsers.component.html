@@ -83,8 +83,8 @@
                     </div>
 
                     <div class="col-md-1" style="margin-left: -1rem;">
-                        <p [ngStyle]="{'color':getRiskScoreColor(userData.score)}" class="rscore">
-                            {{userData.score}}
+                        <p [ngStyle]="{'color':getRiskScoreColor(userData.riskScore)}" class="rscore">
+                            {{userData.riskScore}}
                         </p>
                         <p class="riskscore">
                             RiskScore
@@ -182,7 +182,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Perform Remediaion
                                         </button>
-                                        <button (click) ="goToPolicyViolationSummary()" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.violationId]" ngbDropdownItem class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>

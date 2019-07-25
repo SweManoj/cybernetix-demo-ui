@@ -123,7 +123,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Perform Remediaion
                                         </button>
-                                        <button (click) = "gotoSummery()" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.violationId]" ngbDropdownItem class="greyBackground">
                                             View Summery
                                         </button>
                                     </div>

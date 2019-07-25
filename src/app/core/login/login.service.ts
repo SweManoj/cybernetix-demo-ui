@@ -33,7 +33,7 @@ export class LoginService {
   }
 
     getUsers() {
-        const url = `${environment.serverUrl}/user/getUsers`;
+        const url = `${environment.serverUrl}/v1/user/getUsers`;
         return this.http.get(url);
     }
 

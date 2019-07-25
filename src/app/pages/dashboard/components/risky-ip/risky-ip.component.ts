@@ -19,16 +19,10 @@ export class RiskyIPComponent implements OnInit {
     selectedIP: string;
     ipDetails: any;
     policyViolations: any;
+    graphData: any;
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router) {
-    }
-
-    ngAfterViewInit() {
-        this.zone.runOutsideAngular(() => {
-            // Initialize Bubble chart
-            this.initializeLineChart();
-        });
     }
 
     ngOnInit() {
@@ -42,7 +36,7 @@ export class RiskyIPComponent implements OnInit {
     }
 
     getRiskyIPDetails() {
-        this.riskyUserService.getRiskyUserDetails(this.selectedIP).subscribe((res: any) => {
+        this.riskyUserService.getRiskyUserDetails(this.selectedIP, 'IP').subscribe((res: any) => {
             this.ipDetails = res;
         });
         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedIP, 0, 0, 0).subscribe((res: any) => {
@@ -51,6 +45,14 @@ export class RiskyIPComponent implements OnInit {
             });
             this.policyViolations = res;
         });
+        this.riskyUserService.getDayBasisRiskScore(this.selectedIP).subscribe( (res: any) => {
+            this.graphData = res;
+            this.zone.runOutsideAngular(() => {
+                // Initialize Bubble chart
+                this.initializeLineChart();
+            });
+        });
+
     }
 
     getRiskScoreColor(riskScore: number) {
@@ -77,29 +79,7 @@ export class RiskyIPComponent implements OnInit {
         // Set input format for the dates
         chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
 
-        for (var i = 0; i < 100; i++) {
-            visits = Math.round(i * Math.random());
-
-            if (visits > 100) {
-                visits = 80 + i;
-            }
-
-            if (i > 0) {
-                // add color to previous data item depending on whether current value is less or more than previous value
-                if (previousValue <= 65)
-                    data[i - 1].color = am4core.color('#ADFF2F');
-                else if (previousValue > 65 && previousValue <= 79)
-                    data[i - 1].color = am4core.color('#FFA500');
-                else
-                    data[i - 1].color = am4core.color('#f00');
-
-            }
-
-            data.push({ date: new Date(2018, 0, i + 1), value: visits });
-            previousValue = visits;
-        }
-
-        chart.data = data;
+        chart.data = this.graphData;
 
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         dateAxis.renderer.grid.template.location = 0;
@@ -116,7 +96,7 @@ export class RiskyIPComponent implements OnInit {
 
         let series = chart.series.push(new am4charts.LineSeries());
         series.dataFields.dateX = "date";
-        series.dataFields.valueY = "value";
+        series.dataFields.valueY = "riskScore";
         series.strokeWidth = 2;
         series.tooltipText = "Risk Score : {valueY}";
        // series.tooltip.getFillFromObject = false;

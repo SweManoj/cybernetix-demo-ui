@@ -80,7 +80,7 @@ export class DashboardService {
     }
 
     getPieChartsSummary() {
-        const url = `${this.apiPath}/v1/dashboard/counts/all`;
+        const url = `${this.apiPath}/dashboard/counts/all`;
         return this.http.get(url);
     }
 

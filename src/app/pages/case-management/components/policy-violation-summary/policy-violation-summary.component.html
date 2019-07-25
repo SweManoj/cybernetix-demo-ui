@@ -99,50 +99,10 @@
                     <div class="block-description">
                         <ng-scrollbar trackY="true" barClass="custom-scroll">
                         <ul class="feed-list m-h-400">
-                            <li>
-                                <span class="time">2 days ago</span>
+                            <li *ngFor="let activity of policyDetails.policyViolationActivities">
+                                <span class="time">{{activity.actionTime | timeAgo }}</span>
                                 <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">Denis created this incident <a href="#">help</a></span>
-                            </li>
-                            <li>
-                                <span class="time">2 days ago</span>
-                                <img src='../../../../../assets/images/plus.png'  width="30" />
-                                <span class="news-title">Denis created  this incident <a href="#">help</a></span>
-                            </li>
-                            <li>
-                                <span class="time">2 days ago</span>
-                                <img src='../../../../../assets/images/plus.png'  width="30" />
-                                <span class="news-title">Bill changed status on incident  created  this <a href="#">Bee Lee Test</a>  to be closed</span>
-                            </li>
-                            <li>
-                                <span class="time">2 days ago</span>
-                                <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">Denis created this incident <a href="#">help</a></span>
-                            </li>
-                            <li>
-                                <span class="time">2 days ago</span>
-                                <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">Denis created this incident <a href="#">help</a></span>
-                            </li>
-                            <li>
-                                <span class="time">2 days ago</span>
-                                <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">Bill changed status on incident  created  this <a href="#">Bee Lee Test</a>  to be closed</span>
-                            </li>
-                            <li>
-                                <span class="time">2 days ago</span>
-                                <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">Denis created this incident <a href="#">help</a></span>
-                            </li>
-                            <li>
-                                <span class="time">2 days ago</span>
-                                <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">Denis created this incident <a href="#">help</a></span>
-                            </li>
-                            <li>
-                                <span class="time">2 days ago</span>
-                                <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">Bill changed status on incident  created  this <a href="#">Bee Lee Test</a>  to be closed</span>
+                                <span class="news-title">{{activity.actorUsrId.firstName}} {{activity.actorUsrId.lastName}} {{activity.feed}}<!--<a href="#">help</a>--></span>
                             </li>
                         </ul>
                         </ng-scrollbar>
@@ -188,7 +148,7 @@
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
                     <div class="block-description mt-3 attachments">
                         <div *ngFor="let attachedFile of policyDetails.attachedFiles">
-                            <span (click)="getPolicyAttachmentFile(attachedFile.policyViolationSummaryAttachmentId)">{{attachedFile.uploadFile}}</span>&nbsp;
+                            <span (click)="getPolicyAttachmentFile(attachedFile.policyViolationSummaryAttachmentId, attachedFile.fileName)">{{attachedFile.uploadFile}}</span>&nbsp;
                         </div>
 
 

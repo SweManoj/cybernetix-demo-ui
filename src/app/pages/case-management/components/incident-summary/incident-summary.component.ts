@@ -144,6 +144,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     assignIncident(incidentId) {
         this.incidentSummaryService.assignIncidentToUser(incidentId).subscribe((response: any) => {
+            this.saveIncidentActivity('assigned this incident to himself', 'ASSIGN_TO_ME');
             this._snackBar.open(response, null, {
                 duration: 2000,
             });
@@ -195,13 +196,13 @@ export class IncidentSummaryComponent implements OnInit {
         return this.caseowners.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
     }
 
-    saveIncidentActivity(feed,action) {
+    saveIncidentActivity(feed, action) {
         const activityData = {
-            "feed": feed,
-            "actionType": action,
-            "incID":this.incidentDetails.incId
+            'feed': feed,
+            'actionType': action,
+            'incID': this.incidentDetails.incId
         }
-        this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any){
+        this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) =>{
             console.log(res);
         });
     }

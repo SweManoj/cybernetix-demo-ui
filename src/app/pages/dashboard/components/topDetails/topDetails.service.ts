@@ -19,22 +19,22 @@ export class TopDetailsService {
     }
 
     getTopThreats() {
-        const url = `${this.apiPath}/v1/dashboard/topThreats/0`;
+        const url = `${this.apiPath}/dashboard/topThreats/0`;
         return this.http.get(url);
     }
 
     getTopViolations() {
-        const url = `${this.apiPath}/v1/dashboard/violations/0?offset=0&size=6`;
+        const url = `${this.apiPath}/dashboard/violations/0?offset=0&size=6`;
         return this.http.get(url);
     }
 
     getTopRiskyUsers(entityType) {
-        const url = `${this.apiPath}/v1/dashboard/violators/0/${entityType}?offset=0&size=5`;
+        const url = `${this.apiPath}/dashboard/violators/0/${entityType}?offset=0&size=5`;
         return this.http.get(url);
     }
 
     getTopUsers(userType) {
-        const url = `${this.apiPath}/v1/dashboard/topusersbygroup/0?grp=${userType}`;
+        const url = `${this.apiPath}/dashboard/topusersbygroup/0?grp=${userType}`;
         return this.http.get(url);
     }
 }

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-score-modal.component';
 import * as am4core from '@amcharts/amcharts4/core';
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4charts from '@amcharts/amcharts4/charts';
 
 @Component({
@@ -18,6 +18,7 @@ export class RiskyHostComponent implements OnInit {
     selectedHost: string;
     hostDetails: any;
     policyViolations: any;
+    graphData: any;
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router) {
@@ -31,34 +32,7 @@ export class RiskyHostComponent implements OnInit {
 
         let chart = am4core.create("lineChartDiv", am4charts.XYChart);
         chart.paddingRight = 20;
-
-        let data = [];
-        let visits = 10;
-        let previousValue;
-
-        for (var i = 0; i < 100; i++) {
-            visits = Math.round(i * Math.random());
-
-            if (visits > 100) {
-                visits = 80 + i;
-            }
-
-            if (i > 0) {
-                // add color to previous data item depending on whether current value is less or more than previous value
-                if (previousValue <= 65)
-                    data[i - 1].color = am4core.color('#ADFF2F');
-                else if (previousValue > 65 && previousValue <= 79)
-                    data[i - 1].color = am4core.color('#FFA500');
-                else
-                    data[i - 1].color = am4core.color('#f00');
-
-            }
-
-            data.push({ date: new Date(2018, 0, i + 1), value: visits });
-            previousValue = visits;
-        }
-
-        chart.data = data;
+        chart.data = this.graphData;
 
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         dateAxis.renderer.grid.template.location = 0;
@@ -73,9 +47,9 @@ export class RiskyHostComponent implements OnInit {
 
         let series = chart.series.push(new am4charts.LineSeries());
         series.dataFields.dateX = "date";
-        series.dataFields.valueY = "value";
+        series.dataFields.valueY = "riskScore";
         series.strokeWidth = 2;
-        series.tooltipText = "value: {valueY}, date: {dateX}";
+        series.tooltipText = "Risk Score: {valueY}";
 
         // set stroke property field
         series.propertyFields.stroke = "color";
@@ -87,12 +61,6 @@ export class RiskyHostComponent implements OnInit {
 
     }
 
-    ngAfterViewInit() {
-        this.zone.runOutsideAngular(() => {
-            this.initializeLineChart();
-        });
-    } 
-
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedHost = params.get('selectedHost');
@@ -101,7 +69,7 @@ export class RiskyHostComponent implements OnInit {
     }
 
     getRiskyHostDetails() {
-        this.riskyUserService.getRiskyUserDetails(this.selectedHost).subscribe((res: any) => {
+        this.riskyUserService.getRiskyUserDetails(this.selectedHost,'HOST').subscribe((res: any) => {
             this.hostDetails = res;
         });
          this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, 0, 0).subscribe((res: any) => {
@@ -109,6 +77,12 @@ export class RiskyHostComponent implements OnInit {
                    data.accord = false;
                 });
                 this.policyViolations = res;
+         });
+         this.riskyUserService.getDayBasisRiskScore(this.selectedHost).subscribe( (res: any) => {
+             this.graphData = res;
+             this.zone.runOutsideAngular(() => {
+                 this.initializeLineChart();
+             });
          });
     }
 

@@ -48,18 +48,18 @@ export class RiskyUserService {
         return this.http.get(url);
     }
 
-    getRiskyUserDetails(entityId) {
-        const url = `${this.apiPath}/v1/entity?entityId=${entityId}`;
+    getRiskyUserDetails(entityId, entityType) {
+        const url = `${this.apiPath}/entity/${entityType}?entityId=${entityId}`;
         return this.http.get(url);
     }
 
     getRiskyUserCountDetails(entityId) {
-        const url = `${this.apiPath}/v1/entity/counts/${entityId}`;
+        const url = `${this.apiPath}/entity/counts/${entityId}`;
         return this.http.get(url);
     }
 
     getPolicyViolationsForEntity(entityId, startDate, endDate) {
-        const url = `${this.apiPath}/v1/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
+        const url = `${this.apiPath}/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
         return this.http.get(url);
     }
 
@@ -72,13 +72,18 @@ export class RiskyUserService {
         return this.http.get(url);
     }
 
-    getViolationSummary(ruleId, userId,isotimestamp) {
+    getViolationSummary(ruleId, userId, isotimestamp) {
         const url = `${this.basepath}/api/dashboard/getViolationSummary?ruleId=${ruleId}&userId=${userId}&timeStamp=${isotimestamp}`;
         return this.http.get(url);
     }
 
-    getPolicyViolationForGivenPeriod(entityId,startDate,endDate,offset){
-         const url = `${this.apiPath}/v1/entity/policiesViolationsummaryDetails/${entityId}/${startDate}/${endDate}?offset=${offset}`;
+    getPolicyViolationForGivenPeriod(entityId, startDate, endDate, offset){
+         const url = `${this.apiPath}/entity/policiesViolationsummaryDetails/${entityId}/${startDate}/${endDate}?offset=${offset}`;
           return this.http.get(url);
+    }
+
+    getDayBasisRiskScore(entityId) {
+        const url = `${this.apiPath}/entity/linegraph?entityId=${entityId}`;
+        return this.http.get(url);
     }
 }

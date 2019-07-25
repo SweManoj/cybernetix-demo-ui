@@ -23,12 +23,21 @@ export class PolicyViolationSummaryComponent implements OnInit {
     status: any = '';
     isUpdate: boolean  = false;
     selectedPolicy: any;
-    policyDetails: any = {
+    policyDetailsCopy = {
         pv_ID : 0,
         attachedFiles : [],
         priority: '',
         status: '',
-        policyCommentsEntities :[],
+        policyCommentsEntities : [],
+        reviewer : {userName : '', firstName: '', lastName: ''}
+    };
+    policyDetails = {
+        pv_ID : 0,
+        attachedFiles : [],
+        priority: '',
+        status: '',
+        policyCommentsEntities : [],
+        policyViolationActivities: [],
         reviewer : {userName : '', firstName: '', lastName: ''}
     };
     fileToUpload = {};
@@ -57,18 +66,17 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     initForm() {
         this.commentFormGroup = this.formBuilder.group({
-            commentValue: ['', Validators.compose([Validators.required])],
-            replyComment: ['', Validators.compose([Validators.required])]
+            commentValue: ['', Validators.compose([Validators.required])]
         });
 
         this.commentValue = this.commentFormGroup.controls['commentValue'];
-        this.replyComment = this.commentFormGroup.controls['replyComment'];
     }
 
     submitComment(parentId) {
         const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId);
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
-            this.policyDetails.policyCommentsEntities.push(res);
+            this.policyDetails.policyCommentsEntities.unshift(JSON.parse(res));
+            this.savePolicyViolationActivity('added a comment', 'COMMENT_POSTED');
         });
         this.commentValue.setValue('');
     }
@@ -108,6 +116,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     getViolatedPolicy(violationId) {
         this.policyViolationSummaryService.getPolicyDetails(violationId).subscribe((res: any) => {
             this.policyDetails = res;
+            this.policyDetailsCopy = Object.assign({}, res);
             if (this.policyDetails.reviewer) {
                 this.myControl.setValue({ name: this.policyDetails.reviewer.firstName + ' ' +
                         + this.policyDetails.reviewer.lastName, value: this.policyDetails.reviewer.userName});
@@ -117,7 +126,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     assignPolicy(violationId) {
         this.policyViolationSummaryService.assignPolicyToUser(violationId).subscribe((response: any) => {
-               /* this.savePolicyViolationActivity("assigned this policy to himself","ASSIGNMENT") */
+                this.savePolicyViolationActivity('assigned this policy to himself', 'ASSIGN_TO_ME');
                 this._snackBar.open('Assigned to you successfully', null, {
                     duration: 2000,
                 });
@@ -133,7 +142,9 @@ export class PolicyViolationSummaryComponent implements OnInit {
         const policyStringifiedData = JSON.stringify({'pvId' : this.policyDetails.pv_ID});
         this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(this.fileToUpload, policyStringifiedData)
             .subscribe((res: any) => {
-                this.policyDetails.attachedFiles.push(res);
+                const fileData = JSON.parse(res);
+                this.policyDetails.attachedFiles.push(fileData);
+                this.savePolicyViolationActivity('uploaded ' + fileData.fileName + ' file.', 'FILE_UPLOADED');
                 this._snackBar.open('File uploaded successfully', null, {
                     duration: 2000,
                 });
@@ -148,7 +159,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
         window.open(url);
     }
 
-    getPolicyAttachmentFile(attachementId) {
+    getPolicyAttachmentFile(attachementId, fileName) {
+        this.savePolicyViolationActivity('downloaded ' + fileName + ' file.', 'FILE_DOWNLOADED');
         this.policyViolationSummaryService.downloadPolicyViolationSummaryAttachment(attachementId)
                 .subscribe(data => this.downloadFile(data)), //console.log(data),
                 error => console.log('Error downloading the file.'),
@@ -161,15 +173,37 @@ export class PolicyViolationSummaryComponent implements OnInit {
           'reviewerUsrName': this.myControl.value.value,
           'status': this.policyDetails.status
         };
-        this.policyViolationSummaryService.updatePolicy(policyData, violationId).subscribe((response: any) => {});
+        this.policyViolationSummaryService.updatePolicy(policyData, violationId).subscribe((response: any) => {
+            this.addFeedsForPolicyUpdate();
+        });
          this._snackBar.open('Updated successfully', null, {
                     duration: 2000,
                 });
     }
 
+    addFeedsForPolicyUpdate() {
+        if (this.policyDetails.priority !== this.policyDetailsCopy.priority) {
+            this.savePolicyViolationActivity('changed the priority to be ' + this.policyDetails.priority , 'PRIORITY_UPDATED');
+        }
+
+        if (this.policyDetails.status !== this.policyDetailsCopy.status) {
+            this.savePolicyViolationActivity('changed the status to be ' + this.policyDetails.status , 'STATUS_UPDATED');
+        }
+
+        if (this.policyDetailsCopy.reviewer !== null) {
+            if (this.myControl.value.value !== this.policyDetailsCopy.reviewer.userName) {
+                this.savePolicyViolationActivity('changed the reviewer', 'REVIEWER_ASSIGNED');
+            }
+        } else if (this.myControl.value.value) {
+                this.savePolicyViolationActivity('changed the reviewer' , 'REVIEWER_ASSIGNED');
+        }
+    }
+
     deleteComment(comment) {
        comment.deleted = true;
-       this.policyViolationSummaryService.deleteComment(comment.cmtId).subscribe((res: any) => {});
+       this.policyViolationSummaryService.deleteComment(comment.cmtId).subscribe((res: any) => {
+           this.savePolicyViolationActivity('deleted a comment', 'COMMENT_DELETED');
+       });
     }
 
     private _filter(name: string): User[] {
@@ -178,14 +212,14 @@ export class PolicyViolationSummaryComponent implements OnInit {
         return this.reviewers.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
     }
 
-    savePolicyViolationActivity(feed,action) {
+    savePolicyViolationActivity(feed, action) {
         const activityData = {
-            "feed": feed,
-            "actionType": action,
-            "pvId":this.policyDetails.pv_ID
+            'feed': feed,
+            'actionType': action,
+            'pvID': this.policyDetails.pv_ID
         }
-        this.policyViolationSummaryService.savePolicyViolationActivity(activityData).subscribe((res: any){
-            console.log(res);
+        this.policyViolationSummaryService.savePolicyViolationActivity(activityData).subscribe((res: any) => {
+            this.policyDetails.policyViolationActivities.unshift(res);
         });
     }
 }

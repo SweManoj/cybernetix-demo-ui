@@ -239,7 +239,7 @@ export class RiskyUsersComponent {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
-            this.riskyUserService.getRiskyUserDetails(this.selectedUser).subscribe((res: any) => {
+            this.riskyUserService.getRiskyUserDetails(this.selectedUser,'USER').subscribe((res: any) => {
                 res.score = Math.round(res.score);
                 this.userData = res;
 

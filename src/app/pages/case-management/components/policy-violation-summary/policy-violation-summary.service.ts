@@ -40,7 +40,7 @@ export class PolicyViolationSummaryService {
             const formData: FormData = new FormData();
             formData.append('attachFile', fileData);
             formData.append('attachFileDetails', attachedFileDetails);
-            return this.http.post(url, formData, {});
+            return this.http.post(url, formData);
     }
 
 

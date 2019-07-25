@@ -34,7 +34,7 @@ export class PolicyViolationSummaryService {
         return this.http.patch(url, {}, {responseType: 'text'});
     }
 
-    uploadPolicyViolationSummaryAttachment(fileData, attachedFileDetails){
+    uploadPolicyViolationSummaryAttachment(fileData, attachedFileDetails) {
             const uploadUrl = '/uploadPolicyViolationSummaryAttachment';
             const url = `${this.apiPath}/uploadPolicyViolationSummaryAttachment`;
             const formData: FormData = new FormData();
@@ -46,12 +46,12 @@ export class PolicyViolationSummaryService {
 
     addComment(comment) {
         const url = `${this.apiPath}/pvCasemgmt/save/policycomments`;
-        return this.http.post(url, comment, {responseType: 'text'});
+        return this.http.post(url, comment);
     }
 
-    deleteComment(commentId){
+    deleteComment(commentId) {
         const url = `${this.apiPath}/pvCasemgmt/deletePolicyComment/${commentId}`;
-        return this.http.delete(url, {responseType: 'text'});
+        return this.http.delete(url);
     }
 
     savePolicyViolationActivity(activity) {

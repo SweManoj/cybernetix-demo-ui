@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9"> 
-            <h3 class="title">INC-{{incidentDetails.incId}} <span>- {{incidentDetails.policyViolation}}</span></h3>
+            <h3 class="title">INC-{{incidentDetails.incId}} <span>- {{incidentDetails.incidentName}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
             <button class="assign-btn" mat-raised-button (click) = "assignIncident(incidentDetails.incId)">Assign to Me</button>
@@ -126,7 +126,7 @@
                 <div class="block-content mb-1">
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
                     <div class="block-description mt-3 attachments">
-                        <div *ngFor="let attachedFile of incidentDetails.attachFiles" (click)="getIncidentAttachmentFile(attachedFile.incidentSummaryAttachmentId)">{{attachedFile.uploadFile}}</div>
+                        <div *ngFor="let attachedFile of incidentDetails.attachFiles" (click)="getIncidentAttachmentFile(attachedFile.incidentSummaryAttachmentId, attachedFile.fileName)">{{attachedFile.uploadFile}}</div>
 
                         <div class="attachBox text-center">
                             <input type="file" class="custom-upload" (change)="uploadIncidentSummaryFile($event.target.files)">

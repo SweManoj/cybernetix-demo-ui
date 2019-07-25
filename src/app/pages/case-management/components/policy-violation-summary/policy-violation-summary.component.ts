@@ -75,7 +75,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     submitComment(parentId) {
         const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId);
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
-            this.policyDetails.policyCommentsEntities.unshift(JSON.parse(res));
+            this.policyDetails.policyCommentsEntities.unshift(res);
             this.savePolicyViolationActivity('added a comment', 'COMMENT_POSTED');
         });
         this.commentValue.setValue('');
@@ -142,9 +142,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
         const policyStringifiedData = JSON.stringify({'pvId' : this.policyDetails.pv_ID});
         this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(this.fileToUpload, policyStringifiedData)
             .subscribe((res: any) => {
-                const fileData = JSON.parse(res);
-                this.policyDetails.attachedFiles.push(fileData);
-                this.savePolicyViolationActivity('uploaded ' + fileData.fileName + ' file.', 'FILE_UPLOADED');
+                this.policyDetails.attachedFiles.push(res);
+                this.savePolicyViolationActivity('uploaded ' + res.fileName + ' file.', 'FILE_UPLOADED');
                 this._snackBar.open('File uploaded successfully', null, {
                     duration: 2000,
                 });
@@ -162,7 +161,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     getPolicyAttachmentFile(attachementId, fileName) {
         this.savePolicyViolationActivity('downloaded ' + fileName + ' file.', 'FILE_DOWNLOADED');
         this.policyViolationSummaryService.downloadPolicyViolationSummaryAttachment(attachementId)
-                .subscribe(data => this.downloadFile(data)), //console.log(data),
+                .subscribe(data => this.downloadFile(data)),
                 error => console.log('Error downloading the file.'),
                 () => console.log('Completed file download.');
     }

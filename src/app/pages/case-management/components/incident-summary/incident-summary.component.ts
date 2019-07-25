@@ -155,7 +155,8 @@ export class IncidentSummaryComponent implements OnInit {
         this.fileToUpload = files.item(0);
         const policyStringifiedData = JSON.stringify({'incidentEntityId' : this.incidentDetails.incId});
         this.incidentSummaryService.uploadIncidentSummaryAttachment(this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
-            this.incidentDetails.attachFiles.push(JSON.parse(res));
+            this.incidentDetails.attachFiles.push(res);
+            this.saveIncidentActivity('uploaded ' + res.fileName + ' file.', 'FILE_UPLOADED');
             this._snackBar.open('File uploaded successfully', null, {
                 duration: 2000,
             });
@@ -192,7 +193,8 @@ export class IncidentSummaryComponent implements OnInit {
         window.open(url);
     }
 
-    getIncidentAttachmentFile(attachementId) {
+    getIncidentAttachmentFile(attachementId, fileName) {
+        this.saveIncidentActivity('downloaded ' + fileName + ' file.', 'FILE_DOWNLOADED');
         this.incidentSummaryService.downloadIncidentSummaryAttachment(attachementId)
             .subscribe(data => this.downloadFile(data)),
             error => console.log('Error downloading the file.'),
@@ -213,6 +215,13 @@ export class IncidentSummaryComponent implements OnInit {
         }
         this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) =>{
             console.log(res);
+        });
+    }
+
+    deleteComment(comment) {
+        comment.deleted = true;
+        this.incidentSummaryService.deleteComment(comment.cmtId).subscribe((res: any) => {
+            this.saveIncidentActivity('deleted a comment', 'COMMENT_DELETED');
         });
     }
 }

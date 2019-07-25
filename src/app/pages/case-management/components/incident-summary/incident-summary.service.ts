@@ -29,7 +29,7 @@ export class IncidentSummaryService {
             const formData: FormData = new FormData();
             formData.append('attachFile', fileData);
             formData.append('attachFileDetails', attachedFileDetails);
-            return this.http.post(url, formData, {responseType: 'text'});
+            return this.http.post(url, formData);
     }
 
     downloadIncidentSummaryAttachment(attachementId) {
@@ -50,6 +50,16 @@ export class IncidentSummaryService {
     setIncidentOutcome(outcomeData) {
         const url = `${this.apiPath}/incident/setoutcome`;
         return this.http.patch(url, outcomeData);
+    }
+
+    addComment(comment) {
+        const url = `${this.apiPath}/incident/save/incidentcomment`;
+        return this.http.post(url, comment);
+    }
+
+    deleteComment(commentId) {
+        const url = `${this.apiPath}/incident/deletePolicyComment/${commentId}`;
+        return this.http.delete(url);
     }
 
 }

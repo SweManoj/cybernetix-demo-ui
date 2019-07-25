@@ -19,16 +19,16 @@ export class LeftNavComponent {
             },
             {
                 ionIcon: '',
-                faIcon: 'fa fa-cogs',
+                faIcon: 'fa fa-lock',
                 img: '',
-                title: 'Policy Violation', // this.translateService.instant('general.menu.dashboard')
+                title: 'Policies', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/policyViolation'
             },
             {
                 ionIcon: '',
                 faIcon: 'fa fa-cogs',
                 img: '',
-                title: 'Incident Management', // this.translateService.instant('general.menu.dashboard')
+                title: 'Incidents', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/caseManagement'
             },
             {

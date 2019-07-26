@@ -4,6 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 import { RequestOptions, Headers, } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../../environments/environment';
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 // import { config } from '../../../config';
 // import { Tokens } from '../../auth/models/token';
 // import { tap } from 'rxjs/internal/operators/tap';
@@ -13,15 +15,41 @@ import { environment } from '../../../environments/environment';
 })
 export class LoginService {
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
-  private loggedUser: string;
 
-  constructor(private http: HttpClient) {
+  private basicAuthToken = `Basic ${btoa('cybernetix-client:secret')}`; // base 64 encode mechanism
+
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   login(loginData): Observable<any> {
-    return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
+    localStorage.setItem('accessToken', null);
+    console.log('basic is : ' + this.basicAuthToken);
+    return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`, null, { headers: { "Authorization": `Basic ${btoa('cybernetix-client:secret')}` } });
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+  refreshToken(): Observable<any> {
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    return this.http.post<any>(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}`, null)
+      .pipe(
+        map(resposne => {
+          return JSON.parse(resposne);
+        }));
+  }
+
+  getAuthToken(): string {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (currentUser != null) {
+      return currentUser.accessToken;
+    }
+
+    return '';
   }
 
   get isLoggedIn() {
@@ -32,9 +60,9 @@ export class LoginService {
     return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshtoken}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
   }
 
-    getUsers() {
-        const url = `${environment.serverUrl}/v1/user/getUsers`;
-        return this.http.get(url);
-    }
+  getUsers() {
+    const url = `${environment.serverUrl}/v1/user/getUsers`;
+    return this.http.get(url);
+  }
 
 }

@@ -21,7 +21,7 @@
                 <div *ngIf="isError" class="alert alert-error">
                     <p>Invalid Username or password!</p>
                 </div>
-                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-horizontal">
+                <form [formGroup]="form" (ngSubmit)="loginSubmit()" class="form-horizontal">
     
                     <mat-form-field appearance="outline"
                         [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched)}">

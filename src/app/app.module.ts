@@ -10,7 +10,7 @@ import { LoginModule } from './core/login/login.module';
 import { LoginLayoutComponent } from './core/layout/login.layout.component';
 import { MenuLayoutComponent } from './core/layout/menu.layout.component';
 import { AppTranslationModule } from './app.translation.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './core/services/auth.guard';
 import { LeftNavComponent } from './core/common/leftNav/leftNav.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -26,6 +26,7 @@ import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,7 @@ import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
         HighchartsChartModule,
         SharedPipesModule
     ],
-    exports:[
+    exports: [
         MaterialModule
     ],
     providers: [
@@ -61,7 +62,12 @@ import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
         UserContext,
         SessionStorage,
         UtilService,
-        UtilDataService
+        UtilDataService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent],
     entryComponents: [ModalUtilComponent]

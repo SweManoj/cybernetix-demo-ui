@@ -22,12 +22,25 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        if (localStorage.getItem("accessToken")) {
+        /* if (localStorage.getItem("accessToken")) {
             request = this.addToken(request, localStorage.getItem("accessToken"));
+        } */
+        debugger
+
+        let token = localStorage.getItem('accessToken');
+
+        if (token != 'null') {
+            debugger
+            request = request.clone({
+                setHeaders: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
         }
 
         return next.handle(request).pipe(catchError(error => {
             if (error instanceof HttpErrorResponse && error.status === 401) {
+                this.isRefreshing = true;
                 return this.handle401Error(request, next);
             } else {
                 return throwError(error);
@@ -47,7 +60,14 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-        if (!this.isRefreshing) {
+
+        return this.authService.refreshToken().pipe(
+            switchMap((token: any) => {
+                this.isRefreshing = false;
+                this.refreshTokenSubject.next(token.jwt);
+                return next.handle(this.addToken(request, token.jwt));
+            }));
+        /* if (!this.isRefreshing) {
             this.isRefreshing = true;
             this.refreshTokenSubject.next(null);
 
@@ -65,6 +85,6 @@ export class AuthInterceptor implements HttpInterceptor {
                 switchMap(jwt => {
                     return next.handle(this.addToken(request, jwt));
                 }));
-        }
+        } */
     }
 }

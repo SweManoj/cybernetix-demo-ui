@@ -32,7 +32,7 @@ export class LoginComponent {
         if (this.form.valid) {
             this.loginService.login(this.form.value).subscribe(res => {
                 if (res) {
-                    localStorage.setItem('accessToken', `${res.access_token}`);
+                    localStorage.setItem('accessToken', res.access_token);
                     localStorage.setItem('refreshToken', res.refresh_token);
 
                     console.log('access: '+ localStorage.getItem('accessToken'));

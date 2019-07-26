@@ -34,10 +34,19 @@ export class LoginService {
 
   refreshToken(): Observable<any> {
     const refreshToken = localStorage.getItem('refreshToken');
+    console.log('..... refresh toke .... : ' + refreshToken);
 
-    return this.http.post<any>(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}`, null)
+    const accessToken = localStorage.getItem('accessToken');
+    console.log('..... access toke .... : ' + accessToken);
+
+    localStorage.setItem('accessToken', null);
+
+    return this.http.post<any>(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}`, null, { headers: { "Authorization": `Basic ${btoa('cybernetix-client:secret')}` } })
       .pipe(
         map(resposne => {
+          debugger
+          localStorage.setItem('accessToken', resposne.access_token);
+          localStorage.setItem('refreshToken', resposne.refresh_token);
           return JSON.parse(resposne);
         }));
   }

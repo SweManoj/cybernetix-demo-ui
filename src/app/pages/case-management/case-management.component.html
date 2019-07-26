@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <div class="row mt-4 title-main ml-0">
 
-        <div><span class="h5">Case Management</span></div>
-
-        <div class="col-sm-4 ml-5">
+        <div *ngIf="path == 'policyViolation'"><span class="h5">Policy Violation</span></div>
+        <div *ngIf="path == 'caseManagement'"><span class="h5">Incident Management</span></div>
+        <!-- <div class="col-sm-4 ml-5">
             <ul class="nav nav-pills btn-sm" id="pills-tab" role="tablist">
                 <li class="nav-item active">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -14,14 +14,14 @@
                         aria-controls="pills-profile" aria-selected="false">Incident</a>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </div>
 
 <div class="container-fluid">
     <div class="row ml-0 mr-0 mt-4 mb-3">
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="tab-content">
+            <div *ngIf="path == 'policyViolation'" role="tabpanel">
                 <div class="card">
                     <div class="card-header policy-filter-row row">
                         <div class="col-md-12">
@@ -166,7 +166,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div *ngIf="path == 'caseManagement'" role="tabpanel">
                 <div class="col-md-12 mb-3">
                     <div class="row incident-filter-row">
                         <div class="mr-4 mb-4">

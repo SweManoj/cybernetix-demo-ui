@@ -4,7 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CaseModalComponent } from './components/case-modal/case-modal.component';
 import { CaseManagementService } from './case-management.service';
 import { Table } from 'primeng/table';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { path } from 'd3';
 
 @Component({
   selector: 'app-case-management',
@@ -189,8 +190,9 @@ export class CaseManagementComponent implements OnInit {
   lowItem = 0;
   totalItem = 0;
   todayDate = new Date();
+  path: any;
 
-  constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService, private router: Router) {
+  constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
     this.offset = 0;
     this.recordsReturned = 0;
 
@@ -222,6 +224,9 @@ export class CaseManagementComponent implements OnInit {
 
   ngOnInit() {
     //this.getAllUsers();
+    this.route.url.subscribe(url => {
+      this.path = (url[0].path);  
+    });
       this.getPolicyViolations();
       this.getAllIncidents();
   }

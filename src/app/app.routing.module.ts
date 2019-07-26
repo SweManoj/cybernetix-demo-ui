@@ -55,6 +55,10 @@ export const routes: Routes = [
                 component: FilterRiskEntityComponent
             },
             {
+                path: 'policyViolation',
+                component: CaseManagementComponent
+            },
+            {
                 path: 'caseManagement',
                 component: CaseManagementComponent
             },

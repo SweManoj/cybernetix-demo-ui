@@ -31,7 +31,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         policyCommentsEntities : [],
         reviewer : {userName : '', firstName: '', lastName: ''}
     };
-    policyDetails = {
+    policyDetails:any = {
         pv_ID : 0,
         attachedFiles : [],
         priority: '',

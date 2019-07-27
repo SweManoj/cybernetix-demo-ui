@@ -47,6 +47,7 @@ export class LoginService {
           debugger
           localStorage.setItem('accessToken', resposne.access_token);
           localStorage.setItem('refreshToken', resposne.refresh_token);
+          this.router.navigateByUrl('/dashboard');
           return JSON.parse(resposne);
         }));
   }

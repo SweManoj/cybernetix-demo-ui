@@ -1,4 +1,4 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpClient, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent, HttpErrorResponse } from '@angular/common/http';
+/* import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpClient, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserContext } from '../services/userContext';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
@@ -18,13 +18,10 @@ export class AuthInterceptor implements HttpInterceptor {
     private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
     constructor(private userContext: UserContext, private http: HttpClient, private authService: LoginService) {
-    }
+    } 
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        /* if (localStorage.getItem("accessToken")) {
-            request = this.addToken(request, localStorage.getItem("accessToken"));
-        } */
         debugger
 
         let token = localStorage.getItem('accessToken');
@@ -67,7 +64,11 @@ export class AuthInterceptor implements HttpInterceptor {
                 this.refreshTokenSubject.next(token.jwt);
                 return next.handle(this.addToken(request, token.jwt));
             }));
-        /* if (!this.isRefreshing) {
+        
+    }
+} */
+
+/* if (!this.isRefreshing) {
             this.isRefreshing = true;
             this.refreshTokenSubject.next(null);
 
@@ -86,5 +87,3 @@ export class AuthInterceptor implements HttpInterceptor {
                     return next.handle(this.addToken(request, jwt));
                 }));
         } */
-    }
-}

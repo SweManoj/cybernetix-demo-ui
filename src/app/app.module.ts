@@ -26,7 +26,6 @@ import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
-import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
 @NgModule({
     declarations: [
@@ -62,12 +61,7 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
         UserContext,
         SessionStorage,
         UtilService,
-        UtilDataService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true
-        }
+        UtilDataService
     ],
     bootstrap: [AppComponent],
     entryComponents: [ModalUtilComponent]

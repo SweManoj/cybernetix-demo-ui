@@ -57,14 +57,14 @@ export class DashboardService {
     ];
 
     private theme: string;
-    basePath: string = null;
     apiPath: string;
+    mainURl: string;
 
     constructor(private userContext: UserContext, private http: HttpClient) {
-        this.basePath = this.userContext.getBasePath();
         this.theme = this.userContext.getTheme();
         this.apiPath = this.userContext.getServerUrl();
         this.updateDefaultPie();
+        this.mainURl = `${environment.serverUrl}/v1/dashboard`;
     }
 
     get defaultPieChart() {
@@ -80,27 +80,27 @@ export class DashboardService {
     }
 
     getPieChartsSummary() {
-        const url = `${this.apiPath}/dashboard/counts/all`;
+        const url = `${this.mainURl}/counts/all`;
         return this.http.get(url);
     }
 
     getRiskCountByDepartment() {
-        const url = `${this.apiPath}/dashboard/riskscountbydepartment/0/10`;
+        const url = `${this.mainURl}/riskscountbydepartment/0/10`;
         return this.http.get(url);
     }
 
     getRiskCountByTitle() {
-        const url = `${this.apiPath}/dashboard/riskscountbytitle/0/10`;
+        const url = `${this.mainURl}/riskscountbytitle/0/10`;
         return this.http.get(url);
     }
 
     getRiskCountByLocation() {
-        const url = `${this.apiPath}/dashboard/riskscountbycountry/0`;
+        const url = `${this.mainURl}/riskscountbycountry/0`;
         return this.http.get(url);
     }
 
     searchUserByName(entityName) {
-        const url = `${this.apiPath}/dashboard/searchRiskyEntities/${entityName}`;
+        const url = `${this.mainURl}/searchRiskyEntities/${entityName}`;
         return this.http.get(url);
     }
 

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserContext } from '../../../../core/services/userContext';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable()
 export class RiskyUserService {
-    basepath: string;
-    apiPath: string;
 
-    constructor(private http: HttpClient, private userContext: UserContext) {
-        this.basepath = this.userContext.getBasePath();
-        this.apiPath = this.userContext.getServerUrl();
+    mainURL: string;
+
+    constructor(private http: HttpClient) {
+        this.mainURL = `${environment.serverUrl}`;
     }
 
     getData() {
@@ -44,46 +44,46 @@ export class RiskyUserService {
     }
 
     getUploadExceedData(limit) {
-        const url = `${this.basepath}/api/dashboard/firewallRiskyUsers?records=20&page=${limit}`;
+        const url = `${this.mainURL}/api/dashboard/firewallRiskyUsers?records=20&page=${limit}`;
         return this.http.get(url);
     }
 
     getRiskyUserDetails(entityId, entityType) {
-        const url = `${this.apiPath}/entity/${entityType}?entityId=${entityId}`;
+        const url = `${this.mainURL}/entity/${entityType}?entityId=${entityId}`;
         return this.http.get(url);
     }
 
     getRiskyUserCountDetails(entityId) {
-        const url = `${this.apiPath}/entity/counts/${entityId}`;
+        const url = `${this.mainURL}/entity/counts/${entityId}`;
         return this.http.get(url);
     }
 
     getPolicyViolationsForEntity(entityId, startDate, endDate) {
-        const url = `${this.apiPath}/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
+        const url = `${this.mainURL}/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
         return this.http.get(url);
     }
 
     getSelectedUserData(sourceId, isResource) {
-        const url = `${this.basepath}/api/dashboard/get_Userdata_by_Source?source=${sourceId}&resource=${isResource}`;
+        const url = `${this.mainURL}/api/dashboard/get_Userdata_by_Source?source=${sourceId}&resource=${isResource}`;
         return this.http.get(url);
     }
     getSelectedUserDataFromModel(sourceId, isResource) {
-        const url = `${this.basepath}/api/dashboard/get_Userdata_by_SourceModel?source=${sourceId}&resource=${isResource}`;
+        const url = `${this.mainURL}/api/dashboard/get_Userdata_by_SourceModel?source=${sourceId}&resource=${isResource}`;
         return this.http.get(url);
     }
 
     getViolationSummary(ruleId, userId, isotimestamp) {
-        const url = `${this.basepath}/api/dashboard/getViolationSummary?ruleId=${ruleId}&userId=${userId}&timeStamp=${isotimestamp}`;
+        const url = `${this.mainURL}/api/dashboard/getViolationSummary?ruleId=${ruleId}&userId=${userId}&timeStamp=${isotimestamp}`;
         return this.http.get(url);
     }
 
-    getPolicyViolationForGivenPeriod(entityId, startDate, endDate, offset){
-         const url = `${this.apiPath}/entity/policiesViolationsummaryDetails/${entityId}/${startDate}/${endDate}?offset=${offset}`;
-          return this.http.get(url);
+    getPolicyViolationForGivenPeriod(entityId, startDate, endDate, offset) {
+        const url = `${this.mainURL}/entity/policiesViolationsummaryDetails/${entityId}/${startDate}/${endDate}?offset=${offset}`;
+        return this.http.get(url);
     }
 
     getDayBasisRiskScore(entityId) {
-        const url = `${this.apiPath}/entity/linegraph?entityId=${entityId}`;
+        const url = `${this.mainURL}/entity/linegraph?entityId=${entityId}`;
         return this.http.get(url);
     }
 }

@@ -6,14 +6,12 @@ import { Observable } from 'rxjs/Rx';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-// import { config } from '../../../config';
-// import { Tokens } from '../../auth/models/token';
-// import { tap } from 'rxjs/internal/operators/tap';
-// import { environment } from '../../../environments/environment'
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   private basicAuthToken = `Basic ${btoa('cybernetix-client:secret')}`; // base 64 encode mechanism
@@ -43,12 +41,12 @@ export class LoginService {
 
     return this.http.post<any>(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}`, null, { headers: { "Authorization": `Basic ${btoa('cybernetix-client:secret')}` } })
       .pipe(
-        map(resposne => {
+        map(response => {
           debugger
-          localStorage.setItem('accessToken', resposne.access_token);
-          localStorage.setItem('refreshToken', resposne.refresh_token);
+          localStorage.setItem('accessToken', response.access_token);
+          localStorage.setItem('refreshToken', response.refresh_token);
           this.router.navigateByUrl('/dashboard');
-          return JSON.parse(resposne);
+          return response;
         }));
   }
 
@@ -66,7 +64,8 @@ export class LoginService {
     return this.loggedIn.asObservable();
   }
 
-  refreshAuthToken(refreshtoken): Observable<any> {
+  refreshAuthToken(): Observable<any> {
+    const refreshtoken = localStorage.getItem('refreshToken');
     return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshtoken}`, null, { headers: { "Authorization": "Basic Y3liZXJuZXRpeC1jbGllbnQ6c2VjcmV0" } });
   }
 

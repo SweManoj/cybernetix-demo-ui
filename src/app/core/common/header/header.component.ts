@@ -23,7 +23,7 @@ export class HeaderComponent {
 
     constructor(private sessionStorage: SessionStorage, private userContext: UserContext, private router: Router,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
-        private utilDataService: UtilDataService, private ngbModal: NgbModal,private dashboardService: DashboardService) {
+        private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService) {
         this.themeName = this.userContext.themeName;
         this.prevThemeName = this.themeName;
     }
@@ -33,8 +33,7 @@ export class HeaderComponent {
     }
 
     signout() {
-        this.sessionStorage.removeItem(null);
-        this.userContext.setAuthToken(null);
+        localStorage.clear();
         this.loginService.loggedIn.next(false);
         this.router.navigate(['/login']);
     }
@@ -61,7 +60,7 @@ export class HeaderComponent {
     }
 
     // searchEntityAvailable
-    searchEntity: any='';
+    searchEntity: any = '';
     allEntitiesNames: string[] = [];
 
     ngOnInit() {
@@ -94,37 +93,37 @@ export class HeaderComponent {
         if (this.searchEntity !== '') {
             this.utilDataService.filteredRiskyUsers = [];
 
-        this.dashboardService.searchUserByName(this.searchEntity).subscribe((res: any) => {
+            this.dashboardService.searchUserByName(this.searchEntity).subscribe((res: any) => {
                 this.riskyUsers = res;
 
-            const forFilterDuplication = this.riskyUsers.filter(riskyUser =>
-                riskyUser.user.u_firstName.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1)  // user name
-                .concat(this.riskyUsers.filter(riskyUser =>
-                    riskyUser.user.u_departmentName.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // department name
-                .concat(this.riskyUsers.filter(riskyUser =>
-                    riskyUser.user.u_title.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // role name
-                .concat(this.riskyUsers.filter(riskyUser =>
-                    riskyUser.user.u_country.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // location name
+                const forFilterDuplication = this.riskyUsers.filter(riskyUser =>
+                    riskyUser.user.u_firstName.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1)  // user name
+                    .concat(this.riskyUsers.filter(riskyUser =>
+                        riskyUser.user.u_departmentName.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // department name
+                    .concat(this.riskyUsers.filter(riskyUser =>
+                        riskyUser.user.u_title.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // role name
+                    .concat(this.riskyUsers.filter(riskyUser =>
+                        riskyUser.user.u_country.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // location name
                 /*.concat(this.riskyUsers.filter(riskyUser =>
                     riskyUser.lastViolation.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1));  // last violation name*/
 
-                    if (forFilterDuplication.length > 0) {
-                        this.utilDataService.filteredRiskyUsers = this.removeDuplicates(forFilterDuplication, 'id');
-                        this.router.navigate(['/filteredRiskyUsers', this.searchEntity.toString()]);
-                    } else {
-                        const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
-                        modalRef.componentInstance.modalHeader = 'Warning';
-                        modalRef.componentInstance.modalMessage = 'No Records Found !';
-                        modalRef.componentInstance.cancelFlag = false;
-                    }
-                });    
-            } else {
-                const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
-                modalRef.componentInstance.modalHeader = 'Warning';
-                modalRef.componentInstance.modalMessage = 'Please Enter Risky Entity Values !';
-                modalRef.componentInstance.cancelFlag = false;
-            }
-        
+                if (forFilterDuplication.length > 0) {
+                    this.utilDataService.filteredRiskyUsers = this.removeDuplicates(forFilterDuplication, 'id');
+                    this.router.navigate(['/filteredRiskyUsers', this.searchEntity.toString()]);
+                } else {
+                    const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
+                    modalRef.componentInstance.modalHeader = 'Warning';
+                    modalRef.componentInstance.modalMessage = 'No Records Found !';
+                    modalRef.componentInstance.cancelFlag = false;
+                }
+            });
+        } else {
+            const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
+            modalRef.componentInstance.modalHeader = 'Warning';
+            modalRef.componentInstance.modalMessage = 'Please Enter Risky Entity Values !';
+            modalRef.componentInstance.cancelFlag = false;
+        }
+
 
     }
 

@@ -20,10 +20,10 @@ export interface User {
 })
 export class IncidentSummaryComponent implements OnInit {
     status: any = '';
-    outcome: any = '';
     isUpdate: boolean = false;
     selectedPolicy: any;
     caseowners = [];
+    incidentDetailsCopy: any;
     incidentDetails: any = {
         incId: 0,
         priority: '',
@@ -134,7 +134,6 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
-
     displayFn(user?: User): string | undefined {
         return user ? user.name : undefined;
     }
@@ -142,6 +141,7 @@ export class IncidentSummaryComponent implements OnInit {
     getIncident(pvId) {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
                 this.incidentDetails = res;
+                this.incidentDetailsCopy = Object.assign({}, res);
             if (this.incidentDetails.owner) {
                 this.myControl.setValue({ name: this.incidentDetails.owner.firstName, value: this.incidentDetails.owner.userName});
             }
@@ -174,8 +174,11 @@ export class IncidentSummaryComponent implements OnInit {
             'incID': this.incidentDetails.incId,
             'outcome': this.incidentDetails.outcome
         };
-        this.incidentSummaryService.setIncidentOutcome(outcomeData).subscribe((res: any) => {});
+        this.incidentSummaryService.setIncidentOutcome(outcomeData).subscribe((res: any) => {
+            this.saveIncidentActivity('changed the outcome to ' + this.incidentDetails.outcome, 'INCIDENT_OUTCOME');
+        });
     }
+
     updateIncident() {
         if (this.incidentDetails.status === 'CLOSED') {
             this.updateOutcome();
@@ -185,7 +188,9 @@ export class IncidentSummaryComponent implements OnInit {
             'incOwnerUsrName': this.myControl.value.value,
             'status': this.incidentDetails.status
         };
-        this.incidentSummaryService.updateIncident(incidentData, this.incidentDetails.incId).subscribe((response: any) => {});
+        this.incidentSummaryService.updateIncident(incidentData, this.incidentDetails.incId).subscribe((response: any) => {
+            this.addFeedsForIncidentUpdate();
+        });
         this._snackBar.open('Updated successfully', null, {
             duration: 2000,
         });
@@ -197,6 +202,24 @@ export class IncidentSummaryComponent implements OnInit {
         const blob = new Blob(binaryData, { type: 'application/octet-stream' });
         const url = window.URL.createObjectURL(blob);
         window.open(url);
+    }
+
+    addFeedsForIncidentUpdate() {
+        if (this.incidentDetails.priority !== this.incidentDetailsCopy.priority) {
+            this.saveIncidentActivity('changed the priority to be ' + this.incidentDetails.priority , 'PRIORITY_UPDATED');
+        }
+
+        if (this.incidentDetails.status !== this.incidentDetailsCopy.status) {
+            this.saveIncidentActivity('changed the status to be ' + this.incidentDetails.status , 'STATUS_UPDATED');
+        }
+
+        if (this.incidentDetailsCopy.owner !== null) {
+            if (this.myControl.value.value !== this.incidentDetailsCopy.owner.userName) {
+                this.saveIncidentActivity('changed the case owner', 'CASE_OWNER_ASSIGNED');
+            }
+        } else if (this.myControl.value.value) {
+            this.saveIncidentActivity('changed the reviewer' , 'CASE_OWNER_ASSIGNED');
+        }
     }
 
     getIncidentAttachmentFile(attachementId, fileName) {

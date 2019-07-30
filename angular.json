@@ -22,6 +22,7 @@
               "src/favicon.ico"
             ],
             "styles": [
+              "src/styles.scss",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/ionicons/dist/scss/ionicons.scss",
               "src/assets/themes/black_theme.scss",

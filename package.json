@@ -77,7 +77,7 @@
     "moment": "^2.23.0",
     "mongojs": "^2.6.0",
     "mongoose": "^5.3.11",
-    "ng2-charts": "2.2.2",
+    "ng2-charts": "^2.2.2",
     "ng2modules-easypiechart": "0.0.4",
     "ngx-scrollbar": "^4.2.0",
     "ngx-textarea-autosize": "^2.0.3",

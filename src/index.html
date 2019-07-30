@@ -17,9 +17,66 @@
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
     <script src="//www.amcharts.com/lib/3/plugins/responsive/responsive.min.js"></script> -->
 
+    <style>
+        #preloader {
+            overflow: hidden;
+            background-color: #fff;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999999;
+        }
+
+        .colorlib-load {
+            -webkit-animation: 1000ms linear 0s normal none infinite running colorlib-load;
+            animation: 1000ms linear 0s normal none infinite running colorlib-load;
+            background: transparent none repeat scroll 0 0;
+            border-color: #dddddd #dddddd #fb397d;
+            border-radius: 50%;
+            border-style: solid;
+            border-width: 2px;
+            height: 40px;
+            left: calc(50% - 20px);
+            position: relative;
+            top: calc(50% - 20px);
+            width: 40px;
+            z-index: 9;
+        }
+
+        @-webkit-keyframes colorlib-load {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes colorlib-load {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body [ngClass]="theme">
+
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="colorlib-load"></div>
+    </div>
 </body>
 
 </html>

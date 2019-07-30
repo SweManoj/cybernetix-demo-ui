@@ -2,18 +2,26 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import 'rxjs/add/operator/do';
+import { Route, Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { TokenUtilService } from '../../token-util.service';
 
 @Injectable()
 export class SessionInterceptor implements HttpInterceptor {
 
-    constructor() {
+    constructor(private tokenUtilService: TokenUtilService, private router: Router) {
+    }
+
+    async handleError(error) {
+        if (error.status == 401) {
+            return await this.tokenUtilService.getNewAccessToken()
+        }
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        const accessToken = localStorage.getItem('accessToken');
-
-        if (accessToken != 'null' || accessToken == undefined) {
+        if (!request.url.includes('oauth')) {
+            const accessToken = this.tokenUtilService.accessToken;
             request = request.clone({
                 setHeaders: {
                     'Authorization': `Bearer ${accessToken}`
@@ -21,16 +29,53 @@ export class SessionInterceptor implements HttpInterceptor {
             });
         }
 
-        return next.handle(request)
-            .do(
-                success => {
-                    console.log('success is : ' + success)
-                },
-                error => {
-                    console.log('error is : ' + error);
+        // next.handle(request)
+        /* .pipe(
+            catchError(err => {
+                if (err.status == 401) {
+                    this.handleError(err);
+                    if (!request.url.includes('oauth')) {
+                        const accessToken = this.tokenUtilService.accessToken;
+                        request = request.clone({
+                            setHeaders: {
+                                'Authorization': `Bearer ${accessToken}`
+                            }
+                        });
+                    }
+                    return next.handle(request);
                 }
-            );
+
+                return err;
+            })
+        ); */
+
+        return next.handle(request)
+            .do(success => console.log('success'),
+                error => {
+                    if (error.status == 401) {
+                        sessionStorage.removeItem('accessToken');
+                        sessionStorage.removeItem('refreshToken');
+                        sessionStorage.removeItem('expiryDate');
+                        sessionStorage.clear();
+                        this.router.navigateByUrl('/login')
+                    }
+                });
     }
+
+    /* .do(success => console.log(success),
+        async error => {
+            debugger
+            console.log('1......' + this.tokenUtilService.expiryDate)
+            if (error.status == 401 && this.tokenUtilService.expiryDate < new Date()) {
+                console.log('2......' + this.tokenUtilService.expiryDate)
+                console.log('.....' + (this.tokenUtilService.expiryDate < new Date()));
+                const d = await this.tokenUtilService.getRefreshToken();
+                console.log(error);
+                // return next.handle(request);
+            } else
+                return next.handle(request);
+            // this.router.navigateByUrl('/dashboard');
+        }) */
 
 }
 

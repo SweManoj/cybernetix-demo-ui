@@ -20,8 +20,6 @@ export class LoginService {
   }
 
   login(loginData): Observable<any> {
-    localStorage.setItem('accessToken', null);
-    console.log('basic is : ' + this.basicAuthToken);
     return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`, null, { headers: { "Authorization": `Basic ${btoa('cybernetix-client:secret')}` } });
   }
 
@@ -30,24 +28,29 @@ export class LoginService {
     this.router.navigate(['/login']);
   }
 
-  refreshToken(): Observable<any> {
-    const refreshToken = localStorage.getItem('refreshToken');
-    console.log('..... refresh toke .... : ' + refreshToken);
+  askNewAccessToken(refreshToken: string): Observable<any> {
+    return this.http.post<any>(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}`, null, { headers: { "Authorization": `Basic ${btoa('cybernetix-client:secret')}` } })
+  }
 
-    const accessToken = localStorage.getItem('accessToken');
-    console.log('..... access toke .... : ' + accessToken);
-
-    localStorage.setItem('accessToken', null);
+  refreshToken(refreshToken: string): Promise<any> {
 
     return this.http.post<any>(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshToken}`, null, { headers: { "Authorization": `Basic ${btoa('cybernetix-client:secret')}` } })
-      .pipe(
-        map(response => {
-          debugger
-          localStorage.setItem('accessToken', response.access_token);
-          localStorage.setItem('refreshToken', response.refresh_token);
-          this.router.navigateByUrl('/dashboard');
-          return response;
-        }));
+      .pipe(map(res => {
+        /* this.accessToken = response.access_token
+            this.refreshToken = response.access_token
+            let expiryDate = new Date();
+            expiryDate.setSeconds(expiryDate.getSeconds() + (response.expires_in - 15));
+            this.expiryDate = expiryDate; */
+        return res;
+      })).toPromise();
+    /* .pipe(
+      map(response => {
+        debugger
+        localStorage.setItem('accessToken', response.access_token);
+        localStorage.setItem('refreshToken', response.refresh_token);
+        this.router.navigateByUrl('/dashboard');
+        return response;
+      })); */
   }
 
   getAuthToken(): string {

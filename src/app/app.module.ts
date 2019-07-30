@@ -26,6 +26,7 @@ import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
+import { TokenUtilService } from './token-util.service';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
         UserContext,
         SessionStorage,
         UtilService,
-        UtilDataService
+        UtilDataService,
+        TokenUtilService
     ],
     bootstrap: [AppComponent],
     entryComponents: [ModalUtilComponent]

@@ -9,31 +9,31 @@ export class TopDetailsService {
     mainURL: string;
 
     constructor(private http: HttpClient, private userContext: UserContext) {
-        this.mainURL = `${environment.serverUrl}`;
+        this.mainURL = `${environment.serverUrl}/v1/dashboard`;
     }
 
     getUploadExceedData() {
-        const url = `${this.mainURL}/api/dashboard/firewallRiskyUsers?records=5`;
+        const url = `${this.mainURL}/firewallRiskyUsers?records=5`;
         return this.http.get(url);
     }
 
     getTopThreats() {
-        const url = `${this.mainURL}/dashboard/topThreats/0`;
+        const url = `${this.mainURL}/topThreats/0`;
         return this.http.get(url);
     }
 
     getTopViolations() {
-        const url = `${this.mainURL}/dashboard/violations/0?offset=0&size=6`;
+        const url = `${this.mainURL}/violations/0?offset=0&size=6`;
         return this.http.get(url);
     }
 
     getTopRiskyUsers(entityType) {
-        const url = `${this.mainURL}/dashboard/violators/0/${entityType}?offset=0&size=5`;
+        const url = `${this.mainURL}/violators/0/${entityType}?offset=0&size=5`;
         return this.http.get(url);
     }
 
     getTopUsers(userType) {
-        const url = `${this.mainURL}/dashboard/topusersbygroup/0?grp=${userType}`;
+        const url = `${this.mainURL}/topusersbygroup/0?grp=${userType}`;
         return this.http.get(url);
     }
 

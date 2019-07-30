@@ -10,6 +10,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { UtilDataService } from '../../services/util.data.service';
 import { ModalUtilComponent } from '../modal-util/modal.util.component';
 import { DashboardService } from '../../../pages/dashboard/dashboard.service';
+import { TokenUtilService } from '../../../token-util.service';
 
 @Component({
     selector: 'app-header',
@@ -23,7 +24,9 @@ export class HeaderComponent {
 
     constructor(private sessionStorage: SessionStorage, private userContext: UserContext, private router: Router,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
-        private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService) {
+        private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService,
+        private tokenUtilService: TokenUtilService) {
+
         this.themeName = this.userContext.themeName;
         this.prevThemeName = this.themeName;
     }
@@ -33,7 +36,15 @@ export class HeaderComponent {
     }
 
     signout() {
+        this.tokenUtilService.accessToken = null;
+        this.tokenUtilService.refreshToken = null;
+        this.tokenUtilService.expiryDate = null;
+
+        sessionStorage.removeItem('accessToken');
+        sessionStorage.removeItem('refreshToken');
+        sessionStorage.removeItem('expiryDate');
         localStorage.clear();
+        sessionStorage.clear();
         this.loginService.loggedIn.next(false);
         this.router.navigate(['/login']);
     }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserContext } from '../../../../core/services/userContext';
 import { environment } from '../../../../../environments/environment';
 
 @Injectable()
@@ -8,47 +7,11 @@ export class RiskyUserService {
 
     mainURL: string;
 
-    constructor(private http: HttpClient, private userContext: UserContext) {
-        this.mainURL = userContext.getServerUrl();
+    constructor(private http: HttpClient) {
+        this.mainURL = `${environment.serverUrl}/v1`;
     }
 
-    getData() {
-        return [
-            {
-                name: 'Danae Farone',
-                department: 'Engineering',
-                riskScore: 590.7,
-                icon: 'user'
-            }, {
-                name: 'Major Fisch',
-                department: 'Marketing',
-                riskScore: 487,
-                icon: 'user'
-            }, {
-                name: 'Casandra Baur',
-                department: 'Sales',
-                riskScore: 312.8,
-                icon: 'user'
-            }, {
-                name: '10.0.1.1',
-                department: '',
-                riskScore: 200.5,
-                icon: 'globe'
-            }, {
-                name: 'Jim Duster',
-                department: 'Marketing',
-                riskScore: 200.5,
-                icon: 'user'
-            }
-        ];
-    }
-
-    getUploadExceedData(limit) {
-        const url = `${this.mainURL}/api/dashboard/firewallRiskyUsers?records=20&page=${limit}`;
-        return this.http.get(url);
-    }
-
-    getRiskyUserDetails(entityId, entityType) {
+    getRiskyEntityDetails(entityId, entityType) {
         const url = `${this.mainURL}/entity/${entityType}?entityId=${entityId}`;
         return this.http.get(url);
     }
@@ -60,15 +23,6 @@ export class RiskyUserService {
 
     getPolicyViolationsForEntity(entityId, startDate, endDate) {
         const url = `${this.mainURL}/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
-        return this.http.get(url);
-    }
-
-    getSelectedUserData(sourceId, isResource) {
-        const url = `${this.mainURL}/api/dashboard/get_Userdata_by_Source?source=${sourceId}&resource=${isResource}`;
-        return this.http.get(url);
-    }
-    getSelectedUserDataFromModel(sourceId, isResource) {
-        const url = `${this.mainURL}/api/dashboard/get_Userdata_by_SourceModel?source=${sourceId}&resource=${isResource}`;
         return this.http.get(url);
     }
 

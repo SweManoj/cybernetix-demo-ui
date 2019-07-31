@@ -187,8 +187,8 @@ button.greyBackground.dropdown-item:hover {
     }
     path {
       stroke: #0c202f !important; //$ngxChart-border-color;
-      stroke-width: unset;
-      stroke-opacity: initial;
+      stroke-width: 0;
+      stroke-opacity: 0;
     }
   }
 }
@@ -417,7 +417,7 @@ button.btn.btn-sm {
       margin-left: 1.2rem;
       font-weight: 500;
       cursor: pointer;
-      margin-right: calc(100%-10%);
+      margin-right: calc(100%- 10%);
       border-radius: 15px;
       padding: 4px 15px;
     }

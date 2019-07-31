@@ -29,7 +29,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         priority: '',
         status: '',
         policyCommentsEntities : [],
-        reviewer : {userName : '', firstName: '', lastName: ''}
+        policyReviewer : {userName : '', firstName: '', lastName: ''}
     };
     policyDetails:any = {
         pv_ID : 0,
@@ -38,7 +38,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         status: '',
         policyCommentsEntities : [],
         policyViolationActivities: [],
-        reviewer : {userName : '', firstName: '', lastName: ''}
+        policyReviewer : {userName : '', firstName: '', lastName: ''}
     };
     fileToUpload = {};
 
@@ -117,9 +117,9 @@ export class PolicyViolationSummaryComponent implements OnInit {
         this.policyViolationSummaryService.getPolicyDetails(violationId).subscribe((res: any) => {
             this.policyDetails = res;
             this.policyDetailsCopy = Object.assign({}, res);
-            if (this.policyDetails.reviewer) {
-                this.myControl.setValue({ name: this.policyDetails.reviewer.firstName + ' ' +
-                        + this.policyDetails.reviewer.lastName, value: this.policyDetails.reviewer.userName});
+            if (this.policyDetails.policyReviewer) {
+                this.myControl.setValue({ name: this.policyDetails.policyReviewer.firstName + ' ' +
+                        + this.policyDetails.policyReviewer.lastName, value: this.policyDetails.policyReviewer.userName});
             }
         });
     }
@@ -189,8 +189,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
             this.savePolicyViolationActivity('changed the status to be ' + this.policyDetails.status , 'STATUS_UPDATED');
         }
 
-        if (this.policyDetailsCopy.reviewer !== null) {
-            if (this.myControl.value.value !== this.policyDetailsCopy.reviewer.userName) {
+        if (this.policyDetailsCopy.policyReviewer !== null) {
+            if (this.myControl.value.value !== this.policyDetailsCopy.policyReviewer.userName) {
                 this.savePolicyViolationActivity('changed the reviewer', 'REVIEWER_ASSIGNED');
             }
         } else if (this.myControl.value.value) {

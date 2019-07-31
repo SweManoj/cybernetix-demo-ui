@@ -69,7 +69,7 @@ export class RiskyHostComponent implements OnInit {
     }
 
     getRiskyHostDetails() {
-        this.riskyUserService.getRiskyUserDetails(this.selectedHost,'HOST').subscribe((res: any) => {
+        this.riskyUserService.getRiskyEntityDetails(this.selectedHost,'HOST').subscribe((res: any) => {
             this.hostDetails = res;
         });
          this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, 0, 0).subscribe((res: any) => {

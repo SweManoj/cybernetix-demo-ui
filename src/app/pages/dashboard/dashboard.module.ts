@@ -20,7 +20,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox'
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { GlobeChartComponent } from './components/globe-chart/globe-chart-component';
-import { ChartModule } from 'primeng/chart'
+import { ChartModule } from 'primeng/chart';
 import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import { RiskScoreModalComponent } from './components/riskyUsers/risk-score-modal/risk-score-modal.component';
 import { FilterRiskEntityComponent } from './components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
@@ -29,7 +29,6 @@ import { RiskyEntityViewComponent } from './components/riskyUsers/filter-risk-en
 import { MaterialModule } from './../../material';
 import { RiskyIPComponent } from './components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
-import { PlainGlobeChartComponent } from './components/plain-globe-chart/plain-globe-chart.component';
 import {HighchartsChartModule} from 'highcharts-angular';
 import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
 
@@ -48,7 +47,6 @@ import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
         FilterRiskEntityComponent,
         RiskyIPComponent,
         RiskyHostComponent,
-        PlainGlobeChartComponent,
         ShortNumberPipe
     ],
     imports: [
@@ -70,8 +68,7 @@ import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
     entryComponents: [
         ContentModalComponent,
         RiskyUserInfoModalComponent,
-        RiskScoreModalComponent,
-        PlainGlobeChartComponent
+        RiskScoreModalComponent
     ],
     providers: [
         DashboardService,

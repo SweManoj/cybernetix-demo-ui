@@ -129,7 +129,7 @@ export class RiskyUsersComponent {
         range2.axisFill.zIndex = -1;
 
         var hand = chart.hands.push(new am4charts.ClockHand());
-        hand.value = this.userData.score;
+        hand.value = this.userData.riskScore;
         hand.fill = am4core.color("#2D93AD");   // hand color
         hand.stroke = am4core.color("#2D93AD");
 

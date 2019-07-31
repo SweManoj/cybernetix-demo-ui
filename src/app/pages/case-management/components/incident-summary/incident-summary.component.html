@@ -114,7 +114,7 @@
                             <li *ngFor="let activity of incidentDetails.incidentactivities">
                                 <span class="time">{{activity.actionTime | timeAgo}}</span>
                                 <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">{{activity.actorUsrId.firstName}} {{activity.actorUsrId.lastName}} {{activity.feed}}</span>
+                                <span class="news-title">{{activity.incActor.firstName}} {{activity.incActor.lastName}} {{activity.feed}}</span>
                             </li>
                         </ul>
                         </ng-scrollbar>
@@ -223,7 +223,7 @@
                         </div>
                         <div class="comment-content">
                             <div class="row mb-1">
-                                <div class="col-md-12 comment user-info"><a href="#">{{comment.commentorUsrId.userName}}</a> &emsp;&emsp;
+                                <div class="col-md-12 comment user-info"><a href="#">{{comment.incCommentor.userName}}</a> &emsp;&emsp;
                                     {{comment.commentTime | timeAgo}}
                                 </div>
                             </div>

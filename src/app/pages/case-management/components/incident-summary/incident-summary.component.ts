@@ -30,9 +30,10 @@ export class IncidentSummaryComponent implements OnInit {
         status: '',
         outcome: '',
         attachFiles: [],
-        owner: {
+        incOwner: {
             firstName: '',
-            userName: ''
+            userName: '',
+            lastName: ''
         }
     };
     fileToUpload: any;
@@ -142,8 +143,8 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
                 this.incidentDetails = res;
                 this.incidentDetailsCopy = Object.assign({}, res);
-            if (this.incidentDetails.owner) {
-                this.myControl.setValue({ name: this.incidentDetails.owner.firstName, value: this.incidentDetails.owner.userName});
+            if (this.incidentDetails.incOwner) {
+                this.myControl.setValue({ name: this.incidentDetails.incOwner.firstName, value: this.incidentDetails.incOwner.userName});
             }
         });
     }
@@ -213,8 +214,8 @@ export class IncidentSummaryComponent implements OnInit {
             this.saveIncidentActivity('changed the status to be ' + this.incidentDetails.status , 'STATUS_UPDATED');
         }
 
-        if (this.incidentDetailsCopy.owner !== null) {
-            if (this.myControl.value.value !== this.incidentDetailsCopy.owner.userName) {
+        if (this.incidentDetailsCopy.incOwner !== null) {
+            if (this.myControl.value.value !== this.incidentDetailsCopy.incOwner.userName) {
                 this.saveIncidentActivity('changed the case owner', 'CASE_OWNER_ASSIGNED');
             }
         } else if (this.myControl.value.value) {

@@ -16,7 +16,7 @@ export class IncidentSummaryService {
 
     getIncidentDetials(violationId) {
         const url = `${this.apiPath}/incident/getIncidentSummary/${violationId}`;
-        return this.http.get(url, {});
+        return this.http.get(url);
     }
 
     assignIncidentToUser(incidentId) {

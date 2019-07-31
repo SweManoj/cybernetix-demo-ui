@@ -16,7 +16,7 @@ export class PolicyViolationSummaryService {
 
     getPolicyDetails(violationId) {
         const url = `${this.apiPath}/pvCasemgmt/findOrAddPolicyViolationSummary/${violationId}`;
-        return this.http.post(url, {}, {});
+        return this.http.post(url, {});
     }
 
     updatePolicy(policyData, violationId) {

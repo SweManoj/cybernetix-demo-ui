@@ -20,14 +20,14 @@ export class SessionInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        if (!request.url.includes('oauth')) {
-            const accessToken = this.tokenUtilService.accessToken;
+        /* if (!request.url.includes('oauth')) {
+            const accessToken = sessionStorage.getItem('accessToken');
             request = request.clone({
                 setHeaders: {
                     'Authorization': `Bearer ${accessToken}`
                 }
             });
-        }
+        } */
 
         // next.handle(request)
         /* .pipe(
@@ -49,8 +49,8 @@ export class SessionInterceptor implements HttpInterceptor {
             })
         ); */
 
-        return next.handle(request)
-            .do(success => console.log('success'),
+        return next.handle(request);
+           /*  .do(success => console.log('success'),
                 error => {
                     if (error.status == 401) {
                         sessionStorage.removeItem('accessToken');
@@ -59,7 +59,7 @@ export class SessionInterceptor implements HttpInterceptor {
                         sessionStorage.clear();
                         this.router.navigateByUrl('/login')
                     }
-                });
+                }); */
     }
 
     /* .do(success => console.log(success),

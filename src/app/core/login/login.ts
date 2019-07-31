@@ -33,7 +33,8 @@ export class LoginComponent {
     loginSubmit(): void {
         if (this.form.valid) {
             this.loginService.login(this.form.value).subscribe(res => {
-                if (res) {
+                /* if (res) {
+                    localStorage.setItem('accessToken', res.access_token);
                     sessionStorage.setItem('accessToken', res.access_token);
                     sessionStorage.setItem('refreshToken', res.refresh_token);
                     this.tokenUtilService.accessToken = res.access_token
@@ -46,7 +47,8 @@ export class LoginComponent {
                     this.loginService.loggedIn.next(true);
                     this.router.navigate(['/dashboard']);
                 } else
-                    this.isError = true;
+                    this.isError = true; */
+                    this.router.navigateByUrl('/dashboard');
             }, error => {
                 this.isError = true;
             })

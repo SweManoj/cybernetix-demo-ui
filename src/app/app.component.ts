@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, HostListener } from '@angular/core';
 import { UserContext } from './core/services/userContext';
 import { TokenUtilService } from './token-util.service';
 
@@ -11,7 +11,7 @@ export class AppComponent {
     @HostBinding('class') public theme: string;
     constructor(private userContext: UserContext, private tokenUtilService: TokenUtilService) {
         this.theme = this.userContext.getTheme();
-        setInterval(() => {
+        /* setInterval(() => {
             if (sessionStorage.getItem('accessToken')) {
                 console.log('validate : ' + (new Date(sessionStorage.getItem('expiryDate')) < new Date()));
                 console.log('expiry : ' + (new Date(sessionStorage.getItem('expiryDate')) + '.... current ....' + new Date()));
@@ -19,6 +19,12 @@ export class AppComponent {
                     this.tokenUtilService.getNewAccessToken();
                 }
             }
-        }, 6000);
+        }, 6000); */
+    }
+
+    @HostListener('window:beforeunload', ['$event'])
+    public beforeunloadHandler($event) {
+        alert('before closing...');
+        localStorage.removeItem('accessToken');
     }
 }

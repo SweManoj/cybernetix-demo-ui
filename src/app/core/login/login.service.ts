@@ -24,6 +24,7 @@ export class LoginService {
   }
 
   logout() {
+    localStorage.removeItem('accessToken');
     localStorage.clear();
     this.router.navigate(['/login']);
   }

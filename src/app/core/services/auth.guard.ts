@@ -21,12 +21,13 @@ export class AuthGuard implements CanActivate {
             return new BehaviorSubject<boolean>(false).asObservable();
         } */
 
-        if (sessionStorage.getItem('accessToken') && sessionStorage.getItem('accessToken') !== 'null')
+        /* if (sessionStorage.getItem('accessToken') && sessionStorage.getItem('accessToken') != 'null')
             return new BehaviorSubject<boolean>(true).asObservable();
         else {
             this.router.navigateByUrl('/login');
             return new BehaviorSubject<boolean>(false).asObservable();
-        }
+        } */
+        return new BehaviorSubject<boolean>(true).asObservable();
 
         /* return this.loginService.isLoggedIn.pipe(
             take(1),

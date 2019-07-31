@@ -35,7 +35,7 @@ export class TopDetailsComponent implements AfterViewInit {
         private router: Router) {        
         this.topDetailsService.getTopRiskyUsers('USER').subscribe((res: any) => {
             res.forEach(data => {
-                this.riskyObjects.push({type: 'user', entityId: data.entityId, score: Math.round(data.riskScore), img: true, value : data.user.u_firstName + ' ' + data.user.u_lastName });
+                this.riskyObjects.push({type: 'user', entityId: data.u_employeeId, score: Math.round(data.totalRiskScore), img: true, value : data.u_firstName + ' ' + data.u_lastName });
                 });
             this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
             this.selectedRiskies.sort((a, b) => -(a.score - b.score)); // desending order
@@ -67,14 +67,14 @@ export class TopDetailsComponent implements AfterViewInit {
 
         this.topDetailsService.getTopRiskyUsers('IP').subscribe((res: any) => {
             res.forEach(data => {
-               this.riskyObjects.push({type: 'ip address', entityId: data.entityId, score: Math.round(data.riskScore), img: true, value :data.entityId });
+               this.riskyObjects.push({type: 'ip address', entityId: data.ipValue, score: Math.round(data.totalRiskScore), img: true, value :data.ipValue });
             });
         
         });
 
         this.topDetailsService.getTopRiskyUsers('HOST').subscribe((res: any) => {
             res.forEach(data => {
-               this.riskyObjects.push({type: 'host', entityId: data.entityId, score: Math.round(data.riskScore), img: true, value : data.entityId });
+               this.riskyObjects.push({type: 'host', entityId: data.hostName, score: Math.round(data.totalRiskScore), img: true, value : data.hostName });
             });
         
         });

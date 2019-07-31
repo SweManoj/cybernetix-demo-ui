@@ -8,8 +8,8 @@ export class RiskyUserService {
 
     mainURL: string;
 
-    constructor(private http: HttpClient) {
-        this.mainURL = `${environment.serverUrl}`;
+    constructor(private http: HttpClient, private userContext: UserContext) {
+        this.mainURL = userContext.getServerUrl();
     }
 
     getData() {

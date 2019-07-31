@@ -28,7 +28,8 @@ export class SessionInterceptor implements HttpInterceptor {
             .do(success => {
                 console.log('http request success');
             }, error => {
-                this.router.navigateByUrl('/login');
+                if (error.status == 410)
+                    this.router.navigateByUrl('/login');
             });
     }
 

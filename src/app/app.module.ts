@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
 import { TokenUtilService } from './token-util.service';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { TokenUtilService } from './token-util.service';
         BrowserAnimationsModule,
         MaterialModule,
         HighchartsChartModule,
-        SharedPipesModule
+        SharedPipesModule,
+        StorageServiceModule
     ],
     exports: [
         MaterialModule

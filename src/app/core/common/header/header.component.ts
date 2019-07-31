@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { SessionStorage } from '../../services/sessionStorage';
 import { UserContext } from '../../services/userContext';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { UtilDataService } from '../../services/util.data.service';
 import { ModalUtilComponent } from '../modal-util/modal.util.component';
 import { DashboardService } from '../../../pages/dashboard/dashboard.service';
 import { TokenUtilService } from '../../../token-util.service';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 @Component({
     selector: 'app-header',
@@ -22,10 +23,11 @@ export class HeaderComponent {
     private prevThemeName: string;
     riskyUsers = [];
 
-    constructor(private sessionStorage: SessionStorage, private userContext: UserContext, private router: Router,
+    constructor(private userContext: UserContext, private router: Router,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
         private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService,
-        private tokenUtilService: TokenUtilService) {
+        private tokenUtilService: TokenUtilService,
+        @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
 
         this.themeName = this.userContext.themeName;
         this.prevThemeName = this.themeName;
@@ -36,13 +38,14 @@ export class HeaderComponent {
     }
 
     signout() {
-        this.tokenUtilService.accessToken = null;
+        this.sessionStorage.remove('accessToken');
+        /* this.tokenUtilService.accessToken = null;
         this.tokenUtilService.refreshToken = null;
         this.tokenUtilService.expiryDate = null;
 
         sessionStorage.removeItem('accessToken');
         sessionStorage.removeItem('refreshToken');
-        sessionStorage.removeItem('expiryDate');
+        sessionStorage.removeItem('expiryDate'); */
         localStorage.clear();
         sessionStorage.clear();
         this.loginService.loggedIn.next(false);

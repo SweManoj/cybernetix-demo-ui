@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { LoginService } from '../login/login.service';
 import { map, take } from 'rxjs/operators';
 import { UserContext } from './userContext';
 import { TokenUtilService } from '../../token-util.service';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 
 @Injectable()
 export class AuthGuard implements CanActivate {
     constructor(private loginService: LoginService, private router: Router, private userContext: UserContext,
-        private tokenUtilService: TokenUtilService) { }
+        private tokenUtilService: TokenUtilService,
+        @Inject(SESSION_STORAGE) private sessionStorage: StorageService) { }
 
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 
@@ -27,7 +29,10 @@ export class AuthGuard implements CanActivate {
             this.router.navigateByUrl('/login');
             return new BehaviorSubject<boolean>(false).asObservable();
         } */
-        return new BehaviorSubject<boolean>(true).asObservable();
+        if (this.sessionStorage.get('accessToken'))
+            return new BehaviorSubject<boolean>(true).asObservable();
+        else
+            return new BehaviorSubject<boolean>(false).asObservable();
 
         /* return this.loginService.isLoggedIn.pipe(
             take(1),

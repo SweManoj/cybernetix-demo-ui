@@ -1,11 +1,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <h3 class="title">{{policyDetails.violation_id}} <span>- {{policyDetails.violationName}} - {{policyDetails.violatorId | uppercase}}</span></h3>
+            <h3 class="title">{{policyDetails.violation_id}} <span>- {{policyDetails.violationName}}
+                - {{policyDetails.violatorId | uppercase}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
-            <button class="assign-btn" mat-raised-button (click) = "assignPolicy(policyDetails.pv_ID)">Assign to Me</button>
-            <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i class="fa fa-angle-up"></i></button>
+            <button class="assign-btn" mat-raised-button (click)="assignPolicy(policyDetails.pv_ID)">Assign to Me
+            </button>
+            <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i class="fa fa-angle-up"></i>
+            </button>
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
                 <button class="action-menu-item" mat-menu-item>Create an Incident</button>
@@ -13,7 +16,7 @@
             </mat-menu>
         </div>
     </div>
-    
+
 </div>
 
 <div class="container-fluid">
@@ -27,21 +30,24 @@
                     </div>
                 </div>
                 <div class="block-content mb-4">
-                    <div class="block-title "><i class="fa fa-caret-right"></i> <span class="recommendation-text"><a href="#">Recommendation</a></span></div>
+                    <div class="block-title "><i class="fa fa-caret-right"></i> <span class="recommendation-text"><a
+                        href="#">Recommendation</a></span></div>
                 </div>
 
                 <div class="data-list mb-4">
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">{{policyDetails.violation_date | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
+                        <div
+                            class="col-sm-6 dataValue">{{policyDetails.violation_date | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="policyDetails.priority" (ngModelChange)="policyDataChange()" name="priority" placeholder="Select Priority">
+                            <mat-form-field class="dropdown-priority">
+                                <mat-select [(ngModel)]="policyDetails.priority" (ngModelChange)="policyDataChange()"
+                                            name="priority" placeholder="Select Priority">
                                     <mat-option value="HIGH">High</mat-option>
                                     <mat-option value="MEDIUM">Medium</mat-option>
                                     <mat-option value="LOW">Low</mat-option>
@@ -50,9 +56,11 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Affected Entity	</div>
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Affected Entity</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue"><a [routerLink]="['/riskyUser', policyDetails.violatorId]">{{policyDetails.violatorId | uppercase}}</a></div>
+                        <div class="col-sm-6 dataValue"><a
+                            [routerLink]="['/riskyUser', policyDetails.violatorId]">{{policyDetails.violatorId | uppercase}}</a>
+                        </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Indicators of Attack</div>
@@ -63,12 +71,13 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            <mat-form-field  class="dropdown-priority">
-                                <mat-select [(ngModel)]="policyDetails.status" (ngModelChange)="policyDataChange()" name="status" placeholder="Select Status">
+                            <mat-form-field class="dropdown-priority">
+                                <mat-select [(ngModel)]="policyDetails.status" (ngModelChange)="policyDataChange()"
+                                            name="status" placeholder="Select Status">
                                     <mat-option value="UNREVIEWED">Unreviewed</mat-option>
                                     <mat-option value="INPROGRESS">In Progress</mat-option>
                                     <mat-option value="REVIEWED">Reviewed</mat-option>
-                               </mat-select>
+                                </mat-select>
                             </mat-form-field>
                         </div>
                     </div>
@@ -77,7 +86,8 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field>
-                                <input type="text" placeholder="Select reviewer" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                <input type="text" placeholder="Select reviewer" matInput [formControl]="myControl"
+                                       [matAutocomplete]="auto">
                                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                                         {{option.name}}
@@ -89,7 +99,9 @@
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">&nbsp;</div>
                         <div class="col-sm-6 dataValue">
-                            <button class="update-btn" *ngIf="isUpdate" mat-raised-button (click)="updatePolicy(policyDetails.violation_id)">Update</button>
+                            <button class="update-btn" *ngIf="isUpdate" mat-raised-button
+                                    (click)="updatePolicy(policyDetails.violation_id)">Update
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -98,16 +110,18 @@
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>News Feed</span></div>
                     <div class="block-description">
                         <ng-scrollbar trackY="true" barClass="custom-scroll">
-                        <ul class="feed-list m-h-400">
-                            <li *ngFor="let activity of policyDetails.policyViolationActivities">
-                                <span class="time">{{activity.actionTime | timeAgo }}</span>
-                                <img src='../../../../../assets/images/plus.png' width="30" />
-                                <span class="news-title">{{activity.caseActor.firstName}} {{activity.caseActor.lastName}} {{activity.feed}}<!--<a href="#">help</a>--></span>
-                            </li>
-                        </ul>
+                            <ul class="feed-list m-h-400">
+                                <li *ngFor="let activity of policyDetails.policyViolationActivities">
+                                    <span class="time">{{activity.actionTime | timeAgo }}</span>
+                                    <img src='../../../../../assets/images/plus.png' width="30"/>
+                                    <span
+                                        class="news-title">{{activity.caseActor.firstName}} {{activity.caseActor.lastName}} {{activity.feed}}
+                                        <!--<a href="#">help</a>--></span>
+                                </li>
+                            </ul>
                         </ng-scrollbar>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -141,22 +155,24 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                        
+                    </div>
                 </div>
 
                 <div class="block-content mb-4">
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
                     <div class="block-description mt-3 attachments">
                         <div *ngFor="let attachedFile of policyDetails.attachedFiles">
-                            <span (click)="getPolicyAttachmentFile(attachedFile.policyViolationSummaryAttachmentId, attachedFile.fileName)">{{attachedFile.uploadFile}}</span>&nbsp;
+                            <span
+                                (click)="getPolicyAttachmentFile(attachedFile.policyViolationSummaryAttachmentId, attachedFile.fileName)">{{attachedFile.uploadFile}}</span>&nbsp;
                         </div>
 
 
                         <div class="attachBox text-center">
-                            <input type="file" class="custom-upload" (change)="uploadPolicyViolationFile($event.target.files)">
+                            <input type="file" class="custom-upload"
+                                   (change)="uploadPolicyViolationFile($event.target.files)">
                             <img src="../../../../../assets/images/upload.png" alt="Upload Icon" class="mb-3"/><br/>
-                            Drop files here to upload &nbsp;&nbsp;  OR &nbsp;&nbsp;  Browse from your computer<br/>
-                            <button mat-stroked-button  class="custom-upload-btn mt-3">Browse</button>                     
+                            Drop files here to upload &nbsp;&nbsp; OR &nbsp;&nbsp; Browse from your computer<br/>
+                            <button mat-stroked-button class="custom-upload-btn mt-3">Browse</button>
                         </div>
                     </div>
                 </div>
@@ -168,61 +184,105 @@
                     <div class="col-sm-11 col-md-10 col-lg-11 mt-2 mt-sm-0">
                         <div class="form-group input-group">
                             <textarea class="form-control rounded" formControlName="commentValue" id="commentValue"
-                                placeholder="Enter your commnets here..." matInput cdkTextareaAutosize #autosize
-                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="4"> </textarea>
+                                      placeholder="Enter your commnets here..." matInput cdkTextareaAutosize #autosize
+                                      cdkAutosizeMinRows="1" cdkAutosizeMaxRows="4"> </textarea>
                         </div>
                     </div>
                     <div class="col-12 text-right">
                         <button color="primary" class="btn-main" mat-raised-button
-                            [disabled]="commentFormGroup.invalid || commentValue.value.trim()==''" type="submit"
-                            (click)="submitComment(0)">Post</button>
+                                [disabled]="commentValue.value.trim()==''" type="submit"
+                                (click)="submitComment(0)">Post
+                        </button>
                     </div>
 
 
-                <div class="comment-wrap">
-                    
-                    <ng-scrollbar trackY="true" barClass="custom-scroll">
-                    <div class="user-item mt-3" *ngFor="let comment of policyDetails.policyCommentsEntities" [hidden] = "comment.deleted">
-                        <div class="profile-pic">
-                            <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
-                        </div>
-                        <div class="comment-content">
-                            <div class="row mb-1">
-                                <div class="col-md-12 comment user-info"><a href="#">{{comment.caseCommentor.userName}}</a> &emsp;&emsp;
-                                    {{comment.commentTime | timeAgo}}
+                    <div class="comment-wrap">
+
+                        <ng-scrollbar trackY="true" barClass="custom-scroll">
+                            <div class="user-item mt-3" *ngFor="let comment of policyDetails.policyCommentsEntities"
+                                 [hidden]="comment.deleted">
+                                <div class="profile-pic">
+                                    <img class="profile-image img-round" src="./../../../../../assets/images/user.png">
+                                </div>
+                                <div class="comment-content">
+                                    <div class="row mb-1">
+                                        <div class="col-md-12 comment user-info"><a
+                                            href="#">{{comment.caseCommentor.userName}}</a> &emsp;&emsp;
+                                            {{comment.commentTime | timeAgo}}
+                                        </div>
+                                    </div>
+                                    <div class="row comment">
+                                        <span>{{comment.comment}}</span>
+                                    </div>
+                                    <div class="row mt-1 comment-action"><span class="reply"
+                                                                               (click)="comment.reply= !comment.reply">Reply</span>
+                                        &nbsp;|&nbsp; <span class="delete"
+                                                            (click)="deleteComment(comment);">Delete</span>
+                                    </div>
+                                    <div class="row mt-4" *ngIf="comment.reply">
+                                        <div class="col-md-10">
+                                    <textarea type="text" autosize class="form-control" formControlName="replyComment"
+                                              id="replyComment"
+                                              [(ngModel)]="comment.childContent" required name="content"
+                                              placeholder="Enter your commnets here..."></textarea>
+                                        </div>
+                                        <div class="col-md-3 mt-3">
+                                            <button class="btn btn-sm" [disabled]="replyComment.value.trim()==''"
+                                                    type="submit" (click)="submitReply(comment.cmtId)">
+                                                &emsp;Post&emsp;
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-left: 10%;" class="user-item mt-3"
+                                     *ngFor="let childComment of comment.childCommentsModel"  [hidden]="childComment.deleted">
+                                    <div class="profile-pic">
+                                        <img class="profile-image img-round"
+                                             src="./../../../../../assets/images/user.png">
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="row mb-1">
+                                            <div class="col-md-12 comment user-info"><a
+                                                href="#">{{childComment.caseCommentor.userName}}</a> &emsp;&emsp;
+                                                {{childComment.commentTime | timeAgo}}
+                                            </div>
+                                        </div>
+                                        <div class="row comment">
+                                            <span>{{childComment.comment}}</span>
+                                        </div>
+                                        <div class="row mt-1 comment-action"><span class="reply"
+                                                                                   (click)="childComment.reply= !childComment.reply">Reply</span>
+                                            &nbsp;|&nbsp; <span class="delete"
+                                                                (click)="deleteComment(childComment);">Delete</span>
+                                        </div>
+                                        <div class="row mt-4" *ngIf="childComment.reply">
+                                            <div class="col-md-10">
+                                    <textarea type="text" autosize class="form-control" formControlName="replyComment"
+                                              id="replyComment"
+                                              [(ngModel)]="comment.childContent" required name="content"
+                                              placeholder="Enter your commnets here..."></textarea>
+                                            </div>
+                                            <div class="col-md-3 mt-3">
+                                                <button class="btn btn-sm" [disabled]="replyComment.value.trim()==''"
+                                                        type="submit" (click)="submitReply(comment.cmtId)">
+                                                    &emsp;Post&emsp;
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row comment">
-                                <span>{{comment.comment}}</span>
-                            </div>
-                            <div class="row mt-1 comment-action"><span class="reply" (click)="comment.reply= !comment.reply">Reply</span>
-                               &nbsp;|&nbsp; <span class="delete" (click)="deleteComment(comment);">Delete</span>
-                            </div>
-                            <div class="row mt-2" *ngIf="comment.reply">
-                                <div class="col-md-10">
-                                    <textarea type="text" autosize class="form-control" formControlName="replyComment" id="replyComment"
-                                        [(ngModel)]="comment.content" required name="content"
-                                        placeholder="Enter your commnets here..."></textarea>
-                                </div>
-                                <div class="col-md-2 mt-2">
-                                    <button class="btn btn-sm" [disabled]="replyComment.value.trim()==''" type="submit" (click)="submitReply(comment.cmtId)">
-                                        &emsp;Post&emsp;
-                                    </button>
-                                </div>
-                            </div>
-                        </div>                        
+                        </ng-scrollbar>
                     </div>
-                    </ng-scrollbar>
-                </div>
                 </form>
             </div><!-- End Right Block -->
         </div>
     </div>
 
     <div class="page-footer">
-        <div class="row align-items-center">        
+        <div class="row align-items-center">
             <div class="col-md-3 page-viewer">
-                <img src="../../../../../assets/images/circle.png" />
+                <img src="../../../../../assets/images/circle.png"/>
                 <div class="viewer-info">
                     <span class="view-count">52</span>
                     viewing this page now
@@ -237,19 +297,19 @@
 
             <div class="col-md-5">
                 <nav aria-label="Page navigation">
-                  <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                  </ul>
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
                 </nav>
-            </div>           
+            </div>
         </div>
     </div>
 </div>

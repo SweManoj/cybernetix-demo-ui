@@ -1,315 +1,147 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { RiskyUserService } from '../dashboard/components/riskyUsers/riskyUser.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CaseModalComponent } from './components/case-modal/case-modal.component';
-import { CaseManagementService } from './case-management.service';
-import { Table } from 'primeng/table';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { path } from 'd3';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {RiskyUserService} from '../dashboard/components/riskyUsers/riskyUser.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {CaseModalComponent} from './components/case-modal/case-modal.component';
+import {CaseManagementService} from './case-management.service';
+import {Table} from 'primeng/table';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-case-management',
-  templateUrl: './case-management.component.html'
+    selector: 'app-case-management',
+    templateUrl: './case-management.component.html'
 })
 export class CaseManagementComponent implements OnInit {
 
-  @ViewChild('incident') incident: Table;
-  policyRangeDates:any;
-  incidentRangeDates:any;
-  selectedItems: any;
-  selectedPolicyItems: any;
-  allUsers: any = [];
-  incidents = [];
-  totalRecords: number = 0;
-  recordsReturned: number = 0;
-  private offset: number = 0;
-  fetchingPolicyViolationsInProgress = true;
-  data = [
-    { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
-    { created: '03/02/2018', priority: 'Medium', riskscore: 90, id: 'INC-21', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Pending', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
-    { created: '03/03/2018', priority: 'High', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.106' },
-    { created: '03/04/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.108' },
-    { created: '03/05/2018', priority: 'Low', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
-    { created: '03/06/2018', priority: 'Critical', riskscore: 90, id: 'INC-30', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.108' },
-    { created: '03/07/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Pending', assignee: 'NA', alerts: 2, entity: '192.168.0.112' },
-    { created: '03/08/2018', priority: 'High', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.153' },
-    { created: '03/09/2018', priority: 'Critical', riskscore: 90, id: 'INC-50', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'admin', alerts: 2, entity: '192.168.0.128' },
-    { created: '03/10/2018', priority: 'Low', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'NA', alerts: 2, entity: '192.168.0.157' },
-    { created: '03/11/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.172' },
-    { created: '03/12/2018', priority: 'High', riskscore: 90, id: 'INC-60', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.112' },
-    { created: '03/13/2018', priority: 'Medium', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'NA', alerts: 2, entity: '192.168.0.142' },
-    { created: '03/14/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.102' },
-    { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.109' },
-  ];
+    @ViewChild('incident') incident: Table;
+    policyRangeDates: any;
+    incidentRangeDates: any;
+    selectedItems: any;
+    selectedPolicyItems: any;
+    allUsers: any = [];
+    incidents = [];
+    totalRecords: number = 0;
+    recordsReturned: number = 0;
+    private offset: number = 0;
+    fetchingPolicyViolationsInProgress = true;
 
-  shows = [{ name: 'Last 1 Day', value: '1day' }, { name: 'Last 2 Day', value: '2day' }, { name: 'Last 7 Day', value: '7day' }, { name: 'Last 1 month', value: 'month' }];
-  assignee = [{ name: 'Admin', value: 'admin' }, { name: 'User', value: 'user' }, { name: 'Not Assign', value: 'NA' }];
-  status = [{ name: 'Task Requested', value: 'Task Requested' }, { name: 'Completed', value: 'Completed' }, { name: 'Pending', value: 'Pending' }];
-  priority = [{ name: 'Critical', value: 'Critical' }, { name: 'Medium', value: 'Medium' }, { name: 'High', value: 'High' }, { name: 'Low', value: 'Low' }];
+    shows = [{name: 'Last 1 Day', value: '1day'}, {name: 'Last 2 Day', value: '2day'}, {
+        name: 'Last 7 Day',
+        value: '7day'
+    }, {name: 'Last 1 month', value: 'month'}];
+    assignee = [{name: 'Admin', value: 'admin'}, {name: 'User', value: 'user'}, {name: 'Not Assign', value: 'NA'}];
+    status = [{name: 'Task Requested', value: 'Task Requested'}, {name: 'Completed', value: 'Completed'}, {
+        name: 'Pending',
+        value: 'Pending'
+    }];
+    priority = [{name: 'Critical', value: 'Critical'}, {name: 'Medium', value: 'Medium'}, {name: 'High', value: 'High'}, {
+        name: 'Low',
+        value: 'Low'
+    }];
 
-  @ViewChild('policy') policy: Table;
-  myObjects = {
-    'Monday 01/01/2019': [
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '1', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '3', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '4', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '7', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Tuesday 02/01/2019': [
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#2', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Wednesday 03/01/2019': [
-      { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#3', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Thursday 04/01/2019': [
-      { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#4', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Friday 05/01/2019': [
-      { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#5', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Saturday 06/01/2019': [
-      { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#6', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Sunday 07/01/2019': [
-      { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#7', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Monday 08/01/2019': [
-      { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#8', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Tuesday 09/01/2019': [
-      { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#9', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Wednesday 10/01/2019': [
-      { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#10', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Thursday 11/01/2019': [
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#11', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ],
-    'Friday 12/01/2019': [
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
-    ]
-  };
-  @ViewChild('day') day: Table;
-  myDays = [];
-  policyViolations = [];
-  myPolicies: any[] = [];
-  selectedIndex = 0;
+    @ViewChild('policy') policy: Table;
+    @ViewChild('day') day: Table;
+    myDays = [];
+    policyViolations = [];
+    myPolicies: any[] = [];
+    selectedIndex = 0;
+    criticalItem = 0;
+    mediumItem = 0;
+    highItem = 0;
+    lowItem = 0;
+    totalItem = 0;
+    todayDate = new Date();
+    path: any;
 
-  criticalItem = 0;
-  mediumItem = 0;
-  highItem = 0;
-  lowItem = 0;
-  totalItem = 0;
-  todayDate = new Date();
-  path: any;
+    constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
+        this.offset = 0;
+        this.recordsReturned = 0;
+        this.myDays.push(this.todayDate);
 
-  constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
-    this.offset = 0;
-    this.recordsReturned = 0;
-
-    // Use `key` and `value` - read key value pairs from an object
-/*    for (let key in this.myObjects)
-      this.myDays.push(key);
-
-    if (this.myDays[0]) {
-      this.myPolicies = this.myObjects[this.myDays[0]];
-      this.getStageValues();
-    }*/
-
-    this.myDays.push(this.todayDate);
-
-    for (let dayIndex = 1; dayIndex < 14 ; dayIndex ++) {
-        const date = new Date();
-        date.setDate(date.getDate() - dayIndex);
-        this.myDays.push(date);
+        for (let dayIndex = 1; dayIndex < 14; dayIndex++) {
+            const date = new Date();
+            date.setDate(date.getDate() - dayIndex);
+            this.myDays.push(date);
+        }
     }
-  }
 
-  getStageValues() {
-    this.criticalItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'CRITICAL').length;
-    this.mediumItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'MEDIUM').length;
-    this.highItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'HIGH').length;
-    this.lowItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'LOW').length;
-    this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
-  }
+    getStageValues() {
+        this.criticalItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'CRITICAL').length;
+        this.mediumItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'MEDIUM').length;
+        this.highItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'HIGH').length;
+        this.lowItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'LOW').length;
+        this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
+    }
 
-  ngOnInit() {
-    //this.getAllUsers();
-    this.route.url.subscribe(url => {
-      this.path = (url[0].path);  
-    });
-      this.getPolicyViolations();
-      this.getAllIncidents();
-  }
+    ngOnInit() {
+        this.route.url.subscribe(url => {
+            this.path = (url[0].path);
+        });
+        this.getPolicyViolations();
+        this.getAllIncidents();
+    }
 
-  getPolicyViolations() {
-      const selectedDate = new Date(this.todayDate);
-      const endDate = new Date(this.todayDate);
-      selectedDate.setHours(0,0,0,0);
-      endDate.setHours(23,59,59,999);
-    this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe( (res: any) => {
-        this.policyViolations = res;
-        this.fetchingPolicyViolationsInProgress = false;
-    });
-  }
+    getPolicyViolations() {
+        const selectedDate = new Date(this.todayDate);
+        const endDate = new Date(this.todayDate);
+        selectedDate.setHours(0, 0, 0, 0);
+        endDate.setHours(23, 59, 59, 999);
+        this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
+            this.policyViolations = res;
+            this.fetchingPolicyViolationsInProgress = false;
+        });
+    }
 
     getAllIncidents() {
-      this.caseManagmentService.getAllIncidents(0, 1000).subscribe((response: any) =>{
-           this.incidents = response;
-      });
+        this.caseManagmentService.getAllIncidents(0, 1000).subscribe((response: any) => {
+            this.incidents = response;
+        });
     }
 
-  daySelected(date, rowIndex) {
-    this.fetchingPolicyViolationsInProgress = true;
-    this.selectedIndex = rowIndex;
-    const selectedDate = new Date(date);
-    const endDate = new Date(date);
+    daySelected(date, rowIndex) {
+        this.fetchingPolicyViolationsInProgress = true;
+        this.selectedIndex = rowIndex;
+        const selectedDate = new Date(date);
+        const endDate = new Date(date);
 
-    //this.myPolicies = this.myObjects[this.myDays[rowIndex]];
-      selectedDate.setHours(0,0,0,0);
-      endDate.setHours(23,59,59,999);
-      this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe( (res: any) => {
-          this.fetchingPolicyViolationsInProgress = false;
-          this.policyViolations = res;
-          this.getStageValues();
-      });
+        selectedDate.setHours(0, 0, 0, 0);
+        endDate.setHours(23, 59, 59, 999);
+        this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
+            this.fetchingPolicyViolationsInProgress = false;
+            this.policyViolations = res;
+            this.getStageValues();
+        });
 
-  }
+    }
 
-  onPolicyRowSelect(event: any) {
-  }
+    setDateRange() {
+        if (this.policyRangeDates.length > 0) {
+            this.myDays = [];
+            const endDate = new Date(this.policyRangeDates[1]);
+            const startDate = new Date(this.policyRangeDates[0]);
+            const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  onPolicyRowUnselect(event: any) {
-  }
+            this.myDays.push(endDate);
 
-  getAllUsers() {
-    // this.riskyUserService.getUploadExceedData(this.offset).subscribe((res: any) => {
-    //     this.totalRecords = res._totalRecords;
-    //     this.allUsers = this.allUsers.concat(res.data);
-    //     this.allUsers.sort((a, b) => {
-    //         return b.riskscore - a.riskscore;
-    //     });
-    //     this.recordsReturned = this.allUsers.length;
-    // });
+            for (let dayIndex = 1; dayIndex <= diffDays; dayIndex++) {
+                const date = new Date(endDate);
+                date.setDate(date.getDate() - dayIndex);
+                this.myDays.push(date);
+            }
+        }
+    }
 
-    this.caseManagmentService.getAllCases().subscribe((res: any) => {
-      //debugger
-      this.allUsers = res.data;
-      console.log(res)
-    });
-  }
+    onActionClick(name, data) {
+        const modalRef = this.modalService.open(CaseModalComponent);
+        modalRef.componentInstance.name = name;
+        modalRef.componentInstance.data = data;
+    }
 
-  loadMoreUsers() {
-    this.offset++;
-    this.getAllUsers();
-  }
+    selectIncidentClick(event) {
+        event ? this.incident.filter('NA', 'assignee', 'contains') : this.incident.filter('', 'assignee', 'contains');
+    }
 
-  onActionClick(name, data) {
-    const modalRef = this.modalService.open(CaseModalComponent);
-    modalRef.componentInstance.name = name;
-    modalRef.componentInstance.data = data;
-  }
-
-  onRowSelect(event) {
-  }
-
-  onRowUnselect(event) {
-  }
-
-  selectIncidentClick(event) {
-    event ? this.incident.filter('NA', 'assignee', 'contains') : this.incident.filter('', 'assignee', 'contains'); // value, field, matchMode
-  }
-
-  selectPolicyClick(event) {
-    event ? this.policy.filter('High', 'priority', 'contains') : this.policy.filter('', 'priority', 'contains'); // value, field, matchMode
-  }
+    selectPolicyClick(event) {
+        event ? this.policy.filter('High', 'priority', 'contains') : this.policy.filter('', 'priority', 'contains');
+    }
 }

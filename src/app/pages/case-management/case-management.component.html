@@ -48,7 +48,7 @@
                             <div class="col-md-3">
                                 <div class="input-group">
                                     <p-calendar [(ngModel)]="policyRangeDates" placeholder="Date Range" selectionMode="range" [readonlyInput]="true"></p-calendar>
-                                    <div class="input-group-append">
+                                    <div class="input-group-append" (click)="setDateRange()">
                                         <span class="input-group-text">
                                             <i class="fa fa-search"></i>
                                         </span>

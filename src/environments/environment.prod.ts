@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    theme: 'blue',
+    theme: 'black',
     blackThemeBrandColor: '#0AADC8',
     blackThemePieChartTrackColor: '#252c32',
 

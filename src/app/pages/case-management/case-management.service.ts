@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserContext } from '../../core/services/userContext';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -10,7 +9,7 @@ export class CaseManagementService {
 
   mainURL: string;
 
-  constructor(private http: HttpClient, private userContext: UserContext) {
+  constructor(private http: HttpClient) {
     this.mainURL = `${environment.serverUrl}/v1`;
   }
 

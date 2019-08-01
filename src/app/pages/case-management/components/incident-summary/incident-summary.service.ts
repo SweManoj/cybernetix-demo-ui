@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserContext } from '../../../../core/services/userContext';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +10,8 @@ export class IncidentSummaryService {
     private theme: string;
     apiPath: string;
 
-    constructor(private http: HttpClient, private userContext: UserContext) {
-        this.apiPath = this.userContext.getServerUrl();
+    constructor(private http: HttpClient) {
+        this.apiPath = `${environment.serverUrl}/v1`;
     }
 
     getIncidentDetials(violationId) {

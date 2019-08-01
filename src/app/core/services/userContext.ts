@@ -12,10 +12,6 @@ export class UserContext {
         this.theme = this.sessionStorage.getItem(this.themeSessionKey) || environment.theme;
     }
 
-    getServerUrl() {
-        return 'http://3.130.138.106:9090/cybernetix/v1';
-    }
-
     get themeName() {
         return this.theme;
     }

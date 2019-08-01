@@ -57,12 +57,10 @@ export class DashboardService {
     ];
 
     private theme: string;
-    apiPath: string;
     mainURl: string;
 
     constructor(private userContext: UserContext, private http: HttpClient) {
         this.theme = this.userContext.getTheme();
-        this.apiPath = this.userContext.getServerUrl();
         this.updateDefaultPie();
         this.mainURl = `${environment.serverUrl}/v1/dashboard`;
     }

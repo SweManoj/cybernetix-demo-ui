@@ -101,6 +101,9 @@
         </div>
     </ng-container>
 </div>
+<div *ngIf="componentType === 'terminatedUsers' && terminatedUsers.length === 0" class="no-user">
+    No Terminated Users found
+</div>
 
 <!-- Orphan Users -->
 <div *ngIf="componentType==='orphanUsers' " class="header row">
@@ -123,6 +126,9 @@
             </div>
         </div>
     </ng-container>
+</div>
+<div *ngIf="componentType === 'orphanUsers' && orphanUsers.length === 0" class="no-user">
+    No Orphan Users found
 </div>
 
 <!-- External Users -->
@@ -147,6 +153,9 @@
         </div>
     </ng-container>
 </div>
+<div *ngIf="componentType === 'externalUsers' && externalUsers.length === 0" class="no-user">
+    No External Users found
+</div>
 
 <!-- TOP CLOUD USERS -->
 <div *ngIf="componentType==='riskyCloud' " class="header row">
@@ -170,6 +179,9 @@
         </div>
     </ng-container>
 </div>
+<div *ngIf="componentType === 'riskyCloud' && riskyCloudUsers.length === 0" class="no-user">
+    No Users found
+</div>
 
 <!-- Dormant Users -->
 <div *ngIf="componentType==='dormantUsers' " class="header row">
@@ -192,6 +204,9 @@
             </div>
         </div>
     </ng-container>
+</div>
+<div *ngIf="componentType === 'watchlistedUsers' && watchlistedUsers.length === 0" class="no-user">
+    No Cloud Users found
 </div>
 
 <!-- Top Service Account -->
@@ -217,6 +232,9 @@
         </div>
     </ng-container>
 </div>
+<div *ngIf="componentType === 'serviceAccount' && serviceAccount.length === 0" class="no-user">
+    No Service Account Users found
+</div>
 
 <!-- Watch list users-->
 <div *ngIf="componentType==='watchlistedUsers' " class="header row">
@@ -240,6 +258,9 @@
         </div>
     </ng-container>
 </div>
+<div *ngIf="componentType === 'watchlistedUsers' && watchlistedUsers.length === 0" class="no-user">
+    No Users found
+</div>
 
 <!-- Privileged Users -->
 <div *ngIf="componentType==='privilegedUsers' " class="header row">
@@ -262,4 +283,7 @@
             </div>
         </div>
     </ng-container>
+</div>
+<div *ngIf="componentType === 'privilegedUsers' && privilegedUsers.length === 0" class="no-user">
+    No Privileged Users found
 </div>

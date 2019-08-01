@@ -16,14 +16,14 @@ export class TopDetailsComponent implements OnInit {
     violations: any[];
     @Input() componentType: string;
     selectedRiskies: any[];
-    privilegedUsers: any[];
-    dormantUsers: any[];
-    serviceAccount: any[];
-    watchlistedUsers: any[];
-    terminatedUsers: any[];
-    orphanUsers: any[];
-    externalUsers: any[];
-    riskyCloudUsers: any[];
+    privilegedUsers = [];
+    dormantUsers = [];
+    serviceAccount = [];
+    watchlistedUsers = [];
+    terminatedUsers = [];
+    orphanUsers = [];
+    externalUsers = [];
+    riskyCloudUsers = [];
     riskyObjects = [];
 
 

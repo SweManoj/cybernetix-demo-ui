@@ -33,7 +33,7 @@ export class TopDetailsService {
     }
 
     getTopUsers(userType) {
-        const url = `${this.mainURL}/topusersbygroup/0?grp=${userType}`;
+        const url = `${this.mainURL}/topusersbygroup/0/0?grp=${userType}`;
         return this.http.get(url);
     }
 

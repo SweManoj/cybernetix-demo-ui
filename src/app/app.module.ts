@@ -21,12 +21,10 @@ import { FormsModule } from '@angular/forms';
 import { CaseManagementModule } from './pages/case-management/case-management.module';
 import { UtilDataService } from './core/services/util.data.service';
 import { ModalUtilComponent } from './core/common/modal-util/modal.util.component';
-
 import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
-import { TokenUtilService } from './token-util.service';
 import { StorageServiceModule } from 'angular-webstorage-service';
 
 @NgModule({
@@ -64,8 +62,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
         UserContext,
         SessionStorage,
         UtilService,
-        UtilDataService,
-        TokenUtilService
+        UtilDataService
     ],
     bootstrap: [AppComponent],
     entryComponents: [ModalUtilComponent]

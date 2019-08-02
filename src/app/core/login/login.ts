@@ -2,9 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { UserContext } from '../services/userContext';
-import { SessionStorage } from '../services/sessionStorage';
-import { Router } from '@angular/router';
-import { TokenUtilService } from '../../token-util.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 @Component({
@@ -17,10 +15,11 @@ export class LoginComponent {
     password: AbstractControl;
     themeName: string;
     isError: boolean = false;
+    returnUrl: string;
 
     constructor(private fb: FormBuilder, private loginService: LoginService, private userContext: UserContext,
-          private router: Router,
-        private tokenUtilService: TokenUtilService,@Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
+        private router: Router,
+        private activatedRoute: ActivatedRoute, @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
 
         this.themeName = this.userContext.themeName;
         this.form = this.fb.group({
@@ -32,28 +31,17 @@ export class LoginComponent {
     }
 
     loginSubmit(): void {
+
         if (this.form.valid) {
             this.loginService.login(this.form.value).subscribe(res => {
-                this.sessionStorage.set('accessToken',res.access_token);
-                /* if (res) {
-                    localStorage.setItem('accessToken', res.access_token);
-                    sessionStorage.setItem('accessToken', res.access_token);
-                    sessionStorage.setItem('refreshToken', res.refresh_token);
-                    this.tokenUtilService.accessToken = res.access_token
-                    this.tokenUtilService.refreshToken = res.refresh_token
-                    let expiryDate = new Date();
-                    expiryDate.setSeconds(expiryDate.getSeconds() + (res.expires_in - 15));
-                    this.tokenUtilService.expiryDate = expiryDate;
-                    sessionStorage.setItem('expiryDate', expiryDate + '');
+                this.sessionStorage.set('accessToken', res.access_token);
+                this.sessionStorage.set('refreshToken', res.refresh_token);
 
-                    this.loginService.loggedIn.next(true);
-                    this.router.navigate(['/dashboard']);
-                } else
-                    this.isError = true; */
-                    this.router.navigateByUrl('/dashboard');
+                this.returnUrl = this.activatedRoute.snapshot.paramMap.get('returnUrl');
+                this.router.navigateByUrl(this.returnUrl);
             }, error => {
                 this.isError = true;
-            })
+            });
         }
     }
 }

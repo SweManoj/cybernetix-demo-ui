@@ -88,6 +88,7 @@ export class CaseManagementComponent implements OnInit {
         this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
             this.policyViolations = res;
             this.fetchingPolicyViolationsInProgress = false;
+            this.getStageValues();
         });
     }
 
@@ -128,6 +129,16 @@ export class CaseManagementComponent implements OnInit {
                 date.setDate(date.getDate() - dayIndex);
                 this.myDays.push(date);
             }
+            const selectedDate = new Date(this.policyRangeDates[1]);
+            const endDateForService = new Date(this.policyRangeDates[1]);
+            selectedDate.setHours(0, 0, 0, 0);
+            endDateForService.setHours(23, 59, 59, 999);
+
+             this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
+                this.policyViolations = res;
+                this.fetchingPolicyViolationsInProgress = false;
+                this.getStageValues();
+            });
         }
     }
 

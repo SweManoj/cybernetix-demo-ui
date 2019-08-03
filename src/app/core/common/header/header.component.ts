@@ -96,13 +96,13 @@ export class HeaderComponent {
                 this.riskyUsers = res;
 
                 const forFilterDuplication = this.riskyUsers.filter(riskyUser =>
-                    riskyUser.user.u_firstName.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1)  // user name
+                    riskyUser.u_firstName.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1)  // user name
                     .concat(this.riskyUsers.filter(riskyUser =>
-                        riskyUser.user.u_departmentName.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // department name
+                        riskyUser.u_departmentName.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // department name
                     .concat(this.riskyUsers.filter(riskyUser =>
-                        riskyUser.user.u_title.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // role name
+                        riskyUser.u_title.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // role name
                     .concat(this.riskyUsers.filter(riskyUser =>
-                        riskyUser.user.u_country.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // location name
+                        riskyUser.u_country.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // location name
 
                 if (forFilterDuplication.length > 0) {
                     this.utilDataService.filteredRiskyUsers = this.removeDuplicates(forFilterDuplication, 'id');

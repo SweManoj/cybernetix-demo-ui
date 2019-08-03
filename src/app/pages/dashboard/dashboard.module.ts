@@ -13,7 +13,6 @@ import { RiskyUserService } from './components/riskyUsers/riskyUser.service';
 import { ContentModalComponent } from './components/riskyUsers/riskyUsers-modal/riskyUsers-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RiskyUserInfoModalComponent } from './components/riskyUsers/risky-user-info-modal/risky-user-info-modal.component';
-import { ChartsModule as Ng2Charts } from 'ng2-charts';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox'
@@ -53,7 +52,6 @@ import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
         TranslateModule,
         EasyPieChartModule,
         NgbModule,
-        Ng2Charts,
         TableModule,
         DropdownModule,
         CheckboxModule,

@@ -18,6 +18,9 @@ export class GlobeChartComponent implements OnInit {
     riskScoreByDepartments = [];
     riskScoreByTitles = [];
     riskScoreByTitleCount = [];
+    noRiskByTitle = false;
+    noRiskByDept = false;
+    noRiskByLocation = false;
     riskCountByLocation = {};
     color = ['cadetblue', 'deepskyblue', 'palegreen', 'darkcyan', 'lightcoral'];
 
@@ -175,37 +178,50 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByTitle() {
         this.dashboardService.getRiskCountByTitle().subscribe((res: any) => {
-            let i = 0;
-            res.forEach(riskScoreByTitleObj => {
-                this.riskScoreByTitles.push(riskScoreByTitleObj.title);
-                this.riskScoreByTitleCount.push({y: riskScoreByTitleObj.riskScoreCount, color: this.color[i]});
-                i++;
-            });
-            this.riskByTitleOptions.xAxis.categories = this.riskScoreByTitles;
-            this.riskByTitleOptions.series[0].data = this.riskScoreByTitleCount;
-            Highcharts.chart('riskByTitleContainer', this.riskByTitleOptions);
+           if(res && res.length > 0){
+                let i = 0;
+                res.forEach(riskScoreByTitleObj => {
+                    this.riskScoreByTitles.push(riskScoreByTitleObj.title);
+                    this.riskScoreByTitleCount.push({y: riskScoreByTitleObj.riskScoreCount, color: this.color[i]});
+                    i++;
+                });
+                this.riskByTitleOptions.xAxis.categories = this.riskScoreByTitles;
+                this.riskByTitleOptions.series[0].data = this.riskScoreByTitleCount;
+                Highcharts.chart('riskByTitleContainer', this.riskByTitleOptions);
+            }else{
+                  this.noRiskByTitle = true;
+            }
+       
         });
     }
 
     initializeRiskByDept() {
         this.dashboardService.getRiskCountByDepartment().subscribe((res: any) => {
-
-            res.forEach(riskScoreByDept => {
-                this.riskScoreByDepartments.push({'name': riskScoreByDept.departName, 'y': riskScoreByDept.riskScoreCount});
-            });
-            this.options.series[0].data = this.riskScoreByDepartments;
-            Highcharts.chart('container', this.options);
+            if(res && res.length > 0){
+                res.forEach(riskScoreByDept => {
+                    this.riskScoreByDepartments.push({'name': riskScoreByDept.departName, 'y': riskScoreByDept.riskScoreCount});
+                });
+                this.options.series[0].data = this.riskScoreByDepartments;
+                Highcharts.chart('container', this.options);
+            }else{
+                this.noRiskByDept = true;
+            }
         });
     }
 
     initializeRiskByLocation() {
         this.dashboardService.getRiskCountByLocation().subscribe((res: any) => {
-            res.forEach(countryData => {
-                this.riskCountByLocation[countryData.countryCode.toUpperCase()] = countryData.riskScoreCount;
-            });
-            this.zone.runOutsideAngular(() => {
-                this.initializeGlobeChart();
-            });
+            if(res && res.length > 0){
+                res.forEach(countryData => {
+                    this.riskCountByLocation[countryData.countryCode.toUpperCase()] = countryData.riskScoreCount;
+                });
+                this.zone.runOutsideAngular(() => {
+                    this.initializeGlobeChart();
+                });
+            }else{
+                this.noRiskByLocation = true;
+            }
+            
         });
     }
 

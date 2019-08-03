@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ContentModalComponent } from './riskyUsers-modal/riskyUsers-modal.component';
 import { RiskyUserInfoModalComponent } from './risky-user-info-modal/risky-user-info-modal.component';
 import { bubbleDataMonth } from './data';
+import { CaseManagementService } from './../../../case-management/case-management.service' ;
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -21,6 +22,7 @@ import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { DatePipe } from '@angular/common';
 import { RiskScoreModalComponent } from './risk-score-modal/risk-score-modal.component';
 import { TopDetailsService } from '../topDetails/topDetails.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'risky-users',
@@ -47,7 +49,7 @@ export class RiskyUsersComponent {
     policyViolationData = [];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-        private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService) {
+        private zone: NgZone, private router: Router,private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService, private caseManagementService: CaseManagementService) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
@@ -328,5 +330,17 @@ export class RiskyUsersComponent {
             return "darkorange";
         else
             return "crimson";
+    }
+
+    createIncident(violationId) {
+        const incidentData = {
+             "status":"NEW",
+              "pvID": violationId
+        }
+        this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
+            this._snackBar.open('Created Incident successfully', null, {
+                    duration: 2000,
+            });
+        });
     }
 }

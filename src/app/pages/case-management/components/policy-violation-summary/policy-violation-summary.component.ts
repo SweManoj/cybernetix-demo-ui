@@ -223,4 +223,16 @@ export class PolicyViolationSummaryComponent implements OnInit {
             this.policyDetails.policyViolationActivities.unshift(res);
         });
     }
+
+    createIncident() {
+        const incidentData = {
+             "status":"NEW",
+              "pvID": this.policyDetails.pv_ID
+        }
+        this.policyViolationSummaryService.createIncident(incidentData).subscribe((res: any) => {
+            this._snackBar.open('Created Incident successfully', null, {
+                    duration: 2000,
+            });
+        });
+    }
 }

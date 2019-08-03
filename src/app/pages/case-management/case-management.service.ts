@@ -28,4 +28,9 @@ export class CaseManagementService {
     return this.http.get(url);
   }
 
+  createIncident(violationData) {
+        const url = `${this.mainURL}/incident/createIncident`;
+        return this.http.post(url, violationData,{responseType: 'text'});
+  }
+
 }

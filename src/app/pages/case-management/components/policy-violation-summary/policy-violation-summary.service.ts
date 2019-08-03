@@ -19,6 +19,11 @@ export class PolicyViolationSummaryService {
         return this.http.post(url, {});
     }
 
+    createIncident(violationData) {
+        const url = `${this.apiPath}/incident/createIncident`;
+        return this.http.post(url, violationData,{responseType: 'text'});
+    }
+
     updatePolicy(policyData, violationId) {
         const url = `${this.apiPath}/pvCasemgmt/updatepolicyViolation/${violationId}`;
         return this.http.patch(url, policyData, {responseType: 'text'});

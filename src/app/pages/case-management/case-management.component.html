@@ -114,7 +114,7 @@
                                         <div class="media-body policy-violation-table">
                                             <p-table #policy class="policy" [value]="policyViolations"
                                                 [(selection)]="selectedPolicyItems"
-                                                [globalFilterFields]="['srNo','time','policyViolation','entity','indicator','status','priority']"
+                                                [globalFilterFields]="['violationId','generationTime','policyName','entity','indicatorsOfAttack','status','priority']"
                                                 sortMode="multiple"
                                                 [paginator]="true" [rows]="10"
                                                 (onRowSelect)="onPolicyRowSelect($event)"

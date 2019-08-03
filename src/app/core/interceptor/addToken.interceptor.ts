@@ -1,12 +1,12 @@
-/* import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/do';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 @Injectable()
-export class SessionInterceptor implements HttpInterceptor {
+export class AddTokenInterceptor implements HttpInterceptor {
 
     constructor(private router: Router,
         @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
@@ -30,8 +30,9 @@ export class SessionInterceptor implements HttpInterceptor {
             }, error => {
                 if (error.status == 401)
                     this.router.navigateByUrl('/login');
+                else
+                    return throwError(error);
             });
     }
 
-
-} */
+}

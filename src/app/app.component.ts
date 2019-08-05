@@ -16,14 +16,14 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        setInterval(() => {
+        /* setInterval(() => {
             const refreshToken = this.sessionStorage.get('refreshToken');
             if (refreshToken) {
                 this._loginService.refreshAuthToken().subscribe(tokenObj => {
                     this.sessionStorage.set('accessToken', tokenObj['access_token'])
                 });
             }
-        }, 10000);
+        }, 10000); */
     }
 
 }

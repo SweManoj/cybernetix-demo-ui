@@ -13,11 +13,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PolicyViolationDetailViewComponent } from './pages/case-management/components/policy-violation-detail-view/policy-violation-detail-view.component';
 import { PolicyViolationSummaryComponent } from './pages/case-management/components/policy-violation-summary/policy-violation-summary.component';
 import { IncidentSummaryComponent } from './pages/case-management/components/incident-summary/incident-summary.component';
-import { TestEsComponent } from './pages/case-management/components/test-es/test-es.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
-import {RiskyIPComponent} from './pages/dashboard/components/risky-ip/risky-ip.component';
-import {RiskyHostComponent} from './pages/dashboard/components/riskyHost/riskyHost.component';
+import { RiskyIPComponent } from './pages/dashboard/components/risky-ip/risky-ip.component';
+import { RiskyHostComponent } from './pages/dashboard/components/riskyHost/riskyHost.component';
 
 export const routes: Routes = [
     {
@@ -81,10 +80,6 @@ export const routes: Routes = [
             {
                 path: 'cyberNetixPulse',
                 component: PulseGlobeComponent
-            },
-            {
-                path: 'testES',
-                component: TestEsComponent
             }
         ]
     },

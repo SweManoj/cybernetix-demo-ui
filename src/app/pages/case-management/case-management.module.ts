@@ -19,7 +19,6 @@ import { PolicyViolationDetailViewComponent } from './components/policy-violatio
 import { PolicyViolationSummaryComponent } from './components/policy-violation-summary/policy-violation-summary.component';
 import { IncidentSummaryComponent } from './components/incident-summary/incident-summary.component';
 import { PulseGlobeComponent } from './components/pulse-globe/pulse-globe.component';
-import { TestEsComponent } from './components/test-es/test-es.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TimeAgoPipe } from 'time-ago-pipe';
@@ -55,8 +54,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     PolicyViolationSummaryComponent,
     IncidentSummaryComponent,
     PulseGlobeComponent,
-    TimeAgoPipe,
-    TestEsComponent
+    TimeAgoPipe
   ],
   entryComponents: [
     CaseModalComponent

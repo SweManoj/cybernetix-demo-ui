@@ -227,7 +227,7 @@
                                         </div>
                                         <div class="col-md-3 mt-3">
                                             <button class="btn btn-sm" [disabled]="replyComment.value.trim()==''"
-                                                    type="submit" (click)="submitReply(comment.cmtId)">
+                                                    type="submit" (click)="submitReply(comment,comment.cmtId)">
                                                 &emsp;Post&emsp;
                                             </button>
                                         </div>
@@ -249,9 +249,9 @@
                                         <div class="row comment">
                                             <span>{{childComment.comment}}</span>
                                         </div>
-                                        <div class="row mt-1 comment-action"><span class="reply"
-                                                                                   (click)="childComment.reply= !childComment.reply">Reply</span>
-                                            &nbsp;|&nbsp; <span class="delete"
+                                        <div class="row mt-1 comment-action"><!--< span class="reply"
+                                                                                   (click)="childComment.reply= !childComment.reply">Reply</spa
+                                            &nbsp;|&nbsp; n> --><span class="delete"
                                                                 (click)="deleteComment(childComment);">Delete</span>
                                         </div>
                                         <div class="row mt-4" *ngIf="childComment.reply">

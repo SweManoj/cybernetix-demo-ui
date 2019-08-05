@@ -83,10 +83,14 @@ export class PolicyViolationSummaryComponent implements OnInit {
         this.commentValue.setValue('');
     }
 
-    submitReply(parentId) {
+    submitReply(commentObj,parentId) {
+        if(commentObj.childCommentsModel === null){
+            commentObj.childCommentsModel = [];
+        }
         const comment = new Comment(this.replyComment.value, this.policyDetails.pv_ID, parentId);
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
-            const y = res;
+            commentObj.childCommentsModel.unshift(res);
+            commentObj.reply = false;
         });
         this.replyComment.setValue('');
     }

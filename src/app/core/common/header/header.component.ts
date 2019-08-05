@@ -105,7 +105,7 @@ export class HeaderComponent {
                         riskyUser.u_country.toLowerCase().indexOf(this.searchEntity.toLowerCase()) !== -1))  // location name
 
                 if (forFilterDuplication.length > 0) {
-                    this.utilDataService.filteredRiskyUsers = this.removeDuplicates(forFilterDuplication, 'id');
+                    this.utilDataService.filteredRiskyUsers = this.removeDuplicates(forFilterDuplication, 'u_employeeId');
                     this.router.navigate(['/filteredRiskyUsers', this.searchEntity.toString()]);
                 } else {
                     const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }

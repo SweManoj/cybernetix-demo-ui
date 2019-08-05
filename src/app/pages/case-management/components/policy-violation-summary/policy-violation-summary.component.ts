@@ -124,8 +124,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
             this.policyDetails = res;
             this.policyDetailsCopy = Object.assign({}, res);
             if (this.policyDetails.policyReviewer) {
-                this.myControl.setValue({ name: this.policyDetails.policyReviewer.firstName + ' ' +
-                        + this.policyDetails.policyReviewer.lastName, value: this.policyDetails.policyReviewer.userName});
+                const name = this.policyDetails.policyReviewer.firstName + ' ' + this.policyDetails.policyReviewer.lastName;
+                this.myControl.setValue({ name: name, value: this.policyDetails.policyReviewer.userName});
             }
         });
     }

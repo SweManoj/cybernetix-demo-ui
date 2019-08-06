@@ -149,7 +149,7 @@
                         <span class="risk-dot rounded-circle">&nbsp;</span>
                     </div>
 
-                    <div class="violationTitle">
+                    <div class="violationTitle" [ngClass]="{'data-exfiltaration' : item.pv == 'PV 039'}">
                         <div class="row mt-1 mb-2 ml-3 mr-1">
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
@@ -257,7 +257,7 @@
                         <span class="risk-dot rounded-circle">&nbsp;</span>
                     </div>
 
-                    <div class="violationTitle">
+                    <div class="violationTitle" [ngClass]="{'data-exfiltaration' : item.pv == 'PV 094'}">
                         <div class="row mt-1 mb-2 ml-3 mr-1">
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
@@ -461,7 +461,7 @@
                             <span class="risk-dot rounded-circle">&nbsp;</span>
                         </div>
 
-                        <div class="violationTitle">
+                        <div class="violationTitle" [ngClass]="{'data-exfiltaration' : item.ruleInfo.ruleId == '6'}">
                             <div class="row mt-1 mb-2 ml-3 mr-1">
                                 <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">

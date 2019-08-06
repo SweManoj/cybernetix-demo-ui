@@ -178,7 +178,7 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 97' },
             { title: 'Resources', value: 'DLP' },
             { title: 'Indicators', value: 'URL, Attachment' }],
-            description : 'In this Statistcal ML Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
+            description : 'In this Statistcal Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -198,7 +198,7 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 91' },
             { title: 'Resources', value: 'Fileshare' },
             { title: 'Indicators', value: 'FileName' }],
-            description : 'In this Statistcal ML Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
+            description : 'In this Statistcal Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -218,7 +218,7 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'EventID' }],
-            description : 'In this Statistcal ML Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
+            description : 'In this Statistcal Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -240,7 +240,7 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 84' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'Category' }],
-            description : 'In this Statistcal ML Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
+            description : 'In this Statistcal Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -261,7 +261,7 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 75' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }],
-            description : 'In this Statistcal ML Algorithm, Successful Login Attempts on VPN from Unusual Location'
+            description : 'In this Statistcal Algorithm, Successful Login Attempts on VPN from Unusual Location'
         }
 
 

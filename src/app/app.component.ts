@@ -1,6 +1,5 @@
 import { Component, HostBinding, HostListener, OnInit, Inject } from '@angular/core';
 import { UserContext } from './core/services/userContext';
-import { LoginService } from './core/login/login.service';
 
 @Component({
     selector: 'body',
@@ -10,7 +9,7 @@ import { LoginService } from './core/login/login.service';
 export class AppComponent {
 
     @HostBinding('class') public theme: string;
-    constructor(private userContext: UserContext, private _loginService: LoginService) {
+    constructor(private userContext: UserContext) {
         this.theme = this.userContext.getTheme();
     }
 

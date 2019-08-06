@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { UserContext } from '../services/userContext';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 @Component({
@@ -38,9 +38,11 @@ export class LoginComponent {
 
                 const redirectURL = this.sessionStorage.get('redirectURL');
                 this.router.navigateByUrl(redirectURL);
+                this.sessionStorage.remove('redirectURL');
             }, error => {
                 this.isError = true;
             });
         }
     }
+    
 }

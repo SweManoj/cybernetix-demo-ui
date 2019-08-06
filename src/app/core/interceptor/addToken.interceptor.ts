@@ -39,6 +39,8 @@ export class AddTokenInterceptor implements HttpInterceptor {
                         this.sessionStorage.remove('accessToken');
                         this.sessionStorage.remove('refreshToken');
                     }
+                    if (!this.sessionStorage.get('redirectURL'))
+                        this.sessionStorage.set('redirectURL', this.router.url);
                     this.router.navigateByUrl('/login');
                 }
                 else

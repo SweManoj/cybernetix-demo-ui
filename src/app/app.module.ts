@@ -10,7 +10,7 @@ import { LoginModule } from './core/login/login.module';
 import { LoginLayoutComponent } from './core/layout/login.layout.component';
 import { MenuLayoutComponent } from './core/layout/menu.layout.component';
 import { AppTranslationModule } from './app.translation.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './core/services/auth.guard';
 import { LeftNavComponent } from './core/common/leftNav/leftNav.component';
 import { TranslateModule } from '@ngx-translate/core';

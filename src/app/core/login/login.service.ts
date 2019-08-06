@@ -25,6 +25,7 @@ export class LoginService {
     if (isStorageAvailable) {
       this.sessionStorage.remove('accessToken');
       this.sessionStorage.remove('refreshToken');
+      this.sessionStorage.remove('redirectURL');
     }
     this.router.navigate(['/login']);
   }

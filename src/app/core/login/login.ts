@@ -10,16 +10,15 @@ import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
     templateUrl: 'login.html'
 })
 export class LoginComponent {
+
     form: FormGroup;
     username: AbstractControl;
     password: AbstractControl;
     themeName: string;
     isError: boolean = false;
-    returnUrl: string;
 
     constructor(private fb: FormBuilder, private loginService: LoginService, private userContext: UserContext,
-        private router: Router,
-        private activatedRoute: ActivatedRoute, @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
+        private router: Router, @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
 
         this.themeName = this.userContext.themeName;
         this.form = this.fb.group({
@@ -37,8 +36,8 @@ export class LoginComponent {
                 this.sessionStorage.set('accessToken', res.access_token);
                 this.sessionStorage.set('refreshToken', res.refresh_token);
 
-                this.returnUrl = this.activatedRoute.snapshot.paramMap.get('returnUrl');
-                this.router.navigateByUrl(this.returnUrl);
+                const redirectURL = this.sessionStorage.get('redirectURL');
+                this.router.navigateByUrl(redirectURL);
             }, error => {
                 this.isError = true;
             });

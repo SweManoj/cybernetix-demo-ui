@@ -14,7 +14,8 @@ export class AuthGuard implements CanActivate {
         if (this.sessionStorage.get('accessToken'))
             return of(true);
         else {
-            this.router.navigate(['/login', { returnUrl: state.url }]);  // optional url values
+            this.sessionStorage.set('redirectURL', state.url);
+            this.router.navigate(['/login']);  // optional url values
             return of(false);
         }
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { UserContext } from '../../services/userContext';
 import { Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
@@ -9,6 +9,8 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { UtilDataService } from '../../services/util.data.service';
 import { ModalUtilComponent } from '../modal-util/modal.util.component';
 import { DashboardService } from '../../../pages/dashboard/dashboard.service';
+import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
+import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 
 @Component({
     selector: 'app-header',
@@ -21,11 +23,23 @@ export class HeaderComponent {
     riskyUsers = [];
 
     constructor(private userContext: UserContext, private router: Router,
+        idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
         private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService) {
 
         this.themeName = this.userContext.themeName;
         this.prevThemeName = this.themeName;
+
+        idle.setIdle(600);
+        idle.setTimeout(1);
+        idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
+
+        idle.onTimeout.subscribe(() => {
+            this.loginService.logout();
+            this.sessionStorage.set('redirectURL', this.router.url);
+        });
+
+        idle.watch();
     }
 
     toggleMenu() {
@@ -63,29 +77,7 @@ export class HeaderComponent {
     allEntitiesNames: string[] = [];
 
     ngOnInit() {
-        var uniqueEntityNames = new Set<String>();
-
-        /*  filtering risky users name
-        riskyUsers.forEach(riskyUser => {
-            uniqueEntityNames.add(riskyUser.user);
-        });
-
-        // removing duplicacy of risky users name
-        Array.from(uniqueEntityNames).forEach(uniqueEntityName => {
-            this.allEntitiesNames.push(uniqueEntityName.toString());
-        }); */
     }
-
-    /*  search risky users
-    searchingEntity() {
-        console.log('event user is : ' + this.searchEntity);
-        const filteredRiskyUsers: any[] = riskyUsers.filter(riskyUser => String(riskyUser.user).toLowerCase().includes(this.searchEntity.toLowerCase()));
-
-        if (filteredRiskyUsers.length > 0) {
-            console.log('users are available');
-            this.router.navigate(['/filteredRiskyUsers', this.searchEntity.toString()]);
-        }
-    } */
 
     filterRiskEntities() {
 

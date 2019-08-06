@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
 import { StorageServiceModule } from 'angular-webstorage-service';
+import { NgIdleModule } from '@ng-idle/core';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { StorageServiceModule } from 'angular-webstorage-service';
         MaterialModule,
         HighchartsChartModule,
         SharedPipesModule,
-        StorageServiceModule
+        StorageServiceModule,
+        NgIdleModule.forRoot()
     ],
     exports: [
         MaterialModule

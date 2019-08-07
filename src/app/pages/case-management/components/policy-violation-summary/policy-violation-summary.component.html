@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <h3 class="title">PV1001 <span>- Multiple acount lockedout detected - PUNCEF101</span></h3>
+            <h3 class="title">{{policyDetails.pv}} <span>- {{policyDetails.ruleInfo.title}} - PUNCEF101</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
             <button class="assign-btn" mat-raised-button>Assign to Me</button>
@@ -22,8 +22,11 @@
             <div class="col-md-6 left-block">
                 <div class="block-content">
                     <div class="block-title"><i class="fa fa-caret-right"></i> <span>Description</span></div>
-                    <div class="block-description">
+                    <div class="block-description" *ngIf="!policyDetails.description">
                         In this policy violation, user was trying to access machine which is restricted to access by group policy
+                    </div>
+                    <div class="block-description" *ngIf="policyDetails.description">
+                        {{policyDetails.description}}
                     </div>
                 </div>
                 <div class="block-content mb-4">

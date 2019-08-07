@@ -49,17 +49,17 @@ export class CaseManagementComponent implements OnInit {
   @ViewChild('policy') policy: Table;
   myObjects = {
     'Monday 01/01/2019': [
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '1', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '3', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '4', status: 'Unreviewed', priority: 'High' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '7', status: 'Unreviewed', priority: 'Medium' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
-      { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: 'PV_083', time: '12:23:00Hrs', policyViolation: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows', entity: '192.168.0.102', indicator: '1', status: 'Unreviewed', priority: 'High' },
+      { srNo: 'PV_061', time: '12:23:00Hrs', policyViolation: 'Successful Logon from Rare Machine - Windows', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'Low' },
+      { srNo: 'PV_041', time: '12:23:00Hrs', policyViolation: 'Suspicious Data Objects Downloaded By Service Account - Fileshare', entity: '192.168.0.102', indicator: '3', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: 'PV_069', time: '12:23:00Hrs', policyViolation: 'Abnormal Process Executed - Windows', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' },
+      { srNo: 'PV_094', time: '12:23:00Hrs', policyViolation: 'Multiple Users Logged-In Successfully From Same IP', entity: '192.168.0.102', indicator: '4', status: 'Unreviewed', priority: 'High' },
+      { srNo: 'PV_092', time: '12:23:00Hrs', policyViolation: 'Data Exfiltration to Cloud via HTTPS', entity: '192.168.0.102', indicator: '7', status: 'Unreviewed', priority: 'Medium' },
+      { srNo: 'PV_044', time: '12:23:00Hrs', policyViolation: 'Suspicious RDP to Multiple Hosts from Privileged User', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: 'PV_021', time: '12:23:00Hrs', policyViolation: 'Abnormal Remote Access Tools Usage', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: 'PV_033', time: '12:23:00Hrs', policyViolation: 'Successful Login From Unusual Location - VPN', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: 'PV_043', time: '12:23:00Hrs', policyViolation: 'Multiple Failed Login Attempts From Unusual Location - VPN', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
+      { srNo: 'PV_088', time: '12:23:00Hrs', policyViolation: 'Abnormal VPN Activities after BadgeIN', entity: '192.168.0.102', indicator: '6', status: 'Unreviewed', priority: 'Low' },
       { srNo: '#1', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ],
     'Tuesday 02/01/2019': [

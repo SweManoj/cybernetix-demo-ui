@@ -38,6 +38,9 @@ export class RiskyUsersComponent {
     selectedView = 'timeline';
     private offset: number = 0;
     selectedUserInfo: any[];
+    hardCodeItemDataForDemoForJohn1: any;
+    hardCodeItemDataForDemoForJohn2: any;
+    hardCodeItemDataForDemoForJohn3: any;
     hardCodeItemDataForDemoForEmoor: any;
     userData: any;
     riskyObjects = [
@@ -46,7 +49,9 @@ export class RiskyUsersComponent {
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true, role: 'Sr. Software Engineer', department: 'Development', location: 'Banglore', reportingManager: 'Scott Henry', creationDate: '22 May 2017', lastWorkDay: '26 Feb 2019' },
         { type: 'user', value: 'AWendler', score: 97, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter Moore', creationDate: '13 Jun 2018', lastWorkDay: '9 Jul 2019' },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true, role: 'Project Manager', department: 'Production', location: 'Paris', reportingManager: 'Alex Gee', creationDate: '23 Aug 2018', lastWorkDay: '24 May 2019' },
-        { type: 'user', value: 'Alysa', score: 82, img: true, role: 'Project Manager', department: 'Production', location: 'Stuttgart', reportingManager: 'Rolf Dobelli', creationDate: '21 Nov 2017', lastWorkDay: '24 Apr 2019' }
+        { type: 'user', value: 'Alysa', score: 82, img: true, role: 'Project Manager', department: 'Production', location: 'Stuttgart', reportingManager: 'Rolf Dobelli', creationDate: '21 Nov 2017', lastWorkDay: '24 Apr 2019' },
+        { type: 'user', value: 'Maile', score: 87, img: true, role: 'AVP - Sales', department: 'Sales', location: 'San Diego', reportingManager: 'Ryan Smith', creationDate: '12 Jan 2016', lastWorkDay: '24 Apr 2019' },
+         { type: 'user', value: 'JohnS', score: 88, img: true, role: 'Contrator', department: 'Contractor', location: 'Seattle', reportingManager: 'George Bailey', creationDate: '12 Jan 2016', lastWorkDay: '24 Apr 2019' }
     ];
 
     threatCategories = [
@@ -234,6 +239,144 @@ export class RiskyUsersComponent {
         
 
     ];
+
+hardCodeItemDataForDemoForJohn1 = [
+    {
+            generatedDateFormat: '2 Aug 2019',
+            generatedTimestamp: '20:45:00',
+            accord: false,
+            pv: 'PV_014',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Excessive Remote Access Tools Usage'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Data Exfiltration' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Resources', value: 'Proxy' },
+            { title: 'Indicators', value: 'Bytes, Category' }],
+            description : 'In this Algorithm, User Removed security enabled global group'
+        },
+        {
+            generatedDateFormat: '2 Aug 2019',
+            generatedTimestamp: '19:23:00',
+            accord: false,
+            pv: 'PV_013',
+            riskScore: 18,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Unauthorized Software Downloaded By Contractor'
+            },
+            incId : 'INC-18',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 83' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'Action' }],
+            description : 'In this Algorithm, user performed abnormal data export on MSQL database'
+        },
+        {
+            generatedDateFormat: '31 July 2019',
+            generatedTimestamp: '17:00:00',
+            accord: false,
+            pv: 'PV_010',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: ' Abnormal Software Downloads Attempts by Contractor'
+            },
+            incId : 'INC-19',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 70' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'Action' }],
+            description : 'In this Algorithm, user performed abnormal data export on MSQL database'
+        },
+        {
+            generatedDateFormat: '29 July 2019',
+            generatedTimestamp: '13:23:00',
+            accord: false,
+            pv: 'PV_010',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: ' Abnormal Software Downloads Attempts by Contractor'
+            },
+            incId : 'INC-19',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 67' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'Action' }],
+            description : 'In this Algorithm, user performed abnormal data export on MSQL database'
+        }
+        
+
+    ];
+
+    hardCodeItemDataForDemoForJohn2 = [
+ {
+            generatedDateFormat: '31 July 2019',
+            generatedTimestamp: '17:00:00',
+            accord: false,
+            pv: 'PV_010',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: ' Abnormal Software Downloads Attempts by Contractor'
+            },
+            incId : 'INC-19',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 70' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'Action' }],
+            description : 'In this Algorithm, user performed abnormal data export on MSQL database'
+        }
+        
+    ]
+
+    hardCodeItemDataForDemoForJohn3 = [
+        {
+            generatedDateFormat: '29 July 2019',
+            generatedTimestamp: '13:23:00',
+            accord: false,
+            pv: 'PV_010',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: ' Abnormal Software Downloads Attempts by Contractor'
+            },
+            incId : 'INC-19',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 67' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'Action' }],
+            description : 'In this Algorithm, user performed abnormal data export on MSQL database'
+        }
+    ]
 
 
     hardCodeItemDataForDemo1 = [
@@ -701,8 +844,12 @@ export class RiskyUsersComponent {
                 this.hardCodeItemData = this.flightUserHardCodeItemData;
             }
 
-            if(this.selectedUser === 'Adm-EMoor'){
+            if(this.selectedUser === 'Maile'){
              this.hardCodeItemDataForDemoForEmoor  = this.policyViolationForMaile;
+            }
+
+            if(this.selectedUser === 'JohnS'){
+             this.hardCodeItemDataForDemoForJohn  = this.policyViolationForJohn;
             }
 
             if (this.selectedUser) {

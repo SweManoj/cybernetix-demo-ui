@@ -38,11 +38,11 @@ export class RiskyUsersComponent {
     selectedView = 'timeline';
     private offset: number = 0;
     selectedUserInfo: any[];
-    hardCodeItemDataForDemoForJohn1: any[];
-    hardCodeItemDataForDemoForJohn2: any[];
-    hardCodeItemDataForDemoForJohn3: any[];
-    hardCodeItemDataForDemoForEmoor: any[];
-     hardCodeItemDataForDemoForMendelson: any[];
+    hardCodeItemDataForDemoForJohn = [];
+    hardCodeItemDataForDemoForJohn2= [];
+    hardCodeItemDataForDemoForJohn3 = [];
+    hardCodeItemDataForDemoForEmoor = [];
+     hardCodeItemDataForDemoForMendelson = [];
     userData: any;
     riskyObjects = [
         { type: 'user', value: 'ADittmer', score: 94, img: true, role: 'Sr. Tester', department: 'Quality Testing', location: 'Los Angles', reportingManager: 'Paul Smith', creationDate: '12 Dec 2018', lastWorkDay: '25 Jan 2019' },

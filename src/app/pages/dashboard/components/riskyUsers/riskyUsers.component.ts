@@ -38,10 +38,11 @@ export class RiskyUsersComponent {
     selectedView = 'timeline';
     private offset: number = 0;
     selectedUserInfo: any[];
+    hardCodeItemDataForDemoForEmoor: any;
     userData: any;
     riskyObjects = [
         { type: 'user', value: 'ADittmer', score: 94, img: true, role: 'Sr. Tester', department: 'Quality Testing', location: 'Los Angles', reportingManager: 'Paul Smith', creationDate: '12 Dec 2018', lastWorkDay: '25 Jan 2019' },
-        { type: 'user', value: 'Adm-EMoor', score: 89, img: true, role: 'Sales Manager', department: 'Sales and Marketing', location: 'Beijing', reportingManager: 'John ', creationDate: '11 Jan 2016', lastWorkDay: '02 Mar 2019' },
+        { type: 'user', value: 'Adm-EMoor', score: 87, img: true, role: 'AVP - Sales', department: 'Sales', location: 'San Diego', reportingManager: 'Ryan Smith', creationDate: '12 Jan 2016', lastWorkDay: '24 Apr 2019' },
         { type: 'user', value: 'Adm-ADittmer', score: 81, img: true, role: 'Sr. Software Engineer', department: 'Development', location: 'Banglore', reportingManager: 'Scott Henry', creationDate: '22 May 2017', lastWorkDay: '26 Feb 2019' },
         { type: 'user', value: 'AWendler', score: 97, img: true, role: 'Product Specialist', department: 'Product Development', location: 'Berlin', reportingManager: 'Peter Moore', creationDate: '13 Jun 2018', lastWorkDay: '9 Jul 2019' },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true, role: 'Project Manager', department: 'Production', location: 'Paris', reportingManager: 'Alex Gee', creationDate: '23 Aug 2018', lastWorkDay: '24 May 2019' },
@@ -164,6 +165,76 @@ export class RiskyUsersComponent {
             incId : 'INC-6'
         }
     ];
+
+
+    policyViolationForMaile = [
+    {
+            generatedDateFormat: '18 July 2019',
+            generatedTimestamp: '06:47:00',
+            accord: false,
+            pv: 'PV_014',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Self Escalation Removed Security enabled global group'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Privileged misuse' },
+            { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'Event Code' }],
+            description : 'In this Algorithm, User Removed security enabled global group'
+        },
+        {
+            generatedDateFormat: '18 July 2019',
+            generatedTimestamp: '05:43:00',
+            accord: false,
+            pv: 'PV_013',
+            riskScore: 18,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Abnormal Data Export on MSQL database'
+            },
+            incId : 'INC-18',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Data Export' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 81' },
+            { title: 'Resources', value: 'MSQL' },
+            { title: 'Indicators', value: 'Action/Tables' }],
+            description : 'In this Algorithm, user performed abnormal data export on MSQL database'
+        },
+        {
+            generatedDateFormat: '18 July 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV_010',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Self Escalation Added Security enabled global group'
+            },
+            incId : 'INC-19',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Privileged misuse' },
+            { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 72/87' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'Event Code' }],
+            description : 'In this Algorithm, User Added security enabled global group'
+        }
+        
+
+    ];
+
 
     hardCodeItemDataForDemo1 = [
         {
@@ -628,6 +699,10 @@ export class RiskyUsersComponent {
             })
             if (this.selectedUser == 'Alysa') {
                 this.hardCodeItemData = this.flightUserHardCodeItemData;
+            }
+
+            if(this.selectedUser === 'Adm-EMoor'){
+             this.hardCodeItemDataForDemoForEmoor  = this.policyViolationForMaile;
             }
 
             if (this.selectedUser) {

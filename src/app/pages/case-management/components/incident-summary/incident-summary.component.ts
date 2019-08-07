@@ -303,6 +303,69 @@ export class IncidentSummaryComponent implements OnInit {
             Risk: 42,
             Resources: 'Proxy',
             Indicators: 'Category'
+        },
+        {
+            generatedDateFormat: '18 July 2019',
+            generatedTimestamp: '06:47:00',
+            accord: false,
+            pv: 'PV_014',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Self Escalation Removed Security enabled global group'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Privileged misuse' },
+            { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'Event Code' }],
+            description : 'In this Algorithm, User Removed security enabled global group'
+        },
+        {
+            generatedDateFormat: '18 July 2019',
+            generatedTimestamp: '05:43:00',
+            accord: false,
+            pv: 'PV_013',
+            riskScore: 18,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Abnormal Data Export on MSQL database'
+            },
+            incId : 'INC-18',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Data Export' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 81' },
+            { title: 'Resources', value: 'MSQL' },
+            { title: 'Indicators', value: 'Action/Tables' }],
+            description : 'In this Algorithm, user performed abnormal data export on MSQL database'
+        },
+        {
+            generatedDateFormat: '18 July 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV_010',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Self Escalation Added Security enabled global group'
+            },
+            incId : 'INC-19',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Privileged misuse' },
+            { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 72/87' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'Event Code' }],
+            description : 'In this Algorithm, User Added security enabled global group'
         }
     ];
     policyComments: Comment[] = [{

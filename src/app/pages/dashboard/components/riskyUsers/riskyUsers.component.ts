@@ -38,10 +38,8 @@ export class RiskyUsersComponent {
     selectedView = 'timeline';
     private offset: number = 0;
     selectedUserInfo: any[];
-    hardCodeItemDataForDemoForJohn = [];
-    hardCodeItemDataForDemoForJohn2= [];
-    hardCodeItemDataForDemoForJohn3 = [];
-    hardCodeItemDataForDemoForEmoor = [];
+
+    hardCodeItemDataForDemoForEmoor: any[];
      hardCodeItemDataForDemoForMendelson = [];
     userData: any;
     riskyObjects = [
@@ -915,10 +913,6 @@ hardCodeItemDataForDemoForJohn1 = [
 
             if(this.selectedUser === 'Maile'){
              this.hardCodeItemDataForDemoForEmoor  = this.policyViolationForMaile;
-            }
-
-            if(this.selectedUser === 'JohnS'){
-             this.hardCodeItemDataForDemoForJohn  = this.policyViolationForJohn;
             }
 
             if(this.selectedUser === 'Mendelson'){

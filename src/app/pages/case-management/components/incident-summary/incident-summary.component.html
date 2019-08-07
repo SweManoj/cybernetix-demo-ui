@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9"> 
-            <h3 class="title">INC-20 <span>- High Risk Alert Reporting Engine for Cyber Securities</span></h3>
+            <h3 class="title">{{incidentDetails.incId}} <span>- {{incidentDetails.ruleInfo.title}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
             <button class="assign-btn" mat-raised-button>Assign to Me</button>
@@ -32,12 +32,12 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">09/05/2019 11:23:00</div>
+                        <div class="col-sm-6 dataValue">{{incidentDetails.generatedDateFormat}} 11:23:00</div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Incident Created Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">09/05/2019 10:30:00</div>
+                        <div class="col-sm-6 dataValue">09/08/2019 10:30:00</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>
@@ -185,7 +185,7 @@
                     <div class="listedItem">
                         <div class="block-title"><span>Threat Categorisation</span></div>
                         <div class="block-description mt-3">
-                            <div class="row mt-2 threatRow" *ngFor="let threatCategory of threatCategories">
+                            <div class="row mt-2 threatRow" *ngFor="let threatCategory of incidentDetails.threatCategories">
                                 <div class="col-11 col-sm-5 col-lg-3 threatTitle">
                                     {{ threatCategory.title }}
                                 </div>

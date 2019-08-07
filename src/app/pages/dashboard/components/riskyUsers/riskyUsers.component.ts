@@ -95,45 +95,49 @@ export class RiskyUsersComponent {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
-            pv: 'PV 083',
+            pv: 'PV_083',
             riskScore: 579,
             ruleInfo: {
                 ruleId: 1,
                 title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
-            }
+            },
+            incId : 'INC-1'
         },
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '05:30:00',
             accord: false,
-            pv: 'PV 061',
+            pv: 'PV_061',
             riskScore: 483,
             ruleInfo: {
                 ruleId: 2,
                 title: 'Successful Logon from Rare Machine - Windows'
-            }
+            },
+            incId : 'INC-2'
         },
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '07:10:00',
             accord: false,
-            pv: 'PV 039',
+            pv: 'PV_039',
             riskScore: 451,
             ruleInfo: {
                 ruleId: 3,
                 title: 'Unusual Data Exfiltration By Service Account - Proxy'
-            }
+            },
+            incId : 'INC-3'
         },
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '09:22:00',
             accord: false,
-            pv: 'PV 041',
+            pv: 'PV_041',
             riskScore: 398,
             ruleInfo: {
                 ruleId: 4,
                 title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
-            }
+            },
+            incId : 'INC-4'
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -144,18 +148,20 @@ export class RiskyUsersComponent {
             ruleInfo: {
                 ruleId: 5,
                 title: 'Abnormal Process Executed - Windows'
-            }
+            },
+            incId : 'INC-5'
         },
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '17:14:00',
             accord: false,
-            pv: 'PV 094',
+            pv: 'PV_094',
             riskScore: 149,
             ruleInfo: {
                 ruleId: 6,
                 title: 'Multiple Users Logged-In Successfully From Same IP'
-            }
+            },
+            incId : 'INC-6'
         }
     ];
 
@@ -164,12 +170,13 @@ export class RiskyUsersComponent {
             generatedDateFormat: '13 June 2019',
             generatedTimestamp: '06:22:00',
             accord: false,
-            pv: 'PV 094',
+            pv: 'PV_092',
             riskScore: 19,
             ruleInfo: {
                 ruleId: 6,
                 title: 'Data Exfiltration to Cloud via HTTPS'
             },
+            incId : 'INC-7',
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Data Exfiltration' },
             { title: 'Sub Category', value: 'Data Exfiltration' }],
@@ -178,18 +185,19 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 97' },
             { title: 'Resources', value: 'DLP' },
             { title: 'Indicators', value: 'URL, Attachment' }],
-            description : 'In this Statistcal Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
+            description : 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
         },
         {
             generatedDateFormat: '13 June 2019',
             generatedTimestamp: '05:30:00',
             accord: false,
-            pv: 'PV 069',
+            pv: 'PV_059',
             riskScore: 118,
             ruleInfo: {
                 ruleId: 5,
                 title: 'Abnormal Objects Accessed on Fileshare'
             },
+            incId : 'INC-8',
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Abnormal Pattern' },
             { title: 'Sub Category', value: 'Abnormal Pattern' }],
@@ -198,18 +206,19 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 91' },
             { title: 'Resources', value: 'Fileshare' },
             { title: 'Indicators', value: 'FileName' }],
-            description : 'In this Statistcal Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
+            description : 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
         },
         {
             generatedDateFormat: '13 June 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
-            pv: 'PV 041',
+            pv: 'PV_041',
             riskScore: 23,
             ruleInfo: {
                 ruleId: 4,
                 title: 'Suspicious RDP to Multiple Hosts from Privileged User'
             },
+            incId : 'INC-9',
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Account Compromise' }],
@@ -218,18 +227,19 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'EventID' }],
-            description : 'In this Statistcal Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
+            description : 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
         },
         {
             generatedDateFormat: '13 June 2019',
             generatedTimestamp: '02:45:00',
             accord: false,
-            pv: 'PV 061',
+            pv: 'PV_021',
             riskScore: 17,
             ruleInfo: {
                 ruleId: 2,
                 title: 'Abnormal Remote Access Tools Usage'
             },
+            incId : 'INC-11',
             threatCategories: [
                 { title: 'Kill Chain', value: '-' },
                 { title: 'Threat Category', value: 'Suspicious Behavior' },
@@ -240,19 +250,19 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 84' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'Category' }],
-            description : 'In this Statistcal Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
+            description : 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
         },
         {
             generatedDateFormat: '13 June 2019',
             generatedTimestamp: '01:14:00',
             accord: false,
-            pv: 'PV 083',
+            pv: 'PV_033',
             riskScore: 2,
             ruleInfo: {
                 ruleId: 1,
                 title: 'Successful Login From Unusual Location - VPN'
             },
-
+            incId : 'INC-12',
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Account Compromise' }],
@@ -261,7 +271,7 @@ export class RiskyUsersComponent {
             { title: 'Status', value: 'Risk: 75' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }],
-            description : 'In this Statistcal Algorithm, Successful Login Attempts on VPN from Unusual Location'
+            description : 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location'
         }
 
 
@@ -272,13 +282,14 @@ export class RiskyUsersComponent {
             generatedDateFormat: '12 June 2019',
             generatedTimestamp: '08:02:00',
             accord: false,
-            pv: 'PV 083',
+            pv: 'PV_043',
             riskScore: 9,
             ruleInfo: {
                 ruleId: 1,
                 title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
             },
-            description: 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+            incId : 'INC-13',
+            description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Account Compromise' }],
@@ -292,13 +303,14 @@ export class RiskyUsersComponent {
             generatedDateFormat: '12 June 2019',
             generatedTimestamp: '07:30:00',
             accord: false,
-            pv: 'PV 061',
+            pv: 'PV_088',
             riskScore: 13,
             ruleInfo: {
                 ruleId: 2,
                 title: 'Abnormal VPN Activities after BadgeIN'
             },
-            description: 'In this Statistcal ML Algorithm, VPN Activities from User after he/she has physical BadgeIN',
+            incId : 'INC-14',
+            description: 'In this Algorithm, VPN Activities from User after he/she has physical BadgeIN',
             threatCategories:
                 [{ title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Access Authentication' },
@@ -317,13 +329,14 @@ export class RiskyUsersComponent {
             generatedDateFormat: '11 June 2019',
             generatedTimestamp: '05:20:00',
             accord: false,
-            pv: 'PV 083',
+            pv: 'PV_073',
             riskScore: 17,
             ruleInfo: {
                 ruleId: 1,
                 title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
             },
-            description: 'In this Statistcal ML Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+            incId : 'INC-15',
+            description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Account Compromise' }],
@@ -340,12 +353,13 @@ export class RiskyUsersComponent {
             generatedDateFormat: '10 June 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
-            pv: 'PV 083',
+            pv: 'PV_023',
             riskScore: 83,
             ruleInfo: {
                 ruleId: 1,
                 title: 'Outbound Traffic to Spyware URL’s from Privileged User'
             },
+            incId : 'INC-16',
             Description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
 
             threatCategories: [
@@ -366,45 +380,49 @@ export class RiskyUsersComponent {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '01:08:00',
             accord: false,
-            pv: 'PV 051',
+            pv: 'PV_051',
             riskScore: 479,
             ruleInfo: {
                 ruleId: 1,
                 title: 'Rare Appliations Accessed'
-            }
+            },
+            incId: 'INC-18'
         },
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '04:42:00',
             accord: false,
-            pv: 'PV 072',
+            pv: 'PV_072',
             riskScore: 479,
             ruleInfo: {
                 ruleId: 1,
                 title: 'High Amount of Documents Printed'
-            }
+            },
+            incId: 'INC-20'
         },
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '06:37:00',
             accord: false,
-            pv: 'PV 062',
+            pv: 'PV_062',
             riskScore: 523,
             ruleInfo: {
                 ruleId: 2,
                 title: 'Abnormal Self Email to Personal Domains - DLP '
-            }
+            },
+            incId: 'INC-21'
         },
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '08:21:00',
             accord: false,
-            pv: 'PV 047',
+            pv: 'PV_047',
             riskScore: 291,
             ruleInfo: {
                 ruleId: 3,
                 title: 'Abnormal Visit to Job Sites'
-            }
+            },
+            incId: 'INC-22'
         }
     ];
 
@@ -730,6 +748,10 @@ export class RiskyUsersComponent {
 
     gotoSummery() {
         window.open("#/policyViolationSummary", '_blank');
+    }
+
+    goToIncident() {
+        window.open("#/incidentSummary", '_blank');
     }
 
     openUserInfo(userInfo: any) {

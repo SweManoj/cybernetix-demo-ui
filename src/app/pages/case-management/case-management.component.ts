@@ -24,21 +24,21 @@ export class CaseManagementComponent implements OnInit {
   private offset: number = 0;
   path : any;
   data = [
-    { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
-    { created: '03/02/2018', priority: 'Medium', riskscore: 90, id: 'INC-21', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Pending', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
-    { created: '03/03/2018', priority: 'High', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.106' },
-    { created: '03/04/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.108' },
-    { created: '03/05/2018', priority: 'Low', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
-    { created: '03/06/2018', priority: 'Critical', riskscore: 90, id: 'INC-30', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.108' },
-    { created: '03/07/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Pending', assignee: 'NA', alerts: 2, entity: '192.168.0.112' },
-    { created: '03/08/2018', priority: 'High', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.153' },
-    { created: '03/09/2018', priority: 'Critical', riskscore: 90, id: 'INC-50', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'admin', alerts: 2, entity: '192.168.0.128' },
-    { created: '03/10/2018', priority: 'Low', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'NA', alerts: 2, entity: '192.168.0.157' },
-    { created: '03/11/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.172' },
-    { created: '03/12/2018', priority: 'High', riskscore: 90, id: 'INC-60', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.112' },
-    { created: '03/13/2018', priority: 'Medium', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'NA', alerts: 2, entity: '192.168.0.142' },
-    { created: '03/14/2018', priority: 'Critical', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.102' },
-    { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-20', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.109' },
+    { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-1', name: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
+    { created: '03/02/2018', priority: 'Medium', riskscore: 90, id: 'INC-2', name: 'Successful Logon from Rare Machine - Windows', status: 'Pending', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
+    { created: '03/03/2018', priority: 'High', riskscore: 90, id: 'INC-3', name: 'Unusual Data Exfiltration By Service Account - Proxy', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.106' },
+    { created: '03/04/2018', priority: 'Critical', riskscore: 90, id: 'INC-4', name: 'Suspicious Data Objects Downloaded By Service Account - Fileshare', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.108' },
+    { created: '03/05/2018', priority: 'Low', riskscore: 90, id: 'INC-5', name: 'Abnormal Process Executed - Windows', status: 'Completed', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
+    { created: '03/06/2018', priority: 'Critical', riskscore: 90, id: 'INC-6', name: 'Multiple Users Logged-In Successfully From Same IP', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.108' },
+    { created: '03/07/2018', priority: 'Critical', riskscore: 90, id: 'INC-7', name: 'Data Exfiltration to Cloud via HTTPS', status: 'Pending', assignee: 'NA', alerts: 2, entity: '192.168.0.112' },
+    { created: '03/08/2018', priority: 'High', riskscore: 90, id: 'INC-8', name: 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.153' },
+    { created: '03/09/2018', priority: 'Critical', riskscore: 90, id: 'INC-9', name: 'Abnormal Objects Accessed on Fileshare', status: 'Completed', assignee: 'admin', alerts: 2, entity: '192.168.0.128' },
+    { created: '03/10/2018', priority: 'Low', riskscore: 90, id: 'INC-10', name: 'Suspicious RDP to Multiple Hosts from Privileged User', status: 'Task Requested', assignee: 'NA', alerts: 2, entity: '192.168.0.157' },
+    { created: '03/11/2018', priority: 'Critical', riskscore: 90, id: 'INC-11', name: 'Abnormal Remote Access Tools Usage', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.172' },
+    { created: '03/12/2018', priority: 'High', riskscore: 90, id: 'INC-12', name: 'Successful Login From Unusual Location - VPN', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.112' },
+    { created: '03/13/2018', priority: 'Medium', riskscore: 90, id: 'INC-13', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'NA', alerts: 2, entity: '192.168.0.142' },
+    { created: '03/14/2018', priority: 'Critical', riskscore: 90, id: 'INC-14', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.102' },
+    { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-15', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.109' },
   ];
 
   shows = [{ name: 'Last 1 Day', value: '1day' }, { name: 'Last 2 Day', value: '2day' }, { name: 'Last 7 Day', value: '7day' }, { name: 'Last 1 month', value: 'month' }];

@@ -176,7 +176,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground">
+                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
                                         <button ngbDropdownItem class="greyBackground">
@@ -283,7 +283,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground">
+                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
                                         <button ngbDropdownItem class="greyBackground">
@@ -384,7 +384,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground">
+                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
                                         <button ngbDropdownItem class="greyBackground">
@@ -461,7 +461,7 @@
                             <span class="risk-dot rounded-circle">&nbsp;</span>
                         </div>
 
-                        <div class="violationTitle" [ngClass]="{'data-exfiltaration' : item.ruleInfo.ruleId == '6'}">
+                        <div class="violationTitle">
                             <div class="row mt-1 mb-2 ml-3 mr-1">
                                 <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
@@ -487,7 +487,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground">
+                                        <button ngbDropdownItem class="greyBackground"  [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
                                         <button ngbDropdownItem class="greyBackground">
@@ -589,7 +589,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground">
+                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
                                         <button ngbDropdownItem class="greyBackground">

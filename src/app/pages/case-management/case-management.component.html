@@ -276,8 +276,7 @@
                                 </td>
                                 <td>{{data.id}}</td>
                                 <td>{{data.created}}</td>
-                                <td style="color:#099bb5;" 
-                                (click)="goToIncidentSummaryPage()">{{data.name}}</td>
+                                <td style="color:#099bb5;" [routerLink]="['/incidentSummary', data.id]">{{data.name}}</td>
                                 <td>{{data.entity}}</td>
                                 <td style="padding-left: 40px">
                                     <div class="{{data.priority}} tableStages"></div>

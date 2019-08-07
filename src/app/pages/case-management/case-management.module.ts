@@ -23,6 +23,7 @@ import { TimeAgoPipe } from 'time-ago-pipe';
 
 import { MaterialModule } from './../../material';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { PerformRemediationComponent } from './components/perform-remediation/perform-remediation.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     IncidentSummaryComponent,
     PulseGlobeComponent,
     TimeAgoPipe,
-    TestEsComponent
+    TestEsComponent,
+    PerformRemediationComponent
   ],
   entryComponents: [
     CaseModalComponent

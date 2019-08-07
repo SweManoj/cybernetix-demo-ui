@@ -9,7 +9,7 @@
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
                 <button class="action-menu-item" mat-menu-item [routerLink]="['/incidentSummary', policyDetails.incId]">Create an Incident</button>
-                <button class="action-menu-item" mat-menu-item>Perform Remedidation</button>
+                <button class="action-menu-item" mat-menu-item [routerLink]="['/performRemediation']">Perform Remediation</button>
             </mat-menu>
         </div>
     </div>

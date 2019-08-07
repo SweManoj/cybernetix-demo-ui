@@ -211,7 +211,7 @@ export class RiskyUsersComponent {
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
             { title: 'Status', value: 'Risk: 81' },
-            { title: 'Resources', value: 'MSQL' },
+            { title: 'Resources', value: 'Salesforce' },
             { title: 'Indicators', value: 'Action/Tables' }],
             description : 'In this Algorithm, user performed abnormal data export on MSQL database'
         },
@@ -258,7 +258,7 @@ export class RiskyUsersComponent {
             dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
             { title: 'Locations', value: 'New Jersey' },
             { title: 'Status', value: 'Risk: 87' },
-            { title: 'Resources', value: 'IIS' },
+            { title: 'Resources', value: 'SCCM' },
             { title: 'Indicators', value: 'AppNames' }],
             description : 'In this Algorithm, User Removed security enabled global group'
         },
@@ -346,7 +346,7 @@ hardCodeItemDataForDemoForJohn1 = [
             dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Status', value: 'Risk: 83' },
-            { title: 'Resources', value: 'IIS' },
+            { title: 'Resources', value: 'SCCM' },
             { title: 'Indicators', value: 'Action' }],
             description : 'In this Algorithm, user performed abnormal data export on MSQL database'
         },
@@ -367,7 +367,7 @@ hardCodeItemDataForDemoForJohn1 = [
             dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Status', value: 'Risk: 70' },
-            { title: 'Resources', value: 'IIS' },
+            { title: 'Resources', value: 'SCCM' },
             { title: 'Indicators', value: 'Action' }],
             description : 'In this Algorithm, user performed abnormal data export on MSQL database'
         },

@@ -42,6 +42,7 @@ export class RiskyUsersComponent {
     hardCodeItemDataForDemoForJohn2: any;
     hardCodeItemDataForDemoForJohn3: any;
     hardCodeItemDataForDemoForEmoor: any;
+     hardCodeItemDataForDemoForMendelson: any;
     userData: any;
     riskyObjects = [
         { type: 'user', value: 'ADittmer', score: 94, img: true, role: 'Sr. Tester', department: 'Quality Testing', location: 'Los Angles', reportingManager: 'Paul Smith', creationDate: '12 Dec 2018', lastWorkDay: '25 Jan 2019' },
@@ -51,7 +52,8 @@ export class RiskyUsersComponent {
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true, role: 'Project Manager', department: 'Production', location: 'Paris', reportingManager: 'Alex Gee', creationDate: '23 Aug 2018', lastWorkDay: '24 May 2019' },
         { type: 'user', value: 'Alysa', score: 82, img: true, role: 'Project Manager', department: 'Production', location: 'Stuttgart', reportingManager: 'Rolf Dobelli', creationDate: '21 Nov 2017', lastWorkDay: '24 Apr 2019' },
         { type: 'user', value: 'Maile', score: 87, img: true, role: 'AVP - Sales', department: 'Sales', location: 'San Diego', reportingManager: 'Ryan Smith', creationDate: '12 Jan 2016', lastWorkDay: '24 Apr 2019' },
-         { type: 'user', value: 'JohnS', score: 88, img: true, role: 'Contrator', department: 'Contractor', location: 'Seattle', reportingManager: 'George Bailey', creationDate: '12 Jan 2016', lastWorkDay: '24 Apr 2019' }
+         { type: 'user', value: 'JohnS', score: 88, img: true, role: 'Contrator', department: 'Contractor', location: 'Seattle', reportingManager: 'George Bailey', creationDate: '12 Jan 2016', lastWorkDay: '24 Apr 2019' },
+          { type: 'user', value: 'Mendelson', score: 87, img: true, role: 'Software Developer', department: 'ITSec', location: 'New Jersey', reportingManager: 'George Bailey', creationDate: '12 Jan 2016', lastWorkDay: '24 Apr 2019' }
     ];
 
     threatCategories = [
@@ -240,6 +242,73 @@ export class RiskyUsersComponent {
 
     ];
 
+    policyViolationForMendelson = [
+     {
+            generatedDateFormat: '29 July 2019',
+            generatedTimestamp: '17:34:00',
+            accord: false,
+            pv: 'PV_014',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Abnormal Applications Accessed'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            { title: 'Locations', value: 'New Jersey' },
+            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'AppNames' }],
+            description : 'In this Algorithm, User Removed security enabled global group'
+        },
+         {
+            generatedDateFormat: '29 July 2019',
+            generatedTimestamp: '16:45:00',
+            accord: false,
+            pv: 'PV_014',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Successful Logon from Rare Location'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            { title: 'Locations', value: 'New Jersey' },
+            { title: 'Status', value: 'Risk: 81' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }],
+            description : 'In this Algorithm, User Removed security enabled global group'
+        },
+    {
+            generatedDateFormat: '29 July 2019',
+            generatedTimestamp: '14:34:00',
+            accord: false,
+            pv: 'PV_014',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 6,
+                title: ' Activity By Dormant Account'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            { title: 'Locations', value: 'New Jersey' },
+            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Event' }],
+            description : 'In this Algorithm, User Removed security enabled global group'
+        }
+   
+    ];
+
 hardCodeItemDataForDemoForJohn1 = [
     {
             generatedDateFormat: '2 Aug 2019',
@@ -276,7 +345,7 @@ hardCodeItemDataForDemoForJohn1 = [
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Insider Threat' },
             { title: 'Sub Category', value: 'Insider Threat' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Status', value: 'Risk: 83' },
             { title: 'Resources', value: 'IIS' },
@@ -297,7 +366,7 @@ hardCodeItemDataForDemoForJohn1 = [
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Insider Threat' },
             { title: 'Sub Category', value: 'Insider Threat' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Status', value: 'Risk: 70' },
             { title: 'Resources', value: 'IIS' },
@@ -318,7 +387,7 @@ hardCodeItemDataForDemoForJohn1 = [
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Insider Threat' },
             { title: 'Sub Category', value: 'Insider Threat' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Status', value: 'Risk: 67' },
             { title: 'Resources', value: 'IIS' },
@@ -850,6 +919,10 @@ hardCodeItemDataForDemoForJohn1 = [
 
             if(this.selectedUser === 'JohnS'){
              this.hardCodeItemDataForDemoForJohn  = this.policyViolationForJohn;
+            }
+
+            if(this.selectedUser === 'Mendelson'){
+             this.hardCodeItemDataForDemoForMendelson  = this.policyViolationForMendelson;
             }
 
             if (this.selectedUser) {

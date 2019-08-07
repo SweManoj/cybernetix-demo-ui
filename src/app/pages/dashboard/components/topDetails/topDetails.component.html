@@ -216,7 +216,7 @@
 </div>
 <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let dormantUser of dormantUsers">
-        <div class="row user-item blockPadding">
+        <div [routerLink]="['/riskyUser', dormantUser.image]" class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/{{dormantUser.image}}.jpg' />

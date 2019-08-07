@@ -134,7 +134,7 @@
         </div>
     </div>
 
-    <ng-container *ngIf = "selectedUser !== 'AWendler' && selectedUser !== 'Maile' && selectedUser!== 'JohnS'">
+    <ng-container *ngIf = "selectedUser !== 'AWendler' && selectedUser !== 'Maile' && selectedUser !== 'JohnS' && selectedUser !== 'Mendelson'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>18 June 2019</span>
@@ -708,12 +708,12 @@
             </div>
         </div>
     </ng-container>
-      <ng-container *ngIf = "selectedUser == 'Maile'">
+      <ng-container *ngIf = "selectedUser == 'Mendelson'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
-                <span>18 July 2019</span>
+                <span>29 July 2019</span>
             </div>
-            <div class="row initialPadding" *ngFor="let item of hardCodeItemDataForDemoForEmoor">
+            <div class="row initialPadding" *ngFor="let item of hardCodeItemDataForDemoForMendelson">
                 <div class="col-md-12 d-flex">
                     <div class="risk-time-stamp">
                         <span>{{item.generatedTimestamp}}</span>
@@ -813,6 +813,7 @@
             </div>
         </div>
     </ng-container>
+
     <ng-container *ngIf = "selectedUser == 'JohnS'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">

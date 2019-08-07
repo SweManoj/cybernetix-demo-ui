@@ -81,7 +81,7 @@ export class TopDetailsComponent implements AfterViewInit {
         ],
         dormantUsersObjects: [
             { score: 72, image: 'Charlotte' },
-            { score: 96, image: 'Mendelson' },
+            { score: 87, image: 'Mendelson' },
             { score: 84, image: 'Kazuko' },
             { score: 67, image: 'Nita' },
             { score: 51, image: 'Nada Scheerer' }

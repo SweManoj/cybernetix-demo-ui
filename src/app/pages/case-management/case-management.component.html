@@ -114,15 +114,15 @@
                                         <div class="media-body policy-violation-table">
                                             <p-table #policy class="policy" [value]="policyViolations"
                                                 [(selection)]="selectedPolicyItems"
-                                                [globalFilterFields]="['violationId','generationTime','policyName','entity','indicatorsOfAttack','status','priority']"
+                                                [globalFilterFields]="['generationTime','policyName','entity','indicatorsOfAttack','status','priority']"
                                                 sortMode="multiple"
                                                 [paginator]="true" [rows]="10"
                                                 (onRowSelect)="onPolicyRowSelect($event)"
                                                 (onRowUnselect)="onPolicyRowUnselect($event)">
                                                 <ng-template pTemplate="header">
                                                     <tr>
-                                                        <th style="width:10%" [pSortableColumn]="'violationId'">PV ID
-                                                            <p-sortIcon [field]="'violationId'"></p-sortIcon></th>
+                                                      <!--  <th style="width:10%" [pSortableColumn]="'violationId'">PV ID
+                                                            <p-sortIcon [field]="'violationId'"></p-sortIcon></th>-->
                                                         <th style="width:10%" [pSortableColumn]="'generationTime'">Time
                                                             <p-sortIcon [field]="'generationTime'"></p-sortIcon></th>
                                                         <th style="width:20%" [pSortableColumn]="'policyName'">Policy Violation Name
@@ -144,7 +144,6 @@
                                                         (click)="goToPolicyViolationSummaryPage()">-->
                                                     <tr [pSelectableRow]="rowData"
                                                         [routerLink]="['/policyViolationSummary', myPolicy.violationId]">
-                                                        <td style="padding: 0px 50px;">{{myPolicy.violationId}}</td>
                                                         <td>{{myPolicy.generationTime | date : 'hh:mm:ss'}} Hrs</td>
                                                         <td  style="color:#099bb5;" >{{myPolicy.policyName}}</td>
                                                         <td>{{myPolicy.entity | uppercase}}</td>

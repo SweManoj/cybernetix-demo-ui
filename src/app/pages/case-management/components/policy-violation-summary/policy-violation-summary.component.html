@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <h3 class="title">{{policyDetails.violation_id}} <span>- {{policyDetails.violationName}}
+            <h3 class="title"><span>{{policyDetails.violationName}}
                     - {{policyDetails.violatorId | uppercase}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
@@ -12,7 +12,7 @@
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item>Investigate</button>
                 <button class="action-menu-item" mat-menu-item (click)="createIncident()">Create an Incident</button>
-                <button class="action-menu-item" mat-menu-item>Perform Remediation</button>
+              <!--  <button class="action-menu-item" mat-menu-item>Perform Remediation</button>-->
             </mat-menu>
         </div>
     </div>
@@ -40,6 +40,11 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">{{policyDetails.violation_date | date: 'dd/MM/yyyy HH:mm:ss'}}
                         </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation ID</div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-sm-6 dataValue">{{policyDetails.violation_id}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>

@@ -52,7 +52,8 @@ export class CaseManagementComponent implements OnInit {
     todayDate = new Date();
     path: any;
 
-    constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
+    constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal,
+                private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.myDays.push(this.todayDate);
@@ -65,10 +66,10 @@ export class CaseManagementComponent implements OnInit {
     }
 
     getStageValues() {
-        this.criticalItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'CRITICAL').length;
-        this.mediumItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'MEDIUM').length;
-        this.highItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'HIGH').length;
-        this.lowItem = this.policyViolations.filter(myPolicy => myPolicy.priority == 'LOW').length;
+        this.criticalItem = this.policyViolations.filter(myPolicy => myPolicy.priority === 'CRITICAL').length;
+        this.mediumItem = this.policyViolations.filter(myPolicy => myPolicy.priority === 'MEDIUM').length;
+        this.highItem = this.policyViolations.filter(myPolicy => myPolicy.priority === 'HIGH').length;
+        this.lowItem = this.policyViolations.filter(myPolicy => myPolicy.priority === 'LOW').length;
         this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
     }
 
@@ -134,7 +135,8 @@ export class CaseManagementComponent implements OnInit {
             selectedDate.setHours(0, 0, 0, 0);
             endDateForService.setHours(23, 59, 59, 999);
 
-             this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
+             this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(),
+                 endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
                 this.policyViolations = res;
                 this.fetchingPolicyViolationsInProgress = false;
                 this.getStageValues();

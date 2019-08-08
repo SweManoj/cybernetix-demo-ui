@@ -3,18 +3,6 @@
 
         <div *ngIf="path == 'policyViolation'"><span class="h5">Policy Violation</span></div>
         <div *ngIf="path == 'caseManagement'"><span class="h5">Incident Management</span></div>
-        <!-- <div class="col-sm-4 ml-5">
-            <ul class="nav nav-pills btn-sm" id="pills-tab" role="tablist">
-                <li class="nav-item active">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                        aria-controls="pills-home" aria-selected="true">Policy Violations</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                        aria-controls="pills-profile" aria-selected="false">Incident</a>
-                </li>
-            </ul>
-        </div> -->
     </div>
 </div>
 
@@ -116,9 +104,7 @@
                                                 [(selection)]="selectedPolicyItems"
                                                 [globalFilterFields]="['generationTime','policyName','entity','indicatorsOfAttack','status','priority']"
                                                 sortMode="multiple"
-                                                [paginator]="true" [rows]="10"
-                                                (onRowSelect)="onPolicyRowSelect($event)"
-                                                (onRowUnselect)="onPolicyRowUnselect($event)">
+                                                [paginator]="true" [rows]="10">
                                                 <ng-template pTemplate="header">
                                                     <tr>
                                                       <!--  <th style="width:10%" [pSortableColumn]="'violationId'">PV ID
@@ -181,17 +167,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div class="mr-4 mb-4" style="margin-top:7px;">
-                            <p-checkbox value="NA" label="Show only Unassigned"
-                                (onChange)="selectIncidentClick($event)">
-                            </p-checkbox>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="Check1" (change)="selectClick($event.target.checked)">
-                                <label class="form-check-label" for="Check1">Show only Unassigned</label>
-                            </div>
-                        </div> -->
-
                         <div class="mr-4 mb-4">
                             <div class="input-group">
                                 <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range" selectionMode="range" [readonlyInput]="true"></p-calendar>
@@ -223,26 +198,6 @@
                             <span class="topStages Total">{{incident.totalRecords }}</span>
                             <span class="labels">&nbsp;&nbsp;Record found</span>
                         </div>
-
-                        <!-- <div class="no-border mr-2" style=" display: flex;align-items: flex-end;width:auto;">
-                            <label class="switch" id="check" style="width:auto;">Manoj Kumar</label>
-                        </div>
-                        <div class="no-border mr-2" style="margin-top:4px;display: flex;align-items: flex-end;">
-                            <label class="switch"> 
-                                <input type="checkbox" checked id="check">
-                                <span class="slider round"></span>
-                            </label>
-                        </div> -->
-
-                        <!-- <div class="mr-4 mb-4">
-                            <label id="check">Send to Archer</label>
-                        </div>
-                        <div class="">
-                            <label class="switch">
-                                <input type="checkbox" checked>
-                                <span class="slider round"></span>
-                            </label>
-                        </div> -->
                     </div>
                 </div>
 
@@ -253,9 +208,7 @@
                     [value]="incidents"
                     sortMode="multiple"
                     [(selection)]="selectedItems"
-                    [paginator]="true" [rows]="12"
-                    (onRowSelect)="onRowSelect($event)" 
-                    (onRowUnselect)="onRowUnselect($event)">
+                    [paginator]="true" [rows]="12">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width: 3em;background:#000000">

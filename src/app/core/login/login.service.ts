@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
@@ -10,8 +9,6 @@ import { StorageService, SESSION_STORAGE, isStorageAvailable } from 'angular-web
   providedIn: 'root'
 })
 export class LoginService {
-
-  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router
     , @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {

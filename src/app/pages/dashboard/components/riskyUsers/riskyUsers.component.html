@@ -166,7 +166,7 @@
  -->
 
  <span
-                                      class="risk-score mr-5">{{timeLine.noOfEvents}}</span>
+                                      class="risk-score mr-5" (click)="open(timeLine.ruleId, timeLine.entityId,timeLine.violationEventTime)">{{timeLine.noOfEvents}}</span>
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="timeLine.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions

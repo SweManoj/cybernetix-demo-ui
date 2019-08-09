@@ -36,6 +36,14 @@ export class RiskyUsersComponent {
     hardCodeItemData = [];
     flightUserHardCodeItemData = [];
     policyViolationData = [];
+    eventCounts = {
+        events: 0,
+        resources: 0,
+        locations: 0,
+        incidents: 0,
+        violations: 0
+
+    };
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
                 private zone: NgZone, private router: Router, private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService,
@@ -181,12 +189,19 @@ export class RiskyUsersComponent {
             'hit',
             ev => {
                 const item = ev.target.dataItem['dataContext'];
-                /* this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item['startDateTime'], item['endDateTime'], 0).subscribe((res: any) => {
-                     res.forEach(data => {
-                         data.accord = false;
-                     });
-                     this.policyViolations = res;
-                 });*/
+                this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item['startDateTime'],
+                    item['endDateTime'], 0).subscribe((res: any) => {
+                    if (res && res.length > 0) {
+                        res.forEach((policyViolation) => {
+                            policyViolation.timeLines.forEach((timeLine) => {
+                                timeLine['accord'] = false;
+                            });
+                        });
+                        this.policyViolations = res.reverse();
+                    } else {
+                        this.policyViolations = [];
+                    }
+                });
             },
             this
         );
@@ -239,14 +254,18 @@ export class RiskyUsersComponent {
             });
 
             this.riskyUserService.getRiskyUserCountDetails(this.selectedUser).subscribe((res: any) => {
-                this.activities.push({image: 'falg@1x.png', title: 'Events', value: res.events});
-                this.activities.push({image: 'resources@1x.png', title: 'Resources', value: res.resources});
-                this.activities.push({image: 'Shape@1x.png', title: 'Locations', value: res.locations});
-                this.activities.push({image: 'violations@1x.png', title: 'Violations', value: res.violations});
-                this.activities.push({image: 'incident@1x.png', title: 'Incidents', value: res.incidents});
-            });
+                if (res) {
+                    this.eventCounts = res;
+                }
+                this.activities.push({image: 'falg@1x.png', title: 'Events', value: this.eventCounts.events});
+                this.activities.push({image: 'resources@1x.png', title: 'Resources', value: this.eventCounts.resources});
+                this.activities.push({image: 'Shape@1x.png', title: 'Locations', value: this.eventCounts.locations});
+                this.activities.push({image: 'violations@1x.png', title: 'Violations', value: this.eventCounts.violations});
+                this.activities.push({image: 'incident@1x.png', title: 'Incidents', value: this.eventCounts.incidents});
 
-            this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, 0, 0).subscribe((res: any) => {
+            });
+            const date = new Date();
+            this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, date.getTime(), 0).subscribe((res: any) => {
                 if (res && res.length > 0) {
                     res.forEach((policyViolation) => {
                         policyViolation.timeLines.forEach((timeLine) => {

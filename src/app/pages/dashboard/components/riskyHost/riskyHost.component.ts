@@ -73,10 +73,14 @@ export class RiskyHostComponent implements OnInit {
             this.hostDetails = res;
         });
          this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, 0, 0).subscribe((res: any) => {
-                res.forEach(data => {
-                   data.accord = false;
-                });
-                this.policyViolations = res;
+             if (res && res.length > 0) {
+                 res.forEach((policyViolation) => {
+                     policyViolation.timeLines.forEach((timeLine) => {
+                         timeLine['accord'] = false;
+                     });
+                 });
+                 this.policyViolations = res.reverse();
+             }
          });
          this.riskyUserService.getDayBasisRiskScore(this.selectedHost).subscribe( (res: any) => {
              this.graphData = res;

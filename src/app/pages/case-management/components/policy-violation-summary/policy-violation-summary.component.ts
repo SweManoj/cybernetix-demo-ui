@@ -31,9 +31,10 @@ export class PolicyViolationSummaryComponent implements OnInit {
         policyCommentsEntities : [],
         policyReviewer : {userName : '', firstName: '', lastName: ''}
     };
-    policyDetails:any = {
+    policyDetails = {
         pv_ID : 0,
         attachedFiles : [],
+        elasticPolicyDescription : '',
         priority: '',
         status: '',
         policyCommentsEntities : [],
@@ -121,11 +122,13 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     getViolatedPolicy(violationId) {
         this.policyViolationSummaryService.getPolicyDetails(violationId).subscribe((res: any) => {
-            this.policyDetails = res;
-            this.policyDetailsCopy = Object.assign({}, res);
-            if (this.policyDetails.policyReviewer) {
-                const name = this.policyDetails.policyReviewer.firstName + ' ' + this.policyDetails.policyReviewer.lastName;
-                this.myControl.setValue({ name: name, value: this.policyDetails.policyReviewer.userName});
+            if (res) {
+                this.policyDetails = res;
+                this.policyDetailsCopy = Object.assign({}, res);
+                if (this.policyDetails.policyReviewer) {
+                    const name = this.policyDetails.policyReviewer.firstName + ' ' + this.policyDetails.policyReviewer.lastName;
+                    this.myControl.setValue({ name: name, value: this.policyDetails.policyReviewer.userName});
+                }
             }
         });
     }

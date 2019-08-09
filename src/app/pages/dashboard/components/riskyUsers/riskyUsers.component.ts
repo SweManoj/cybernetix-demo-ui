@@ -1,28 +1,17 @@
-import { AfterContentInit, Component, OnInit, NgZone } from '@angular/core';
-import { RiskyUserService } from './riskyUser.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin } from "rxjs/internal/observable/forkJoin";
-import * as moment from 'moment';
-import * as d3 from 'd3';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ContentModalComponent } from './riskyUsers-modal/riskyUsers-modal.component';
-import { RiskyUserInfoModalComponent } from './risky-user-info-modal/risky-user-info-modal.component';
-import { bubbleDataMonth } from './data';
-import { CaseManagementService } from './../../../case-management/case-management.service' ;
+import {Component, NgZone} from '@angular/core';
+import {RiskyUserService} from './riskyUser.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {RiskyUserInfoModalComponent} from './risky-user-info-modal/risky-user-info-modal.component';
+import {CaseManagementService} from './../../../case-management/case-management.service';
 
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import material from "@amcharts/amcharts4/themes/material";
-import am4themes_dark from "@amcharts/amcharts4/themes/amchartsdark";
-import * as am4maps from "@amcharts/amcharts4/maps"
-import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
-import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
-import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
-import { DatePipe } from '@angular/common';
-import { RiskScoreModalComponent } from './risk-score-modal/risk-score-modal.component';
-import { TopDetailsService } from '../topDetails/topDetails.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import * as am4core from '@amcharts/amcharts4/core';
+import * as am4charts from '@amcharts/amcharts4/charts';
+import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import {AmChartsService} from '@amcharts/amcharts3-angular';
+import {RiskScoreModalComponent} from './risk-score-modal/risk-score-modal.component';
+import {TopDetailsService} from '../topDetails/topDetails.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'risky-users',
@@ -49,28 +38,25 @@ export class RiskyUsersComponent {
     policyViolationData = [];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-        private zone: NgZone, private router: Router,private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService, private caseManagementService: CaseManagementService) {
+                private zone: NgZone, private router: Router, private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService,
+                private caseManagementService: CaseManagementService) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
-    }
-
-    ngAfterViewInit() {
-        
     }
 
     initializeGuageMeterChart() {
 
         am4core.useTheme(am4themes_animated);
         // create chart
-        var chart = am4core.create("chartGuageDiv", am4charts.GaugeChart);
+        var chart = am4core.create('chartGuageDiv', am4charts.GaugeChart);
         chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
         chart.innerRadius = -20;
 
         // Set cell size in pixels
         let cellSize = 30;
-        chart.events.on("datavalidated", function (ev) {
+        chart.events.on('datavalidated', function (ev) {
 
             // Get objects of interest
             let chart = ev.target;
@@ -94,7 +80,7 @@ export class RiskyUsersComponent {
         axis.min = 0;
         axis.max = 100;
         axis.strictMinMax = true;
-        axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+        axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor('background');
         axis.renderer.grid.template.strokeOpacity = 0.3;
 
         // axis.fontSize = 0;
@@ -113,27 +99,27 @@ export class RiskyUsersComponent {
         range0.value = 0;
         range0.endValue = 65;
         range0.axisFill.fillOpacity = 1;
-        range0.axisFill.fill = am4core.color('greenyellow')
-        range0.axisFill.zIndex = - 1;
+        range0.axisFill.fill = am4core.color('greenyellow');
+        range0.axisFill.zIndex = -1;
 
         var range1 = axis.axisRanges.create();
         range1.value = 65;
         range1.endValue = 79;
         range1.axisFill.fillOpacity = 1;
-        range1.axisFill.fill = am4core.color('darkorange')
+        range1.axisFill.fill = am4core.color('darkorange');
         range1.axisFill.zIndex = -1;
 
         var range2 = axis.axisRanges.create();
         range2.value = 79;
         range2.endValue = 100;
         range2.axisFill.fillOpacity = 1;
-        range2.axisFill.fill = am4core.color('crimson')
+        range2.axisFill.fill = am4core.color('crimson');
         range2.axisFill.zIndex = -1;
 
         var hand = chart.hands.push(new am4charts.ClockHand());
         hand.value = this.userData.riskScore;
-        hand.fill = am4core.color("#2D93AD");   // hand color
-        hand.stroke = am4core.color("#2D93AD");
+        hand.fill = am4core.color('#2D93AD');   // hand color
+        hand.stroke = am4core.color('#2D93AD');
 
         // using chart.setTimeout method as the timeout will be disposed together with a chart
         /* chart.setTimeout((randomValue), 2000);
@@ -149,10 +135,10 @@ export class RiskyUsersComponent {
         // Apply chart themes
         am4core.useTheme(am4themes_animated);
 
-        var chart = am4core.create("bubbleChartdiv", am4charts.XYChart);
+        var chart = am4core.create('bubbleChartdiv', am4charts.XYChart);
 
         // Set input format for the dates
-        chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
+        chart.dateFormatter.inputDateFormat = 'yyyy-MM-dd';
 
         chart.maskBullets = false;
 
@@ -160,10 +146,10 @@ export class RiskyUsersComponent {
         //xAxis.dataFields.category = "date";
 
         let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-        yAxis.dataFields.category = "hourOfDay";
+        yAxis.dataFields.category = 'hourOfDay';
 
-        xAxis.dateFormats.setKey("day", "MMM dd, yyyy");
-        xAxis.periodChangeDateFormats.setKey("day", "MMM dd, yyyy");
+        xAxis.dateFormats.setKey('day', 'MMM dd, yyyy');
+        xAxis.periodChangeDateFormats.setKey('day', 'MMM dd, yyyy');
 
         xAxis.renderer.grid.template.disabled = false; // vertical line middle on the bubbles
         yAxis.renderer.grid.template.disabled = false; // Horizontal border line for the bubbles
@@ -173,58 +159,59 @@ export class RiskyUsersComponent {
         xAxis.renderer.ticks.template.disabled = true;
 
         var series = chart.series.push(new am4charts.ColumnSeries());
-        series.dataFields.categoryY = "hourOfDay";
-        series.dataFields.dateX = "date";
-        series.dataFields.value = "violationsCount";
+        series.dataFields.categoryY = 'hourOfDay';
+        series.dataFields.dateX = 'date';
+        series.dataFields.value = 'violationsCount';
         series.columns.template.disabled = true; // background color for the columns
         series.sequencedInterpolation = true;
         series.tooltip.getFillFromObject = false;
-        series.tooltip.background.fill = am4core.color("#2D93AD");
+        series.tooltip.background.fill = am4core.color('#2D93AD');
         series.defaultState.transitionDuration = 1000;
 
         var bullet = series.bullets.push(new am4charts.CircleBullet());
-        bullet.tooltipText = "[bold, black]{policyName} : {violationsCount}";
-        bullet.background.fill = am4core.color("black");
+        bullet.tooltipText = '[bold, black]{policyName} : {violationsCount}';
+        bullet.background.fill = am4core.color('black');
         bullet.strokeWidth = 2;
-        bullet.stroke = am4core.color("#ffffff");
-        bullet.propertyFields.fill = "color"; // provide dynamic color for bubbles
+        bullet.stroke = am4core.color('#ffffff');
+        bullet.propertyFields.fill = 'color'; // provide dynamic color for bubbles
         bullet.strokeOpacity = 0;
 
         series.bullets.template.interactionsEnabled = true;
         bullet.events.on(
-            "hit",
+            'hit',
             ev => {
                 const item = ev.target.dataItem['dataContext'];
-                this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item['startDateTime'], item['endDateTime'], 0).subscribe((res: any) => {
-                    res.forEach(data => {
-                        data.accord = false;
-                    });
-                    this.policyViolations = res;
-                });
+                /* this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item['startDateTime'], item['endDateTime'], 0).subscribe((res: any) => {
+                     res.forEach(data => {
+                         data.accord = false;
+                     });
+                     this.policyViolations = res;
+                 });*/
             },
             this
         );
 
         // tooltip rendering on the bubble
-        bullet.adapter.add("tooltipY", (tooltipY, target) => {
+        bullet.adapter.add('tooltipY', (tooltipY, target) => {
             return 1; // -target.circle.radius + 1;
-        })
+        });
 
         // size of the bubble increment
-        series.heatRules.push({ property: "radius", target: bullet.circle, min: 6, max: 12 });
+        series.heatRules.push({property: 'radius', target: bullet.circle, min: 6, max: 12});
 
         bullet.hiddenState.properties.scale = 0.01;
         bullet.hiddenState.properties.opacity = 1;
-        var hoverState = bullet.states.create("hover");
+        var hoverState = bullet.states.create('hover');
         hoverState.properties.strokeOpacity = 1;
 
         for (var x in this.policyViolationData) {
-            if (this.policyViolationData[x].violationsCount > 0 && this.policyViolationData[x].violationsCount <= 10)
+            if (this.policyViolationData[x].violationsCount > 0 && this.policyViolationData[x].violationsCount <= 10) {
                 this.policyViolationData[x].color = '#FFFF00';
-            else if (this.policyViolationData[x].violationsCount > 10 && this.policyViolationData[x].violationsCount <= 50)
+            } else if (this.policyViolationData[x].violationsCount > 10 && this.policyViolationData[x].violationsCount <= 50) {
                 this.policyViolationData[x].color = '#FFA500';
-            else if (this.policyViolationData[x].violationsCount > 50)
+            } else if (this.policyViolationData[x].violationsCount > 50) {
                 this.policyViolationData[x].color = '#f00';
+            }
         }
 
         chart.data = this.policyViolationData;
@@ -235,13 +222,13 @@ export class RiskyUsersComponent {
 
         // Add cursor
         chart.cursor = new am4charts.XYCursor();
-        chart.cursor.behavior = "zoomXY";
+        chart.cursor.behavior = 'zoomXY';
     }
 
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
-            this.riskyUserService.getRiskyEntityDetails(this.selectedUser,'USER').subscribe((res: any) => {
+            this.riskyUserService.getRiskyEntityDetails(this.selectedUser, 'USER').subscribe((res: any) => {
                 res.score = Math.round(res.score);
                 this.userData = res;
 
@@ -252,23 +239,23 @@ export class RiskyUsersComponent {
             });
 
             this.riskyUserService.getRiskyUserCountDetails(this.selectedUser).subscribe((res: any) => {
-                this.activities.push({ image: 'falg@1x.png', title: 'Events', value: res.events});
-                this.activities.push({ image: 'resources@1x.png', title: 'Resources', value: res.resources});
-                this.activities.push({ image: 'Shape@1x.png', title: 'Locations', value: res.locations });
-                this.activities.push({ image: 'violations@1x.png', title: 'Violations', value: res.violations });
-                this.activities.push({ image: 'incident@1x.png', title: 'Incidents', value : res.incidents });
+                this.activities.push({image: 'falg@1x.png', title: 'Events', value: res.events});
+                this.activities.push({image: 'resources@1x.png', title: 'Resources', value: res.resources});
+                this.activities.push({image: 'Shape@1x.png', title: 'Locations', value: res.locations});
+                this.activities.push({image: 'violations@1x.png', title: 'Violations', value: res.violations});
+                this.activities.push({image: 'incident@1x.png', title: 'Incidents', value: res.incidents});
             });
 
             this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, 0, 0).subscribe((res: any) => {
-                res.forEach(data => {
-                   data.accord = false;
-                });
-                this.policyViolations = res;
+                if (res && res.length > 0) {
+                    res.forEach((policyViolation) => {
+                        policyViolation.timeLines.forEach((timeLine) => {
+                            timeLine['accord'] = false;
+                        });
+                    });
+                    this.policyViolations = res.reverse();
+                }
             });
-
-            if (this.selectedUser == 'Alysa') {
-                this.hardCodeItemData = this.flightUserHardCodeItemData;
-            }
         });
         const startDate = 0;
         const endDate = new Date();
@@ -278,14 +265,14 @@ export class RiskyUsersComponent {
                 const date = new Date(data.endDateTime);
                 data.hourOfDay = date.getHours();
 
-    data.hourOfDay = (data.hourOfDay < 12) ? (data.hourOfDay) + ' AM' : (data.hourOfDay % 12)  + ' PM';
-                })
+                data.hourOfDay = (data.hourOfDay < 12) ? (data.hourOfDay) + ' AM' : (data.hourOfDay % 12) + ' PM';
+            });
             this.zone.runOutsideAngular(() => {
 
-            // Initialize Bubble chart
-            this.initializeBubbleChart();
+                // Initialize Bubble chart
+                this.initializeBubbleChart();
+            });
         });
-        })
     }
 
     switchView(view) {
@@ -303,7 +290,7 @@ export class RiskyUsersComponent {
     }
 
     open(ruilId, userId, isotimestamp) {
-        const modalRef = this.modalService.open(RiskScoreModalComponent, { backdrop: 'static' }); // { size: 'sm' }
+        const modalRef = this.modalService.open(RiskScoreModalComponent, {backdrop: 'static'}); // { size: 'sm' }
         modalRef.componentInstance.ruilId = ruilId;
         modalRef.componentInstance.userId = userId;
         modalRef.componentInstance.isotimestamp = isotimestamp;
@@ -311,11 +298,11 @@ export class RiskyUsersComponent {
 
 
     gotoSummery() {
-        window.open("#/policyViolationSummary", '_blank');
+        window.open('#/policyViolationSummary', '_blank');
     }
 
     openUserInfo(userInfo: any) {
-        const modalRef = this.modalService.open(RiskyUserInfoModalComponent, { size: 'lg' });
+        const modalRef = this.modalService.open(RiskyUserInfoModalComponent, {size: 'lg'});
         modalRef.componentInstance.userInfo = userInfo;
     }
 
@@ -324,22 +311,23 @@ export class RiskyUsersComponent {
     }
 
     getRiskScoreColor(riskScore: number) {
-        if (riskScore <= 65)
-            return "greenyellow";
-        else if (riskScore > 65 && riskScore <= 79)
-            return "darkorange";
-        else
-            return "crimson";
+        if (riskScore <= 65) {
+            return 'greenyellow';
+        } else if (riskScore > 65 && riskScore <= 79) {
+            return 'darkorange';
+        } else {
+            return 'crimson';
+        }
     }
 
     createIncident(violationId) {
         const incidentData = {
-             "status":"NEW",
-              "pvID": violationId
-        }
+            'status': 'NEW',
+            'pvID': violationId
+        };
         this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
             this._snackBar.open('Created Incident successfully', null, {
-                    duration: 2000,
+                duration: 2000,
             });
         });
     }

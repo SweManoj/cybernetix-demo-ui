@@ -339,10 +339,19 @@ export class RiskyUsersComponent {
         }
     }
 
-    createIncident(violationId) {
+    createIncident(violation) {
+
+        const date = new Date(violation.violationEventTime);
+ 
+        console.log(date.toISOString().substring(0, 19));
+ 
+
         const incidentData = {
-            'status': 'NEW',
-            'pvID': violationId
+                'status': 'NEW',           
+                "entityId":this.selectedUser,
+                "ruleId": violation.ruleId,
+                "violationEventDate": date.toISOString().substring(0, 10),
+                "violationEventTime": date.toISOString().substring(0, 19)             
         };
         this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
             this._snackBar.open('Created Incident successfully', null, {

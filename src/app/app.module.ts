@@ -27,6 +27,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { NgIdleModule } from '@ng-idle/core';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
 
 @NgModule({
     declarations: [
@@ -54,7 +56,9 @@ import { NgIdleModule } from '@ng-idle/core';
         HighchartsChartModule,
         SharedPipesModule,
         StorageServiceModule,
-        NgIdleModule.forRoot()
+        NgIdleModule.forRoot(),
+        NgProgressModule.forRoot(),
+        NgProgressHttpClientModule
     ],
     exports: [
         MaterialModule

@@ -169,7 +169,7 @@
                             <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name"></p-dropdown>
                         </div>
 
-                        <div class="mr-4 mb-4 width-250">
+                        <div class="width-200 mr-4 mb-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search by Keyword"
                                     (keyup)="incident.filterGlobal($event.target.value, 'contains')">
@@ -178,7 +178,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mr-4 mb-4">
+                        <div class="width-200 mr-4 mb-4">
                             <div class="input-group">
                                 <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range"
                                     selectionMode="range" [readonlyInput]="true"></p-calendar>
@@ -190,23 +190,22 @@
                             </div>
                         </div>
 
-                        <div class="mr-4 mb-4">
+                        <div class="width-200 mr-4 mb-4">
                             <p-dropdown [options]="priority" placeholder="Priority" optionLabel="name"
                                 (onChange)="incident.filter($event.value.value, 'priority','contains')"></p-dropdown>
                         </div>
 
-                        <div class="mr-4 mb-4">
+                        <div class="width-200 mr-4 mb-4">
                             <p-dropdown [options]="status" placeholder="Status" optionLabel="name"
                                 (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
                         </div>
 
-                        <div class=" mb-4">
+                        <div class="width-200 mr-4 mb-4">
                             <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
                                 (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
                         </div>
 
-
-                        <div class="mb-4 mt-2">
+                        <div class="width-200 mr-4 mb-4 mx-auto mt-2">
                             <span class="topStages Total">{{incident.totalRecords }}</span>
                             <span class="labels">&nbsp;&nbsp;Record found</span>
                         </div>

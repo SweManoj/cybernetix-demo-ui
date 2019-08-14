@@ -22,15 +22,15 @@ export class HeaderComponent {
         minimum: 0.08,
         maximum: 1,
         ease: 'linear',
-        speed: 100,
-        trickleSpeed: 200,
+        speed: 200,
+        trickleSpeed: 300,
         meteor: true,
         spinner: true,
         spinnerPosition: 'right',
         direction: 'leftToRightIncreased',
         color: 'red',
         thick: true
-    };
+      };
 
     themeName: string;
     private prevThemeName: string;

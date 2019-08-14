@@ -11,9 +11,9 @@
         <div class="tab-content">
             <div *ngIf="path == 'policyViolation'" role="tabpanel">
                 <div class="card">
-                    <div class="card-header policy-filter-row row">
+                    <div class="card-header policy-filter-row row rightPaddingInitial">
                         <div class="col-md-12">
-                            <div class="col-md-6 row">
+                            <div class="col-md-6 row rightPaddingInitial">
                                 <div class="col-md-4 leftPaddingInitial">
                                     <div class="input-group">
                                         <input type="text" class="form-control" pInputText
@@ -27,14 +27,14 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-2 rightPaddingInitial">
+                                <div class="col-md-2 rightPaddingInitial m-auto">
                                     <div class="highcheckbox">
                                         <p-checkbox value="High" label="High" (onChange)="selectPolicyClick($event)">
                                         </p-checkbox>
                                     </div>
                                 </div>
 
-                                <div class="col-md-5 rightPaddingInitial">
+                                <div class="col-md-5 rightPaddingInitial text-center">
                                     <div class="input-group">
                                         <p-calendar [(ngModel)]="policyRangeDates" placeholder="Date Range"
                                             selectionMode="range" [readonlyInput]="true"></p-calendar>
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 row centerAlign">
+                            <div class="col-md-6 row centerAlign m-auto rightPaddingInitial text-center">
                                 <div class="col-md-3 rightPaddingInitial">
                                     <span class="topStages Total">{{totalItem}}</span>
                                     <span class="labels">&nbsp;&nbsp;Total</span>

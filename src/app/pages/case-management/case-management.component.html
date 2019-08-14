@@ -13,56 +13,56 @@
                 <div class="card">
                     <div class="card-header policy-filter-row row">
                         <div class="col-md-12">
-                            <div class="col-md-2 initialPadding">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" pInputText placeholder="Search By Keywords"
-                                        (input)="policy.filterGlobal($event.target.value,'contains')">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-search"></i>
-                                        </span>
+                            <div class="col-md-6 row">
+                                <div class="col-md-4 leftPaddingInitial">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" pInputText
+                                            placeholder="Search By Keywords"
+                                            (input)="policy.filterGlobal($event.target.value,'contains')">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 rightPaddingInitial">
+                                    <div class="highcheckbox">
+                                        <p-checkbox value="High" label="High" (onChange)="selectPolicyClick($event)">
+                                        </p-checkbox>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 rightPaddingInitial">
+                                    <div class="input-group">
+                                        <p-calendar [(ngModel)]="policyRangeDates" placeholder="Date Range"
+                                            selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                        <div class="input-group-append" (click)="setDateRange()">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-2 ml-2">
-                                <div class="highcheckbox">
-                                    <p-checkbox value="High" label="Show only High"
-                                        (onChange)="selectPolicyClick($event)">
-                                    </p-checkbox>
+                            <div class="col-md-6 row centerAlign">
+                                <div class="col-md-3 rightPaddingInitial">
+                                    <span class="topStages Total">{{totalItem}}</span>
+                                    <span class="labels">&nbsp;&nbsp;Total</span>
                                 </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group">
-                                    <p-calendar [(ngModel)]="policyRangeDates" placeholder="Date Range" selectionMode="range" [readonlyInput]="true"></p-calendar>
-                                    <div class="input-group-append" (click)="setDateRange()">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                    </div>
+                                <div class="col-md-3 rightPaddingInitial">
+                                    <span class="topStages High">{{highItem}}</span>
+                                    <span class="labels">&nbsp;&nbsp;High</span>
                                 </div>
-                            </div>
-                            
-
-                            <div class="col-md-4 d-flex m-auto initialPadding">
-                                <div class="d-flex flex-row ml-auto">
-                                    <div>
-                                        <span class="topStages Total">{{totalItem}}</span>
-                                        <span class="labels">&nbsp;&nbsp;Total</span>
-                                    </div>
-                                    <div>
-                                        <span class="topStages High">{{highItem}}</span>
-                                        <span class="labels">&nbsp;&nbsp;High</span>
-                                    </div>
-                                    <div>
-                                        <span class="topStages Medium">{{mediumItem}}</span>
-                                        <span class="labels">&nbsp;&nbsp;Medium</span>
-                                    </div>
-                                    <div>
-                                        <span class="topStages Low">{{lowItem}}</span>
-                                        <span class="labels">&nbsp;&nbsp;Low</span>
-                                    </div>
+                                <div class="col-md-3 rightPaddingInitial">
+                                    <span class="topStages Medium">{{mediumItem}}</span>
+                                    <span class="labels">&nbsp;&nbsp;Medium</span>
+                                </div>
+                                <div class="col-md-3 rightPaddingInitial">
+                                    <span class="topStages Low">{{lowItem}}</span>
+                                    <span class="labels">&nbsp;&nbsp;Low</span>
                                 </div>
                             </div>
                         </div>
@@ -73,8 +73,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-2 filterRow policy-violation-date-table">
-                                        <p-table 
-                                        #day [paginator]="true" [rows]="10" class="policy" [value]="myDays">
+                                        <p-table #day [paginator]="true" [rows]="10" class="policy" [value]="myDays">
                                             <ng-template pTemplate="header">
                                                 <tr>
                                                     <th style="width:5%"></th>
@@ -93,45 +92,56 @@
                                             </ng-template>
                                         </p-table>
                                     </div>
-                                    <mat-spinner *ngIf="fetchingPolicyViolationsInProgress" style="margin: 15% 35%;"></mat-spinner>
-                                    <div class="col-md-10" style="padding: inherit; text-align: center; margin-top: 10%; font-size: 20px;" *ngIf="policyViolations.length == 0 && !fetchingPolicyViolationsInProgress">
+                                    <mat-spinner *ngIf="fetchingPolicyViolationsInProgress" style="margin: 15% 35%;">
+                                    </mat-spinner>
+                                    <div class="col-md-10"
+                                        style="padding: inherit; text-align: center; margin-top: 10%; font-size: 20px;"
+                                        *ngIf="policyViolations.length == 0 && !fetchingPolicyViolationsInProgress">
                                         <p>No Policy Violations found</p>
                                     </div>
 
-                                    <div class="col-md-10" style="padding: inherit;background:rgb(52, 67, 78);" *ngIf="policyViolations.length > 0">
+                                    <div class="col-md-10" style="padding: inherit;background:rgb(52, 67, 78);"
+                                        *ngIf="policyViolations.length > 0">
                                         <div class="media-body policy-violation-table">
                                             <p-table #policy class="policy" [value]="policyViolations"
                                                 [(selection)]="selectedPolicyItems"
                                                 [globalFilterFields]="['generationTime','policyName','entity','indicatorsOfAttack','status','priority']"
-                                                sortMode="multiple"
-                                                [paginator]="true" [rows]="10">
+                                                sortMode="multiple" [paginator]="true" [rows]="10">
                                                 <ng-template pTemplate="header">
                                                     <tr>
-                                                      <!--  <th style="width:10%" [pSortableColumn]="'violationId'">PV ID
+                                                        <!--  <th style="width:10%" [pSortableColumn]="'violationId'">PV ID
                                                             <p-sortIcon [field]="'violationId'"></p-sortIcon></th>-->
                                                         <th style="width:10%" [pSortableColumn]="'generationTime'">Time
-                                                            <p-sortIcon [field]="'generationTime'"></p-sortIcon></th>
-                                                        <th style="width:20%" [pSortableColumn]="'policyName'">Policy Violation Name
-                                                            <p-sortIcon [field]="'policyName'"></p-sortIcon></th>
+                                                            <p-sortIcon [field]="'generationTime'"></p-sortIcon>
+                                                        </th>
+                                                        <th style="width:20%" [pSortableColumn]="'policyName'">Policy
+                                                            Violation Name
+                                                            <p-sortIcon [field]="'policyName'"></p-sortIcon>
+                                                        </th>
                                                         <th style="width:15%" [pSortableColumn]="'entity'">Entity
-                                                            <p-sortIcon [field]="'entity'"></p-sortIcon></th>
-                                                        <th style="width:20%" [pSortableColumn]="'indicatorsOfAttack'">Indicators of attack
-                                                            <p-sortIcon [field]="'indicatorsOfAttack'"></p-sortIcon></th>
+                                                            <p-sortIcon [field]="'entity'"></p-sortIcon>
+                                                        </th>
+                                                        <th style="width:20%" [pSortableColumn]="'indicatorsOfAttack'">
+                                                            Indicators of attack
+                                                            <p-sortIcon [field]="'indicatorsOfAttack'"></p-sortIcon>
+                                                        </th>
                                                         <th style="width:12%" [pSortableColumn]="'status'">Status
-                                                            <p-sortIcon [field]="'status'"></p-sortIcon></th>
+                                                            <p-sortIcon [field]="'status'"></p-sortIcon>
+                                                        </th>
                                                         <th style="width:12%" [pSortableColumn]="'priority'">Priority
-                                                            <p-sortIcon [field]="'priority'"></p-sortIcon></th>
+                                                            <p-sortIcon [field]="'priority'"></p-sortIcon>
+                                                        </th>
                                                     </tr>
                                                 </ng-template>
                                                 <ng-template class="policy" pTemplate="body" let-rowData let-myPolicy
                                                     let-rowIndex="rowIndex"
                                                     style="margin-left:5px;margin-right:5px;padding:5px 5px;">
-                                                 <!--   <tr [pSelectableRow]="rowData"
+                                                    <!--   <tr [pSelectableRow]="rowData"
                                                         (click)="goToPolicyViolationSummaryPage()">-->
                                                     <tr [pSelectableRow]="rowData"
                                                         [routerLink]="['/policyViolationSummary', myPolicy.violationId]">
                                                         <td>{{myPolicy.generationTime | date : 'hh:mm:ss'}} Hrs</td>
-                                                        <td  style="color:#099bb5;" >{{myPolicy.policyName}}</td>
+                                                        <td style="color:#099bb5;">{{myPolicy.policyName}}</td>
                                                         <td>{{myPolicy.entity | uppercase}}</td>
                                                         <td>{{myPolicy.indicatorsOfAttack}}</td>
                                                         <td>{{myPolicy.status}}</td>
@@ -169,7 +179,8 @@
                         </div>
                         <div class="mr-4 mb-4">
                             <div class="input-group">
-                                <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range" selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range"
+                                    selectionMode="range" [readonlyInput]="true"></p-calendar>
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fa fa-search"></i>
@@ -193,7 +204,7 @@
                                 (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
                         </div>
 
-                        
+
                         <div class="mb-4 mt-2">
                             <span class="topStages Total">{{incident.totalRecords }}</span>
                             <span class="labels">&nbsp;&nbsp;Record found</span>
@@ -202,26 +213,35 @@
                 </div>
 
                 <div class="row ml-auto mr-auto policy-incident-table">
-                    <p-table #incident 
-                    [globalFilterFields]="['id', 'created', 'name', 'priority', 'status', 'assignee', 'entity']" 
-                    [resizableColumns]="true"
-                    [value]="incidents"
-                    sortMode="multiple"
-                    [(selection)]="selectedItems"
-                    [paginator]="true" [rows]="12">
+                    <p-table #incident
+                        [globalFilterFields]="['id', 'created', 'name', 'priority', 'status', 'assignee', 'entity']"
+                        [resizableColumns]="true" [value]="incidents" sortMode="multiple" [(selection)]="selectedItems"
+                        [paginator]="true" [rows]="12">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width: 3em;background:#000000">
                                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                                 </th>
-                                
-                                <th [pSortableColumn]="'incId'">Incident ID <p-sortIcon [field]="'incId'"></p-sortIcon></th>
-                                <th [pSortableColumn]="'incidentCreatedTime'">CREATED <p-sortIcon [field]="'incidentCreatedTime'"></p-sortIcon></th>
-                                <th style="width:33em;" [pSortableColumn]="'incidentName'">Incident Name <p-sortIcon [field]="'incidentName'"></p-sortIcon></th>
-                                <th [pSortableColumn]="'entity'">Entity <p-sortIcon [field]="'entity'"></p-sortIcon></th>
-                                <th [pSortableColumn]="'priority'">PRIORITY <p-sortIcon [field]="'priority'"></p-sortIcon></th>
-                                <th style="width:12em;" [pSortableColumn]="'status'">STATUS <p-sortIcon [field]="'status'"></p-sortIcon></th>
-                                <th [pSortableColumn]="'ownerName'">Case Owner <p-sortIcon [field]="'ownerName'"></p-sortIcon></th>
+
+                                <th [pSortableColumn]="'incId'">Incident ID <p-sortIcon [field]="'incId'"></p-sortIcon>
+                                </th>
+                                <th [pSortableColumn]="'incidentCreatedTime'">CREATED <p-sortIcon
+                                        [field]="'incidentCreatedTime'"></p-sortIcon>
+                                </th>
+                                <th style="width:33em;" [pSortableColumn]="'incidentName'">Incident Name <p-sortIcon
+                                        [field]="'incidentName'"></p-sortIcon>
+                                </th>
+                                <th [pSortableColumn]="'entity'">Entity <p-sortIcon [field]="'entity'"></p-sortIcon>
+                                </th>
+                                <th [pSortableColumn]="'priority'">PRIORITY <p-sortIcon [field]="'priority'">
+                                    </p-sortIcon>
+                                </th>
+                                <th style="width:12em;" [pSortableColumn]="'status'">STATUS <p-sortIcon
+                                        [field]="'status'"></p-sortIcon>
+                                </th>
+                                <th [pSortableColumn]="'ownerName'">Case Owner <p-sortIcon [field]="'ownerName'">
+                                    </p-sortIcon>
+                                </th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-incident>

@@ -268,9 +268,11 @@ export class RiskyUsersComponent {
             this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, date.getTime(), 0).subscribe((res: any) => {
                 if (res && res.length > 0) {
                     res.forEach((policyViolation) => {
-                        policyViolation.timeLines.forEach((timeLine) => {
-                            timeLine['accord'] = false;
-                        });
+                        if(policyViolation.timeLines && policyViolation.timeLines.length > 0){
+                             policyViolation.timeLines.forEach((timeLine) => {
+                                timeLine['accord'] = false;
+                            });
+                        }
                     });
                     this.policyViolations = res.reverse();
                 }

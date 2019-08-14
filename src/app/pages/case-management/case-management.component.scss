@@ -211,7 +211,7 @@ tr {
 
 .topStages {
   margin-right: 1px;
-//   margin-left: 2.5rem;
+  //   margin-left: 2.5rem;
   font-size: 14px;
   padding: 3.5px 10px;
   border-radius: 5px;
@@ -223,8 +223,8 @@ tr {
 }
 
 .centerAlign {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .Total {
@@ -263,8 +263,8 @@ tr {
 }
 
 .rightPaddingInitial {
-    padding-right: initial;
-  }
+  padding-right: initial;
+}
 
 .tableStages {
   width: 10px;
@@ -826,6 +826,11 @@ input:checked + .slider:before {
 .policy .ui-table .ui-table-tbody > tr > td.day {
   cursor: pointer;
   border-bottom: 1px solid #404040;
+}
+
+.sortingDate
+  .ui-paginator-bottom.ui-paginator.ui-widget.ui-widget-header.ui-unselectable-text.ui-helper-clearfix.ng-star-inserted {
+  margin: 15px 5px;
 }
 
 /* @media only screen and (min-width: 768px) {

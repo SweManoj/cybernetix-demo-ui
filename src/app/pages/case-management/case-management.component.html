@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row mt-4 title-main ml-0">
+    <div class="row mt-2 title-main ml-0">
 
         <div *ngIf="path == 'policyViolation'"><span class="h5">Policy Violation</span></div>
         <div *ngIf="path == 'caseManagement'"><span class="h5">Incident Management</span></div>
@@ -73,7 +73,8 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-2 filterRow policy-violation-date-table">
-                                        <p-table #day [paginator]="true" [rows]="10" class="policy" [value]="myDays">
+                                        <p-table #day [paginator]="true" [rows]="10" class="policy sortingDate"
+                                            [value]="myDays">
                                             <ng-template pTemplate="header">
                                                 <tr>
                                                     <th style="width:5%"></th>

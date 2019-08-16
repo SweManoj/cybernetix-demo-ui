@@ -95,7 +95,7 @@ export class RiskyHostComponent implements OnInit {
             generatedDateFormat: '13 July 2019',
             generatedTimestamp: '10:02:00',
             accord: false,
-            pv: 'PV_014',
+            pv: 'PV_013',
             riskScore: 45,
             ruleInfo: {
                 ruleId: 6,
@@ -116,7 +116,7 @@ export class RiskyHostComponent implements OnInit {
             generatedDateFormat: '13 July 2019',
             generatedTimestamp: '09:42:00',
             accord: false,
-            pv: 'PV_014',
+            pv: 'PV_012',
             riskScore: 94,
             ruleInfo: {
                 ruleId: 6,
@@ -138,7 +138,7 @@ export class RiskyHostComponent implements OnInit {
             generatedDateFormat: '13 July 2019',
             generatedTimestamp: '07:13:00',
             accord: false,
-            pv: 'PV_014',
+            pv: 'PV_011',
             riskScore: 23,
             ruleInfo: {
                 ruleId: 6,

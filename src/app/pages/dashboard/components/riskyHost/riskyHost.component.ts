@@ -132,7 +132,7 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'URL' }],
             description : 'This violation is flagged when there are high number of Spam/Spyware URL’s accessed'
-        }
+        },
 
  {
             generatedDateFormat: '13 July 2019',

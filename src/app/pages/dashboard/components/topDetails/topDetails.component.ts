@@ -36,11 +36,11 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'ip address', value: '95.181.116.77', score: 85, img: false },
         { type: 'ip address', value: '23.94.213.6', score: 89, img: false },
         { type: 'ip address', value: '69.249.19.217', score: 76, img: false },
+        { type: 'host', value: 'AUSLAP4873', score: 90, img: false },
         { type: 'host', value: 'PUNDESK001', score: 30, img: false },
         { type: 'host', value: 'USADESK25', score: 89, img: false },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false },
-        { type: 'host', value: 'LONDESK588', score: 95, img: false },
-        { type: 'host', value: 'AUSLAP4873', score: 70, img: false }
+        { type: 'host', value: 'LONDESK588', score: 88, img: false }
     ];
 
     topRiskyObjects = {

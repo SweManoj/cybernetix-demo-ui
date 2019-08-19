@@ -23,7 +23,7 @@ export class RiskyHostComponent implements OnInit {
         { type: 'host', value: 'USADESK25', score: 89, img: false, location: 'Amsterdam, Netherlands ', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { type: 'host', value: 'LONDESK588', score: 95, img: false, location: 'Beijing, China', lastSeen: '27 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
-        { type: 'host', value: 'AUSLAP4873', score: 70, img: false, location: 'Paris, France', lastSeen: '24 Jun 2019 18:38:00', peer: 3, lastSeenUser: 'JRU87122' }];
+        { type: 'host', value: 'AUSLAP4873', score: 90, img: false, location: 'Sydney, Australia', lastSeen: '14 Aug 2019 17:23:12', peer: 23, lastSeenUser: 'AndrewsStarc1' }];
 
     hardCodeItemData = [
         {
@@ -68,6 +68,95 @@ export class RiskyHostComponent implements OnInit {
         },
 
     ];
+
+    hardCodeItemDataForAUS = [
+        {
+            generatedDateFormat: '13 July 2019',
+            generatedTimestamp: '10:45:00',
+            accord: false,
+            pv: 'PV_014',
+            riskScore: 36,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Threat Intelligence - Communication with Blacklisted IP'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: ' Malicious Outbound Communication' },
+            { title: 'Threat Category', value: ' Malicious Outbound Communication' },
+            { title: 'Sub Category', value: ' Malicious Outbound Communication' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
+            { title: 'Locations', value: 'Taipie' },
+            { title: 'Status', value: 'Risk: 90' },
+            { title: 'Resources', value: 'Firewall' },
+            { title: 'Indicators', value: 'DestIP, DestPort' }],
+            description : 'This violation is flagged when there are high number of outbound connections to Blacklisted hosts as per Threat Intelligence feed'
+        },
+             {
+            generatedDateFormat: '13 July 2019',
+            generatedTimestamp: '10:02:00',
+            accord: false,
+            pv: 'PV_013',
+            riskScore: 45,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Rare Outbound Connections - Firewall'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: 'Malicious Outbound Communication' },
+            { title: 'Threat Category', value: ' Malicious Outbound Communication' },
+            { title: 'Sub Category', value: 'Malicious Outbound Communication' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
+            { title: 'Locations', value: 'Taipie' },
+            { title: 'Status', value: 'Risk: 82' },
+            { title: 'Resources', value: 'Firewall' },
+            { title: 'Indicators', value: 'DestIP, DestPort' }],
+            description : 'This violation is flagged when there are high number of outbound connections to Rare hosts'
+        },
+        {
+            generatedDateFormat: '13 July 2019',
+            generatedTimestamp: '09:42:00',
+            accord: false,
+            pv: 'PV_012',
+            riskScore: 94,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Spam/Spyware URL Accessed - Proxy'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+            { title: 'Threat Category', value: 'Suspicious/Malicious Behavior' },
+            { title: 'Sub Category', value: 'Spam/Spyware' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
+            { title: 'Locations', value: 'Sydney' },
+            { title: 'Status', value: 'Risk: 71' },
+            { title: 'Resources', value: 'Proxy' },
+            { title: 'Indicators', value: 'URL' }],
+            description : 'This violation is flagged when there are high number of Spam/Spyware URL’s accessed'
+        }
+
+ {
+            generatedDateFormat: '13 July 2019',
+            generatedTimestamp: '07:13:00',
+            accord: false,
+            pv: 'PV_011',
+            riskScore: 23,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Abnormal Vulnerability Detected - Qualys'
+            },
+            incId : 'INC-17',
+            threatCategories: [{ title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+            { title: 'Threat Category', value: 'Suspicious/Malicious Behavior' },
+            { title: 'Sub Category', value: 'Vulnerabilities' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
+            { title: 'Locations', value: 'Sydney' },
+            { title: 'Status', value: 'Risk: 53' },
+            { title: 'Resources', value: 'Qualys' },
+            { title: 'Indicators', value: 'Filenames' }],
+            description : 'This violation is flagged when there are abnormal vulnerabilities found in the host as per baselining.'
+        }
+   
+    ]
 
     hardCodeItemForDemo = [
         {

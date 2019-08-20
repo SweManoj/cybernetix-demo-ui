@@ -1,0 +1,47 @@
+<div class="container-fluid mt-3 rightIntialPadding">
+    <div class="mb-3">
+      <span class="recordInfoPV h4">{{filteredRiskyEntities.length}} Users found for violating
+        <b>"Failed Login Attempts On Same IP By Multiple Users"</b> policy</span>
+    </div> 
+  </div>
+  
+  <div class="container-fluid rightIntialPadding">  
+      <div class="row mr-0">
+  
+  <ng-container class="col-md-2-5 mt-3" *ngFor="let entity of filteredRiskyEntities">
+    <mat-card [routerLink]="['/riskyUser', entity.user]" class="violatedUser">
+        <mat-card-header>
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <div class="pl-2">
+                        <img class="user-img img-rounded" src='../assets/images/user.png' />
+                    </div>
+                </div>
+                <div class="col-sm-7 col-lg-8 text-center">
+                    <p class="user-name-text">{{entity.user}}</p>
+                    <div class="left-block">
+                        <span class="risk-score-value" [ngStyle]="{'color':getRiskScoreColor(entity.riskScore)}">{{entity.riskScore}}</span>
+                        <span class="risk-score-text">Risk Score</span>
+                    </div>
+                </div>
+            </div>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="row-block">
+                <p class="text-style-1">Role</p>
+                <p class="text-style-2">{{entity.role}}</p>
+            </div>
+
+            <div class="row-block">
+                <p class="text-style-1">Location</p>
+                <p class="text-style-2">{{entity.location}}</p>
+            </div>
+        </mat-card-content>
+        
+ 
+
+    </mat-card>
+</ng-container>
+      </div>
+    </div>

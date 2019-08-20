@@ -90,6 +90,10 @@ export const routes: Routes = [
             {
                 path: 'performRemediation',
                 component: PerformRemediationComponent
+            },
+            {
+                path: 'policyViolation/:pvId',
+                component: PolicyViolatedUsersComponent
             }
         ]
     },

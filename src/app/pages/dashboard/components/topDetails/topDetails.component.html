@@ -130,7 +130,7 @@
                     src='./../../../../../assets/images/users/{{terminatedUser.image}}.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', terminatedUser.image]">{{terminatedUser.image}}</a>
+                <a class = "cursorPointer" [routerLink]="['/riskyUser', terminatedUser.image]">{{terminatedUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(terminatedUser.score)}"> {{terminatedUser.score}}</span>
@@ -153,7 +153,7 @@
                     style="width: 2.9rem;height: 2.9rem;" />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', orphanUser.image]">{{orphanUser.image}}</a>
+                <a class = "cursorPointer" [routerLink]="['/riskyUser', orphanUser.image]">{{orphanUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(orphanUser.score)}"> {{orphanUser.score}}</span>
@@ -170,13 +170,13 @@
 </div>
 <div *ngIf="componentType === 'externalUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let externalUser of externalUsers">
-        <div [routerLink]="['/riskyUser', externalUser.image]" class="row user-item blockPadding">
+        <div  class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/{{externalUser.image}}.jpg' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{externalUser.image}}</a>
+            <div class="col-8 col-sm-8 col-md-8 centerAlign pointerCursor" >
+                <a class="cursorPointer" [routerLink]="['/riskyUser', externalUser.image]">{{externalUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(externalUser.score)}"> {{externalUser.score}}</span>
@@ -199,7 +199,7 @@
                     src='./../../../../../assets/images/users/{{riskyCloudUser.image}}.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', riskyCloudUser.image]">{{riskyCloudUser.image}}</a>
+                <a [routerLink]="['/riskyUser', riskyCloudUser.image]" class="cursorPointer">{{riskyCloudUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(riskyCloudUser.score)}"> {{riskyCloudUser.score}}</span>
@@ -222,7 +222,7 @@
                     src='./../../../../../assets/images/users/{{dormantUser.image}}.jpg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', dormantUser.image]">{{dormantUser.image}}</a>
+                <a [routerLink]="['/riskyUser', dormantUser.image]" class = "cursorPointer">{{dormantUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(dormantUser.score)}"> {{dormantUser.score}}</span>
@@ -245,7 +245,7 @@
                     src="./../../../../../assets/images/users/service_user.jpeg" />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', serviceAcnt.image]">{{'svc_'+serviceAcnt.image}}</a>
+                <a class = "pointerCursor" [routerLink]="['/riskyUser', serviceAcnt.image]">{{'svc_'+serviceAcnt.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(serviceAcnt.score)}"> {{serviceAcnt.score}}</span>
@@ -262,13 +262,13 @@
 </div>
 <div *ngIf="componentType === 'watchlistedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let watchlistedUser of watchlistedUsers">
-        <div [routerLink]="['/riskyUser', watchlistedUser.image]" class="row user-item blockPadding pointerCursor">
+        <div  class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/{{watchlistedUser.image}}.jpg' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{watchlistedUser.image}}</a>
+            <div class="col-8 col-sm-8 col-md-8 centerAlign pointerCursor">
+                <a class = "pointerCursor" [routerLink]="['/riskyUser', watchlistedUser.image]">{{watchlistedUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(watchlistedUser.score)}"> {{watchlistedUser.score}}</span>
@@ -287,13 +287,13 @@
 </div>
 <div *ngIf="componentType === 'privilegedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let privilegedUser of privilegedUsers">
-        <div [routerLink]="['/riskyUser', privilegedUser.image]" class="row user-item blockPadding pointerCursor">
+        <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/{{privilegedUser.image}}.jpg' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{privilegedUser.image}}</a>
+            <div class="col-8 col-sm-8 col-md-8 centerAlign pointerCursor" >
+                <a class="pointerCursor" [routerLink]="['/riskyUser', privilegedUser.image]">{{privilegedUser.image}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(privilegedUser.score)}"> {{privilegedUser.score}}</span>

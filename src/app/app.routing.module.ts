@@ -19,6 +19,7 @@ import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUse
 import {RiskyIPComponent} from './pages/dashboard/components/risky-ip/risky-ip.component';
 import {RiskyHostComponent} from './pages/dashboard/components/riskyHost/riskyHost.component';
 import {PerformRemediationComponent} from './pages/case-management/components/perform-remediation/perform-remediation.component';
+import { PolicyViolatedUsersComponent } from './pages/case-management/components/policy-violated-users/policy-violated-users.component';
 
 export const routes: Routes = [
     {

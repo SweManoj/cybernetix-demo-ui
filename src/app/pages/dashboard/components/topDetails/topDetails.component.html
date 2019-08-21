@@ -72,7 +72,7 @@
     <ng-container *ngFor="let threat of threatsList">
         <div class="threat-item row">
             <div class="col-10 col-md-10 threat-details centerAlign">
-                <span  class="cursorPointer" [routerLink]="['/policyViolation', 'PV_02']">{{threat.title}}</span>
+                <span  class="cursorPointer" [routerLink]="['/policyViolation', threat.pvId]">{{threat.title}}</span>
                 <!--<span>{{threat.description}}</span>-->
             </div>
             <div class="col-2 col-md-2 risk-count centerAlign">

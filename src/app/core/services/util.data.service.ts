@@ -69,7 +69,7 @@ export class UtilDataService {
     {
       id: "6",
       user: "Admist Fane",
-      riskScore: 100,
+      riskScore: 94,
       department: "Engineering",
       role: "VP Buisness Development",
       location: "Los Angeles",
@@ -369,7 +369,7 @@ export class UtilDataService {
     {
       id: "31",
       user: "Syrian",
-      riskScore: 100,
+      riskScore: 88,
       department: "Engineering",
       role: "VP Buisness Development",
       location: "Los Angeles",
@@ -597,7 +597,7 @@ export class UtilDataService {
     {
       id: "50",
       user: "Paul",
-      riskScore: 100,
+      riskScore: 92,
       department: "Engineering",
       role: "VP Buisness Development",
       location: "Los Angeles",

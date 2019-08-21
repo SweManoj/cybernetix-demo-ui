@@ -239,23 +239,28 @@ export class TopDetailsComponent implements AfterViewInit {
         this.threatsList = [
             {
                 title: 'Abnormal Beaconing from Host - Proxy',
-                count: 47
+                count: 47,
+                pvId: 'PV01'
             },
             {
                 title: 'Failed Login Attempts On Same IP By Multiple Users',
-                count: 93
+                count: 93,
+                pvId: 'PV02'
             },
             {
                 title: 'Interactive login attempt by user without badge activity',
-                count: 18
+                count: 18,
+                pvId: 'PV03'
             },
             {
                 title: 'Abnormal Outbound Connections From Host',
-                count: 3
+                count: 3,
+                pvId: 'PV04'
             },
             {
                 title: 'Rare Host Usage',
-                count: 11
+                count: 11,
+                pvId: 'PV05'
             }
         ];
 

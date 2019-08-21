@@ -1,13 +1,13 @@
 <div class="container-fluid mt-3 rightIntialPadding">
     <div class="mb-3">
-      <span class="recordInfoPV h4">Policy Violation (PV 093) : Failed Login Attempts On Same IP By Multiple Users</span>
+      <span class="recordInfoPV h4">Policy Violation ({{filteredRiskyEntities.pvId}}) : {{filteredRiskyEntities.title}}</span>
     </div> 
   </div>
   
   <div class="container-fluid rightIntialPadding">  
       <div class="row mr-0">
   
-  <ng-container class="col-md-2-5 mt-3" *ngFor="let entity of filteredRiskyEntities">
+  <ng-container class="col-md-2-5 mt-3" *ngFor="let entity of filteredRiskyEntities.users">
     <mat-card [routerLink]="['/riskyUser', entity.user]" class="violatedUser">
         <mat-card-header>
             <div class="row">

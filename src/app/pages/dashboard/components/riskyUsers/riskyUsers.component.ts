@@ -141,6 +141,18 @@ export class RiskyUsersComponent {
             reportingManager: 'George Bailey',
             creationDate: '12 Jan 2016',
             lastWorkDay: '24 Apr 2019'
+        },
+        {
+            type: 'user',
+            value: 'Heidy',
+            score: 88,
+            img: true,
+            role: 'VP - Sales',
+            department: 'Sales',
+            location: 'Los Angeles',
+            reportingManager: 'Brett Root',
+            creationDate: '19th Sep 2018',
+            lastWorkDay: '-'
         }
     ];
 
@@ -293,7 +305,7 @@ export class RiskyUsersComponent {
             threatCategories: [{title: 'Kill Chain', value: 'Account Compromise'},
                 {title: 'Threat Category', value: 'Account Compromise'},
                 {title: 'Sub Category', value: 'Successful Logon'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Adm-ADittmer'},
+            dummyDatas: [{title: 'Affected Entity', value: 'SSmith'},
                 {title: 'Locations', value: 'San Diego'},
                 {title: 'Status', value: 'Risk: 85'},
                 {title: 'Resources', value: 'NetApp'},
@@ -314,7 +326,7 @@ export class RiskyUsersComponent {
             threatCategories: [{title: 'Kill Chain', value: 'Account Compromise'},
                 {title: 'Threat Category', value: 'Account Compromise'},
                 {title: 'Sub Category', value: 'Failed Attempts'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Adm-ADittmer'},
+            dummyDatas: [{title: 'Affected Entity', value: 'SSmith1'},
                 {title: 'Locations', value: 'San Diego'},
                 {title: 'Status', value: 'Risk: 74'},
                 {title: 'Resources', value: 'Windows'},
@@ -335,7 +347,7 @@ export class RiskyUsersComponent {
             threatCategories: [{title: 'Kill Chain', value: 'Insider Threat'},
                 {title: 'Threat Category', value: 'Suspicious/Malicious Behavior'},
                 {title: 'Sub Category', value: 'Suspicious/Malicious Behavior'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Adm-ADittmer'},
+            dummyDatas: [{title: 'Affected Entity', value: 'SSmith1'},
                 {title: 'Locations', value: 'San Diego'},
                 {title: 'Status', value: 'Risk: 53'},
                 {title: 'Resources', value: 'Badge'},
@@ -344,6 +356,50 @@ export class RiskyUsersComponent {
         }
     ];
 
+ policyViolationForHeidy = [
+        {
+            generatedDateFormat: '17th Jul 2019',
+            generatedTimestamp: '19:12:00',
+            accord: false,
+            pv: 'PV_034',
+            riskScore: 13,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Email to Competitors  - O365'
+            },
+            incId: 'INC-17',
+            threatCategories: [{title: 'Kill Chain', value: ''},
+                {title: 'Threat Category', value: 'Data Exfiltration'},
+                {title: 'Sub Category', value: 'Email'}],
+            dummyDatas: [{title: 'Affected Entity', value: 'Heidy'},
+                {title: 'Locations', value: 'Los Angeles'},
+                {title: 'Status', value: 'Risk: 88'},
+                {title: 'Resources', value: 'O365'},
+                {title: 'Indicators', value: 'RecipientID, ThreatIntel'}],
+            description: ' This violation is flagged when there is email sent to competitor domain'
+        },
+         {
+            generatedDateFormat: '17th Jul 2019',
+            generatedTimestamp: '13:42:00',
+            accord: false,
+            pv: 'PV_034',
+            riskScore: 27,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Unusual Export on Database - GCP'
+            },
+            incId: 'INC-17',
+            threatCategories: [{title: 'Kill Chain', value: ''},
+                {title: 'Threat Category', value: 'Data Exfiltration'},
+                {title: 'Sub Category', value: 'Data Export'}],
+            dummyDatas: [{title: 'Affected Entity', value: 'Heidy'},
+                {title: 'Locations', value: 'Los Angeles'},
+                {title: 'Status', value: 'Risk: 65'},
+                {title: 'Resources', value: 'GCP'},
+                {title: 'Indicators', value: 'Event, Tables'}],
+            description: 'This violation is flagged when there is abnormal export on Database as per User’s past pattern'
+        }
+    ];
     policyViolationForMaile = [
         {
             generatedDateFormat: '18 July 2019',
@@ -490,14 +546,14 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-17',
             threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Data Exfiltration'},
-                {title: 'Sub Category', value: 'Data Exfiltration'}],
+                {title: 'Threat Category', value: 'Suspicious Behavior'},
+                {title: 'Sub Category', value: 'Suspicious Behavior'}],
             dummyDatas: [{title: 'Affected Entity', value: 'JohnS'},
                 {title: 'Locations', value: 'Seattle'},
                 {title: 'Status', value: 'Risk: 87'},
                 {title: 'Resources', value: 'Proxy'},
                 {title: 'Indicators', value: 'Bytes, Category'}],
-            description: 'In this Algorithm, User Removed security enabled global group'
+            description: 'This policy violation is triggered when user attempted to access remote access tools '
         },
         {
             generatedDateFormat: '2 Aug 2019',
@@ -511,14 +567,14 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-18',
             threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
+                {title: 'Threat Category', value: 'Suspicious Behavior'},
+                {title: 'Sub Category', value: 'Suspicious Behavior'}],
             dummyDatas: [{title: 'Affected Entity', value: 'JohnS'},
                 {title: 'Locations', value: 'Seattle'},
                 {title: 'Status', value: 'Risk: 83'},
                 {title: 'Resources', value: 'SCCM'},
                 {title: 'Indicators', value: 'Action'}],
-            description: 'In this Algorithm, user performed abnormal data export on MSQL database'
+            description: 'This policy violation is triggered when there is unauthorized software downloaded by an external user'
         },
         {
             generatedDateFormat: '31 July 2019',
@@ -532,14 +588,14 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-19',
             threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
+                {title: 'Threat Category', value: 'Suspicious Behavior'},
+                {title: 'Sub Category', value: 'Suspicious Behavior'}],
             dummyDatas: [{title: 'Affected Entity', value: 'JohnS'},
                 {title: 'Locations', value: 'Seattle'},
                 {title: 'Status', value: 'Risk: 70'},
                 {title: 'Resources', value: 'SCCM'},
                 {title: 'Indicators', value: 'Action'}],
-            description: 'In this Algorithm, user performed abnormal data export on MSQL database'
+            description: 'This policy violation is triggered when there is sudden spike in software downloads attempts for an external user'
         },
         {
             generatedDateFormat: '29 July 2019',
@@ -926,6 +982,14 @@ export class RiskyUsersComponent {
         {image: 'resources@1x.png', value: '04', title: 'Applications'},
         {image: 'Shape@1x.png', value: '01', title: 'Locations'},
         {image: 'violations@1x.png', value: '04', title: 'Violations'},
+        {image: 'incident@1x.png', value: '01', title: 'Incidents'},
+    ];
+
+    activitiesForHeidy = [
+        {image: 'falg@1x.png', value: '1.9K', title: 'Events'},
+        {image: 'resources@1x.png', value: '03', title: 'Applications'},
+        {image: 'Shape@1x.png', value: '02', title: 'Locations'},
+        {image: 'violations@1x.png', value: '02', title: 'Violations'},
         {image: 'incident@1x.png', value: '01', title: 'Incidents'},
     ]
 

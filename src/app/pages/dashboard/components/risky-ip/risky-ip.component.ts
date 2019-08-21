@@ -105,21 +105,19 @@ export class RiskyIPComponent implements OnInit {
             riskScore: 82,
             ruleInfo: {
                 ruleId: 5,
-                title: 'Excessive Bytes Sent to Suspicious External Host via FTP'
-            }
+                title: 'Outbound Uncategorized Traffic to Multiple URLs'
+            },
+             threatCategories: [{title: 'Kill Chain', value: ''},
+                {title: 'Threat Category', value: ' Malicious Behavior'},
+                {title: 'Sub Category', value: 'Malicious Outbound Activities'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Locations', value: 'Indonesia'},
+                {title: 'Status', value: 'Risk: 83'},
+                {title: 'Resources', value: 'Proxy'},
+                {title: 'Indicators', value: 'Category, URL'}],
+            description: 'This Violation is triggered when there is suspicious Outbound traffic with Uknown Category to multiple URLs'
         },
         {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '09:22:00',
-            accord: false,
-            pv: 'PV 041',
-            riskScore: 36,
-            ruleInfo: {
-                ruleId: 4,
-                title: 'Outbound Malicious Traffic from Multiple Ports'
-            }
-        },
-         {
             generatedDateFormat: 'June 27 2019',
             generatedTimestamp: '07:10:00',
             accord: false,
@@ -128,7 +126,16 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 3,
                 title: 'Outbound P2P File Sharing Traffic to Rare Host'
-            }
+            },
+             threatCategories: [{title: 'Kill Chain', value: ''},
+                {title: 'Threat Category', value: ' Malicious Behavior'},
+                {title: 'Sub Category', value: 'Malicious Outbound Activities'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Locations', value: 'Indonesia'},
+                {title: 'Status', value: 'Risk: 88'},
+                {title: 'Resources', value: 'Proxy'},
+                {title: 'Indicators', value: 'Category, URL'}],
+            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
         },
          {
             generatedDateFormat: 'June 27 2019',
@@ -139,7 +146,16 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 2,
                 title: "Inbound Uncategorized Traffic From Multiple URL's"
-            }
+            },
+             threatCategories: [{title: 'Kill Chain', value: ''},
+                {title: 'Threat Category', value: ' Malicious Behavior'},
+                {title: 'Sub Category', value: 'Inbound Attack'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Locations', value: 'Indonesia'},
+                {title: 'Status', value: 'Risk: 67'},
+                {title: 'Resources', value: 'Firewall'},
+                {title: 'Indicators', value: 'SrcIP, DestPort, Threat Intelligence'}],
+            description: 'This Violation is triggered when there is suspicious inbound Telnet traffic from Blacklisted IP'
         },
          {
             generatedDateFormat: 'June 27 2019',
@@ -150,7 +166,16 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 2,
                 title: "Inbound Spam Traffic From OFAC Countries"
-            }
+            },
+             threatCategories: [{title: 'Kill Chain', value: ''},
+                {title: 'Threat Category', value: 'Malicious Behavior'},
+                {title: 'Sub Category', value: 'Inbound Attack'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Locations', value: 'Indonesia, Ukraine, Taipei'},
+                {title: 'Status', value: 'Risk: 83'},
+                {title: 'Resources', value: 'Firewall'},
+                {title: 'Indicators', value: 'SrcIP, DestPort, Threat Intelligence'}],
+            description: 'This Violation is triggered when there is suspicious Spam traffic from OFAC Countries'
         },
         {
             generatedDateFormat: 'June 27 2019',
@@ -161,7 +186,16 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 1,
                 title: "Inbound Telnet Traffic From Blacklisted IP's"
-            }
+            },
+             threatCategories: [{title: 'Kill Chain', value: ''},
+                {title: 'Threat Category', value: ' Malicious Behavior'},
+                {title: 'Sub Category', value: 'Inbound Attack'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Locations', value: 'Indonesia'},
+                {title: 'Status', value: 'Risk: 67'},
+                {title: 'Resources', value: 'Firewall'},
+                {title: 'Indicators', value: 'SrcIP, DestPort, Threat Intelligence'}],
+            description: 'This Violation is triggered when there is suspicious inbound Telnet traffic from Blacklisted IP'
         }
        
         

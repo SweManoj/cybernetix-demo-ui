@@ -66,7 +66,7 @@ export class TopDetailsComponent implements AfterViewInit {
             { score: 69, image: 'Kylie Mier' }
         ],
         riskyCloudUsersObjects: [
-            { score: 83, image: 'Heidy' },
+            { score: 88, image: 'Heidy' },
             { score: 91, image: 'Sondra Hildebrand' },
             { score: 69, image: 'Kylie Mier' },
             { score: 79, image: 'Maragret' },

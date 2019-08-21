@@ -28,7 +28,7 @@ export class TopDetailsComponent implements AfterViewInit {
     riskyObjects = [
         { type: 'user', value: 'ADittmer', score: 94, img: true },
         { type: 'user', value: 'Adm-EMoor', score: 86, img: true },
-        { type: 'user', value: 'Adm-ADittmer', score: 81, img: true },
+        { type: 'user', value: 'Adm-ADittmer', score: 90, img: true },
         { type: 'user', value: 'AWendler', score: 97, img: true },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
         { type: 'ip address', value: '10.82.32.212', score: 95, img: false },
@@ -73,8 +73,8 @@ export class TopDetailsComponent implements AfterViewInit {
             { score: 45, image: 'Hazel' }
         ],
         privilegedUsersObjects: [
+            { score: 90, image: 'Adm-ADittmer' },
             { score: 87, image: 'Maile' },
-            { score: 71, image: 'Stella' },
             { score: 62, image: 'Shayla Simo' },
             { score: 57, image: 'Tina' },
             { score: 49, image: 'Coral' }
@@ -94,9 +94,9 @@ export class TopDetailsComponent implements AfterViewInit {
             { score: 59, image: 'Tina' }
         ],
         watchlistedUsersObjects: [
-            { score: 93, image: 'Tina' },
+            { score: 90, image: 'Adm-ADittmer'},
             { score: 82, image: 'Alysa' },
-            { score: 78, image: 'Brunilda' },
+            { score: 78, image: 'Tina' },
             { score: 72, image: 'Yamasaki' },
             { score: 68, image: 'Stella' }
         ]

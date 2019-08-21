@@ -113,7 +113,7 @@
             </div> -->
 
         <!-- Show Activity Images With Values -->
-        <div class="row pt-3 pb-3" *ngIf="selectedUser !== 'Adm-ADittmer'">
+        <div class="row pt-3 pb-3" *ngIf="selectedUser !== 'SSmith1'">
             <div class="col-sm" *ngFor="let activity of activities">
                 <div class="media">
                     <img class="align-self-center" src='../assets/images/{{activity.image}}' />
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-        <div class="row pt-3 pb-3" *ngIf="selectedUser === 'Adm-ADittmer'">
+        <div class="row pt-3 pb-3" *ngIf="selectedUser === 'SSmith1'">
             <div class="col-sm" *ngFor="let activity of activitiesForAdmADittmer">
                 <div class="media">
                     <img class="align-self-center" src='../assets/images/{{activity.image}}' />
@@ -146,7 +146,7 @@
         </div>
     </div>
 
-    <ng-container *ngIf = "selectedUser !== 'AWendler' && selectedUser !== 'Alysa' && selectedUser !== 'Maile' && selectedUser !== 'JohnS' && selectedUser !== 'Mendelson' && selectedUser !== 'Adm-ADittmer'">
+    <ng-container *ngIf = "selectedUser !== 'AWendler' && selectedUser !== 'Alysa' && selectedUser !== 'Maile' && selectedUser !== 'JohnS' && selectedUser !== 'Mendelson' && selectedUser !== 'SSmith1'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>18 June 2019</span>
@@ -1348,7 +1348,7 @@
         </div>
     </ng-container>
 
-    <ng-container *ngIf = "selectedUser == 'Adm-ADittmer'">
+    <ng-container *ngIf = "selectedUser == 'SSmith1'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>27 July 2019</span>

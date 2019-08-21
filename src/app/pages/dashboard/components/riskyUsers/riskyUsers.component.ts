@@ -60,7 +60,7 @@ export class RiskyUsersComponent {
         },
         {
             type: 'user',
-            value: 'Adm-ADittmer',
+            value: 'SSmith1',
             score: 90,
             img: true,
             role: 'Sr. Software Engineer',
@@ -68,7 +68,7 @@ export class RiskyUsersComponent {
             location: 'San Diego',
             reportingManager: 'John Brown',
             creationDate: '13th Oct 2016',
-            lastWorkDay: '26 Feb 2019'
+            lastWorkDay: '-'
         },
         {
             type: 'user',
@@ -843,9 +843,9 @@ export class RiskyUsersComponent {
                 {title: 'Sub Category', value: 'Suspicious Behavior'}],
             dummyDatas: [{title: 'Affected Entity', value: 'Alysa'},
                 {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: ''},
-                {title: 'Resources', value: ''},
-                {title: 'Indicators', value: ''}],
+                {title: 'Status', value: 'Risk 51'},
+                {title: 'Resources', value: 'IIS'},
+                {title: 'Indicators', value: 'ApplicationName'}],
             description: 'This Violation is triggered when a user accessed multiple Rare Applications as per past pattern'
         },
         {
@@ -864,9 +864,9 @@ export class RiskyUsersComponent {
                 {title: 'Sub Category', value: 'Documents Print'}],
             dummyDatas: [{title: 'Affected Entity', value: 'Alysa'},
                 {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: ''},
-                {title: 'Resources', value: ''},
-                {title: 'Indicators', value: ''}],
+                {title: 'Status', value: 'Risk: 71'},
+                {title: 'Resources', value: 'DLP'},
+                {title: 'Indicators', value: 'DocumentName'}],
             description: 'This Violation is triggered when a user prints abnornal number of documents as per past pattern'
         },
         {
@@ -885,9 +885,9 @@ export class RiskyUsersComponent {
                 {title: 'Sub Category', value: 'Insider Threat'}],
             dummyDatas: [{title: 'Affected Entity', value: 'Alysa'},
                 {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: ''},
-                {title: 'Resources', value: ''},
-                {title: 'Indicators', value: ''}],
+                {title: 'Status', value: 'Risk: 78'},
+                {title: 'Resources', value: 'Email'},
+                {title: 'Indicators', value: 'RecipientID'}],
             description: 'This Violation is triggered when a user sends email to personal domains '
         },
         {
@@ -906,9 +906,9 @@ export class RiskyUsersComponent {
                 {title: 'Sub Category', value: 'Insider Threat'}],
             dummyDatas: [{title: 'Affected Entity', value: 'Alysa'},
                 {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: ''},
-                {title: 'Resources', value: ''},
-                {title: 'Indicators', value: ''}],
+                {title: 'Status', value: 'Risk: 82'},
+                {title: 'Resources', value: 'Proxy'},
+                {title: 'Indicators', value: 'Category, dstHost'}],
             description: 'This Violation is triggered when a user visits unusual number of job sites as per past pattern'
         }
     ];

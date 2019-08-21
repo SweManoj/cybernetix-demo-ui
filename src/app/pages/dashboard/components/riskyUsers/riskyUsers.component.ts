@@ -140,7 +140,7 @@ export class RiskyUsersComponent {
             location: 'New Jersey',
             reportingManager: 'George Bailey',
             creationDate: '12 Jan 2016',
-            lastWorkDay: '24 Apr 2019'
+            lastWorkDay: '-'
         },
         {
             type: 'user',
@@ -479,14 +479,14 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-17',
             threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
+                {title: 'Threat Category', value: 'Suspicious Behavior'},
+                {title: 'Sub Category', value: 'Suspicious Behavior'}],
             dummyDatas: [{title: 'Affected Entity', value: 'Mendelson'},
-                {title: 'Locations', value: 'New Jersey'},
-                {title: 'Status', value: 'Risk: 87'},
-                {title: 'Resources', value: 'SCCM'},
+                {title: 'Locations', value: 'Florida'},
+                {title: 'Status', value: 'Risk: 82'},
+                {title: 'Resources', value: 'IIS'},
                 {title: 'Indicators', value: 'AppNames'}],
-            description: 'In this Algorithm, User Removed security enabled global group'
+            description: 'This Violation is triggered when rare applications has been accessed as per User’s past pattern'
         },
         {
             generatedDateFormat: '29 July 2019',
@@ -496,18 +496,18 @@ export class RiskyUsersComponent {
             riskScore: 2,
             ruleInfo: {
                 ruleId: 6,
-                title: 'Successful Logon from Rare Location'
+                title: 'Successful Logon from Rare Location- VPN'
             },
             incId: 'INC-17',
             threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
+                {title: 'Threat Category', value: 'Potential Account Compromise'},
+                {title: 'Sub Category', value: 'Potential Account Compromise'}],
             dummyDatas: [{title: 'Affected Entity', value: 'Mendelson'},
-                {title: 'Locations', value: 'New Jersey'},
-                {title: 'Status', value: 'Risk: 81'},
+                {title: 'Locations', value: 'Florida'},
+                {title: 'Status', value: 'Risk: 76'},
                 {title: 'Resources', value: 'VPN'},
                 {title: 'Indicators', value: 'Location'}],
-            description: 'In this Algorithm, User Removed security enabled global group'
+            description: 'This Violation is triggered when VPN activity is observed from rare location'
         },
         {
             generatedDateFormat: '29 July 2019',
@@ -521,14 +521,14 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-17',
             threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
+                {title: 'Threat Category', value: 'Potential Account Compromise'},
+                {title: 'Sub Category', value: 'Potential Account Compromise'}],
             dummyDatas: [{title: 'Affected Entity', value: 'Mendelson'},
-                {title: 'Locations', value: 'New Jersey'},
-                {title: 'Status', value: 'Risk: 74'},
+                {title: 'Locations', value: 'Florida'},
+                {title: 'Status', value: 'Risk: 67'},
                 {title: 'Resources', value: 'VPN'},
-                {title: 'Indicators', value: 'Event'}],
-            description: 'In this Algorithm, User Removed security enabled global group'
+                {title: 'Indicators', value: 'Id'}],
+            description: 'This Violation is triggered when activity is seen for a dormant user'
         }
 
     ];

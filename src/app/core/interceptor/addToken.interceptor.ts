@@ -32,7 +32,7 @@ export class AddTokenInterceptor implements HttpInterceptor {
 
         return next.handle(request)
             .do(success => {
-                console.log('http request success');
+                return success;
             }, error => {
                 if (error.status == 401) {
                     if (isStorageAvailable) {

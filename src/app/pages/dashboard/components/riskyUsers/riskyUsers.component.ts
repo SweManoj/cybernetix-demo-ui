@@ -361,4 +361,10 @@ export class RiskyUsersComponent {
             });
         });
     }
+
+    fetchEnrichIndexKibanaURL(entityId,violationEventDate,violationEventTime,ruleId) {
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId,encodeURIComponent(violationEventDate),encodeURIComponent(violationEventTime),ruleId).subscribe((res: any) => {
+            window.open(res, '_blank');
+        });
+    }
 }

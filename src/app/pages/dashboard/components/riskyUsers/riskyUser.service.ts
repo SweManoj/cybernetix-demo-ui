@@ -40,4 +40,9 @@ export class RiskyUserService {
         const url = `${this.mainURL}/entity/linegraph?entityId=${entityId}`;
         return this.http.get(url);
     }
+
+    fetchEnrichIndexKibanaURL(entityId,violationEventDate,violationEventTime,ruleId) {
+        const url = `${this.mainURL}/entity/fetchEnrichIndexKibanaURL/${entityId}/${violationEventDate}/${violationEventTime}/${ruleId}`;
+        return this.http.get(url);
+    }
 }

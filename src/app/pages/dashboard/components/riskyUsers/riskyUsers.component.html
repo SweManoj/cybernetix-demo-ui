@@ -30,10 +30,12 @@
             <div class="risky-user-header">
                 <div class="row m-auto" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
-                        <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image rounded-circle mt-4"
-                            src='./../../../../../assets/images/users/service_user.jpeg' style="width: 4rem;"/>
+                        <img (click)="openUserInfo(selectedUserDetails.userInfo)"
+                            class="profile-image rounded-circle mt-4"
+                            src='./../../../../../assets/images/users/service_user.jpeg' style="width: 4rem;" />
                         <div class="user-info m-t-sm">
-                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.user.u_firstName}} {{userData.user.u_lastName}}</span>
+                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.user.u_firstName}}
+                                {{userData.user.u_lastName}}</span>
                             <p></p>
                         </div>
                     </div>
@@ -119,8 +121,10 @@
                     <img class="align-self-center" src='../assets/images/{{activity.image}}' />
                     <div class="media-body pl-3">
                         <p class="value">{{activity.value}}</p>
-                        <span *ngIf = "selectedUser !== 'AWendler' || activity.title !== 'Resources'" class="title">{{activity.title}}</span>
-                        <span *ngIf = "selectedUser == 'AWendler' && activity.title == 'Resources' " class="title">Applications</span>
+                        <span *ngIf="selectedUser !== 'AWendler' || activity.title !== 'Resources'"
+                            class="title">{{activity.title}}</span>
+                        <span *ngIf="selectedUser == 'AWendler' && activity.title == 'Resources' "
+                            class="title">Applications</span>
                     </div>
                 </div>
             </div>
@@ -134,7 +138,7 @@
         </div>
     </div>
 
-    <ng-container  *ngFor="let policyViolation of policyViolations">
+    <ng-container *ngFor="let policyViolation of policyViolations">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>{{policyViolation.violationEventDate | date: 'dd MMM yyyy'}}</span>
@@ -153,11 +157,11 @@
                         <div class="row mt-1 mb-2 ml-3 mr-1">
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="timeLine.accord = !timeLine.accord">
-                                    &emsp;<i *ngIf="timeLine.accord" class="fa fa-angle-up"></i> <i *ngIf="!timeLine.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                    &emsp;<i *ngIf="timeLine.accord" class="fa fa-angle-up"></i> <i
+                                        *ngIf="!timeLine.accord" class="fa fa-angle-down"></i>
                                 </span>
-                                <span class="pointerCursor pvValue"
-                                      (click)="timeLine.accord = !timeLine.accord">PV {{timeLine.ruleId}}</span>
+                                <span class="pointerCursor pvValue" (click)="timeLine.accord = !timeLine.accord">PV
+                                    {{timeLine.ruleId}}</span>
                                 <span class="pointerCursor pvText" (click)="timeLine.accord = !timeLine.accord">
                                     {{timeLine.ruleName}}</span>
 
@@ -165,27 +169,31 @@
                                       class="risk-score mr-5">{{item.riskScore}}</span>
  -->
 
- <span
-                                      class="risk-score mr-5" (click)="open(timeLine.ruleId, timeLine.entityId,timeLine.violationEventTime)">{{timeLine.noOfEvents}}</span>
-                                <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="timeLine.accord">
+                                <span class="risk-score mr-5"
+                                    (click)="fetchBasicEnrichIndexKibanaURL(timeLine.violationEventTime,timeLine.ruleId)">{{timeLine.noOfEvents}}</span>
+                                <span ngbDropdown placement="bottom-right" class="float-right mt-1"
+                                    *ngIf="timeLine.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground" (click) = "fetchEnrichIndexKibanaURL(
+                                        aria-labelledby="dropdownBasic1">
+                                        <button ngbDropdownItem class="greyBackground" (click)="fetchEnrichIndexKibanaURL(
                                         policyViolation.entityId,
                                         policyViolation.violationEventDate,
                                         timeLine.violationEventTime,timeLine.ruleId)">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" (click) = "createIncident(timeLine)">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            (click)="createIncident(timeLine)">
                                             Create an Incident
                                         </button>
-                                     <!--    <button ngbDropdownItem class="greyBackground">
+                                        <!--    <button ngbDropdownItem class="greyBackground">
                                             Perform Remediation
                                         </button> -->
-                                        <button [routerLink]="['/policyViolationSummary', timeLine.lastViolationId]" ngbDropdownItem class="greyBackground" *ngIf="policyViolation.dataAggregated">
+                                        <button [routerLink]="['/policyViolationSummary', timeLine.lastViolationId]"
+                                            ngbDropdownItem class="greyBackground"
+                                            *ngIf="policyViolation.dataAggregated">
                                             View Summary
                                         </button>
                                     </div>
@@ -232,7 +240,7 @@
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
                                             <div class="col-md-6">
-                                               {{timeLine.subCategory}}
+                                                {{timeLine.subCategory}}
                                             </div>
                                         </div>
                                     </div>
@@ -243,7 +251,7 @@
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                     </dl>
                                     <div class="ml-4">
-                                      <!--  <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
+                                        <!--  <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
                                             <div class="col-md-6">
                                                 {{dummyData.title}}
                                             </div>

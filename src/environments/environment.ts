@@ -11,5 +11,5 @@ export const environment = {
     blueThemeBrandColor: '#252c32',
     blueThemePieChartTrackColor: '#eeeeee',
     serverUrl: 'http://3.15.116.184:9090/cybernetix',
-    kibanaLink: 'https://search-cybernetix-7aladlvxidvs7lovmnvdsmyffm.us-east-2.es.amazonaws.com/_plugin/kibana/app/kibana'
+    kibanaLink: 'http://ec2-3-15-116-184.us-east-2.compute.amazonaws.com:5601'
 };

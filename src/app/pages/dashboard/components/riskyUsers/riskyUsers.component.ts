@@ -1,17 +1,18 @@
-import {Component, NgZone} from '@angular/core';
-import {RiskyUserService} from './riskyUser.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {RiskyUserInfoModalComponent} from './risky-user-info-modal/risky-user-info-modal.component';
-import {CaseManagementService} from './../../../case-management/case-management.service';
+import { Component, NgZone } from '@angular/core';
+import { RiskyUserService } from './riskyUser.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RiskyUserInfoModalComponent } from './risky-user-info-modal/risky-user-info-modal.component';
+import { CaseManagementService } from './../../../case-management/case-management.service';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import {AmChartsService} from '@amcharts/amcharts3-angular';
-import {RiskScoreModalComponent} from './risk-score-modal/risk-score-modal.component';
-import {TopDetailsService} from '../topDetails/topDetails.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { AmChartsService } from '@amcharts/amcharts3-angular';
+import { RiskScoreModalComponent } from './risk-score-modal/risk-score-modal.component';
+import { TopDetailsService } from '../topDetails/topDetails.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
     selector: 'risky-users',
@@ -46,8 +47,8 @@ export class RiskyUsersComponent {
     };
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-                private zone: NgZone, private router: Router, private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService,
-                private caseManagementService: CaseManagementService) {
+        private zone: NgZone, private router: Router, private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService,
+        private caseManagementService: CaseManagementService) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
@@ -191,17 +192,17 @@ export class RiskyUsersComponent {
                 const item = ev.target.dataItem['dataContext'];
                 this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item['startDateTime'],
                     item['endDateTime'], 0).subscribe((res: any) => {
-                    if (res && res.length > 0) {
-                        res.forEach((policyViolation) => {
-                            policyViolation.timeLines.forEach((timeLine) => {
-                                timeLine['accord'] = false;
+                        if (res && res.length > 0) {
+                            res.forEach((policyViolation) => {
+                                policyViolation.timeLines.forEach((timeLine) => {
+                                    timeLine['accord'] = false;
+                                });
                             });
-                        });
-                        this.policyViolations = res.reverse();
-                    } else {
-                        this.policyViolations = [];
-                    }
-                });
+                            this.policyViolations = res.reverse();
+                        } else {
+                            this.policyViolations = [];
+                        }
+                    });
             },
             this
         );
@@ -212,7 +213,7 @@ export class RiskyUsersComponent {
         });
 
         // size of the bubble increment
-        series.heatRules.push({property: 'radius', target: bullet.circle, min: 6, max: 12});
+        series.heatRules.push({ property: 'radius', target: bullet.circle, min: 6, max: 12 });
 
         bullet.hiddenState.properties.scale = 0.01;
         bullet.hiddenState.properties.opacity = 1;
@@ -257,19 +258,19 @@ export class RiskyUsersComponent {
                 if (res) {
                     this.eventCounts = res;
                 }
-                this.activities.push({image: 'falg@1x.png', title: 'Events', value: this.eventCounts.events});
-                this.activities.push({image: 'resources@1x.png', title: 'Resources', value: this.eventCounts.resources});
-                this.activities.push({image: 'Shape@1x.png', title: 'Locations', value: this.eventCounts.locations});
-                this.activities.push({image: 'violations@1x.png', title: 'Violations', value: this.eventCounts.violations});
-                this.activities.push({image: 'incident@1x.png', title: 'Incidents', value: this.eventCounts.incidents});
+                this.activities.push({ image: 'falg@1x.png', title: 'Events', value: this.eventCounts.events });
+                this.activities.push({ image: 'resources@1x.png', title: 'Resources', value: this.eventCounts.resources });
+                this.activities.push({ image: 'Shape@1x.png', title: 'Locations', value: this.eventCounts.locations });
+                this.activities.push({ image: 'violations@1x.png', title: 'Violations', value: this.eventCounts.violations });
+                this.activities.push({ image: 'incident@1x.png', title: 'Incidents', value: this.eventCounts.incidents });
 
             });
             const date = new Date();
             this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, date.getTime(), 0).subscribe((res: any) => {
                 if (res && res.length > 0) {
                     res.forEach((policyViolation) => {
-                        if(policyViolation.timeLines && policyViolation.timeLines.length > 0){
-                             policyViolation.timeLines.forEach((timeLine) => {
+                        if (policyViolation.timeLines && policyViolation.timeLines.length > 0) {
+                            policyViolation.timeLines.forEach((timeLine) => {
                                 timeLine['accord'] = false;
                             });
                         }
@@ -311,19 +312,25 @@ export class RiskyUsersComponent {
     }
 
     open(ruilId, userId, isotimestamp) {
-        const modalRef = this.modalService.open(RiskScoreModalComponent, {backdrop: 'static'}); // { size: 'sm' }
+        const modalRef = this.modalService.open(RiskScoreModalComponent, { backdrop: 'static' }); // { size: 'sm' }
         modalRef.componentInstance.ruilId = ruilId;
         modalRef.componentInstance.userId = userId;
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
+    fetchBasicEnrichIndexKibanaURL(violationEventDateTime, ruleId) {
+        this.riskyUserService.fetchBasicEnrichIndexKibanaURL(this.policyViolations[0].entityId, violationEventDateTime, ruleId)
+            .subscribe(urlId => {
+                window.open(`${environment.kibanaLink}/goto/${urlId}`);
+            });
+    }
 
     gotoSummery() {
         window.open('#/policyViolationSummary', '_blank');
     }
 
     openUserInfo(userInfo: any) {
-        const modalRef = this.modalService.open(RiskyUserInfoModalComponent, {size: 'lg'});
+        const modalRef = this.modalService.open(RiskyUserInfoModalComponent, { size: 'lg' });
         modalRef.componentInstance.userInfo = userInfo;
     }
 
@@ -344,16 +351,16 @@ export class RiskyUsersComponent {
     createIncident(violation) {
 
         const date = new Date(violation.violationEventTime);
- 
+
         console.log(date.toISOString().substring(0, 19));
- 
+
 
         const incidentData = {
-                'status': 'NEW',           
-                "entityId":this.selectedUser,
-                "ruleId": violation.ruleId,
-                "violationEventDate": date.toISOString().substring(0, 10),
-                "violationEventTime": date.toISOString().substring(0, 19)             
+            'status': 'NEW',
+            "entityId": this.selectedUser,
+            "ruleId": violation.ruleId,
+            "violationEventDate": date.toISOString().substring(0, 10),
+            "violationEventTime": date.toISOString().substring(0, 19)
         };
         this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
             this._snackBar.open('Created Incident successfully', null, {
@@ -362,8 +369,8 @@ export class RiskyUsersComponent {
         });
     }
 
-    fetchEnrichIndexKibanaURL(entityId,violationEventDate,violationEventTime,ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId,encodeURIComponent(violationEventDate),encodeURIComponent(violationEventTime),ruleId).subscribe((res: any) => {
+    fetchEnrichIndexKibanaURL(entityId, violationEventDate, violationEventTime, ruleId) {
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDate), encodeURIComponent(violationEventTime), ruleId).subscribe((res: any) => {
             window.open(res, '_blank');
         });
     }

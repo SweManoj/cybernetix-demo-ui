@@ -320,8 +320,8 @@ export class RiskyUsersComponent {
 
     fetchBasicEnrichIndexKibanaURL(violationEventDateTime, ruleId) {
         this.riskyUserService.fetchBasicEnrichIndexKibanaURL(this.policyViolations[0].entityId, violationEventDateTime, ruleId)
-            .subscribe(urlId => {
-                window.open(`${environment.kibanaLink}/goto/${urlId}`);
+            .subscribe((urlId: any) => {
+                window.open(`${environment.kibanaLink}/goto/${urlId.urlId}`);
             });
     }
 

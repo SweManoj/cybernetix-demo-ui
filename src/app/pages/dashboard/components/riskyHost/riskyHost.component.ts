@@ -7,6 +7,7 @@ import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-sco
 import * as am4core from '@amcharts/amcharts4/core';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4charts from '@amcharts/amcharts4/charts';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
     selector: 'app-riskyHost',
@@ -108,5 +109,12 @@ export class RiskyHostComponent implements OnInit {
 
     gotoSummery(){
         //window.open("#/policyViolationSummary", '_blank');
+    }
+
+    fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , violationEventDateTime, ruleId, 'HOST')
+            .subscribe((urlId: any) => {
+                window.open(`${environment.kibanaLink}/goto/${urlId.urlId}`);
+            });
     }
 }

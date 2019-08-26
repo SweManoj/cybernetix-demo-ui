@@ -8,6 +8,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { bubbleDataMonth } from '../riskyUsers/data';
 import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-score-modal.component';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
     selector: 'app-risky-ip',
@@ -126,6 +127,13 @@ export class RiskyIPComponent implements OnInit {
 
     gotoSummery() {
         //window.open("#/policyViolationSummary", '_blank');
+    }
+
+    fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , violationEventDateTime, ruleId, 'IP')
+            .subscribe((urlId: any) => {
+                window.open(`${environment.kibanaLink}/goto/${urlId.urlId}`);
+            });
     }
 
 }

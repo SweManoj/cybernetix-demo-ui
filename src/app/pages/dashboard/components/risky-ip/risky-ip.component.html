@@ -108,14 +108,18 @@
  -->
 
                                 <span
-                                    class="risk-score mr-5">{{timeLine.noOfEvents}}</span>
+                                    class="risk-score mr-5" (click)="fetchEnrichIndexKibanaURL(
+                                        policyViolation.entityId,
+                                        timeLine.violationEventTime,timeLine.ruleId)">{{timeLine.noOfEvents}}</span>
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="timeLine.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
                                          aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground">
+                                        <button ngbDropdownItem class="greyBackground" (click)="fetchEnrichIndexKibanaURL(
+                                        policyViolation.entityId,
+                                        timeLine.violationEventTime,timeLine.ruleId)">
                                             Investigate
                                         </button>
                                         <button ngbDropdownItem class="greyBackground" (click) = "createIncident(timeLine.lastViolationId)">

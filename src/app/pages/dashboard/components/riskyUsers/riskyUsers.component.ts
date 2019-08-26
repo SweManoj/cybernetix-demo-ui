@@ -318,8 +318,8 @@ export class RiskyUsersComponent {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
-    fetchBasicEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchBasicEnrichIndexKibanaURL(entityId , violationEventDateTime, ruleId)
+    fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , violationEventDateTime, ruleId, 'USER')
             .subscribe((urlId: any) => {
                 window.open(`${environment.kibanaLink}/goto/${urlId.urlId}`);
             });
@@ -369,9 +369,4 @@ export class RiskyUsersComponent {
         });
     }
 
-    fetchEnrichIndexKibanaURL(entityId, violationEventDate, violationEventTime, ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDate), encodeURIComponent(violationEventTime), ruleId).subscribe((res: any) => {
-            window.open(res, '_blank');
-        });
-    }
 }

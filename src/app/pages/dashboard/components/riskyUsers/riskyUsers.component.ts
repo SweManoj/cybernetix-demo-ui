@@ -319,9 +319,9 @@ export class RiskyUsersComponent {
     }
 
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , violationEventDateTime, ruleId, 'USER')
-            .subscribe((urlId: any) => {
-                window.open(`${environment.kibanaLink}/goto/${urlId.urlId}`);
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , encodeURIComponent(violationEventDateTime), ruleId, 'USER')
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
 

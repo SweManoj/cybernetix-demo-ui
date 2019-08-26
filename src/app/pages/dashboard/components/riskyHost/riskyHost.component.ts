@@ -112,9 +112,9 @@ export class RiskyHostComponent implements OnInit {
     }
 
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , violationEventDateTime, ruleId, 'HOST')
-            .subscribe((urlId: any) => {
-                window.open(`${environment.kibanaLink}/goto/${urlId.urlId}`);
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , encodeURIComponent(violationEventDateTime), ruleId, 'HOST')
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
 }

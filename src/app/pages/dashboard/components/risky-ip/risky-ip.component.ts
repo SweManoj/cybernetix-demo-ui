@@ -130,9 +130,9 @@ export class RiskyIPComponent implements OnInit {
     }
 
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , violationEventDateTime, ruleId, 'IP')
-            .subscribe((urlId: any) => {
-                window.open(`${environment.kibanaLink}/goto/${urlId.urlId}`);
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , encodeURIComponent(violationEventDateTime), ruleId, 'IP')
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
 

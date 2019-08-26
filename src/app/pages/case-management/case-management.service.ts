@@ -23,8 +23,8 @@ export class CaseManagementService {
     return this.http.get(url);
   }
 
-  getAllIncidents(offset, size) {
-    const url = `${this.mainURL}/caseMgmt/entity/getIncidents/${offset}/${size}/2019-03-25%2000%3A00%3A00/2019-08-25%2000%3A00%3A00`;
+  getAllIncidents(offset, size, startDateTime, endDateTime) {
+    const url = `${this.mainURL}/caseMgmt/entity/getIncidents/${offset}/${size}/${startDateTime}/${endDateTime}`;
     return this.http.get(url);
   }
 

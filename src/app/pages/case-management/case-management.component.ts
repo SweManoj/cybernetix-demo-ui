@@ -94,7 +94,22 @@ export class CaseManagementComponent implements OnInit {
     }
 
     getAllIncidents() {
-        this.caseManagmentService.getAllIncidents(0, 1000).subscribe((response: any) => {
+        const date = new Date();
+        const quaterDate = new Date(date.getMonth() - 3);
+        const formattedEndDate = date.getUTCFullYear() +
+            '-' + (date.getUTCMonth() + 1) +
+            '-' + (date.getUTCDate()) +
+            ' ' + (date.getUTCHours()) +
+            ':' + (date.getUTCMinutes()) +
+            ':' + (date.getUTCSeconds());
+        const formattedStartDate = quaterDate.getUTCFullYear() +
+            '-' + (quaterDate.getUTCMonth() + 1) +
+            '-' + (quaterDate.getUTCDate()) +
+            ' ' + (quaterDate.getUTCHours()) +
+            ':' + (quaterDate.getUTCMinutes()) +
+            ':' + (quaterDate.getUTCSeconds());
+
+        this.caseManagmentService.getAllIncidents(0, 1000, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
             this.incidents = response;
         });
     }
@@ -135,8 +150,8 @@ export class CaseManagementComponent implements OnInit {
             selectedDate.setHours(0, 0, 0, 0);
             endDateForService.setHours(23, 59, 59, 999);
 
-             this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(),
-                 endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
+            this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(),
+                endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
                 this.policyViolations = res;
                 this.fetchingPolicyViolationsInProgress = false;
                 this.getStageValues();

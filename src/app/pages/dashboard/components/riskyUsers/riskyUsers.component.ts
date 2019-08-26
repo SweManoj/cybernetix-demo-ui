@@ -318,8 +318,8 @@ export class RiskyUsersComponent {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
-    fetchBasicEnrichIndexKibanaURL(violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchBasicEnrichIndexKibanaURL(this.policyViolations[0].entityId, violationEventDateTime, ruleId)
+    fetchBasicEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
+        this.riskyUserService.fetchBasicEnrichIndexKibanaURL(entityId , violationEventDateTime, ruleId)
             .subscribe((urlId: any) => {
                 window.open(`${environment.kibanaLink}/goto/${urlId.urlId}`);
             });

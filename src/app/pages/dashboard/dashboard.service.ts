@@ -77,7 +77,7 @@ export class DashboardService {
         }
     }
 
-    getPieChartsSummary() {
+    getDashboardCounts() {
         const url = `${this.mainURl}/counts/all`;
         return this.http.get(url);
     }

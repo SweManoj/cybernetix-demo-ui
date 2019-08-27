@@ -87,13 +87,13 @@
 </div>
 <div *ngIf="componentType === 'terminatedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let terminatedUser of terminatedUsers">
-        <div [routerLink]="['/riskyUser', terminatedUser.entityId]" class="row user-item blockPadding">
+        <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{terminatedUser.fName}}
+                <a [routerLink]="['/riskyUser', terminatedUser.entityId]" class="pointerCursor">{{terminatedUser.fName}}
                     {{terminatedUser.lName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -142,13 +142,13 @@
 </div>
 <div *ngIf="componentType === 'externalUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let externalUser of externalUsers">
-        <div [routerLink]="['/riskyUser', externalUser.entityId]" class="row user-item blockPadding pointerCursor">
+        <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{externalUser.fName}}
+                <a  [routerLink]="['/riskyUser', externalUser.entityId]" class="pointerCursor">{{externalUser.fName}}
                     {{externalUser.lName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -198,13 +198,13 @@
 </div>
 <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let dormantUser of dormantUsers">
-        <div [routerLink]="['/riskyUser', dormantUser.entityId]" class="row user-item blockPadding pointerCursor">
+        <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='../../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{dormantUser.fName}} {{dormantUser.lName}}</a>
+                <a [routerLink]="['/riskyUser', dormantUser.entityId]" class="pointerCursor">{{dormantUser.fName}} {{dormantUser.lName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(dormantUser.riskscorebygrp)}">
@@ -229,13 +229,13 @@
 </div>
 <div *ngIf="componentType === 'serviceAccount'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let serviceAcnt of serviceAccount">
-        <div [routerLink]="['/riskyUser',  serviceAcnt.entityId]" class="row user-item blockPadding pointerCursor">
+        <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src="./../../../../../assets/images/users/service_user.jpeg" />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>
+                <a [routerLink]="['/riskyUser',  serviceAcnt.entityId]" class="pointerCursor">
                     {{serviceAcnt.fName}} {{serviceAcnt.lName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -257,13 +257,13 @@
 </div>
 <div *ngIf="componentType === 'watchlistedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let watchlistedUser of watchlistedUsers">
-        <div [routerLink]="['/riskyUser', watchlistedUser.entityId]" class="row user-item blockPadding pointerCursor">
+        <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a> {{watchlistedUser.fName}} {{watchlistedUser.lName}}</a>
+                <a [routerLink]="['/riskyUser', watchlistedUser.entityId]" class="pointerCursor"> {{watchlistedUser.fName}} {{watchlistedUser.lName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(watchlistedUser.riskscorebygrp)}">
@@ -284,13 +284,13 @@
 </div>
 <div *ngIf="componentType === 'privilegedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let privilegedUser of privilegedUsers">
-        <div  [routerLink]="['/riskyUser', privilegedUser.entityId]" class="row user-item blockPadding pointerCursor">
+        <div  class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{privilegedUser.fName}}
+                <a [routerLink]="['/riskyUser', privilegedUser.entityId]" class="pointerCursor">{{privilegedUser.fName}}
                     {{privilegedUser.lName}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">

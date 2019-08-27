@@ -4,7 +4,6 @@ import { DashboardComponent } from './dashboard.component';
 import { CommonModule } from '@angular/common';
 import { EasyPieChartModule } from 'ng2modules-easypiechart';
 import { DashboardService } from './dashboard.service';
-import { PieChartComponent } from './components/pieChart/pieChart.component';
 import { TopDetailsComponent } from './components/topDetails/topDetails.component';
 import { TopDetailsService } from './components/topDetails/topDetails.service';
 import { RiskyUsersComponent } from './components/riskyUsers/riskyUsers.component';
@@ -29,11 +28,11 @@ import { RiskyIPComponent } from './components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
 import {HighchartsChartModule} from 'highcharts-angular';
 import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
+import { DashboardCountsComponent } from './components/dashboard-counts/dashboard-counts.component';
 
 @NgModule({ 
     declarations: [
         DashboardComponent,
-        PieChartComponent,
         TopDetailsComponent,
         RiskyUsersComponent,
         ContentModalComponent,
@@ -44,7 +43,8 @@ import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
         FilterRiskEntityComponent,
         RiskyIPComponent,
         RiskyHostComponent,
-        ShortNumberPipe
+        ShortNumberPipe,
+        DashboardCountsComponent
     ],
     imports: [
         CommonModule,

@@ -34,7 +34,8 @@
                             <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/logs@1x.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count">{{dashboardCounts.eventImported}}</div>
+                            <div class="count" *ngIf="dashboardCounts.eventImported">{{dashboardCounts.eventImported}}</div>
+                            <div class="count" *ngIf="!dashboardCounts.eventImported">0</div>
                             <div class="title">Event Imported</div>
                         </div>
                     </div>

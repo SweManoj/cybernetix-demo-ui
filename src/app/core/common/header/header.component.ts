@@ -130,6 +130,10 @@ export class HeaderComponent {
         });
     };
 
+    changeMenuOpen() {
+        this.utilService.isMenuOpened = !this.utilService.isMenuOpened;
+    }
+
     search = (text$: Observable<string>) =>
         text$
             .pipe(debounceTime(200))

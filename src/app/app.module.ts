@@ -29,6 +29,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 import { NgIdleModule } from '@ng-idle/core';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
     declarations: [
@@ -58,7 +59,8 @@ import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
         StorageServiceModule,
         NgIdleModule.forRoot(),
         NgProgressModule.forRoot(),
-        NgProgressHttpClientModule
+        NgProgressHttpClientModule,
+        MatTooltipModule
     ],
     exports: [
         MaterialModule

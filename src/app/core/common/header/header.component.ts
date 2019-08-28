@@ -19,19 +19,15 @@ import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 export class HeaderComponent {
 
     options = {
-        minimum: 0.08,
-        maximum: 1,
         ease: 'linear',
-        speed: 200,
-        trickleSpeed: 300,
         meteor: true,
-        spinner: true,
+        spinner: false,
         spinnerPosition: 'right',
         direction: 'leftToRightIncreased',
-        color: 'red',
+        color: '#42b4e6',
         thick: true
       };
-
+    opened: boolean;
     themeName: string;
     private prevThemeName: string;
     riskyUsers = [];

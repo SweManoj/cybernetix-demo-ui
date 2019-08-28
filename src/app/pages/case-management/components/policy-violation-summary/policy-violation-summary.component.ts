@@ -144,6 +144,12 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     assignPolicy(violationId) {
         this.policyViolationSummaryService.assignPolicyToUser(violationId).subscribe((response: any) => {
+            if (response) {
+                response = JSON.parse(response);
+                const name = response.firstName + ' ' + response.lastName;
+                this.myControl.setValue({ name: name, value: response.userName });
+                this.policyDetails.policyReviewer = response;
+            }
             this.savePolicyViolationActivity('assigned this policy to himself', 'ASSIGN_TO_ME');
             this._snackBar.open('Assigned to you successfully', null, {
                 duration: 2000,

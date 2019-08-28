@@ -166,8 +166,16 @@ export class IncidentSummaryComponent implements OnInit {
 
     assignIncident(incidentId) {
         this.incidentSummaryService.assignIncidentToUser(incidentId).subscribe((response: any) => {
+            if (response) {
+                response = JSON.parse(response);
+                this.incidentDetails.incOwner = response;
+                this.myControl.setValue({
+                    name: this.incidentDetails.incOwner.firstName,
+                    value: this.incidentDetails.incOwner.userName
+                });
+            }
             this.saveIncidentActivity('assigned this incident to himself', 'ASSIGN_TO_ME');
-            this._snackBar.open(response, null, {
+            this._snackBar.open('Assigned to you successfully', null, {
                 duration: 2000,
             });
         });

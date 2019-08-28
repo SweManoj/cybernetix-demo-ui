@@ -7,12 +7,14 @@ import { DashboardService } from '../../dashboard.service';
 })
 export class DashboardCountComponent implements OnInit {
 
+  loadingInProgress = true;
   dashboardCounts = [];
 
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
         this.dashboardService.getDashboardCounts().subscribe((res: any) => {
+            this.loadingInProgress = false;
             this.dashboardCounts = res;
         });  
   }

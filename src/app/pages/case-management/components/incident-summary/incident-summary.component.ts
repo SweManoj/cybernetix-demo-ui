@@ -49,7 +49,7 @@ export class IncidentSummaryComponent implements OnInit {
     policyComments: any[] = [];
 
     myControl = new FormControl();
-    replyComment = new FormControl();
+    replyComment: AbstractControl;
     filteredOptions: Observable<User[]>;
 
     @ViewChild('autosize') autosize: CdkTextareaAutosize;

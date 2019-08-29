@@ -121,9 +121,11 @@ export class IncidentSummaryComponent implements OnInit {
     initForm() {
 
         this.commentFormGroup = this.formBuilder.group({
-            commentValue: ['', Validators.compose([Validators.required])]
+            commentValue: ['', Validators.compose([Validators.required])],
+            replyComment: ['', Validators.compose([Validators.required])]
         });
         this.commentValue = this.commentFormGroup.controls['commentValue'];
+        this.replyComment = this.commentFormGroup.controls['replyComment'];
     }
 
     ngOnInit() {

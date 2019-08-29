@@ -225,7 +225,7 @@
                     </div>
                     <div class="col-12 text-right">
                         <button color="primary" class="btn-main" mat-raised-button
-                            [disabled]="commentFormGroup.invalid || commentValue.value.trim()==''" type="submit"
+                            [disabled]="commentValue.value.trim()==''" type="submit"
                             (click)="submitComment(0)">Post</button>
                     </div>
 
@@ -252,18 +252,57 @@
                                         &nbsp;|&nbsp; <span class="delete"
                                             (click)="deleteComment(comment);">Delete</span>
                                     </div>
-                                    <div class="row mt-2" *ngIf="comment.reply">
+                                    <div class="row mt-4" *ngIf="comment.reply">
                                         <div class="col-md-10">
                                             <textarea type="text" autosize class="form-control"
-                                                formControlName="replyComment" id="replyComment"
-                                                [(ngModel)]="comment.content" required name="content"
-                                                placeholder="Enter your comments here..."></textarea>
+                                                      formControlName="replyComment" id="replyComment"
+                                                      [(ngModel)]="comment.childContent" required name="content"
+                                                      placeholder="Enter your comments here..."></textarea>
                                         </div>
-                                        <div class="col-md-2 mt-2">
+                                        <div class="col-md-3 mt-3">
                                             <button class="btn btn-sm" [disabled]="replyComment.value.trim()==''"
-                                                type="submit" (click)="submitReply(comment, comment.cmtId)">
+                                                    type="submit" (click)="submitReply(comment,comment.incCmtId)">
                                                 &emsp;Post&emsp;
                                             </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-left: 10%;" class="user-item mt-3 mb-4"
+                                     *ngFor="let childComment of comment.childCommentsModel"
+                                     [hidden]="childComment.deleted">
+                                    <div class="profile-pic">
+                                        <img class="profile-image img-round"
+                                             src="./../../../../../assets/images/user.png">
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="row mb-1">
+                                            <div class="col-md-12 comment user-info"><a
+                                                href="#">{{childComment.incCommentor.userName}}</a> &emsp;&emsp;
+                                                {{childComment.commentTime | timeAgo}}
+                                            </div>
+                                        </div>
+                                        <div class="row comment" style="word-break: break-all;">
+                                            {{childComment.comment}}
+                                        </div>
+                                        <div class="row mt-1 comment-action">
+                                            <!--< span class="reply"
+                                                                                   (click)="childComment.reply= !childComment.reply">Reply</spa
+                                            &nbsp;|&nbsp; n> --><span class="delete"
+                                                                      (click)="deleteComment(childComment);">Delete</span>
+                                        </div>
+                                        <div class="row mt-4" *ngIf="childComment.reply">
+                                            <div class="col-md-10">
+                                                <textarea type="text" autosize class="form-control"
+                                                          formControlName="replyComment" id="replyComment"
+                                                          [(ngModel)]="comment.childContent" required name="content"
+                                                          placeholder="Enter your comments here..."></textarea>
+                                            </div>
+                                            <div class="col-md-3 mt-3">
+                                                <button class="btn btn-sm" [disabled]="replyComment.value.trim()==''"
+                                                        type="submit" (click)="submitReply(comment.cmtId)">
+                                                    &emsp;Post&emsp;
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

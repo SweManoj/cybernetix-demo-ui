@@ -207,8 +207,7 @@ export class RiskyUsersComponent {
                             this.policyViolations = [];
                         }
                     });
-            },
-            this
+            }
         );
 
         // tooltip rendering on the bubble
@@ -297,6 +296,9 @@ export class RiskyUsersComponent {
         const endDate = new Date();
         this.riskyUserService.getPolicyViolationsForEntity(this.selectedUser, startDate, endDate.getTime()).subscribe((res: any) => {
             this.policyViolationData = res;
+            if(this.policyViolationData.length > 0){
+                this.policyViolationData = this.policyViolationData.sort((a, b) => -(a.hourOfDay - b.hourOfDay))
+            }
             this.policyViolationData.forEach(data => {
                 const date = this.covertDateToUTCFormat(data.startDateTime);
                 data.hourOfDay = date.getHours();

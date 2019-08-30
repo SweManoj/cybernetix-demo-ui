@@ -29,7 +29,7 @@
             </div>
         </mat-card-content>
         
-        <mat-card-actions>
+        <mat-card-actions *ngIf="entity.lastViolatedViolationId">
             <div class="row-block">
                 <p class="text-style-1">Last Violation</p>
                 <div class="violation-box">

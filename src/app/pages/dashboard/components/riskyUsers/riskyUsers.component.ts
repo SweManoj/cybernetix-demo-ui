@@ -196,6 +196,12 @@ export class RiskyUsersComponent {
                             res.forEach((policyViolation) => {
                                 policyViolation.timeLines.forEach((timeLine) => {
                                     timeLine['accord'] = false;
+                                    if(timeLine.violationEventTime){
+                                        const date = new Date(timeLine.violationEventTime);
+                                        const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+                                        timeLine.violationEventTime = _utc;
+                                    }
+                                       
                                 });
                             });
                             this.policyViolations = res.reverse();
@@ -272,6 +278,11 @@ export class RiskyUsersComponent {
                         if (policyViolation.timeLines && policyViolation.timeLines.length > 0) {
                             policyViolation.timeLines.forEach((timeLine) => {
                                 timeLine['accord'] = false;
+                                if(timeLine.violationEventTime){
+                                        const date = new Date(timeLine.violationEventTime);
+                                        const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+                                        timeLine.violationTime = _utc;
+                                    }
                             });
                         }
                     });

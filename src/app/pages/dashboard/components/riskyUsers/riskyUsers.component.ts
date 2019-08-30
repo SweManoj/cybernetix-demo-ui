@@ -197,9 +197,7 @@ export class RiskyUsersComponent {
                                 policyViolation.timeLines.forEach((timeLine) => {
                                     timeLine['accord'] = false;
                                     if(timeLine.violationEventTime){
-                                        const date = new Date(timeLine.violationEventTime);
-                                        const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
-                                        timeLine.violationEventTime = _utc;
+                                        timeLine.violationTime = this.covertDateToUTCFormat(timeLine.violationEventTime)
                                     }
                                        
                                 });
@@ -247,6 +245,12 @@ export class RiskyUsersComponent {
         chart.cursor.behavior = 'zoomXY';
     }
 
+    covertDateToUTCFormat(inputDate){
+     const date = new Date(inputDate);
+     const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+     return _utc;
+    }
+
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
@@ -279,9 +283,8 @@ export class RiskyUsersComponent {
                             policyViolation.timeLines.forEach((timeLine) => {
                                 timeLine['accord'] = false;
                                 if(timeLine.violationEventTime){
-                                        const date = new Date(timeLine.violationEventTime);
-                                        const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
-                                        timeLine.violationTime = _utc;
+                                    
+                                        timeLine.violationTime = this.covertDateToUTCFormat(timeLine.violationEventTime)
                                     }
                             });
                         }
@@ -295,7 +298,7 @@ export class RiskyUsersComponent {
         this.riskyUserService.getPolicyViolationsForEntity(this.selectedUser, startDate, endDate.getTime()).subscribe((res: any) => {
             this.policyViolationData = res;
             this.policyViolationData.forEach(data => {
-                const date = new Date(data.endDateTime);
+                const date = this.covertDateToUTCFormat(data.startDateTime);
                 data.hourOfDay = date.getHours();
 
                 data.hourOfDay = (data.hourOfDay < 12) ? (data.hourOfDay) + ' AM' : (data.hourOfDay % 12) + ' PM';

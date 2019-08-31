@@ -45,7 +45,7 @@ export class GlobeChartComponent implements OnInit {
             y: 24
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.0f}</b>'
+            pointFormat: '{point.percentage:.0f}%'
         },
         plotOptions: {
             pie: {
@@ -70,7 +70,6 @@ export class GlobeChartComponent implements OnInit {
             }
         },
         series: [{
-            name: 'Risk Score',
             colorByPoint: true,
             data: [
                 {
@@ -119,14 +118,14 @@ export class GlobeChartComponent implements OnInit {
             gridLineColor: 'transparent',
             title: {
                 style: {color: '#fff'},
-                text: 'Risk Score'
+                text: 'User Count'
             },
             labels: {
                 style: {color: '#fff'},
             }
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.y:.1f}</b>'
+            pointFormat: '{series.name}: <b>{point.y:1f}</b>'
         },
         legend: {
             itemStyle: {
@@ -149,7 +148,7 @@ export class GlobeChartComponent implements OnInit {
         },
         series: [{
             showInLegend: false,
-            name: 'Risk Score',
+            name: 'User Count',
             data: [{y: 65, color: '#2b908f'},
                 {y: 80, color: '#90ee7e'},
                 {y: 75, color: '#7798BF'},

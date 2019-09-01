@@ -18,12 +18,12 @@ export class TopDetailsService {
     }
 
     getTopThreats() {
-        const url = `${this.mainURL}/topThreats/0`;
+        const url = `${this.mainURL}/topThreats/0?size=5`;
         return this.http.get(url);
     }
 
     getTopViolations() {
-        const url = `${this.mainURL}/violations/0?offset=0&size=6`;
+        const url = `${this.mainURL}/violations/0?offset=0&size=5`;
         return this.http.get(url);
     }
 
@@ -33,7 +33,7 @@ export class TopDetailsService {
     }
 
     getTopUsers(userType) {
-        const url = `${this.mainURL}/topusersbygroup/0/0?grp=${userType}`;
+        const url = `${this.mainURL}/topusersbygroup/0/10?grp=${userType}&size=5`;
         return this.http.get(url);
     }
 

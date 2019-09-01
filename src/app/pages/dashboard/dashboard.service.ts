@@ -83,17 +83,17 @@ export class DashboardService {
     }
 
     getRiskCountByDepartment() {
-        const url = `${this.mainURl}/riskscountbydepartment/0/10`;
+        const url = `${this.mainURl}/riskscountbydepartment/0/50?size=5`;
         return this.http.get(url);
     }
 
     getRiskCountByTitle() {
-        const url = `${this.mainURl}/riskscountbytitle/0/10`;
+        const url = `${this.mainURl}/riskscountbytitle/0/0?size=5`;
         return this.http.get(url);
     }
 
     getRiskCountByLocation() {
-        const url = `${this.mainURl}/riskscountbycountry/0`;
+        const url = `${this.mainURl}/riskscountbycountry/0?size=5`;
         return this.http.get(url);
     }
 

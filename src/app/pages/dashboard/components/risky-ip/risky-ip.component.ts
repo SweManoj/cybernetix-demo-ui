@@ -40,7 +40,8 @@ export class RiskyIPComponent implements OnInit {
         this.riskyUserService.getRiskyEntityDetails(this.selectedIP, 'IP').subscribe((res: any) => {
             this.ipDetails = res;
         });
-        this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedIP, 0, 0, 0).subscribe((res: any) => {
+        const date = new Date();
+        this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedIP, 0, date.getTime(), 0).subscribe((res: any) => {
             if (res && res.length > 0) {
                 res.forEach((policyViolation) => {
                     policyViolation.timeLines.forEach((timeLine) => {

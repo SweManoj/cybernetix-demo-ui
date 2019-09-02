@@ -128,7 +128,7 @@
                                 <!--         <button ngbDropdownItem class="greyBackground">
                                             Perform Remediation
                                         </button> -->
-                                        <button [routerLink]="['/policyViolationSummary', timeLine.lastViolationId]" ngbDropdownItem class="greyBackground"  *ngIf="policyViolation.dataAggregated">
+                                        <button [routerLink]="['/policyViolationSummary', timeLine.lastViolationId]" ngbDropdownItem class="greyBackground"  *ngIf="!policyViolation.dataAggregated">
                                             View Summary
                                         </button>
                                     </div>

@@ -192,7 +192,7 @@
                                         </button> -->
                                         <button [routerLink]="['/policyViolationSummary', timeLine.lastViolationId]"
                                             ngbDropdownItem class="greyBackground"
-                                            *ngIf="policyViolation.dataAggregated">
+                                            *ngIf="!policyViolation.dataAggregated">
                                             View Summary
                                         </button>
                                     </div>

@@ -5,6 +5,7 @@ import {CaseModalComponent} from './components/case-modal/case-modal.component';
 import {CaseManagementService} from './case-management.service';
 import {Table} from 'primeng/table';
 import {ActivatedRoute, Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-case-management',
@@ -171,5 +172,13 @@ export class CaseManagementComponent implements OnInit {
 
     selectPolicyClick(event) {
         event ? this.policy.filter('High', 'priority', 'contains') : this.policy.filter('', 'priority', 'contains');
+    }
+
+    fetchEnrichIndexKibanaURL(event: any, entityId, violationEventDateTime, ruleId, entityType) {
+        event.stopPropagation();
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , encodeURIComponent(violationEventDateTime), ruleId, entityType)
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+            });
     }
 }

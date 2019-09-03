@@ -17,8 +17,8 @@
                                 <div class="col-md-4 leftPaddingInitial">
                                     <div class="input-group">
                                         <input type="text" class="form-control" pInputText
-                                            placeholder="Search By Keywords"
-                                            (input)="policy.filterGlobal($event.target.value,'contains')">
+                                               placeholder="Search By Keywords"
+                                               (input)="policy.filterGlobal($event.target.value,'contains')">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <i class="fa fa-search"></i>
@@ -37,7 +37,7 @@
                                 <div class="col-md-5 rightPaddingInitial text-center">
                                     <div class="input-group">
                                         <p-calendar [(ngModel)]="policyRangeDates" placeholder="Date Range"
-                                            selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                                    selectionMode="range" [readonlyInput]="true"></p-calendar>
                                         <div class="input-group-append" (click)="setDateRange()">
                                             <span class="input-group-text">
                                                 <i class="fa fa-search"></i>
@@ -74,7 +74,7 @@
                                 <div class="row">
                                     <div class="col-md-2 filterRow policy-violation-date-table">
                                         <p-table #day [paginator]="true" [rows]="10" class="policy sortingDate"
-                                            [value]="myDays">
+                                                 [value]="myDays">
                                             <ng-template pTemplate="header">
                                                 <tr>
                                                     <th style="width:5%"></th>
@@ -82,7 +82,7 @@
                                                 </tr>
                                             </ng-template>
                                             <ng-template class="policy" pTemplate="body" let-rowData let-myDay
-                                                let-rowIndex="rowIndex" width="100%">
+                                                         let-rowIndex="rowIndex" width="100%">
                                                 <tr [pSelectableRow]="rowData">
                                                     <td (click)="daySelected(myDay,rowIndex)" class="rowdata"></td>
 
@@ -96,34 +96,35 @@
                                     <mat-spinner *ngIf="fetchingPolicyViolationsInProgress" style="margin: 15% 35%;">
                                     </mat-spinner>
                                     <div class="col-md-10"
-                                        style="padding: inherit; text-align: center; margin-top: 10%; font-size: 20px;"
-                                        *ngIf="policyViolations.length == 0 && !fetchingPolicyViolationsInProgress">
+                                         style="padding: inherit; text-align: center; margin-top: 10%; font-size: 20px;"
+                                         *ngIf="policyViolations.length == 0 && !fetchingPolicyViolationsInProgress">
                                         <p>No Policy Violations found</p>
                                     </div>
 
                                     <div class="col-md-10" style="padding: inherit;background:rgb(52, 67, 78);"
-                                        *ngIf="policyViolations.length > 0">
+                                         *ngIf="policyViolations.length > 0">
                                         <div class="media-body policy-violation-table">
                                             <p-table #policy class="policy" [value]="policyViolations"
-                                                [(selection)]="selectedPolicyItems"
-                                                [globalFilterFields]="['generationTime','policyName','entity','indicatorsOfAttack','status','priority']"
-                                                sortMode="multiple" [paginator]="true" [rows]="10">
+                                                     [(selection)]="selectedPolicyItems"
+                                                     [globalFilterFields]="['generationTime','policyName','entity','indicatorsOfAttack','status','priority']"
+                                                     sortMode="multiple" [paginator]="true" [rows]="10">
                                                 <ng-template pTemplate="header">
                                                     <tr>
                                                         <!--  <th style="width:10%" [pSortableColumn]="'violationId'">PV ID
                                                             <p-sortIcon [field]="'violationId'"></p-sortIcon></th>-->
-                                                        <th style="width:10%" [pSortableColumn]="'generationTime'">Time
-                                                            <p-sortIcon [field]="'generationTime'"></p-sortIcon>
+                                                        <th style="width:15%" [pSortableColumn]="'eventDateTime'">Event
+                                                            Day/Time
+                                                            <p-sortIcon [field]="'eventDateTime'"></p-sortIcon>
                                                         </th>
-                                                        <th style="width:20%" [pSortableColumn]="'policyName'">Policy
+                                                        <th style="width:20%" [pSortableColumn]="'ruleName'">Policy
                                                             Violation Name
-                                                            <p-sortIcon [field]="'policyName'"></p-sortIcon>
+                                                            <p-sortIcon [field]="'ruleName'"></p-sortIcon>
                                                         </th>
                                                         <th style="width:15%" [pSortableColumn]="'entity'">Entity
                                                             <p-sortIcon [field]="'entity'"></p-sortIcon>
                                                         </th>
-                                                        <th style="width:20%" [pSortableColumn]="'indicatorsOfAttack'">
-                                                            Indicators of attack
+                                                        <th style="width:15%" [pSortableColumn]="'indicatorsOfAttack'">
+                                                            Event Count
                                                             <p-sortIcon [field]="'indicatorsOfAttack'"></p-sortIcon>
                                                         </th>
                                                         <th style="width:12%" [pSortableColumn]="'status'">Status
@@ -135,16 +136,18 @@
                                                     </tr>
                                                 </ng-template>
                                                 <ng-template class="policy" pTemplate="body" let-rowData let-myPolicy
-                                                    let-rowIndex="rowIndex"
-                                                    style="margin-left:5px;margin-right:5px;padding:5px 5px;">
+                                                             let-rowIndex="rowIndex"
+                                                             style="margin-left:5px;margin-right:5px;padding:5px 5px;">
                                                     <!--   <tr [pSelectableRow]="rowData"
                                                         (click)="goToPolicyViolationSummaryPage()">-->
                                                     <tr [pSelectableRow]="rowData"
                                                         [routerLink]="['/policyViolationSummary', myPolicy.violationId]">
-                                                        <td>{{myPolicy.generationTime | date : 'hh:mm:ss'}} Hrs</td>
-                                                        <td style="color:#099bb5;">{{myPolicy.policyName}}</td>
-                                                        <td>{{myPolicy.entity | uppercase}}</td>
-                                                        <td>{{myPolicy.indicatorsOfAttack}}</td>
+                                                        <td>{{myPolicy.eventDateTime | date: 'dd/MM/yyyy'}} {{myPolicy.generationTime | date : 'hh:mm:ss'}}</td>
+                                                        <td style="color:#099bb5;">{{myPolicy.ruleName}}</td>
+                                                        <td [routerLink]="['/riskyUser', myPolicy.entity]">{{myPolicy.entity | uppercase}}</td>
+                                                        <td (click)="fetchEnrichIndexKibanaURL($event,
+                                        myPolicy.entity,
+                                        myPolicy.eventDateTime,myPolicy.ruleId,myPolicy.violationType)">{{myPolicy.indicatorsOfAttack}}</td>
                                                         <td>{{myPolicy.status}}</td>
                                                         <td>
                                                             <div class="{{myPolicy.priority}} tableStages"></div>
@@ -172,7 +175,7 @@
                         <div class="width-200 mr-4 mb-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search by Keyword"
-                                    (keyup)="incident.filterGlobal($event.target.value, 'contains')">
+                                       (keyup)="incident.filterGlobal($event.target.value, 'contains')">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-search"></i></span>
                                 </div>
@@ -181,7 +184,7 @@
                         <div class="width-200 mr-4 mb-4">
                             <div class="input-group">
                                 <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range"
-                                    selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                            selectionMode="range" [readonlyInput]="true"></p-calendar>
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fa fa-search"></i>
@@ -192,17 +195,17 @@
 
                         <div class="width-200 mr-4 mb-4">
                             <p-dropdown [options]="priority" placeholder="Priority" optionLabel="name"
-                                (onChange)="incident.filter($event.value.value, 'priority','contains')"></p-dropdown>
+                                        (onChange)="incident.filter($event.value.value, 'priority','contains')"></p-dropdown>
                         </div>
 
                         <div class="width-200 mr-4 mb-4">
                             <p-dropdown [options]="status" placeholder="Status" optionLabel="name"
-                                (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
+                                        (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
                         </div>
 
                         <div class="width-200 mr-4 mb-4">
                             <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
-                                (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
+                                        (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
                         </div>
 
                         <div class="width-200 mr-4 mb-4 mx-auto mt-2">
@@ -214,32 +217,40 @@
 
                 <div class="row ml-auto mr-auto policy-incident-table">
                     <p-table #incident
-                        [globalFilterFields]="['id', 'created', 'name', 'priority', 'status', 'assignee', 'entity']"
-                        [resizableColumns]="true" [value]="incidents" sortMode="multiple" [(selection)]="selectedItems"
-                        [paginator]="true" [rows]="12">
+                             [globalFilterFields]="['id', 'created', 'name', 'priority', 'status', 'assignee', 'entity']"
+                             [resizableColumns]="true" [value]="incidents" sortMode="multiple"
+                             [(selection)]="selectedItems"
+                             [paginator]="true" [rows]="12">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width: 3em;background:#000000">
                                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                                 </th>
 
-                                <th [pSortableColumn]="'incId'">Incident ID <p-sortIcon [field]="'incId'"></p-sortIcon>
+                                <th [pSortableColumn]="'incId'">Incident ID
+                                    <p-sortIcon [field]="'incId'"></p-sortIcon>
                                 </th>
-                                <th [pSortableColumn]="'incidentCreatedTime'">CREATED <p-sortIcon
+                                <th [pSortableColumn]="'incidentCreatedTime'">CREATED
+                                    <p-sortIcon
                                         [field]="'incidentCreatedTime'"></p-sortIcon>
                                 </th>
-                                <th style="width:33em;" [pSortableColumn]="'incidentName'">Incident Name <p-sortIcon
+                                <th style="width:33em;" [pSortableColumn]="'incidentName'">Incident Name
+                                    <p-sortIcon
                                         [field]="'incidentName'"></p-sortIcon>
                                 </th>
-                                <th [pSortableColumn]="'entity'">Entity <p-sortIcon [field]="'entity'"></p-sortIcon>
+                                <th [pSortableColumn]="'entity'">Entity
+                                    <p-sortIcon [field]="'entity'"></p-sortIcon>
                                 </th>
-                                <th [pSortableColumn]="'priority'">PRIORITY <p-sortIcon [field]="'priority'">
+                                <th [pSortableColumn]="'priority'">PRIORITY
+                                    <p-sortIcon [field]="'priority'">
                                     </p-sortIcon>
                                 </th>
-                                <th style="width:12em;" [pSortableColumn]="'status'">STATUS <p-sortIcon
+                                <th style="width:12em;" [pSortableColumn]="'status'">STATUS
+                                    <p-sortIcon
                                         [field]="'status'"></p-sortIcon>
                                 </th>
-                                <th [pSortableColumn]="'ownerName'">Case Owner <p-sortIcon [field]="'ownerName'">
+                                <th [pSortableColumn]="'ownerName'">Case Owner
+                                    <p-sortIcon [field]="'ownerName'">
                                     </p-sortIcon>
                                 </th>
                             </tr>
@@ -267,23 +278,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- <ngb-tabset type="pills">

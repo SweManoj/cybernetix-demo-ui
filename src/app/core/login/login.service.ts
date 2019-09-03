@@ -1,17 +1,14 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/finally';
 import { environment } from '../../../environments/environment';
-import { Router } from '@angular/router';
 import { StorageService, SESSION_STORAGE, isStorageAvailable } from 'angular-webstorage-service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LoginService {
 
-  constructor(private http: HttpClient, private router: Router
-    , @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
+  constructor(private http: HttpClient, @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
   }
 
   login(loginData): Observable<any> {
@@ -19,12 +16,20 @@ export class LoginService {
   }
 
   logout() {
-    if (isStorageAvailable) {
-      this.sessionStorage.remove('accessToken');
-      this.sessionStorage.remove('refreshToken');
-      this.sessionStorage.remove('redirectURL');
-    }
-    this.router.navigate(['/login']);
+    const requestHeaders = {
+      headers: new HttpHeaders({
+        accessToken: this.sessionStorage.get('accessToken'),
+        refreshToken: this.sessionStorage.get('refreshToken')
+      })
+    };
+
+    return this.http.delete(`${environment.serverUrl}/removeTokens`, requestHeaders).finally(() => {
+      if (isStorageAvailable) {
+        this.sessionStorage.remove('accessToken');
+        this.sessionStorage.remove('refreshToken');
+        this.sessionStorage.remove('redirectURL');
+      }
+    }).toPromise();
   }
 
   refreshAuthToken(): Observable<any> {

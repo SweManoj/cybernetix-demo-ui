@@ -1,16 +1,16 @@
-import {Component, Inject} from '@angular/core';
-import {UserContext} from '../../services/userContext';
-import {Router} from '@angular/router';
-import {LoginService} from '../../login/login.service';
-import {UtilService} from '../../services/util.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import {UtilDataService} from '../../services/util.data.service';
-import {ModalUtilComponent} from '../modal-util/modal.util.component';
-import {DashboardService} from '../../../pages/dashboard/dashboard.service';
-import {DEFAULT_INTERRUPTSOURCES, Idle} from '@ng-idle/core';
-import {SESSION_STORAGE, StorageService} from 'angular-webstorage-service';
+import { Component, Inject } from '@angular/core';
+import { UserContext } from '../../services/userContext';
+import { Router } from '@angular/router';
+import { LoginService } from '../../login/login.service';
+import { UtilService } from '../../services/util.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { UtilDataService } from '../../services/util.data.service';
+import { ModalUtilComponent } from '../modal-util/modal.util.component';
+import { DashboardService } from '../../../pages/dashboard/dashboard.service';
+import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 @Component({
     selector: 'app-header',
@@ -35,9 +35,9 @@ export class HeaderComponent {
     riskyHosts = [];
 
     constructor(private userContext: UserContext, private router: Router,
-                idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
-                private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
-                private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService) {
+        idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
+        private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
+        private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService) {
 
         this.themeName = this.userContext.themeName;
         this.prevThemeName = this.themeName;
@@ -112,7 +112,7 @@ export class HeaderComponent {
 
 
                 if (res.users.length === 0 && res.hosts.length === 0 && res.ipAddresses.length === 0) {
-                    const modalRef = this.ngbModal.open(ModalUtilComponent, {size: 'sm', backdrop: 'static'}); // { size: 'sm' }
+                    const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
                     modalRef.componentInstance.modalHeader = 'Warning';
                     modalRef.componentInstance.modalMessage = 'No Records Found !';
                     modalRef.componentInstance.cancelFlag = false;
@@ -121,7 +121,7 @@ export class HeaderComponent {
 
             });
         } else {
-            const modalRef = this.ngbModal.open(ModalUtilComponent, {size: 'sm', backdrop: 'static'}); // { size: 'sm' }
+            const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
             modalRef.componentInstance.modalHeader = 'Warning';
             modalRef.componentInstance.modalMessage = 'Please Enter Risky Entity Values !';
             modalRef.componentInstance.cancelFlag = false;

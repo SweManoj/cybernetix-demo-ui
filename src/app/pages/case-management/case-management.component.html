@@ -144,7 +144,7 @@
                                                         [routerLink]="['/policyViolationSummary', myPolicy.violationId]">
                                                         <td>{{myPolicy.eventDateTimeFormatted | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
                                                         <td style="color:#099bb5;">{{myPolicy.ruleName}}</td>
-                                                        <td [routerLink]="['/riskyUser', myPolicy.entity]">{{myPolicy.entity | uppercase}}</td>
+                                                        <td (click)="redirectToEntityDetailPage(myPolicy.violationType,myPolicy.entity)">{{myPolicy.entity | uppercase}}</td>
                                                         <td (click)="fetchEnrichIndexKibanaURL($event,
                                         myPolicy.entity,
                                         myPolicy.eventDateTime,myPolicy.ruleId,myPolicy.violationType)">{{myPolicy.indicatorsOfAttack}}</td>

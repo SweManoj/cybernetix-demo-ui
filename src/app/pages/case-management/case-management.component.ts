@@ -194,5 +194,15 @@ export class CaseManagementComponent implements OnInit {
             });
     }
 
+    redirectToEntityDetailPage(violationType,entityId) {
+       switch(violationType) {
+        case 'USER':  this.router.navigateByUrl('/riskyUser/' + entityId);
+                     break; 
+        case 'IP':  this.router.navigateByUrl('/riskyIP/' + entityId);
+                     break; 
+        case 'HOST':  this.router.navigateByUrl('/riskyHost/' + entityId);
+                     break; 
+       }
+    }
 
 }

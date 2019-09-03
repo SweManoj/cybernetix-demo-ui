@@ -78,7 +78,7 @@
                                             <ng-template pTemplate="header">
                                                 <tr>
                                                     <th style="width:5%"></th>
-                                                    <th style="text-align: center;">Day</th>
+                                                    <th style="text-align: center;">Violation Triggered Day</th>
                                                 </tr>
                                             </ng-template>
                                             <ng-template class="policy" pTemplate="body" let-rowData let-myDay
@@ -114,7 +114,7 @@
                                                             <p-sortIcon [field]="'violationId'"></p-sortIcon></th>-->
                                                         <th style="width:15%" [pSortableColumn]="'eventDateTime'">Event
                                                             Day/Time
-                                                            <p-sortIcon [field]="'eventDateTime'"></p-sortIcon>
+                                                            <p-sortIcon [field]="'eventDateTimeFormatted'"></p-sortIcon>
                                                         </th>
                                                         <th style="width:20%" [pSortableColumn]="'ruleName'">Policy
                                                             Violation Name
@@ -142,7 +142,7 @@
                                                         (click)="goToPolicyViolationSummaryPage()">-->
                                                     <tr [pSelectableRow]="rowData"
                                                         [routerLink]="['/policyViolationSummary', myPolicy.violationId]">
-                                                        <td>{{myPolicy.eventDateTime | date: 'dd/MM/yyyy'}} {{myPolicy.generationTime | date : 'hh:mm:ss'}}</td>
+                                                        <td>{{myPolicy.eventDateTimeFormatted | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
                                                         <td style="color:#099bb5;">{{myPolicy.ruleName}}</td>
                                                         <td [routerLink]="['/riskyUser', myPolicy.entity]">{{myPolicy.entity | uppercase}}</td>
                                                         <td (click)="fetchEnrichIndexKibanaURL($event,

@@ -82,6 +82,12 @@ export class CaseManagementComponent implements OnInit {
         this.getAllIncidents();
     }
 
+    covertDateToUTCFormat(inputDate) {
+        const date = new Date(inputDate);
+        const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+        return _utc;
+    }
+
     getPolicyViolations() {
         const selectedDate = new Date(this.todayDate);
         const endDate = new Date(this.todayDate);
@@ -89,6 +95,9 @@ export class CaseManagementComponent implements OnInit {
         endDate.setHours(23, 59, 59, 999);
         this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
             this.policyViolations = res;
+            this.policyViolations.forEach((policy: any) => {
+               policy.eventDateTimeFormatted = this.covertDateToUTCFormat(policy.eventDateTime);
+            });
             this.fetchingPolicyViolationsInProgress = false;
             this.getStageValues();
         });
@@ -126,6 +135,9 @@ export class CaseManagementComponent implements OnInit {
         this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
             this.fetchingPolicyViolationsInProgress = false;
             this.policyViolations = res;
+            this.policyViolations.forEach((policy: any) => {
+                policy.eventDateTimeFormatted = this.covertDateToUTCFormat(policy.eventDateTime);
+            });
             this.getStageValues();
         });
 
@@ -181,4 +193,6 @@ export class CaseManagementComponent implements OnInit {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
+
+
 }

@@ -23,13 +23,13 @@ export class LoginService {
       })
     };
 
-    return this.http.delete(`${environment.serverUrl}/removeTokens`, requestHeaders).finally(() => {
-      if (isStorageAvailable) {
-        this.sessionStorage.remove('accessToken');
-        this.sessionStorage.remove('refreshToken');
-        this.sessionStorage.remove('redirectURL');
-      }
-    }).toPromise();
+    this.http.delete(`${environment.serverUrl}/removeTokens`, requestHeaders).toPromise();
+
+    if (isStorageAvailable) {
+      this.sessionStorage.remove('accessToken');
+      this.sessionStorage.remove('refreshToken');
+      this.sessionStorage.remove('redirectURL');
+    }
   }
 
   refreshAuthToken(): Observable<any> {

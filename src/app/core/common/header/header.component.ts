@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { UserContext } from '../../services/userContext';
 import { Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
@@ -16,7 +16,7 @@ import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
     selector: 'app-header',
     templateUrl: './header.component.html'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
     options = {
         ease: 'linear',
@@ -33,6 +33,7 @@ export class HeaderComponent {
     riskyUsers = [];
     riskyIPAddress = [];
     riskyHosts = [];
+    loggedInUserDetails = {firstName : '', lastName: ''};
 
     constructor(private userContext: UserContext, private router: Router,
         idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
@@ -90,6 +91,9 @@ export class HeaderComponent {
     allEntitiesNames: string[] = [];
 
     ngOnInit() {
+        this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
+            this.loggedInUserDetails = res;
+        });
     }
 
     filterRiskEntities() {

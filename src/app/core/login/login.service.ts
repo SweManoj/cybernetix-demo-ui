@@ -42,4 +42,9 @@ export class LoginService {
     return this.http.get(url);
   }
 
+  getLoggedInUserDetails() {
+      const url = `${environment.serverUrl}/v1/user/getLoggedinUser`;
+      return this.http.get(url);
+  }
+
 }

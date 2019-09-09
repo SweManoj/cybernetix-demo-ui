@@ -251,6 +251,7 @@ export class RiskyUsersComponent {
     }
 
     ngOnInit() {
+
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
             this.riskyUserService.getRiskyEntityDetails(this.selectedUser, 'USER').subscribe((res: any) => {
@@ -262,17 +263,18 @@ export class RiskyUsersComponent {
                     this.initializeGuageMeterChart();
                 });
             });
-
+            
             this.riskyUserService.getRiskyUserCountDetails(this.selectedUser).subscribe((res: any) => {
                 if (res) {
                     this.eventCounts = res;
                 }
+                this.activities = [];
                 this.activities.push({ image: 'falg@1x.png', title: 'Events', value: this.eventCounts.events });
                 this.activities.push({ image: 'resources@1x.png', title: 'Resources', value: this.eventCounts.resources });
                 this.activities.push({ image: 'Shape@1x.png', title: 'Locations', value: this.eventCounts.locations });
                 this.activities.push({ image: 'violations@1x.png', title: 'Violations', value: this.eventCounts.violations });
                 this.activities.push({ image: 'incident@1x.png', title: 'Incidents', value: this.eventCounts.incidents });
-
+            
             });
             const date = new Date();
             this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, date.getTime(), 0).subscribe((res: any) => {

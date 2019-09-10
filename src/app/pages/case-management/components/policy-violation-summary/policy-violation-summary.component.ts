@@ -198,6 +198,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         };
         this.policyViolationSummaryService.updatePolicy(policyData, violationId).subscribe((response: any) => {
             this.addFeedsForPolicyUpdate();
+            this.getViolatedPolicy(this.selectedPolicy);
         });
         this._snackBar.open('Updated successfully', null, {
             duration: 2000,

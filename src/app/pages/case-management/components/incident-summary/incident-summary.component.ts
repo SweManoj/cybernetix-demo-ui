@@ -233,6 +233,7 @@ export class IncidentSummaryComponent implements OnInit {
         };
         this.incidentSummaryService.updateIncident(incidentData, this.incidentDetails.incId).subscribe((response: any) => {
             this.addFeedsForIncidentUpdate();
+            this.getIncident(this.incidentDetails.pvId);
         });
         this._snackBar.open('Updated successfully', null, {
             duration: 2000,

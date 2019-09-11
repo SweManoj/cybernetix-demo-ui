@@ -177,6 +177,7 @@ export class IncidentSummaryComponent implements OnInit {
             if (response) {
                 response = JSON.parse(response);
                 this.incidentDetails.incOwner = response;
+                this.incidentDetailsCopy.incOwner = Object.assign({}, this.incidentDetails.incOwner);
                 this.myControl.setValue({
                     name: this.incidentDetails.incOwner.firstName,
                     value: this.incidentDetails.incOwner.userName
@@ -234,7 +235,7 @@ export class IncidentSummaryComponent implements OnInit {
         };
         this.incidentSummaryService.updateIncident(incidentData, this.incidentDetails.incId).subscribe((response: any) => {
             this.addFeedsForIncidentUpdate();
-            this.getIncident(this.incidentDetails.pvID);
+            this.getIncident(this.selectedPolicy);
         });
         this._snackBar.open('Updated successfully', null, {
             duration: 2000,

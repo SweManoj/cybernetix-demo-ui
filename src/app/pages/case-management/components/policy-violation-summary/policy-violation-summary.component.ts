@@ -149,6 +149,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 const name = response.firstName + ' ' + response.lastName;
                 this.myControl.setValue({ name: name, value: response.userName });
                 this.policyDetails.policyReviewer = response;
+                this.policyDetailsCopy.policyReviewer = Object.assign({}, this.policyDetails.policyReviewer);
             }
             this.savePolicyViolationActivity('assigned this policy to himself', 'ASSIGN_TO_ME');
             this._snackBar.open('Assigned to you successfully', null, {

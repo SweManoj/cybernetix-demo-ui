@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
     riskyIPAddress = [];
     riskyHosts = [];
     loggedInUserDetails = {firstName : '', lastName: ''};
+    notificationCount: Object = 0;
 
     constructor(private userContext: UserContext, private router: Router,
         idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
@@ -94,6 +95,8 @@ export class HeaderComponent implements OnInit {
         this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
             this.loggedInUserDetails = res;
         });
+
+        this.loginService.getNotificationCount().subscribe((count) => { this.notificationCount = count; });
     }
 
     filterRiskEntities() {

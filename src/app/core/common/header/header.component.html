@@ -24,8 +24,9 @@
             </div>
         </div>
 
-        <div class="col-md-1 input-group initialPadding" style="display: flex;align-items:center;">
-            <a routerLink="/dashboard" class="al-logo clearfix">
+        <div class="col-md-1 input-group initialPadding" style="display: flex;align-items:center; position:relative;padding-top:20px;display:inline-block;">
+            <a routerLink="/dashboard" class="al-logo clearfix">                
+                <span *ngIf="notificationCount > 0" class="notify-badge">{{notificationCount}}</span>
                 <img class="notify" src="../../../../assets/images/notification.png" alt="CyberNetiz Logo"/>
             </a>
         </div>

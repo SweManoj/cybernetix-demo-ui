@@ -47,4 +47,8 @@ export class LoginService {
       return this.http.get(url);
   }
 
+  getNotificationCount() {
+    const url = `${environment.serverUrl}/v1/incident/notificationcount`;
+    return this.http.get(url);
+  }
 }

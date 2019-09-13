@@ -63,4 +63,9 @@ export class PolicyViolationSummaryService {
         const url = `${this.apiPath}/pvCasemgmt/save/policyViolationactivity`;
         return this.http.post(url, activity);
     }
+
+    getTaggedUsers(pvId) {
+        const url = `${this.apiPath}/pvCasemgmt/getTaggedUsers/${pvId}`;
+        return this.http.get(url);
+    }
 }

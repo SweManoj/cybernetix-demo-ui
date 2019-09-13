@@ -23,6 +23,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     status: any = '';
     isUpdate: boolean = false;
     selectedPolicy: any;
+    taggedUsers: any;
     policyDetailsCopy = {
         pv_ID: 0,
         attachedFiles: [],
@@ -113,6 +114,12 @@ export class PolicyViolationSummaryComponent implements OnInit {
         });
     }
 
+    getTaggedUsers() {
+        this.policyViolationSummaryService.getTaggedUsers(this.policyDetails.pv_ID).subscribe((res: any) => {
+           this.taggedUsers = res;
+        });
+    }
+
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
             users.forEach(user => {
@@ -133,6 +140,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         this.policyViolationSummaryService.getPolicyDetails(violationId).subscribe((res: any) => {
             if (res) {
                 this.policyDetails = res;
+                this.getTaggedUsers();
                 this.policyDetailsCopy = Object.assign({}, res);
                 if (this.policyDetails.policyReviewer) {
                     const name = this.policyDetails.policyReviewer.firstName + ' ' + this.policyDetails.policyReviewer.lastName;

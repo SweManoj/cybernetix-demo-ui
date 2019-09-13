@@ -22,6 +22,7 @@ export class IncidentSummaryComponent implements OnInit {
     isUpdate: boolean = false;
     selectedPolicy: any;
     caseowners = [];
+    taggedUsers: any;
     incidentDetailsCopy: any;
     incidentDetails = {
         incidentCreatedTime: '',
@@ -161,6 +162,7 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
             if (res) {
                 this.incidentDetails = res;
+                this.getTaggedUsersForIncident();
                 this.incidentDetailsCopy = Object.assign({}, res);
                 if (this.incidentDetails.incOwner) {
                     this.myControl.setValue({
@@ -172,6 +174,11 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
+    getTaggedUsersForIncident() {
+        this.incidentSummaryService.getTaggedUsersforIncident(this.incidentDetails.incId).subscribe((res: any) => {
+           this.taggedUsers = res;
+        });
+    }
     assignIncident(incidentId) {
         this.incidentSummaryService.assignIncidentToUser(incidentId).subscribe((response: any) => {
             if (response) {

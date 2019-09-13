@@ -297,7 +297,11 @@
             <div class="col-md-4">
                 <div class="ml-md-5">
                     <h3>Tagged People</h3>
-                    <p>#chetanp, #abhishek, #manish</p>
+                    <p>
+                         <span *ngFor="let taggedUser of taggedUsers; let i = index" [attr.data-index]="i">
+                            #{{taggedUser.userName}}<span *ngIf="i !== (taggedUsers.length-1)">,</span>
+                        </span>
+                    </p>
                 </div>
             </div>
 

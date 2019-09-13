@@ -62,4 +62,9 @@ export class IncidentSummaryService {
         return this.http.delete(url,{responseType: 'text'});
     }
 
+    getTaggedUsersforIncident(incId) {
+        const url = `${this.apiPath}/incident/getTaggedUsers/${incId}`;
+        return this.http.get(url);
+    }
+
 }

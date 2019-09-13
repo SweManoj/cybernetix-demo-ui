@@ -257,6 +257,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });
+            this.savePolicyViolationActivity('created an incident.', 'CREATE_AN_INCIDENT');
         });
     }
 }

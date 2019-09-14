@@ -29,13 +29,13 @@
                 <span *ngIf="notificationCount > 0" class="notify-badge">{{notificationCount}}</span>
                 <img class="notify" src="../../../../assets/images/notification.png" alt="CyberNetiz Logo"/>
             </a> -->
-            <button matBadge="{{notificationCount}}" mat-icon-button [matMenuTriggerFor]="menu" class = "notification-btn">
+            <button matBadge="{{notificationCount}}" mat-icon-button [matMenuTriggerFor]="menu" class = "notification-btn" (click)="markAsRead()">
               <img class="notify" src="../../../../assets/images/notification.png" alt="CyberNetiz Logo"/>
             </button>
             <mat-menu #menu="matMenu">
               <div mat-menu-item *ngFor="let notification of notifications">
                 <div class="row">
-                    <div class="col-1"> <mat-icon>account_circle</mat-icon></div>
+                    <div class="col-1"> <mat-icon [ngStyle]="{'color':'white'}" inline="true">account_circle</mat-icon></div>
                     <div class="col-8">
                         <b>{{notification.userName}}</b> {{notification.message}}
                     </div>

@@ -151,6 +151,14 @@ export class HeaderComponent implements OnInit {
         this.utilService.isMenuOpened = !this.utilService.isMenuOpened;
     }
 
+    markAsRead() {
+        this.notifications.forEach((notification) => {
+            this.loginService.markNotificationAsRead(notification.incNotId).subscribe((res: any) => {
+
+            })
+        })
+    }
+
     search = (text$: Observable<string>) =>
         text$
             .pipe(debounceTime(200))

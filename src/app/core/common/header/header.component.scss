@@ -167,7 +167,8 @@ input.form-control:focus {
 }
 
 .mat-menu-panel{
-    max-width: 380px;
+    max-width: 370px;
+    background-color: #212529;
 }
 
 .mat-menu-item{
@@ -176,5 +177,6 @@ input.form-control:focus {
     text-overflow: initial;
     display: block;
     line-height: 22px;
-    height: 54px;
+    height: 58px;
+    color: #a0a0a0;
 }

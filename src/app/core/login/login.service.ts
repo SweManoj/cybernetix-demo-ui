@@ -56,4 +56,9 @@ export class LoginService {
     const url = `${environment.serverUrl}/v1/incident/unreadnotification`;
     return this.http.get(url);
   }
+
+  markNotificationAsRead(incId) {
+    const url = `${environment.serverUrl}/v1/incident/markasread/${incId}`;
+    return this.http.post(url);
+  }
 }

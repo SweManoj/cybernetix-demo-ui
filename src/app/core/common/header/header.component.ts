@@ -11,6 +11,7 @@ import { ModalUtilComponent } from '../modal-util/modal.util.component';
 import { DashboardService } from '../../../pages/dashboard/dashboard.service';
 import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-header',
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
         thick: true
     };
     opened: boolean;
+    notifications: any;
     themeName: string;
     private prevThemeName: string;
     riskyUsers = [];
@@ -36,8 +38,7 @@ export class HeaderComponent implements OnInit {
     loggedInUserDetails = {firstName : '', lastName: ''};
     notificationCount: Object = 0;
 
-    constructor(private userContext: UserContext, private router: Router,
-        idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
+    constructor(private userContext: UserContext, private router: Router,private _snackBar: MatSnackBar,idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
         private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService) {
 
@@ -91,12 +92,22 @@ export class HeaderComponent implements OnInit {
     searchEntity: any = '';
     allEntitiesNames: string[] = [];
 
+    getAllUnreadNotifications() {
+        this.loginService.getUnreadNotifications().subscribe((res: any) => {
+            this.notifications = res;
+            console.log(res);
+        })
+    }
+
     ngOnInit() {
         this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
             this.loggedInUserDetails = res;
         });
 
-        this.loginService.getNotificationCount().subscribe((count) => { this.notificationCount = count; });
+        this.loginService.getNotificationCount().subscribe((count: any) => { 
+               this.notificationCount = count;
+        });
+        this.getAllUnreadNotifications();
     }
 
     filterRiskEntities() {
@@ -119,10 +130,11 @@ export class HeaderComponent implements OnInit {
 
 
                 if (res.users.length === 0 && res.hosts.length === 0 && res.ipAddresses.length === 0) {
-                    const modalRef = this.ngbModal.open(ModalUtilComponent, { size: 'sm', backdrop: 'static' }); // { size: 'sm' }
-                    modalRef.componentInstance.modalHeader = 'Warning';
-                    modalRef.componentInstance.modalMessage = 'No Records Found !';
-                    modalRef.componentInstance.cancelFlag = false;
+                this._snackBar.open('No records found', null, {
+                    duration: 2000,
+                    verticalPosition: 'top'
+                });
+                   
 
                 }
 

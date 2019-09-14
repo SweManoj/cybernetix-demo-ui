@@ -51,4 +51,9 @@ export class LoginService {
     const url = `${environment.serverUrl}/v1/incident/notificationcount`;
     return this.http.get(url);
   }
+
+  getUnreadNotifications() {
+    const url = `${environment.serverUrl}/v1/incident/unreadnotification`;
+    return this.http.get(url);
+  }
 }

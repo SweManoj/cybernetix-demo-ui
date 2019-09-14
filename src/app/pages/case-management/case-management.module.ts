@@ -56,6 +56,9 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     PulseGlobeComponent,
     TimeAgoPipe
   ],
+  exports: [
+     TimeAgoPipe
+  ],
   entryComponents: [
     CaseModalComponent
   ],

@@ -30,6 +30,8 @@ import { NgIdleModule } from '@ng-idle/core';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -60,7 +62,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         NgIdleModule.forRoot(),
         NgProgressModule.forRoot(),
         NgProgressHttpClientModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatBadgeModule,
+        MatIconModule
     ],
     exports: [
         MaterialModule

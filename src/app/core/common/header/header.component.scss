@@ -160,3 +160,21 @@ input.form-control:focus {
     padding-top: 10px;
     text-transform: capitalize;
 }
+
+.notification-btn{
+    margin-left: 100%;
+    outline: none;
+}
+
+.mat-menu-panel{
+    max-width: 380px;
+}
+
+.mat-menu-item{
+    white-space: initial; 
+    overflow: hidden;
+    text-overflow: initial;
+    display: block;
+    line-height: 22px;
+    height: 54px;
+}

@@ -35,7 +35,7 @@
             <mat-menu #menu="matMenu">
               <div mat-menu-item *ngFor="let notification of notifications">
                 <div class="row">
-                    <div class="col-1"> <mat-icon [ngStyle]="{'color':'white'}" inline="true">account_circle</mat-icon></div>
+                    <div class="col-1"> <mat-icon [ngStyle]="{'color':'white'}">account_circle</mat-icon></div>
                     <div class="col-8">
                         <b>{{notification.userName}}</b> {{notification.message}}
                     </div>

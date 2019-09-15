@@ -192,6 +192,33 @@
                                 placeholder="Enter your comments here..." matInput cdkTextareaAutosize #autosize
                                 cdkAutosizeMinRows="1" cdkAutosizeMaxRows="4"> </textarea>
                         </div>
+
+                        <mat-form-field class="example-chip-list" [hidden] = "commentValue.value.trim()==''">
+                          <mat-chip-list #chipList aria-label="Tag Users">
+                            <mat-chip
+                              *ngFor="let user of taggedUsers"
+                              [selectable]="selectable"
+                              [removable]="removable"
+                              (removed)="remove(user)">
+                              {{user.userName}}
+                              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            <input
+                              placeholder="Tag Users"
+                              #taggedUserInput
+                              [formControl]="taggedUserCtrl"
+                              [matAutocomplete]="autoForTaggedUser"
+                              [matChipInputFor]="chipList"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur"
+                              (matChipInputTokenEnd)="add($event)">
+                          </mat-chip-list>
+                          <mat-autocomplete #autoForTaggedUser="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+                              {{user.userName}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
                     </div>
                     <div class="col-12 text-right">
                         <button color="primary" class="btn-main" mat-raised-button
@@ -218,6 +245,9 @@
                                     <div class="row comment" style="word-break: break-all;">
                                         {{comment.comment}}
                                     </div>
+                                    <mat-chip-list aria-label="taggedUsers">
+                                      <mat-chip *ngFor="let taggedUser of comment.taggedUserList">{{taggedUser.userName}}</mat-chip>
+                                    </mat-chip-list>
                                     <div class="row mt-1 comment-action"><span class="reply"
                                             (click)="comment.reply= !comment.reply">Reply</span>
                                         &nbsp;|&nbsp; <span class="delete"

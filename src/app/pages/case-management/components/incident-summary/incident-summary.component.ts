@@ -112,7 +112,7 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     submitComment(parentId) {
-        const comment = new Comment(this.commentValue.value, this.incidentDetails.incId, parentId);
+        const comment = new Comment(this.commentValue.value, this.incidentDetails.incId, parentId,[]);
         this.incidentSummaryService.addComment(comment).subscribe((res: any) => {
             this.incidentDetails.incidentComments.unshift(res);
             this.saveIncidentActivity('added a comment', 'COMMENT_POSTED');
@@ -201,7 +201,7 @@ export class IncidentSummaryComponent implements OnInit {
         if (commentObj.childCommentsModel === null) {
             commentObj.childCommentsModel = [];
         }
-        const comment = new Comment(this.replyComment.value, this.incidentDetails.incId, parentId);
+        const comment = new Comment(this.replyComment.value, this.incidentDetails.incId, parentId,[]);
         this.incidentSummaryService.addComment(comment).subscribe((res: any) => {
             commentObj.childCommentsModel.unshift(res);
             commentObj.reply = false;

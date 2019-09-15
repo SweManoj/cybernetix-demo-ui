@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Comment } from './comment';
 import { PolicyViolationSummaryService } from './policy-violation-summary.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
@@ -9,6 +9,9 @@ import { map, startWith } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../../../core/login/login.service';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 
 export interface User {
     name: string;
@@ -21,9 +24,17 @@ export interface User {
 export class PolicyViolationSummaryComponent implements OnInit {
     priority: any = '';
     status: any = '';
+    users: any;
     isUpdate: boolean = false;
     selectedPolicy: any;
     taggedUsers: any;
+    @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
+    filteredUsers: Observable<string[]>;
+    visible = true;
+      selectable = true;
+      removable = true;
+      addOnBlur = true;
+      separatorKeysCodes: number[] = [ENTER, COMMA];
     policyDetailsCopy = {
         pv_ID: 0,
         attachedFiles: [],
@@ -54,9 +65,11 @@ export class PolicyViolationSummaryComponent implements OnInit {
     fileToUpload = {};
 
     myControl = new FormControl();
+    taggedUserCtrl = new FormControl();
     reviewers: User[] = [];
     filteredOptions: Observable<User[]>;
     @ViewChild('autosize') autosize: CdkTextareaAutosize;
+    @ViewChild('taggedUserInput') taggedUserInput: ElementRef<HTMLInputElement>;
     d = new Date();
     policyComments: Comment[] = [];
 
@@ -86,7 +99,12 @@ export class PolicyViolationSummaryComponent implements OnInit {
     }
 
     submitComment(parentId) {
-        const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId);
+        const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId,[]);
+        comment.taggedUserIds = []
+        this.taggedUsers.forEach((taggedUser) => {
+            comment.taggedUserIds.push(taggedUser.userId);
+        });
+        console.log(comment)
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
             this.policyDetails.policyCommentsEntities.unshift(res);
             this.savePolicyViolationActivity('added a comment', 'COMMENT_POSTED');
@@ -98,7 +116,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         if (commentObj.childCommentsModel === null) {
             commentObj.childCommentsModel = [];
         }
-        const comment = new Comment(this.replyComment.value, this.policyDetails.pv_ID, parentId);
+        const comment = new Comment(this.replyComment.value, this.policyDetails.pv_ID, parentId,[]);
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
             commentObj.childCommentsModel.unshift(res);
             commentObj.reply = false;
@@ -119,9 +137,46 @@ export class PolicyViolationSummaryComponent implements OnInit {
            this.taggedUsers = res;
         });
     }
+  add(event: MatChipInputEvent): void {
+    if (!this.matAutocomplete.isOpen) {
+      const input = event.input;
+      const value = event.value;
+
+
+      if ((value || '').trim()) {
+        this.taggedUsers.push(value);
+      }
+
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+
+      this.taggedUserCtrl.setValue(null);
+    }
+  }
+
+  remove(user: string): void {
+    const index = this.taggedUsers.indexOf(user);
+
+    if (index >= 0) {
+      this.taggedUsers.splice(index, 1);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.taggedUsers.push(event.option.value);
+    this.taggedUserInput.nativeElement.value = '';
+    this.taggedUserCtrl.setValue(null);
+  }
+
 
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
+            this.users = users;
+            this.filteredUsers = this.taggedUserCtrl.valueChanges.pipe(
+                startWith(null),
+                map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
             users.forEach(user => {
                 if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
                     this.reviewers.push({ name: user.firstName + ' ' + user.lastName, value: user.userName });
@@ -165,6 +220,12 @@ export class PolicyViolationSummaryComponent implements OnInit {
             });
         });
     }
+
+   private _taggedUserFilter(value): string[] {
+    const filterValue = value.userName.toLowerCase();
+
+    return this.users.filter(user => user.userName.toLowerCase().indexOf(filterValue) === 0);
+  }
 
     displayFn(user?: User): string | undefined {
         return user ? user.name : undefined;

@@ -25,6 +25,7 @@ import { TimeAgoPipe } from 'time-ago-pipe';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MaterialModule } from './../../material';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     MaterialModule,
     NgScrollbarModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatChipsModule
 
   ],
   declarations: [

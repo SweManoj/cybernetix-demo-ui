@@ -10,7 +10,7 @@
             <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i class="fa fa-angle-up"></i>
             </button>
             <mat-menu #menu="matMenu">
-                <button class="action-menu-item" mat-menu-item>Investigate</button>
+                <button class="action-menu-item" mat-menu-item (click)="fetchEnrichIndexKibanaURL(policyDetails.shortenUrl)">Investigate</button>
                 <button class="action-menu-item" mat-menu-item (click)="createIncident()">Create an Incident</button>
                 <!--  <button class="action-menu-item" mat-menu-item>Perform Remediation</button>-->
             </mat-menu>

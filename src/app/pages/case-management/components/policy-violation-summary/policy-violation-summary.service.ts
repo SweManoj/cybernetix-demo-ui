@@ -14,8 +14,8 @@ export class PolicyViolationSummaryService {
         this.apiPath = `${environment.serverUrl}/v1`;
     }
 
-    getPolicyDetails(violationId) {
-        const url = `${this.apiPath}/pvCasemgmt/findOrAddPolicyViolationSummary/${violationId}`;
+    getPolicyDetails(violationId, eventDateTime, dataAggregated) {
+        const url = `${this.apiPath}/pvCasemgmt/findOrAddPolicyViolationSummary/${violationId}/${eventDateTime}/${dataAggregated}`;
         return this.http.post(url, {});
     }
 

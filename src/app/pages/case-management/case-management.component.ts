@@ -205,4 +205,8 @@ export class CaseManagementComponent implements OnInit {
        }
     }
 
+    redirectToSummaryPage (violationId, eventDateTime, dataAggregated) {
+        this.router.navigate(['policyViolationSummary', violationId, eventDateTime, dataAggregated])
+    }
+
 }

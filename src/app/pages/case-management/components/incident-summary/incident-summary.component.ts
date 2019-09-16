@@ -10,6 +10,7 @@ import {IncidentSummaryService} from './incident-summary.service';
 import {LoginService} from '../../../../core/login/login.service';
 import {MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {environment} from '../../../../../environments/environment';
 
 export interface User {
     name: string;
@@ -366,5 +367,10 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.deleteComment(comment.incCmtId).subscribe((res: any) => {
             this.saveIncidentActivity('deleted a comment', 'COMMENT_DELETED');
         });
+    }
+
+    fetchEnrichIndexKibanaURL(urlId) {
+        const formatedUrlId = urlId;
+        window.open(`${environment.kibanaLink}/goto/${urlId}`);
     }
 }

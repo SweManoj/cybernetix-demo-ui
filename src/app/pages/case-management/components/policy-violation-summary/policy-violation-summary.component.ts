@@ -1,22 +1,23 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Comment } from './comment';
-import { PolicyViolationSummaryService } from './policy-violation-summary.service';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoginService } from '../../../../core/login/login.service';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Comment} from './comment';
+import {PolicyViolationSummaryService} from './policy-violation-summary.service';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {LoginService} from '../../../../core/login/login.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
+import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {environment} from '../../../../../environments/environment';
 
 export interface User {
     name: string;
     value: string;
 }
+
 @Component({
     selector: 'app-policy-violation-summary',
     templateUrl: './policy-violation-summary.component.html'
@@ -27,22 +28,24 @@ export class PolicyViolationSummaryComponent implements OnInit {
     users: any;
     isUpdate: boolean = false;
     selectedPolicy: any;
+    eventDateTime: any;
+    dataAggregated: any;
     taggedUsers = [];
     taggedUsersForViolation: any;
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
     filteredUsers: Observable<string[]>;
     visible = true;
-      selectable = true;
-      removable = true;
-      addOnBlur = true;
-      separatorKeysCodes: number[] = [ENTER, COMMA];
+    selectable = true;
+    removable = true;
+    addOnBlur = true;
+    separatorKeysCodes: number[] = [ENTER, COMMA];
     policyDetailsCopy = {
         pv_ID: 0,
         attachedFiles: [],
         priority: '',
         status: '',
         policyCommentsEntities: [],
-        policyReviewer: { userName: '', firstName: '', lastName: '' }
+        policyReviewer: {userName: '', firstName: '', lastName: ''}
     };
     policyDetails = {
         violationName: '',
@@ -61,7 +64,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         status: '',
         policyCommentsEntities: [],
         policyViolationActivities: [],
-        policyReviewer: { userName: '', firstName: '', lastName: '' }
+        policyReviewer: {userName: '', firstName: '', lastName: ''}
     };
     fileToUpload = {};
 
@@ -79,10 +82,11 @@ export class PolicyViolationSummaryComponent implements OnInit {
     replyComment: AbstractControl;
 
     constructor(private formBuilder: FormBuilder, private policyViolationSummaryService: PolicyViolationSummaryService,
-        private routeParam: ActivatedRoute, private router: Router,
-        private _snackBar: MatSnackBar, private loginService: LoginService) {
+                private routeParam: ActivatedRoute, private router: Router,
+                private _snackBar: MatSnackBar, private loginService: LoginService) {
         this.initForm();
     }
+
     policyDataChange() {
         if (this.policyDetails.priority !== '' || this.policyDetails.status !== '' || this.myControl.value !== null) {
             this.isUpdate = true;
@@ -100,12 +104,12 @@ export class PolicyViolationSummaryComponent implements OnInit {
     }
 
     submitComment(parentId) {
-        const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId,[]);
-        comment.taggedUserIds = []
+        const comment = new Comment(this.commentValue.value, this.policyDetails.pv_ID, parentId, []);
+        comment.taggedUserIds = [];
         this.taggedUsers.forEach((taggedUser) => {
             comment.taggedUserIds.push(taggedUser.userId);
         });
-        console.log(comment)
+        console.log(comment);
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
             this.policyDetails.policyCommentsEntities.unshift(res);
             this.taggedUsers = [];
@@ -119,7 +123,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         if (commentObj.childCommentsModel === null) {
             commentObj.childCommentsModel = [];
         }
-        const comment = new Comment(this.replyComment.value, this.policyDetails.pv_ID, parentId,[]);
+        const comment = new Comment(this.replyComment.value, this.policyDetails.pv_ID, parentId, []);
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
             commentObj.childCommentsModel.unshift(res);
             commentObj.reply = false;
@@ -131,47 +135,50 @@ export class PolicyViolationSummaryComponent implements OnInit {
         this.getUsers();
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedPolicy = params.get('violationId');
-            this.getViolatedPolicy(this.selectedPolicy);
+            this.eventDateTime = params.get('eventDateTime');
+            this.dataAggregated = params.get('dataAggregated');
+            this.getViolatedPolicy();
         });
     }
 
     getTaggedUsers() {
         this.policyViolationSummaryService.getTaggedUsers(this.policyDetails.pv_ID).subscribe((res: any) => {
-           this.taggedUsersForViolation = res;
+            this.taggedUsersForViolation = res;
         });
     }
-  add(event: MatChipInputEvent): void {
-    if (!this.matAutocomplete.isOpen) {
-      const input = event.input;
-      const value = event.value;
+
+    add(event: MatChipInputEvent): void {
+        if (!this.matAutocomplete.isOpen) {
+            const input = event.input;
+            const value = event.value;
 
 
-      if ((value || '').trim()) {
-        this.taggedUsers.push(value);
-      }
+            if ((value || '').trim()) {
+                this.taggedUsers.push(value);
+            }
 
-      // Reset the input value
-      if (input) {
-        input.value = '';
-      }
+            // Reset the input value
+            if (input) {
+                input.value = '';
+            }
 
-      this.taggedUserCtrl.setValue(null);
+            this.taggedUserCtrl.setValue(null);
+        }
     }
-  }
 
-  remove(user: string): void {
-    const index = this.taggedUsers.indexOf(user);
+    remove(user: string): void {
+        const index = this.taggedUsers.indexOf(user);
 
-    if (index >= 0) {
-      this.taggedUsers.splice(index, 1);
+        if (index >= 0) {
+            this.taggedUsers.splice(index, 1);
+        }
     }
-  }
 
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.taggedUsers.push(event.option.value);
-    this.taggedUserInput.nativeElement.value = '';
-    this.taggedUserCtrl.setValue(null);
-  }
+    selected(event: MatAutocompleteSelectedEvent): void {
+        this.taggedUsers.push(event.option.value);
+        this.taggedUserInput.nativeElement.value = '';
+        this.taggedUserCtrl.setValue(null);
+    }
 
 
     getUsers() {
@@ -182,7 +189,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
             users.forEach(user => {
                 if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
-                    this.reviewers.push({ name: user.firstName + ' ' + user.lastName, value: user.userName });
+                    this.reviewers.push({name: user.firstName + ' ' + user.lastName, value: user.userName});
                 }
             });
             this.filteredOptions = this.myControl.valueChanges
@@ -194,15 +201,15 @@ export class PolicyViolationSummaryComponent implements OnInit {
         });
     }
 
-    getViolatedPolicy(violationId) {
-        this.policyViolationSummaryService.getPolicyDetails(violationId).subscribe((res: any) => {
+    getViolatedPolicy() {
+        this.policyViolationSummaryService.getPolicyDetails(this.selectedPolicy, encodeURIComponent(this.eventDateTime), this.dataAggregated).subscribe((res: any) => {
             if (res) {
                 this.policyDetails = res;
                 this.getTaggedUsers();
                 this.policyDetailsCopy = Object.assign({}, res);
                 if (this.policyDetails.policyReviewer) {
                     const name = this.policyDetails.policyReviewer.firstName + ' ' + this.policyDetails.policyReviewer.lastName;
-                    this.myControl.setValue({ name: name, value: this.policyDetails.policyReviewer.userName });
+                    this.myControl.setValue({name: name, value: this.policyDetails.policyReviewer.userName});
                 }
             }
         });
@@ -213,7 +220,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             if (response) {
                 response = JSON.parse(response);
                 const name = response.firstName + ' ' + response.lastName;
-                this.myControl.setValue({ name: name, value: response.userName });
+                this.myControl.setValue({name: name, value: response.userName});
                 this.policyDetails.policyReviewer = response;
                 this.policyDetailsCopy.policyReviewer = Object.assign({}, this.policyDetails.policyReviewer);
             }
@@ -224,11 +231,11 @@ export class PolicyViolationSummaryComponent implements OnInit {
         });
     }
 
-   private _taggedUserFilter(value): string[] {
-    const filterValue = value.userName.toLowerCase();
+    private _taggedUserFilter(value): string[] {
+        const filterValue = value.userName.toLowerCase();
 
-    return this.users.filter(user => user.userName.toLowerCase().indexOf(filterValue) === 0);
-  }
+        return this.users.filter(user => user.userName.toLowerCase().indexOf(filterValue) === 0);
+    }
 
     displayFn(user?: User): string | undefined {
         return user ? user.name : undefined;
@@ -236,7 +243,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     uploadPolicyViolationFile(files: FileList) {
         this.fileToUpload = files.item(0);
-        const policyStringifiedData = JSON.stringify({ 'pvId': this.policyDetails.pv_ID });
+        const policyStringifiedData = JSON.stringify({'pvId': this.policyDetails.pv_ID});
         this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(this.fileToUpload, policyStringifiedData)
             .subscribe((res: any) => {
                 this.policyDetails.attachedFiles.push(res);
@@ -250,7 +257,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     downloadFile(data) {
         const binaryData = [];
         binaryData.push(data);
-        const blob = new Blob(binaryData, { type: 'application/octet-stream' });
+        const blob = new Blob(binaryData, {type: 'application/octet-stream'});
         const url = window.URL.createObjectURL(blob);
         window.open(url);
     }
@@ -271,7 +278,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         };
         this.policyViolationSummaryService.updatePolicy(policyData, violationId).subscribe((response: any) => {
             this.addFeedsForPolicyUpdate();
-            this.getViolatedPolicy(this.selectedPolicy);
+            this.getViolatedPolicy();
         });
         this._snackBar.open('Updated successfully', null, {
             duration: 2000,
@@ -314,7 +321,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             'feed': feed,
             'actionType': action,
             'pvID': this.policyDetails.pv_ID
-        }
+        };
         this.policyViolationSummaryService.savePolicyViolationActivity(activityData).subscribe((res: any) => {
             this.policyDetails.policyViolationActivities.unshift(res);
         });
@@ -322,14 +329,19 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     createIncident() {
         const incidentData = {
-            "status": "NEW",
-            "pvID": this.policyDetails.pv_ID
-        }
+            'status': 'NEW',
+            'pvID': this.policyDetails.pv_ID
+        };
         this.policyViolationSummaryService.createIncident(incidentData).subscribe((res: any) => {
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });
             this.savePolicyViolationActivity('created an incident.', 'CREATE_AN_INCIDENT');
         });
+    }
+
+    fetchEnrichIndexKibanaURL(urlId) {
+        const formatedUrlId = urlId;
+        window.open(`${environment.kibanaLink}/goto/${urlId}`);
     }
 }

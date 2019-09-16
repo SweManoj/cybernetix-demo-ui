@@ -70,7 +70,7 @@ export const routes: Routes = [
                 component: AlertsComponent
             },
             {
-                path: 'policyViolationSummary/:violationId',
+                path: 'policyViolationSummary/:violationId/:eventDateTime/:dataAggregated',
                 component: PolicyViolationSummaryComponent
             },
             {

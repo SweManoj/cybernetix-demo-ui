@@ -338,6 +338,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 duration: 2000,
             });
             if(res){
+             this.policyDetails.incId = res.incId;
              this.savePolicyViolationActivity('created an incident INC-' + res.incId , 'CREATE_AN_INCIDENT');
              }else{
               this.savePolicyViolationActivity('created an incident', 'CREATE_AN_INCIDENT');

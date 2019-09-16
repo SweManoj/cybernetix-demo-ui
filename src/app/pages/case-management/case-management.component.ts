@@ -138,6 +138,7 @@ export class CaseManagementComponent implements OnInit {
             this.policyViolations = res;
             this.policyViolations.forEach((policy: any) => {
                 policy.eventDateTimeFormatted = this.covertDateToUTCFormat(policy.eventDateTime);
+                policy.generationTimeFormatted = this.covertDateToUTCFormat(policy.generationTime);
             });
             this.getStageValues();
         });

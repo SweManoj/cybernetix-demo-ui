@@ -158,7 +158,9 @@ export class HeaderComponent implements OnInit {
         });
         const that = this;
         setTimeout(function () {
-            that.getAllUnreadNotifications();
+            that.loginService.getNotificationCount().subscribe((count: any) => { 
+               that.notificationCount = count;
+        });
         }, 200);
     }
 

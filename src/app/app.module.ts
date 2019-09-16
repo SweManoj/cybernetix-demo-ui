@@ -32,6 +32,7 @@ import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
     declarations: [
@@ -64,7 +65,8 @@ import {MatIconModule} from '@angular/material/icon';
         NgProgressHttpClientModule,
         MatTooltipModule,
         MatBadgeModule,
-        MatIconModule
+        MatIconModule,
+        NgScrollbarModule
     ],
     exports: [
         MaterialModule

@@ -167,8 +167,8 @@ input.form-control:focus {
 }
 
 .mat-menu-panel{
-    max-width: 360px;
-    background-color: #212529;
+    max-width: 450px;
+    background-color: rgb(52, 67, 78);
 }
 
 .mat-menu-item{
@@ -177,7 +177,7 @@ input.form-control:focus {
     text-overflow: initial;
     display: block;
     line-height: 22px;
-    height: 58px;
+    height: 48px;
     color: #a0a0a0;
 }
 
@@ -192,4 +192,13 @@ input.form-control:focus {
 
 .search-icon-container{
     margin-bottom: 2px;
+}
+
+.notification-list{
+    height: 250px !important;
+}
+.notification-container{
+    .ng-scroll-view-container{
+        margin-right: -1px!important;
+    }
 }

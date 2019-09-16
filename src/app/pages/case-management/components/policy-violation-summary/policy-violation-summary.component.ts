@@ -27,7 +27,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
     users: any;
     isUpdate: boolean = false;
     selectedPolicy: any;
-    taggedUsers: any;
+    taggedUsers = [];
+    taggedUsersForViolation: any;
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
     filteredUsers: Observable<string[]>;
     visible = true;
@@ -107,7 +108,9 @@ export class PolicyViolationSummaryComponent implements OnInit {
         console.log(comment)
         this.policyViolationSummaryService.addComment(comment).subscribe((res: any) => {
             this.policyDetails.policyCommentsEntities.unshift(res);
+            this.taggedUsers = [];
             this.savePolicyViolationActivity('added a comment', 'COMMENT_POSTED');
+            this.getTaggedUsers();
         });
         this.commentValue.setValue('');
     }
@@ -134,7 +137,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     getTaggedUsers() {
         this.policyViolationSummaryService.getTaggedUsers(this.policyDetails.pv_ID).subscribe((res: any) => {
-           this.taggedUsers = res;
+           this.taggedUsersForViolation = res;
         });
     }
   add(event: MatChipInputEvent): void {

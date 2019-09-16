@@ -12,6 +12,7 @@ import { DashboardService } from '../../../pages/dashboard/dashboard.service';
 import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {notifications} from 'ionicons/icons';
 
 @Component({
     selector: 'app-header',
@@ -95,8 +96,7 @@ export class HeaderComponent implements OnInit {
     getAllUnreadNotifications() {
         this.loginService.getUnreadNotifications().subscribe((res: any) => {
             this.notifications = res;
-            console.log(res);
-        })
+        });
     }
 
     ngOnInit() {
@@ -154,9 +154,12 @@ export class HeaderComponent implements OnInit {
     markAsRead() {
         this.notifications.forEach((notification) => {
             this.loginService.markNotificationAsRead(notification.incNotId).subscribe((res: any) => {
-
-            })
-        })
+            });
+        });
+        const that = this;
+        setTimeout(function () {
+            that.getAllUnreadNotifications();
+        }, 200);
     }
 
     search = (text$: Observable<string>) =>

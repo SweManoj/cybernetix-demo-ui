@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Comment} from './comment';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
@@ -8,6 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {IncidentSummaryService} from './incident-summary.service';
 import {LoginService} from '../../../../core/login/login.service';
+import {MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 export interface User {
     name: string;
@@ -22,7 +24,9 @@ export class IncidentSummaryComponent implements OnInit {
     isUpdate: boolean = false;
     selectedPolicy: any;
     caseowners = [];
-    taggedUsers: any;
+    taggedUsers = [];
+    taggedUsersForIncident: any;
+    users: any;
     incidentDetailsCopy: any;
     incidentDetails = {
         incidentCreatedTime: '',
@@ -49,8 +53,16 @@ export class IncidentSummaryComponent implements OnInit {
     };
     fileToUpload: any;
     policyComments: any[] = [];
-
+    @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
+    filteredUsers: Observable<string[]>;
+    visible = true;
+    selectable = true;
+    removable = true;
+    addOnBlur = true;
+    separatorKeysCodes: number[] = [ENTER, COMMA];
     myControl = new FormControl();
+    taggedUserCtrl = new FormControl();
+    @ViewChild('taggedUserInput') taggedUserInput: ElementRef<HTMLInputElement>;
     replyComment: AbstractControl;
     filteredOptions: Observable<User[]>;
 
@@ -112,10 +124,16 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     submitComment(parentId) {
-        const comment = new Comment(this.commentValue.value, this.incidentDetails.incId, parentId,[]);
+        const comment = new Comment(this.commentValue.value, this.incidentDetails.incId, parentId, []);
+        comment.taggedUserIds = []
+        this.taggedUsers.forEach((taggedUser) => {
+            comment.taggedUserIds.push(taggedUser.userId);
+        });
         this.incidentSummaryService.addComment(comment).subscribe((res: any) => {
             this.incidentDetails.incidentComments.unshift(res);
+            this.taggedUsers = [];
             this.saveIncidentActivity('added a comment', 'COMMENT_POSTED');
+            this.getTaggedUsersForIncident();
         });
         this.commentValue.setValue('');
     }
@@ -138,8 +156,18 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
+    private _taggedUserFilter(value): string[] {
+        const filterValue = value.userName.toLowerCase();
+
+        return this.users.filter(user => user.userName.toLowerCase().indexOf(filterValue) === 0);
+    }
+
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
+            this.users = users;
+            this.filteredUsers = this.taggedUserCtrl.valueChanges.pipe(
+                startWith(null),
+                map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
             users.forEach(user => {
                 if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
                     this.caseowners.push({name: user.firstName, value: user.userName});
@@ -176,7 +204,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     getTaggedUsersForIncident() {
         this.incidentSummaryService.getTaggedUsersforIncident(this.incidentDetails.incId).subscribe((res: any) => {
-           this.taggedUsers = res;
+           this.taggedUsersForIncident = res;
         });
     }
     assignIncident(incidentId) {
@@ -219,6 +247,39 @@ export class IncidentSummaryComponent implements OnInit {
                 duration: 2000,
             });
         });
+    }
+
+    add(event: MatChipInputEvent): void {
+        if (!this.matAutocomplete.isOpen) {
+            const input = event.input;
+            const value = event.value;
+
+
+            if ((value || '').trim()) {
+                this.taggedUsers.push(value);
+            }
+
+            // Reset the input value
+            if (input) {
+                input.value = '';
+            }
+
+            this.taggedUserCtrl.setValue(null);
+        }
+    }
+
+    remove(user: string): void {
+        const index = this.taggedUsers.indexOf(user);
+
+        if (index >= 0) {
+            this.taggedUsers.splice(index, 1);
+        }
+    }
+
+    selected(event: MatAutocompleteSelectedEvent): void {
+        this.taggedUsers.push(event.option.value);
+        this.taggedUserInput.nativeElement.value = '';
+        this.taggedUserCtrl.setValue(null);
     }
 
     updateOutcome() {
@@ -271,7 +332,7 @@ export class IncidentSummaryComponent implements OnInit {
                 this.saveIncidentActivity('changed the case owner', 'CASE_OWNER_ASSIGNED');
             }
         } else if (this.myControl.value.value) {
-            this.saveIncidentActivity('changed the reviewer', 'CASE_OWNER_ASSIGNED');
+            this.saveIncidentActivity('changed the case owner', 'CASE_OWNER_ASSIGNED');
         }
     }
 

@@ -36,6 +36,7 @@ export class IncidentSummaryComponent implements OnInit {
         violationTime: '',
         indicatorsCount: '',
         elasticKillChainName: '',
+        shortenUrl: '',
         elasticCategory: '',
         elasticSubCategory: '',
         incId: 0,

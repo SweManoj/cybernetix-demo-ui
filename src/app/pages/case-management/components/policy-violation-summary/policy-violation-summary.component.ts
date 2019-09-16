@@ -50,6 +50,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     policyDetails = {
         violationName: '',
         violatorId: '',
+        shortenUrl: '',
         violation_date: '',
         violation_id: '',
         indicatorsCount: '',

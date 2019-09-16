@@ -40,7 +40,7 @@
                 <ng-scrollbar trackY="true" barClass="custom-scroll">
                 <div class="notification-list">
                     <div mat-menu-item *ngFor="let notification of notifications">
-                        <div class="row">
+                        <div class="row" [routerLink]="['/incidentSummary', notification.incId]">
                             <div class="col-1">
                                 <mat-icon [ngStyle]="{'color':'white'}">account_circle</mat-icon>
                             </div>

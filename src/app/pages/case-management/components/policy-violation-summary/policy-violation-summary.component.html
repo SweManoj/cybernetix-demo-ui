@@ -11,7 +11,7 @@
             </button>
             <mat-menu #menu="matMenu">
                 <button class="action-menu-item" mat-menu-item (click)="fetchEnrichIndexKibanaURL(policyDetails.shortenUrl)">Investigate</button>
-                <button class="action-menu-item" mat-menu-item (click)="createIncident()">Create an Incident</button>
+                <button class="action-menu-item" mat-menu-item (click)="createIncident()" *ngIf="policyDetails.incId == 0">Create an Incident</button>
                 <!--  <button class="action-menu-item" mat-menu-item>Perform Remediation</button>-->
             </mat-menu>
         </div>
@@ -45,6 +45,12 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation ID</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">{{policyDetails.violation_id}}</div>
+                    </div>
+                     <div class="row mt-2" *ngIf="policyDetails.incId !== 0">
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Incident ID</div>
+                        <b>&nbsp;:&nbsp;</b>
+                        <div class="col-sm-6 dataValue" ><a [routerLink]="['/incidentSummary', policyDetails.incId]">INC - {{policyDetails.incId}}</a>
+                        </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>

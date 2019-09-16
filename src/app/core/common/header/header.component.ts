@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
         thick: true
     };
     opened: boolean;
-    notifications: any;
+    notifications = [];
     themeName: string;
     private prevThemeName: string;
     riskyUsers = [];

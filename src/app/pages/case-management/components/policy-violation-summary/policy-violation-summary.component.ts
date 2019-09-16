@@ -57,7 +57,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         elasticKillChainName: '',
         elasticCategory: '',
         elasticSubCategory: '',
-
+        incId : 0,
         pv_ID: 0,
         attachedFiles: [],
         elasticPolicyDescription: '',
@@ -337,7 +337,11 @@ export class PolicyViolationSummaryComponent implements OnInit {
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });
-            this.savePolicyViolationActivity('created an incident.', 'CREATE_AN_INCIDENT');
+            if(res){
+             this.savePolicyViolationActivity('created an incident INC-' + res.incId , 'CREATE_AN_INCIDENT');
+             }else{
+              this.savePolicyViolationActivity('created an incident', 'CREATE_AN_INCIDENT');
+             }
         });
     }
 

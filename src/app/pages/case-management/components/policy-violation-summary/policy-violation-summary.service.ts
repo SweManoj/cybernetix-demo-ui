@@ -21,7 +21,7 @@ export class PolicyViolationSummaryService {
 
     createIncident(violationData) {
         const url = `${this.apiPath}/incident/createIncident`;
-        return this.http.post(url, violationData,{responseType: 'text'});
+        return this.http.post(url, violationData);
     }
 
     updatePolicy(policyData, violationId) {
@@ -45,7 +45,7 @@ export class PolicyViolationSummaryService {
             const formData: FormData = new FormData();
             formData.append('attachFile', fileData);
             formData.append('attachFileDetails', attachedFileDetails);
-            return this.http.post(url, formData);
+            return this.http.post(url, formData, {responseType: 'json'});
     }
 
 
@@ -61,7 +61,7 @@ export class PolicyViolationSummaryService {
 
     savePolicyViolationActivity(activity) {
         const url = `${this.apiPath}/pvCasemgmt/save/policyViolationactivity`;
-        return this.http.post(url, activity);
+        return this.http.post(url, activity, {responseType: 'json'});
     }
 
     getTaggedUsers(pvId) {

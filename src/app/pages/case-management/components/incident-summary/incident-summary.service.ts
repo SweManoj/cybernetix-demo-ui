@@ -29,7 +29,7 @@ export class IncidentSummaryService {
             const formData: FormData = new FormData();
             formData.append('attachFile', fileData);
             formData.append('attachFileDetails', attachedFileDetails);
-            return this.http.post(url, formData);
+            return this.http.post(url, formData, {responseType: 'json'});
     }
 
     downloadIncidentSummaryAttachment(attachementId) {
@@ -44,7 +44,7 @@ export class IncidentSummaryService {
 
     saveIncidentActivity(activity) {
         const url = `${this.apiPath}/incident/save/incidentactivity`;
-        return this.http.post(url, activity);
+        return this.http.post(url, activity, {responseType: 'json'});
     }
 
     setIncidentOutcome(outcomeData) {
@@ -54,7 +54,7 @@ export class IncidentSummaryService {
 
     addComment(comment) {
         const url = `${this.apiPath}/incident/save/incidentcomment`;
-        return this.http.post(url, comment);
+        return this.http.post(url, comment, {responseType: 'json'});
     }
 
     deleteComment(commentId) {

@@ -11,6 +11,7 @@ import {LoginService} from '../../../../core/login/login.service';
 import {MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {environment} from '../../../../../environments/environment';
+import {UtilDataService} from '../../../../core/services/util.data.service';
 
 export interface User {
     name: string;
@@ -26,6 +27,7 @@ export class IncidentSummaryComponent implements OnInit {
     selectedPolicy: any;
     caseowners = [];
     taggedUsers = [];
+    filteredTaggedValue: any;
     taggedUsersForIncident: any;
     users: any;
     incidentDetailsCopy: any;
@@ -114,7 +116,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder, private routeParam: ActivatedRoute,
                 private router: Router, private _snackBar: MatSnackBar, private incidentSummaryService: IncidentSummaryService,
-                private loginService: LoginService) {
+                private loginService: LoginService, private utilDataService: UtilDataService) {
         this.initForm();
     }
 
@@ -159,14 +161,23 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     private _taggedUserFilter(value): string[] {
-        const filterValue = value.userName.toLowerCase();
+        if (typeof value === 'object') {
+            this.filteredTaggedValue = value.userName.toLowerCase();
+        } else {
+            this.filteredTaggedValue = value.toLowerCase();
+        }
 
-        return this.users.filter(user => user.userName.toLowerCase().indexOf(filterValue) === 0);
+
+        return this.users.filter(user => user.userName.toLowerCase().indexOf(this.filteredTaggedValue) === 0);
     }
 
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
             this.users = users;
+            const loggedInUser = this.utilDataService.getLoggedInUser();
+            if (this.users.find(user => user.userName === loggedInUser.userName)) {
+                this.users.splice(this.users.findIndex(user => user.userName === loggedInUser.userName), 1);
+            }
             this.filteredUsers = this.taggedUserCtrl.valueChanges.pipe(
                 startWith(null),
                 map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));

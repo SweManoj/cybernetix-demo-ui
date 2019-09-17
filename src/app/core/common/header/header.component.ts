@@ -102,6 +102,7 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
         this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
             this.loggedInUserDetails = res;
+            this.utilDataService.setLoggedInUser(res);
         });
 
         this.loginService.getNotificationCount().subscribe((count: any) => { 

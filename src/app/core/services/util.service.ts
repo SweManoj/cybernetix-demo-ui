@@ -5,6 +5,7 @@ export class UtilService {
 
     menuStatus: boolean = false;
 
+
     constructor() { }
 
     set isMenuOpened(menuStatus) {

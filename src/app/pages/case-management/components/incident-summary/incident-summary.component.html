@@ -227,7 +227,7 @@
                         <div class="row" [hidden]="commentValue.value.trim()==''">
                             <div class="col-md-2" class="tag-user-label">Tag Users:</div>
                             <div class="col-md-10">
-                                <mat-form-field class="example-chip-list" >
+                                <mat-form-field class="example-chip-list">
                                     <mat-chip-list #chipList aria-label="Tag Users">
                                         <mat-chip
                                             *ngFor="let user of taggedUsers"
@@ -247,7 +247,8 @@
                                                [matChipInputAddOnBlur]="addOnBlur"
                                                (matChipInputTokenEnd)="add($event)">
                                     </mat-chip-list>
-                                    <mat-autocomplete #autoForTaggedUser="matAutocomplete" (optionSelected)="selected($event)">
+                                    <mat-autocomplete #autoForTaggedUser="matAutocomplete"
+                                                      (optionSelected)="selected($event)">
                                         <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
                                             {{user.userName}}
                                         </mat-option>

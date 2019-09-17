@@ -6,6 +6,7 @@ export class UtilDataService {
     filteredRiskyUsers: any[] = [];
     filteredRiskyHost: any[] = [];
     filteredRiskyIPAddress: any[] = [];
+    loggedInUser: any;
 
     getFilteredRiskyUsers(): any[] {
         return this.filteredRiskyUsers;
@@ -17,6 +18,14 @@ export class UtilDataService {
 
     getFilteredRiskyIPAddresses(): any[] {
         return this.filteredRiskyIPAddress;
+    }
+
+    getLoggedInUser() {
+        return this.loggedInUser;
+    }
+
+    setLoggedInUser(loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
 }

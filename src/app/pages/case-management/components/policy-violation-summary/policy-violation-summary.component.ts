@@ -12,6 +12,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {environment} from '../../../../../environments/environment';
+import {UtilDataService} from '../../../../core/services/util.data.service';
 
 export interface User {
     name: string;
@@ -29,6 +30,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     isUpdate: boolean = false;
     selectedPolicy: any;
     eventDateTime: any;
+    filteredTaggedValue: any;
     dataAggregated: any;
     taggedUsers = [];
     taggedUsersForViolation: any;
@@ -84,7 +86,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder, private policyViolationSummaryService: PolicyViolationSummaryService,
                 private routeParam: ActivatedRoute, private router: Router,
-                private _snackBar: MatSnackBar, private loginService: LoginService) {
+                private _snackBar: MatSnackBar, private loginService: LoginService, private utilDataService: UtilDataService) {
         this.initForm();
     }
 
@@ -185,6 +187,11 @@ export class PolicyViolationSummaryComponent implements OnInit {
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
             this.users = users;
+            const loggedInUser = this.utilDataService.getLoggedInUser();
+            if (this.users.find(user => user.userName === loggedInUser.userName)) {
+                this.users.splice(this.users.findIndex(user => user.userName === loggedInUser.userName), 1);
+            }
+
             this.filteredUsers = this.taggedUserCtrl.valueChanges.pipe(
                 startWith(null),
                 map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
@@ -232,10 +239,15 @@ export class PolicyViolationSummaryComponent implements OnInit {
         });
     }
 
-    private _taggedUserFilter(value): string[] {
-        const filterValue = value.userName.toLowerCase();
+    private _taggedUserFilter(value) {
+        if (typeof value === 'object'){
+            this.filteredTaggedValue = value.userName.toLowerCase();
+        } else {
+            this.filteredTaggedValue = value.toLowerCase();
+        }
 
-        return this.users.filter(user => user.userName.toLowerCase().indexOf(filterValue) === 0);
+
+        return this.users.filter(user => user.userName.toLowerCase().indexOf(this.filteredTaggedValue) === 0);
     }
 
     displayFn(user?: User): string | undefined {

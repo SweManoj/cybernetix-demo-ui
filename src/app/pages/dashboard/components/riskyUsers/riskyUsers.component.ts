@@ -387,6 +387,7 @@ export class RiskyUsersComponent {
             if (res) {
                 const parsedRes = JSON.parse(res);
                 violation.incId = parsedRes.incId;
+                violation.pvId = parsedRes.pvID;
             }
         });
     }

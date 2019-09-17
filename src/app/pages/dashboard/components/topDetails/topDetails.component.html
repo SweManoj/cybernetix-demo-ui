@@ -120,7 +120,7 @@
                     style="width: 2.9rem;height: 2.9rem;" />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{orphanUser.fName}} {{orphanUser.lName}}</a>
+                <a>{{orphanUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(orphanUser.riskscorebygrp)}">
@@ -147,8 +147,7 @@
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a  [routerLink]="['/riskyUser', externalUser.entityId]" class="pointerCursor">{{externalUser.fName}}
-                    {{externalUser.lName}}</a>
+                <a  [routerLink]="['/riskyUser', externalUser.entityId]" class="pointerCursor">{{externalUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(externalUser.riskscorebygrp)}">
@@ -175,8 +174,7 @@
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a>{{riskyCloudUser.fName}}
-                    {{riskyCloudUser.lName}}</a>
+                <a>{{riskyCloudUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(riskyCloudUser.riskscorebygrp)}">
@@ -203,7 +201,7 @@
                     src='../../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', dormantUser.entityId]" class="pointerCursor">{{dormantUser.fName}} {{dormantUser.lName}}</a>
+                <a [routerLink]="['/riskyUser', dormantUser.entityId]" class="pointerCursor">{{dormantUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(dormantUser.riskscorebygrp)}">
@@ -214,10 +212,6 @@
 </div>
 <div *ngIf="componentType === 'dormantUsers' && dormantUsers.length === 0" class="no-user">
     No Dormant Users found
-</div>
-
-<div *ngIf="componentType === 'watchlistedUsers' && watchlistedUsers.length === 0" class="no-user">
-    No Cloud Users found
 </div>
 
 <!-- Top Service Account -->
@@ -235,7 +229,7 @@
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
                 <a [routerLink]="['/riskyUser',  serviceAcnt.entityId]" class="pointerCursor">
-                    {{serviceAcnt.fName}} {{serviceAcnt.lName}}</a>
+                    {{serviceAcnt.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(serviceAcnt.riskscorebygrp)}">
@@ -262,7 +256,7 @@
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', watchlistedUser.entityId]" class="pointerCursor"> {{watchlistedUser.fName}} {{watchlistedUser.lName}}</a>
+                <a [routerLink]="['/riskyUser', watchlistedUser.entityId]" class="pointerCursor"> {{watchlistedUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(watchlistedUser.riskscorebygrp)}">
@@ -272,7 +266,7 @@
     </ng-container>
 </div>
 <div *ngIf="componentType === 'watchlistedUsers' && watchlistedUsers.length === 0" class="no-user">
-    No Users found
+    No Flight Users found
 </div>
 
 <!-- Privileged Users -->
@@ -289,8 +283,7 @@
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign">
-                <a [routerLink]="['/riskyUser', privilegedUser.entityId]" class="pointerCursor">{{privilegedUser.fName}}
-                    {{privilegedUser.lName}}</a>
+                <a [routerLink]="['/riskyUser', privilegedUser.entityId]" class="pointerCursor">{{privilegedUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(privilegedUser.riskscorebygrp)}">

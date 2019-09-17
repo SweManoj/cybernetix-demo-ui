@@ -98,7 +98,7 @@ export class TopDetailsComponent implements OnInit {
                     entityId: data.u_employeeId,
                     score: Math.round(data.totalRiskScore),
                     img: true,
-                    value: data.u_firstName + ' ' + data.u_lastName
+                    value: data.u_employeeId
                 };
                 this.riskyObjects.push(userObj);
             });

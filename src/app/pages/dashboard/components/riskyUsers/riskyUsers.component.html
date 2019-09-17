@@ -172,7 +172,7 @@
 
                                 <span class="risk-score mr-5"
                                     (click)="fetchEnrichIndexKibanaURL(policyViolation.entityId, timeLine.violationEventTime,timeLine.ruleId)">{{timeLine.noOfEvents}}</span>
-                                    <a [routerLink]="['/incidentSummary', timeLine.incId]" *ngIf="timeLine.incId">INC-{{timeLine.incId}}</a>
+                                    <a [routerLink]="['/incidentSummary', timeLine.pvId]" *ngIf="timeLine.incId">INC-{{timeLine.incId}}</a>
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1"
                                     *ngIf="timeLine.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
@@ -186,7 +186,7 @@
                                             Investigate
                                         </button>
                                         <button ngbDropdownItem class="greyBackground"
-                                            (click)="createIncident(timeLine)">
+                                            (click)="createIncident(timeLine)" *ngIf="timeLine.incId !== 0">
                                             Create an Incident
                                         </button>
                                         <!--    <button ngbDropdownItem class="greyBackground">

@@ -8,6 +8,8 @@ import * as am4core from '@amcharts/amcharts4/core';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import {environment} from '../../../../../environments/environment';
+import {CaseManagementService} from '../../../case-management/case-management.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-riskyHost',
@@ -21,7 +23,8 @@ export class RiskyHostComponent implements OnInit {
     policyViolations: any;
     graphData: any;
 
-    constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
+    constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService,  private _snackBar: MatSnackBar,
+                private routeParam: ActivatedRoute, private modalService: NgbModal, private caseManagementService: CaseManagementService,
         private zone: NgZone, private router: Router) {
     }
 
@@ -117,5 +120,22 @@ export class RiskyHostComponent implements OnInit {
             .subscribe((res: any) => {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
+    }
+
+    createIncident(violation) {
+
+        const date = new Date(violation.violationEventTime);
+        const incidentData = {
+            'status': 'NEW',
+            "entityId": this.selectedHost,
+            "ruleId": violation.ruleId,
+            "violationEventDate": date.toISOString().substring(0, 10),
+            "violationEventTime": date.toISOString().substring(0, 19)
+        };
+        this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
+            this._snackBar.open('Created Incident successfully', null, {
+                duration: 2000,
+            });
+        });
     }
 }

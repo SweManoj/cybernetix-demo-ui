@@ -385,7 +385,8 @@ export class RiskyUsersComponent {
                 duration: 2000,
             });
             if (res) {
-                violation.incId = res.incId;
+                const parsedRes = JSON.parse(res);
+                violation.incId = parsedRes.incId;
             }
         });
     }

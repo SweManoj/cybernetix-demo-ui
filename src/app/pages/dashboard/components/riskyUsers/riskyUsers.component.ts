@@ -384,6 +384,9 @@ export class RiskyUsersComponent {
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });
+            if (res) {
+                violation.incId = res.incId;
+            }
         });
     }
 

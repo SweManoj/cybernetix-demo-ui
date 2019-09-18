@@ -43,12 +43,16 @@
                         <div class="col-md-5 mr-1">
                             <div class="mt-2">
                                 <span class="captionTitle">Role</span>
-                                <p class="captionData">{{userData.user.u_title}}
+                                <p class="captionData" ng-if="userData.user.u_title">{{userData.user.u_title}}
+                                </p>
+                                <p class="captionData" ng-if="!userData.user.u_title">NA
                                 </p>
                             </div>
                             <div>
                                 <span class="captionTitle">Department</span>
-                                <p class="captionData">{{userData.user.u_departmentName}}
+                                <p class="captionData" ng-if="!userData.user.u_departmentName">{{userData.user.u_departmentName}}
+                                </p>
+                                <p class="captionData" ng-if="!userData.user.u_departmentName">NA
                                 </p>
                             </div>
                         </div>
@@ -56,15 +60,19 @@
                             <div class="col-md-7">
                                 <div class="mt-2">
                                     <span class="captionTitle">Location</span>
-                                    <p class="captionData">{{userData.user.u_country}}
+                                    <p class="captionData" ng-if="userData.user.u_country">{{userData.user.u_country}}
+                                    </p>
+                                    <p class="captionData" ng-if="!userData.user.u_country">NA
                                     </p>
                                 </div>
 
                                 <div>
                                     <span class="captionTitle">Reporting
                                         Manager</span>
-                                    <p class="captionData">
+                                    <p class="captionData"  ng-if="userData.user.u_immediateManagerLevel1">
                                         <a [routerLink]="['/riskyUser', userData.user.u_immediateManagerLevel1]">{{userData.user.u_immediateManagerLevel1}}</a>
+                                    </p>
+                                    <p class="captionData" ng-if="!userData.user.u_immediateManagerLevel1">NA
                                     </p>
                                 </div>
                             </div>
@@ -78,7 +86,9 @@
                                 <div>
                                     <span class="captionTitle">Last
                                         Working Day</span>
-                                    <p class="captionData">{{userData.user.u_employeeTerminationDate}}</p>
+                                    <p class="captionData" ng-if="userData.user.u_employeeTerminationDate">{{userData.user.u_employeeTerminationDate}}</p>
+                                    <p class="captionData" ng-if="!userData.user.u_employeeTerminationDate">NA
+                                    </p>
                                 </div>
                             </div>
                         </div>

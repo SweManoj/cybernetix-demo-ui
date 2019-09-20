@@ -11,8 +11,14 @@ export class LoginService {
   constructor(private http: HttpClient, @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
   }
 
+  showSecurityTokenInput: boolean = false;
+
   login(loginData): Observable<any> {
-    return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`, null);
+    return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}&token=${loginData.token}`, null);
+  }
+
+  setSecurityTokenInput(value:boolean){
+  this.showSecurityTokenInput = value;
   }
 
   logout() {
@@ -39,6 +45,10 @@ export class LoginService {
 
   getUsers() {
     const url = `${environment.serverUrl}/v1/user/getUsers`;
+    return this.http.get(url);
+  }
+  getSecreteKey(username:string) {
+    const url = `${environment.serverUrl}/v1/user/getsecretekey/${username}/`;
     return this.http.get(url);
   }
 

@@ -33,6 +33,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import {SecreteKeyPupupComponent} from './core/login/secrete-key-popup/secrete-key-popup.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
         LoginLayoutComponent,
         MenuLayoutComponent,
         LeftNavComponent,
+        SecreteKeyPupupComponent,
         ModalUtilComponent
     ],
     imports: [
@@ -79,7 +81,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
         UtilDataService
     ],
     bootstrap: [AppComponent],
-    entryComponents: [ModalUtilComponent]
+    entryComponents: [ModalUtilComponent,SecreteKeyPupupComponent]
 })
 export class AppModule {
 }

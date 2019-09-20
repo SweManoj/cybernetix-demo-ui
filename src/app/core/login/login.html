@@ -45,7 +45,7 @@
 
                         <mat-form-field appearance="outline"
                                         [ngClass]="{'has-error': (token.touched), 'has-success': (token.touched)}">
-                            <input type="text" matInput [formControl]="token" placeholder="Authentication secret token"  autocomplete="off">
+                            <input type="password" matInput [formControl]="token" placeholder="Authentication secret token"  autocomplete="off">
                             <mat-icon color="white" matPrefix>lock</mat-icon>
 
                         </mat-form-field>

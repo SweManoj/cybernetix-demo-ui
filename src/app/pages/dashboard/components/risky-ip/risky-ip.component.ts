@@ -45,8 +45,8 @@ export class RiskyIPComponent implements OnInit {
     getRiskyIPDetails() {
         this.riskyUserService.getRiskyEntityDetails(this.selectedIP, 'IP').subscribe((res: any) => {
             this.ipDetails = res;
-            this.ipDetails.firstSeenTimeFormatted = covertDateToUTCFormat(this.ipDetails.firstSeenTime);
-             this.ipDetails.lastSeenTimeFormatted = covertDateToUTCFormat(this.ipDetails.lastSeenTime);
+            this.ipDetails.firstSeenTimeFormatted = this.covertDateToUTCFormat(this.ipDetails.firstSeenTime);
+             this.ipDetails.lastSeenTimeFormatted = this.covertDateToUTCFormat(this.ipDetails.lastSeenTime);
         });
         const date = new Date();
         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedIP, 0, date.getTime(), 0).subscribe((res: any) => {

@@ -72,9 +72,17 @@ export class RiskyHostComponent implements OnInit {
         });
     }
 
+    covertDateToUTCFormat(inputDate){
+     const date = new Date(inputDate);
+     const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+     return _utc;
+    }
+
     getRiskyHostDetails() {
         this.riskyUserService.getRiskyEntityDetails(this.selectedHost,'HOST').subscribe((res: any) => {
             this.hostDetails = res;
+            this.hostDetails.firstSeenTimeFormatted = covertDateToUTCFormat(this.hostDetails.firstSeenTime);
+             this.hostDetails.lastSeenTimeFormatted = covertDateToUTCFormat(this.hostDetails.lastSeenTime);
         });
         const date = new Date()
          this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, date.getTime(), 0).subscribe((res: any) => {

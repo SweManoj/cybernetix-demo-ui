@@ -170,7 +170,7 @@ export class TopDetailsComponent implements OnInit {
     }
 
     getRiskyCloudUsers() {
-        this.topDetailsService.getTopUsers('Cloud').subscribe((users: any) => {
+        this.topDetailsService.getTopUsers('okta').subscribe((users: any) => {
             this.riskyCloudUsers = users;
         });
         if (this.riskyCloudUsers) {

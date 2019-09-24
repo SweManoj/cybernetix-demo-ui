@@ -197,7 +197,7 @@ export class TopDetailsComponent implements OnInit {
     }
 
     getWatchlistedUsers() {
-        this.topDetailsService.getTopUsers('flight').subscribe((users: any) => {
+        this.topDetailsService.getTopUsers('okta').subscribe((users: any) => {
             this.watchlistedUsers = users;
         });
         if (this.watchlistedUsers) {

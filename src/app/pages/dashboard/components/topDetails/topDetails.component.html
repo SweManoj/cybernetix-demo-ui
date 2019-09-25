@@ -49,7 +49,7 @@
 <div *ngIf="componentType === 'topViolations'" class="top-threats ">
     <ng-container *ngFor="let violation of violations">
         <div class="threat-item row">
-            <div class="col-10 col-md-10 threat-details centerAlign">
+            <div class="col-10 col-md-10 threat-details centerAlign wordWrap">
                 <span>{{violation.policyName}}</span>
             </div>
             <div class="col-2 col-md-2 risk-count centerAlign">
@@ -68,7 +68,7 @@
 <div *ngIf="componentType ==='topThreats' " class="top-violations  mt-3">
     <ng-container *ngFor="let threat of threats">
         <div class="threat-item row pt-1 pb-2">
-            <div class="col-9 col-md-9 centerAlign p-3">
+            <div class="col-9 col-md-9 centerAlign wordWrap p-3">
                 <span>{{threat.threatCategory}}</span>
             </div>
             <div class="col-3 col-md-3 risk-count centerAlign" style="place-content: center;">
@@ -91,7 +91,7 @@
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+            <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
                 <a [routerLink]="['/riskyUser', terminatedUser.entityId]" class="pointerCursor">{{terminatedUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -145,7 +145,7 @@
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+            <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
                 <a  [routerLink]="['/riskyUser', externalUser.entityId]" class="pointerCursor">{{externalUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -199,7 +199,7 @@
                 <img class="profile-image rounded-circle"
                     src='../../../../../../assets/images/users/service_user.jpeg' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+            <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
                 <a [routerLink]="['/riskyUser', dormantUser.entityId]" class="pointerCursor">{{dormantUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -226,7 +226,7 @@
                 <img class="profile-image rounded-circle"
                     src="./../../../../../assets/images/users/service_user.jpeg" />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+            <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
                 <a [routerLink]="['/riskyUser',  serviceAcnt.entityId]" class="pointerCursor">
                     {{serviceAcnt.entityId}}</a>
             </div>
@@ -254,7 +254,7 @@
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+            <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
                 <a [routerLink]="['/riskyUser', watchlistedUser.entityId]" class="pointerCursor"> {{watchlistedUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
@@ -281,7 +281,7 @@
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
-            <div class="col-8 col-sm-8 col-md-8 centerAlign">
+            <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
                 <a [routerLink]="['/riskyUser', privilegedUser.entityId]" class="pointerCursor">{{privilegedUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">

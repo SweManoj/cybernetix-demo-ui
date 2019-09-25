@@ -153,7 +153,7 @@ export class TopDetailsComponent implements OnInit {
 
     getOrphanUsers() {
         this.topDetailsService.getTopUsers('Orphan').subscribe((users: any) => {
-            this.externalUsers = users;
+            this.orphanUsers = users;
         });
         if (this.orphanUsers) {
             this.orphanUsers.sort((a, b) => -(a.score - b.score));

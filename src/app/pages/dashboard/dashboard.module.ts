@@ -29,6 +29,7 @@ import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
 import {HighchartsChartModule} from 'highcharts-angular';
 import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
 import { DashboardCountComponent } from './components/dashboard-count/dashboard-count.component';
+import { TopUsersComponent } from './components/top-users/top-users.component';
 
 @NgModule({ 
     declarations: [
@@ -44,7 +45,8 @@ import { DashboardCountComponent } from './components/dashboard-count/dashboard-
         RiskyIPComponent,
         RiskyHostComponent,
         ShortNumberPipe,
-        DashboardCountComponent
+        DashboardCountComponent,
+        TopUsersComponent
     ],
     imports: [
         CommonModule,

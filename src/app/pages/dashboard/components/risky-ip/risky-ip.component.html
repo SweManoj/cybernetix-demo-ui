@@ -207,7 +207,7 @@
                                 </span>
                                 <span class="pointerCursor pvValue"
                                       (click)="item.accord = !item.accord">{{item.pv}}</span>
-                                      <span *ngIf=" item.ruleInfo.title === 'DHCP RENEWAL'" style="color: yellow">INFO</span>
+                                      <span class="pointerCursor pvValue" *ngIf=" item.ruleInfo.title === 'DHCP RENEWAL'" style="color: yellow">INFO</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 

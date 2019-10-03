@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/finally';
 import { environment } from '../../../environments/environment';
 import { StorageService, SESSION_STORAGE, isStorageAvailable } from 'angular-webstorage-service';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable()
 export class LoginService {
@@ -14,7 +15,17 @@ export class LoginService {
   showSecurityTokenInput: boolean = false;
 
   login(loginData): Observable<any> {
-    return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}&token=${loginData.token}`, null);
+      const key = CryptoJS.enc.Utf8.parse(environment.encryptionParsePhrase);
+      const iv = CryptoJS.enc.Utf8.parse(environment.encryptionParsePhrase);
+      const encryptionConfig = {
+          keySize: 16,
+          iv: iv,
+          mode: CryptoJS.mode.ECB,
+          padding: CryptoJS.pad.Pkcs7
+      }
+      const encryptedUsername = CryptoJS.AES.encrypt(loginData.username, key, encryptionConfig);
+      const encryptedPassword = CryptoJS.AES.encrypt(loginData.password, key, encryptionConfig);
+    return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${encryptedUsername}&password=${encryptedPassword}&token=${loginData.token}`, null);
   }
 
   setSecurityTokenInput(value:boolean){

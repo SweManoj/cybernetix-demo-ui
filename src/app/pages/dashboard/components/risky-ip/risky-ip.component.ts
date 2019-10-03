@@ -161,7 +161,7 @@ export class RiskyIPComponent implements OnInit {
             generatedDateFormat: 'June 27 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
-            pv: 'PI083',
+            pv: 'TI 083',
             riskScore: 6,
             ruleInfo: {
                 ruleId: 1,

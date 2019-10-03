@@ -163,7 +163,7 @@ export class RiskyHostComponent implements OnInit {
             generatedDateFormat: 'June 27 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
-            pv: 'PV 083',
+            pv: 'TI 083',
             riskScore: 87,
             ruleInfo: {
                 ruleId: 1,

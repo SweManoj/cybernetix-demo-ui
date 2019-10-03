@@ -99,6 +99,26 @@ export class RiskyIPComponent implements OnInit {
     hardCodeItemForDemo = [
         {
             generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '12:45:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 4,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Outbound P2P File Sharing Traffic to Rare Host'
+            },
+            threatCategories: [{title: 'Kill Chain', value: 'C2'},
+                {title: 'Threat Category', value: 'Malicious Behavior'},
+                {title: 'Sub Category', value: 'P2P Traffics'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16'},
+                {title: 'Locations', value: 'Indonesia'},
+                {title: 'Status', value: 'Risk: 95'},
+                {title: 'Resources', value: 'Proxy'},
+                {title: 'Indicators', value: 'DstIP, URL, Category, BytesOut'}],
+            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
             generatedTimestamp: '06:43:00',
             accord: false,
             pv: 'PV 045',
@@ -176,26 +196,6 @@ export class RiskyIPComponent implements OnInit {
                 {title: 'Resources', value: 'Netflow'},
                 {title: 'Indicators', value: 'SrcIP, DstIP, DstPort'}],
             description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '12:45:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 4,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Outbound P2P File Sharing Traffic to Rare Host'
-            },
-            threatCategories: [{title: 'Kill Chain', value: 'C2'},
-                {title: 'Threat Category', value: 'Malicious Behavior'},
-                {title: 'Sub Category', value: 'P2P Traffics'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16'},
-                {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 95'},
-                {title: 'Resources', value: 'Proxy'},
-                {title: 'Indicators', value: 'DstIP, URL, Category, BytesOut'}],
-            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
         }
     ];
 

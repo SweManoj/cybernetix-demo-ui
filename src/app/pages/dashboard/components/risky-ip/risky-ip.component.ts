@@ -97,29 +97,89 @@ export class RiskyIPComponent implements OnInit {
 
 
     hardCodeItemForDemo = [
-    {
+        {
             generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '14:45:00',
+            generatedTimestamp: '06:43:00',
             accord: false,
-            pv: 'PV 069',
-            riskScore: 82,
+            pv: 'PV 045',
+            riskScore: 2,
             ruleInfo: {
-                ruleId: 5,
-                title: 'Outbound Uncategorized Traffic to Multiple URLs'
+                ruleId: 3,
+                title: 'INFO - DHCP RENEWAL'
             },
-             threatCategories: [{title: 'Kill Chain', value: ''},
-                {title: 'Threat Category', value: ' Malicious Behavior'},
-                {title: 'Sub Category', value: 'Malicious Outbound Activities'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
-                {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 83'},
-                {title: 'Resources', value: 'Proxy'},
-                {title: 'Indicators', value: 'Category, URL'}],
-            description: 'This Violation is triggered when there is suspicious Outbound traffic with Uknown Category to multiple URLs'
+            threatCategories: [{title: 'Kill Chain', value: ''},
+                {title: 'Threat Category', value: ''},
+                {title: 'Sub Category', value: ''}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16'},
+                {title: 'Locations', value: ''},
+                {title: 'Status', value: ''},
+                {title: 'Resources', value: 'DHCP'},
+                {title: 'Indicators', value: 'AgentIP, AgentMAC, AgentHostname'}],
+            description: 'This event correlates Dynamic IP with Hostnames / MAC'
         },
         {
             generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '07:10:00',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 067',
+            riskScore: 13,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Inbound Traffic on SMB Port from Suspicious Location'
+            },
+            threatCategories: [{title: 'Kill Chain', value: 'Reconnaissance'},
+                {title: 'Threat Category', value: 'Malicious Behavior'},
+                {title: 'Sub Category', value: 'Inbound SMB'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Locations', value: 'Indonesia'},
+                {title: 'Status', value: 'Risk: 74'},
+                {title: 'Resources', value: 'Netflow'},
+                {title: 'Indicators', value: 'SrcIP, DstIP, DstPort'}],
+            description: 'This Violation is triggered when there is Inbound SMB traffic from Rare Location'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 6,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Inbound Telnet Traffic From Blacklisted IP's"
+            },
+             threatCategories: [{title: 'Kill Chain', value: 'Reconnaissance'},
+                {title: 'Threat Category', value: 'Malicious Behavior'},
+                {title: 'Sub Category', value: 'Inbound Telnetk'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Locations', value: 'Indonesia'},
+                {title: 'Status', value: 'Risk: 63'},
+                {title: 'Resources', value: 'Netflow'},
+                {title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence'}],
+            description: 'This Violation is triggered when there is Inbound Telnet traffic from Blacklisted IP'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '01:17:00',
+            accord: false,
+            pv: 'PV 022',
+            riskScore: 34,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Port Scanning from External IP"
+            },
+            threatCategories: [{title: 'Kill Chain', value: 'Reconnaissance'},
+                {title: 'Threat Category', value: 'Port Scanning'},
+                {title: 'Sub Category', value: 'Inbound Attack'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Locations', value: 'Indonesia'},
+                {title: 'Status', value: 'Risk: 54'},
+                {title: 'Resources', value: 'Netflow'},
+                {title: 'Indicators', value: 'SrcIP, DstIP, DstPort'}],
+            description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '12:45:00',
             accord: false,
             pv: 'PV 039',
             riskScore: 4,
@@ -127,79 +187,16 @@ export class RiskyIPComponent implements OnInit {
                 ruleId: 3,
                 title: 'Outbound P2P File Sharing Traffic to Rare Host'
             },
-             threatCategories: [{title: 'Kill Chain', value: ''},
-                {title: 'Threat Category', value: ' Malicious Behavior'},
-                {title: 'Sub Category', value: 'Malicious Outbound Activities'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
-                {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 88'},
-                {title: 'Resources', value: 'Proxy'},
-                {title: 'Indicators', value: 'Category, URL'}],
-            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
-        },
-         {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 061',
-            riskScore: 11,
-            ruleInfo: {
-                ruleId: 2,
-                title: "Inbound Uncategorized Traffic From Multiple URL's"
-            },
-             threatCategories: [{title: 'Kill Chain', value: ''},
-                {title: 'Threat Category', value: ' Malicious Behavior'},
-                {title: 'Sub Category', value: 'Inbound Attack'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
-                {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 67'},
-                {title: 'Resources', value: 'Firewall'},
-                {title: 'Indicators', value: 'SrcIP, DestPort, Threat Intelligence'}],
-            description: 'This Violation is triggered when there is suspicious inbound Telnet traffic from Blacklisted IP'
-        },
-         {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 061',
-            riskScore: 64,
-            ruleInfo: {
-                ruleId: 2,
-                title: "Inbound Spam Traffic From OFAC Countries"
-            },
-             threatCategories: [{title: 'Kill Chain', value: ''},
+            threatCategories: [{title: 'Kill Chain', value: 'C2'},
                 {title: 'Threat Category', value: 'Malicious Behavior'},
-                {title: 'Sub Category', value: 'Inbound Attack'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
-                {title: 'Locations', value: 'Indonesia, Ukraine, Taipei'},
-                {title: 'Status', value: 'Risk: 83'},
-                {title: 'Resources', value: 'Firewall'},
-                {title: 'Indicators', value: 'SrcIP, DestPort, Threat Intelligence'}],
-            description: 'This Violation is triggered when there is suspicious Spam traffic from OFAC Countries'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '03:22:00',
-            accord: false,
-            pv: 'PV 083',
-            riskScore: 87,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Inbound Telnet Traffic From Blacklisted IP's"
-            },
-             threatCategories: [{title: 'Kill Chain', value: ''},
-                {title: 'Threat Category', value: ' Malicious Behavior'},
-                {title: 'Sub Category', value: 'Inbound Attack'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
+                {title: 'Sub Category', value: 'P2P Traffics'}],
+            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16'},
                 {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 67'},
-                {title: 'Resources', value: 'Firewall'},
-                {title: 'Indicators', value: 'SrcIP, DestPort, Threat Intelligence'}],
-            description: 'This Violation is triggered when there is suspicious inbound Telnet traffic from Blacklisted IP'
+                {title: 'Status', value: 'Risk: 95'},
+                {title: 'Resources', value: 'Proxy'},
+                {title: 'Indicators', value: 'DstIP, URL, Category, BytesOut'}],
+            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
         }
-       
-        
-    
     ];
 
     threatCategories = [

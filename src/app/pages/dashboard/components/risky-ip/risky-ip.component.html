@@ -198,7 +198,7 @@
                         <span class="risk-dot rounded-circle">&nbsp;</span>
                     </div>
 
-                    <div class="violationTitle" [ngClass]="{'dhcp' : item.ruleInfo.title === 'INFO - DHCP RENEWAL'}">
+                    <div class="violationTitle" [ngClass]="{'dhcp' : item.ruleInfo.title === 'DHCP RENEWAL'}">
                         <div class="row mt-1 mb-2 ml-3 mr-1">
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
@@ -207,6 +207,7 @@
                                 </span>
                                 <span class="pointerCursor pvValue"
                                       (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                      <span *ngIf=" item.ruleInfo.title === 'DHCP RENEWAL'" style="color: yellow">INFO</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 

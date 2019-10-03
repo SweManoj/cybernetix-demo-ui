@@ -20,8 +20,8 @@ export class RiskyIPComponent implements OnInit {
     ipDetails: any;
 
     ipaddressesData = [
-        { value: '10.82.32.212', score: 95, location: 'London, UK', lastSeen: '27 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'ChrisM98' },
-        { value: '82.102.21.217', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 32, lastSeenUser: 'NEI89321' },
+        { value: '10.82.32.212', score: 95, location: 'London, UK', lastSeen: '27 Jun 2019 03:22:00', peer: 32, lastSeenUser: 'ChrisM98' },
+        { value: '82.102.21.217', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 2, lastSeenUser: 'NEI89321' },
         { value: '95.181.116.77', score: 85, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { value: '23.94.213.6', score: 89, location: 'Berlin, Germany', lastSeen: '23 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
         { value: '69.249.19.217', score: 76, location: 'Paris, France ', lastSeen: '24 Jun 2019 18:38:00', peer: 3, lastSeenUser: 'JRU87122' }];
@@ -125,7 +125,7 @@ export class RiskyIPComponent implements OnInit {
             riskScore: 2,
             ruleInfo: {
                 ruleId: 3,
-                title: 'INFO - DHCP RENEWAL'
+                title: 'DHCP RENEWAL'
             },
             threatCategories: [{title: 'Kill Chain', value: ''},
                 {title: 'Threat Category', value: ''},
@@ -161,7 +161,7 @@ export class RiskyIPComponent implements OnInit {
             generatedDateFormat: 'June 27 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
-            pv: 'PV 083',
+            pv: 'TI083',
             riskScore: 6,
             ruleInfo: {
                 ruleId: 1,

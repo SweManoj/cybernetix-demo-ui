@@ -21,7 +21,7 @@ export class RiskyIPComponent implements OnInit {
 
     ipaddressesData = [
         { value: '10.82.32.212', score: 95, location: 'London, UK', lastSeen: '27 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'ChrisM98' },
-        { value: '82.102.21.217', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
+        { value: '82.102.21.217', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 32, lastSeenUser: 'NEI89321' },
         { value: '95.181.116.77', score: 85, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { value: '23.94.213.6', score: 89, location: 'Berlin, Germany', lastSeen: '23 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
         { value: '69.249.19.217', score: 76, location: 'Paris, France ', lastSeen: '24 Jun 2019 18:38:00', peer: 3, lastSeenUser: 'JRU87122' }];
@@ -109,7 +109,7 @@ export class RiskyIPComponent implements OnInit {
             },
             threatCategories: [{title: 'Kill Chain', value: 'C2'},
                 {title: 'Threat Category', value: 'Malicious Behavior'},
-                {title: 'Sub Category', value: 'P2P Traffics'}],
+                {title: 'Sub Category', value: 'P2P Traffic'}],
             dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16'},
                 {title: 'Locations', value: 'Indonesia'},
                 {title: 'Status', value: 'Risk: 95'},
@@ -121,7 +121,7 @@ export class RiskyIPComponent implements OnInit {
             generatedDateFormat: 'June 27 2019',
             generatedTimestamp: '06:43:00',
             accord: false,
-            pv: 'PV 045',
+            pv: '',
             riskScore: 2,
             ruleInfo: {
                 ruleId: 3,
@@ -169,7 +169,7 @@ export class RiskyIPComponent implements OnInit {
             },
              threatCategories: [{title: 'Kill Chain', value: 'Reconnaissance'},
                 {title: 'Threat Category', value: 'Malicious Behavior'},
-                {title: 'Sub Category', value: 'Inbound Telnetk'}],
+                {title: 'Sub Category', value: 'Inbound Telnet'}],
             dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
                 {title: 'Locations', value: 'Indonesia'},
                 {title: 'Status', value: 'Risk: 63'},

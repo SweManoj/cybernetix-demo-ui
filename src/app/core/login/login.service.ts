@@ -15,8 +15,16 @@ export class LoginService {
   showSecurityTokenInput: boolean = false;
 
   login(loginData): Observable<any> {
-      const encryptedUsername = CryptoJS.AES.encrypt(loginData.username, environment.encryptionSecretKey);
-      const encryptedPassword = CryptoJS.AES.encrypt(loginData.password, environment.encryptionSecretKey);
+      const key = CryptoJS.enc.Utf8.parse(environment.encryptionParsePhrase);
+      const iv = CryptoJS.enc.Utf8.parse(environment.encryptionParsePhrase);
+      const encryptionConfig = {
+          keySize: 16,
+          iv: iv,
+          mode: CryptoJS.mode.ECB,
+          padding: CryptoJS.pad.Pkcs7
+      }
+      const encryptedUsername = CryptoJS.AES.encrypt(loginData.username, key, encryptionConfig);
+      const encryptedPassword = CryptoJS.AES.encrypt(loginData.password, key, encryptionConfig);
     return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${encryptedUsername}&password=${encryptedPassword}&token=${loginData.token}`, null);
   }
 

@@ -5,14 +5,14 @@
             <div class="risky-user-header">
                 <div class="row m-auto" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
-                        <img  class="profile-image mt-4"
-                            src='./../../../../../assets/images/dashboard_icons/Ip@2x.png' style="width: 4rem;"/>
+                        <img class="profile-image mt-4" src='./../../../../../assets/images/dashboard_icons/Ip@2x.png'
+                            style="width: 4rem;" />
                         <div class="user-info m-t-sm">
                             <span style="color:#D3D3D3;size:26px;font-weight: 600">{{ipDetails.value}}</span>
                             <p></p>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-8 mt-1 d-flex initialPadding">
                         <div class="col-md-3" style="text-align: center;">
                             <div class="info m-t-sm">
@@ -44,7 +44,7 @@
                                 <p></p>
                             </div>
                         </div>
-                        <div class="col-md-3"  style="text-align: center;">
+                        <div class="col-md-3" style="text-align: center;">
                             <div class="info m-t-sm">
                                 <span style="color:#a0a0a0;size:30px;font-weight: 500">Peers</span>
                                 <p></p>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-md-2" style="text-align: center;background: #041421;">
                         <p [ngStyle]="{'color':getRiskScoreColor(ipDetails.score)}" class="rscore">
-                             {{ipDetails.score}}
+                            {{ipDetails.score}}
                         </p>
                         <div class="user-info m-t-sm">
                             <span class="riskscore">Risk Score</span>
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <ng-container *ngIf = "selectedIP !== '10.82.32.212'">
+    <ng-container *ngIf="selectedIP !== '10.82.32.212'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4">
             <div class="risk-date-stamp">
                 <span>20 June 2019</span>
@@ -96,24 +96,23 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                      <span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
@@ -123,7 +122,8 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Perform Remediaion
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary']" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary']" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -183,7 +183,7 @@
         </div>
     </ng-container>
 
-    <ng-container *ngIf = "selectedIP === '10.82.32.212'">
+    <ng-container *ngIf="selectedIP === '10.82.32.212'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4">
             <div class="risk-date-stamp">
                 <span>27 June 2019</span>
@@ -203,26 +203,25 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
-                                <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord" [ngStyle]="{'color':item.pv=='INFO'?'yellow':'red'}">{{item.pv}}</span>
-                                      <!-- <span class="pointerCursor pvValue" *ngIf=" item.ruleInfo.title === 'DHCP RENEWAL'" style="color: yellow">INFO</span> -->
-                                      <span  *ngIf="item.pv=='INFO'"  >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                <span class="pointerCursor pvValue" (click)="item.accord = !item.accord" [ngStyle]="{'color':item.pv=='INFO'?'yellow':'red';
+                                      'margin-right':item.pv=='INFO'?' 2rem:auto; }">{{item.pv}}</span>
+                                <!-- <span class="pointerCursor pvValue" *ngIf=" item.ruleInfo.title === 'DHCP RENEWAL'" style="color: yellow">INFO</span> -->
+                                <!-- <span *ngIf="item.pv=='INFO'">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> -->
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
-                               <!--  <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                <!--  <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                       <span
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
@@ -232,7 +231,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Perform Remediaion
                                         </button>
-                                        <button (click) = "gotoSummery()" ngbDropdownItem class="greyBackground">
+                                        <button (click)="gotoSummery()" ngbDropdownItem class="greyBackground">
                                             View Summery
                                         </button>
                                     </div>
@@ -240,7 +239,7 @@
                             </div>
                         </div>
 
-                             <div class="row col-md-12 violationInfo " *ngIf="item.accord">
+                        <div class="row col-md-12 violationInfo " *ngIf="item.accord">
                             <div class="mt-3 d-flex mb-3">
                                 <div class="col-md-3 riskAccordBorder">
                                     <dl>
@@ -255,7 +254,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>

@@ -50,6 +50,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         policyReviewer: {userName: '', firstName: '', lastName: ''}
     };
     policyDetails = {
+        entity:'',
         violationName: '',
         violatorId: '',
         shortenUrl: '',
@@ -89,6 +90,17 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 private _snackBar: MatSnackBar, private loginService: LoginService, private utilDataService: UtilDataService) {
         this.initForm();
     }
+
+    redirectToEntityDetailPage(violationType,violatorId) {
+        switch(violationType) {
+         case 'USER':  this.router.navigateByUrl('/riskyUser/' + violatorId);
+                      break; 
+         case 'IP':  this.router.navigateByUrl('/riskyIP/' + violatorId);
+                      break; 
+         case 'HOST':  this.router.navigateByUrl('/riskyHost/' + violatorId);
+                      break; 
+        }
+     }
 
     policyDataChange() {
         if (this.policyDetails.priority !== '' || this.policyDetails.status !== '' || this.myControl.value !== null) {

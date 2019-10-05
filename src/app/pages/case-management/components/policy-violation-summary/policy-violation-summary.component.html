@@ -69,8 +69,9 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Affected Entity</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue"><a
-                            [routerLink]="['/riskyUser', policyDetails.violatorId]">{{policyDetails.violatorId | uppercase}}</a>
+                        <div class="col-sm-6 dataValue"><a [routerLink]=""
+                            (click)="redirectToEntityDetailPage(policyDetails.entity, policyDetails.violatorId)"
+                            >{{policyDetails.violatorId | uppercase}}</a>
                         </div>
                     </div>
                     <div class="row mt-2">

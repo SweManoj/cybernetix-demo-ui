@@ -98,7 +98,7 @@ export class DashboardService {
     }
 
     searchUserByName(entityName) {
-        const url = `${this.mainURl}/searchRiskyEntities/${entityName}`;
+        const url = `${this.mainURl}/searchRiskyEntities?entityName=${entityName}`;
         return this.http.get(url);
     }
 

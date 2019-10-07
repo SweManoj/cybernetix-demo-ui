@@ -438,6 +438,8 @@ export class PolicyViolatedUsersComponent implements OnInit {
     ]
   };
 
+  nonThreatVector = true;
+
   constructor(private utilDataService: UtilDataService, private routeParam: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -455,6 +457,7 @@ export class PolicyViolatedUsersComponent implements OnInit {
         case 'PV05': this.filteredRiskyEntities = this.filteredRiskyEntitiesForPV05;
           break;
         default:
+          this.nonThreatVector = false;
           this.filteredRiskyEntities = this.filteredRiskyEntitiesForPV05;
           this.filteredRiskyEntities.title = this.selectedPolicy;
           break;

@@ -224,7 +224,7 @@
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
                                     </dl>
 
-                                    <div class="ml-4">
+                                    <div class="ml-4" *ngIf="!item.threatCategories">
                                         <div class="row mt-1 details" *ngFor="let threatCategory of threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
@@ -235,13 +235,25 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="ml-4" *ngIf="item.threatCategories">
+                                            <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                                <div class="col-md-5">
+                                                    {{threatCategory.title}}
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-6">
+                                                    {{threatCategory.value}}
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
 
                                 <div class="col-4 col-sm-4">
                                     <dl>
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                     </dl>
-                                    <div class="ml-4">
+                                    <div class="ml-4" *ngIf="!item.additionalInfo">
                                         <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
                                             <div class="col-md-6">
                                                 {{dummyData.title}}
@@ -252,6 +264,18 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="ml-4" *ngIf="item.additionalInfo">
+                                            <div class="row mt-1 details" *ngFor="let dummyData of item.additionalInfo">
+                                                <div class="col-md-6">
+                                                    {{dummyData.title}}
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-5">
+                                                    {{dummyData.value}}
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>

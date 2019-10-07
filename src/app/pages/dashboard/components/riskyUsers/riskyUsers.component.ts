@@ -194,7 +194,7 @@ export class RiskyUsersComponent {
         }
     ];
 
-    hardCodeItemData:any = [
+    hardCodeItemData: any = [
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '09:33:00',
@@ -207,18 +207,18 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-1',
             description: 'This Violation is triggered when user exfiltrates excissive bytes of data via HTTPS',
-            threatCategories:[
-                { title:'Kill Chain', value:'Data Exfiltration' },
-                { title:'Threat Category', value:'Data Exfiltration' },
-                { title:'Sub Category', value:'Data Exfiltration via HTTPS' }
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration via HTTPS' }
             ],
-            additionalInfo: {
-                'Affected Entity': 'SVL-EMoor, WK-38482L',
-                'Location': 'San Diego',
-                'Status': 'Risk: 95',
-                'Resource': 'Proxy',
-                'Indicators': 'URL, BytesOut, Event'
-            }
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 95' },
+                { title: 'Resource', value: 'Proxy' },
+                { title: 'Indicators', value: 'URL, BytesOut, Event' }
+            ]
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -232,18 +232,18 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-2',
             description: 'This Violation is triggered when service attempts to connect to Proxy',
-            threatCategories:[
-                { title:'Kill Chain', value:'Exploitation' },
-                { title:'Threat Category', value:'Proxy Attempts' },
-                { title:'Sub Category', value:'Proxy Attempts' }
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Exploitation' },
+                { title: 'Threat Category', value: 'Proxy Attempts' },
+                { title: 'Sub Category', value: 'Proxy Attempts' }
             ],
-            additionalInfo: {
-                'Affected Entity': 'SVL-EMoor, WK-38482L',
-                'Location': 'San Diego',
-                'Status': 'Risk:89',
-                'Resource': 'Proxy',
-                'Indicators': 'URL'
-            }
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 89' },
+                { title: 'Resource', value: 'Proxy' },
+                { title: 'Indicators', value: 'URL' }
+            ]
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -257,18 +257,18 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-3',
             description: 'This Violation is triggered when User attempts to exfiltrate data via DLP',
-            threatCategories:[
-                { title:'Kill Chain', value:'Data Exfiltration' },
-                { title:'Threat Category', value:'Data Exfiltration Attempt' },
-                { title:'Sub Category', value:'Data Exfiltration Attempt via Email' }
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration Attempt' },
+                { title: 'Sub Category', value: 'Data Exfiltration Attempt via Email' }
             ],
-            additionalInfo: {
-                'Affected Entity': 'SVL-EMoor, WK-38482L',
-                'Location': 'San Diego',
-                'Status': 'Risk: 86',
-                'Resource': ' DLP Network',
-                'Indicators': 'FileNames, BytesOut, Event'
-            }
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 86' },
+                { title: 'Resource', value: 'DLP Network' },
+                { title: 'Indicators', value: 'FileNames, BytesOut, Event' }
+            ]
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -282,18 +282,18 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-4',
             description: 'This Violation is triggered when User downloads high number of Files / documents from 0-365 Sharepoint',
-            threatCategories:[
-                { title:'Kill Chain', value:'Insider Threat' },
-                { title:'Threat Category', value:'Data Downloads' },
-                { title:'Sub Category', value:'Data Downloads from Cloud' }
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Insider Threat' },
+                { title: 'Threat Category', value: 'Data Downloads' },
+                { title: 'Sub Category', value: 'Data Downloads from Cloud' }
             ],
-            additionalInfo: {
-                'Affected Entity': 'SVL-EMoor, WK-38482L',
-                'Location': 'San Diego',
-                'Status': 'Risk: 83',
-                'Resource': '0365 Sharepoint',
-                'Indicators': 'FileNames, Size, Event'
-            }
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 83' },
+                { title: 'Resource', value: '0365 Sharepoint' },
+                { title: 'Indicators', value: 'FileNames, Size, Event' }
+            ]
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -307,18 +307,18 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-5',
             description: 'This Violation is triggered when User grants groups / permissions to Service Account',
-            threatCategories:[
-                { title:'Kill Chain', value:'Privilege Misuse' },
-                { title:'Threat Category', value:'Privilege Escalation' },
-                { title:'Sub Category', value:'Privilege Escalation to Service Accounts' }
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Privilege Misuse' },
+                { title: 'Threat Category', value: 'Privilege Escalation' },
+                { title: 'Sub Category', value: 'Privilege Escalation to Service Accounts' }
             ],
-            additionalInfo: {
-                'Affected Entity': 'Adm-EMoor, WK-38482L',
-                'Location': 'San Diego',
-                'Status': 'Risk: 74',
-                'Resource': 'Windows',
-                'Indicators': 'TargetAccount, Groups, Event'
-            }
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Adm-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 74' },
+                { title: 'Resource', value: 'Windows' },
+                { title: 'Indicators', value: 'TargetAccount, Groups, Event' }
+            ]
         }/* ,
         {
             generatedDateFormat: '10 May 2019',

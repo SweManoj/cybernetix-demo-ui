@@ -21,8 +21,8 @@ export class TopDetailsComponent implements AfterViewInit {
         { id: 'Beaconing', count: 85 },
         { id: 'Phishing', count: 69 },
         { id: 'Data Exfiltration', count: 54 },
-        { id: 'Cyber Threat', count: 12 },
-        { id: 'Flight Risk', count: 9 }
+        { id: 'Reconnaissance', count: 12 },
+        { id: 'Lateral Movement', count: 9 }
     ];
 
     riskyObjects = [

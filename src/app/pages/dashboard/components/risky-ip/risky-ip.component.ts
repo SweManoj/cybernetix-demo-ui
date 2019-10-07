@@ -107,14 +107,14 @@ export class RiskyIPComponent implements OnInit {
                 ruleId: 3,
                 title: 'Outbound P2P File Sharing Traffic to Rare Host'
             },
-            threatCategories: [{title: 'Kill Chain', value: 'C2'},
-                {title: 'Threat Category', value: 'Malicious Behavior'},
-                {title: 'Sub Category', value: 'P2P Traffic'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16'},
-                {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 95'},
-                {title: 'Resources', value: 'Proxy'},
-                {title: 'Indicators', value: 'DstIP, URL, Category, BytesOut'}],
+            threatCategories: [{ title: 'Kill Chain', value: 'C2' },
+            { title: 'Threat Category', value: 'Malicious Behavior' },
+            { title: 'Sub Category', value: 'P2P Traffic' }],
+            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16' },
+            { title: 'Locations', value: 'Indonesia' },
+            { title: 'Status', value: 'Risk: 95' },
+            { title: 'Resources', value: 'Proxy' },
+            { title: 'Indicators', value: 'DstIP, URL, Category, BytesOut' }],
             description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
         },
         {
@@ -127,14 +127,14 @@ export class RiskyIPComponent implements OnInit {
                 ruleId: 3,
                 title: 'DHCP RENEWAL'
             },
-            threatCategories: [{title: 'Kill Chain', value: ''},
-                {title: 'Threat Category', value: ''},
-                {title: 'Sub Category', value: ''}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16'},
-                {title: 'Locations', value: ''},
-                {title: 'Status', value: ''},
-                {title: 'Resources', value: 'DHCP'},
-                {title: 'Indicators', value: 'AgentIP, AgentMAC, AgentHostname'}],
+            threatCategories: [{ title: 'Kill Chain', value: '' },
+            { title: 'Threat Category', value: '' },
+            { title: 'Sub Category', value: '' }],
+            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16' },
+            { title: 'Locations', value: '' },
+            { title: 'Status', value: '' },
+            { title: 'Resources', value: 'DHCP' },
+            { title: 'Indicators', value: 'AgentIP, AgentMAC, AgentHostname' }],
             description: 'This event correlates Dynamic IP with Hostnames / MAC'
         },
         {
@@ -147,14 +147,14 @@ export class RiskyIPComponent implements OnInit {
                 ruleId: 3,
                 title: 'Inbound Traffic on SMB Port from Suspicious Location'
             },
-            threatCategories: [{title: 'Kill Chain', value: 'Reconnaissance'},
-                {title: 'Threat Category', value: 'Malicious Behavior'},
-                {title: 'Sub Category', value: 'Inbound SMB'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
-                {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 74'},
-                {title: 'Resources', value: 'Netflow'},
-                {title: 'Indicators', value: 'SrcIP, DstIP, DstPort'}],
+            threatCategories: [{ title: 'Kill Chain', value: 'Reconnaissance' },
+            { title: 'Threat Category', value: 'Malicious Behavior' },
+            { title: 'Sub Category', value: 'Inbound SMB' }],
+            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
+            { title: 'Locations', value: 'Indonesia' },
+            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Resources', value: 'Netflow' },
+            { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
             description: 'This Violation is triggered when there is Inbound SMB traffic from Rare Location'
         },
         {
@@ -167,14 +167,14 @@ export class RiskyIPComponent implements OnInit {
                 ruleId: 1,
                 title: "Inbound Telnet Traffic From Blacklisted IP's"
             },
-             threatCategories: [{title: 'Kill Chain', value: 'Reconnaissance'},
-                {title: 'Threat Category', value: 'Malicious Behavior'},
-                {title: 'Sub Category', value: 'Inbound Telnet'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
-                {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 63'},
-                {title: 'Resources', value: 'Netflow'},
-                {title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence'}],
+            threatCategories: [{ title: 'Kill Chain', value: 'Reconnaissance' },
+            { title: 'Threat Category', value: 'Malicious Behavior' },
+            { title: 'Sub Category', value: 'Inbound Telnet' }],
+            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
+            { title: 'Locations', value: 'Indonesia' },
+            { title: 'Status', value: 'Risk: 63' },
+            { title: 'Resources', value: 'Netflow' },
+            { title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence' }],
             description: 'This Violation is triggered when there is Inbound Telnet traffic from Blacklisted IP'
         },
         {
@@ -187,14 +187,14 @@ export class RiskyIPComponent implements OnInit {
                 ruleId: 1,
                 title: "Port Scanning from External IP"
             },
-            threatCategories: [{title: 'Kill Chain', value: 'Reconnaissance'},
-                {title: 'Threat Category', value: 'Port Scanning'},
-                {title: 'Sub Category', value: 'Inbound Attack'}],
-            dummyDatas: [{title: 'Affected Entity', value: '10.82.32.212'},
-                {title: 'Locations', value: 'Indonesia'},
-                {title: 'Status', value: 'Risk: 54'},
-                {title: 'Resources', value: 'Netflow'},
-                {title: 'Indicators', value: 'SrcIP, DstIP, DstPort'}],
+            threatCategories: [{ title: 'Kill Chain', value: 'Reconnaissance' },
+            { title: 'Threat Category', value: 'Port Scanning' },
+            { title: 'Sub Category', value: 'Inbound Attack' }],
+            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
+            { title: 'Locations', value: 'Indonesia' },
+            { title: 'Status', value: 'Risk: 54' },
+            { title: 'Resources', value: 'Netflow' },
+            { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
             description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
         }
     ];
@@ -241,6 +241,12 @@ export class RiskyIPComponent implements OnInit {
         } */
     ];
 
+    infoStyleObject(input): Object {
+        if (input == 'INFO') {
+            return { 'color': 'yellow', 'margin-right': '2rem' }
+        }
+        return { 'color': 'red' }
+    }
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router) {
@@ -337,7 +343,7 @@ export class RiskyIPComponent implements OnInit {
         series.dataFields.valueY = "value";
         series.strokeWidth = 2;
         series.tooltipText = "Risk Score : {valueY}";
-       // series.tooltip.getFillFromObject = false;
+        // series.tooltip.getFillFromObject = false;
         series.tooltip.background.fill = am4core.color("#2D93AD");
         series.tooltip.autoTextColor = false;
         series.tooltip.label.fill = am4core.color("black");
@@ -358,7 +364,7 @@ export class RiskyIPComponent implements OnInit {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
-    gotoSummery(){
+    gotoSummery() {
         window.open("#/policyViolationSummary", '_blank');
     }
 

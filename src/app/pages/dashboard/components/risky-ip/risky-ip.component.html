@@ -297,13 +297,13 @@
                                     <dl *ngIf="item.pv!='INFO'">
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                     </dl>
-                                    <div class="ml-4">
+                                    <div [ngClass]="{'ml-1':item.pv =='INFO','ml-4':item.pv !='INFO'}">
                                         <div class="row mt-1 details" *ngFor="let dummyData of item.dummyDatas">
-                                            <div class="col-md-6" [ngClass]="{'whiteText':item.pv =='INFO'}">
+                                            <div class="col-md" [ngClass]="{'whiteText':item.pv =='INFO'}">
                                                 {{dummyData.title}}
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-5" [ngClass]="{'whiteText':item.pv =='INFO'}">
+                                            <div class="col-md" [ngClass]="{'whiteText':item.pv =='INFO'}">
                                                 {{dummyData.value}}
                                             </div>
                                         </div>

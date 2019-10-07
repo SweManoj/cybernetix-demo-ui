@@ -110,7 +110,7 @@ export class RiskyIPComponent implements OnInit {
             threatCategories: [{ title: 'Kill Chain', value: 'C2' },
             { title: 'Threat Category', value: 'Malicious Behavior' },
             { title: 'Sub Category', value: 'P2P Traffic' }],
-            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16' },
+            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.227' },
             { title: 'Locations', value: 'Indonesia' },
             { title: 'Status', value: 'Risk: 95' },
             { title: 'Resources', value: 'Proxy' },
@@ -130,7 +130,7 @@ export class RiskyIPComponent implements OnInit {
             threatCategories: [{ title: 'Kill Chain', value: '' },
             { title: 'Threat Category', value: '' },
             { title: 'Sub Category', value: '' }],
-            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212, WK-UKL48503D, 00:0a:95:9d:68:16' },
+            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.227, WK-UKL48503D, 00:0a:95:9d:68:16' },
             { title: 'Locations', value: '' },
             { title: 'Status', value: '' },
             { title: 'Resources', value: 'DHCP' },
@@ -240,6 +240,14 @@ export class RiskyIPComponent implements OnInit {
             value: 'Be sure to add aria-expanded to the control element. This attribute explicitly conveys the current state of the collapsible'
         } */
     ];
+
+    itemInfo=[{
+        title:'Last Hostname:',
+        value:'WK-UKL48503D'
+    },{
+        title:'Last IP:',
+        value:'10.82.32.212'
+    }]
 
     infoStyleObject(input): Object {
         if (input == 'INFO') {

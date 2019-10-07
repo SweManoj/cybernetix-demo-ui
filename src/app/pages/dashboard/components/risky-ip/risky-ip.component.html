@@ -205,8 +205,8 @@
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
                                         class="fa fa-angle-down"></i>
                                 </span>
-                                <span class="pointerCursor pvValue" (click)="item.accord = !item.accord" 
-                                [ngStyle]="infoStyleObject(item.pv)">{{item.pv}}</span>
+                                <span class="pointerCursor pvValue" (click)="item.accord = !item.accord"
+                                    [ngStyle]="infoStyleObject(item.pv)">{{item.pv}}</span>
                                 <!-- <span class="pointerCursor pvValue" *ngIf=" item.ruleInfo.title === 'DHCP RENEWAL'" style="color: yellow">INFO</span> -->
                                 <!-- <span *ngIf="item.pv=='INFO'">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> -->
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
@@ -217,7 +217,8 @@
                                 <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
-                                    <button *ngIf="item.pv!='INFO'" class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
+                                    <button *ngIf="item.pv!='INFO'" class="btn btn-sm greyBackground"
+                                        id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
@@ -253,22 +254,38 @@
                                 </div>
 
                                 <div class="col-5 col-sm-5 riskAccordBorder">
-                                    <dl>
-                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
-                                    </dl>
+                                    <ng-container *ngIf="item.pv!='INFO'">
+                                        <dl>
+                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
+                                        </dl>
 
-                                    <div class="ml-4">
-                                        <div class="row mt-1 details"
-                                            *ngFor="let threatCategory of item.threatCategories">
-                                            <div class="col-md-5">
-                                                {{threatCategory.title}}
-                                            </div>
-                                            <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-6">
-                                                {{threatCategory.value}}
+                                        <div class="ml-4">
+                                            <div class="row mt-1 details"
+                                                *ngFor="let threatCategory of item.threatCategories">
+                                                <div class="col-md-5">
+                                                    {{threatCategory.title}}
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-6">
+                                                    {{threatCategory.value}}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </ng-container>
+
+                                    <ng-container *ngIf="item.pv=='INFO'">
+                                        <div class="ml-4 mt-4">
+                                            <div class="row mt-1 details" *ngFor="let threatCategory of itemInfo">
+                                                <div class="col-md-5">
+                                                    {{threatCategory.title}}
+                                                </div>
+                                                <b>&nbsp;:&nbsp;</b>
+                                                <div class="col-md-6">
+                                                    {{threatCategory.value}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
                                 </div>
 
                                 <div class="col-4 col-sm-4">

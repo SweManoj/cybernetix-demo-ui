@@ -10,12 +10,15 @@
     <div class="row mr-0">
 
         <ng-container class="col-md-2-5 mt-3" *ngFor="let entity of filteredRiskyEntities.users">
-            <mat-card [routerLink]="['/riskyUser', entity.user]" class="violatedUser">
+            <mat-card (click)="routerPage(filteredRiskyEntities.routerLink, entity.user)" class="violatedUser">
                 <mat-card-header>
                     <div class="row">
                         <div class="col-sm-4 text-center">
                             <div class="pl-2">
-                                <img class="user-img img-rounded" src='../assets/images/users/orphan_user.png' />
+                                <img *ngIf="entity.user=='10.82.32.212'" class="user-img"
+                                    src='../assets/images/dashboard_icons/Ip@2x.png' />
+                                <img *ngIf="entity.user!='10.82.32.212'" class="user-img img-rounded"
+                                    src='../assets/images/users/orphan_user.png' />
                             </div>
                         </div>
                         <div class="col-sm-7 col-lg-8 text-center">
@@ -30,12 +33,12 @@
                 </mat-card-header>
 
                 <mat-card-content>
-                    <div class="row-block">
+                    <div class="row-block" *ngIf="entity.user!='10.82.32.212'">
                         <p class="text-style-1">Role</p>
                         <p class="text-style-2">{{entity.role}}</p>
                     </div>
 
-                    <div class="row-block">
+                    <div class="row-block" *ngIf="entity.user!='10.82.32.212'">
                         <p class="text-style-1">Location</p>
                         <p class="text-style-2">{{entity.location}}</p>
                     </div>

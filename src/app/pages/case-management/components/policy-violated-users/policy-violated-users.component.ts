@@ -11,6 +11,7 @@ export class PolicyViolatedUsersComponent implements OnInit {
   filteredRiskyEntities: any;
   selectedPolicy = "";
   filteredRiskyEntitiesForPV01 = {
+    routerLink: 'riskyUser',
     pvId: 'PV 088',
     title: 'Abnormal Beaconing from Host - Proxy',
     users: [
@@ -113,6 +114,7 @@ export class PolicyViolatedUsersComponent implements OnInit {
   };
 
   filteredRiskyEntitiesForPV05 = {
+    routerLink: 'riskyUser',
     title: 'Rare Host Usage',
     pvId: 'PV 089',
     users: [
@@ -191,6 +193,7 @@ export class PolicyViolatedUsersComponent implements OnInit {
   };
 
   filteredRiskyEntitiesForPV02 = {
+    routerLink: 'riskyUser',
     pvId: 'PV 090',
     title: 'Failed Login Attempts On Same IP By Multiple Users',
     users: [
@@ -282,6 +285,7 @@ export class PolicyViolatedUsersComponent implements OnInit {
 
 
   filteredRiskyEntitiesForPV03 = {
+    routerLink: 'riskyUser',
     pvId: 'PV 091',
     title: 'Interactive login attempt by user without badge activity',
     users: [
@@ -361,6 +365,7 @@ export class PolicyViolatedUsersComponent implements OnInit {
   };
 
   filteredRiskyEntitiesForPV04 = {
+    routerLink: 'riskyUser',
     pvId: 'PV 092',
     title: 'Abnormal Outbound Connections From Host',
     users: [{
@@ -438,7 +443,90 @@ export class PolicyViolatedUsersComponent implements OnInit {
     ]
   };
 
+  threatVector = {
+    routerLink: 'riskyIP',
+    title: '',
+    pvId: '',
+    users: [
+      {
+        id: "42",
+        user: "10.82.32.212",
+        riskScore: 95,
+        department: "",
+        role: "",
+        location: "",
+        reportingManager: "",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "",
+        lastViolation: "Uploded More Data"
+      },
+      {
+        id: "43",
+        user: "Shadon",
+        riskScore: 50,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Interactive login attempt by user without badge activity"
+      },
+      {
+        id: "44",
+        user: "Harry",
+        riskScore: 30,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Logon Event By Service Account As An User"
+      },
+      {
+        id: "45",
+        user: "Fling",
+        riskScore: 64,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Uploded More Data"
+      },
+      {
+        id: "46",
+        user: "Sling",
+        riskScore: 56,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Logon Event By Service Account As An User"
+      },
+      {
+        id: "47",
+        user: "Samy",
+        riskScore: 45,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Uploded More Data"
+      }]
+  };
+
   nonThreatVector = true;
+
+  routerPage(routerLink, user) {
+    this.router.navigateByUrl(`/${routerLink}/${user}`)
+  }
 
   constructor(private utilDataService: UtilDataService, private routeParam: ActivatedRoute, private router: Router) { }
 
@@ -458,7 +546,7 @@ export class PolicyViolatedUsersComponent implements OnInit {
           break;
         default:
           this.nonThreatVector = false;
-          this.filteredRiskyEntities = this.filteredRiskyEntitiesForPV05;
+          this.filteredRiskyEntities = this.threatVector;
           this.filteredRiskyEntities.title = this.selectedPolicy;
           break;
       }

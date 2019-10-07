@@ -1,17 +1,17 @@
-import {Component, NgZone} from '@angular/core';
-import {RiskyUserService} from './riskyUser.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {forkJoin} from 'rxjs/internal/observable/forkJoin';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {RiskyUserInfoModalComponent} from './risky-user-info-modal/risky-user-info-modal.component';
-import {bubbleDataMonth} from './data';
+import { Component, NgZone } from '@angular/core';
+import { RiskyUserService } from './riskyUser.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs/internal/observable/forkJoin';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RiskyUserInfoModalComponent } from './risky-user-info-modal/risky-user-info-modal.component';
+import { bubbleDataMonth } from './data';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import {AmChartsService} from '@amcharts/amcharts3-angular';
-import {RiskScoreModalComponent} from './risk-score-modal/risk-score-modal.component';
-import {TopDetailsService} from '../topDetails/topDetails.service';
+import { AmChartsService } from '@amcharts/amcharts3-angular';
+import { RiskScoreModalComponent } from './risk-score-modal/risk-score-modal.component';
+import { TopDetailsService } from '../topDetails/topDetails.service';
 
 @Component({
     selector: 'risky-users',
@@ -49,14 +49,14 @@ export class RiskyUsersComponent {
         {
             type: 'user',
             value: 'Adm-EMoor',
-            score: 87,
+            score: 95,
             img: true,
             role: 'AVP - Sales',
             department: 'Sales',
             location: 'San Diego',
             reportingManager: 'Ryan Smith',
             creationDate: '12 Jan 2016',
-            lastWorkDay: '24 Apr 2019'
+            lastWorkDay: '4 Oct 2019'
         },
         {
             type: 'user',
@@ -194,67 +194,132 @@ export class RiskyUsersComponent {
         }
     ];
 
-    hardCodeItemData = [
+    hardCodeItemData:any = [
         {
             generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '03:22:00',
+            generatedTimestamp: '09:33:00',
             accord: false,
             pv: 'PV_083',
-            riskScore: 579,
+            riskScore: 27,
             ruleInfo: {
                 ruleId: 1,
-                title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
+                title: 'Data Exfiltration via HTTPS'
             },
-            incId: 'INC-1'
+            incId: 'INC-1',
+            description: 'This Violation is triggered when user exfiltrates excissive bytes of data via HTTPS',
+            threatCategories: {
+                'Kill Chain': 'Data Exfiltration',
+                'Threat Category': 'Data Exfiltration',
+                'Sub Category': 'Data Exfiltration via HTTPS'
+            },
+            additionalInfo: {
+                'Affected Entity': 'SVL-EMoor, WK-38482L',
+                'Location': 'San Diego',
+                'Status': 'Risk: 95',
+                'Resource': 'Proxy',
+                'Indicators': 'URL, BytesOut, Event'
+            }
         },
         {
             generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '05:30:00',
+            generatedTimestamp: '09:13:00',
             accord: false,
             pv: 'PV_061',
-            riskScore: 483,
+            riskScore: 6,
             ruleInfo: {
                 ruleId: 2,
-                title: 'Successful Logon from Rare Machine - Windows'
+                title: 'Rare Access to Proxy By Service Account'
             },
-            incId: 'INC-2'
+            incId: 'INC-2',
+            description: 'This Violation is triggered when service attempts to connect to Proxy',
+            threatCategories: {
+                'Kill Chain': 'Exploitation',
+                'Threat Category': 'Proxy Attempts',
+                'Sub Category': 'Proxy Attempts'
+            },
+            additionalInfo: {
+                'Affected Entity': 'SVL-EMoor, WK-38482L',
+                'Location': 'San Diego',
+                'Status': 'Risk:89',
+                'Resource': 'Proxy',
+                'Indicators': 'URL'
+            }
         },
         {
             generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '07:10:00',
+            generatedTimestamp: '09:13:00',
             accord: false,
             pv: 'PV_039',
-            riskScore: 451,
+            riskScore: 13,
             ruleInfo: {
                 ruleId: 3,
-                title: 'Unusual Data Exfiltration By Service Account - Proxy'
+                title: 'Data Exfiltration Attempts via Email: DLP Alert '
             },
-            incId: 'INC-3'
+            incId: 'INC-3',
+            description: 'This Violation is triggered when User attempts to exfiltrate data via DLP',
+            threatCategories: {
+                'Kill Chain': 'Data Exfiltration',
+                'Threat Category': 'Data Exfiltration Attempt',
+                'Sub Category': 'Data Exfiltration Attempt via Email'
+            },
+            additionalInfo: {
+                'Affected Entity': 'SVL-EMoor, WK-38482L',
+                'Location': 'San Diego',
+                'Status': 'Risk: 86',
+                'Resource': ' DLP Network',
+                'Indicators': 'FileNames, BytesOut, Event'
+            }
         },
         {
             generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '09:22:00',
+            generatedTimestamp: '08:34:00',
             accord: false,
             pv: 'PV_041',
-            riskScore: 398,
+            riskScore: 63,
             ruleInfo: {
                 ruleId: 4,
-                title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
+                title: 'Abnormal Downloads from 0365 Sharepoint'
             },
-            incId: 'INC-4'
+            incId: 'INC-4',
+            description: 'This Violation is triggered when User downloads high number of Files / documents from 0-365 Sharepoint',
+            threatCategories: {
+                'Kill Chain': 'Insider Threat',
+                'Threat Category': 'Data Downloads',
+                'Sub Category': 'Data Downloads from Cloud'
+            },
+            additionalInfo: {
+                'Affected Entity': 'SVL-EMoor, WK-38482L',
+                'Location': 'San Diego',
+                'Status': 'Risk: 83',
+                'Resource': '0365 Sharepoint',
+                'Indicators': 'FileNames, Size, Event'
+            }
         },
         {
             generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '14:45:00',
+            generatedTimestamp: '07:42:00',
             accord: false,
             pv: 'PV 069',
-            riskScore: 243,
+            riskScore: 27,
             ruleInfo: {
                 ruleId: 5,
-                title: 'Abnormal Process Executed - Windows'
+                title: 'Privileged Escalation to Service Account'
             },
-            incId: 'INC-5'
-        },
+            incId: 'INC-5',
+            description: 'This Violation is triggered when User grants groups / permissions to Service Account',
+            threatCategories: {
+                'Kill Chain': 'Privilege Misuse',
+                'Threat Category': 'Privilege Escalation',
+                'Sub Category': 'Privilege Escalation to Service Accounts'
+            },
+            additionalInfo: {
+                'Affected Entity': 'Adm-EMoor, WK-38482L',
+                'Location': 'San Diego',
+                'Status': 'Risk: 74',
+                'Resource': 'Windows',
+                'Indicators': 'TargetAccount, Groups, Event'
+            }
+        }/* ,
         {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '17:14:00',
@@ -265,8 +330,21 @@ export class RiskyUsersComponent {
                 ruleId: 6,
                 title: 'Multiple Users Logged-In Successfully From Same IP'
             },
-            incId: 'INC-6'
-        }
+            incId: 'INC-6',
+            description: 'This Violation is triggered when user exfiltrates excissive bytes of data via HTTPS',
+            threatCategories: {
+                'Kill Chain': 'Data Exfiltration',
+                'Threat Category': 'Data Exfiltration',
+                'Sub Category': 'Data Exfiltration via HTTPS'
+            },
+            additionalInfo: {
+                'Affected Entity': 'SVL-EMoor, WK-38482L',
+                'Location': 'San Diego',
+                'Status': 'Risk: 95',
+                'Resource': 'Proxy',
+                'Indicators': 'URL, BytesOut, Event'
+            }
+        } */
     ];
 
     policyViolationForUser1 = [
@@ -281,14 +359,14 @@ export class RiskyUsersComponent {
                 title: 'Abnormal Objects Accessed - Fileshare'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: 'Suspicious/Malicious Behavior'},
-                {title: 'Threat Category', value: 'Network Traversing'},
-                {title: 'Sub Category', value: 'Network Traversing'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Adm-ADittmer'},
-                {title: 'Locations', value: 'San Diego'},
-                {title: 'Status', value: 'Risk: 90'},
-                {title: 'Resources', value: 'NetApp'},
-                {title: 'Indicators', value: 'Filenames'}],
+            threatCategories: [{ title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+            { title: 'Threat Category', value: 'Network Traversing' },
+            { title: 'Sub Category', value: 'Network Traversing' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Adm-ADittmer' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 90' },
+            { title: 'Resources', value: 'NetApp' },
+            { title: 'Indicators', value: 'Filenames' }],
             description: 'This violation is flagged when there are unusual number of objects accessed as per User’s past pattern. '
         },
         {
@@ -302,14 +380,14 @@ export class RiskyUsersComponent {
                 title: 'Successful Logon on Rare Host - Windows'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: 'Account Compromise'},
-                {title: 'Threat Category', value: 'Account Compromise'},
-                {title: 'Sub Category', value: 'Successful Logon'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'SSmith'},
-                {title: 'Locations', value: 'San Diego'},
-                {title: 'Status', value: 'Risk: 85'},
-                {title: 'Resources', value: 'NetApp'},
-                {title: 'Indicators', value: 'EventType, Workstationname'}],
+            threatCategories: [{ title: 'Kill Chain', value: 'Account Compromise' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Successful Logon' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'SSmith' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 85' },
+            { title: 'Resources', value: 'NetApp' },
+            { title: 'Indicators', value: 'EventType, Workstationname' }],
             description: 'This violation is flagged when there is suspicious successful logon on a Rare Host.'
         },
         {
@@ -323,14 +401,14 @@ export class RiskyUsersComponent {
                 title: 'Failed Attempts on Rare Host - Windows'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: 'Account Compromise'},
-                {title: 'Threat Category', value: 'Account Compromise'},
-                {title: 'Sub Category', value: 'Failed Attempts'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'SSmith1'},
-                {title: 'Locations', value: 'San Diego'},
-                {title: 'Status', value: 'Risk: 74'},
-                {title: 'Resources', value: 'Windows'},
-                {title: 'Indicators', value: 'EventType, Workstationname'}],
+            threatCategories: [{ title: 'Kill Chain', value: 'Account Compromise' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Failed Attempts' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'SSmith1' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'EventType, Workstationname' }],
             description: 'This violation is flagged when there are unusual number of failed attempts on a Rare Host'
         },
         {
@@ -344,19 +422,19 @@ export class RiskyUsersComponent {
                 title: 'Unusal Badge Activity during Off-Hours '
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: 'Insider Threat'},
-                {title: 'Threat Category', value: 'Suspicious/Malicious Behavior'},
-                {title: 'Sub Category', value: 'Suspicious/Malicious Behavior'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'SSmith1'},
-                {title: 'Locations', value: 'San Diego'},
-                {title: 'Status', value: 'Risk: 53'},
-                {title: 'Resources', value: 'Badge'},
-                {title: 'Indicators', value: 'EventTime'}],
+            threatCategories: [{ title: 'Kill Chain', value: 'Insider Threat' },
+            { title: 'Threat Category', value: 'Suspicious/Malicious Behavior' },
+            { title: 'Sub Category', value: 'Suspicious/Malicious Behavior' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'SSmith1' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 53' },
+            { title: 'Resources', value: 'Badge' },
+            { title: 'Indicators', value: 'EventTime' }],
             description: 'This violation is flagged when there is an abnormal badge access during off-hours as per User’s past pattern'
         }
     ];
 
- policyViolationForHeidy = [
+    policyViolationForHeidy = [
         {
             generatedDateFormat: '17th Jul 2019',
             generatedTimestamp: '19:12:00',
@@ -368,17 +446,17 @@ export class RiskyUsersComponent {
                 title: 'Email to Competitors  - O365'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: ''},
-                {title: 'Threat Category', value: 'Data Exfiltration'},
-                {title: 'Sub Category', value: 'Email'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Heidy'},
-                {title: 'Locations', value: 'Los Angeles'},
-                {title: 'Status', value: 'Risk: 88'},
-                {title: 'Resources', value: 'O365'},
-                {title: 'Indicators', value: 'RecipientID, ThreatIntel'}],
+            threatCategories: [{ title: 'Kill Chain', value: '' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Email' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Heidy' },
+            { title: 'Locations', value: 'Los Angeles' },
+            { title: 'Status', value: 'Risk: 88' },
+            { title: 'Resources', value: 'O365' },
+            { title: 'Indicators', value: 'RecipientID, ThreatIntel' }],
             description: ' This violation is flagged when there is email sent to competitor domain'
         },
-         {
+        {
             generatedDateFormat: '17th Jul 2019',
             generatedTimestamp: '13:42:00',
             accord: false,
@@ -389,14 +467,14 @@ export class RiskyUsersComponent {
                 title: 'Unusual Export on Database - GCP'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: ''},
-                {title: 'Threat Category', value: 'Data Exfiltration'},
-                {title: 'Sub Category', value: 'Data Export'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Heidy'},
-                {title: 'Locations', value: 'Los Angeles'},
-                {title: 'Status', value: 'Risk: 65'},
-                {title: 'Resources', value: 'GCP'},
-                {title: 'Indicators', value: 'Event, Tables'}],
+            threatCategories: [{ title: 'Kill Chain', value: '' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Data Export' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Heidy' },
+            { title: 'Locations', value: 'Los Angeles' },
+            { title: 'Status', value: 'Risk: 65' },
+            { title: 'Resources', value: 'GCP' },
+            { title: 'Indicators', value: 'Event, Tables' }],
             description: 'This violation is flagged when there is abnormal export on Database as per User’s past pattern'
         }
     ];
@@ -412,14 +490,14 @@ export class RiskyUsersComponent {
                 title: 'Self Escalation Removed Security enabled global group'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Privileged misuse'},
-                {title: 'Sub Category', value: 'Self Privileged Elscalation'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Maile'},
-                {title: 'Locations', value: 'San Diego'},
-                {title: 'Status', value: 'Risk: 87'},
-                {title: 'Resources', value: 'Windows'},
-                {title: 'Indicators', value: 'Event Code'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Privileged misuse' },
+            { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'Event Code' }],
             description: 'In this Algorithm, User Removed security enabled global group'
         },
         {
@@ -433,14 +511,14 @@ export class RiskyUsersComponent {
                 title: 'Abnormal Data Export on MSQL database'
             },
             incId: 'INC-18',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Data Exfiltration'},
-                {title: 'Sub Category', value: 'Data Export'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Maile'},
-                {title: 'Locations', value: 'San Diego'},
-                {title: 'Status', value: 'Risk: 81'},
-                {title: 'Resources', value: 'Salesforce'},
-                {title: 'Indicators', value: 'Action/Tables'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Data Export' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 81' },
+            { title: 'Resources', value: 'Salesforce' },
+            { title: 'Indicators', value: 'Action/Tables' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
         },
         {
@@ -454,14 +532,14 @@ export class RiskyUsersComponent {
                 title: 'Self Escalation Added Security enabled global group'
             },
             incId: 'INC-19',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Privileged misuse'},
-                {title: 'Sub Category', value: 'Self Privileged Elscalation'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Maile'},
-                {title: 'Locations', value: 'San Diego'},
-                {title: 'Status', value: 'Risk: 72/87'},
-                {title: 'Resources', value: 'Windows'},
-                {title: 'Indicators', value: 'Event Code'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Privileged misuse' },
+            { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'San Diego' },
+            { title: 'Status', value: 'Risk: 72/87' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'Event Code' }],
             description: 'In this Algorithm, User Added security enabled global group'
         }
     ];
@@ -478,14 +556,14 @@ export class RiskyUsersComponent {
                 title: 'Abnormal Applications Accessed'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Suspicious Behavior'},
-                {title: 'Sub Category', value: 'Suspicious Behavior'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Mendelson'},
-                {title: 'Locations', value: 'Florida'},
-                {title: 'Status', value: 'Risk: 82'},
-                {title: 'Resources', value: 'IIS'},
-                {title: 'Indicators', value: 'AppNames'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Suspicious Behavior' },
+            { title: 'Sub Category', value: 'Suspicious Behavior' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            { title: 'Locations', value: 'Florida' },
+            { title: 'Status', value: 'Risk: 82' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'AppNames' }],
             description: 'This Violation is triggered when rare applications has been accessed as per User’s past pattern'
         },
         {
@@ -499,14 +577,14 @@ export class RiskyUsersComponent {
                 title: 'Successful Logon from Rare Location- VPN'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Potential Account Compromise'},
-                {title: 'Sub Category', value: 'Potential Account Compromise'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Mendelson'},
-                {title: 'Locations', value: 'Florida'},
-                {title: 'Status', value: 'Risk: 76'},
-                {title: 'Resources', value: 'VPN'},
-                {title: 'Indicators', value: 'Location'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Potential Account Compromise' },
+            { title: 'Sub Category', value: 'Potential Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            { title: 'Locations', value: 'Florida' },
+            { title: 'Status', value: 'Risk: 76' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }],
             description: 'This Violation is triggered when VPN activity is observed from rare location'
         },
         {
@@ -520,14 +598,14 @@ export class RiskyUsersComponent {
                 title: ' Activity By Dormant Account'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Potential Account Compromise'},
-                {title: 'Sub Category', value: 'Potential Account Compromise'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Mendelson'},
-                {title: 'Locations', value: 'Florida'},
-                {title: 'Status', value: 'Risk: 67'},
-                {title: 'Resources', value: 'VPN'},
-                {title: 'Indicators', value: 'Id'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Potential Account Compromise' },
+            { title: 'Sub Category', value: 'Potential Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            { title: 'Locations', value: 'Florida' },
+            { title: 'Status', value: 'Risk: 67' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Id' }],
             description: 'This Violation is triggered when activity is seen for a dormant user'
         }
 
@@ -545,14 +623,14 @@ export class RiskyUsersComponent {
                 title: 'Excessive Remote Access Tools Usage'
             },
             incId: 'INC-17',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Suspicious Behavior'},
-                {title: 'Sub Category', value: 'Suspicious Behavior'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'JohnS'},
-                {title: 'Locations', value: 'Seattle'},
-                {title: 'Status', value: 'Risk: 87'},
-                {title: 'Resources', value: 'Proxy'},
-                {title: 'Indicators', value: 'Bytes, Category'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Suspicious Behavior' },
+            { title: 'Sub Category', value: 'Suspicious Behavior' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Resources', value: 'Proxy' },
+            { title: 'Indicators', value: 'Bytes, Category' }],
             description: 'This policy violation is triggered when user attempted to access remote access tools '
         },
         {
@@ -566,14 +644,14 @@ export class RiskyUsersComponent {
                 title: 'Unauthorized Software Downloaded By Contractor'
             },
             incId: 'INC-18',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Suspicious Behavior'},
-                {title: 'Sub Category', value: 'Suspicious Behavior'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'JohnS'},
-                {title: 'Locations', value: 'Seattle'},
-                {title: 'Status', value: 'Risk: 83'},
-                {title: 'Resources', value: 'SCCM'},
-                {title: 'Indicators', value: 'Action'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Suspicious Behavior' },
+            { title: 'Sub Category', value: 'Suspicious Behavior' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 83' },
+            { title: 'Resources', value: 'SCCM' },
+            { title: 'Indicators', value: 'Action' }],
             description: 'This policy violation is triggered when there is unauthorized software downloaded by an external user'
         },
         {
@@ -587,14 +665,14 @@ export class RiskyUsersComponent {
                 title: ' Abnormal Software Downloads Attempts by Contractor'
             },
             incId: 'INC-19',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Suspicious Behavior'},
-                {title: 'Sub Category', value: 'Suspicious Behavior'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'JohnS'},
-                {title: 'Locations', value: 'Seattle'},
-                {title: 'Status', value: 'Risk: 70'},
-                {title: 'Resources', value: 'SCCM'},
-                {title: 'Indicators', value: 'Action'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Suspicious Behavior' },
+            { title: 'Sub Category', value: 'Suspicious Behavior' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 70' },
+            { title: 'Resources', value: 'SCCM' },
+            { title: 'Indicators', value: 'Action' }],
             description: 'This policy violation is triggered when there is sudden spike in software downloads attempts for an external user'
         },
         {
@@ -608,14 +686,14 @@ export class RiskyUsersComponent {
                 title: ' Abnormal Software Downloads Attempts by Contractor'
             },
             incId: 'INC-19',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'JohnS'},
-                {title: 'Locations', value: 'Seattle'},
-                {title: 'Status', value: 'Risk: 67'},
-                {title: 'Resources', value: 'IIS'},
-                {title: 'Indicators', value: 'Action'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 67' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'Action' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
         }
 
@@ -634,14 +712,14 @@ export class RiskyUsersComponent {
                 title: ' Abnormal Software Downloads Attempts by Contractor'
             },
             incId: 'INC-19',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Maile'},
-                {title: 'Locations', value: 'Seattle'},
-                {title: 'Status', value: 'Risk: 70'},
-                {title: 'Resources', value: 'IIS'},
-                {title: 'Indicators', value: 'Action'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 70' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'Action' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
         }
 
@@ -659,14 +737,14 @@ export class RiskyUsersComponent {
                 title: ' Abnormal Software Downloads Attempts by Contractor'
             },
             incId: 'INC-19',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Maile'},
-                {title: 'Locations', value: 'Seattle'},
-                {title: 'Status', value: 'Risk: 67'},
-                {title: 'Resources', value: 'IIS'},
-                {title: 'Indicators', value: 'Action'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            { title: 'Locations', value: 'Seattle' },
+            { title: 'Status', value: 'Risk: 67' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'Action' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
         }
     ];
@@ -684,14 +762,14 @@ export class RiskyUsersComponent {
                 title: 'Data Exfiltration to Cloud via HTTPS'
             },
             incId: 'INC-7',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Data Exfiltration'},
-                {title: 'Sub Category', value: 'Data Exfiltration'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'AWendler'},
-                {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: 'Risk: 97'},
-                {title: 'Resources', value: 'DLP'},
-                {title: 'Indicators', value: 'URL, Attachment'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Data Exfiltration' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 97' },
+            { title: 'Resources', value: 'DLP' },
+            { title: 'Indicators', value: 'URL, Attachment' }],
             description: 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
         },
         {
@@ -705,14 +783,14 @@ export class RiskyUsersComponent {
                 title: 'Abnormal Objects Accessed on Fileshare'
             },
             incId: 'INC-8',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Abnormal Pattern'},
-                {title: 'Sub Category', value: 'Abnormal Pattern'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'AWendler'},
-                {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: 'Risk: 91'},
-                {title: 'Resources', value: 'Fileshare'},
-                {title: 'Indicators', value: 'FileName'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Abnormal Pattern' },
+            { title: 'Sub Category', value: 'Abnormal Pattern' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 91' },
+            { title: 'Resources', value: 'Fileshare' },
+            { title: 'Indicators', value: 'FileName' }],
             description: 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
         },
         {
@@ -726,14 +804,14 @@ export class RiskyUsersComponent {
                 title: 'Suspicious RDP to Multiple Hosts from Privileged User'
             },
             incId: 'INC-9',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Account Compromise'},
-                {title: 'Sub Category', value: 'Account Compromise'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'AWendler'},
-                {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: 'Risk: 87'},
-                {title: 'Resources', value: 'Windows'},
-                {title: 'Indicators', value: 'EventID'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Resources', value: 'Windows' },
+            { title: 'Indicators', value: 'EventID' }],
             description: 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
         },
         {
@@ -748,15 +826,15 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-11',
             threatCategories: [
-                {title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Suspicious Behavior'},
-                {title: 'Sub Category', value: 'Suspicious Behavior'}
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Suspicious Behavior' },
+                { title: 'Sub Category', value: 'Suspicious Behavior' }
             ],
-            dummyDatas: [{title: 'Affected Entity', value: 'AWendler'},
-                {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: 'Risk: 84'},
-                {title: 'Resources', value: 'Proxy'},
-                {title: 'Indicators', value: 'Category'}],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 84' },
+            { title: 'Resources', value: 'Proxy' },
+            { title: 'Indicators', value: 'Category' }],
             description: 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
         },
         {
@@ -770,14 +848,14 @@ export class RiskyUsersComponent {
                 title: 'Successful Login From Unusual Location - VPN'
             },
             incId: 'INC-12',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Account Compromise'},
-                {title: 'Sub Category', value: 'Account Compromise'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'AWendler'},
-                {title: 'Locations', value: 'Ukraine'},
-                {title: 'Status', value: 'Risk: 75'},
-                {title: 'Resources', value: 'VPN'},
-                {title: 'Indicators', value: 'Location'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Ukraine' },
+            { title: 'Status', value: 'Risk: 75' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }],
             description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location'
         }
 
@@ -797,14 +875,14 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-13',
             description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Account Compromise'},
-                {title: 'Sub Category', value: 'Account Compromise'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'AWendler'},
-                {title: 'Locations', value: 'Ukraine'},
-                {title: 'Status', value: 'Risk: 75'},
-                {title: 'Resources', value: 'VPN'},
-                {title: 'Indicators', value: 'Location'}]
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Ukraine' },
+            { title: 'Status', value: 'Risk: 75' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }]
         },
         {
             generatedDateFormat: '12 June 2019',
@@ -819,14 +897,14 @@ export class RiskyUsersComponent {
             incId: 'INC-14',
             description: 'In this Algorithm, VPN Activities are observerd for User after Physical Badge IN',
             threatCategories:
-                [{title: 'Kill Chain', value: 'Actions/Maintain'},
-                    {title: 'Threat Category', value: 'Credentials Compromise'},
-                    {title: 'Sub Category', value: 'Credentials Compromise'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'AWendler'},
-                {title: 'Locations', value: 'Berlin, Ukraine'},
-                {title: 'Status', value: 'Risk: 74'},
-                {title: 'Resources', value: 'Physical, VPN'},
-                {title: 'Indicators', value: 'Location'}]
+                [{ title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Credentials Compromise' },
+                { title: 'Sub Category', value: 'Credentials Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Berlin, Ukraine' },
+            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Resources', value: 'Physical, VPN' },
+            { title: 'Indicators', value: 'Location' }]
 
         }
     ];
@@ -844,14 +922,14 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-15',
             description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Account Compromise'},
-                {title: 'Sub Category', value: 'Account Compromise'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'AWendler'},
-                {title: 'Locations', value: 'Ukraine'},
-                {title: 'Status', value: 'Risk: 57'},
-                {title: 'Resources', value: 'VPN'},
-                {title: 'Indicators', value: 'Location'}]
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Account Compromise' },
+            { title: 'Sub Category', value: 'Account Compromise' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            { title: 'Locations', value: 'Ukraine' },
+            { title: 'Status', value: 'Risk: 57' },
+            { title: 'Resources', value: 'VPN' },
+            { title: 'Indicators', value: 'Location' }]
         }
     ];
 
@@ -870,9 +948,9 @@ export class RiskyUsersComponent {
             Description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
 
             threatCategories: [
-                {title: 'Kill Chain', 'value': '-'},
-                {title: 'Threat Category', 'value': 'Malicious Behavior'},
-                {title: 'SubCategory', 'value': 'Malicious Behavior'}
+                { title: 'Kill Chain', 'value': '-' },
+                { title: 'Threat Category', 'value': 'Malicious Behavior' },
+                { title: 'SubCategory', 'value': 'Malicious Behavior' }
             ],
             AffectedEntity: 'AWendler',
             Locations: 'Ukraine',
@@ -894,14 +972,14 @@ export class RiskyUsersComponent {
                 title: 'Rare Appliations Accessed'
             },
             incId: 'INC-18',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Suspicious Behavior'},
-                {title: 'Sub Category', value: 'Suspicious Behavior'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Alysa'},
-                {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: 'Risk 51'},
-                {title: 'Resources', value: 'IIS'},
-                {title: 'Indicators', value: 'ApplicationName'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Suspicious Behavior' },
+            { title: 'Sub Category', value: 'Suspicious Behavior' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk 51' },
+            { title: 'Resources', value: 'IIS' },
+            { title: 'Indicators', value: 'ApplicationName' }],
             description: 'This Violation is triggered when a user accessed multiple Rare Applications as per past pattern'
         },
         {
@@ -915,14 +993,14 @@ export class RiskyUsersComponent {
                 title: 'High Amount of Documents Printed'
             },
             incId: 'INC-20',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Data Exfiltration'},
-                {title: 'Sub Category', value: 'Documents Print'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Alysa'},
-                {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: 'Risk: 71'},
-                {title: 'Resources', value: 'DLP'},
-                {title: 'Indicators', value: 'DocumentName'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Data Exfiltration' },
+            { title: 'Sub Category', value: 'Documents Print' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 71' },
+            { title: 'Resources', value: 'DLP' },
+            { title: 'Indicators', value: 'DocumentName' }],
             description: 'This Violation is triggered when a user prints abnornal number of documents as per past pattern'
         },
         {
@@ -936,14 +1014,14 @@ export class RiskyUsersComponent {
                 title: 'Abnormal Self Email to Personal Domains - DLP '
             },
             incId: 'INC-21',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Alysa'},
-                {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: 'Risk: 78'},
-                {title: 'Resources', value: 'Email'},
-                {title: 'Indicators', value: 'RecipientID'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 78' },
+            { title: 'Resources', value: 'Email' },
+            { title: 'Indicators', value: 'RecipientID' }],
             description: 'This Violation is triggered when a user sends email to personal domains '
         },
         {
@@ -957,44 +1035,44 @@ export class RiskyUsersComponent {
                 title: 'Abnormal Visit to Job Sites'
             },
             incId: 'INC-22',
-            threatCategories: [{title: 'Kill Chain', value: '-'},
-                {title: 'Threat Category', value: 'Insider Threat'},
-                {title: 'Sub Category', value: 'Insider Threat'}],
-            dummyDatas: [{title: 'Affected Entity', value: 'Alysa'},
-                {title: 'Locations', value: 'Berlin'},
-                {title: 'Status', value: 'Risk: 82'},
-                {title: 'Resources', value: 'Proxy'},
-                {title: 'Indicators', value: 'Category, dstHost'}],
+            threatCategories: [{ title: 'Kill Chain', value: '-' },
+            { title: 'Threat Category', value: 'Insider Threat' },
+            { title: 'Sub Category', value: 'Insider Threat' }],
+            dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
+            { title: 'Locations', value: 'Berlin' },
+            { title: 'Status', value: 'Risk: 82' },
+            { title: 'Resources', value: 'Proxy' },
+            { title: 'Indicators', value: 'Category, dstHost' }],
             description: 'This Violation is triggered when a user visits unusual number of job sites as per past pattern'
         }
     ];
 
     activities = [
-        {image: 'falg@1x.png', value: '1.2K', title: 'Events'},
-        {image: 'resources@1x.png', value: '09', title: 'Resources'},
-        {image: 'Shape@1x.png', value: '02', title: 'Locations'},
-        {image: 'violations@1x.png', value: '08', title: 'Violations'},
-        {image: 'incident@1x.png', value: '02', title: 'Incidents'},
+        { image: 'falg@1x.png', value: '9.8K', title: 'Events' },
+        { image: 'resources@1x.png', value: '09', title: 'Resources' },
+        { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+        { image: 'violations@1x.png', value: '05', title: 'Violations' },
+        { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 
     activitiesForAdmADittmer = [
-        {image: 'falg@1x.png', value: '1.4K', title: 'Events'},
-        {image: 'resources@1x.png', value: '04', title: 'Applications'},
-        {image: 'Shape@1x.png', value: '01', title: 'Locations'},
-        {image: 'violations@1x.png', value: '04', title: 'Violations'},
-        {image: 'incident@1x.png', value: '01', title: 'Incidents'},
+        { image: 'falg@1x.png', value: '1.4K', title: 'Events' },
+        { image: 'resources@1x.png', value: '04', title: 'Applications' },
+        { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+        { image: 'violations@1x.png', value: '04', title: 'Violations' },
+        { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 
     activitiesForHeidy = [
-        {image: 'falg@1x.png', value: '1.9K', title: 'Events'},
-        {image: 'resources@1x.png', value: '03', title: 'Applications'},
-        {image: 'Shape@1x.png', value: '02', title: 'Locations'},
-        {image: 'violations@1x.png', value: '02', title: 'Violations'},
-        {image: 'incident@1x.png', value: '01', title: 'Incidents'},
+        { image: 'falg@1x.png', value: '1.9K', title: 'Events' },
+        { image: 'resources@1x.png', value: '03', title: 'Applications' },
+        { image: 'Shape@1x.png', value: '02', title: 'Locations' },
+        { image: 'violations@1x.png', value: '02', title: 'Violations' },
+        { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ]
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-                private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService) {
+        private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
@@ -1147,7 +1225,7 @@ export class RiskyUsersComponent {
         });
 
         // size of the bubble increment
-        series.heatRules.push({property: 'radius', target: bullet.circle, min: 6, max: 12});
+        series.heatRules.push({ property: 'radius', target: bullet.circle, min: 6, max: 12 });
 
         bullet.hiddenState.properties.scale = 0.01;
         bullet.hiddenState.properties.opacity = 1;
@@ -1307,7 +1385,7 @@ export class RiskyUsersComponent {
     }
 
     open(ruilId, userId, isotimestamp) {
-        const modalRef = this.modalService.open(RiskScoreModalComponent, {backdrop: 'static'}); // { size: 'sm' }
+        const modalRef = this.modalService.open(RiskScoreModalComponent, { backdrop: 'static' }); // { size: 'sm' }
         modalRef.componentInstance.ruilId = ruilId;
         modalRef.componentInstance.userId = userId;
         modalRef.componentInstance.isotimestamp = isotimestamp;
@@ -1323,7 +1401,7 @@ export class RiskyUsersComponent {
     }
 
     openUserInfo(userInfo: any) {
-        const modalRef = this.modalService.open(RiskyUserInfoModalComponent, {size: 'lg'});
+        const modalRef = this.modalService.open(RiskyUserInfoModalComponent, { size: 'lg' });
         modalRef.componentInstance.userInfo = userInfo;
     }
 

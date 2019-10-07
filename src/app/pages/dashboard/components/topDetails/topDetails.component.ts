@@ -27,7 +27,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     riskyObjects = [
         { type: 'user', value: 'ADittmer', score: 94, img: true },
-        { type: 'user', value: 'Adm-EMoor', score: 86, img: true },
+        { type: 'user', value: 'Adm-EMoor', score: 95, img: true },
         { type: 'user', value: 'SSmith1', score: 90, img: true },
         { type: 'user', value: 'AWendler', score: 97, img: true },
         { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },

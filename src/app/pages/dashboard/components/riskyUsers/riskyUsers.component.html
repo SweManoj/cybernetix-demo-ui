@@ -30,8 +30,9 @@
             <div class="risky-user-header">
                 <div class="row m-auto" style="background: #2C4255;">
                     <div class="col-md-2" style="text-align: center;background: #041421;">
-                        <img (click)="openUserInfo(selectedUserDetails.userInfo)" class="profile-image rounded-circle mt-4"
-                            src='./../../../../../assets/images/users/{{userData.value}}.jpg' style="width: 4rem;"/>
+                        <img (click)="openUserInfo(selectedUserDetails.userInfo)"
+                            class="profile-image rounded-circle mt-4"
+                            src='./../../../../../assets/images/users/{{userData.value}}.jpg' style="width: 4rem;" />
                         <div class="user-info m-t-sm">
                             <span style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.value}}</span>
                             <p></p>
@@ -119,8 +120,10 @@
                     <img class="align-self-center" src='../assets/images/{{activity.image}}' />
                     <div class="media-body pl-3">
                         <p class="value">{{activity.value}}</p>
-                        <span *ngIf = "selectedUser !== 'AWendler' || activity.title !== 'Resources'" class="title">{{activity.title}}</span>
-                        <span *ngIf = "selectedUser == 'AWendler' && activity.title == 'Resources' " class="title">Applications</span>
+                        <span *ngIf="selectedUser !== 'AWendler' || activity.title !== 'Resources'"
+                            class="title">{{activity.title}}</span>
+                        <span *ngIf="selectedUser == 'AWendler' && activity.title == 'Resources' "
+                            class="title">Applications</span>
                     </div>
                 </div>
             </div>
@@ -131,8 +134,10 @@
                     <img class="align-self-center" src='../assets/images/{{activity.image}}' />
                     <div class="media-body pl-3">
                         <p class="value">{{activity.value}}</p>
-                        <span *ngIf = "selectedUser !== 'AWendler' || activity.title !== 'Resources'" class="title">{{activity.title}}</span>
-                        <span *ngIf = "selectedUser == 'AWendler' && activity.title == 'Resources' " class="title">Applications</span>
+                        <span *ngIf="selectedUser !== 'AWendler' || activity.title !== 'Resources'"
+                            class="title">{{activity.title}}</span>
+                        <span *ngIf="selectedUser == 'AWendler' && activity.title == 'Resources' "
+                            class="title">Applications</span>
                     </div>
                 </div>
             </div>
@@ -146,10 +151,11 @@
         </div>
     </div>
 
-    <ng-container *ngIf = "selectedUser !== 'AWendler' && selectedUser !== 'Alysa' && selectedUser !== 'Maile' && selectedUser !== 'JohnS' && selectedUser !== 'Mendelson' && selectedUser !== 'SSmith1' && selectedUser !== 'Heidy'">
+    <ng-container
+        *ngIf="selectedUser !== 'AWendler' && selectedUser !== 'Alysa' && selectedUser !== 'Maile' && selectedUser !== 'JohnS' && selectedUser !== 'Mendelson' && selectedUser !== 'SSmith1' && selectedUser !== 'Heidy'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
-                <span>18 June 2019</span>
+                <span>23 Sep 2019</span>
             </div>
             <div class="row initialPadding" *ngFor="let item of hardCodeItemData">
                 <div class="col-md-12 d-flex">
@@ -166,10 +172,10 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
@@ -177,24 +183,26 @@
                                       class="risk-score mr-5">{{item.riskScore}}</span>
  -->
 
- <span
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -254,7 +262,7 @@
         </div>
     </ng-container>
 
-    <ng-container *ngIf = "selectedUser == 'AWendler'">
+    <ng-container *ngIf="selectedUser == 'AWendler'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>13 June 2019</span>
@@ -274,34 +282,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                      <span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -324,7 +334,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>
@@ -357,7 +368,8 @@
                     </div>
                 </div>
             </div>
-            <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
+            <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4"
+                *ngIf="selectedView === 'timeline'">
                 <div class="risk-date-stamp">
                     <span>12 June 2019</span>
                 </div>
@@ -374,39 +386,42 @@
                         <div class="violationTitle">
                             <div class="row mt-1 mb-2 ml-3 mr-1">
                                 <div class="col-sm-12">
-                                <span class="pointerCursor" (click)="item.accord = !item.accord">
-                                    &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
-                                </span>
+                                    <span class="pointerCursor" (click)="item.accord = !item.accord">
+                                        &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
+                                            class="fa fa-angle-down"></i>
+                                    </span>
                                     <span class="pointerCursor pvValue"
-                                          (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                        (click)="item.accord = !item.accord">{{item.pv}}</span>
                                     <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
-                                    {{item.ruleInfo.title}}</span>
+                                        {{item.ruleInfo.title}}</span>
 
-                               <!--      <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                    <!--      <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                           class="risk-score mr-5">{{item.riskScore}}</span> -->
-<span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
-                                    <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
-                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
-                                        Actions
-                                    </button>
-                                    <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground">
-                                            Investigate
+                                    <span class="risk-score mr-5">{{item.riskScore}}</span>
+                                    <span ngbDropdown placement="bottom-right" class="float-right mt-1"
+                                        *ngIf="item.accord">
+                                        <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
+                                            Actions
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
-                                            Create an Incident
-                                        </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
-                                            Perform Remediation
-                                        </button>
-                                        <button [routerLink]="['/policyViolationSummary',item.pv]" ngbDropdownItem class="greyBackground">
-                                            View Summary
-                                        </button>
-                                    </div>
-                                </span>
+                                        <div class="greyBackground actionDropDown" ngbDropdownMenu
+                                            aria-labelledby="dropdownBasic1">
+                                            <button ngbDropdownItem class="greyBackground">
+                                                Investigate
+                                            </button>
+                                            <button ngbDropdownItem class="greyBackground"
+                                                [routerLink]="['/incidentSummary', item.incId]">
+                                                Create an Incident
+                                            </button>
+                                            <button ngbDropdownItem class="greyBackground"
+                                                [routerLink]="['/performRemediation']">
+                                                Perform Remediation
+                                            </button>
+                                            <button [routerLink]="['/policyViolationSummary',item.pv]" ngbDropdownItem
+                                                class="greyBackground">
+                                                View Summary
+                                            </button>
+                                        </div>
+                                    </span>
                                 </div>
                             </div>
 
@@ -425,7 +440,8 @@
                                         </dl>
 
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                            <div class="row mt-1 details"
+                                                *ngFor="let threatCategory of item.threatCategories">
                                                 <div class="col-md-5">
                                                     {{threatCategory.title}}
                                                 </div>
@@ -459,7 +475,8 @@
                     </div>
                 </div>
             </div>
-            <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
+            <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4"
+                *ngIf="selectedView === 'timeline'">
                 <div class="risk-date-stamp">
                     <span>11 June 2019</span>
                 </div>
@@ -476,40 +493,44 @@
                         <div class="violationTitle">
                             <div class="row mt-1 mb-2 ml-3 mr-1">
                                 <div class="col-sm-12">
-                                <span class="pointerCursor" (click)="item.accord = !item.accord">
-                                    &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
-                                </span>
+                                    <span class="pointerCursor" (click)="item.accord = !item.accord">
+                                        &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
+                                            class="fa fa-angle-down"></i>
+                                    </span>
                                     <span class="pointerCursor pvValue"
-                                          (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                        (click)="item.accord = !item.accord">{{item.pv}}</span>
                                     <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
-                                    {{item.ruleInfo.title}}</span>
+                                        {{item.ruleInfo.title}}</span>
 
-                                   <!--  <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                    <!--  <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                           class="risk-score mr-5">{{item.riskScore}}</span> -->
 
-                                           <span                                           class="risk-score mr-5">{{item.riskScore}}</span>
+                                    <span class="risk-score mr-5">{{item.riskScore}}</span>
 
-                                    <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
-                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
-                                        Actions
-                                    </button>
-                                    <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground">
-                                            Investigate
+                                    <span ngbDropdown placement="bottom-right" class="float-right mt-1"
+                                        *ngIf="item.accord">
+                                        <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
+                                            Actions
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground"  [routerLink]="['/incidentSummary', item.incId]">
-                                            Create an Incident
-                                        </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
-                                            Perform Remediation
-                                        </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
-                                            View Summary
-                                        </button>
-                                    </div>
-                                </span>
+                                        <div class="greyBackground actionDropDown" ngbDropdownMenu
+                                            aria-labelledby="dropdownBasic1">
+                                            <button ngbDropdownItem class="greyBackground">
+                                                Investigate
+                                            </button>
+                                            <button ngbDropdownItem class="greyBackground"
+                                                [routerLink]="['/incidentSummary', item.incId]">
+                                                Create an Incident
+                                            </button>
+                                            <button ngbDropdownItem class="greyBackground"
+                                                [routerLink]="['/performRemediation']">
+                                                Perform Remediation
+                                            </button>
+                                            <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                                class="greyBackground">
+                                                View Summary
+                                            </button>
+                                        </div>
+                                    </span>
                                 </div>
                             </div>
 
@@ -528,7 +549,8 @@
                                         </dl>
 
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                            <div class="row mt-1 details"
+                                                *ngFor="let threatCategory of item.threatCategories">
                                                 <div class="col-md-5">
                                                     {{threatCategory.title}}
                                                 </div>
@@ -562,7 +584,8 @@
                     </div>
                 </div>
             </div>
-            <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
+            <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4"
+                *ngIf="selectedView === 'timeline'">
                 <div class="risk-date-stamp">
                     <span>10 June 2019</span>
                 </div>
@@ -579,39 +602,42 @@
                         <div class="violationTitle">
                             <div class="row mt-1 mb-2 ml-3 mr-1">
                                 <div class="col-sm-12">
-                                <span class="pointerCursor" (click)="item.accord = !item.accord">
-                                    &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
-                                </span>
+                                    <span class="pointerCursor" (click)="item.accord = !item.accord">
+                                        &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
+                                            class="fa fa-angle-down"></i>
+                                    </span>
                                     <span class="pointerCursor pvValue"
-                                          (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                        (click)="item.accord = !item.accord">{{item.pv}}</span>
                                     <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
-                                    {{item.ruleInfo.title}}</span>
+                                        {{item.ruleInfo.title}}</span>
 
-                                 <!--    <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+                                    <!--    <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                           class="risk-score mr-5">{{item.riskScore}}</span> -->
-<span
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
-                                    <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
-                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
-                                        Actions
-                                    </button>
-                                    <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground">
-                                            Investigate
+                                    <span class="risk-score mr-5">{{item.riskScore}}</span>
+                                    <span ngbDropdown placement="bottom-right" class="float-right mt-1"
+                                        *ngIf="item.accord">
+                                        <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
+                                            Actions
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
-                                            Create an Incident
-                                        </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
-                                            Perform Remediation
-                                        </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
-                                            View Summary
-                                        </button>
-                                    </div>
-                                </span>
+                                        <div class="greyBackground actionDropDown" ngbDropdownMenu
+                                            aria-labelledby="dropdownBasic1">
+                                            <button ngbDropdownItem class="greyBackground">
+                                                Investigate
+                                            </button>
+                                            <button ngbDropdownItem class="greyBackground"
+                                                [routerLink]="['/incidentSummary', item.incId]">
+                                                Create an Incident
+                                            </button>
+                                            <button ngbDropdownItem class="greyBackground"
+                                                [routerLink]="['/performRemediation']">
+                                                Perform Remediation
+                                            </button>
+                                            <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                                class="greyBackground">
+                                                View Summary
+                                            </button>
+                                        </div>
+                                    </span>
                                 </div>
                             </div>
 
@@ -632,11 +658,11 @@
                                         <div class="ml-4">
                                             <div class="row mt-1 details">
                                                 <div class="col-md-5">
-                                                   Kill Chain
+                                                    Kill Chain
                                                 </div>
                                                 <b>&nbsp;:&nbsp;</b>
                                                 <div class="col-md-6">
-                                                   -
+                                                    -
                                                 </div>
                                             </div>
                                             <div class="row mt-1 details">
@@ -665,7 +691,7 @@
                                             <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                         </dl>
                                         <div class="ml-4">
-                                            <div class="row mt-1 details" >
+                                            <div class="row mt-1 details">
                                                 <div class="col-md-6">
                                                     Affected Entity
                                                 </div>
@@ -674,7 +700,7 @@
                                                     AWendler
                                                 </div>
                                             </div>
-                                            <div class="row mt-1 details" >
+                                            <div class="row mt-1 details">
                                                 <div class="col-md-6">
                                                     Locations
                                                 </div>
@@ -683,31 +709,31 @@
                                                     Ukraine
                                                 </div>
                                             </div>
-                                            <div class="row mt-1 details" >
+                                            <div class="row mt-1 details">
                                                 <div class="col-md-6">
                                                     Status
                                                 </div>
                                                 <b>&nbsp;:&nbsp;</b>
                                                 <div class="col-md-5">
-                                                   Risk: 42
+                                                    Risk: 42
                                                 </div>
                                             </div>
-                                            <div class="row mt-1 details" >
+                                            <div class="row mt-1 details">
                                                 <div class="col-md-6">
                                                     Resources
                                                 </div>
                                                 <b>&nbsp;:&nbsp;</b>
                                                 <div class="col-md-5">
-                                                   Proxy
+                                                    Proxy
                                                 </div>
                                             </div>
-                                            <div class="row mt-1 details" >
+                                            <div class="row mt-1 details">
                                                 <div class="col-md-6">
                                                     Indicators
                                                 </div>
                                                 <b>&nbsp;:&nbsp;</b>
                                                 <div class="col-md-5">
-                                                   Category
+                                                    Category
                                                 </div>
                                             </div>
                                         </div>
@@ -720,7 +746,7 @@
             </div>
         </div>
     </ng-container>
-          <ng-container *ngIf = "selectedUser == 'Maile'">
+    <ng-container *ngIf="selectedUser == 'Maile'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>18 July 2019</span>
@@ -740,34 +766,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                      <span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -790,7 +818,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>
@@ -825,7 +854,7 @@
             </div>
         </div>
     </ng-container>
-    <ng-container *ngIf = "selectedUser == 'Alysa'">
+    <ng-container *ngIf="selectedUser == 'Alysa'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>18 July 2019</span>
@@ -845,34 +874,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                <span
-                                    class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -895,7 +926,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>
@@ -930,7 +962,7 @@
             </div>
         </div>
     </ng-container>
-    <ng-container *ngIf = "selectedUser == 'Heidy'">
+    <ng-container *ngIf="selectedUser == 'Heidy'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>17 July 2019</span>
@@ -950,34 +982,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                <span
-                                    class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -1000,7 +1034,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>
@@ -1035,7 +1070,7 @@
             </div>
         </div>
     </ng-container>
-      <ng-container *ngIf = "selectedUser == 'Mendelson'">
+    <ng-container *ngIf="selectedUser == 'Mendelson'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>29 July 2019</span>
@@ -1055,34 +1090,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                      <span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -1105,7 +1142,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>
@@ -1141,7 +1179,7 @@
         </div>
     </ng-container>
 
-    <ng-container *ngIf = "selectedUser == 'JohnS'">
+    <ng-container *ngIf="selectedUser == 'JohnS'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>2 Aug 2019</span>
@@ -1161,34 +1199,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                      <span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -1211,7 +1251,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>
@@ -1264,34 +1305,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                      <span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -1314,7 +1357,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>
@@ -1367,34 +1411,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                      <span 
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -1417,7 +1463,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>
@@ -1453,7 +1500,7 @@
         </div>
     </ng-container>
 
-    <ng-container *ngIf = "selectedUser == 'SSmith1'">
+    <ng-container *ngIf="selectedUser == 'SSmith1'">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
                 <span>27 July 2019</span>
@@ -1473,34 +1520,36 @@
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
                                     &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                                                                                class="fa fa-angle-down"></i>
+                                        class="fa fa-angle-down"></i>
                                 </span>
                                 <span class="pointerCursor pvValue"
-                                      (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
                                 <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                <span
-                                    class="risk-score mr-5">{{item.riskScore}}</span>
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                         aria-labelledby="dropdownBasic1">
+                                        aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground">
                                             Investigate
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/incidentSummary', item.incId]">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground" [routerLink]="['/performRemediation']">
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
                                             Perform Remediation
                                         </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem class="greyBackground">
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
                                             View Summary
                                         </button>
                                     </div>
@@ -1523,7 +1572,8 @@
                                     </dl>
 
                                     <div class="ml-4">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of item.threatCategories">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
                                             <div class="col-md-5">
                                                 {{threatCategory.title}}
                                             </div>

@@ -328,7 +328,7 @@ export class RiskyIPComponent implements OnInit {
 
             }
 
-            data.push({ date: new Date(2018, 0, i + 1), value: visits });
+            data.push({ date: new Date(2019, 5, i + 1), value: visits });
             previousValue = visits;
         }
 
@@ -363,7 +363,6 @@ export class RiskyIPComponent implements OnInit {
         chart.cursor = new am4charts.XYCursor();
         let scrollbarX = new am4core.Scrollbar();
         chart.scrollbarX = scrollbarX;
-
     }
 
     open(ruilId, userId, isotimestamp) {

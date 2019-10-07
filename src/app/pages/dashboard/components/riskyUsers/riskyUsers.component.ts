@@ -222,7 +222,7 @@ export class RiskyUsersComponent {
         },
         {
             generatedDateFormat: '10 May 2019',
-            generatedTimestamp: '09:13:00',
+            generatedTimestamp: '09:17:00',
             accord: false,
             pv: 'PV_061',
             riskScore: 6,

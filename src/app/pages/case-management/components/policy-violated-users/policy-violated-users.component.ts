@@ -634,7 +634,9 @@ export class PolicyViolatedUsersComponent implements OnInit {
           this.filteredRiskyEntities.title = this.selectedPolicy;
           break;
         default:
+          this.nonThreatVector = false;
           this.filteredRiskyEntities = this.filteredRiskyEntitiesForPV05;
+          this.filteredRiskyEntities.title = this.selectedPolicy;
           break;
       }
     });

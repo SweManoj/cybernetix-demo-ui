@@ -31,7 +31,7 @@ export class DashboardService {
         { total: "12 M", title: "Raw Logs", ico: "logs@1x.png" },
         { total: "121 K", title: "Parsed Logs", ico: "noun_Check@1x.png" },
         { total: "950", title: "Roles", ico: "entities@1x.png" },
-        { total: "156", title: "Policy Violations", ico: "violations@2x.png" },
+        { total: "156", title: "Insights", ico: "violations@2x.png" },
         { total: "85", title: "Incidents", ico: "incident@2x.png" },
         { total: "17", title: "Actions", ico: "actions@1x.png" }
     ];

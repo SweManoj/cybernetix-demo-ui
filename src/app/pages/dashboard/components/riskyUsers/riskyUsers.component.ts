@@ -1051,7 +1051,7 @@ export class RiskyUsersComponent {
         { image: 'falg@1x.png', value: '9.8K', title: 'Events' },
         { image: 'resources@1x.png', value: '09', title: 'Resources' },
         { image: 'Shape@1x.png', value: '01', title: 'Locations' },
-        { image: 'violations@1x.png', value: '05', title: 'Violations' },
+        { image: 'violations@1x.png', value: '05', title: 'Insights' },
         { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 
@@ -1059,7 +1059,7 @@ export class RiskyUsersComponent {
         { image: 'falg@1x.png', value: '1.4K', title: 'Events' },
         { image: 'resources@1x.png', value: '04', title: 'Applications' },
         { image: 'Shape@1x.png', value: '01', title: 'Locations' },
-        { image: 'violations@1x.png', value: '04', title: 'Violations' },
+        { image: 'violations@1x.png', value: '04', title: 'Insights' },
         { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 
@@ -1067,7 +1067,7 @@ export class RiskyUsersComponent {
         { image: 'falg@1x.png', value: '1.9K', title: 'Events' },
         { image: 'resources@1x.png', value: '03', title: 'Applications' },
         { image: 'Shape@1x.png', value: '02', title: 'Locations' },
-        { image: 'violations@1x.png', value: '02', title: 'Violations' },
+        { image: 'violations@1x.png', value: '02', title: 'Insights' },
         { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ]
 

@@ -217,7 +217,7 @@
                                 <span class="risk-score mr-5">{{item.riskScore}}</span>
 
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
-                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
+                                    <button *ngIf="item.pv!='INFO'" class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
@@ -245,6 +245,10 @@
                                     <dl>
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
                                         <dd class="mt-2"> {{item.description}}</dd>
+                                    </dl>
+                                    <dl *ngIf="item.pv=='INFO'">
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;MAC</dt>
+                                        <dd class="mt-2"> 00:0a:95:9d:68:16</dd>
                                     </dl>
                                 </div>
 

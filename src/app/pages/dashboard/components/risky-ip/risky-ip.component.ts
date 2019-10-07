@@ -132,10 +132,10 @@ export class RiskyIPComponent implements OnInit {
             { title: 'Sub Category', value: '' }],
             dummyDatas: [{ title: 'New Hostname', value: 'WK-UKL48503D' },
             { title: 'New IP', value: '10.82.32.227' },
-            { title: 'Locations', value: '' },
+            /* { title: 'Locations', value: '' },
             { title: 'Status', value: '' },
             { title: 'Resources', value: 'DHCP' },
-            { title: 'Indicators', value: 'AgentIP, AgentMAC, AgentHostname' }],
+            { title: 'Indicators', value: 'AgentIP, AgentMAC, AgentHostname' } */],
             description: 'This event correlates Dynamic IP with Hostnames / MAC'
         },
         {

@@ -207,11 +207,11 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-1',
             description: 'This Violation is triggered when user exfiltrates excissive bytes of data via HTTPS',
-            threatCategories: {
-                'Kill Chain': 'Data Exfiltration',
-                'Threat Category': 'Data Exfiltration',
-                'Sub Category': 'Data Exfiltration via HTTPS'
-            },
+            threatCategories:[
+                { title:'Kill Chain', value:'Data Exfiltration' },
+                { title:'Threat Category', value:'Data Exfiltration' },
+                { title:'Sub Category', value:'Data Exfiltration via HTTPS' }
+            ],
             additionalInfo: {
                 'Affected Entity': 'SVL-EMoor, WK-38482L',
                 'Location': 'San Diego',
@@ -232,11 +232,11 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-2',
             description: 'This Violation is triggered when service attempts to connect to Proxy',
-            threatCategories: {
-                'Kill Chain': 'Exploitation',
-                'Threat Category': 'Proxy Attempts',
-                'Sub Category': 'Proxy Attempts'
-            },
+            threatCategories:[
+                { title:'Kill Chain', value:'Exploitation' },
+                { title:'Threat Category', value:'Proxy Attempts' },
+                { title:'Sub Category', value:'Proxy Attempts' }
+            ],
             additionalInfo: {
                 'Affected Entity': 'SVL-EMoor, WK-38482L',
                 'Location': 'San Diego',
@@ -257,11 +257,11 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-3',
             description: 'This Violation is triggered when User attempts to exfiltrate data via DLP',
-            threatCategories: {
-                'Kill Chain': 'Data Exfiltration',
-                'Threat Category': 'Data Exfiltration Attempt',
-                'Sub Category': 'Data Exfiltration Attempt via Email'
-            },
+            threatCategories:[
+                { title:'Kill Chain', value:'Data Exfiltration' },
+                { title:'Threat Category', value:'Data Exfiltration Attempt' },
+                { title:'Sub Category', value:'Data Exfiltration Attempt via Email' }
+            ],
             additionalInfo: {
                 'Affected Entity': 'SVL-EMoor, WK-38482L',
                 'Location': 'San Diego',
@@ -282,11 +282,11 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-4',
             description: 'This Violation is triggered when User downloads high number of Files / documents from 0-365 Sharepoint',
-            threatCategories: {
-                'Kill Chain': 'Insider Threat',
-                'Threat Category': 'Data Downloads',
-                'Sub Category': 'Data Downloads from Cloud'
-            },
+            threatCategories:[
+                { title:'Kill Chain', value:'Insider Threat' },
+                { title:'Threat Category', value:'Data Downloads' },
+                { title:'Sub Category', value:'Data Downloads from Cloud' }
+            ],
             additionalInfo: {
                 'Affected Entity': 'SVL-EMoor, WK-38482L',
                 'Location': 'San Diego',
@@ -307,11 +307,11 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-5',
             description: 'This Violation is triggered when User grants groups / permissions to Service Account',
-            threatCategories: {
-                'Kill Chain': 'Privilege Misuse',
-                'Threat Category': 'Privilege Escalation',
-                'Sub Category': 'Privilege Escalation to Service Accounts'
-            },
+            threatCategories:[
+                { title:'Kill Chain', value:'Privilege Misuse' },
+                { title:'Threat Category', value:'Privilege Escalation' },
+                { title:'Sub Category', value:'Privilege Escalation to Service Accounts' }
+            ],
             additionalInfo: {
                 'Affected Entity': 'Adm-EMoor, WK-38482L',
                 'Location': 'San Diego',

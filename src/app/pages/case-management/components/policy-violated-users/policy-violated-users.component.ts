@@ -443,7 +443,7 @@ export class PolicyViolatedUsersComponent implements OnInit {
     ]
   };
 
-  threatVector = {
+  reconnaissance = {
     routerLink: 'riskyIP',
     title: '',
     pvId: '',
@@ -456,6 +456,85 @@ export class PolicyViolatedUsersComponent implements OnInit {
         role: "",
         location: "",
         reportingManager: "",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "",
+        lastViolation: "Uploded More Data"
+      },
+      {
+        id: "43",
+        user: "Shadon",
+        riskScore: 50,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Interactive login attempt by user without badge activity"
+      },
+      {
+        id: "44",
+        user: "Harry",
+        riskScore: 30,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Logon Event By Service Account As An User"
+      },
+      {
+        id: "45",
+        user: "Fling",
+        riskScore: 64,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Uploded More Data"
+      },
+      {
+        id: "46",
+        user: "Sling",
+        riskScore: 56,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Logon Event By Service Account As An User"
+      },
+      {
+        id: "47",
+        user: "Samy",
+        riskScore: 45,
+        department: "Engineering",
+        role: "VP Buisness Development",
+        location: "Los Angeles",
+        reportingManager: "Paul Smith",
+        creationDate: "2018-05-12",
+        lastWorkingDay: "2019-01-12",
+        lastViolation: "Uploded More Data"
+      }]
+  };
+
+  dataExfiltration = {
+    routerLink: 'riskyUser',
+    title: '',
+    pvId: '',
+    users: [
+      {
+        id: "42",
+        user: "Adm-EMoor",
+        riskScore: 95,
+        department: "Sales",
+        role: "AVP - Sales",
+        location: "San Diego",
+        reportingManager: "Ryan Smith",
         creationDate: "2018-05-12",
         lastWorkingDay: "",
         lastViolation: "Uploded More Data"
@@ -544,10 +623,18 @@ export class PolicyViolatedUsersComponent implements OnInit {
           break;
         case 'PV05': this.filteredRiskyEntities = this.filteredRiskyEntitiesForPV05;
           break;
-        default:
+        case 'Reconnaissance':
           this.nonThreatVector = false;
-          this.filteredRiskyEntities = this.threatVector;
+          this.filteredRiskyEntities = this.reconnaissance;
           this.filteredRiskyEntities.title = this.selectedPolicy;
+          break;
+        case 'Data Exfiltration':
+          this.nonThreatVector = false;
+          this.filteredRiskyEntities = this.dataExfiltration;
+          this.filteredRiskyEntities.title = this.selectedPolicy;
+          break;
+        default:
+          this.filteredRiskyEntities = this.filteredRiskyEntitiesForPV05;
           break;
       }
     });

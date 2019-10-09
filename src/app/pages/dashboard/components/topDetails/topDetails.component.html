@@ -92,7 +92,8 @@
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
-                <a [routerLink]="['/riskyUser', terminatedUser.entityId]" class="pointerCursor">{{terminatedUser.entityId}}</a>
+                <a [routerLink]="['/riskyUser', terminatedUser.entityId]"
+                    class="pointerCursor">{{terminatedUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(terminatedUser.riskscorebygrp)}">
@@ -113,7 +114,8 @@
 </div>
 <div *ngIf="componentType === 'orphanUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let orphanUser of orphanUsers">
-        <div [routerLink]="['/riskyUser',orphanUser.entityId]" class="row user-item blockPadding pointerCursor">
+        <div (click)="fetchOrphanUserEnrichIndexKibanaURL(orphanUser.entityId)"
+            class="row user-item blockPadding pointerCursor">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle" src='./../../../../../assets/images/users/orphan_user.png'
                     style="width: 2.9rem;height: 2.9rem;" />
@@ -146,7 +148,8 @@
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
-                <a  [routerLink]="['/riskyUser', externalUser.entityId]" class="pointerCursor">{{externalUser.entityId}}</a>
+                <a [routerLink]="['/riskyUser', externalUser.entityId]"
+                    class="pointerCursor">{{externalUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(externalUser.riskscorebygrp)}">
@@ -200,7 +203,8 @@
                     src='../../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
-                <a [routerLink]="['/riskyUser', dormantUser.entityId]" class="pointerCursor">{{dormantUser.entityId}}</a>
+                <a [routerLink]="['/riskyUser', dormantUser.entityId]"
+                    class="pointerCursor">{{dormantUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(dormantUser.riskscorebygrp)}">
@@ -255,7 +259,8 @@
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
-                <a [routerLink]="['/riskyUser', watchlistedUser.entityId]" class="pointerCursor"> {{watchlistedUser.entityId}}</a>
+                <a [routerLink]="['/riskyUser', watchlistedUser.entityId]" class="pointerCursor">
+                    {{watchlistedUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(watchlistedUser.riskscorebygrp)}">
@@ -276,13 +281,14 @@
 </div>
 <div *ngIf="componentType === 'privilegedUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let privilegedUser of privilegedUsers">
-        <div  class="row user-item blockPadding">
+        <div class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
                 <img class="profile-image rounded-circle"
                     src='./../../../../../assets/images/users/service_user.jpeg' />
             </div>
             <div class="col-8 col-sm-8 col-md-8 centerAlign wordWrap">
-                <a [routerLink]="['/riskyUser', privilegedUser.entityId]" class="pointerCursor">{{privilegedUser.entityId}}</a>
+                <a [routerLink]="['/riskyUser', privilegedUser.entityId]"
+                    class="pointerCursor">{{privilegedUser.entityId}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
                 <span [ngStyle]="{'color':getRiskScoreColor(privilegedUser.riskscorebygrp)}">

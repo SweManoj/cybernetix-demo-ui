@@ -12,6 +12,10 @@ export class TopDetailsService {
         this.mainURL = `${environment.serverUrl}/v1/dashboard`;
     }
 
+    fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntity) {
+        return this.http.get(`${environment.serverUrl}/v1/entity/fetchOrphanUserEnrichIndexKibanaURL?entityId=${orphanUserEntity}`);
+    }
+
     getUploadExceedData() {
         const url = `${this.mainURL}/firewallRiskyUsers?records=5`;
         return this.http.get(url);

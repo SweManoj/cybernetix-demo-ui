@@ -42,7 +42,7 @@ export class RiskyUserService {
     }
 
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId, entityType) {
-        const url = `${this.mainURL}/entity/fetchEnrichIndexKibanaURL/${entityId}/${entityType}/${violationEventDateTime}/${ruleId}`;
+        const url = `${this.mainURL}/entity/fetchEnrichIndexKibanaURL/${entityType}/${violationEventDateTime}/${ruleId}?entityId=${entityId}`;
         return this.http.get(url);
     }
 

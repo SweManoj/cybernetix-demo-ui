@@ -2,6 +2,7 @@ import {AfterViewInit, Component, Input, OnInit, ViewChild,} from '@angular/core
 import {TopDetailsService} from './topDetails.service';
 import {Table} from 'primeng/table';
 import {Router} from '@angular/router';
+import { environment } from '../../../../../environments/environment.prod';
 
 // import {routerTransition} from '../../router.animations';
 
@@ -133,7 +134,6 @@ export class TopDetailsComponent implements OnInit {
         });
     }
 
-
     getThreats() {
         this.topDetailsService.getTopThreats().subscribe((res: any) => {
             this.threats = res;
@@ -231,4 +231,12 @@ export class TopDetailsComponent implements OnInit {
             this.watchlistedUsers.sort((a, b) => -(a.score - b.score));
         }
     }
+
+    fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntityId) {
+        this.topDetailsService.fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntityId)
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+            });
+    }
+
 }

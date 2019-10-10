@@ -1,17 +1,17 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Comment} from './comment';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {ActivatedRoute, Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {IncidentSummaryService} from './incident-summary.service';
-import {LoginService} from '../../../../core/login/login.service';
-import {MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {environment} from '../../../../../environments/environment';
-import {UtilDataService} from '../../../../core/services/util.data.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Comment } from './comment';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { IncidentSummaryService } from './incident-summary.service';
+import { LoginService } from '../../../../core/login/login.service';
+import { MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent } from '@angular/material';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { environment } from '../../../../../environments/environment';
+import { UtilDataService } from '../../../../core/services/util.data.service';
 
 export interface User {
     name: string;
@@ -22,6 +22,7 @@ export interface User {
     templateUrl: './incident-summary.component.html'
 })
 export class IncidentSummaryComponent implements OnInit {
+
     status: any = '';
     isUpdate: boolean = false;
     selectedPolicy: any;
@@ -58,7 +59,7 @@ export class IncidentSummaryComponent implements OnInit {
     fileToUpload: any;
     policyComments: any[] = [];
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
-    filteredUsers: Observable<string[]>;
+    filteredUsers: Observable<User[]>;
     visible = true;
     selectable = true;
     removable = true;
@@ -115,9 +116,17 @@ export class IncidentSummaryComponent implements OnInit {
     commentValue: AbstractControl;
 
     constructor(private formBuilder: FormBuilder, private routeParam: ActivatedRoute,
-                private router: Router, private _snackBar: MatSnackBar, private incidentSummaryService: IncidentSummaryService,
-                private loginService: LoginService, private utilDataService: UtilDataService) {
+        private router: Router, private _snackBar: MatSnackBar, private incidentSummaryService: IncidentSummaryService,
+        private loginService: LoginService, private utilDataService: UtilDataService) {
         this.initForm();
+    }
+
+    ngOnInit() {
+        this.getUsers();
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedPolicy = params.get('policyViolationId');
+            this.getIncident(this.selectedPolicy);
+        });
     }
 
     incidentDataChange() {
@@ -152,14 +161,6 @@ export class IncidentSummaryComponent implements OnInit {
         this.replyComment = this.commentFormGroup.controls['replyComment'];
     }
 
-    ngOnInit() {
-        this.getUsers();
-        this.routeParam.paramMap.subscribe((params) => {
-            this.selectedPolicy = params.get('policyViolationId');
-            this.getIncident(this.selectedPolicy);
-        });
-    }
-
     private _taggedUserFilter(value): string[] {
         if (typeof value === 'object') {
             this.filteredTaggedValue = value.userName.toLowerCase();
@@ -167,14 +168,15 @@ export class IncidentSummaryComponent implements OnInit {
             this.filteredTaggedValue = value.toLowerCase();
         }
 
-
         return this.users.filter(user => user.userName.toLowerCase().indexOf(this.filteredTaggedValue) === 0);
     }
 
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
+
             this.users = users;
             const loggedInUser = this.utilDataService.getLoggedInUser();
+
             if (this.users.find(user => user.userName === loggedInUser.userName)) {
                 this.users.splice(this.users.findIndex(user => user.userName === loggedInUser.userName), 1);
             }
@@ -183,7 +185,7 @@ export class IncidentSummaryComponent implements OnInit {
                 map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
             users.forEach(user => {
                 if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
-                    this.caseowners.push({name: user.firstName, value: user.userName});
+                    this.caseowners.push({ name: user.firstName, value: user.userName });
                 }
             });
             this.filteredOptions = this.myControl.valueChanges
@@ -195,9 +197,21 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
+    selectedCaseOwner() {
+        if (this.myControl.value.value !== this.incidentDetailsCopy.incOwner.userName)
+            this.isUpdate = true;
+        else {
+            this._snackBar.open('Please assign to other user', null, {
+                duration: 2000,
+            });
+        }
+    }
+
     displayFn(user?: User): string | undefined {
         return user ? user.name : undefined;
     }
+
+    hideAssigMeButton = false;
 
     getIncident(pvId) {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
@@ -211,18 +225,24 @@ export class IncidentSummaryComponent implements OnInit {
                         value: this.incidentDetails.incOwner.userName
                     });
                 }
+                const loggedInUser = this.utilDataService.getLoggedInUser();
+                if (res.incOwner.usrId !== loggedInUser.userId) {
+                    this.hideAssigMeButton = true;
+                }
             }
         });
     }
 
     getTaggedUsersForIncident() {
         this.incidentSummaryService.getTaggedUsersforIncident(this.incidentDetails.incId).subscribe((res: any) => {
-           this.taggedUsersForIncident = res;
+            this.taggedUsersForIncident = res;
         });
     }
+
     assignIncident(incidentId) {
         this.incidentSummaryService.assignIncidentToUser(incidentId).subscribe((response: any) => {
             if (response) {
+                this.hideAssigMeButton = false;
                 response = JSON.parse(response);
                 this.incidentDetails.incOwner = response;
                 this.incidentDetailsCopy.incOwner = Object.assign({}, this.incidentDetails.incOwner);
@@ -235,6 +255,8 @@ export class IncidentSummaryComponent implements OnInit {
             this._snackBar.open('Assigned to you successfully', null, {
                 duration: 2000,
             });
+
+            this.isUpdate = false;
         });
     }
 
@@ -242,7 +264,7 @@ export class IncidentSummaryComponent implements OnInit {
         if (commentObj.childCommentsModel === null) {
             commentObj.childCommentsModel = [];
         }
-        const comment = new Comment(this.replyComment.value, this.incidentDetails.incId, parentId,[]);
+        const comment = new Comment(this.replyComment.value, this.incidentDetails.incId, parentId, []);
         this.incidentSummaryService.addComment(comment).subscribe((res: any) => {
             commentObj.childCommentsModel.unshift(res);
             commentObj.reply = false;
@@ -252,7 +274,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     uploadIncidentSummaryFile(files: FileList) {
         this.fileToUpload = files.item(0);
-        const policyStringifiedData = JSON.stringify({'incidentEntityId': this.incidentDetails.incId});
+        const policyStringifiedData = JSON.stringify({ 'incidentEntityId': this.incidentDetails.incId });
         this.incidentSummaryService.uploadIncidentSummaryAttachment(this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
             this.incidentDetails.attachFiles.push(res);
             this.saveIncidentActivity('uploaded ' + res.fileName + ' file.', 'FILE_UPLOADED');
@@ -317,7 +339,9 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.updateIncident(incidentData, this.incidentDetails.incId).subscribe((response: any) => {
             this.addFeedsForIncidentUpdate();
             this.getIncident(this.selectedPolicy);
+            this.isUpdate = false;
         });
+
         this._snackBar.open('Updated successfully', null, {
             duration: 2000,
         });
@@ -326,12 +350,13 @@ export class IncidentSummaryComponent implements OnInit {
     downloadFile(data) {
         const binaryData = [];
         binaryData.push(data);
-        const blob = new Blob(binaryData, {type: 'application/octet-stream'});
+        const blob = new Blob(binaryData, { type: 'application/octet-stream' });
         const url = window.URL.createObjectURL(blob);
         window.open(url);
     }
 
     addFeedsForIncidentUpdate() {
+        debugger
         if (this.incidentDetails.priority !== this.incidentDetailsCopy.priority) {
             this.saveIncidentActivity('changed the priority to be ' + this.incidentDetails.priority, 'PRIORITY_UPDATED');
         }
@@ -342,10 +367,10 @@ export class IncidentSummaryComponent implements OnInit {
 
         if (this.incidentDetailsCopy.incOwner !== null) {
             if (this.myControl.value.value !== this.incidentDetailsCopy.incOwner.userName) {
-                this.saveIncidentActivity('changed the case owner', 'CASE_OWNER_ASSIGNED');
+                this.saveIncidentActivity(`changed the case owner to ${this.myControl.value.value}`, 'CASE_OWNER_ASSIGNED');
             }
         } else if (this.myControl.value.value) {
-            this.saveIncidentActivity('changed the case owner', 'CASE_OWNER_ASSIGNED');
+            this.saveIncidentActivity(`changed the case owner to ${this.myControl.value.value}`, 'CASE_OWNER_ASSIGNED');
         }
     }
 

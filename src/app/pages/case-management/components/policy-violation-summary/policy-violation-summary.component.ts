@@ -1,18 +1,18 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Comment} from './comment';
-import {PolicyViolationSummaryService} from './policy-violation-summary.service';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {ActivatedRoute, Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {LoginService} from '../../../../core/login/login.service';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {environment} from '../../../../../environments/environment';
-import {UtilDataService} from '../../../../core/services/util.data.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Comment } from './comment';
+import { PolicyViolationSummaryService } from './policy-violation-summary.service';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginService } from '../../../../core/login/login.service';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { environment } from '../../../../../environments/environment';
+import { UtilDataService } from '../../../../core/services/util.data.service';
 
 export interface User {
     name: string;
@@ -24,6 +24,7 @@ export interface User {
     templateUrl: './policy-violation-summary.component.html'
 })
 export class PolicyViolationSummaryComponent implements OnInit {
+
     priority: any = '';
     status: any = '';
     users: any;
@@ -47,10 +48,10 @@ export class PolicyViolationSummaryComponent implements OnInit {
         priority: '',
         status: '',
         policyCommentsEntities: [],
-        policyReviewer: {userName: '', firstName: '', lastName: ''}
+        policyReviewer: { userName: '', firstName: '', lastName: '' }
     };
     policyDetails = {
-        entity:'',
+        entity: '',
         violationName: '',
         violatorId: '',
         shortenUrl: '',
@@ -60,7 +61,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         elasticKillChainName: '',
         elasticCategory: '',
         elasticSubCategory: '',
-        incId : 0,
+        incId: 0,
         pv_ID: 0,
         attachedFiles: [],
         elasticPolicyDescription: '',
@@ -68,7 +69,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         status: '',
         policyCommentsEntities: [],
         policyViolationActivities: [],
-        policyReviewer: {userName: '', firstName: '', lastName: ''}
+        policyReviewer: { userName: '', firstName: '', lastName: '' }
     };
     fileToUpload = {};
 
@@ -86,21 +87,21 @@ export class PolicyViolationSummaryComponent implements OnInit {
     replyComment: AbstractControl;
 
     constructor(private formBuilder: FormBuilder, private policyViolationSummaryService: PolicyViolationSummaryService,
-                private routeParam: ActivatedRoute, private router: Router,
-                private _snackBar: MatSnackBar, private loginService: LoginService, private utilDataService: UtilDataService) {
+        private routeParam: ActivatedRoute, private router: Router,
+        private _snackBar: MatSnackBar, private loginService: LoginService, private utilDataService: UtilDataService) {
         this.initForm();
     }
 
-    redirectToEntityDetailPage(violationType,violatorId) {
-        switch(violationType) {
-         case 'USER':  this.router.navigateByUrl('/riskyUser/' + violatorId);
-                      break; 
-         case 'IP':  this.router.navigateByUrl('/riskyIP/' + violatorId);
-                      break; 
-         case 'HOST':  this.router.navigateByUrl('/riskyHost/' + violatorId);
-                      break; 
+    redirectToEntityDetailPage(violationType, violatorId) {
+        switch (violationType) {
+            case 'USER': this.router.navigateByUrl('/riskyUser/' + violatorId);
+                break;
+            case 'IP': this.router.navigateByUrl('/riskyIP/' + violatorId);
+                break;
+            case 'HOST': this.router.navigateByUrl('/riskyHost/' + violatorId);
+                break;
         }
-     }
+    }
 
     policyDataChange() {
         if (this.policyDetails.priority !== '' || this.policyDetails.status !== '' || this.myControl.value !== null) {
@@ -167,7 +168,6 @@ export class PolicyViolationSummaryComponent implements OnInit {
             const input = event.input;
             const value = event.value;
 
-
             if ((value || '').trim()) {
                 this.taggedUsers.push(value);
             }
@@ -195,6 +195,15 @@ export class PolicyViolationSummaryComponent implements OnInit {
         this.taggedUserCtrl.setValue(null);
     }
 
+    selectReviewer() {
+        if (this.myControl.value.value !== this.policyDetailsCopy.policyReviewer.userName)
+            this.isUpdate = true;
+        else {
+            this._snackBar.open('Please assign to other user', null, {
+                duration: 2000,
+            });
+        }
+    }
 
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
@@ -209,7 +218,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
             users.forEach(user => {
                 if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
-                    this.reviewers.push({name: user.firstName + ' ' + user.lastName, value: user.userName});
+                    this.reviewers.push({ name: user.firstName + ' ' + user.lastName, value: user.userName });
                 }
             });
             this.filteredOptions = this.myControl.valueChanges
@@ -229,18 +238,27 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 this.policyDetailsCopy = Object.assign({}, res);
                 if (this.policyDetails.policyReviewer) {
                     const name = this.policyDetails.policyReviewer.firstName + ' ' + this.policyDetails.policyReviewer.lastName;
-                    this.myControl.setValue({name: name, value: this.policyDetails.policyReviewer.userName});
+                    this.myControl.setValue({ name: name, value: this.policyDetails.policyReviewer.userName });
+                }
+
+                const loggedInUser = this.utilDataService.getLoggedInUser();
+                if (res.policyReviewer.usrId !== loggedInUser.userId) {
+                    this.hideAssigMeButton = true;
                 }
             }
         });
     }
 
+    hideAssigMeButton = false;
+
     assignPolicy(violationId) {
         this.policyViolationSummaryService.assignPolicyToUser(violationId).subscribe((response: any) => {
             if (response) {
+                this.hideAssigMeButton = false;
+
                 response = JSON.parse(response);
                 const name = response.firstName + ' ' + response.lastName;
-                this.myControl.setValue({name: name, value: response.userName});
+                this.myControl.setValue({ name: name, value: response.userName });
                 this.policyDetails.policyReviewer = response;
                 this.policyDetailsCopy.policyReviewer = Object.assign({}, this.policyDetails.policyReviewer);
             }
@@ -248,16 +266,17 @@ export class PolicyViolationSummaryComponent implements OnInit {
             this._snackBar.open('Assigned to you successfully', null, {
                 duration: 2000,
             });
+
+            this.isUpdate = false;
         });
     }
 
     private _taggedUserFilter(value) {
-        if (typeof value === 'object'){
+        if (typeof value === 'object') {
             this.filteredTaggedValue = value.userName.toLowerCase();
         } else {
             this.filteredTaggedValue = value.toLowerCase();
         }
-
 
         return this.users.filter(user => user.userName.toLowerCase().indexOf(this.filteredTaggedValue) === 0);
     }
@@ -268,7 +287,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     uploadPolicyViolationFile(files: FileList) {
         this.fileToUpload = files.item(0);
-        const policyStringifiedData = JSON.stringify({'pvId': this.policyDetails.pv_ID});
+        const policyStringifiedData = JSON.stringify({ 'pvId': this.policyDetails.pv_ID });
         this.policyViolationSummaryService.uploadPolicyViolationSummaryAttachment(this.fileToUpload, policyStringifiedData)
             .subscribe((res: any) => {
                 this.policyDetails.attachedFiles.push(res);
@@ -282,7 +301,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     downloadFile(data) {
         const binaryData = [];
         binaryData.push(data);
-        const blob = new Blob(binaryData, {type: 'application/octet-stream'});
+        const blob = new Blob(binaryData, { type: 'application/octet-stream' });
         const url = window.URL.createObjectURL(blob);
         window.open(url);
     }
@@ -304,6 +323,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         this.policyViolationSummaryService.updatePolicy(policyData, violationId).subscribe((response: any) => {
             this.addFeedsForPolicyUpdate();
             this.getViolatedPolicy();
+            this.isUpdate = false;
         });
         this._snackBar.open('Updated successfully', null, {
             duration: 2000,
@@ -321,10 +341,10 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
         if (this.policyDetailsCopy.policyReviewer !== null) {
             if (this.myControl.value.value !== this.policyDetailsCopy.policyReviewer.userName) {
-                this.savePolicyViolationActivity('changed the reviewer', 'REVIEWER_ASSIGNED');
+                this.savePolicyViolationActivity(`changed the reviewer to ${this.myControl.value.value}`, 'REVIEWER_ASSIGNED');
             }
         } else if (this.myControl.value.value) {
-            this.savePolicyViolationActivity('changed the reviewer', 'REVIEWER_ASSIGNED');
+            this.savePolicyViolationActivity(`changed the reviewer to ${this.myControl.value.value}`, 'REVIEWER_ASSIGNED');
         }
     }
 
@@ -361,12 +381,12 @@ export class PolicyViolationSummaryComponent implements OnInit {
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });
-            if(res){
-             this.policyDetails.incId = res.incId;
-             this.savePolicyViolationActivity('created an incident INC-' + res.incId , 'CREATE_AN_INCIDENT');
-             }else{
-              this.savePolicyViolationActivity('created an incident', 'CREATE_AN_INCIDENT');
-             }
+            if (res) {
+                this.policyDetails.incId = res.incId;
+                this.savePolicyViolationActivity('created an incident INC-' + res.incId, 'CREATE_AN_INCIDENT');
+            } else {
+                this.savePolicyViolationActivity('created an incident', 'CREATE_AN_INCIDENT');
+            }
         });
     }
 
@@ -374,4 +394,5 @@ export class PolicyViolationSummaryComponent implements OnInit {
         const formatedUrlId = urlId;
         window.open(`${environment.kibanaLink}/goto/${urlId}`);
     }
+
 }

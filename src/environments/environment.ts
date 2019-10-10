@@ -10,7 +10,7 @@ export const environment = {
 
     blueThemeBrandColor: '#252c32',
     blueThemePieChartTrackColor: '#eeeeee',
-    serverUrl: 'http://localhost:9090/cybernetix',
+    serverUrl: 'http://3.15.116.184:9090/cybernetix',
     encryptionParsePhrase: '6726376763767452',
     kibanaLink: 'http://ec2-3-15-116-184.us-east-2.compute.amazonaws.com:5601'
 };

@@ -58,7 +58,7 @@ export class IncidentSummaryComponent implements OnInit {
     };
     fileToUpload: any;
     policyComments: any[] = [];
-    autoForTaggedUser:any;
+    // autoForTaggedUser:any;
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
     filteredUsers: Observable<User[]>;
     visible = true;
@@ -199,7 +199,7 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     selectedCaseOwner() {
-        if (this.myControl.value.value !== this.incidentDetailsCopy.incOwner.userName)
+        if (!this.incidentDetailsCopy.incOwner || this.myControl.value.value !== this.incidentDetailsCopy.incOwner.userName)
             this.isUpdate = true;
         else {
             this._snackBar.open('Please assign to other user', null, {
@@ -212,7 +212,7 @@ export class IncidentSummaryComponent implements OnInit {
         return user ? user.name : undefined;
     }
 
-    hideAssigMeButton = false;
+    showAssigMeButton = true;
 
     getIncident(pvId) {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
@@ -225,11 +225,15 @@ export class IncidentSummaryComponent implements OnInit {
                         name: this.incidentDetails.incOwner.firstName,
                         value: this.incidentDetails.incOwner.userName
                     });
-                }
-                const loggedInUser = this.utilDataService.getLoggedInUser();
-                if (res.incOwner.usrId !== loggedInUser.userId) {
-                    this.hideAssigMeButton = true;
-                }
+
+                    const loggedInUser = this.utilDataService.getLoggedInUser();
+                    if (res.incOwner.usrId === loggedInUser.userId) {
+                        this.showAssigMeButton = false;
+                    }else{
+                        this.showAssigMeButton = true;
+                    }
+                }else
+                    this.showAssigMeButton = true;
             }
         });
     }
@@ -243,7 +247,7 @@ export class IncidentSummaryComponent implements OnInit {
     assignIncident(incidentId) {
         this.incidentSummaryService.assignIncidentToUser(incidentId).subscribe((response: any) => {
             if (response) {
-                this.hideAssigMeButton = false;
+                this.showAssigMeButton = false;
                 response = JSON.parse(response);
                 this.incidentDetails.incOwner = response;
                 this.incidentDetailsCopy.incOwner = Object.assign({}, this.incidentDetails.incOwner);
@@ -329,6 +333,7 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     updateIncident() {
+        this.showAssigMeButton = true;
         if (this.incidentDetails.status === 'CLOSED') {
             this.updateOutcome();
         }

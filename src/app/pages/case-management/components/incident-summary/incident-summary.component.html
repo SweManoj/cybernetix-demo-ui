@@ -4,7 +4,7 @@
             <h3 class="title">INC-{{incidentDetails.incId}} <span>- {{incidentDetails.incidentName}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
-            <button class="assign-btn" *ngIf="hideAssigMeButton" mat-raised-button
+            <button class="assign-btn" *ngIf="showAssigMeButton" mat-raised-button
                 (click)="assignIncident(incidentDetails.incId)">Assign to Me
             </button>
             <button class="action-btn" mat-button [matMenuTriggerFor]="menu">Action <i
@@ -36,14 +36,14 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">{{incidentDetails.violationTime | date: 'dd/mm/yyy HH:mm:ss'}}
+                        <div class="col-sm-6 dataValue">{{incidentDetails.violationTime | date: 'dd/MM/yyy HH:mm:ss'}}
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Incident Created Date</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            {{incidentDetails.incidentCreatedTime | date: 'dd/mm/yyyy HH:mm:ss'}}</div>
+                            {{incidentDetails.incidentCreatedTime | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>

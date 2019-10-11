@@ -229,10 +229,10 @@ export class IncidentSummaryComponent implements OnInit {
                     const loggedInUser = this.utilDataService.getLoggedInUser();
                     if (res.incOwner.usrId === loggedInUser.userId) {
                         this.showAssigMeButton = false;
-                    }else{
+                    } else {
                         this.showAssigMeButton = true;
                     }
-                }else
+                } else
                     this.showAssigMeButton = true;
             }
         });

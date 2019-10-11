@@ -35,7 +35,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     dataAggregated: any;
     taggedUsers = [];
     taggedUsersForViolation: any;
-    autoForTaggedUser:any;
+    // autoForTaggedUser:any;
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
     filteredUsers: Observable<string[]>;
     visible = true;
@@ -240,22 +240,24 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 if (this.policyDetails.policyReviewer) {
                     const name = this.policyDetails.policyReviewer.firstName + ' ' + this.policyDetails.policyReviewer.lastName;
                     this.myControl.setValue({ name: name, value: this.policyDetails.policyReviewer.userName });
-                }
 
-                const loggedInUser = this.utilDataService.getLoggedInUser();
-                if (res.policyReviewer.usrId !== loggedInUser.userId) {
-                    this.hideAssigMeButton = true;
-                }
+                    const loggedInUser = this.utilDataService.getLoggedInUser();
+                    if (res.policyReviewer.usrId === loggedInUser.userId) {
+                        this.showAssigMeButton = false;
+                    } else
+                        this.showAssigMeButton = true;
+                } else
+                    this.showAssigMeButton = true;
             }
         });
     }
 
-    hideAssigMeButton = false;
+    showAssigMeButton = true;
 
     assignPolicy(violationId) {
         this.policyViolationSummaryService.assignPolicyToUser(violationId).subscribe((response: any) => {
             if (response) {
-                this.hideAssigMeButton = false;
+                this.showAssigMeButton = false;
 
                 response = JSON.parse(response);
                 const name = response.firstName + ' ' + response.lastName;
@@ -316,6 +318,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     }
 
     updatePolicy(violationId) {
+        this.showAssigMeButton = true;
         const policyData = {
             'priority': this.policyDetails.priority,
             'reviewerUsrName': this.myControl.value.value,

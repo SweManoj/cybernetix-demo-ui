@@ -197,7 +197,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     }
 
     selectReviewer() {
-        if (this.myControl.value.value !== this.policyDetailsCopy.policyReviewer.userName)
+        if (!this.policyDetailsCopy.policyReviewer || this.myControl.value.value !== this.policyDetailsCopy.policyReviewer.userName)
             this.isUpdate = true;
         else {
             this._snackBar.open('Please assign to other user', null, {

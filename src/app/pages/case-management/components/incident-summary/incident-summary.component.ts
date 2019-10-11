@@ -58,7 +58,7 @@ export class IncidentSummaryComponent implements OnInit {
     };
     fileToUpload: any;
     policyComments: any[] = [];
-    // autoForTaggedUser:any;
+    autoForTaggedUser:any;
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
     filteredUsers: Observable<User[]>;
     visible = true;

@@ -8,7 +8,9 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { bubbleDataMonth } from '../riskyUsers/data';
 import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-score-modal.component';
-import {environment} from '../../../../../environments/environment';
+import { environment } from '../../../../../environments/environment';
+import { CaseManagementService } from '../../../case-management/case-management.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
     selector: 'app-risky-ip',
@@ -23,7 +25,8 @@ export class RiskyIPComponent implements OnInit {
     graphData: any;
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-        private zone: NgZone, private router: Router) {
+        private zone: NgZone, private router: Router, private caseManagementService: CaseManagementService
+        , private _snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -33,7 +36,6 @@ export class RiskyIPComponent implements OnInit {
         });
 
         this.getRiskyIPDetails();
-
     }
 
     getRiskyIPDetails() {
@@ -51,14 +53,13 @@ export class RiskyIPComponent implements OnInit {
                 this.policyViolations = res.reverse();
             }
         });
-        this.riskyUserService.getDayBasisRiskScore(this.selectedIP).subscribe( (res: any) => {
+        this.riskyUserService.getDayBasisRiskScore(this.selectedIP).subscribe((res: any) => {
             this.graphData = res;
             this.zone.runOutsideAngular(() => {
                 // Initialize Bubble chart
                 this.initializeLineChart();
             });
         });
-
     }
 
     getRiskScoreColor(riskScore: number) {
@@ -105,7 +106,7 @@ export class RiskyIPComponent implements OnInit {
         series.dataFields.valueY = "riskScore";
         series.strokeWidth = 2;
         series.tooltipText = "Risk Score : {valueY}";
-       // series.tooltip.getFillFromObject = false;
+        // series.tooltip.getFillFromObject = false;
         series.tooltip.background.fill = am4core.color("#2D93AD");
         series.tooltip.autoTextColor = false;
         series.tooltip.label.fill = am4core.color("black");
@@ -131,10 +132,36 @@ export class RiskyIPComponent implements OnInit {
     }
 
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , encodeURIComponent(violationEventDateTime), ruleId, 'IP')
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDateTime), ruleId, 'IP')
             .subscribe((res: any) => {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
+    }
+
+    createIncident(violation) {
+
+        const date = new Date(violation.violationEventTime);
+
+        console.log(date.toISOString().substring(0, 19));
+
+        const incidentData = {
+            'status': 'NEW',
+            "entityId": this.ipDetails.entityId,
+            "ruleId": violation.ruleId,
+            "violationEventDate": date.toISOString().substring(0, 10),
+            "violationEventTime": date.toISOString().substring(0, 19)
+        };
+
+        this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
+            this._snackBar.open('Created Incident successfully', null, {
+                duration: 2000,
+            });
+            if (res) {
+                const parsedRes = JSON.parse(res);
+                violation.incId = parsedRes.incId;
+                violation.pvId = parsedRes.pvID;
+            }
+        });
     }
 
 }

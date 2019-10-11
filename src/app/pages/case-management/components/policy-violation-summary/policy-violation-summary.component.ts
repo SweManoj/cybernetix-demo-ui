@@ -35,6 +35,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     dataAggregated: any;
     taggedUsers = [];
     taggedUsersForViolation: any;
+    autoForTaggedUser:any;
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
     filteredUsers: Observable<string[]>;
     visible = true;

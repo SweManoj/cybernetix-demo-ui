@@ -58,7 +58,7 @@ export class RiskyUsersComponent {
             creationDate: '12 Jan 2016',
             lastWorkDay: '4 Oct 2019'
         },
-        {
+        /* {
             type: 'user',
             value: 'SSmith1',
             score: 90,
@@ -68,6 +68,18 @@ export class RiskyUsersComponent {
             location: 'San Diego',
             reportingManager: 'John Brown',
             creationDate: '13th Oct 2016',
+            lastWorkDay: '-'
+        }, */
+        {
+            type: 'user',
+            value: 'Chen_Zhang',
+            score: 93,
+            img: true,
+            role: 'Sr. Software Engineer',
+            department: ' IT Security',
+            location: 'San Diego',
+            reportingManager: 'John Smith',
+            creationDate: '13th Oct 2018',
             lastWorkDay: '-'
         },
         {
@@ -192,6 +204,136 @@ export class RiskyUsersComponent {
             title: 'Indicators',
             value: ''
         }
+    ];
+
+    
+
+    chen_ZhangHardCodeItemDate = [
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '10:13:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 9,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Excessive Bytes Exfiltrated via HTTPS'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when Excessive Bytes Exfiltrated via HTTPS',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Database Upload' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Chen_Zhang, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 93' },
+                { title: 'Resource', value: 'Proxy' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcHost, BytesOut' }
+            ]
+        },
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '09:43:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 9,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Guardium: Database Dump Activity on Rare Subnet'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when Database Dump Activity is performed on Rare Subnet',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Database Dumb' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 91' },
+                { title: 'Resource', value: 'Guardium' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
+            ]
+        },
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '09:13:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 29,
+            ruleInfo: {
+                ruleId: 1,
+                title: ' Privileged Activity By Dormant Account'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when Privileged Activity is performed after more than 45 days',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+                { title: 'Threat Category', value: 'Dormanr Activity' },
+                { title: 'Sub Category', value: 'Dormanr Activity' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 87' },
+                { title: 'Resource', value: 'Guardium' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
+            ]
+        },
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '07:45:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 29,
+            ruleInfo: {
+                ruleId: 7,
+                title: 'Multiple Users Presence on Same IP'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when multiple users presence seen on Same IP',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Account Compromise' },
+                { title: 'Threat Category', value: 'Account Compromise' },
+                { title: 'Sub Category', value: 'Account Compromise' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Steve_Warner,Ross_Liam,adm_RL93, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 81' },
+                { title: 'Resource', value: 'Guardium' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
+            ]
+        },
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '07:01:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 32,
+            ruleInfo: {
+                ruleId: 7,
+                title: 'Guardium - Database Events By Restricted Users'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when there are unusual number of attempts by Restricted User',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+                { title: 'Threat Category', value: 'Privileged Activity Attempt' },
+                { title: 'Sub Category', value: 'Privileged Activity Attempt' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Chen_Zhang, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 63' },
+                { title: 'Resource', value: 'Guardium' },
+                { title: 'Indicators', value: 'Event, Accountname' }
+            ]
+        },
     ];
 
     hardCodeItemData: any = [
@@ -478,6 +620,7 @@ export class RiskyUsersComponent {
             description: 'This violation is flagged when there is abnormal export on Database as per User’s past pattern'
         }
     ];
+
     policyViolationForMaile = [
         {
             generatedDateFormat: '18 July 2019',
@@ -1047,6 +1190,14 @@ export class RiskyUsersComponent {
         }
     ];
 
+    chenZhangActivities = [
+        { image: 'falg@1x.png', value: '2.7K', title: 'Events' },
+        { image: 'resources@1x.png', value: '04', title: 'Resources' },
+        { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+        { image: 'violations@1x.png', value: '03', title: 'Insights' },
+        { image: 'incident@1x.png', value: '01', title: 'Incidents' },
+    ];
+
     activities = [
         { image: 'falg@1x.png', value: '9.8K', title: 'Events' },
         { image: 'resources@1x.png', value: '09', title: 'Resources' },
@@ -1264,6 +1415,7 @@ export class RiskyUsersComponent {
                     this.userData = res;
                 }
             });
+
             if (this.selectedUser == 'Alysa') {
                 this.hardCodeItemData = this.flightUserHardCodeItemData;
             }

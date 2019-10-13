@@ -213,10 +213,28 @@
 <!-- Dormant Users -->
 <div *ngIf="componentType==='dormantUsers' " class="header row">
     <div class="col-9 col-md-12 heading ">
-        TOP DORMANT USERS
+        TOP RISKY CORRELATIONS
     </div>
 </div>
 <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
+    <ng-container *ngFor="let topRiskyCorrelation of topRiskyCorrelations">
+        <div class="row user-item blockPadding">
+            <div class="col-5 col-sm-5 col-md-5 pl-2 centerAlign" [ngStyle]="riskyCorrelationStyle('date')">
+                <span>{{topRiskyCorrelation.date}}</span>
+            </div>
+            <div class="col-5 col-sm-5 col-md-5 centerAlign">
+                <a (click)="routeRiskyCorrelations(topRiskyCorrelation.entities)" [ngStyle]="riskyCorrelationStyle('entity')"
+                    class="cursorPointer">{{topRiskyCorrelation.entities}}</a>
+            </div>
+            <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
+                <span [ngStyle]="{'color':getRiskScoreColor(topRiskyCorrelation.riskScore)}">
+                    {{topRiskyCorrelation.riskScore}}</span>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<!-- <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let dormantUser of dormantUsers">
         <div [routerLink]="['/riskyUser', dormantUser.image]" class="row user-item blockPadding">
             <div class="col-2 col-sm-2 col-md-2 pl-2">
@@ -231,7 +249,7 @@
             </div>
         </div>
     </ng-container>
-</div>
+</div> -->
 
 <!-- Top Service Account -->
 <div *ngIf="componentType==='serviceAccount' " class="header row">

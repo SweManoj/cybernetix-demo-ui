@@ -25,6 +25,25 @@ export class TopDetailsComponent implements AfterViewInit {
         { id: 'Lateral Movement', count: 9 }
     ];
 
+    topRiskyCorrelations = [
+        { date: 'Sep 23 2019', entities: '2 Users', riskScore: 95 },
+        { date: 'June 27 2019', entities: '2 IP', riskScore: 95 }
+    ];
+
+    routeRiskyCorrelations(entities) {
+        if (new String(entities).includes('Users'))
+            this.router.navigate(['/riskyUser', 'Adm-EMoor']);
+        else
+            this.router.navigate(['/riskyIP', '10.82.32.212']);
+    }
+
+    riskyCorrelationStyle(input) {
+        if (input == 'entity')
+            return { 'color': 'yellow', 'font-size': '18px' };
+        else
+            return { 'color': 'grey', 'font-size': '18px' };
+    }
+
     riskyObjects = [
         { type: 'user', value: 'ADittmer', score: 94, img: true },
         { type: 'user', value: 'Adm-EMoor', score: 95, img: true },
@@ -94,7 +113,7 @@ export class TopDetailsComponent implements AfterViewInit {
             { score: 59, image: 'Tina' }
         ],
         watchlistedUsersObjects: [
-            { score: 90, image: 'SSmith1'},
+            { score: 90, image: 'SSmith1' },
             { score: 82, image: 'Alysa' },
             { score: 78, image: 'Tina' },
             { score: 72, image: 'Yamasaki' },
@@ -122,7 +141,7 @@ export class TopDetailsComponent implements AfterViewInit {
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
 
         this.riskyObjects.sort((a, b) => -(a.score - b.score)); // desending order
-        
+
     }
 
     getRiskScoreColor(riskScore: number) {
@@ -138,9 +157,9 @@ export class TopDetailsComponent implements AfterViewInit {
         this.riskyTypeSelected = val;
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == this.riskyTypeSelected);
         this.selectRiskyType = String(val).toUpperCase();;
-    } 
-    
-    ngAfterViewInit(){
+    }
+
+    ngAfterViewInit() {
 
     }
     ngOnInit() {
@@ -277,12 +296,12 @@ export class TopDetailsComponent implements AfterViewInit {
 
     riskyUserTimeline(selectedEntity: any) {
         switch (this.selectRiskyType) {
-            case 'IP ADDRESS' : this.router.navigateByUrl('/riskyIP/' + selectedEntity);
-            break;
-            case 'USER' : this.router.navigateByUrl('/riskyUser/' + selectedEntity);
-            break;
-            case 'HOST' : this.router.navigateByUrl('/riskyHost/' + selectedEntity);
-            break;
+            case 'IP ADDRESS': this.router.navigateByUrl('/riskyIP/' + selectedEntity);
+                break;
+            case 'USER': this.router.navigateByUrl('/riskyUser/' + selectedEntity);
+                break;
+            case 'HOST': this.router.navigateByUrl('/riskyHost/' + selectedEntity);
+                break;
         }
     }
 }

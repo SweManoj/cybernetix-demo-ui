@@ -27,12 +27,15 @@ export class TopDetailsComponent implements AfterViewInit {
 
     topRiskyCorrelations = [
         { date: 'Sep 23 2019', entities: '2 Users', riskScore: 95 },
-        { date: 'Jun 27 2019', entities: '2 IP', riskScore: 95 }
+        { date: 'Jun 27 2019', entities: '2 IP', riskScore: 95 },
+        { date: 'Jun 27 2019', entities: '4 Users', riskScore: 93 }
     ];
 
     routeRiskyCorrelations(entities) {
-        if (new String(entities).includes('Users'))
+        if (new String(entities).includes('2 Users'))
             this.router.navigate(['/riskyUser', 'Adm-EMoor']);
+        else if (new String(entities).includes('4 Users'))
+            this.router.navigate(['/riskyUser', 'Chen_Zhang']);
         else
             this.router.navigate(['/riskyIP', '10.82.32.212']);
     }

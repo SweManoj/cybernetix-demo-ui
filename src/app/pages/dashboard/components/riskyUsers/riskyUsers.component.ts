@@ -206,8 +206,6 @@ export class RiskyUsersComponent {
         }
     ];
 
-    
-
     chen_ZhangHardCodeItemDate = [
         {
             generatedDateFormat: '27 Sep 2019',

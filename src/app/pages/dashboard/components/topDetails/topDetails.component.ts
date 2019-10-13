@@ -39,9 +39,9 @@ export class TopDetailsComponent implements AfterViewInit {
 
     riskyCorrelationStyle(input) {
         if (input == 'entity')
-            return { 'color': 'yellow', 'font-size': '18px' };
+            return { 'color': 'yellow', 'font-size': '16px' };
         else
-            return { 'color': 'grey', 'font-size': '18px' };
+            return { 'color': 'grey', 'font-size': '16px' };
     }
 
     riskyObjects = [

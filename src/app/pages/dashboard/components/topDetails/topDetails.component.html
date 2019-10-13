@@ -219,11 +219,13 @@
 <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let topRiskyCorrelation of topRiskyCorrelations">
         <div class="row user-item blockPadding">
-            <div class="col-5 col-sm-5 col-md-5 pl-2 centerAlign" [ngStyle]="riskyCorrelationStyle('date')">
+            <div class="col-5 col-sm-5 col-md-5 initialPadding font-weight-bold centerAlign"
+                [ngStyle]="riskyCorrelationStyle('date')">
                 <span>{{topRiskyCorrelation.date}}</span>
             </div>
-            <div class="col-5 col-sm-5 col-md-5 centerAlign">
-                <a (click)="routeRiskyCorrelations(topRiskyCorrelation.entities)" [ngStyle]="riskyCorrelationStyle('entity')"
+            <div class="col-5 col-sm-5 col-md-5 centerAlign font-weight-bold">
+                <a (click)="routeRiskyCorrelations(topRiskyCorrelation.entities)"
+                    [ngStyle]="riskyCorrelationStyle('entity')"
                     class="cursorPointer">{{topRiskyCorrelation.entities}}</a>
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">

@@ -27,7 +27,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     topRiskyCorrelations = [
         { date: 'Sep 23 2019', entities: '2 Users', riskScore: 95 },
-        { date: 'June 27 2019', entities: '2 IP', riskScore: 95 }
+        { date: 'Jun 27 2019', entities: '2 IP', riskScore: 95 }
     ];
 
     routeRiskyCorrelations(entities) {

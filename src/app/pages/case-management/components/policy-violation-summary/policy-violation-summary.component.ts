@@ -24,7 +24,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     options: User[] = [
       {name: 'Maile'},
       {name: 'Stella'},
-      {name: 'Tina'},
+      {name: 'Tino_Best'},
       {name: 'Coral'},
       {name: 'Shayla Simo'}
     ];

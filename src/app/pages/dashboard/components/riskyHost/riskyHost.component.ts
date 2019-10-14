@@ -20,7 +20,7 @@ export class RiskyHostComponent implements OnInit {
 
     hostAddressData = [
         // { type: 'host', value: 'PUNDESK001', score: 30, img: false, location: 'Munich, Germany', lastSeen: '23 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'PAV58329' },
-        { type: 'host', value: 'WK-1929304D', score: 93, img: false, location: 'San Diego', lastSeen: '14 Oct 2019 03:22:00', peer: 212, lastSeenUser: 'PAV58329' },
+        { type: 'host', value: 'WK-1929304D', score: 93, img: false, location: 'San Diego', lastSeen: '14 Oct 2019 03:22:00', peer: 212, lastSeenUser: 'Chen_Zhang' },
         { type: 'host', value: 'USADESK25', score: 89, img: false, location: 'Amsterdam, Netherlands ', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { type: 'host', value: 'LONDESK588', score: 95, img: false, location: 'Beijing, China', lastSeen: '27 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
@@ -334,8 +334,8 @@ export class RiskyHostComponent implements OnInit {
             description: 'This violation is flagged when Privileged Activity is performed after more than 45 days',
             threatCategories: [
                 { title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
-                { title: 'Threat Category', value: 'Dorman Activity' },
-                { title: 'Sub Category', value: 'Dorman Activity' }
+                { title: 'Threat Category', value: 'Dormant Activity' },
+                { title: 'Sub Category', value: 'Dormant Activity' }
             ],
             additionalInfo: [
                 { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },

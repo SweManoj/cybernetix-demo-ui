@@ -84,15 +84,15 @@ export class TopDetailsComponent implements AfterViewInit {
         ],
         externalUsersObjects: [
             { score: 88, image: 'JohnS' },
-            { score: 95, image: 'Tina' },
+            { score: 95, image: 'Tino_Best' },
             { score: 86, image: 'Maile' },
-            { score: 75, image: 'Sarah Carmichael' },
+            { score: 75, image: 'Sam_Carman' },
             // { score: 69, image: 'Kylie Mier' }
         ],
         riskyCloudUsersObjects: [
             { score: 88, image: 'Heidy' },
             { score: 91, image: 'Sondra Hildebrand' },
-            { score: 69, image: 'Kylie Mier' },
+            { score: 69, image: 'Ross_Despares' },
             /* { score: 79, image: 'Maragret' },
             { score: 45, image: 'Hazel' } */
         ],
@@ -100,7 +100,7 @@ export class TopDetailsComponent implements AfterViewInit {
             { score: 90, image: 'SSmith1' },
             { score: 87, image: 'Maile' },
             { score: 62, image: 'Shayla Simo' },
-            { score: 57, image: 'Tina' },
+            { score: 57, image: 'Tino_Best' },
             { score: 49, image: 'Coral' }
         ],
         dormantUsersObjects: [
@@ -115,12 +115,12 @@ export class TopDetailsComponent implements AfterViewInit {
             { score: 98, image: 'Heidy' },
             { score: 76, image: 'Steven' },
             { score: 65, image: 'Coral' },
-            { score: 59, image: 'Tina' }
+            { score: 59, image: 'Tino_Best' }
         ],
         watchlistedUsersObjects: [
             { score: 90, image: 'SSmith1' },
             { score: 82, image: 'Alysa' },
-            { score: 78, image: 'Tina' },
+            { score: 78, image: 'Tino_Best' },
             { score: 72, image: 'Yamasaki' },
             { score: 68, image: 'Stella' }
         ]

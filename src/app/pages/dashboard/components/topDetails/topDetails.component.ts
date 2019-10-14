@@ -60,6 +60,7 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'ip address', value: '23.94.213.6', score: 89, img: false },
         { type: 'ip address', value: '69.249.19.217', score: 76, img: false },
         { type: 'host', value: 'AUSLAP4873', score: 90, img: false },
+        { type: 'host', value: 'WK-1929304D', score: 93, img: false },
         { type: 'host', value: 'PUNDESK001', score: 30, img: false },
         { type: 'host', value: 'USADESK25', score: 89, img: false },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false },
@@ -77,23 +78,23 @@ export class TopDetailsComponent implements AfterViewInit {
         orphanUsersObjects: [
             { score: 94, image: 'agga787' },
             { score: 88, image: ' philip392' },
-            { score: 80, image: 'sibi025' },
+            /* { score: 80, image: 'sibi025' },
             { score: 75, image: 'mahi521' },
-            { score: 63, image: 'abhi035' }
+            { score: 63, image: 'abhi035' } */
         ],
         externalUsersObjects: [
             { score: 88, image: 'JohnS' },
             { score: 95, image: 'Tina' },
             { score: 86, image: 'Maile' },
             { score: 75, image: 'Sarah Carmichael' },
-            { score: 69, image: 'Kylie Mier' }
+            // { score: 69, image: 'Kylie Mier' }
         ],
         riskyCloudUsersObjects: [
             { score: 88, image: 'Heidy' },
             { score: 91, image: 'Sondra Hildebrand' },
             { score: 69, image: 'Kylie Mier' },
-            { score: 79, image: 'Maragret' },
-            { score: 45, image: 'Hazel' }
+            /* { score: 79, image: 'Maragret' },
+            { score: 45, image: 'Hazel' } */
         ],
         privilegedUsersObjects: [
             { score: 90, image: 'SSmith1' },

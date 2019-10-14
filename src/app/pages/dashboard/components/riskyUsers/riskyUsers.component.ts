@@ -236,7 +236,7 @@ export class RiskyUsersComponent {
             generatedDateFormat: '27 Sep 2019',
             generatedTimestamp: '09:43:00',
             accord: false,
-            pv: 'PV_083',
+            pv: 'PV_056',
             riskScore: 9,
             ruleInfo: {
                 ruleId: 1,
@@ -261,7 +261,7 @@ export class RiskyUsersComponent {
             generatedDateFormat: '27 Sep 2019',
             generatedTimestamp: '09:13:00',
             accord: false,
-            pv: 'PV_083',
+            pv: 'PV_017',
             riskScore: 29,
             ruleInfo: {
                 ruleId: 1,
@@ -286,7 +286,7 @@ export class RiskyUsersComponent {
             generatedDateFormat: '27 Sep 2019',
             generatedTimestamp: '07:45:00',
             accord: false,
-            pv: 'PV_083',
+            pv: 'PV_069',
             riskScore: 29,
             ruleInfo: {
                 ruleId: 7,
@@ -311,7 +311,7 @@ export class RiskyUsersComponent {
             generatedDateFormat: '27 Sep 2019',
             generatedTimestamp: '07:01:00',
             accord: false,
-            pv: 'PV_083',
+            pv: 'PV_071',
             riskScore: 32,
             ruleInfo: {
                 ruleId: 7,
@@ -1192,7 +1192,7 @@ export class RiskyUsersComponent {
         { image: 'falg@1x.png', value: '2.7K', title: 'Events' },
         { image: 'resources@1x.png', value: '04', title: 'Resources' },
         { image: 'Shape@1x.png', value: '01', title: 'Locations' },
-        { image: 'violations@1x.png', value: '03', title: 'Insights' },
+        { image: 'violations@1x.png', value: '05', title: 'Insights' },
         { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 

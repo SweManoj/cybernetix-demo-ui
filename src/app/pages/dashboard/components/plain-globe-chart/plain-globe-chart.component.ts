@@ -121,7 +121,7 @@ export class PlainGlobeChartComponent {
     // https://developer.chrome.com/webstore/i18n -> find national keyword
     let data = {
       "IN": 4,  // India
-      "TW":132,     // Taiwan
+      "TW":2,     // Taiwan
       "CN":3,     // China
       "US":13,    // United States
       "RU":2,     // Russia

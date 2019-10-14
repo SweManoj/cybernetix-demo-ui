@@ -19,7 +19,8 @@ export class RiskyHostComponent implements OnInit {
     hostDetails: any;
 
     hostAddressData = [
-        { type: 'host', value: 'PUNDESK001', score: 30, img: false, location: 'Munich, Germany', lastSeen: '23 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'PAV58329' },
+        // { type: 'host', value: 'PUNDESK001', score: 30, img: false, location: 'Munich, Germany', lastSeen: '23 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'PAV58329' },
+        { type: 'host', value: 'WK-1929304D', score: 93, img: false, location: 'San Diego', lastSeen: '14 Oct 2019 03:22:00', peer: 212, lastSeenUser: 'PAV58329' },
         { type: 'host', value: 'USADESK25', score: 89, img: false, location: 'Amsterdam, Netherlands ', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { type: 'host', value: 'LONDESK588', score: 95, img: false, location: 'Beijing, China', lastSeen: '27 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
@@ -80,7 +81,7 @@ export class RiskyHostComponent implements OnInit {
                 ruleId: 6,
                 title: 'Threat Intelligence - Communication with Blacklisted IP'
             },
-            incId : 'INC-17',
+            incId: 'INC-17',
             threatCategories: [{ title: 'Kill Chain', value: ' Malicious Outbound Communication' },
             { title: 'Threat Category', value: ' Malicious Outbound Communication' },
             { title: 'Sub Category', value: ' Malicious Outbound Communication' }],
@@ -89,9 +90,9 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Status', value: 'Risk: 90' },
             { title: 'Resources', value: 'Firewall' },
             { title: 'Indicators', value: 'DestIP, DestPort' }],
-            description : 'This violation is flagged when there are high number of outbound connections to Blacklisted hosts as per Threat Intelligence feed'
+            description: 'This violation is flagged when there are high number of outbound connections to Blacklisted hosts as per Threat Intelligence feed'
         },
-             {
+        {
             generatedDateFormat: '13 July 2019',
             generatedTimestamp: '10:02:00',
             accord: false,
@@ -101,7 +102,7 @@ export class RiskyHostComponent implements OnInit {
                 ruleId: 6,
                 title: 'Rare Outbound Connections - Firewall'
             },
-            incId : 'INC-17',
+            incId: 'INC-17',
             threatCategories: [{ title: 'Kill Chain', value: 'Malicious Outbound Communication' },
             { title: 'Threat Category', value: ' Malicious Outbound Communication' },
             { title: 'Sub Category', value: 'Malicious Outbound Communication' }],
@@ -110,7 +111,7 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Status', value: 'Risk: 82' },
             { title: 'Resources', value: 'Firewall' },
             { title: 'Indicators', value: 'DestIP, DestPort' }],
-            description : 'This violation is flagged when there are high number of outbound connections to Rare hosts'
+            description: 'This violation is flagged when there are high number of outbound connections to Rare hosts'
         },
         {
             generatedDateFormat: '13 July 2019',
@@ -122,7 +123,7 @@ export class RiskyHostComponent implements OnInit {
                 ruleId: 6,
                 title: 'Spam/Spyware URL Accessed - Proxy'
             },
-            incId : 'INC-17',
+            incId: 'INC-17',
             threatCategories: [{ title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
             { title: 'Threat Category', value: 'Suspicious/Malicious Behavior' },
             { title: 'Sub Category', value: 'Spam/Spyware' }],
@@ -131,10 +132,10 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Status', value: 'Risk: 71' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'URL' }],
-            description : 'This violation is flagged when there are high number of Spam/Spyware URL’s accessed'
+            description: 'This violation is flagged when there are high number of Spam/Spyware URL’s accessed'
         },
 
- {
+        {
             generatedDateFormat: '13 July 2019',
             generatedTimestamp: '07:13:00',
             accord: false,
@@ -144,7 +145,7 @@ export class RiskyHostComponent implements OnInit {
                 ruleId: 6,
                 title: 'Abnormal Vulnerability Detected - Qualys'
             },
-            incId : 'INC-17',
+            incId: 'INC-17',
             threatCategories: [{ title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
             { title: 'Threat Category', value: 'Suspicious/Malicious Behavior' },
             { title: 'Sub Category', value: 'Vulnerabilities' }],
@@ -153,9 +154,8 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Status', value: 'Risk: 53' },
             { title: 'Resources', value: 'Qualys' },
             { title: 'Indicators', value: 'Filenames' }],
-            description : 'This violation is flagged when there are abnormal vulnerabilities found in the host as per baselining.'
+            description: 'This violation is flagged when there are abnormal vulnerabilities found in the host as per baselining.'
         }
-   
     ]
 
     hardCodeItemForDemo = [
@@ -269,16 +269,150 @@ export class RiskyHostComponent implements OnInit {
         } */
     ];
 
+    chen_ZhangHardCodeItemDate = [
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '10:13:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 9,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Excessive Bytes Exfiltrated via HTTPS'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when Excessive Bytes Exfiltrated via HTTPS',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Database Upload' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Chen_Zhang, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 93' },
+                { title: 'Resource', value: 'Proxy' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcHost, BytesOut' }
+            ]
+        },
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '09:43:00',
+            accord: false,
+            pv: 'PV_056',
+            riskScore: 9,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Guardium: Database Dump Activity on Rare Subnet'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when Database Dump Activity is performed on Rare Subnet',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Database Dumb' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 91' },
+                { title: 'Resource', value: 'Guardium' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
+            ]
+        },
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '09:13:00',
+            accord: false,
+            pv: 'PV_017',
+            riskScore: 29,
+            ruleInfo: {
+                ruleId: 1,
+                title: ' Privileged Activity By Dormant Account'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when Privileged Activity is performed after more than 45 days',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+                { title: 'Threat Category', value: 'Dorman Activity' },
+                { title: 'Sub Category', value: 'Dorman Activity' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 87' },
+                { title: 'Resource', value: 'Guardium' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
+            ]
+        },
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '07:45:00',
+            accord: false,
+            pv: 'PV_069',
+            riskScore: 29,
+            ruleInfo: {
+                ruleId: 7,
+                title: 'Multiple Users Presence on Same IP'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when multiple users presence seen on Same IP',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Account Compromise' },
+                { title: 'Threat Category', value: 'Account Compromise' },
+                { title: 'Sub Category', value: 'Account Compromise' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Steve_Warner, Ross_Liam,adm_RL93, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 81' },
+                { title: 'Resource', value: 'Guardium' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
+            ]
+        },
+        {
+            generatedDateFormat: '27 Sep 2019',
+            generatedTimestamp: '07:01:00',
+            accord: false,
+            pv: 'PV_071',
+            riskScore: 32,
+            ruleInfo: {
+                ruleId: 7,
+                title: 'Guardium - Database Events By Restricted Users'
+            },
+            incId: 'INC-1',
+            description: 'This violation is flagged when there are unusual number of attempts by Restricted User',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+                { title: 'Threat Category', value: 'Privileged Activity Attempt' },
+                { title: 'Sub Category', value: 'Privileged Activity Attempt' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Chen_Zhang, WK-1929304D' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 63' },
+                { title: 'Resource', value: 'Guardium' },
+                { title: 'Indicators', value: 'Event, Accountname' }
+            ]
+        },
+    ];
+
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router) {
     }
 
     getDataByHost() {
         this.hostAddressData.forEach(hostData => {
-            if (hostData.value === this.selectedHost) {
+            if (hostData.value === this.selectedHost)
                 this.hostDetails = hostData;
-            }
         });
+
+        /* this.hostAddressData.forEach(hostData => {
+            if (hostData.value === 'WK-1929304D')
+                this.hostDetails = this.chen_ZhangHardCodeItemDate;
+            else if (hostData.value === this.selectedHost)
+                this.hostDetails = hostData;
+        }); */
     }
 
     initializeLineChart() {
@@ -348,11 +482,13 @@ export class RiskyHostComponent implements OnInit {
         this.zone.runOutsideAngular(() => {
             this.initializeLineChart();
         });
-    } 
+    }
 
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedHost = params.get('selectedHost');
+            /* if (this.selectedHost == 'WK-1929304D')
+                this.hardCodeItemData = this.chen_ZhangHardCodeItemDate; */
         });
 
         this.getDataByHost();
@@ -374,7 +510,7 @@ export class RiskyHostComponent implements OnInit {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
-    gotoSummery(){
+    gotoSummery() {
         window.open("#/policyViolationSummary", '_blank');
     }
 }

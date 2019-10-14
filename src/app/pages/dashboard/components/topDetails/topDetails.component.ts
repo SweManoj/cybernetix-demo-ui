@@ -165,8 +165,8 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-
     }
+
     ngOnInit() {
         switch (this.componentType) {
             case 'riskyUser':
@@ -306,10 +306,11 @@ export class TopDetailsComponent implements AfterViewInit {
             case 'USER': this.router.navigateByUrl('/riskyUser/' + selectedEntity);
                 break;
             case 'HOST':
-                if (selectedEntity == 'WK-1929304D')
+                this.router.navigateByUrl('/riskyHost/' + selectedEntity);
+                /* if (selectedEntity == 'WK-1929304D')
                     this.router.navigateByUrl('/riskyUser/' + 'Chen_Zhang');
                 else
-                    this.router.navigateByUrl('/riskyHost/' + selectedEntity);
+                    this.router.navigateByUrl('/riskyHost/' + selectedEntity); */
                 break;
         }
     }

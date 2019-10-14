@@ -300,7 +300,7 @@ export class RiskyUsersComponent {
                 { title: 'Sub Category', value: 'Account Compromise' }
             ],
             additionalInfo: [
-                { title: 'Affected Entity', value: 'Steve_Warner,Ross_Liam,adm_RL93, WK-1929304D' },
+                { title: 'Affected Entity', value: 'Steve_Warner, Ross_Liam,adm_RL93, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
                 { title: 'Status', value: 'Risk: 81' },
                 { title: 'Resource', value: 'Guardium' },

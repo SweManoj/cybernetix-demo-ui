@@ -119,7 +119,12 @@ export class PlainGlobeChartComponent {
     })
 
     let data = {
-      "AL": 58,
+      "IN": 14,  // India
+      "TW":2,     // Taiwan
+      "CN":3,     // China
+      "US":13,    // United States
+      "RU":2,     // Russia
+      /* "AL": 58,
       "AM": 65,
       "AO": 28,
       "AR": 32,
@@ -178,7 +183,7 @@ export class PlainGlobeChartComponent {
       "VE": 179,
       "ZA": 38,
       "ZM": 30,
-      "ZW": 25
+      "ZW": 25 */
     }
   }
 

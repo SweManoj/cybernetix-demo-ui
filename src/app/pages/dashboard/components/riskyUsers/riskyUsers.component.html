@@ -278,7 +278,7 @@
                                                 {{dummyData.title}}
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-5">
+                                            <div class="col-md-5" style="word-break: break-all;">
                                                 {{dummyData.value}}
                                             </div>
                                         </div>
@@ -290,7 +290,7 @@
                                                 {{dummyData.title}}
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-5">
+                                            <div class="col-md-5" style="word-break: break-all;">
                                                 {{dummyData.value}}
                                             </div>
                                         </div>
@@ -1656,103 +1656,102 @@
     </ng-container>
 
     <ng-container *ngIf="selectedUser == 'Chen_Zhang'">
-            <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
-                <div class="risk-date-stamp">
-                    <span>13 Oct 2018</span>
-                </div>
-                <div class="row initialPadding" *ngFor="let item of chen_ZhangHardCodeItemDate">
-                    <div class="col-md-12 d-flex">
-                        <div class="risk-time-stamp">
-                            <span>{{item.generatedTimestamp}}</span>
-                        </div>
-    
-                        <div class="risky-separator mt-1">
-                            <span class="risk-dot rounded-circle">&nbsp;</span>
-                        </div>
-    
-                        <div class="violationTitle" [ngClass]="{'data-exfiltaration' : item.pv == 'PV 094'}">
-                            <div class="row mt-1 mb-2 ml-3 mr-1">
-                                <div class="col-sm-12">
-                                    <span class="pointerCursor" (click)="item.accord = !item.accord">
-                                        &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
-                                            class="fa fa-angle-down"></i>
-                                    </span>
-                                    <span class="pointerCursor pvValue"
-                                        (click)="item.accord = !item.accord">{{item.pv}}</span>
-                                    <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
-                                        {{item.ruleInfo.title}}</span>
-    
-                                    <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
+        <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
+            <div class="risk-date-stamp">
+                <span>13 Oct 2018</span>
+            </div>
+            <div class="row initialPadding" *ngFor="let item of chen_ZhangHardCodeItemDate">
+                <div class="col-md-12 d-flex">
+                    <div class="risk-time-stamp">
+                        <span>{{item.generatedTimestamp}}</span>
+                    </div>
+
+                    <div class="risky-separator mt-1">
+                        <span class="risk-dot rounded-circle">&nbsp;</span>
+                    </div>
+
+                    <div class="violationTitle" [ngClass]="{'data-exfiltaration' : item.pv == 'PV 094'}">
+                        <div class="row mt-1 mb-2 ml-3 mr-1">
+                            <div class="col-sm-12">
+                                <span class="pointerCursor" (click)="item.accord = !item.accord">
+                                    &emsp;<i *ngIf="item.accord" class="fa fa-angle-up"></i> <i *ngIf="!item.accord"
+                                        class="fa fa-angle-down"></i>
+                                </span>
+                                <span class="pointerCursor pvValue"
+                                    (click)="item.accord = !item.accord">{{item.pv}}</span>
+                                <span class="pointerCursor pvText" (click)="item.accord = !item.accord">
+                                    {{item.ruleInfo.title}}</span>
+
+                                <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
                                           class="risk-score mr-5">{{item.riskScore}}</span> -->
-                                    <span class="risk-score mr-5">{{item.riskScore}}</span>
-    
-                                    <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
-                                        <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
-                                            Actions
+                                <span class="risk-score mr-5">{{item.riskScore}}</span>
+
+                                <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
+                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
+                                        Actions
+                                    </button>
+                                    <div class="greyBackground actionDropDown" ngbDropdownMenu
+                                        aria-labelledby="dropdownBasic1">
+                                        <button ngbDropdownItem class="greyBackground">
+                                            Investigate
                                         </button>
-                                        <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                            aria-labelledby="dropdownBasic1">
-                                            <button ngbDropdownItem class="greyBackground">
-                                                Investigate
-                                            </button>
-                                            <button ngbDropdownItem class="greyBackground"
-                                                [routerLink]="['/incidentSummary', item.incId]">
-                                                Create an Incident
-                                            </button>
-                                            <button ngbDropdownItem class="greyBackground"
-                                                [routerLink]="['/performRemediation']">
-                                                Perform Remediation
-                                            </button>
-                                            <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
-                                                class="greyBackground">
-                                                View Summary
-                                            </button>
-                                        </div>
-                                    </span>
-                                </div>
-                            </div>
-    
-                            <div class="row col-md-12 violationInfo " *ngIf="item.accord">
-                                <div class="mt-3 d-flex mb-3">
-                                    <div class="col-md-3 riskAccordBorder">
-                                        <dl>
-                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                            <dd class="mt-2"> {{item.description}}</dd>
-                                        </dl>
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/incidentSummary', item.incId]">
+                                            Create an Incident
+                                        </button>
+                                        <button ngbDropdownItem class="greyBackground"
+                                            [routerLink]="['/performRemediation']">
+                                            Perform Remediation
+                                        </button>
+                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
+                                            class="greyBackground">
+                                            View Summary
+                                        </button>
                                     </div>
-    
-                                    <div class="col-5 col-sm-5 riskAccordBorder">
-                                        <dl>
-                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
-                                        </dl>
-    
-                                        <div class="ml-4">
-                                            <div class="row mt-1 details"
-                                                *ngFor="let threatCategory of item.threatCategories">
-                                                <div class="col-md-5">
-                                                    {{threatCategory.title}}
-                                                </div>
-                                                <b>&nbsp;:&nbsp;</b>
-                                                <div class="col-md-6">
-                                                    {{threatCategory.value}}
-                                                </div>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row col-md-12 violationInfo " *ngIf="item.accord">
+                            <div class="mt-3 d-flex mb-3">
+                                <div class="col-md-3 riskAccordBorder">
+                                    <dl>
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
+                                        <dd class="mt-2"> {{item.description}}</dd>
+                                    </dl>
+                                </div>
+
+                                <div class="col-5 col-sm-5 riskAccordBorder">
+                                    <dl>
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
+                                    </dl>
+
+                                    <div class="ml-4">
+                                        <div class="row mt-1 details"
+                                            *ngFor="let threatCategory of item.threatCategories">
+                                            <div class="col-md-5">
+                                                {{threatCategory.title}}
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-6">
+                                                {{threatCategory.value}}
                                             </div>
                                         </div>
                                     </div>
-    
-                                    <div class="col-4 col-sm-4">
-                                        <dl>
-                                            <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
-                                        </dl>
-                                        <div class="ml-4">
-                                            <div class="row mt-1 details" *ngFor="let dummyData of item.additionalInfo">
-                                                <div class="col-md-5 initialPadding">
-                                                    {{dummyData.title}}
-                                                </div>
-                                                <b>&nbsp;:&nbsp;</b>
-                                                <div class="col-md-6">
-                                                    {{dummyData.value}}
-                                                </div>
+                                </div>
+
+                                <div class="col-4 col-sm-4">
+                                    <dl>
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
+                                    </dl>
+                                    <div class="ml-4">
+                                        <div class="row mt-1 details" *ngFor="let dummyData of item.additionalInfo">
+                                            <div class="col-md-5 initialPadding">
+                                                {{dummyData.title}}
+                                            </div>
+                                            <b>&nbsp;:&nbsp;</b>
+                                            <div class="col-md-6" style="word-break: break-all;">
+                                                {{dummyData.value}}
                                             </div>
                                         </div>
                                     </div>
@@ -1762,5 +1761,6 @@
                     </div>
                 </div>
             </div>
-        </ng-container>
+        </div>
+    </ng-container>
 </div>

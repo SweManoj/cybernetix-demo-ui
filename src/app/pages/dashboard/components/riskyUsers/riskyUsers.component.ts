@@ -271,8 +271,8 @@ export class RiskyUsersComponent {
             description: 'This violation is flagged when Privileged Activity is performed after more than 45 days',
             threatCategories: [
                 { title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
-                { title: 'Threat Category', value: 'Dormanr Activity' },
-                { title: 'Sub Category', value: 'Dormanr Activity' }
+                { title: 'Threat Category', value: 'Dorman Activity' },
+                { title: 'Sub Category', value: 'Dorman Activity' }
             ],
             additionalInfo: [
                 { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },

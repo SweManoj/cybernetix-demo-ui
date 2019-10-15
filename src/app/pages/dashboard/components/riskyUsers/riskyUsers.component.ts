@@ -43,7 +43,6 @@ export class RiskyUsersComponent {
         locations: 0,
         incidents: 0,
         violations: 0
-
     };
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
@@ -52,6 +51,74 @@ export class RiskyUsersComponent {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
+    }
+
+    ngOnInit() {
+
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedUser = params.get('selectedUser');
+            this.riskyUserService.getRiskyEntityDetails(this.selectedUser, 'USER').subscribe((res: any) => {
+                res.score = Math.round(res.score);
+                this.userData = res;
+
+                this.zone.runOutsideAngular(() => {
+                    // Initialize Guage meter chart
+                    this.initializeGuageMeterChart();
+                });
+            });
+
+            this.riskyUserService.getRiskyUserCountDetails(this.selectedUser).subscribe((res: any) => {
+                if (res) {
+                    this.eventCounts = res;
+                }
+                this.activities = [];
+                this.activities.push({ image: 'falg@1x.png', title: 'Events', value: this.eventCounts.events });
+                this.activities.push({ image: 'resources@1x.png', title: 'Resources', value: this.eventCounts.resources });
+                this.activities.push({ image: 'Shape@1x.png', title: 'Locations', value: this.eventCounts.locations });
+                this.activities.push({ image: 'violations@1x.png', title: 'Violations', value: this.eventCounts.violations });
+                this.activities.push({ image: 'incident@1x.png', title: 'Incidents', value: this.eventCounts.incidents });
+            });
+
+            const date = new Date();
+            this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, date.getTime(), 0).subscribe((res: any) => {
+                if (res && res.length > 0) {
+                    res.forEach((policyViolation) => {
+                        if (policyViolation.timeLines && policyViolation.timeLines.length > 0) {
+                            policyViolation.timeLines.forEach((timeLine) => {
+                                timeLine['accord'] = false;
+                                if (timeLine.violationEventTime) {
+
+                                    timeLine.violationTime = this.covertDateToUTCFormat(timeLine.violationEventTime)
+                                }
+                            });
+                        }
+                    });
+                    this.policyViolations = res.reverse();
+                } else if (this.userData.riskScore != 0)
+                    this._snackBar.open('Data processing is happening, Please retry after some time', null, {
+                        duration: 2000,
+                    });
+            });
+        });
+        const startDate = 0;
+        const endDate = new Date();
+        this.riskyUserService.getPolicyViolationsForEntity(this.selectedUser, startDate, endDate.getTime()).subscribe((res: any) => {
+            this.policyViolationData = res;
+            if (this.policyViolationData.length > 0) {
+                this.policyViolationData = this.policyViolationData.sort((a, b) => -(a.hourOfDay - b.hourOfDay))
+            }
+            this.policyViolationData.forEach(data => {
+                const date = this.covertDateToUTCFormat(data.startDateTime);
+                data.hourOfDay = date.getHours();
+
+                data.hourOfDay = (data.hourOfDay < 12) ? (data.hourOfDay) + ' AM' : (data.hourOfDay % 12) + ' PM';
+            });
+            this.zone.runOutsideAngular(() => {
+
+                // Initialize Bubble chart
+                this.initializeBubbleChart();
+            });
+        });
     }
 
     initializeGuageMeterChart() {
@@ -196,10 +263,10 @@ export class RiskyUsersComponent {
                             res.forEach((policyViolation) => {
                                 policyViolation.timeLines.forEach((timeLine) => {
                                     timeLine['accord'] = false;
-                                    if(timeLine.violationEventTime){
+                                    if (timeLine.violationEventTime) {
                                         timeLine.violationTime = this.covertDateToUTCFormat(timeLine.violationEventTime)
                                     }
-                                       
+
                                 });
                             });
                             this.policyViolations = res.reverse();
@@ -244,81 +311,15 @@ export class RiskyUsersComponent {
         chart.cursor.behavior = 'zoomXY';
     }
 
-    covertDateToUTCFormat(inputDate){
-     const date = new Date(inputDate);
-     const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
-     return _utc;
-    }
-
-    ngOnInit() {
-
-        this.routeParam.paramMap.subscribe((params) => {
-            this.selectedUser = params.get('selectedUser');
-            this.riskyUserService.getRiskyEntityDetails(this.selectedUser, 'USER').subscribe((res: any) => {
-                res.score = Math.round(res.score);
-                this.userData = res;
-
-                this.zone.runOutsideAngular(() => {
-                    // Initialize Guage meter chart
-                    this.initializeGuageMeterChart();
-                });
-            });
-            
-            this.riskyUserService.getRiskyUserCountDetails(this.selectedUser).subscribe((res: any) => {
-                if (res) {
-                    this.eventCounts = res;
-                }
-                this.activities = [];
-                this.activities.push({ image: 'falg@1x.png', title: 'Events', value: this.eventCounts.events });
-                this.activities.push({ image: 'resources@1x.png', title: 'Resources', value: this.eventCounts.resources });
-                this.activities.push({ image: 'Shape@1x.png', title: 'Locations', value: this.eventCounts.locations });
-                this.activities.push({ image: 'violations@1x.png', title: 'Violations', value: this.eventCounts.violations });
-                this.activities.push({ image: 'incident@1x.png', title: 'Incidents', value: this.eventCounts.incidents });
-            
-            });
-            const date = new Date();
-            this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, date.getTime(), 0).subscribe((res: any) => {
-                if (res && res.length > 0) {
-                    res.forEach((policyViolation) => {
-                        if (policyViolation.timeLines && policyViolation.timeLines.length > 0) {
-                            policyViolation.timeLines.forEach((timeLine) => {
-                                timeLine['accord'] = false;
-                                if(timeLine.violationEventTime){
-                                    
-                                        timeLine.violationTime = this.covertDateToUTCFormat(timeLine.violationEventTime)
-                                    }
-                            });
-                        }
-                    });
-                    this.policyViolations = res.reverse();
-                }
-            });
-        });
-        const startDate = 0;
-        const endDate = new Date();
-        this.riskyUserService.getPolicyViolationsForEntity(this.selectedUser, startDate, endDate.getTime()).subscribe((res: any) => {
-            this.policyViolationData = res;
-            if(this.policyViolationData.length > 0){
-                this.policyViolationData = this.policyViolationData.sort((a, b) => -(a.hourOfDay - b.hourOfDay))
-            }
-            this.policyViolationData.forEach(data => {
-                const date = this.covertDateToUTCFormat(data.startDateTime);
-                data.hourOfDay = date.getHours();
-
-                data.hourOfDay = (data.hourOfDay < 12) ? (data.hourOfDay) + ' AM' : (data.hourOfDay % 12) + ' PM';
-            });
-            this.zone.runOutsideAngular(() => {
-
-                // Initialize Bubble chart
-                this.initializeBubbleChart();
-            });
-        });
+    covertDateToUTCFormat(inputDate) {
+        const date = new Date(inputDate);
+        const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+        return _utc;
     }
 
     switchView(view) {
         this.selectedView = view;
     }
-
 
     goToPolicyViolationSummary() {
         this.router.navigateByUrl('/policyViolationSummary');
@@ -337,7 +338,7 @@ export class RiskyUsersComponent {
     }
 
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , encodeURIComponent(violationEventDateTime), ruleId, 'USER')
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDateTime), ruleId, 'USER')
             .subscribe((res: any) => {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });

@@ -108,18 +108,17 @@ button.btn.btn-sm {
       }
     }
   }
-  .top-riksy-users,
-  .top-threats,
-  .top-violations {
-    padding: 1px;
-    a {
-      font-size: 18px;
-    }
+
+ .borderLine {
+    border-bottom: 1px solid $top-details-border-color;
   }
+
   .user-item {
+    max-height: 4.5rem;
+    align-items: center;
     margin: 0 10px;
     padding-bottom: 15px;
-    border-bottom: 1px solid $top-details-border-color;
+    // border-bottom: 1px solid $top-details-border-color;
     color: $text-white;
     &:last-child {
       border-bottom: none;
@@ -280,7 +279,7 @@ button.btn.btn-sm {
     }
     .user-item {
       margin: 0 0 10px;
-      border-bottom: 1px solid $top-details-border-color;
+      // border-bottom: 1px solid $top-details-border-color;
       .profile-image {
         width: 35px;
         height: 35px;
@@ -386,6 +385,7 @@ button.btn.btn-sm {
       }
     }
   }
+
   .top-riksy-users,
   .top-threats,
   .top-violations {
@@ -393,11 +393,14 @@ button.btn.btn-sm {
     a {
       font-size: 18px;
     }
+    .borderLine {
+      border-bottom: 1px solid $top-details-border-color;
+    }
   }
   .user-item {
     margin: 0 10px;
     padding-bottom: 15px;
-    border-bottom: 1px solid $top-details-border-color;
+    // border-bottom: 1px solid $top-details-border-color;
     color: $text-white;
     &:last-child {
       border-bottom: none;
@@ -553,7 +556,7 @@ button.btn.btn-sm {
     }
     .user-item {
       margin: 0 0 10px;
-      border-bottom: 1px solid $top-details-border-color;
+      // border-bottom: 1px solid $top-details-border-color;
       .profile-image {
         width: 35px;
         height: 35px;
@@ -615,12 +618,12 @@ button.btn.btn-sm {
   }
 }
 
-.no-user{
-    color: #a0a0a0;
-    margin: 50px 0px;
-    text-align: center;
+.no-user {
+  color: #a0a0a0;
+  margin: 50px 0px;
+  text-align: center;
 }
 
-.wordWrap{
-      word-break: break-word;
+.wordWrap {
+  word-break: break-word;
 }

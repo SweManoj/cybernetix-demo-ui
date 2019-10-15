@@ -58,7 +58,7 @@ export class IncidentSummaryComponent implements OnInit {
     };
     fileToUpload: any;
     policyComments: any[] = [];
-    autoForTaggedUser:any;
+    autoForTaggedUser: any;
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
     filteredUsers: Observable<User[]>;
     visible = true;
@@ -203,7 +203,7 @@ export class IncidentSummaryComponent implements OnInit {
             this.isUpdate = true;
         else {
             this._snackBar.open('Please assign to other user', null, {
-                duration: 2000,
+                duration: 4000,
             });
         }
     }

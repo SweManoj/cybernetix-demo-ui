@@ -19,7 +19,7 @@
             <div class="text-center logo-container">
                 <img src="../../../assets/images/{{themeName}}-logo.png" alt="CyberNetiz Logo" />
             </div>
-            <div *ngIf="isError" class="alert alert-error">
+            <div *ngIf="isError && !showSecurityTokenInput" class="alert alert-error">
                 <p>Invalid Username or password!</p>
             </div>
 

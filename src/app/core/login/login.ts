@@ -45,7 +45,7 @@ export class LoginComponent {
     }
 
     loginSubmit(): void {
-        
+
         if (this.form.valid) {
             this.loginService.login(this.form.value).subscribe(res => {
                 this.sessionStorage.set('accessToken', res.access_token);
@@ -57,6 +57,7 @@ export class LoginComponent {
                 this.router.navigateByUrl(redirectURL);
                 this.sessionStorage.remove('redirectURL');
             }, error => {
+                this.token.setValue('');
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;
                 if (this.showSecurityTokenInput) {
                     this.loginService.getSecreteKey(this.username.value).subscribe(res => {
@@ -69,5 +70,5 @@ export class LoginComponent {
             });
         }
     }
-    
+
 }

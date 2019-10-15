@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UserContext } from '../../services/userContext';
 import { Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
@@ -11,8 +11,8 @@ import { ModalUtilComponent } from '../modal-util/modal.util.component';
 import { DashboardService } from '../../../pages/dashboard/dashboard.service';
 import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {notifications} from 'ionicons/icons';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { notifications } from 'ionicons/icons';
 
 @Component({
     selector: 'app-header',
@@ -36,10 +36,10 @@ export class HeaderComponent implements OnInit {
     riskyUsers = [];
     riskyIPAddress = [];
     riskyHosts = [];
-    loggedInUserDetails = {firstName : '', lastName: ''};
+    loggedInUserDetails = { firstName: '', lastName: '' };
     notificationCount: Object = 0;
 
-    constructor(private userContext: UserContext, private router: Router,private _snackBar: MatSnackBar,idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
+    constructor(private userContext: UserContext, private router: Router, private _snackBar: MatSnackBar, idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
         private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService) {
 
@@ -60,6 +60,10 @@ export class HeaderComponent implements OnInit {
 
     toggleMenu() {
         this.utilService.isMenuOpened = !this.utilService.isMenuOpened;
+    }
+
+    goToWebSite() {
+        window.open('http://cybernetix.ai')
     }
 
     signout() {
@@ -105,8 +109,8 @@ export class HeaderComponent implements OnInit {
             this.utilDataService.setLoggedInUser(res);
         });
 
-        this.loginService.getNotificationCount().subscribe((count: any) => { 
-               this.notificationCount = count;
+        this.loginService.getNotificationCount().subscribe((count: any) => {
+            this.notificationCount = count;
         });
         this.getAllUnreadNotifications();
     }
@@ -131,11 +135,11 @@ export class HeaderComponent implements OnInit {
 
 
                 if (res.users.length === 0 && res.hosts.length === 0 && res.ipAddresses.length === 0) {
-                this._snackBar.open('No records found', null, {
-                    duration: 2000,
-                    verticalPosition: 'top'
-                });
-                   
+                    this._snackBar.open('No records found', null, {
+                        duration: 2000,
+                        verticalPosition: 'top'
+                    });
+
 
                 }
 
@@ -159,9 +163,9 @@ export class HeaderComponent implements OnInit {
         });
         const that = this;
         setTimeout(function () {
-            that.loginService.getNotificationCount().subscribe((count: any) => { 
-               that.notificationCount = count;
-        });
+            that.loginService.getNotificationCount().subscribe((count: any) => {
+                that.notificationCount = count;
+            });
         }, 200);
     }
 

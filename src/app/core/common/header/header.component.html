@@ -1,23 +1,22 @@
-<ng-progress [meteor]="options.meteor" [color]="options.color"
-             [spinner]="options.spinner" [spinnerPosition]="options.spinnerPosition" [direction]="options.direction"
-             [thick]="options.thick" [ease]="options.ease">
+<ng-progress [meteor]="options.meteor" [color]="options.color" [spinner]="options.spinner"
+    [spinnerPosition]="options.spinnerPosition" [direction]="options.direction" [thick]="options.thick"
+    [ease]="options.ease">
 </ng-progress>
 <nav class="navbar row header-container">
     <div class="col-md-9 initialPadding">
         <a href (click)="changeMenuOpen()" class="menu ion-navicon" href="javascript:void(0)">
             <span class="ion ion-md-menu"></span>
         </a>
-        <a routerLink="/dashboard" class="clearfix d-inline-block" style="margin-left: 16px">
+        <a (click)="goToWebSite()" class="clearfix d-inline-block" style="margin-left: 16px">
             <!-- <img src="../../../../assets/images/{{themeName}}-logo.png" alt="CyberNetiz Logo" /> -->
-            <img src="../../../../assets/images/black-logo.png" alt="CyberNetiz Logo" style="width:60%;"/>
+            <img src="../../../../assets/images/black-logo.png" alt="CyberNetiz Logo" style="width:60%;" />
         </a>
     </div>
 
     <div class="col-md-2 row">
         <div class="col-md-12 input-group initialPadding">
             <input type="text" class="form-control search-box" [(ngModel)]="searchEntity"
-                   placeholder="Search Risky Entities"
-                   (keyup.enter)="filterRiskEntities()">
+                placeholder="Search Risky Entities" (keyup.enter)="filterRiskEntities()">
             <div class="input-group-append search-icon-container" (click)="filterRiskEntities()">
                 <span class="input-group-text">
                     <i class="fa fa-search" style="font-size: initial;"></i>
@@ -25,7 +24,7 @@
             </div>
         </div>
 
-<!--        <div class="col-md-1 input-group initialPadding"
+        <!--        <div class="col-md-1 input-group initialPadding"
              style="display: flex;align-items:center; position:relative;padding-top:20px;display:inline-block;">&lt;!&ndash;
             <a class="al-logo clearfix" (click)="displayNotifications()">                
                 <span *ngIf="notificationCount > 0" class="notify-badge">{{notificationCount}}</span>
@@ -70,7 +69,7 @@
     <div class="user-profile">
         <div class="dropdown al-user-profile pl-3">
             <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown"
-               aria-expanded="false">
+                aria-expanded="false">
                 <!-- <div class="col-md-3 row ">
                     <img class="logged-user-img" src="../assets/images/users/service_user.jpeg">
                 </div> -->
@@ -84,7 +83,7 @@
                 <!--     <li class="dropdown-item"><a (click)="showSettings(settingsModal)"><i
                                 class="fa fa-cog m-r-sm"></i>{{'global.settings' | translate}}</a></li> -->
                 <li class="dropdown-item"><a (click)="signout()" class="signout"><i
-                    class="fa fa-power-off m-r-sm"></i>{{'actions.signOut' | translate}}</a></li>
+                            class="fa fa-power-off m-r-sm"></i>{{'actions.signOut' | translate}}</a></li>
             </ul>
         </div>
     </div>

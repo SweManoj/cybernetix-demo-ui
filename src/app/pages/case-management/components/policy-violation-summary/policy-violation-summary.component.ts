@@ -35,7 +35,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     dataAggregated: any;
     taggedUsers = [];
     taggedUsersForViolation: any;
-    autoForTaggedUser:any;
+    autoForTaggedUser: any;
     @ViewChild('autoForTaggedUser') matAutocomplete: MatAutocomplete;
     filteredUsers: Observable<string[]>;
     visible = true;
@@ -95,11 +95,11 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     redirectToEntityDetailPage(violationType, violatorId) {
         switch (violationType) {
-            case 'USER': this.router.navigateByUrl('/riskyUser/' + violatorId);
+            case 'USER': window.open('/#/riskyUser/' + violatorId);
                 break;
-            case 'IP': this.router.navigateByUrl('/riskyIP/' + violatorId);
+            case 'IP': window.open('/#/riskyIP/' + violatorId);
                 break;
-            case 'HOST': this.router.navigateByUrl('/riskyHost/' + violatorId);
+            case 'HOST': window.open('/#/riskyHost/' + violatorId);
                 break;
         }
     }

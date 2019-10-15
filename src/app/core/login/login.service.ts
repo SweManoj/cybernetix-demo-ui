@@ -15,21 +15,21 @@ export class LoginService {
   showSecurityTokenInput: boolean = false;
 
   login(loginData): Observable<any> {
-      const key = CryptoJS.enc.Utf8.parse(environment.encryptionParsePhrase);
-      const iv = CryptoJS.enc.Utf8.parse(environment.encryptionParsePhrase);
-      const encryptionConfig = {
-          keySize: 16,
-          iv: iv,
-          mode: CryptoJS.mode.ECB,
-          padding: CryptoJS.pad.Pkcs7
-      }
-      const encryptedUsername = CryptoJS.AES.encrypt(loginData.username, key, encryptionConfig);
-      const encryptedPassword = CryptoJS.AES.encrypt(loginData.password, key, encryptionConfig);
+    const key = CryptoJS.enc.Utf8.parse(environment.encryptionParsePhrase);
+    const iv = CryptoJS.enc.Utf8.parse(environment.encryptionParsePhrase);
+    const encryptionConfig = {
+      keySize: 16,
+      iv: iv,
+      mode: CryptoJS.mode.ECB,
+      padding: CryptoJS.pad.Pkcs7
+    }
+    const encryptedUsername = CryptoJS.AES.encrypt(loginData.username, key, encryptionConfig);
+    const encryptedPassword = CryptoJS.AES.encrypt(loginData.password, key, encryptionConfig);
     return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=password&username=${encryptedUsername}&password=${encryptedPassword}&token=${loginData.token}`, null);
   }
 
-  setSecurityTokenInput(value:boolean){
-  this.showSecurityTokenInput = value;
+  setSecurityTokenInput(value: boolean) {
+    this.showSecurityTokenInput = value;
   }
 
   logout() {
@@ -58,14 +58,15 @@ export class LoginService {
     const url = `${environment.serverUrl}/v1/user/getUsers`;
     return this.http.get(url);
   }
-  getSecreteKey(username:string) {
+
+  getSecreteKey(username: string) {
     const url = `${environment.serverUrl}/v1/user/getsecretekey/${username}/`;
     return this.http.get(url);
   }
 
   getLoggedInUserDetails() {
-      const url = `${environment.serverUrl}/v1/user/getLoggedinUser`;
-      return this.http.get(url);
+    const url = `${environment.serverUrl}/v1/user/getLoggedinUser`;
+    return this.http.get(url);
   }
 
   getNotificationCount() {
@@ -82,4 +83,5 @@ export class LoginService {
     const url = `${environment.serverUrl}/v1/incident/notification/markasread/${incId}`;
     return this.http.get(url);
   }
+  
 }

@@ -36,21 +36,23 @@ export class LoginComponent {
         this.password = this.form.controls['password'];
         this.token = this.form.controls['token'];
     }
-    openSecreteKeyPupup():void  {
 
+    openSecreteKeyPupup(): void {
         const dialogRef = this.dialog.open(SecreteKeyPupupComponent, {
             width: '400px',
-            data: {secreteKey: this.secreteKey, secreteKeyQRUrl: this.secreteKeyQRUrl}
+            data: { secreteKey: this.secreteKey, secreteKeyQRUrl: this.secreteKeyQRUrl }
         });
     }
 
     loginSubmit(): void {
-
+        
         if (this.form.valid) {
             this.loginService.login(this.form.value).subscribe(res => {
                 this.sessionStorage.set('accessToken', res.access_token);
                 this.sessionStorage.set('refreshToken', res.refresh_token);
+                this.dialog.closeAll();
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;
+
                 const redirectURL = this.sessionStorage.get('redirectURL');
                 this.router.navigateByUrl(redirectURL);
                 this.sessionStorage.remove('redirectURL');
@@ -67,4 +69,5 @@ export class LoginComponent {
             });
         }
     }
+    
 }

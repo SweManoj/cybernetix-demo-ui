@@ -22,16 +22,15 @@ import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import { RiskScoreModalComponent } from './components/riskyUsers/risk-score-modal/risk-score-modal.component';
 import { FilterRiskEntityComponent } from './components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
 import { RiskyEntityViewComponent } from './components/riskyUsers/filter-risk-entity/risky-entity-view/risky-entity-view';
-
 import { MaterialModule } from './../../material';
 import { RiskyIPComponent } from './components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
-import {HighchartsChartModule} from 'highcharts-angular';
+import { HighchartsChartModule } from 'highcharts-angular';
 import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
 import { DashboardCountComponent } from './components/dashboard-count/dashboard-count.component';
 import { TopUsersComponent } from './components/top-users/top-users.component';
 
-@NgModule({ 
+@NgModule({
     declarations: [
         DashboardComponent,
         TopDetailsComponent,

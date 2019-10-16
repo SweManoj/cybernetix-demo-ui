@@ -1,203 +1,39 @@
 <ngb-carousel *ngIf="!loadingInProgress">
     <ng-template ngbSlide>
         <div class="carousel-slide-container">
-            <div class="card">
+            <div class="card" *ngFor="let violationCount of violationCountsFirstHalf">
                 <div class="card-body">
                     <div class="pie-chart-container">
                         <div class="ico mt-2 mb-3">
                             <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/logs@1x.png" />
+                                src="./../../../../../assets/images/dashboard_icons/{{violationCount.image}}.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.eventImported">
-                                {{intToString(dashboardCounts.eventImported)}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.eventImported">0</div>
-                            <div class="title">Event Imported</div>
+                            <div class="count" *ngIf="violationCount.value">
+                                {{intToString(violationCount.value)}}</div>
+                            <div class="count" *ngIf="!violationCount.value">0</div>
+                            <div class="title">{{violationCount.title}}</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/users@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.importedUserCount">
-                                {{dashboardCounts.importedUserCount}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.importedUserCount">0</div>
-                            <div class="title">Users</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate" src="./../../../../../assets/images/dashboard_icons/Ip@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.importedIpAddressCount">
-                                {{dashboardCounts.importedIpAddressCount}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.importedIpAddressCount">0</div>
-
-                            <div class="title">IP Address</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/hostname@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.importedHostCount">
-                                {{dashboardCounts.importedHostCount}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.importedHostCount">0</div>
-
-                            <div class="title">Hosts</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/previledged users@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.privilegedUserCount">
-                                {{dashboardCounts.privilegedUserCount}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.privilegedUserCount">0</div>
-                            <div class="title">Priviledged Accounts</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/service@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.serviceAccountsCount">
-                                {{dashboardCounts.serviceAccountsCount}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.serviceAccountsCount">0</div>
-
-                            <div class="title">Service Accounts</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </ng-template>
+
     <ng-template ngbSlide>
         <div class="carousel-slide-container">
-            <div class="card">
+            <div class="card" *ngFor="let violationCount of violationCountsSecondHalf">
                 <div class="card-body">
                     <div class="pie-chart-container">
                         <div class="ico mt-2 mb-3">
                             <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/entities@1x.png" />
+                                src="./../../../../../assets/images/dashboard_icons/{{violationCount.image}}.png" />
                         </div>
                         <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.highRiskyIPCount">
-                                {{dashboardCounts.highRiskyIPCount}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.highRiskyIPCount">0</div>
-
-                            <div class="title">High Risky IPs</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/risky@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.highRiskyUserCount">
-                                {{dashboardCounts.highRiskyUserCount}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.highRiskyUserCount">0</div>
-                            <div class="title">High Risky Users</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/hostname@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.highRiskyHostnameCount">
-                                {{dashboardCounts.highRiskyHostnameCount}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.highRiskyHostnameCount">0</div>
-
-                            <div class="title">High Risky Host</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/violations@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.policyViolation">
-                                {{dashboardCounts.policyViolation}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.policyViolation">0</div>
-
-                            <div class="title">Policy Violations</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3">
-                            <img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/incident@2x.png" />
-                        </div>
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.incidents">{{dashboardCounts.incidents}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.incidents">0</div>
-                            <div class="title">Incidents</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="pie-chart-container">
-                        <div class="ico mt-2 mb-3"><img class="imagePixelate"
-                                src="./../../../../../assets/images/dashboard_icons/actions@1x.png">
-                        </div>
-
-                        <div class="chart-info mt-2 mb-1">
-                            <div class="count" *ngIf="dashboardCounts.actions">{{dashboardCounts.actions}}</div>
-                            <div class="count" *ngIf="!dashboardCounts.actions">0</div>
-
-                            <div class="title">Actions</div>
+                            <div class="count" *ngIf="violationCount.value">
+                                {{intToString(violationCount.value)}}</div>
+                            <div class="count" *ngIf="!violationCount.value">0</div>
+                            <div class="title">{{violationCount.title}}</div>
                         </div>
                     </div>
                 </div>

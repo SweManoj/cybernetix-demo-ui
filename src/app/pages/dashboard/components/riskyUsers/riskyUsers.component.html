@@ -50,7 +50,8 @@
                             </div>
                             <div>
                                 <span class="captionTitle">Department</span>
-                                <p class="captionData" *ngIf="userData.user.u_departmentName">{{userData.user.u_departmentName}}
+                                <p class="captionData" *ngIf="userData.user.u_departmentName">
+                                    {{userData.user.u_departmentName}}
                                 </p>
                                 <p class="captionData" *ngIf="!userData.user.u_departmentName">NA
                                 </p>
@@ -69,8 +70,9 @@
                                 <div>
                                     <span class="captionTitle">Reporting
                                         Manager</span>
-                                    <p class="captionData"  *ngIf="userData.user.u_immediateManagerLevel1">
-                                        <a [routerLink]="['/riskyUser', userData.user.u_immediateManagerLevel1]">{{userData.user.u_immediateManagerLevel1}}</a>
+                                    <p class="captionData" *ngIf="userData.user.u_immediateManagerLevel1">
+                                        <a
+                                            [routerLink]="['/riskyUser', userData.user.u_immediateManagerLevel1]">{{userData.user.u_immediateManagerLevel1}}</a>
                                     </p>
                                     <p class="captionData" *ngIf="!userData.user.u_immediateManagerLevel1">NA
                                     </p>
@@ -86,7 +88,8 @@
                                 <div>
                                     <span class="captionTitle">Last
                                         Working Day</span>
-                                    <p class="captionData" *ngIf="userData.user.u_employeeTerminationDate">{{userData.user.u_employeeTerminationDate}}</p>
+                                    <p class="captionData" *ngIf="userData.user.u_employeeTerminationDate">
+                                        {{userData.user.u_employeeTerminationDate}}</p>
                                     <p class="captionData" *ngIf="!userData.user.u_employeeTerminationDate">NA
                                     </p>
                                 </div>
@@ -95,7 +98,7 @@
                     </div>
 
                     <div class="col-md-1" style="margin-left: -1rem;">
-                        <p [ngStyle]="{'color':getRiskScoreColor(userData.riskScore)}" class="rscore">
+                        <p [ngStyle]="{'color':getRiskScoreColor(userData.riskScore)}" class="rscore text-center">
                             {{userData.riskScore}}
                         </p>
                         <p class="riskscore">
@@ -181,7 +184,8 @@
 
                                 <span class="risk-score mr-5"
                                     (click)="fetchEnrichIndexKibanaURL(policyViolation.entityId, timeLine.violationEventTime,timeLine.ruleId)">{{timeLine.noOfEvents}}</span>
-                                    <a [routerLink]="['/incidentSummary', timeLine.pvId]" *ngIf="timeLine.incId !== 0">INC-{{timeLine.incId}}</a>
+                                <a [routerLink]="['/incidentSummary', timeLine.pvId]"
+                                    *ngIf="timeLine.incId !== 0">INC-{{timeLine.incId}}</a>
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1"
                                     *ngIf="timeLine.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>

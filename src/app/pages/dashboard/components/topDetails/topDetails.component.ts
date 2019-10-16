@@ -4,7 +4,7 @@ import { Table } from 'primeng/table';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment.prod';
 import { string } from '@amcharts/amcharts4/core';
-import { intToString } from '../../../../shared/utils/util-functions';
+import { intToString, getRiskScoreColor } from '../../../../shared/utils/util-functions';
 
 // import {routerTransition} from '../../router.animations';
 
@@ -19,30 +19,15 @@ export class TopDetailsComponent implements OnInit {
     violations: any[];
     @Input() componentType: string;
     selectedRiskies: any[];
-    privilegedUsers = [];
-    dormantUsers = [];
-    serviceAccount = [];
-    watchlistedUsers = [];
-    terminatedUsers = [];
-    orphanUsers = [];
-    externalUsers = [];
-    riskyCloudUsers = [];
+
     riskyObjects = [];
     intToString = intToString;
+    getRiskScoreColor = getRiskScoreColor;
 
     @ViewChild('selectedRiskyType') riskyTypeTable: Table;
     riskyTypeSelected = 'user';
 
-    constructor(private topDetailsService: TopDetailsService, private router: Router) { }
-
-    getRiskScoreColor(riskScore: number) {
-        if (riskScore <= 65) {
-            return 'limegreen';
-        } else if (riskScore > 65 && riskScore <= 79) {
-            return 'darkorange';
-        } else {
-            return 'crimson';
-        }
+    constructor(private topDetailsService: TopDetailsService, private router: Router) {
     }
 
     changeRiskyType(val: any) {
@@ -55,7 +40,6 @@ export class TopDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
-
         switch (this.componentType) {
             case 'riskyEntities':
                 this.getRiskyEntities();
@@ -65,30 +49,6 @@ export class TopDetailsComponent implements OnInit {
                 break;
             case 'topViolations':
                 this.getViolations();
-                break;
-            case 'privilegedUsers':
-                this.getPrivilegedUsers();
-                break;
-            case 'dormantUsers':
-                this.getDormantUsers();
-                break;
-            case 'serviceAccount':
-                this.getServiceAccounts();
-                break;
-            case 'watchlistedUsers':
-                this.getWatchlistedUsers();
-                break;
-            case 'terminatedUsers':
-                this.getTerminatedUsers();
-                break;
-            case 'orphanUsers':
-                this.getOrphanUsers();
-                break;
-            case 'externalUsers':
-                this.getExternalUsers();
-                break;
-            case 'riskyCloud':
-                this.getRiskyCloudUsers();
                 break;
         }
     }
@@ -160,85 +120,6 @@ export class TopDetailsComponent implements OnInit {
                 this.router.navigateByUrl('/riskyHost/' + selectedEntity);
                 break;
         }
-    }
-
-    getPrivilegedUsers() {
-        this.topDetailsService.getTopUsers('Privileged').subscribe((users: any) => {
-            this.privilegedUsers = users;
-        });
-        if (this.privilegedUsers) {
-            this.privilegedUsers.sort((a, b) => -(a.score - b.score));
-        }
-    }
-
-    getTerminatedUsers() {
-        this.topDetailsService.getTopUsers('Terminated').subscribe((users: any) => {
-            this.terminatedUsers = users;
-        });
-        if (this.terminatedUsers) {
-            this.terminatedUsers.sort((a, b) => -(a.score - b.score));
-        }
-    }
-
-    getOrphanUsers() {
-        this.topDetailsService.getTopUsers('Orphan').subscribe((users: any) => {
-            this.orphanUsers = users;
-        });
-        if (this.orphanUsers) {
-            this.orphanUsers.sort((a, b) => -(a.score - b.score));
-        }
-    }
-
-    getExternalUsers() {
-        this.topDetailsService.getTopUsers('External').subscribe((users: any) => {
-            this.externalUsers = users;
-        });
-        if (this.externalUsers) {
-            this.externalUsers.sort((a, b) => -(a.score - b.score));
-        }
-    }
-
-    getRiskyCloudUsers() {
-        this.topDetailsService.getTopUsers('okta').subscribe((users: any) => {
-            this.riskyCloudUsers = users;
-        });
-        if (this.riskyCloudUsers) {
-            this.riskyCloudUsers.sort((a, b) => -(a.score - b.score));
-        }
-    }
-
-    getDormantUsers() {
-        this.topDetailsService.getTopUsers('Dormant').subscribe((users: any) => {
-            this.dormantUsers = users;
-        });
-        if (this.dormantUsers) {
-            this.dormantUsers.sort((a, b) => -(a.score - b.score));
-        }
-    }
-
-    getServiceAccounts() {
-        this.topDetailsService.getTopUsers('Service').subscribe((users: any) => {
-            this.serviceAccount = users;
-        });
-        if (this.serviceAccount) {
-            this.serviceAccount.sort((a, b) => -(a.score - b.score));
-        }
-    }
-
-    getWatchlistedUsers() {
-        this.topDetailsService.getTopUsers('newuser').subscribe((users: any) => {
-            this.watchlistedUsers = users;
-        });
-        if (this.watchlistedUsers) {
-            this.watchlistedUsers.sort((a, b) => -(a.score - b.score));
-        }
-    }
-
-    fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntityId) {
-        this.topDetailsService.fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntityId)
-            .subscribe((res: any) => {
-                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
-            });
     }
 
 }

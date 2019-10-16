@@ -10,3 +10,20 @@ export function intToString(value) {
     } else
         return value;
 }
+
+export function getRiskScoreColor(riskScore: number) {
+    if (riskScore <= 65)
+        return 'limegreen';
+    else if (riskScore > 65 && riskScore <= 79)
+        return 'darkorange';
+    else
+        return 'crimson';
+}
+
+export class User {
+    public entityId: string;
+    public fName: string;
+    public lName: string;
+    public lastgenerationtime: number;
+    public riskscorebygrp: number;
+}

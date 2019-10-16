@@ -5,10 +5,9 @@
         </div>
 
         <div class="col-md-2 initialPadding">
-            <a href="{{kibanaUrl}}"
-               target="_blank">
+            <a href="{{kibanaUrl}}" target="_blank">
                 <button mat-raised-button color="primary"
-                        class="pull-right">{{'dashboard.liveThreatHunting' | translate}}</button>
+                    class="pull-right">{{'dashboard.liveThreatHunting' | translate}}</button>
             </a>
         </div>
     </div>
@@ -31,22 +30,24 @@
         <globe-chart class="chart-details-container2" componentType="riskByLocation">globe</globe-chart>
     </div>
 
-
     <div class="carousel-slide-container">
         <div class="top-details row mt-3">
-            <top-details class="top-details-container4" componentType="privilegedUsers"></top-details>
-            <top-details class="top-details-container4" componentType="dormantUsers"></top-details>
-            <top-details class="top-details-container4" componentType="serviceAccount"></top-details>
-            <top-details class="top-details-container4" componentType="watchlistedUsers"></top-details>
+            <app-top-users class="top-details-container4" user="PRIVILEGED" componentType="privilegedUsers">
+            </app-top-users>
+            <app-top-users class="top-details-container4" user="DORMANT" componentType="dormantUsers"></app-top-users>
+            <app-top-users class="top-details-container4" user="SERVICE" componentType="serviceAccount"></app-top-users>
+            <app-top-users class="top-details-container4" user="NEW" componentType="watchlistedUsers"></app-top-users>
         </div>
     </div>
 
     <div class="carousel-slide-container">
         <div class="top-details row mt-3">
-            <top-details class="top-details-container4" componentType="terminatedUsers"></top-details>
-            <top-details class="top-details-container4" componentType="orphanUsers"></top-details>
-            <top-details class="top-details-container4" componentType="externalUsers"></top-details>
-            <top-details class="top-details-container4" componentType="riskyCloud"></top-details>
+            <app-top-users class="top-details-container4" user="TERMINATED" componentType="privilegedUsers">
+            </app-top-users>
+            <app-top-users class="top-details-container4" user="ORPHAN" componentType="dormantUsers"></app-top-users>
+            <app-top-users class="top-details-container4" user="EXTERNAL" componentType="serviceAccount">
+            </app-top-users>
+            <app-top-users class="top-details-container4" user="OKTA" componentType="watchlistedUsers"></app-top-users>
         </div>
     </div>
 </div>

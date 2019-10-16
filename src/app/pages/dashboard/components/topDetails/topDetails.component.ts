@@ -1,8 +1,10 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild,} from '@angular/core';
-import {TopDetailsService} from './topDetails.service';
-import {Table} from 'primeng/table';
-import {Router} from '@angular/router';
+import { AfterViewInit, Component, Input, OnInit, ViewChild, } from '@angular/core';
+import { TopDetailsService } from './topDetails.service';
+import { Table } from 'primeng/table';
+import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment.prod';
+import { string } from '@amcharts/amcharts4/core';
+import { intToString } from '../../../../shared/utils/util-functions';
 
 // import {routerTransition} from '../../router.animations';
 
@@ -26,12 +28,12 @@ export class TopDetailsComponent implements OnInit {
     externalUsers = [];
     riskyCloudUsers = [];
     riskyObjects = [];
-
+    intToString = intToString;
 
     @ViewChild('selectedRiskyType') riskyTypeTable: Table;
     riskyTypeSelected = 'user';
 
-    constructor(private topDetailsService: TopDetailsService, private router: Router) {}
+    constructor(private topDetailsService: TopDetailsService, private router: Router) { }
 
     getRiskScoreColor(riskScore: number) {
         if (riskScore <= 65) {
@@ -64,30 +66,30 @@ export class TopDetailsComponent implements OnInit {
             case 'topViolations':
                 this.getViolations();
                 break;
-                case 'privilegedUsers':
-                    this.getPrivilegedUsers();
-                    break;
-                case 'dormantUsers':
-                    this.getDormantUsers();
-                    break;
-                case 'serviceAccount':
-                    this.getServiceAccounts();
-                    break;
-                case 'watchlistedUsers':
-                    this.getWatchlistedUsers();
-                    break;
-                case 'terminatedUsers':
-                    this.getTerminatedUsers();
-                    break;
-                case 'orphanUsers':
-                    this.getOrphanUsers();
-                    break;
-                case 'externalUsers':
-                    this.getExternalUsers();
-                    break;
-                case 'riskyCloud':
-                    this.getRiskyCloudUsers();
-                    break;
+            case 'privilegedUsers':
+                this.getPrivilegedUsers();
+                break;
+            case 'dormantUsers':
+                this.getDormantUsers();
+                break;
+            case 'serviceAccount':
+                this.getServiceAccounts();
+                break;
+            case 'watchlistedUsers':
+                this.getWatchlistedUsers();
+                break;
+            case 'terminatedUsers':
+                this.getTerminatedUsers();
+                break;
+            case 'orphanUsers':
+                this.getOrphanUsers();
+                break;
+            case 'externalUsers':
+                this.getExternalUsers();
+                break;
+            case 'riskyCloud':
+                this.getRiskyCloudUsers();
+                break;
         }
     }
 
@@ -148,13 +150,13 @@ export class TopDetailsComponent implements OnInit {
 
     viewRiskyEntityDetails(selectedEntity: any) {
         switch (this.selectRiskyType) {
-            case 'IP ADDRESS' :
+            case 'IP ADDRESS':
                 this.router.navigateByUrl('/riskyIP/' + selectedEntity);
                 break;
-            case 'USER' :
+            case 'USER':
                 this.router.navigateByUrl('/riskyUser/' + selectedEntity);
                 break;
-            case 'HOST' :
+            case 'HOST':
                 this.router.navigateByUrl('/riskyHost/' + selectedEntity);
                 break;
         }

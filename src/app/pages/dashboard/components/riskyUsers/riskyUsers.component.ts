@@ -96,7 +96,11 @@ export class RiskyUsersComponent {
                     this.policyViolations = res.reverse();
                 } else if (this.userData.riskScore != 0)
                     this._snackBar.open('Data processing is happening, Please retry after some time', null, {
-                        duration: 2000,
+                        duration: 4000,
+                    });
+                else if (this.userData.riskScore == 0)
+                    this._snackBar.open('User does not have any Violations', null, {
+                        duration: 3000,
                     });
             });
         });

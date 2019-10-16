@@ -110,7 +110,7 @@ button.btn.btn-sm {
   }
 
  .borderLine {
-    border-bottom: 1px solid $top-details-border-color;
+    border-bottom: 1.2px solid $top-details-border-color;
   }
 
   .user-item {
@@ -142,7 +142,7 @@ button.btn.btn-sm {
   .risk-count {
     place-content: center;
     color: crimson;
-    font-size: 28px;
+    font-size: 24px;
     span {
       //   display: block;
       font-weight: 600;
@@ -295,7 +295,7 @@ button.btn.btn-sm {
         }
       }
       .risk-count {
-        font-size: 28px;
+        font-size: 24px;
       }
     }
     .top-threats {
@@ -423,7 +423,7 @@ button.btn.btn-sm {
   }
   .risk-count {
     color: crimson;
-    font-size: 28px;
+    font-size: 24px;
     // text-align: center;
     padding-top: 2px;
     padding-bottom: 0;

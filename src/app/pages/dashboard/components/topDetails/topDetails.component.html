@@ -87,7 +87,7 @@
     </div>
 </div>
 <div *ngIf="componentType === 'terminatedUsers'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let terminatedUser of terminatedUsers;let i=index;">
+    <ng-container *ngFor="let terminatedUser of terminatedUsers;let last=last;">
         <div class="row user-item blockPadding pointerCursor mx-auto" style="max-height: 4.5rem;align-content: center;">
             <div class="col-2 col-sm-2 col-md-2 pl-0 align-self-center">
                 <img class="profile-image rounded-circle"
@@ -99,10 +99,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(terminatedUser.riskscorebygrp)}">
-                    {{terminatedUser.riskscorebygrp}}</span>
+                    {{intToString(terminatedUser.riskscorebygrp)}}</span>
             </div>
         </div>
-        <div class="ml-1 mr-1 borderLine" *ngIf="i!=4">
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>
@@ -117,7 +117,7 @@
     </div>
 </div>
 <div *ngIf="componentType === 'orphanUsers'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let orphanUser of orphanUsers;let i=index;">
+    <ng-container *ngFor="let orphanUser of orphanUsers;let last=last;">
         <div (click)="fetchOrphanUserEnrichIndexKibanaURL(orphanUser.entityId)"
             class="row user-item blockPadding pointerCursor mx-auto" style="max-height: 4.5rem;align-content: center;">
             <div class="col-2 col-sm-2 col-md-2 pl-0 align-self-center">
@@ -129,10 +129,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(orphanUser.riskscorebygrp)}">
-                    {{orphanUser.riskscorebygrp}}</span>
+                    {{intToString(orphanUser.riskscorebygrp)}}</span>
             </div>
         </div>
-        <div class="ml-1 mr-1 borderLine" *ngIf="i!=4">
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>
@@ -147,7 +147,7 @@
     </div>
 </div>
 <div *ngIf="componentType === 'externalUsers'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let externalUser of externalUsers;let i=index;">
+    <ng-container *ngFor="let externalUser of externalUsers;let last=last;">
         <div class="row user-item blockPadding pointerCursor mx-auto" style="max-height: 4.5rem;align-content: center;">
             <div class="col-2 col-sm-2 col-md-2 pl-0 align-self-center">
                 <img class="profile-image rounded-circle"
@@ -159,10 +159,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(externalUser.riskscorebygrp)}">
-                    {{externalUser.riskscorebygrp}}</span>
+                    {{intToString(externalUser.riskscorebygrp)}}</span>
             </div>
         </div>
-        <div class="ml-1 mr-1 borderLine" *ngIf="i!=4">
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>
@@ -177,7 +177,7 @@
     </div>
 </div>
 <div *ngIf="componentType === 'riskyCloud'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let riskyCloudUser of riskyCloudUsers;let i=index;">
+    <ng-container *ngFor="let riskyCloudUser of riskyCloudUsers;let last=last;">
         <div [routerLink]="['/riskyUser', riskyCloudUser.entityId]"
             class="row user-item blockPadding pointerCursor mx-auto" style="max-height: 4.5rem;align-content: center;">
             <div class="col-2 col-sm-2 col-md-2 pl-0 align-self-center">
@@ -189,10 +189,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(riskyCloudUser.riskscorebygrp)}">
-                    {{riskyCloudUser.riskscorebygrp}}</span>
+                    {{intToString(riskyCloudUser.riskscorebygrp)}}</span>
             </div>
         </div>
-        <div class="ml-1 mr-1 borderLine" *ngIf="i!=4">
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>
@@ -208,7 +208,7 @@
     </div>
 </div>
 <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let dormantUser of dormantUsers;let i=index;">
+    <ng-container *ngFor="let dormantUser of dormantUsers;let last=last;">
         <div class="row user-item blockPadding pointerCursor mx-auto" style="max-height: 4.5rem;align-content: center;">
             <div class="col-2 col-sm-2 col-md-2 pl-0 align-self-center">
                 <img class="profile-image rounded-circle"
@@ -220,10 +220,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(dormantUser.riskscorebygrp)}">
-                    {{dormantUser.riskscorebygrp}}</span>
+                    {{intToString(dormantUser.riskscorebygrp)}}</span>
             </div>
         </div>
-        <div class="ml-1 mr-1 borderLine" *ngIf="i!=4">
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>
@@ -238,7 +238,7 @@
     </div>
 </div>
 <div *ngIf="componentType === 'serviceAccount'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let serviceAcnt of serviceAccount;let i=index;">
+    <ng-container *ngFor="let serviceAcnt of serviceAccount;let last=last;">
         <div class="row user-item blockPadding pointerCursor mx-auto" style="max-height: 4.5rem;align-content: center;">
             <div class="col-2 col-sm-2 col-md-2 pl-0 align-self-center">
                 <img class="profile-image rounded-circle"
@@ -250,10 +250,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(serviceAcnt.riskscorebygrp)}">
-                    {{serviceAcnt.riskscorebygrp}}</span>
+                    {{intToString(serviceAcnt.riskscorebygrp)}}</span>
             </div>
         </div>
-        <div class="ml-1 mr-1 borderLine" *ngIf="i!=4">
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>
@@ -268,7 +268,7 @@
     </div>
 </div>
 <div *ngIf="componentType === 'watchlistedUsers'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let watchlistedUser of watchlistedUsers;let i=index;">
+    <ng-container *ngFor="let watchlistedUser of watchlistedUsers;let last = last">
         <div class="row user-item blockPadding pointerCursor mx-auto" style="max-height: 4.5rem;align-content: center;">
             <div class="col-2 col-sm-2 col-md-2 pl-0 align-self-center">
                 <img class="profile-image rounded-circle"
@@ -280,10 +280,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(watchlistedUser.riskscorebygrp)}">
-                    {{watchlistedUser.riskscorebygrp}}</span>
+                    {{intToString(watchlistedUser.riskscorebygrp)}}</span>
             </div>
         </div>
-        <div class="ml-1 mr-1 borderLine" *ngIf="i!=4">
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>
@@ -298,7 +298,7 @@
     </div>
 </div>
 <div *ngIf="componentType === 'privilegedUsers'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let privilegedUser of privilegedUsers;let i=index;">
+    <ng-container *ngFor="let privilegedUser of privilegedUsers;let last=last;">
         <div class="row user-item blockPadding pointerCursor mx-auto" style="max-height: 4.5rem;align-content: center;">
             <div class="col-2 col-sm-2 col-md-2 pl-0 align-self-center">
                 <img class="profile-image rounded-circle"
@@ -310,10 +310,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-2 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(privilegedUser.riskscorebygrp)}">
-                    {{privilegedUser.riskscorebygrp}}</span>
+                    {{intToString(privilegedUser.riskscorebygrp)}}</span>
             </div>
         </div>
-        <div class="ml-1 mr-1 borderLine" *ngIf="i!=4">
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>

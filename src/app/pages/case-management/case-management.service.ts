@@ -33,8 +33,8 @@ export class CaseManagementService {
     return this.http.post(url, violationData, { responseType: 'text' });
   }
 
-  timelineCreateIncident(lastViolationId, eventDateTime) {
-    const url = `${this.mainURL}/pvCasemgmt/timelineCreateIncident/${lastViolationId}/${eventDateTime}`;
+  timelineCreateIncident(lastViolationId, eventDateTime, loggedInUser) {
+    const url = `${this.mainURL}/pvCasemgmt/timelineCreateIncident/${lastViolationId}/${eventDateTime}?username=${loggedInUser.userName}`;
     return this.http.post(url, {});
   }
 

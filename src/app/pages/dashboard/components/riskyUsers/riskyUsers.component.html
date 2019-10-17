@@ -1,5 +1,5 @@
 <div class="custom-container">
-    <ng-container *ngIf="selectedUser === null">
+    <!-- <ng-container *ngIf="selectedUser === null">
         <div class="risky-users-container">
             <h5 class="page-heading">{{'global.riskyUser.allUsers' | translate}}</h5>
             <div class="risky-users-list">
@@ -22,7 +22,7 @@
                 <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
             </div>
         </div>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container *ngIf="selectedUser">
         <!--<h5 class="page-heading">{{'global.riskyUser.user' | translate}}: {{selectedUser}}</h5>-->
@@ -160,7 +160,7 @@
     <ng-container *ngFor="let policyViolation of policyViolations">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
-                <span>{{policyViolation.violationEventDate | date: 'dd MMM yyyy' : 'UTC'}}</span>
+                <span>{{policyViolation.violationEventDate | date: 'dd MMM yyyy' }}</span>
             </div>
             <div class="row initialPadding" *ngFor="let timeLine of policyViolation.timeLines">
                 <div class="col-md-12 d-flex">
@@ -206,7 +206,7 @@
                                         </button>
                                         <button ngbDropdownItem class="greyBackground"
                                             (click)="timelineCreateIncident(timeLine)" *ngIf="timeLine.incId === 0">
-                                            Create an Incident 
+                                            Create an Incident
                                         </button>
                                         <!--    <button ngbDropdownItem class="greyBackground">
                                             Perform Remediation

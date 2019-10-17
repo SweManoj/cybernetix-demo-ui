@@ -17,12 +17,12 @@ export class RiskyUserService {
     }
 
     getRiskyUserCountDetails(entityId) {
-        const url = `${this.mainURL}/entity/counts/${entityId}`;
+        const url = `${this.mainURL}/entity/counts?entityId=${entityId}`;
         return this.http.get(url);
     }
 
     getPolicyViolationsForEntity(entityId, startDate, endDate) {
-        const url = `${this.mainURL}/entity/policiesViolation/${entityId}/${startDate}/${endDate}`;
+        const url = `${this.mainURL}/entity/policiesViolation/${startDate}/${endDate}?entityId=${entityId}`;
         return this.http.get(url);
     }
 
@@ -32,7 +32,7 @@ export class RiskyUserService {
     }
 
     getPolicyViolationForGivenPeriod(entityId, startDate, endDate, offset) {
-        const url = `${this.mainURL}/entity/policiesViolationsummaryDetails/${entityId}/${startDate}/${endDate}?offset=${offset}`;
+        const url = `${this.mainURL}/entity/policiesViolationsummaryDetails/${startDate}/${endDate}?offset=${offset}&entityId=${entityId}`;
         return this.http.get(url);
     }
 

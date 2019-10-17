@@ -13,6 +13,9 @@ import { RiskScoreModalComponent } from './risk-score-modal/risk-score-modal.com
 import { TopDetailsService } from '../topDetails/topDetails.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../../../environments/environment';
+import { LoginService } from '../../../../core/login/login.service';
+import { UtilDataService } from '../../../../core/services/util.data.service';
+import { of } from 'rxjs';
 
 @Component({
     selector: 'risky-users',
@@ -47,7 +50,7 @@ export class RiskyUsersComponent {
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService,
-        private caseManagementService: CaseManagementService) {
+        private caseManagementService: CaseManagementService, private utilService: UtilDataService) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
@@ -58,7 +61,7 @@ export class RiskyUsersComponent {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
             this.riskyUserService.getRiskyEntityDetails(this.selectedUser, 'USER').subscribe((res: any) => {
-                res.score = Math.round(res.score);
+                res.riskScore = Math.round(res.riskScore);
                 this.userData = res;
 
                 this.zone.runOutsideAngular(() => {
@@ -87,7 +90,7 @@ export class RiskyUsersComponent {
                             policyViolation.timeLines.forEach((timeLine) => {
                                 timeLine['accord'] = false;
                                 if (timeLine.violationEventTime) {
-
+                                    timeLine.violationEventTime = timeLine.violationEventTime + 'Z';
                                     timeLine.violationTime = this.covertDateToUTCFormat(timeLine.violationEventTime)
                                 }
                             });
@@ -372,10 +375,9 @@ export class RiskyUsersComponent {
     }
 
     timelineCreateIncident(timeline) {
+        const loggedInUser = this.utilService.getLoggedInUser();
 
-        const violationEventTime = new Date(timeline.violationEventTime);
-
-        this.caseManagementService.timelineCreateIncident(timeline.lastViolationId, violationEventTime.toISOString().substring(0, 19))
+        this.caseManagementService.timelineCreateIncident(timeline.lastViolationId, encodeURIComponent(timeline.violationEventTime), loggedInUser)
             .subscribe((res: any) => {
                 this._snackBar.open('Created Incident successfully', null, {
                     duration: 2000,

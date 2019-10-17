@@ -29,8 +29,13 @@ export class CaseManagementService {
   }
 
   createIncident(violationData) {
-        const url = `${this.mainURL}/incident/directIncidentCreation`;
-        return this.http.post(url, violationData,{responseType: 'text'});
+    const url = `${this.mainURL}/incident/directIncidentCreation`;
+    return this.http.post(url, violationData, { responseType: 'text' });
+  }
+
+  timelineCreateIncident(lastViolationId, eventDateTime) {
+    const url = `${this.mainURL}/pvCasemgmt/timelineCreateIncident/${lastViolationId}/${eventDateTime}`;
+    return this.http.post(url, {});
   }
 
 }

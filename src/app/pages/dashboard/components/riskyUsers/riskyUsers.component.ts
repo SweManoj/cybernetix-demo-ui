@@ -371,12 +371,27 @@ export class RiskyUsersComponent {
         }
     }
 
+    timelineCreateIncident(timeline) {
+
+        const violationEventTime = new Date(timeline.violationEventTime);
+
+        this.caseManagementService.timelineCreateIncident(timeline.lastViolationId, violationEventTime.toISOString().substring(0, 19))
+            .subscribe((res: any) => {
+                this._snackBar.open('Created Incident successfully', null, {
+                    duration: 2000,
+                });
+                if (res) {
+                    const parsedRes = JSON.parse(res);
+                    timeline.incId = parsedRes.incId;
+                    timeline.pvId = parsedRes.pvID;
+                }
+            });
+    }
+
     createIncident(violation) {
 
         const date = new Date(violation.violationEventTime);
-
         console.log(date.toISOString().substring(0, 19));
-
 
         const incidentData = {
             'status': 'NEW',

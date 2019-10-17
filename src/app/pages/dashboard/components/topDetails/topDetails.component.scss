@@ -109,7 +109,7 @@ button.btn.btn-sm {
     }
   }
 
- .borderLine {
+  .borderLine {
     border-bottom: 1.2px solid $top-details-border-color;
   }
 
@@ -143,6 +143,7 @@ button.btn.btn-sm {
     place-content: center;
     color: crimson;
     font-size: 24px;
+    text-align: right;
     span {
       //   display: block;
       font-weight: 600;
@@ -185,8 +186,6 @@ button.btn.btn-sm {
       span {
         font-size: 18px;
         color: #a0a0a0;
-      }
-      .risk-count {
       }
       .threat-details {
         a {
@@ -235,7 +234,7 @@ button.btn.btn-sm {
   .risk-count {
     color: $brand-red;
     font-size: 12px;
-    text-align: center;
+    text-align: right;
     padding-top: 2px;
     padding-bottom: 0;
     span {
@@ -428,6 +427,7 @@ button.btn.btn-sm {
     padding-top: 2px;
     padding-bottom: 0;
     place-content: center;
+    text-align: right;
     span {
       //   display: block;
       font-weight: 600;
@@ -512,7 +512,7 @@ button.btn.btn-sm {
   .risk-count {
     color: $brand-red;
     font-size: 12px;
-    text-align: center;
+    text-align: right;
     padding-top: 2px;
     padding-bottom: 0;
     span {
@@ -602,17 +602,6 @@ button.btn.btn-sm {
             display: none;
           }
         }
-        /* .risk-count {
-          span {
-            color: crimson;
-            font-size: 28px;
-            font-weight: 600;
-          }
-          font-size: 19px;
-          .risk-type {
-            font-size: 19px;
-          }
-        } */
       }
     }
   }

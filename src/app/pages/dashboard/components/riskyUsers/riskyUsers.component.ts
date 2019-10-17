@@ -351,6 +351,13 @@ export class RiskyUsersComponent {
             });
     }
 
+    fetchKibanaRawEventindex(entityId, enrichEventIds) {
+        this.riskyUserService.fetchKibanaRawEventindex(entityId, 'USER', enrichEventIds)
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+            });
+    }
+
     gotoSummery() {
         window.open('#/policyViolationSummary', '_blank');
     }
@@ -383,9 +390,9 @@ export class RiskyUsersComponent {
                     duration: 2000,
                 });
                 if (res) {
-                    const parsedRes = JSON.parse(res);
-                    timeline.incId = parsedRes.incId;
-                    timeline.pvId = parsedRes.pvID;
+                    // const parsedRes = JSON.parse(res);
+                    timeline.incId = res.incId;
+                    timeline.pvId = res.pvID;
                 }
             });
     }

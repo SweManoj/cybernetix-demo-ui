@@ -122,6 +122,13 @@ export class RiskyHostComponent implements OnInit {
             });
     }
 
+    fetchKibanaRawEventindex(entityId, enrichEventIds) {
+        this.riskyUserService.fetchKibanaRawEventindex(entityId, 'HOST', enrichEventIds)
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+            });
+    }
+
     createIncident(violation) {
 
         const date = new Date(violation.violationEventTime);

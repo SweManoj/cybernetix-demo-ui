@@ -46,4 +46,14 @@ export class RiskyUserService {
         return this.http.get(url);
     }
 
+    fetchKibanaRawEventindex(entityId, entityType, enrichEventId) {
+        const body = {
+            entityId: entityId,
+            entityType: entityType,
+            enrichEventIds: enrichEventId
+        }
+        const url = `${this.mainURL}/entity/fetchKibanaRawEventindex`;
+        return this.http.post(url, body);
+    }
+
 }

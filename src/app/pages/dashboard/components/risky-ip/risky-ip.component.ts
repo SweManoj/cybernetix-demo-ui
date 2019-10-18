@@ -138,8 +138,13 @@ export class RiskyIPComponent implements OnInit {
             });
     }
 
-    fetchKibanaRawEventindex(entityId, enrichEventIds) {
-        this.riskyUserService.fetchKibanaRawEventindex(entityId, 'IP', enrichEventIds)
+    fetchKibanaRawEventindex(lastViolationId) {
+        /* this.riskyUserService.fetchKibanaRawEventindex(entityId, 'IP', enrichEventIds)
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+            }); */
+
+        this.riskyUserService.rawEventCount(lastViolationId)
             .subscribe((res: any) => {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });

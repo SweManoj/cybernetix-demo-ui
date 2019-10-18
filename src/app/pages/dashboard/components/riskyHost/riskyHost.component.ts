@@ -7,9 +7,9 @@ import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-sco
 import * as am4core from '@amcharts/amcharts4/core';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import {environment} from '../../../../../environments/environment';
-import {CaseManagementService} from '../../../case-management/case-management.service';
-import {MatSnackBar} from '@angular/material';
+import { environment } from '../../../../../environments/environment';
+import { CaseManagementService } from '../../../case-management/case-management.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
     selector: 'app-riskyHost',
@@ -23,8 +23,8 @@ export class RiskyHostComponent implements OnInit {
     policyViolations: any;
     graphData: any;
 
-    constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService,  private _snackBar: MatSnackBar,
-                private routeParam: ActivatedRoute, private modalService: NgbModal, private caseManagementService: CaseManagementService,
+    constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private _snackBar: MatSnackBar,
+        private routeParam: ActivatedRoute, private modalService: NgbModal, private caseManagementService: CaseManagementService,
         private zone: NgZone, private router: Router) {
     }
 
@@ -73,26 +73,26 @@ export class RiskyHostComponent implements OnInit {
     }
 
     getRiskyHostDetails() {
-        this.riskyUserService.getRiskyEntityDetails(this.selectedHost,'HOST').subscribe((res: any) => {
+        this.riskyUserService.getRiskyEntityDetails(this.selectedHost, 'HOST').subscribe((res: any) => {
             this.hostDetails = res;
         });
         const date = new Date()
-         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, date.getTime(), 0).subscribe((res: any) => {
-             if (res && res.length > 0) {
-                 res.forEach((policyViolation) => {
-                     policyViolation.timeLines.forEach((timeLine) => {
-                         timeLine['accord'] = false;
-                     });
-                 });
-                 this.policyViolations = res.reverse();
-             }
-         });
-         this.riskyUserService.getDayBasisRiskScore(this.selectedHost).subscribe( (res: any) => {
-             this.graphData = res;
-             this.zone.runOutsideAngular(() => {
-                 this.initializeLineChart();
-             });
-         });
+        this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, date.getTime(), 0).subscribe((res: any) => {
+            if (res && res.length > 0) {
+                res.forEach((policyViolation) => {
+                    policyViolation.timeLines.forEach((timeLine) => {
+                        timeLine['accord'] = false;
+                    });
+                });
+                this.policyViolations = res.reverse();
+            }
+        });
+        this.riskyUserService.getDayBasisRiskScore(this.selectedHost).subscribe((res: any) => {
+            this.graphData = res;
+            this.zone.runOutsideAngular(() => {
+                this.initializeLineChart();
+            });
+        });
     }
 
     getRiskScoreColor(riskScore: number) {
@@ -111,19 +111,24 @@ export class RiskyHostComponent implements OnInit {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
-    gotoSummery(){
+    gotoSummery() {
         //window.open("#/policyViolationSummary", '_blank');
     }
 
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , encodeURIComponent(violationEventDateTime), ruleId, 'HOST')
+        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDateTime), ruleId, 'HOST')
             .subscribe((res: any) => {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
 
-    fetchKibanaRawEventindex(entityId, enrichEventIds) {
-        this.riskyUserService.fetchKibanaRawEventindex(entityId, 'HOST', enrichEventIds)
+    fetchKibanaRawEventindex(lastViolationId) {
+        /* this.riskyUserService.fetchKibanaRawEventindex(entityId, 'HOST', enrichEventIds)
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+            }); */
+
+        this.riskyUserService.rawEventCount(lastViolationId)
             .subscribe((res: any) => {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });

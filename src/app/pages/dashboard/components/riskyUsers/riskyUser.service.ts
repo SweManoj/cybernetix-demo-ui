@@ -56,4 +56,9 @@ export class RiskyUserService {
         return this.http.post(url, body);
     }
 
+    rawEventCount(lastViolationId) {
+        const url = `${this.mainURL}/entity/rawEventCount?violationId=${lastViolationId}`;
+        return this.http.get(url);
+    }
+
 }

@@ -40,7 +40,8 @@
                             class="profile-image rounded-circle mt-4"
                             src='./../../../../../assets/images/users/service_user.jpeg' style="width: 4rem;" />
                         <div class="user-info m-t-sm">
-                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.user.u_employeeId}}</span>
+                            <span
+                                style="color:#D3D3D3;size:26px;font-weight: 600">{{userData?.user.u_employeeId}}</span>
                             <p></p>
                         </div>
                     </div>
@@ -49,17 +50,17 @@
                         <div class="col-md-5 mr-1">
                             <div class="mt-2">
                                 <span class="captionTitle">Role</span>
-                                <p class="captionData" *ngIf="userData.user.u_title">{{userData.user.u_title}}
+                                <p class="captionData" *ngIf="userData?.user.u_title">{{userData?.user.u_title}}
                                 </p>
-                                <p class="captionData" *ngIf="!userData.user.u_title">NA
+                                <p class="captionData" *ngIf="!userData?.user.u_title">NA
                                 </p>
                             </div>
                             <div>
                                 <span class="captionTitle">Department</span>
-                                <p class="captionData" *ngIf="userData.user.u_departmentName">
-                                    {{userData.user.u_departmentName}}
+                                <p class="captionData" *ngIf="userData?.user.u_departmentName">
+                                    {{userData?.user.u_departmentName}}
                                 </p>
-                                <p class="captionData" *ngIf="!userData.user.u_departmentName">NA
+                                <p class="captionData" *ngIf="!userData?.user.u_departmentName">NA
                                 </p>
                             </div>
                         </div>
@@ -67,20 +68,20 @@
                             <div class="col-md-7">
                                 <div class="mt-2">
                                     <span class="captionTitle">Location</span>
-                                    <p class="captionData" *ngIf="userData.user.u_country">{{userData.user.u_country}}
+                                    <p class="captionData" *ngIf="userData?.user.u_country">{{userData?.user.u_country}}
                                     </p>
-                                    <p class="captionData" *ngIf="!userData.user.u_country">NA
+                                    <p class="captionData" *ngIf="!userData?.user.u_country">NA
                                     </p>
                                 </div>
 
                                 <div>
                                     <span class="captionTitle">Reporting
                                         Manager</span>
-                                    <p class="captionData" *ngIf="userData.user.u_immediateManagerLevel1">
+                                    <p class="captionData" *ngIf="userData?.user.u_immediateManagerLevel1">
                                         <a
-                                            [routerLink]="['/riskyUser', userData.user.u_immediateManagerLevel1]">{{userData.user.u_immediateManagerLevel1}}</a>
+                                            [routerLink]="['/riskyUser', userData.user.u_immediateManagerLevel1]">{{userData?.user.u_immediateManagerLevel1}}</a>
                                     </p>
-                                    <p class="captionData" *ngIf="!userData.user.u_immediateManagerLevel1">NA
+                                    <p class="captionData" *ngIf="!userData?.user.u_immediateManagerLevel1">NA
                                     </p>
                                 </div>
                             </div>
@@ -88,15 +89,15 @@
                                 <div class="mt-2">
                                     <span class="captionTitle">Creation
                                         Date</span>
-                                    <p class="captionData">{{userData.user.u_startDate}}</p>
+                                    <p class="captionData">{{userData?.user.u_startDate}}</p>
                                 </div>
 
                                 <div>
                                     <span class="captionTitle">Last
                                         Working Day</span>
-                                    <p class="captionData" *ngIf="userData.user.u_employeeTerminationDate">
-                                        {{userData.user.u_employeeTerminationDate}}</p>
-                                    <p class="captionData" *ngIf="!userData.user.u_employeeTerminationDate">NA
+                                    <p class="captionData" *ngIf="userData?.user.u_employeeTerminationDate">
+                                        {{userData?.user.u_employeeTerminationDate}}</p>
+                                    <p class="captionData" *ngIf="!userData?.user.u_employeeTerminationDate">NA
                                     </p>
                                 </div>
                             </div>
@@ -104,8 +105,8 @@
                     </div>
 
                     <div class="col-md-1" style="margin-left: -1rem;">
-                        <p [ngStyle]="{'color':getRiskScoreColor(userData.riskScore)}" class="rscore text-center">
-                            {{userData.riskScore}}
+                        <p [ngStyle]="{'color':getRiskScoreColor(userData?.riskScore)}" class="rscore text-center">
+                            {{userData?.riskScore}}
                         </p>
                         <p class="riskscore">
                             RiskScore
@@ -185,11 +186,10 @@
                                     {{timeLine.ruleName}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
- -->
+                                      class="risk-score mr-5">{{item.riskScore}}</span>  -->
 
                                 <span class="risk-score mr-5"
-                                    (click)="fetchKibanaRawEventindex(policyViolation.entityId, timeLine.enrichEventIds)">{{timeLine.noOfEvents}}</span>
+                                    (click)="fetchKibanaRawEventindex(timeLine.lastViolationId)">{{timeLine.noOfEvents}}</span>
                                 <a [routerLink]="['/incidentSummary', timeLine.pvId]"
                                     *ngIf="timeLine.incId !== 0">INC-{{timeLine.incId}}</a>
                                 <span ngbDropdown placement="bottom-right" class="float-right mt-1"
@@ -200,7 +200,7 @@
                                     <div class="greyBackground actionDropDown" ngbDropdownMenu
                                         aria-labelledby="dropdownBasic1">
                                         <button ngbDropdownItem class="greyBackground"
-                                            (click)="fetchKibanaRawEventindex(policyViolation.entityId, timeLine.enrichEventIds)">
+                                            (click)="fetchKibanaRawEventindex(timeLine.lastViolationId)">
                                             Investigate
                                         </button>
                                         <button ngbDropdownItem class="greyBackground"

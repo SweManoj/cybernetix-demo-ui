@@ -351,8 +351,13 @@ export class RiskyUsersComponent {
             });
     }
 
-    fetchKibanaRawEventindex(entityId, enrichEventIds) {
-        this.riskyUserService.fetchKibanaRawEventindex(entityId, 'USER', enrichEventIds)
+    fetchKibanaRawEventindex(lastViolationId) {
+        /* this.riskyUserService.fetchKibanaRawEventindex(entityId, 'USER', enrichEventIds)
+            .subscribe((res: any) => {
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+            }); */
+
+        this.riskyUserService.rawEventCount(lastViolationId)
             .subscribe((res: any) => {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });

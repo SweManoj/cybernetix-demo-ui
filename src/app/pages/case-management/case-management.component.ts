@@ -14,17 +14,21 @@ import { path } from 'd3';
 export class CaseManagementComponent implements OnInit {
 
   @ViewChild('incident') incident: Table;
-  policyRangeDates:any;
-  incidentRangeDates:any;
+  policyRangeDates: any;
+  incidentRangeDates: any;
   selectedItems: any;
   selectedPolicyItems: any;
   allUsers: any = [];
   totalRecords: number = 0;
   recordsReturned: number = 0;
   private offset: number = 0;
-  path : any;
+  path: any;
   data = [
-    { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-1', name: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
+    { created: '23/09/2019', priority: 'Critical', riskscore: 90, id: 'INC 38', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'Adm-EMoor', type: 'user' },
+    { created: '27/06/2018', priority: 'Critical', riskscore: 90, id: 'INC 71', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '10.82.32.212', type: 'ip' },
+    { created: '13/10/2018', priority: 'Critical', riskscore: 90, id: 'INC 44', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, entity: 'Chen_Zhang', type: 'user' },
+
+    /* { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-1', name: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
     { created: '03/02/2018', priority: 'Medium', riskscore: 90, id: 'INC-2', name: 'Successful Logon from Rare Machine - Windows', status: 'Pending', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
     { created: '03/03/2018', priority: 'High', riskscore: 90, id: 'INC-3', name: 'Unusual Data Exfiltration By Service Account - Proxy', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.106' },
     { created: '03/04/2018', priority: 'Critical', riskscore: 90, id: 'INC-4', name: 'Suspicious Data Objects Downloaded By Service Account - Fileshare', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.108' },
@@ -38,8 +42,15 @@ export class CaseManagementComponent implements OnInit {
     { created: '03/12/2018', priority: 'High', riskscore: 90, id: 'INC-12', name: 'Successful Login From Unusual Location - VPN', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.112' },
     { created: '03/13/2018', priority: 'Medium', riskscore: 90, id: 'INC-13', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'NA', alerts: 2, entity: '192.168.0.142' },
     { created: '03/14/2018', priority: 'Critical', riskscore: 90, id: 'INC-14', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.102' },
-    { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-15', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.109' },
+    { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-15', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.109' }, */
   ];
+
+  redirectToTimeline(type, entity) {
+    if (type == 'user')
+      this.router.navigate(['/riskyUser', entity]);
+    else if (type == 'ip')
+      this.router.navigate(['/riskyIP', entity]);
+  }
 
   shows = [{ name: 'Last 1 Day', value: '1day' }, { name: 'Last 2 Day', value: '2day' }, { name: 'Last 7 Day', value: '7day' }, { name: 'Last 1 month', value: 'month' }];
   assignee = [{ name: 'Admin', value: 'admin' }, { name: 'User', value: 'user' }, { name: 'Not Assign', value: 'NA' }];
@@ -189,8 +200,8 @@ export class CaseManagementComponent implements OnInit {
   totalItem = 0;
 
   constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService,
-    private router: Router,		private route: ActivatedRoute,
-    ) {
+    private router: Router, private route: ActivatedRoute,
+  ) {
     this.offset = 0;
     this.recordsReturned = 0;
 
@@ -213,13 +224,13 @@ export class CaseManagementComponent implements OnInit {
   }
   ngOnInit() {
 
-  // Current Path:  company 
-  this.route.url.subscribe(url => {
-    this.path = (url[0].path);
-    // if (this.path = 'policyViolation') 
+    // Current Path:  company 
+    this.route.url.subscribe(url => {
+      this.path = (url[0].path);
+      // if (this.path = 'policyViolation') 
 
-  });
-   
+    });
+
     this.getAllUsers();
   }
 

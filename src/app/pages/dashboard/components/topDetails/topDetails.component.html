@@ -215,8 +215,8 @@
     <div class="col-9 col-md-12 heading">TOP IMPERSONATIONS</div>
 </div>
 <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
-    <ng-container *ngFor="let topRiskyImpersonation of topRiskyImpersonations">
-        <div class="row user-item blockPadding mx-auto" [ngStyle]="{'min-height':'4.5rem'}">
+    <ng-container *ngFor="let topRiskyImpersonation of topRiskyImpersonations;let last=last;">
+        <div class="row user-item blockPadding mx-auto" [ngStyle]="{'min-height':'4.5rem','border-bottom': 'unset'}">
 
             <div class="col-md-2 centerAlign font-weight-bold initialPadding">
                 <img class="profile-image" [ngClass]="{'rounded-circle': topRiskyImpersonation.type=='user'}"
@@ -229,8 +229,7 @@
             </div> -->
 
             <div class="col-md-6 centerAlign font-weight-bold">
-                <a (click)="routeRiskyCorrelations(topRiskyImpersonation.entities)"
-                    [ngStyle]="riskyCorrelationStyle('entity')"
+                <a (click)="routeRiskyCorrelations(topRiskyImpersonation.type,topRiskyImpersonation.entity)"
                     class="cursorPointer">{{topRiskyImpersonation.entity}}</a>
             </div>
             <div class="col-md-4 font-weight-bold centerAlign">
@@ -238,6 +237,8 @@
                     [ngStyle]="{'color':'crimson','font-size': '16px','text-align':'end'}">
                     {{topRiskyImpersonation.incident}}</a>
             </div>
+        </div>
+        <div class="ml-1 mr-1 borderLine" *ngIf="!last">
         </div>
     </ng-container>
 </div>

@@ -63,6 +63,10 @@ button.btn.btn-sm {
   }
 }
 
+.borderLine {
+  border-bottom: 1.2px solid $top-details-border-color;
+}
+
 .top-details-container {
   background-color: $top-details-bg-color;
   border-radius: 6px;

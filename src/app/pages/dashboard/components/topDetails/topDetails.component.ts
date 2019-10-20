@@ -35,13 +35,11 @@ export class TopDetailsComponent implements AfterViewInit {
         this.router.navigate(['/riskyIncident', incident]);
     }
 
-    routeRiskyCorrelations(entities) {
-        if (new String(entities).includes('2 Users'))
-            this.router.navigate(['/riskyUser', 'Adm-EMoor']);
-        else if (new String(entities).includes('4 Users'))
-            this.router.navigate(['/riskyUser', 'Chen_Zhang']);
+    routeRiskyCorrelations(type, entity) {
+        if (type == 'user')
+            this.router.navigate(['/riskyUser', entity]);
         else
-            this.router.navigate(['/riskyIP', '10.82.32.212']);
+            this.router.navigate(['/riskyIP', entity]);
     }
 
     riskyCorrelationStyle(input) {

@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <h3 class="title">{{incidentDetails.incId}} <span>- {{incidentDetails.ruleInfo.title}}</span></h3>
+            <h3 class="title">{{incidentDetails.incId}} <span *ngIf="incidentDetails.ruleInfo.title">-
+                    {{incidentDetails.ruleInfo.title}}</span></h3>
         </div>
         <div class="col-md-3 btn-block text-right">
             <button class="assign-btn" mat-raised-button>Assign to Me</button>

@@ -50,7 +50,7 @@ export class IncidentSummaryComponent implements OnInit {
             riskScore: 579,
             ruleInfo: {
                 ruleId: 1,
-                title: ''
+                title: null
             },
             incId: 'INC 38',
             viewCount: 1,
@@ -71,7 +71,7 @@ export class IncidentSummaryComponent implements OnInit {
             riskScore: 579,
             ruleInfo: {
                 ruleId: 1,
-                title: ''
+                title: null
             },
             incId: 'INC 71',
             viewCount: 1,
@@ -92,7 +92,7 @@ export class IncidentSummaryComponent implements OnInit {
             riskScore: 579,
             ruleInfo: {
                 ruleId: 1,
-                title: ''
+                title: null
             },
             incId: 'INC 44',
             viewCount: 1,

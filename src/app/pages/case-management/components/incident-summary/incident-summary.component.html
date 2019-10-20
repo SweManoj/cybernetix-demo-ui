@@ -33,23 +33,25 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">{{incidentDetails.generatedDateFormat}} 11:23:00</div>
+                        <div class="col-sm-6 dataValue">{{incidentDetails.policyViolationDate}} 11:23:00</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Incident Created Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">09/08/2019 10:30:00</div>
+                        <div class="col-sm-6 dataValue">{{incidentDetails.incidentCreatedDate}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field class="dropdown-priority">
-                                <mat-select [(ngModel)]="priority" (ngModelChange)="incidentDataChange($event)"
-                                    name="priority" placeholder="Select Priority">
+                                <mat-select [(ngModel)]="incidentDetails.priority"
+                                    (ngModelChange)="incidentDataChange($event)" name="priority"
+                                    placeholder="Select Priority">
                                     <mat-option value="High">High</mat-option>
                                     <mat-option value="Medium">Medium</mat-option>
                                     <mat-option value="Low">Low</mat-option>
+                                    <mat-option value="Critical">Critical</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -57,15 +59,16 @@
                     <div class="row mt-2">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Indicators of attack</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">5</div>
+                        <div class="col-sm-6 dataValue">{{incidentDetails.indicatorsOfAttack}}</div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field class="dropdown-priority">
-                                <mat-select [(ngModel)]="status" (ngModelChange)="incidentDataChange($event)"
-                                    name="status" placeholder="Select Status">
+                                <mat-select [(ngModel)]="incidentDetails.status"
+                                    (ngModelChange)="incidentDataChange($event)" name="status"
+                                    placeholder="Select Status">
                                     <mat-option value="New">New</mat-option>
                                     <mat-option value="In Progress">In Progress</mat-option>
                                     <mat-option value="Perform Remediation">Perform Remediation</mat-option>
@@ -79,11 +82,13 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field class="dropdown-priority">
-                                <mat-select [(ngModel)]="outcome" (ngModelChange)="incidentDataChange($event)"
-                                    name="outcome" placeholder="Select Outcome">
+                                <mat-select [(ngModel)]="incidentDetails.outcome"
+                                    (ngModelChange)="incidentDataChange($event)" name="outcome"
+                                    placeholder="Select Outcome">
                                     <mat-option value="True Positive">True Positive</mat-option>
                                     <mat-option value="Benign Positive">Benign Positive</mat-option>
                                     <mat-option value="False Positive">False Positive</mat-option>
+                                    <mat-option value="Investigation In Progress">Investigation In Progress</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -92,7 +97,6 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Case Owner</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-
                             <mat-form-field class="case-owner-box">
                                 <input type="text" placeholder="Case Owner" matInput [formControl]="myControl"
                                     [matAutocomplete]="auto">
@@ -104,7 +108,6 @@
                                     </mat-option>
                                 </mat-autocomplete>
                             </mat-form-field>
-
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -298,7 +301,7 @@
             <div class="col-md-3 page-viewer">
                 <img src="../../../../../assets/images/circle.png" />
                 <div class="viewer-info">
-                    <span class="view-count">{{incidentDetails.viewCount?incidentDetails.viewCount:'52'}}</span>
+                    <span class="view-count">{{incidentDetails.viewCount}}</span>
                     viewing this page now
                 </div>
             </div>

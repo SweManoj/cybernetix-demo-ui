@@ -27,7 +27,10 @@ export class IncidentSummaryComponent implements OnInit {
         { name: 'Stella' },
         { name: 'Tino_Best' },
         { name: 'Coral' },
-        { name: 'Shayla Simo' }
+        { name: 'Shayla Simo' },
+        { name: 'Martin J' },
+        { name: 'Scott R' },
+        { name: 'Steve D' }
     ];
     filteredOptions: Observable<User[]>;
     show = true;
@@ -49,7 +52,14 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
             },
             incId: 'INC 38',
-            viewCount: 1
+            viewCount: 1,
+            policyViolationDate: '23 Sep 2019 09:33',
+            incidentCreatedDate: '23 Sep 2019 11:45',
+            priority: 'Critical',
+            indicatorsOfAttack: 5,
+            status: 'Closed',
+            outcome: 'True Positive',
+            caseOwner: 'Martin J'
         },
         {
             description: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic',
@@ -63,7 +73,14 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
             },
             incId: 'INC 71',
-            viewCount: 1
+            viewCount: 1,
+            policyViolationDate: '27 June 2019 12:45',
+            incidentCreatedDate: '27 June 2019 13:58',
+            priority: 'Critical',
+            indicatorsOfAttack: 4,
+            status: 'Open',
+            outcome: 'Investigation In Progress',
+            caseOwner: 'Scott R'
         },
         {
             description: 'Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltrtion',
@@ -77,7 +94,14 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
             },
             incId: 'INC 44',
-            viewCount: 1
+            viewCount: 1,
+            policyViolationDate: '13 Oct 2019 10:13',
+            incidentCreatedDate: '13 Oct 2019 10:49',
+            priority: 'Critical',
+            indicatorsOfAttack: 5,
+            status: 'Open',
+            outcome: 'Investigation In Progress',
+            caseOwner: 'Steve D'
         },
         {
             description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
@@ -90,7 +114,15 @@ export class IncidentSummaryComponent implements OnInit {
                 ruleId: 1,
                 title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
             },
-            incId: 'INC-1'
+            incId: 'INC-1',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
@@ -103,7 +135,15 @@ export class IncidentSummaryComponent implements OnInit {
                 ruleId: 2,
                 title: 'Successful Logon from Rare Machine - Windows'
             },
-            incId: 'INC-2'
+            incId: 'INC-2',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
@@ -116,7 +156,15 @@ export class IncidentSummaryComponent implements OnInit {
                 ruleId: 3,
                 title: 'Unusual Data Exfiltration By Service Account - Proxy'
             },
-            incId: 'INC-3'
+            incId: 'INC-3',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
@@ -129,7 +177,15 @@ export class IncidentSummaryComponent implements OnInit {
                 ruleId: 4,
                 title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
             },
-            incId: 'INC-4'
+            incId: 'INC-4',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
@@ -142,7 +198,15 @@ export class IncidentSummaryComponent implements OnInit {
                 ruleId: 5,
                 title: 'Abnormal Process Executed - Windows'
             },
-            incId: 'INC-5'
+            incId: 'INC-5',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
@@ -155,7 +219,15 @@ export class IncidentSummaryComponent implements OnInit {
                 ruleId: 6,
                 title: 'Multiple Users Logged-In Successfully From Same IP'
             },
-            incId: 'INC-6'
+            incId: 'INC-6',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -176,7 +248,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Status', value: 'Risk: 97' },
             { title: 'Resources', value: 'DLP' },
             { title: 'Indicators', value: 'URL, Attachment' }],
-            description: 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
+            description: 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -197,7 +277,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Status', value: 'Risk: 91' },
             { title: 'Resources', value: 'Fileshare' },
             { title: 'Indicators', value: 'FileName' }],
-            description: 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
+            description: 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -218,7 +306,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Status', value: 'Risk: 87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'EventID' }],
-            description: 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
+            description: 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -241,7 +337,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Status', value: 'Risk: 84' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'Category' }],
-            description: 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
+            description: 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '13 June 2019',
@@ -262,7 +366,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Status', value: 'Risk: 75' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }],
-            description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location'
+            description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '12 June 2019',
@@ -283,7 +395,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Locations', value: 'Ukraine' },
             { title: 'Status', value: 'Risk: 75' },
             { title: 'Resources', value: 'VPN' },
-            { title: 'Indicators', value: 'Location' }]
+            { title: 'Indicators', value: 'Location' }],
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '12 June 2019',
@@ -305,8 +425,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Locations', value: 'Berlin, Ukraine' },
             { title: 'Status', value: 'Risk: 74' },
             { title: 'Resources', value: 'Physical, VPN' },
-            { title: 'Indicators', value: 'Location' }]
-
+            { title: 'Indicators', value: 'Location' }],
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '11 June 2019',
@@ -327,7 +454,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Locations', value: 'Ukraine' },
             { title: 'Status', value: 'Risk: 57' },
             { title: 'Resources', value: 'VPN' },
-            { title: 'Indicators', value: 'Location' }]
+            { title: 'Indicators', value: 'Location' }],
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '10 June 2019',
@@ -351,7 +486,15 @@ export class IncidentSummaryComponent implements OnInit {
             Locations: 'Ukraine',
             Risk: 42,
             Resources: 'Proxy',
-            Indicators: 'Category'
+            Indicators: 'Category',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '18 July 2019',
@@ -372,7 +515,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Status', value: 'Risk: 87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'Event Code' }],
-            description: 'In this Algorithm, User Removed security enabled global group'
+            description: 'In this Algorithm, User Removed security enabled global group',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '18 July 2019',
@@ -393,7 +544,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Status', value: 'Risk: 81' },
             { title: 'Resources', value: 'MSQL' },
             { title: 'Indicators', value: 'Action/Tables' }],
-            description: 'In this Algorithm, user performed abnormal data export on MSQL database'
+            description: 'In this Algorithm, user performed abnormal data export on MSQL database',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         },
         {
             generatedDateFormat: '18 July 2019',
@@ -414,7 +573,15 @@ export class IncidentSummaryComponent implements OnInit {
             { title: 'Status', value: 'Risk: 72/87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'Event Code' }],
-            description: 'In this Algorithm, User Added security enabled global group'
+            description: 'In this Algorithm, User Added security enabled global group',
+            viewCount: 52,
+            policyViolationDate: '10 May 2019 11:23:00',
+            incidentCreatedDate: '09 Aug 2019 10:30:00',
+            priority: '',
+            indicatorsOfAttack: 5,
+            status: '',
+            outcome: '',
+            caseOwner: ''
         }
     ];
 

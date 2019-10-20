@@ -1916,10 +1916,8 @@
                                 </div>
 
                                 <div class="col-4 col-sm-4">
-                                    <dl>
-                                        <dt><i class="fa fa-caret-right"
-                                                *ngIf="item.ruleInfo.title !== 'DHCP RENEWAL'"></i>&nbsp;&nbsp;Additional
-                                            Info</dt>
+                                    <dl *ngIf="item.ruleInfo.title !== 'DHCP RENEWAL'">
+                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                     </dl>
 
                                     <div class="ml-2" *ngIf="item.additionalInfo">

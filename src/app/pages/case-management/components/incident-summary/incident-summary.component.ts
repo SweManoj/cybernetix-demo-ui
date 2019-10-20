@@ -32,6 +32,7 @@ export class IncidentSummaryComponent implements OnInit {
         { name: 'Scott R' },
         { name: 'Steve D' }
     ];
+
     filteredOptions: Observable<User[]>;
     show = true;
 
@@ -41,7 +42,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     incidents = [
         {
-            description: 'Privileged User escalated self-owned service account and used it for Data Exfiltration',
+            description: '',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -62,7 +63,7 @@ export class IncidentSummaryComponent implements OnInit {
             caseOwner: 'Martin J'
         },
         {
-            description: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic',
+            description: '',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -83,7 +84,7 @@ export class IncidentSummaryComponent implements OnInit {
             caseOwner: 'Scott R'
         },
         {
-            description: 'Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltrtion',
+            description: '',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -750,6 +751,7 @@ export class IncidentSummaryComponent implements OnInit {
             this.incidents.forEach((incident) => {
                 if (incident.incId === this.selectedIncident) {
                     this.incidentDetails = incident;
+                    this.myControl.setValue({ name: incident.caseOwner });
                 }
             });
         });

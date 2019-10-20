@@ -42,13 +42,6 @@ export class TopDetailsComponent implements AfterViewInit {
             this.router.navigate(['/riskyIP', entity]);
     }
 
-    riskyCorrelationStyle(input) {
-        if (input == 'entity')
-            return { 'color': 'yellow', 'font-size': '16px' };
-        else
-            return { 'color': 'grey', 'font-size': '16px' };
-    }
-
     riskyObjects = [
         { type: 'user', value: 'ADittmer', score: 94, img: true },
         { type: 'user', value: 'Adm-EMoor', score: 95, img: true },

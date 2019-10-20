@@ -1226,8 +1226,126 @@ export class RiskyUsersComponent {
         this.selectedDateRange = '1 Week';
     }
 
+    ngOnInit() {
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedUser = params.get('selectedUser');
+
+            this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
+            this.selectedUserInfo.forEach(res => {
+
+                if (res.value == this.selectedUser) {
+                    this.userData = res;
+                }
+            });
+
+            if (this.selectedUser == 'Alysa') {
+                this.hardCodeItemData = this.flightUserHardCodeItemData;
+            }
+
+            if (this.selectedUser === 'Maile') {
+                this.hardCodeItemDataForDemoForEmoor = this.policyViolationForMaile;
+            }
+
+            if (this.selectedUser === 'Mendelson') {
+                this.hardCodeItemDataForDemoForMendelson = this.policyViolationForMendelson;
+            }
+
+            if (this.selectedUser) {
+                const dotIndex = this.selectedUser.indexOf('.');
+                const isResource = dotIndex !== -1;
+                const selectedUserData = this.riskyUserService.getSelectedUserData(this.selectedUser, isResource);
+                const selectedUserDataFromModel = this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource);
+                forkJoin([selectedUserData, selectedUserDataFromModel]).subscribe((results: any) => {
+                    const userData = results[0],
+                        userDataFromModel = results[1];
+                    this.selectedUserDetails.userInfo = userData.userInfo && userData.userInfo[0] || {};
+                    this.selectedUserDetails.totalScore = userData.totalScore && userData.totalScore.total_riskscore || 0;
+                    /* this.selectedUserDetails.data = [];
+    
+                    let data = userData && userData.data,
+                        len = data && data.length, date;
+    
+                    let j = 1;
+                    for (let i = 0; i < len; i++) {
+                        const item = data[i];
+                        date = moment(item.isotimestamp);
+                        let pv = 'PV000';
+                        const info = {
+                            generatedTimestamp: date.utc().format('HH:mm:ss a'), // item.isotimestamp
+                            riskScore: item.riskscore,
+                            ruleInfo: item.ruleInfo[0],
+                            userId: item.userid,
+                            isotimestamp: item.isotimestamp,
+                            accord: false,
+                            pv: pv + j
+                        };
+                        this.selectedUserDetails.data.push(info);
+                        j++;
+                    }
+    
+                    if (userDataFromModel.totalScore && userDataFromModel.totalScore.total_riskscore) {
+                        this.selectedUserDetails.totalScore = userDataFromModel.totalScore.total_riskscore + this.selectedUserDetails.totalScore;
+                    }
+                    data = userDataFromModel && userDataFromModel.data;
+                    len = data && data.length;
+                    for (let i = 0; i < len; i++) {
+                        const item = data[i];
+                        const info = {
+                            generatedTimestamp: moment(item.isotimestamp).utc().format('HH:mm:ss a'), //moment(item.isotimestamp, 'YYYYMMDD'),
+                            riskScore: item.riskscore,
+                            ruleInfo: item.ruleInfo[0]
+                        };
+                        this.selectedUserDetails.data.push(info);
+                    } */
+                });
+                /*this.riskyUserService.getSelectedUserData(this.selectedUser, isResource).subscribe((res: any) => {
+                    const data = res.data,
+                        len = data.length;
+                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
+                    this.selectedUserDetails.data = [];
+                    for (let i = 0; i < len; i++) {
+                        const item = data[i];
+                        const info = {
+                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
+                            riskScore: item.riskscore,
+                            ruleInfo: item.ruleInfo[0]
+                        };
+                        this.selectedUserDetails.data.push(info);
+                    }
+                });*/
+                /*this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource).subscribe((res: any) => {
+                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
+                    this.selectedUserDetails.data = [];
+                    const data = res && res.data,
+                        len = data && data.length;
+                    for (let i = 0; i < len; i++) {
+                        const item = data[i];
+                        const info = {
+                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
+                            riskScore: item.riskscore,
+                            ruleInfo: item.ruleInfo[0]
+                        };
+                        this.selectedUserDetails.data.push(info);
+                    }
+                });*/
+            } else {
+                this.getAllUsers();
+            }
+        });
+
+        this.routeParam.paramMap.subscribe(params => {
+            const incident = params.get('incident');
+
+            this.incidentDetails.forEach(incidentDetail => {
+                if (incidentDetail.incident == incident) {
+                    this.incidentDetail = incidentDetail;
+                }
+            });
+        })
+    }
+
     ngAfterViewInit() {
-        if (!this.incident) {
+        if (!this.incidentDetail) {
             this.zone.runOutsideAngular(() => {
                 // Initialize Guage meter chart
                 this.initializeGuageMeterChart();
@@ -1403,137 +1521,60 @@ export class RiskyUsersComponent {
         chart.cursor.behavior = 'zoomXY';
     }
 
-    incident: string;
-    incidentDetails = {
-        affectedEntity: 'Adm-EMoor, SVL-EMoor, WK-38482L, 10.82.30.121',
-        lastUpdatedOn: '23 Sep 2019 09:33',
-        lastUpdatedBy: ' Martin J',
-        currentStauts: 'Closed',
-        outcome: 'True Positive',
-        remediation: 'N/A',
-    }
-    incidentActivities = [
-        { image: 'falg@1x.png', value: '136', title: 'Events' },
-        { image: 'resources@1x.png', value: '04', title: 'Resources' },
-        { image: 'Shape@1x.png', value: '01', title: 'Locations' },
-        { image: 'violations@1x.png', value: '05', title: 'Insights' },
-        { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+    incidentDetail: any;
+    incidentDetails = [
+        {
+            incident: 'INC 38',
+            affectedEntity: 'Adm-EMoor, SVL-EMoor, WK-38482L, 10.82.30.121',
+            lastUpdatedOn: '23 Sep 2019 09:33',
+            lastUpdatedBy: 'Martin J',
+            currentStauts: 'Closed',
+            outcome: 'True Positive',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '136', title: 'Events' },
+                { image: 'resources@1x.png', value: '04', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+                { image: 'violations@1x.png', value: '05', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
+        },
+        {
+            incident: 'INC 71',
+            affectedEntity: '10.82.32.212, WK-UKL48503D, 10.82.32.227, 00:0a:95:9d:68:16',
+            lastUpdatedOn: '27 June 2019 12:45',
+            lastUpdatedBy: 'Scott R',
+            currentStauts: 'Open',
+            outcome: 'Investigation In Progress',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '59', title: 'Events' },
+                { image: 'resources@1x.png', value: '03', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+                { image: 'violations@1x.png', value: '04', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
+        },
+        {
+            incident: 'INC 44',
+            affectedEntity: 'Chen_Zhang, Steve_Warner, Ross_Liam, adm_RL93, WK-1929304D',
+            lastUpdatedOn: '13 Oct 2019 10:13',
+            lastUpdatedBy: 'Steve D',
+            currentStauts: 'Open',
+            outcome: 'Investigation In Progress',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '108', title: 'Events' },
+                { image: 'resources@1x.png', value: '02', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+                { image: 'violations@1x.png', value: '05', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
+        }
     ];
 
     routeToIncident(incident) {
         this.router.navigate(['/incidentSummary', incident]);
-    }
-
-    ngOnInit() {
-        this.routeParam.paramMap.subscribe((params) => {
-            this.selectedUser = params.get('selectedUser');
-
-            this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
-            this.selectedUserInfo.forEach(res => {
-
-                if (res.value == this.selectedUser) {
-                    this.userData = res;
-                }
-            });
-
-            if (this.selectedUser == 'Alysa') {
-                this.hardCodeItemData = this.flightUserHardCodeItemData;
-            }
-
-            if (this.selectedUser === 'Maile') {
-                this.hardCodeItemDataForDemoForEmoor = this.policyViolationForMaile;
-            }
-
-            if (this.selectedUser === 'Mendelson') {
-                this.hardCodeItemDataForDemoForMendelson = this.policyViolationForMendelson;
-            }
-
-            if (this.selectedUser) {
-                const dotIndex = this.selectedUser.indexOf('.');
-                const isResource = dotIndex !== -1;
-                const selectedUserData = this.riskyUserService.getSelectedUserData(this.selectedUser, isResource);
-                const selectedUserDataFromModel = this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource);
-                forkJoin([selectedUserData, selectedUserDataFromModel]).subscribe((results: any) => {
-                    const userData = results[0],
-                        userDataFromModel = results[1];
-                    this.selectedUserDetails.userInfo = userData.userInfo && userData.userInfo[0] || {};
-                    this.selectedUserDetails.totalScore = userData.totalScore && userData.totalScore.total_riskscore || 0;
-                    /* this.selectedUserDetails.data = [];
-    
-                    let data = userData && userData.data,
-                        len = data && data.length, date;
-    
-                    let j = 1;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        date = moment(item.isotimestamp);
-                        let pv = 'PV000';
-                        const info = {
-                            generatedTimestamp: date.utc().format('HH:mm:ss a'), // item.isotimestamp
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0],
-                            userId: item.userid,
-                            isotimestamp: item.isotimestamp,
-                            accord: false,
-                            pv: pv + j
-                        };
-                        this.selectedUserDetails.data.push(info);
-                        j++;
-                    }
-    
-                    if (userDataFromModel.totalScore && userDataFromModel.totalScore.total_riskscore) {
-                        this.selectedUserDetails.totalScore = userDataFromModel.totalScore.total_riskscore + this.selectedUserDetails.totalScore;
-                    }
-                    data = userDataFromModel && userDataFromModel.data;
-                    len = data && data.length;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: moment(item.isotimestamp).utc().format('HH:mm:ss a'), //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    } */
-                });
-                /*this.riskyUserService.getSelectedUserData(this.selectedUser, isResource).subscribe((res: any) => {
-                    const data = res.data,
-                        len = data.length;
-                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
-                    this.selectedUserDetails.data = [];
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    }
-                });*/
-                /*this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource).subscribe((res: any) => {
-                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
-                    this.selectedUserDetails.data = [];
-                    const data = res && res.data,
-                        len = data && data.length;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    }
-                });*/
-            } else {
-                this.getAllUsers();
-            }
-        });
-
-        this.routeParam.paramMap.subscribe(params => {
-            this.incident = params.get('incident');
-        })
     }
 
     switchView(view) {

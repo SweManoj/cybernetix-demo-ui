@@ -163,7 +163,7 @@
     </div>
 
     <!--zoomable bubble chart -->
-    <div class="container-fluid chartBg pb-4" *ngIf="!incident">
+    <div class="container-fluid chartBg pb-4" *ngIf="!incidentDetail">
         <div class="row pr-3 pl-3 pb-3" style="height: 64vh;overflow:hidden;">
             <div #bubbleChartdiv id="bubbleChartdiv" class="mt-3"></div>
         </div>
@@ -1765,7 +1765,7 @@
     </ng-container>
 
     <!-- Incident Page-->
-    <ng-container *ngIf="incident">
+    <ng-container *ngIf="incidentDetail">
         <div class="risky-user-container">
             <div class="risky-user-header">
                 <div class="row m-auto" style="background: #2C4255;">
@@ -1773,7 +1773,7 @@
                         <img class="profile-image rounded-circle" src='./../../../../../assets/images/incident.jpg'
                             style="width: 4rem;margin-top: 2rem;" />
                         <div class="user-info m-t-sm">
-                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{incident}}</span>
+                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{incidentDetail.incident}}</span>
                             <p></p>
                         </div>
                     </div>
@@ -1783,52 +1783,53 @@
                             <div class="col-md-5 mr-3">
                                 <div class="mt-2" style="min-height: 4.5rem;">
                                     <span class="captionTitle">Affected Entities</span>
-                                    <p style="color:orange;">{{incidentDetails.affectedEntity}}
+                                    <p style="color:orange;">{{incidentDetail.affectedEntity}}
                                     </p>
                                 </div>
                                 <div class="mt-2">
                                     <span class="captionTitle">Last Updated On</span>
-                                    <p class="captionData">{{incidentDetails.lastUpdatedOn}}
+                                    <p class="captionData">{{incidentDetail.lastUpdatedOn}}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-3 ml-3">
                                 <div class="mt-2" style="min-height: 4.5rem;">
                                     <span class="captionTitle">Last Updated By</span>
-                                    <p class="captionData">{{incidentDetails.lastUpdatedBy}}
+                                    <p class="captionData">{{incidentDetail.lastUpdatedBy}}
                                     </p>
                                 </div>
                                 <div class="mt-2">
                                     <span class="captionTitle">Current Status</span>
-                                    <p class="captionData">{{incidentDetails.currentStauts}}
+                                    <p class="captionData">{{incidentDetail.currentStauts}}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-3 ml-4">
                                 <div class="mt-2" style="min-height: 4.5rem;">
                                     <span class="captionTitle">Outcome</span>
-                                    <p style="color:red;">{{incidentDetails.outcome}}</p>
+                                    <p style="color:red;">{{incidentDetail.outcome}}</p>
                                 </div>
                                 <div class="mt-2">
                                     <span class="captionTitle">Remediation</span>
-                                    <p class="captionData">{{incidentDetails.remediation}}</p>
+                                    <p class="captionData">{{incidentDetail.remediation}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-2 incidentButton">
-                        <button mat-raised-button color="primary" (click)="routeToIncident(incident)">Incident Summary</button>
+                        <button mat-raised-button color="primary" (click)="routeToIncident(incident)">Incident
+                            Summary</button>
                     </div>
                 </div>
             </div>
         </div>
     </ng-container>
 
-    <div *ngIf="incident" class="container-fluid showActivity initialPadding">
+    <div *ngIf="incidentDetail" class="container-fluid showActivity initialPadding">
         <div class="row pt-3 pb-3">
             <ng-container>
-                <div class="col-sm" *ngFor="let activity of incidentActivities">
+                <div class="col-sm" *ngFor="let activity of incidentDetail.incidentActivities">
                     <div class="media">
                         <img class="align-self-center" src='../assets/images/{{activity.image}}' />
                         <div class="media-body pl-3">
@@ -1841,8 +1842,8 @@
         </div>
     </div>
 
-    <ng-container *ngIf="incident">
-        <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
+    <ng-container *ngIf="incidentDetail">
+        <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4">
             <div class="risk-date-stamp">
                 <span>23 Sep 2019</span>
             </div>

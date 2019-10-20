@@ -202,6 +202,7 @@ export class CaseManagementComponent implements OnInit {
   constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal, private caseManagmentService: CaseManagementService,
     private router: Router, private route: ActivatedRoute,
   ) {
+    window.scrollTo(0, 0);
     this.offset = 0;
     this.recordsReturned = 0;
 

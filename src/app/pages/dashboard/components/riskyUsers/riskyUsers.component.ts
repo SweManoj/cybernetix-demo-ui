@@ -1221,6 +1221,7 @@ export class RiskyUsersComponent {
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService) {
+        window.scrollTo(0, 0);
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';

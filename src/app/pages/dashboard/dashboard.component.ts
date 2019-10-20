@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
     constructor() {
+        window.scrollTo(0, 0);
     }
 }

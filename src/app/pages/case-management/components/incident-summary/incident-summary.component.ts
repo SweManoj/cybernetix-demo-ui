@@ -777,6 +777,7 @@ export class IncidentSummaryComponent implements OnInit {
     commentValue: AbstractControl;
 
     constructor(private formBuilder: FormBuilder, private routeParam: ActivatedRoute) {
+        window.scrollTo(0, 0);
         this.initForm();
     }
 

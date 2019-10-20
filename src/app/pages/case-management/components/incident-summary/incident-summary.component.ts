@@ -38,6 +38,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     incidents = [
         {
+            description: 'Privileged User escalated self-owned service account and used it for Data Exfiltration',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -51,6 +52,7 @@ export class IncidentSummaryComponent implements OnInit {
             viewCount: 1
         },
         {
+            description: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -64,6 +66,7 @@ export class IncidentSummaryComponent implements OnInit {
             viewCount: 1
         },
         {
+            description: 'Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltrtion',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -77,6 +80,7 @@ export class IncidentSummaryComponent implements OnInit {
             viewCount: 1
         },
         {
+            description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -89,6 +93,7 @@ export class IncidentSummaryComponent implements OnInit {
             incId: 'INC-1'
         },
         {
+            description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '05:30:00',
             accord: false,
@@ -101,6 +106,7 @@ export class IncidentSummaryComponent implements OnInit {
             incId: 'INC-2'
         },
         {
+            description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '07:10:00',
             accord: false,
@@ -113,6 +119,7 @@ export class IncidentSummaryComponent implements OnInit {
             incId: 'INC-3'
         },
         {
+            description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '09:22:00',
             accord: false,
@@ -125,6 +132,7 @@ export class IncidentSummaryComponent implements OnInit {
             incId: 'INC-4'
         },
         {
+            description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '14:45:00',
             accord: false,
@@ -137,6 +145,7 @@ export class IncidentSummaryComponent implements OnInit {
             incId: 'INC-5'
         },
         {
+            description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '17:14:00',
             accord: false,

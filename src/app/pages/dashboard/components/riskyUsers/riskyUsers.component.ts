@@ -1279,6 +1279,262 @@ export class RiskyUsersComponent {
     ];
     incidentViolations: any;
 
+    admEmoorHardCodeItemData: any = [
+        {
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '09:33:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 27,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Data Exfiltration via HTTPS'
+            },
+            incId: 'INC-1',
+            description: 'This Violation is triggered when user exfiltrates excissive bytes of data via HTTPS',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration via HTTPS' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 95' },
+                { title: 'Resource', value: 'Proxy' },
+                { title: 'Indicators', value: 'URL, BytesOut, Event' }
+            ]
+        },
+        {
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '09:17:00',
+            accord: false,
+            pv: 'PV_061',
+            riskScore: 6,
+            ruleInfo: {
+                ruleId: 2,
+                title: 'Rare Access to Proxy By Service Account'
+            },
+            incId: 'INC-2',
+            description: 'This Violation is triggered when service attempts to connect to Proxy',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Exploitation' },
+                { title: 'Threat Category', value: 'Proxy Attempts' },
+                { title: 'Sub Category', value: 'Proxy Attempts' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 89' },
+                { title: 'Resource', value: 'Proxy' },
+                { title: 'Indicators', value: 'URL' }
+            ]
+        },
+        {
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '09:13:00',
+            accord: false,
+            pv: 'PV_039',
+            riskScore: 13,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Data Exfiltration Attempts via Email: DLP Alert '
+            },
+            incId: 'INC-3',
+            description: 'This Violation is triggered when User attempts to exfiltrate data via DLP',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration Attempt' },
+                { title: 'Sub Category', value: 'Data Exfiltration Attempt via Email' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 86' },
+                { title: 'Resource', value: 'DLP Network' },
+                { title: 'Indicators', value: 'FileNames, BytesOut, Event' }
+            ]
+        },
+        {
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '08:34:00',
+            accord: false,
+            pv: 'PV_041',
+            riskScore: 63,
+            ruleInfo: {
+                ruleId: 4,
+                title: 'Abnormal Downloads from 0365 Sharepoint'
+            },
+            incId: 'INC-4',
+            description: 'This Violation is triggered when User downloads high number of Files / documents from 0-365 Sharepoint',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Insider Threat' },
+                { title: 'Threat Category', value: 'Data Downloads' },
+                { title: 'Sub Category', value: 'Data Downloads from Cloud' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 83' },
+                { title: 'Resource', value: '0365 Sharepoint' },
+                { title: 'Indicators', value: 'FileNames, Size, Event' }
+            ]
+        },
+        {
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '07:42:00',
+            accord: false,
+            pv: 'PV_069',
+            riskScore: 27,
+            ruleInfo: {
+                ruleId: 5,
+                title: 'Privileged Escalation to Service Account'
+            },
+            incId: 'INC-5',
+            description: 'This Violation is triggered when User grants groups / permissions to Service Account',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Privilege Misuse' },
+                { title: 'Threat Category', value: 'Privilege Escalation' },
+                { title: 'Sub Category', value: 'Privilege Escalation to Service Accounts' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Adm-EMoor, WK-38482L' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 74' },
+                { title: 'Resource', value: 'Windows' },
+                { title: 'Indicators', value: 'TargetAccount, Groups, Event' }
+            ]
+        }
+    ];
+
+    itemInfo = [{
+        title: 'Last Hostname:',
+        value: 'WK-UKL48503D'
+    }, {
+        title: 'Last IP:',
+        value: '10.82.32.212'
+    }]
+
+    ipHardCodeItemData = [
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '12:45:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 4,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Outbound P2P File Sharing Traffic to Rare Host'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'C2' },
+                { title: 'Threat Category', value: 'Malicious Behavior' },
+                { title: 'Sub Category', value: 'P2P Traffic' }
+            ],
+            dummyDatas: [
+                { title: 'Affected Entity', value: '10.82.32.227' },
+                { title: 'Locations', value: 'Indonesia' },
+                { title: 'Status', value: 'Risk: 95' },
+                { title: 'Resources', value: 'Proxy' },
+                { title: 'Indicators', value: 'DstIP, URL, Category, BytesOut' }
+            ],
+            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '06:43:00',
+            accord: false,
+            pv: 'INFO',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'DHCP RENEWAL'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: '' },
+                { title: 'Threat Category', value: '' },
+                { title: 'Sub Category', value: '' }
+            ],
+            dummyDatas: [
+                { title: 'New Hostname', value: 'WK-UKL48503D' },
+                { title: 'New IP', value: '10.82.32.227' }
+            ],
+            description: 'This event correlates Dynamic IP with Hostnames / MAC'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 067',
+            riskScore: 13,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Inbound Traffic on SMB Port from Suspicious Location'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Malicious Behavior' },
+                { title: 'Sub Category', value: 'Inbound SMB' }
+            ],
+            dummyDatas: [
+                { title: 'Affected Entity', value: '10.82.32.212' },
+                { title: 'Locations', value: 'Indonesia' },
+                { title: 'Status', value: 'Risk: 74' },
+                { title: 'Resources', value: 'Netflow' },
+                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }
+            ],
+            description: 'This Violation is triggered when there is Inbound SMB traffic from Rare Location'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 6,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Inbound Telnet Traffic From Blacklisted IP's"
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Malicious Behavior' },
+                { title: 'Sub Category', value: 'Inbound Telnet' }
+            ],
+            dummyDatas: [
+                { title: 'Affected Entity', value: '10.82.32.212' },
+                { title: 'Locations', value: 'Indonesia' },
+                { title: 'Status', value: 'Risk: 63' },
+                { title: 'Resources', value: 'Netflow' },
+                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence' }
+            ],
+            description: 'This Violation is triggered when there is Inbound Telnet traffic from Blacklisted IP'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '01:17:00',
+            accord: false,
+            pv: 'PV 022',
+            riskScore: 34,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Port Scanning from External IP"
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Port Scanning' },
+                { title: 'Sub Category', value: 'Inbound Attack' }
+            ],
+            dummyDatas: [
+                { title: 'Affected Entity', value: '10.82.32.212' },
+                { title: 'Locations', value: 'Indonesia' },
+                { title: 'Status', value: 'Risk: 54' },
+                { title: 'Resources', value: 'Netflow' },
+                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }
+            ],
+            description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
+        }
+    ];
+
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
@@ -1390,11 +1646,11 @@ export class RiskyUsersComponent {
             const incident = params.get('incident');
 
             if (incident == 'INC 38')
-                this.incidentViolations = this.hardCodeItemData;
+                this.incidentViolations = this.admEmoorHardCodeItemData;
             else if (incident == 'INC 44')
                 this.incidentViolations = this.chen_ZhangHardCodeItemDate;
             else if (incident == 'INC 71')
-                this.incidentViolations = null;
+                this.incidentViolations = this.ipHardCodeItemData;
 
             this.incidentDetails.forEach(incidentDetail => {
                 if (incidentDetail.incident == incident) {

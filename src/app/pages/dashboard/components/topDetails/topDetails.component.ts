@@ -25,11 +25,15 @@ export class TopDetailsComponent implements AfterViewInit {
         { id: 'Lateral Movement', count: 9 }
     ];
 
-    topRiskyCorrelations = [
-        { date: 'Sep 23 2019', entities: '2 Users', riskScore: 95 },
-        { date: 'Jun 27 2019', entities: '2 IP', riskScore: 95 },
-        { date: 'Jun 27 2019', entities: '4 Users', riskScore: 93 }
+    topRiskyImpersonations = [
+        { date: 'Sep 23 2019', entities: '2 Users', incident: 'INC 38' },
+        { date: 'Jun 27 2019', entities: '2 IP', incident: 'INC 71' },
+        { date: 'Jun 27 2019', entities: '4 Users', incident: 'INC 44' }
     ];
+
+    impersonationIncidentRouting(incident){
+        
+    }
 
     routeRiskyCorrelations(entities) {
         if (new String(entities).includes('2 Users'))

@@ -1764,6 +1764,83 @@
         </div>
     </ng-container>
 
+    <!-- Incident Page-->
+    <ng-container *ngIf="incident">
+        <div class="risky-user-container">
+            <div class="risky-user-header">
+                <div class="row m-auto" style="background: #2C4255;">
+                    <div class="col-md-2" style="text-align: center;background: #041421;">
+                        <img class="profile-image rounded-circle" src='./../../../../../assets/images/incident.jpg'
+                            style="width: 4rem;margin-top: 2rem;" />
+                        <div class="user-info m-t-sm">
+                            <span style="color:#D3D3D3;size:26px;font-weight: 600">{{incident}}</span>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 mt-1 d-flex initialPadding ml-2">
+                        <div class="container row">
+                            <div class="col-md-5 mr-3">
+                                <div class="mt-2" style="min-height: 4.5rem;">
+                                    <span class="captionTitle">Affected Entities</span>
+                                    <p class="captionData">{{incidentDetails.affectedEntity}}
+                                    </p>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="captionTitle">Last Updated On</span>
+                                    <p class="captionData">{{incidentDetails.lastUpdatedOn}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ml-3">
+                                <div class="mt-2" style="min-height: 4.5rem;">
+                                    <span class="captionTitle">Last Updated By</span>
+                                    <p class="captionData">{{incidentDetails.lastUpdatedBy}}
+                                    </p>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="captionTitle">Current Status</span>
+                                    <p class="captionData">{{incidentDetails.currentStauts}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ml-4">
+                                <div class="mt-2" style="min-height: 4.5rem;">
+                                    <span class="captionTitle">Outcome</span>
+                                    <p class="captionData">{{incidentDetails.outcome}}</p>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="captionTitle">Remediation</span>
+                                    <p class="captionData">{{incidentDetails.remediation}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 incidentButton">
+                        <button mat-raised-button color="primary">Incident Summary</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <div *ngIf="incident" class="container-fluid showActivity initialPadding">
+        <div class="row pt-3 pb-3">
+            <ng-container>
+                <div class="col-sm" *ngFor="let activity of incidentActivities">
+                    <div class="media">
+                        <img class="align-self-center" src='../assets/images/{{activity.image}}' />
+                        <div class="media-body pl-3">
+                            <p class="value">{{activity.value}}</p>
+                            <span class="title">{{activity.title}}</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
     <ng-container *ngIf="incident">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4" *ngIf="selectedView === 'timeline'">
             <div class="risk-date-stamp">
@@ -1792,33 +1869,9 @@
                                     {{item.ruleInfo.title}}</span>
 
                                 <!-- <span (click)="open(item.ruleInfo.ruleid, item.userId,item.isotimestamp)"
-                                      class="risk-score mr-5">{{item.riskScore}}</span>
- -->
+                                      class="risk-score mr-5">{{item.riskScore}}</span> -->
 
                                 <span class="risk-score mr-5">{{item.riskScore}}</span>
-                                <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
-                                    <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
-                                        Actions
-                                    </button>
-                                    <div class="greyBackground actionDropDown" ngbDropdownMenu
-                                        aria-labelledby="dropdownBasic1">
-                                        <button ngbDropdownItem class="greyBackground">
-                                            Investigate
-                                        </button>
-                                        <button ngbDropdownItem class="greyBackground"
-                                            [routerLink]="['/incidentSummary', item.incId]">
-                                            Create an Incident
-                                        </button>
-                                        <button ngbDropdownItem class="greyBackground"
-                                            [routerLink]="['/performRemediation']">
-                                            Perform Remediation
-                                        </button>
-                                        <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem
-                                            class="greyBackground">
-                                            View Summary
-                                        </button>
-                                    </div>
-                                </span>
                             </div>
                         </div>
 

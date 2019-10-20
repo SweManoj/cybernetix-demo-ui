@@ -7,6 +7,13 @@ ngb-modal-window.modal.fade.show.d-block {
 //   background: $buttonBackGround !important;
 // }
 
+.incidentButton {
+  margin-left: -2rem;
+  height: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
 .container-fluid.showActivity {
   background: $black-bg-color;
   margin-top: 5px;
@@ -111,13 +118,13 @@ ngb-modal-window.modal.fade.show.d-block {
 }
 
 #lineChartDiv {
-    width: 100%;
-    height: 55vh;
-    tspan {
-        fill: #6e6e6e;
-        font-size: 16px;
-        letter-spacing: -0.26px;
-    }
+  width: 100%;
+  height: 55vh;
+  tspan {
+    fill: #6e6e6e;
+    font-size: 16px;
+    letter-spacing: -0.26px;
+  }
 }
 
 h6 {
@@ -362,7 +369,7 @@ button.btn.btn-sm {
 }
 
 .risky-user-violations {
-  .risk-date-stamp{
+  .risk-date-stamp {
     font-weight: 600;
     color: #bdbdbd;
   }
@@ -396,15 +403,15 @@ button.btn.btn-sm {
     margin-top: 1rem;
     height: auto;
     .pvValue {
-      color: #FF5A5A;
+      color: #ff5a5a;
       font-size: 17px;
       margin-right: 0.8rem;
       margin-left: 0.8rem;
-      margin-top: .2rem;
+      margin-top: 0.2rem;
     }
     .pvText {
       font-size: 17px;
-      margin-top: .2rem;
+      margin-top: 0.2rem;
     }
     .risk-score {
       background-color: #3a4751;
@@ -425,8 +432,8 @@ button.btn.btn-sm {
       .riskAccordBorder {
         border-right: 1px solid $risk-accord-border-color;
       }
-      .details{
-        color: #8E8E8E;
+      .details {
+        color: #8e8e8e;
       }
     }
   }
@@ -442,7 +449,7 @@ button.btn.btn-sm {
   margin-top: 1%;
 }
 
-.rscore{
+.rscore {
   font-size: 67.6px;
   letter-spacing: -0.47px;
   margin-bottom: -20px;
@@ -450,13 +457,12 @@ button.btn.btn-sm {
   font-weight: 400;
 }
 
-.riskscore{
+.riskscore {
   font-size: 18px;
-  color: #A7A7A7;
+  color: #a7a7a7;
   font-weight: 550;
 }
 
-
-.data-exfiltaration{
-    background-color: #580d0d !important;
+.data-exfiltaration {
+  background-color: #580d0d !important;
 }

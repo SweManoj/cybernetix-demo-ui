@@ -439,7 +439,7 @@ export class RiskyUsersComponent {
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '07:42:00',
             accord: false,
-            pv: 'PV 069',
+            pv: 'PV_069',
             riskScore: 27,
             ruleInfo: {
                 ruleId: 5,
@@ -1404,6 +1404,22 @@ export class RiskyUsersComponent {
     }
 
     incident: string;
+    incidentDetails = {
+        affectedEntity: 'Adm-EMoor, SVL-EMoor, WK-38482L, 10.82.30.121',
+        lastUpdatedOn: '23 Sep 2019 09:33',
+        lastUpdatedBy: ' Martin J',
+        currentStauts: 'Closed',
+        outcome: 'True Positive',
+        remediation: 'N/A',
+    }
+    incidentActivities = [
+        { image: 'falg@1x.png', value: '136', title: 'Events' },
+        { image: 'resources@1x.png', value: '04', title: 'Resources' },
+        { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+        { image: 'violations@1x.png', value: '05', title: 'Insights' },
+        { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+    ];
+
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');

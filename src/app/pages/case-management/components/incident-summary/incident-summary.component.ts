@@ -42,7 +42,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     incidents = [
         {
-            description: '',
+            description: 'Privileged User escalated self-owned service account and used it for Data Exfiltration',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -50,7 +50,7 @@ export class IncidentSummaryComponent implements OnInit {
             riskScore: 579,
             ruleInfo: {
                 ruleId: 1,
-                title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
+                title: ''
             },
             incId: 'INC 38',
             viewCount: 1,
@@ -63,7 +63,7 @@ export class IncidentSummaryComponent implements OnInit {
             caseOwner: 'Martin J'
         },
         {
-            description: '',
+            description: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -71,7 +71,7 @@ export class IncidentSummaryComponent implements OnInit {
             riskScore: 579,
             ruleInfo: {
                 ruleId: 1,
-                title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
+                title: ''
             },
             incId: 'INC 71',
             viewCount: 1,
@@ -84,7 +84,7 @@ export class IncidentSummaryComponent implements OnInit {
             caseOwner: 'Scott R'
         },
         {
-            description: '',
+            description: 'Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltrtion',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
             accord: false,
@@ -92,7 +92,7 @@ export class IncidentSummaryComponent implements OnInit {
             riskScore: 579,
             ruleInfo: {
                 ruleId: 1,
-                title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
+                title: ''
             },
             incId: 'INC 44',
             viewCount: 1,

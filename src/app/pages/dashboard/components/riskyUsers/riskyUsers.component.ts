@@ -890,7 +890,6 @@ export class RiskyUsersComponent {
         }
     ];
 
-
     hardCodeItemDataForDemo1 = [
         {
             generatedDateFormat: '13 June 2019',
@@ -1228,13 +1227,15 @@ export class RiskyUsersComponent {
     }
 
     ngAfterViewInit() {
-        this.zone.runOutsideAngular(() => {
-            // Initialize Guage meter chart
-            this.initializeGuageMeterChart();
+        if (!this.incident) {
+            this.zone.runOutsideAngular(() => {
+                // Initialize Guage meter chart
+                this.initializeGuageMeterChart();
 
-            // Initialize Bubble chart
-            this.initializeBubbleChart();
-        });
+                // Initialize Bubble chart
+                this.initializeBubbleChart();
+            });
+        }
     }
 
     initializeGuageMeterChart() {
@@ -1402,6 +1403,7 @@ export class RiskyUsersComponent {
         chart.cursor.behavior = 'zoomXY';
     }
 
+    incident: string;
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
@@ -1508,6 +1510,10 @@ export class RiskyUsersComponent {
                 this.getAllUsers();
             }
         });
+
+        this.routeParam.paramMap.subscribe(params => {
+            this.incident = params.get('incident');
+        })
     }
 
     switchView(view) {

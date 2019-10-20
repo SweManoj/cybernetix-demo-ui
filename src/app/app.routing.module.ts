@@ -16,9 +16,9 @@ import { IncidentSummaryComponent } from './pages/case-management/components/inc
 import { TestEsComponent } from './pages/case-management/components/test-es/test-es.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
-import {RiskyIPComponent} from './pages/dashboard/components/risky-ip/risky-ip.component';
-import {RiskyHostComponent} from './pages/dashboard/components/riskyHost/riskyHost.component';
-import {PerformRemediationComponent} from './pages/case-management/components/perform-remediation/perform-remediation.component';
+import { RiskyIPComponent } from './pages/dashboard/components/risky-ip/risky-ip.component';
+import { RiskyHostComponent } from './pages/dashboard/components/riskyHost/riskyHost.component';
+import { PerformRemediationComponent } from './pages/case-management/components/perform-remediation/perform-remediation.component';
 import { PolicyViolatedUsersComponent } from './pages/case-management/components/policy-violated-users/policy-violated-users.component';
 
 export const routes: Routes = [
@@ -51,6 +51,10 @@ export const routes: Routes = [
             {
                 path: 'riskyHost/:selectedHost',
                 component: RiskyHostComponent
+            },
+            {
+                path: 'riskyIncident/:incident',
+                component: RiskyUsersComponent
             },
             {
                 path: 'filteredRiskyUsers/:riskyUser',

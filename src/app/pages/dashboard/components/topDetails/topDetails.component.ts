@@ -32,7 +32,7 @@ export class TopDetailsComponent implements AfterViewInit {
     ];
 
     impersonationIncidentRouting(incident){
-        
+        this.router.navigate(['/riskyIncident', incident]);
     }
 
     routeRiskyCorrelations(entities) {

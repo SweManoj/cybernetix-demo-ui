@@ -217,16 +217,23 @@
 <div *ngIf="componentType === 'dormantUsers'" class="top-riksy-users mt-2">
     <ng-container *ngFor="let topRiskyImpersonation of topRiskyImpersonations">
         <div class="row user-item blockPadding mx-auto" [ngStyle]="{'min-height':'4.5rem'}">
-            <div class="col-5 col-sm-5 col-md-5 initialPadding font-weight-bold centerAlign"
+
+            <div class="col-md-2 centerAlign font-weight-bold initialPadding">
+                <img class="profile-image" [ngClass]="{'rounded-circle': topRiskyImpersonation.type=='user'}"
+                    src='./../../../../../{{topRiskyImpersonation.image}}' />
+            </div>
+
+            <!-- <div class="col-5 col-sm-5 col-md-5 initialPadding font-weight-bold centerAlign"
                 [ngStyle]="riskyCorrelationStyle('date')">
                 <span>{{topRiskyImpersonation.date}}</span>
-            </div>
-            <div class="col-md-4 centerAlign font-weight-bold initialPadding">
+            </div> -->
+
+            <div class="col-md-6 centerAlign font-weight-bold">
                 <a (click)="routeRiskyCorrelations(topRiskyImpersonation.entities)"
                     [ngStyle]="riskyCorrelationStyle('entity')"
-                    class="cursorPointer">{{topRiskyImpersonation.entities}}</a>
+                    class="cursorPointer">{{topRiskyImpersonation.entity}}</a>
             </div>
-            <div class="col-md-3 font-weight-bold centerAlign initialPadding">
+            <div class="col-md-4 font-weight-bold centerAlign">
                 <a class="cursorPointer" (click)="impersonationIncidentRouting(topRiskyImpersonation.incident)"
                     [ngStyle]="{'color':'crimson','font-size': '16px','text-align':'end'}">
                     {{topRiskyImpersonation.incident}}</a>

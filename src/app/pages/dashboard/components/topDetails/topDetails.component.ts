@@ -26,12 +26,12 @@ export class TopDetailsComponent implements AfterViewInit {
     ];
 
     topRiskyImpersonations = [
-        { date: 'Sep 23 2019', entities: '2 Users', incident: 'INC 38' },
-        { date: 'Jun 27 2019', entities: '2 IP', incident: 'INC 71' },
-        { date: 'Jun 27 2019', entities: '4 Users', incident: 'INC 44' }
+        { image: 'assets/images/users/Adm-EMoor.jpg', entity: 'Adm-EMoor', incident: 'INC 38', type: 'user' },
+        { image: 'assets/images/dashboard_icons/Ip@2x.png', entity: '10.82.32.212', incident: 'INC 71', type: 'ip' },
+        { image: 'assets/images/users/Chen_Zhang.jpg', entity: 'Chen_Zhang', incident: 'INC 44', type: 'user' }
     ];
 
-    impersonationIncidentRouting(incident){
+    impersonationIncidentRouting(incident) {
         this.router.navigate(['/riskyIncident', incident]);
     }
 

@@ -1443,9 +1443,8 @@ export class RiskyUsersComponent {
                 title: 'DHCP RENEWAL'
             },
             threatCategories: [
-                { title: 'Kill Chain', value: '' },
-                { title: 'Threat Category', value: '' },
-                { title: 'Sub Category', value: '' }
+                { title: 'Last Hostname', value: 'WK-UKL48503D' },
+                { title: 'Last IP', value: '10.82.32.212' }
             ],
             additionalInfo: [
                 { title: 'New Hostname', value: 'WK-UKL48503D' },

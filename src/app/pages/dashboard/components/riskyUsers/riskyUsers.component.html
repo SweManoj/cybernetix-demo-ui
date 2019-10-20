@@ -1857,7 +1857,7 @@
                         <span class="risk-dot rounded-circle">&nbsp;</span>
                     </div>
 
-                    <div class="violationTitle">
+                    <div class="violationTitle" [ngClass]="{'dhcp' : item.ruleInfo.title === 'DHCP RENEWAL'}">
                         <div class="row mt-1 mb-2 ml-3 mr-1">
                             <div class="col-sm-12">
                                 <span class="pointerCursor" (click)="item.accord = !item.accord">
@@ -1881,35 +1881,33 @@
                                 <div class="col-md-3 riskAccordBorder">
                                     <dl>
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
-                                        <dd class="mt-2">{{item.description}}</dd>
+                                        <dd class="mt-2"
+                                            [ngClass]="{'dhcpLetters' : item.ruleInfo.title === 'DHCP RENEWAL'}">
+                                            {{item.description}}</dd>
+                                    </dl>
+                                    <dl *ngIf="item.pv=='INFO'">
+                                        <dt><i class="fa fa-caret-right"
+                                                [ngClass]="{'greyText':item.pv =='INFO'}"></i>&nbsp;&nbsp;MAC</dt>
+                                        <dd class="mt-2" [ngClass]="{'dhcpLetters':item.pv =='INFO'}"> 00:0a:95:9d:68:16
+                                        </dd>
                                     </dl>
                                 </div>
 
                                 <div class="col-5 col-sm-5 riskAccordBorder">
-                                    <dl>
+                                    <dl *ngIf="item.ruleInfo.title !== 'DHCP RENEWAL'">
                                         <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
                                     </dl>
 
-                                    <div class="ml-4" *ngIf="!item.threatCategories">
-                                        <div class="row mt-1 details" *ngFor="let threatCategory of threatCategories">
-                                            <div class="col-md-5">
-                                                {{threatCategory.title}}
-                                            </div>
-                                            <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-6">
-                                                {{threatCategory.value}}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ml-4" *ngIf="item.threatCategories">
+                                    <div class="ml-3" *ngIf="item.threatCategories">
                                         <div class="row mt-1 details"
                                             *ngFor="let threatCategory of item.threatCategories">
-                                            <div class="col-md-5">
+                                            <div class="col-md-5"
+                                                [ngClass]="{'dhcpLetters' : item.ruleInfo.title === 'DHCP RENEWAL'}">
                                                 {{threatCategory.title}}
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6"
+                                                [ngClass]="{'dhcpLetters' : item.ruleInfo.title === 'DHCP RENEWAL'}">
                                                 {{threatCategory.value}}
                                             </div>
                                         </div>
@@ -1918,27 +1916,20 @@
 
                                 <div class="col-4 col-sm-4">
                                     <dl>
-                                        <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
+                                        <dt><i class="fa fa-caret-right"
+                                                *ngIf="item.ruleInfo.title !== 'DHCP RENEWAL'"></i>&nbsp;&nbsp;Additional
+                                            Info</dt>
                                     </dl>
-                                    <div class="ml-4" *ngIf="!item.additionalInfo">
-                                        <div class="row mt-1 details" *ngFor="let dummyData of dummyDatas">
-                                            <div class="col-md-6">
-                                                {{dummyData.title}}
-                                            </div>
-                                            <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-5" style="word-break: break-all;">
-                                                {{dummyData.value}}
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="ml-4" *ngIf="item.additionalInfo">
+                                    <div class="ml-2" *ngIf="item.additionalInfo">
                                         <div class="row mt-1 details" *ngFor="let dummyData of item.additionalInfo">
-                                            <div class="col-md-6">
+                                            <div class="col-md"
+                                                [ngClass]="{'dhcpLetters' : item.ruleInfo.title === 'DHCP RENEWAL'}">
                                                 {{dummyData.title}}
                                             </div>
                                             <b>&nbsp;:&nbsp;</b>
-                                            <div class="col-md-5" style="word-break: break-all;">
+                                            <div class="col-md" style="word-break: break-all;"
+                                                [ngClass]="{'dhcpLetters' : item.ruleInfo.title === 'DHCP RENEWAL'}">
                                                 {{dummyData.value}}
                                             </div>
                                         </div>

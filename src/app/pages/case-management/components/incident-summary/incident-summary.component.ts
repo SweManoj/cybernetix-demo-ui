@@ -60,7 +60,29 @@ export class IncidentSummaryComponent implements OnInit {
             indicatorsOfAttack: 5,
             status: 'Closed',
             outcome: 'True Positive',
-            caseOwner: 'Martin J'
+            caseOwner: 'Martin J',
+            killChainProcess: [
+                {
+                    title: 'Privilege Escalation',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Data Downloads',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Data Exfiltration Attempt',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Proxy Attempts',
+                    icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'connection.png'
+                }
+            ]
         },
         {
             description: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic',
@@ -81,7 +103,25 @@ export class IncidentSummaryComponent implements OnInit {
             indicatorsOfAttack: 4,
             status: 'Open',
             outcome: 'Investigation In Progress',
-            caseOwner: 'Scott R'
+            caseOwner: 'Scott R',
+            killChainProcess: [
+                {
+                    title: 'Port Scanning',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Inbound Telnet',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Inbound SMB',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'P2P Traffic',
+                    icon: 'monitor-code.png'
+                }
+            ]
         },
         {
             description: 'Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltrtion',
@@ -102,7 +142,25 @@ export class IncidentSummaryComponent implements OnInit {
             indicatorsOfAttack: 5,
             status: 'Open',
             outcome: 'Investigation In Progress',
-            caseOwner: 'Steve D'
+            caseOwner: 'Steve D',
+            killChainProcess: [
+                {
+                    title: 'Privileged Activity Attempt',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Account Compromise',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Dormant Activity',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'monitor-code.png'
+                }
+            ]
         },
         {
             description: 'In this incident page, user was trying to access machine which is restricted to access by group policy',

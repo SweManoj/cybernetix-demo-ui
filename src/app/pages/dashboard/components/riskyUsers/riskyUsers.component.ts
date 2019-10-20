@@ -1407,14 +1407,6 @@ export class RiskyUsersComponent {
         }
     ];
 
-    itemInfo = [{
-        title: 'Last Hostname:',
-        value: 'WK-UKL48503D'
-    }, {
-        title: 'Last IP:',
-        value: '10.82.32.212'
-    }]
-
     ipHardCodeItemData = [
         {
             generatedDateFormat: 'June 27 2019',
@@ -1431,7 +1423,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Malicious Behavior' },
                 { title: 'Sub Category', value: 'P2P Traffic' }
             ],
-            dummyDatas: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.227' },
                 { title: 'Locations', value: 'Indonesia' },
                 { title: 'Status', value: 'Risk: 95' },
@@ -1455,7 +1447,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: '' },
                 { title: 'Sub Category', value: '' }
             ],
-            dummyDatas: [
+            additionalInfo: [
                 { title: 'New Hostname', value: 'WK-UKL48503D' },
                 { title: 'New IP', value: '10.82.32.227' }
             ],
@@ -1476,7 +1468,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Malicious Behavior' },
                 { title: 'Sub Category', value: 'Inbound SMB' }
             ],
-            dummyDatas: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
                 { title: 'Status', value: 'Risk: 74' },
@@ -1500,7 +1492,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Malicious Behavior' },
                 { title: 'Sub Category', value: 'Inbound Telnet' }
             ],
-            dummyDatas: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
                 { title: 'Status', value: 'Risk: 63' },
@@ -1524,7 +1516,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Port Scanning' },
                 { title: 'Sub Category', value: 'Inbound Attack' }
             ],
-            dummyDatas: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
                 { title: 'Status', value: 'Risk: 54' },

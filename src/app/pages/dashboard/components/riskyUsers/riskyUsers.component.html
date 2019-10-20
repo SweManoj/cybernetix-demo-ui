@@ -1783,7 +1783,7 @@
                             <div class="col-md-5 mr-3">
                                 <div class="mt-2" style="min-height: 4.5rem;">
                                     <span class="captionTitle">Affected Entities</span>
-                                    <p class="captionData">{{incidentDetails.affectedEntity}}
+                                    <p style="color:orange;">{{incidentDetails.affectedEntity}}
                                     </p>
                                 </div>
                                 <div class="mt-2">
@@ -1807,7 +1807,7 @@
                             <div class="col-md-3 ml-4">
                                 <div class="mt-2" style="min-height: 4.5rem;">
                                     <span class="captionTitle">Outcome</span>
-                                    <p class="captionData">{{incidentDetails.outcome}}</p>
+                                    <p style="color:red;">{{incidentDetails.outcome}}</p>
                                 </div>
                                 <div class="mt-2">
                                     <span class="captionTitle">Remediation</span>
@@ -1818,7 +1818,7 @@
                     </div>
 
                     <div class="col-md-2 incidentButton">
-                        <button mat-raised-button color="primary">Incident Summary</button>
+                        <button mat-raised-button color="primary" (click)="routeToIncident(incident)">Incident Summary</button>
                     </div>
                 </div>
             </div>

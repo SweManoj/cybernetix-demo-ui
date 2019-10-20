@@ -1420,6 +1420,10 @@ export class RiskyUsersComponent {
         { image: 'incident@1x.png', value: '0', title: 'Remediations' },
     ];
 
+    routeToIncident(incident) {
+        this.router.navigate(['/incidentSummary', incident]);
+    }
+
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');

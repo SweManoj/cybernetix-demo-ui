@@ -14,6 +14,7 @@ import { path } from 'd3';
 export class CaseManagementComponent implements OnInit {
 
   @ViewChild('incident') incident: Table;
+  @ViewChild('threatVectorTable') threatVectorTable: Table;
   policyRangeDates: any;
   incidentRangeDates: any;
   selectedItems: any;
@@ -43,6 +44,12 @@ export class CaseManagementComponent implements OnInit {
     { created: '03/13/2018', priority: 'Medium', riskscore: 90, id: 'INC-13', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Completed', assignee: 'NA', alerts: 2, entity: '192.168.0.142' },
     { created: '03/14/2018', priority: 'Critical', riskscore: 90, id: 'INC-14', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.102' },
     { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-15', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.109' }, */
+  ];
+
+  threatVectorData:Array<any> = [
+    { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', id: 'INC 38', riskScore: '95', incident: 'YES', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'Adm-EMoor', type: 'Auto' },
+    { detectedOn: '13/10/2018', threatVectorID: 'TVDE43', priority: 'Critical', id: 'INC 71', riskScore: '93', incident: 'YES', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '10.82.32.212', type: 'Auto' },
+    { detectedOn: '27/06/2018', threatVectorID: 'TVDE21', priority: 'Critical', id: 'INC 44', riskScore: '89', incident: 'YES', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, entity: 'Chen_Zhang', type: 'Auto' },
   ];
 
   redirectToTimeline(type, entity) {
@@ -225,7 +232,7 @@ export class CaseManagementComponent implements OnInit {
     this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
   }
 
-  threatVectorTitle:string;
+  threatVectorTitle: string;
   ngOnInit() {
 
     // Current Path:  company 

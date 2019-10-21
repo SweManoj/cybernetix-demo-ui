@@ -3,7 +3,7 @@
 
         <div *ngIf="path == 'policyViolation'"><span class="h5">Policy Violation</span></div>
         <div *ngIf="path == 'caseManagement'"><span class="h5">Incident Management</span></div>
-        <div *ngIf="threatVectorTitle"><span class="h5">Threat Vector: {{threatVectorTitle}}</span></div>
+        <div *ngIf="threatVectorTitle"><span class="h5">Threat Vector : {{threatVectorTitle}}</span></div>
         <!-- <div class="col-sm-4 ml-5">
             <ul class="nav nav-pills btn-sm" id="pills-tab" role="tablist">
                 <div *ngIf="path == 'caseManagement'">
@@ -57,7 +57,6 @@
                                     </div>
                                 </div>
                             </div>
-
 
                             <div class="col-md-4 d-flex m-auto initialPadding">
                                 <div class="d-flex flex-row ml-auto">
@@ -169,7 +168,7 @@
                 </div>
             </div>
 
-            <div *ngIf="path == 'caseManagement' || threatVectorTitle" role="tabpanel">
+            <div *ngIf="path == 'caseManagement'" role="tabpanel">
                 <div class="col-md-12 mb-3">
                     <div class="row incident-filter-row">
                         <div class="mr-4 mb-4">
@@ -299,6 +298,122 @@
                                 </td>
                                 <td>{{data.status}}</td>
                                 <td>{{data.assignee}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+
+            <!-- Threat Vector -->
+            <div *ngIf="threatVectorTitle" role="tabpanel">
+                <div class="col-md-12 mb-3">
+                    <div class="row incident-filter-row">
+                        <div class="mr-4 mb-4">
+                            <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name"></p-dropdown>
+                        </div>
+
+                        <div class="mr-4 mb-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search by Keyword"
+                                    (keyup)="incident.filterGlobal($event.target.value, 'contains')">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mr-4 mb-4">
+                            <div class="input-group">
+                                <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range"
+                                    selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mr-4 mb-4">
+                            <p-dropdown [options]="priority" placeholder="Priority" optionLabel="name"
+                                (onChange)="incident.filter($event.value.value, 'priority','contains')"></p-dropdown>
+                        </div>
+
+                        <div class="mr-4 mb-4">
+                            <p-dropdown [options]="status" placeholder="Status" optionLabel="name"
+                                (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
+                        </div>
+
+                        <div class="mr-4 mb-4">
+                            <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
+                                (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
+                        </div>
+
+                        <div class="mb-4 mt-2">
+                            <span class="topStages Total" style="margin-left: 0rem;">{{threatVectorData.length }}</span>
+                            <span class="labels">&nbsp;&nbsp;Record found</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ml-auto mr-auto policy-incident-table">
+                    <p-table #threatVectorTable
+                        [globalFilterFields]="['threatVectorID', 'detectedOn', 'priority', 'entity', 'riskScore', 'incident', 'type']"
+                        [resizableColumns]="true" [value]="threatVectorData" sortMode="multiple"
+                        [(selection)]="selectedItems" [paginator]="true" [rows]="12" (onRowSelect)="onRowSelect($event)"
+                        (onRowUnselect)="onRowUnselect($event)">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="width: 3em;background:#000000">
+                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                </th>
+
+                                <th [pSortableColumn]="'threatVectorID'">Threat Vector ID <p-sortIcon
+                                        [field]="'threatVectorID'"></p-sortIcon>
+                                </th>
+                                <th [pSortableColumn]="'detectedOn'">Detected On <p-sortIcon [field]="'detectedOn'">
+                                    </p-sortIcon>
+                                </th>
+                                <!-- <th style="width:33em;" [pSortableColumn]="'name'">Incident Name <p-sortIcon
+                                        [field]="'name'"></p-sortIcon>
+                                </th> -->
+                                <th [pSortableColumn]="'priority'">PRIORITY <p-sortIcon [field]="'priority'">
+                                    </p-sortIcon>
+                                </th>
+                                <th [pSortableColumn]="'entity'">Entity <p-sortIcon [field]="'entity'"></p-sortIcon>
+                                </th>
+                                <th [pSortableColumn]="'riskScore'">Risk Score <p-sortIcon [field]="'riskScore'">
+                                    </p-sortIcon>
+                                </th>
+
+                                <th [pSortableColumn]="'incident'">INCIDENT <p-sortIcon [field]="'incident'">
+                                    </p-sortIcon>
+                                </th>
+                                <th [pSortableColumn]="'type'">TYPE <p-sortIcon [field]="'type'">
+                                    </p-sortIcon>
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-threatVectorData>
+                            <tr [pSelectableRow]="rowData">
+                                <td>
+                                    <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                                </td>
+                                <td [routerLink]="['/riskyIncident', threatVectorData.threatVectorID]">
+                                    {{threatVectorData.threatVectorID}}</td>
+                                <td>{{threatVectorData.detectedOn}}</td>
+                                <td style="padding-left: 40px">
+                                    <div class="{{threatVectorData.priority}} tableStages"></div>
+                                    <span class="priority1">{{threatVectorData.priority}}</span>
+                                </td>
+                                <td (click)="redirectToTimeline(threatVectorData.type,threatVectorData.entity)">
+                                    {{threatVectorData.entity}}</td>
+
+                                <td style="color:#099bb5;">{{threatVectorData.riskScore}}
+                                </td>
+
+                                <td>{{threatVectorData.incident}}</td>
+                                <td>{{threatVectorData.type}}</td>
                             </tr>
                         </ng-template>
                     </p-table>

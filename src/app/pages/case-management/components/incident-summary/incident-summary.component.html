@@ -201,13 +201,13 @@
                         <div class="block-title"><span>Threat Categorisation</span> </div>
                         <div class="row ng-star-inserted mx-auto mt-2" *ngIf="incidentDetails.killChainProcess">
                             <ul class="kill-chain-list">
-                                <li *ngFor="let killchain of incidentDetails.killChainProcess"
+                                <li *ngFor="let killchain of incidentDetails.killChainProcess;let last=last;"
                                     [style.background-image]="'url(../../../../../assets/images/kill-arrow.png)'">
                                     <div class="img-wrap">
                                         <img src="../../../../../assets/images/{{killchain.icon}}"
                                             alt="Complete Mission" />
                                     </div>
-                                    <span>{{killchain.title}}</span>
+                                    <span [ngStyle]="redColorText(last)">{{killchain.title}}</span>
                                 </li>
                             </ul>
                             <div class="clear"></div>

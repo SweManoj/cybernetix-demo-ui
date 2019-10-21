@@ -1783,7 +1783,7 @@
                             <div class="col-md-5 mr-3">
                                 <div class="mt-2" style="min-height: 4.5rem;">
                                     <span class="captionTitle">Affected Entities</span>
-                                    <p class="captionData">{{incidentDetail.affectedEntity}}
+                                    <p style="color: white;">{{incidentDetail.affectedEntity}}
                                     </p>
                                 </div>
                                 <div class="mt-2">
@@ -1807,7 +1807,9 @@
                             <div class="col-md-3 ml-4">
                                 <div class="mt-2" style="min-height: 4.5rem;">
                                     <span class="captionTitle">Outcome</span>
-                                    <p style="color:yellow;">{{incidentDetail.outcome}}</p>
+                                    <br />
+                                    <span
+                                        [ngStyle]="outcomeStyle(incidentDetail.outcome)">{{incidentDetail.outcome}}&emsp;</span>
                                 </div>
                                 <div class="mt-2">
                                     <span class="captionTitle">Remediation</span>
@@ -1819,8 +1821,7 @@
 
                     <div class="col-md-2 incidentButton">
                         <button mat-raised-button color="primary"
-                            (click)="routeToIncident(incidentDetail.incident)">Incident
-                            Response</button>
+                            (click)="routeToIncident(incidentDetail.incident)">Auto Incident Created</button>
                     </div>
                 </div>
             </div>

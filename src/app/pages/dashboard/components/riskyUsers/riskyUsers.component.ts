@@ -1326,6 +1326,16 @@ export class RiskyUsersComponent {
             ]
         }
     ];
+
+    outcomeStyle(outcome: string) {
+        if (outcome.includes('True Positive'))
+            return { 'color': 'white', 'background-color': 'red' }
+        else if (outcome.includes('Investigation In Progress'))
+            return { 'color': 'white', 'background-color': 'orange' }
+        else
+            return { 'color': 'white' };
+    }
+
     incidentViolations: any;
 
     admEmoorHardCodeItemData: any = [

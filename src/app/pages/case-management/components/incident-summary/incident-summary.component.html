@@ -126,49 +126,49 @@
                         <ng-scrollbar trackY="true" barClass="custom-scroll">
                             <ul class="feed-list" style="height: 300px">
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Denis created this incident <a href="#">help</a></span>
                                 </li>
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Denis created this incident <a href="#">help</a></span>
                                 </li>
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Bill changed status on incident created this <a
                                             href="#">Bee Lee Test</a> to be closed</span>
                                 </li>
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Denis created this incident <a href="#">help</a></span>
                                 </li>
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Denis created this incident <a href="#">help</a></span>
                                 </li>
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Bill changed status on incident created this <a
                                             href="#">Bee Lee Test</a> to be closed</span>
                                 </li>
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Denis created this incident <a href="#">help</a></span>
                                 </li>
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Denis created this incident <a href="#">help</a></span>
                                 </li>
                                 <li>
-                                    <span class="time">2 days ago</span>
+                                    <span class="time">{{show?'2':'7'}} days ago</span>
                                     <img src='../../../../../assets/images/plus.png' width="30" />
                                     <span class="news-title">Bill changed status on incident created this <a
                                             href="#">Bee Lee Test</a> to be closed</span>
@@ -206,7 +206,7 @@
                                         <img src="../../../../../assets/images/{{killchain.icon}}"
                                             alt="Complete Mission" />
                                     </div>
-                                    <span [ngStyle]="redColorText(last)">{{killchain.title}}</span>
+                                    <span [ngStyle]="lastBoxStyles(last)">{{killchain.title}}</span>
                                 </li>
                             </ul>
                             <div class="clear"></div>
@@ -256,7 +256,7 @@
                     <div class="col-sm-11 col-md-10 col-lg-11 mt-2 mt-sm-0">
                         <div class="form-group input-group">
                             <textarea class="form-control rounded" formControlName="commentValue" id="commentValue"
-                                placeholder="Enter your commnets here..." matInput cdkTextareaAutosize #autosize
+                                placeholder="Enter your comments here..." matInput cdkTextareaAutosize #autosize
                                 cdkAutosizeMinRows="1" cdkAutosizeMaxRows="4"> </textarea>
                         </div>
                     </div>
@@ -267,7 +267,7 @@
                     </div>
                 </form>
 
-                <div class="comment-wrap" style="height: 600px; ">
+                <div class="comment-wrap" style="height: 600px;" *ngIf="show">
 
                     <ng-scrollbar trackY="true" barClass="custom-scroll">
                         <div class="user-item mt-3" *ngFor="let comment of policyComments">

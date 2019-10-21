@@ -287,7 +287,7 @@
                                 <td>
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
-                                <td [routerLink]="['/riskyIncident', data.id]">{{data.id}}</td>
+                                <td [routerLink]="['/incidentSummary', data.id]">{{data.id}}</td>
                                 <td>{{data.created}}</td>
                                 <td style="color:#099bb5;">{{data.name}}
                                 </td>
@@ -409,7 +409,8 @@
                                 <td (click)="redirectToTimeline(threatVectorData.entityType,threatVectorData.entity)">
                                     {{threatVectorData.entity}}</td>
 
-                                <td [ngStyle]="getRiskScoreColor(threatVectorData.riskScore)">{{threatVectorData.riskScore}}
+                                <td [ngStyle]="getRiskScoreColor(threatVectorData.riskScore)">
+                                    {{threatVectorData.riskScore}}
                                 </td>
 
                                 <td>{{threatVectorData.incident}}</td>

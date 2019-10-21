@@ -21,6 +21,7 @@ export class RiskyIPComponent implements OnInit {
 
     ipaddressesData = [
         { value: '10.82.32.212', score: 95, location: 'London, UK', lastSeen: '27 Jun 2019 03:22:00', peer: 32, lastSeenUser: 'ChrisM98' },
+        { value: '18.10.8.1', score: 93, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
         { value: '82.102.21.217', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 2, lastSeenUser: 'NEI89321' },
         { value: '95.181.116.77', score: 85, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { value: '23.94.213.6', score: 89, location: 'Berlin, Germany', lastSeen: '23 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
@@ -200,6 +201,78 @@ export class RiskyIPComponent implements OnInit {
         }
     ];
 
+    hardCodeItemFor18IP = [
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:13:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Potential scanning attempt on public facing cloud instance'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Reconnaissance' },
+                { title: 'Sub Category', value: 'Reconnaissance' }],
+            dummyDatas: [
+                { title: 'Affected Entity', value: '18.10.8.1' },
+                { title: 'Locations', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 65' },
+                { title: 'Resources', value: 'Firewall' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' },
+                { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP Kill Chain: Reconnaissance'
+        },
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:30:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 127,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'High number of Denied traffic followed by Allowed traffic'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Potential Firewall Compromise' },
+                { title: 'Sub Category', value: 'Potential Firewall Compromise' }],
+            dummyDatas: [
+                { title: 'Affected Entity', value: '18.10.8.1' },
+                { title: 'Locations', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 81' },
+                { title: 'Resources', value: 'Firewall' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, Destination Port' },
+                { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+            description: 'This Policy is triggered when high number of Denied Traffic observed in firewall followed by Allowed Traffic from a same Source IP'
+        },
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:30:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 127,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Inbound Allowed traffic on Non-standard ports'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Initial Access' },
+                { title: 'Sub Category', value: 'Compromise' }],
+            dummyDatas: [
+                { title: 'Affected Entity', value: '18.10.8.1' },
+                { title: 'Locations', value: 'San Diego' },
+                { title: 'Status', value: 'Risk: 93' },
+                { title: 'Resources', value: 'Firewall' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, DestinationPort' },
+                { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+            description: 'This Policy is triggered when traffic observed towards a nonstandard port'
+        }
+    ];
+
     threatCategories = [
         {
             title: 'Kill Chain',
@@ -242,12 +315,12 @@ export class RiskyIPComponent implements OnInit {
         } */
     ];
 
-    itemInfo=[{
-        title:'Last Hostname:',
-        value:'WK-UKL48503D'
-    },{
-        title:'Last IP:',
-        value:'10.82.32.212'
+    itemInfo = [{
+        title: 'Last Hostname:',
+        value: 'WK-UKL48503D'
+    }, {
+        title: 'Last IP:',
+        value: '10.82.32.212'
     }]
 
     infoStyleObject(input): Object {
@@ -283,7 +356,6 @@ export class RiskyIPComponent implements OnInit {
         });
 
         this.getDataByIP();
-
     }
 
     getRiskScoreColor(riskScore: number) {

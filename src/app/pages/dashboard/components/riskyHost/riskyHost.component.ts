@@ -24,7 +24,9 @@ export class RiskyHostComponent implements OnInit {
         { type: 'host', value: 'USADESK25', score: 89, img: false, location: 'Amsterdam, Netherlands ', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { type: 'host', value: 'LONDESK588', score: 95, img: false, location: 'Beijing, China', lastSeen: '27 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
-        { type: 'host', value: 'AUSLAP4873', score: 90, img: false, location: 'Sydney, Australia', lastSeen: '14 Aug 2019 17:23:12', peer: 23, lastSeenUser: 'AndrewsStarc1' }];
+        { type: 'host', value: 'AUSLAP4873', score: 90, img: false, location: 'Sydney, Australia', lastSeen: '14 Aug 2019 17:23:12', peer: 23, lastSeenUser: 'AndrewsStarc1' },
+        { type: 'host', value: 'AWS-DomainEC2-Instance07', score: 92, img: false, location: 'San Diego', lastSeen: '7 Oct 2019 11:53:00', peer: 25, lastSeenUser: 'Glenn_Roberto' },
+        { type: 'host', value: 'AWS-S3-Instance01', score: 98, img: false, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' }];
 
     hardCodeItemData = [
         {
@@ -226,6 +228,181 @@ export class RiskyHostComponent implements OnInit {
             }
         }
     ];
+
+    hardCodeItemForDomainEC2 = [
+        {
+            generatedDateFormat: 'Sep 17 2019',
+            generatedTimestamp: '07:13:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 7,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Vulnerability Alert"
+            },
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Vulnerability Alert' },
+                { title: 'Sub Category', value: 'Vulnerability Alert' },
+                { title: 'Threat Category', value: 'Vulnerability Alert' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '36' },
+                { title: 'Resource', value: 'Qualys' },
+                { title: 'Indicators', value: 'SourceIP, Signature' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:13:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Potential scanning attempts on Public facing cloud instance"
+            },
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Sub Category', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Reconnaissance' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07,AWS-DomainEC2-Instance13,AWS-DomainEC2-Instance29,AWS-DomainEC2-Instance38' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '65' },
+                { title: 'Resource', value: 'AWS' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Sep 29 2019',
+            generatedTimestamp: '13:07:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 8,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Suspicious cloud IAM activities observed"
+            },
+            description: 'This violation is flagged when unusual (rare, privileged) IAM realted commands executed in cloud instance which can indicate access mining and probable recon activity',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Sub Category', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Reconnaissance' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '83' },
+                { title: 'Resource', value: 'AWS EC2 Logs' },
+                { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        }
+    ];
+
+    hardCodeItemForAWSS3 = [
+        {
+            generatedDateFormat: 'Oct 1 2019',
+            generatedTimestamp: '00:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Suspicious activity towards critical cloud data storage"
+            },
+            description: 'This violation is flagged when abnormal access of critical S3 bucket is observed in cloud logs. Rare IP, Spike in number of activities, Un-unusual business time contribute to this Anomaly',
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Sub Category', value: 'Suspicious Database Access' },
+                { title: 'Threat Category', value: '-' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'AWS Access Logs' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, Count of Activities, CloudServer' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '03:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 118,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal access of critical file paths in Cloud storage"
+            },
+            description: 'This anomaly is flagged when a critical/sensitive file paths are accessed – rare file path accessed, spike in accessing file path, file access in un usual or non-business hours , high number of queries',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data exfiltration' },
+                { title: 'Sub Category', value: 'Data exfiltration' },
+                { title: 'Threat Category', value: 'Data exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '92' },
+                { title: 'Resource', value: 'AWS Logs' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, CloudServer, objName' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '03:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 26,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Suspicious/Privileged commands executed in Cloud Instance"
+            },
+            description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Privilege Misuse' },
+                { title: 'Sub Category', value: 'Privilege Misuse' },
+                { title: 'Threat Category', value: 'Privilege Misuse' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '90' },
+                { title: 'Resource', value: 'AWS Logs' },
+                { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 4 2019',
+            generatedTimestamp: '03:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 188,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Excessive Bytes Exfiltrated via HTTPS from a cloud instance"
+            },
+            description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01, 11.3.4.6, 11.3.4.5, 11.3.4.8, 11.3.4.9' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '95' },
+                { title: 'Resource', value: 'AWS Logs' },
+                { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        }
+    ];
+
 
     threatCategories = [
         {

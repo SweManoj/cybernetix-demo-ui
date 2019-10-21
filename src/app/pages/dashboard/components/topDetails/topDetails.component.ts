@@ -26,9 +26,9 @@ export class TopDetailsComponent implements AfterViewInit {
     ];
 
     topRiskyImpersonations = [
-        { image: 'assets/images/users/Adm-EMoor.jpg', entity: 'Adm-EMoor', incident: 'INC 38', type: 'user' },
-        { image: 'assets/images/dashboard_icons/Ip@2x.png', entity: '10.82.32.212', incident: 'INC 71', type: 'ip' },
-        { image: 'assets/images/users/Chen_Zhang.jpg', entity: 'Chen_Zhang', incident: 'INC 44', type: 'user' }
+        { image: 'assets/images/users/Adm-EMoor.jpg', entity: 'Adm-EMoor', incident: 'INC 38', type: 'user', riskScore:95 },
+        { image: 'assets/images/dashboard_icons/Ip@2x.png', entity: '10.82.32.212', incident: 'INC 71', type: 'ip', riskScore:95 },
+        { image: 'assets/images/users/Chen_Zhang.jpg', entity: 'Chen_Zhang', incident: 'INC 44', type: 'user', riskScore:93 }
     ];
 
     impersonationIncidentRouting(incident) {

@@ -202,14 +202,13 @@
                 <span>{{topRiskyImpersonation.date}}</span>
             </div> -->
 
-            <div class="col-md-6 centerAlign font-weight-bold">
+            <div class="col-md-8 centerAlign font-weight-bold">
                 <a (click)="routeRiskyCorrelations(topRiskyImpersonation.type,topRiskyImpersonation.entity)"
                     class="cursorPointer">{{topRiskyImpersonation.entity}}</a>
             </div>
-            <div class="col-md-4 font-weight-bold centerAlign">
-                <a class="cursorPointer" (click)="impersonationIncidentRouting(topRiskyImpersonation.incident)"
-                    [ngStyle]="{'color':'crimson','font-size': '16px','text-align':'end'}">
-                    {{topRiskyImpersonation.incident}}</a>
+            <div class="col-2 col-sm-2 col-md-2 risk-count centerAlign">
+                <span [ngStyle]="{'color':getRiskScoreColor(topRiskyImpersonation.riskScore)}">
+                    {{topRiskyImpersonation.riskScore}}</span>
             </div>
         </div>
         <div class="ml-1 mr-1 borderLine" *ngIf="!last">

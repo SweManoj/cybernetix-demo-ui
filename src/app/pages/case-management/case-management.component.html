@@ -406,7 +406,7 @@
                                     <div class="{{threatVectorData.priority}} tableStages"></div>
                                     <span class="priority1">{{threatVectorData.priority}}</span>
                                 </td>
-                                <td (click)="redirectToTimeline(threatVectorData.type,threatVectorData.entity)">
+                                <td (click)="redirectToTimeline(threatVectorData.entityType,threatVectorData.entity)">
                                     {{threatVectorData.entity}}</td>
 
                                 <td [ngStyle]="getRiskScoreColor(threatVectorData.riskScore)">{{threatVectorData.riskScore}}

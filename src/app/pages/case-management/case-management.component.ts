@@ -188,6 +188,7 @@ export class CaseManagementComponent implements OnInit {
       { srNo: '#12', time: '12:23:00Hrs', policyViolation: 'Virus Detected', entity: '192.168.0.102', indicator: '5', status: 'Unreviewed', priority: 'High' }
     ]
   };
+
   @ViewChild('day') day: Table;
   myDays: string[] = [];
   myPolicies: any[] = [];
@@ -223,14 +224,20 @@ export class CaseManagementComponent implements OnInit {
     this.lowItem = this.myPolicies.filter(myPolicy => myPolicy.priority == 'Low').length;
     this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
   }
+
+  threatVectorTitle:string;
   ngOnInit() {
 
     // Current Path:  company 
     this.route.url.subscribe(url => {
       this.path = (url[0].path);
-      // if (this.path = 'policyViolation') 
-
     });
+
+    if (this.router.url.includes('threatVectorManagement')) {
+      this.route.paramMap.subscribe((params) => {
+        this.threatVectorTitle = params.get('threatVector');
+      });
+    }
 
     this.getAllUsers();
   }

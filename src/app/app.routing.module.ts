@@ -65,6 +65,10 @@ export const routes: Routes = [
                 component: CaseManagementComponent
             },
             {
+                path: 'threatVectorManagement/:threatVector',
+                component: CaseManagementComponent
+            },
+            {
                 path: 'policyViolation',
                 component: CaseManagementComponent
             },

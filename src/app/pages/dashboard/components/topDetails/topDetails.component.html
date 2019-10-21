@@ -81,7 +81,7 @@
     <ng-container *ngFor="let threat of threatVectors">
         <div class="threat-item row pt-1 pb-2" *ngIf="threat.id ">
             <div class="col-9 col-md-9 centerAlign p-3">
-                <span class="cursorPointer" [routerLink]="['/policyViolation', threat.id]">{{threat.id}}</span>
+                <span class="cursorPointer" [routerLink]="['/threatVectorManagement', threat.id]">{{threat.id}}</span>
             </div>
             <div class="col-3 col-md-3 risk-count centerAlign" style="place-content: center;">
                 <span style="color: crimson;font-size:28px;">{{threat.count}}</span>

@@ -3,7 +3,7 @@
 
         <div *ngIf="path == 'policyViolation'"><span class="h5">Policy Violation</span></div>
         <div *ngIf="path == 'caseManagement'"><span class="h5">Incident Management</span></div>
-
+        <div *ngIf="threatVectorTitle"><span class="h5">Threat Vector: {{threatVectorTitle}}</span></div>
         <!-- <div class="col-sm-4 ml-5">
             <ul class="nav nav-pills btn-sm" id="pills-tab" role="tablist">
                 <div *ngIf="path == 'caseManagement'">
@@ -169,14 +169,14 @@
                 </div>
             </div>
 
-            <div *ngIf="path == 'caseManagement'" role="tabpanel">
+            <div *ngIf="path == 'caseManagement' || threatVectorTitle" role="tabpanel">
                 <div class="col-md-12 mb-3">
                     <div class="row incident-filter-row">
                         <div class="mr-4 mb-4">
                             <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name"></p-dropdown>
                         </div>
 
-                        <div class="mr-4 mb-4 width-250">
+                        <div class="mr-4 mb-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search by Keyword"
                                     (keyup)="incident.filterGlobal($event.target.value, 'contains')">
@@ -218,14 +218,14 @@
                                 (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
                         </div>
 
-                        <div class=" mb-4">
+                        <div class="mr-4 mb-4">
                             <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
                                 (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
                         </div>
 
 
                         <div class="mb-4 mt-2">
-                            <span class="topStages Total">{{incident.totalRecords }}</span>
+                            <span class="topStages Total" style="margin-left: 0rem;">{{incident.totalRecords }}</span>
                             <span class="labels">&nbsp;&nbsp;Record found</span>
                         </div>
 

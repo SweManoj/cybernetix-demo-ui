@@ -239,7 +239,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'Chen_Zhang, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 93' },
+                { title: 'Risk', value: '93' },
                 { title: 'Resource', value: 'Proxy' },
                 { title: 'Indicators', value: 'Event, Accountname, SrcHost, BytesOut' }
             ]
@@ -264,7 +264,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 91' },
+                { title: 'Risk', value: '91' },
                 { title: 'Resource', value: 'Guardium' },
                 { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
             ]
@@ -289,7 +289,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 87' },
+                { title: 'Risk', value: '87' },
                 { title: 'Resource', value: 'Guardium' },
                 { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
             ]
@@ -314,7 +314,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'Steve_Warner, Ross_Liam,adm_RL93, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 81' },
+                { title: 'Risk', value: '81' },
                 { title: 'Resource', value: 'Guardium' },
                 { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
             ]
@@ -339,7 +339,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'Chen_Zhang, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 63' },
+                { title: 'Risk', value: '63' },
                 { title: 'Resource', value: 'Guardium' },
                 { title: 'Indicators', value: 'Event, Accountname' }
             ]
@@ -395,7 +395,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 95' },
+                { title: 'Risk', value: '95' },
                 { title: 'Resource', value: 'Proxy' },
                 { title: 'Indicators', value: 'URL, BytesOut, Event' }
             ]
@@ -420,7 +420,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 89' },
+                { title: 'Risk', value: '89' },
                 { title: 'Resource', value: 'Proxy' },
                 { title: 'Indicators', value: 'URL' }
             ]
@@ -445,7 +445,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 86' },
+                { title: 'Risk', value: '86' },
                 { title: 'Resource', value: 'DLP Network' },
                 { title: 'Indicators', value: 'FileNames, BytesOut, Event' }
             ]
@@ -470,7 +470,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 83' },
+                { title: 'Risk', value: '83' },
                 { title: 'Resource', value: '0365 Sharepoint' },
                 { title: 'Indicators', value: 'FileNames, Size, Event' }
             ]
@@ -495,7 +495,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'Adm-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 74' },
+                { title: 'Risk', value: '74' },
                 { title: 'Resource', value: 'Windows' },
                 { title: 'Indicators', value: 'TargetAccount, Groups, Event' }
             ]
@@ -544,7 +544,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Network Traversing' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Adm-ADittmer' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 90' },
+            { title: 'Risk', value: '90' },
             { title: 'Resources', value: 'NetApp' },
             { title: 'Indicators', value: 'Filenames' }],
             description: 'This violation is flagged when there are unusual number of objects accessed as per User’s past pattern. '
@@ -565,7 +565,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Successful Logon' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'SSmith' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 85' },
+            { title: 'Risk', value: '85' },
             { title: 'Resources', value: 'NetApp' },
             { title: 'Indicators', value: 'EventType, Workstationname' }],
             description: 'This violation is flagged when there is suspicious successful logon on a Rare Host.'
@@ -586,7 +586,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Failed Attempts' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'SSmith1' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Risk', value: '74' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'EventType, Workstationname' }],
             description: 'This violation is flagged when there are unusual number of failed attempts on a Rare Host'
@@ -607,7 +607,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Suspicious/Malicious Behavior' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'SSmith1' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 53' },
+            { title: 'Risk', value: '53' },
             { title: 'Resources', value: 'Badge' },
             { title: 'Indicators', value: 'EventTime' }],
             description: 'This violation is flagged when there is an abnormal badge access during off-hours as per User’s past pattern'
@@ -631,7 +631,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Email' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Heidy' },
             { title: 'Locations', value: 'Los Angeles' },
-            { title: 'Status', value: 'Risk: 88' },
+            { title: 'Risk', value: '88' },
             { title: 'Resources', value: 'O365' },
             { title: 'Indicators', value: 'RecipientID, ThreatIntel' }],
             description: ' This violation is flagged when there is email sent to competitor domain'
@@ -652,7 +652,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Data Export' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Heidy' },
             { title: 'Locations', value: 'Los Angeles' },
-            { title: 'Status', value: 'Risk: 65' },
+            { title: 'Risk', value: '65' },
             { title: 'Resources', value: 'GCP' },
             { title: 'Indicators', value: 'Event, Tables' }],
             description: 'This violation is flagged when there is abnormal export on Database as per User’s past pattern'
@@ -676,7 +676,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Risk', value: '87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'Event Code' }],
             description: 'In this Algorithm, User Removed security enabled global group'
@@ -697,7 +697,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Data Export' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 81' },
+            { title: 'Risk', value: '81' },
             { title: 'Resources', value: 'Salesforce' },
             { title: 'Indicators', value: 'Action/Tables' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
@@ -718,7 +718,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 72/87' },
+            { title: 'Risk', value: '72/87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'Event Code' }],
             description: 'In this Algorithm, User Added security enabled global group'
@@ -742,7 +742,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
             { title: 'Locations', value: 'Florida' },
-            { title: 'Status', value: 'Risk: 82' },
+            { title: 'Risk', value: '82' },
             { title: 'Resources', value: 'IIS' },
             { title: 'Indicators', value: 'AppNames' }],
             description: 'This Violation is triggered when rare applications has been accessed as per User’s past pattern'
@@ -763,7 +763,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Potential Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
             { title: 'Locations', value: 'Florida' },
-            { title: 'Status', value: 'Risk: 76' },
+            { title: 'Risk', value: '76' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }],
             description: 'This Violation is triggered when VPN activity is observed from rare location'
@@ -784,7 +784,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Potential Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
             { title: 'Locations', value: 'Florida' },
-            { title: 'Status', value: 'Risk: 67' },
+            { title: 'Risk', value: '67' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Id' }],
             description: 'This Violation is triggered when activity is seen for a dormant user'
@@ -809,7 +809,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
-            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Risk', value: '87' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'Bytes, Category' }],
             description: 'This policy violation is triggered when user attempted to access remote access tools '
@@ -830,7 +830,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
-            { title: 'Status', value: 'Risk: 83' },
+            { title: 'Risk', value: '83' },
             { title: 'Resources', value: 'SCCM' },
             { title: 'Indicators', value: 'Action' }],
             description: 'This policy violation is triggered when there is unauthorized software downloaded by an external user'
@@ -851,7 +851,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
-            { title: 'Status', value: 'Risk: 70' },
+            { title: 'Risk', value: '70' },
             { title: 'Resources', value: 'SCCM' },
             { title: 'Indicators', value: 'Action' }],
             description: 'This policy violation is triggered when there is sudden spike in software downloads attempts for an external user'
@@ -872,7 +872,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Insider Threat' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
-            { title: 'Status', value: 'Risk: 67' },
+            { title: 'Risk', value: '67' },
             { title: 'Resources', value: 'IIS' },
             { title: 'Indicators', value: 'Action' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
@@ -898,7 +898,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Insider Threat' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'Seattle' },
-            { title: 'Status', value: 'Risk: 70' },
+            { title: 'Risk', value: '70' },
             { title: 'Resources', value: 'IIS' },
             { title: 'Indicators', value: 'Action' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
@@ -923,7 +923,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Insider Threat' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'Seattle' },
-            { title: 'Status', value: 'Risk: 67' },
+            { title: 'Risk', value: '67' },
             { title: 'Resources', value: 'IIS' },
             { title: 'Indicators', value: 'Action' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
@@ -947,7 +947,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Data Exfiltration' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 97' },
+            { title: 'Risk', value: '97' },
             { title: 'Resources', value: 'DLP' },
             { title: 'Indicators', value: 'URL, Attachment' }],
             description: 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
@@ -968,7 +968,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Abnormal Pattern' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 91' },
+            { title: 'Risk', value: '91' },
             { title: 'Resources', value: 'Fileshare' },
             { title: 'Indicators', value: 'FileName' }],
             description: 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
@@ -989,7 +989,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Risk', value: '87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'EventID' }],
             description: 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
@@ -1012,7 +1012,7 @@ export class RiskyUsersComponent {
             ],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 84' },
+            { title: 'Risk', value: '84' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'Category' }],
             description: 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
@@ -1033,7 +1033,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
-            { title: 'Status', value: 'Risk: 75' },
+            { title: 'Risk', value: '75' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }],
             description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location'
@@ -1060,7 +1060,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
-            { title: 'Status', value: 'Risk: 75' },
+            { title: 'Risk', value: '75' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }]
         },
@@ -1082,7 +1082,7 @@ export class RiskyUsersComponent {
                 { title: 'Sub Category', value: 'Credentials Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin, Ukraine' },
-            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Risk', value: '74' },
             { title: 'Resources', value: 'Physical, VPN' },
             { title: 'Indicators', value: 'Location' }]
 
@@ -1107,7 +1107,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
-            { title: 'Status', value: 'Risk: 57' },
+            { title: 'Risk', value: '57' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }]
         }
@@ -1178,7 +1178,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Documents Print' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 71' },
+            { title: 'Risk', value: '71' },
             { title: 'Resources', value: 'DLP' },
             { title: 'Indicators', value: 'DocumentName' }],
             description: 'This Violation is triggered when a user prints abnornal number of documents as per past pattern'
@@ -1199,7 +1199,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Insider Threat' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 78' },
+            { title: 'Risk', value: '78' },
             { title: 'Resources', value: 'Email' },
             { title: 'Indicators', value: 'RecipientID' }],
             description: 'This Violation is triggered when a user sends email to personal domains '
@@ -1220,7 +1220,7 @@ export class RiskyUsersComponent {
             { title: 'Sub Category', value: 'Insider Threat' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 82' },
+            { title: 'Risk', value: '82' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'Category, dstHost' }],
             description: 'This Violation is triggered when a user visits unusual number of job sites as per past pattern'
@@ -1407,7 +1407,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 95' },
+                { title: 'Risk', value: '95' },
                 { title: 'Resource', value: 'Proxy' },
                 { title: 'Indicators', value: 'URL, BytesOut, Event' }
             ]
@@ -1432,7 +1432,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 89' },
+                { title: 'Risk', value: '89' },
                 { title: 'Resource', value: 'Proxy' },
                 { title: 'Indicators', value: 'URL' }
             ]
@@ -1457,7 +1457,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 86' },
+                { title: 'Risk', value: '86' },
                 { title: 'Resource', value: 'DLP Network' },
                 { title: 'Indicators', value: 'FileNames, BytesOut, Event' }
             ]
@@ -1482,7 +1482,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'SVL-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 83' },
+                { title: 'Risk', value: '83' },
                 { title: 'Resource', value: '0365 Sharepoint' },
                 { title: 'Indicators', value: 'FileNames, Size, Event' }
             ]
@@ -1507,7 +1507,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'Adm-EMoor, WK-38482L' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 74' },
+                { title: 'Risk', value: '74' },
                 { title: 'Resource', value: 'Windows' },
                 { title: 'Indicators', value: 'TargetAccount, Groups, Event' }
             ]
@@ -1533,7 +1533,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.227' },
                 { title: 'Locations', value: 'Indonesia' },
-                { title: 'Status', value: 'Risk: 95' },
+                { title: 'Risk', value: '95' },
                 { title: 'Resources', value: 'Proxy' },
                 { title: 'Indicators', value: 'DstIP, URL, Category, BytesOut' }
             ],
@@ -1577,7 +1577,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
-                { title: 'Status', value: 'Risk: 74' },
+                { title: 'Risk', value: '74' },
                 { title: 'Resources', value: 'Netflow' },
                 { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }
             ],
@@ -1601,7 +1601,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
-                { title: 'Status', value: 'Risk: 63' },
+                { title: 'Risk', value: '63' },
                 { title: 'Resources', value: 'Netflow' },
                 { title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence' }
             ],
@@ -1625,7 +1625,7 @@ export class RiskyUsersComponent {
             additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
-                { title: 'Status', value: 'Risk: 54' },
+                { title: 'Risk', value: '54' },
                 { title: 'Resources', value: 'Netflow' },
                 { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }
             ],

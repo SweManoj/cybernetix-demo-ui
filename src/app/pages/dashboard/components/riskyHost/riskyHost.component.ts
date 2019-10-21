@@ -89,7 +89,7 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Sub Category', value: ' Malicious Outbound Communication' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
             { title: 'Locations', value: 'Taipie' },
-            { title: 'Status', value: 'Risk: 90' },
+            { title: 'Risk', value: '90' },
             { title: 'Resources', value: 'Firewall' },
             { title: 'Indicators', value: 'DestIP, DestPort' }],
             description: 'This violation is flagged when there are high number of outbound connections to Blacklisted hosts as per Threat Intelligence feed'
@@ -110,7 +110,7 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Sub Category', value: 'Malicious Outbound Communication' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
             { title: 'Locations', value: 'Taipie' },
-            { title: 'Status', value: 'Risk: 82' },
+            { title: 'Risk', value: '82' },
             { title: 'Resources', value: 'Firewall' },
             { title: 'Indicators', value: 'DestIP, DestPort' }],
             description: 'This violation is flagged when there are high number of outbound connections to Rare hosts'
@@ -131,7 +131,7 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Sub Category', value: 'Spam/Spyware' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
             { title: 'Locations', value: 'Sydney' },
-            { title: 'Status', value: 'Risk: 71' },
+            { title: 'Risk', value: '71' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'URL' }],
             description: 'This violation is flagged when there are high number of Spam/Spyware URL’s accessed'
@@ -153,7 +153,7 @@ export class RiskyHostComponent implements OnInit {
             { title: 'Sub Category', value: 'Vulnerabilities' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
             { title: 'Locations', value: 'Sydney' },
-            { title: 'Status', value: 'Risk: 53' },
+            { title: 'Risk', value: '53' },
             { title: 'Resources', value: 'Qualys' },
             { title: 'Indicators', value: 'Filenames' }],
             description: 'This violation is flagged when there are abnormal vulnerabilities found in the host as per baselining.'
@@ -467,7 +467,7 @@ export class RiskyHostComponent implements OnInit {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'Chen_Zhang, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 93' },
+                { title: 'Risk', value: '93' },
                 { title: 'Resource', value: 'Proxy' },
                 { title: 'Indicators', value: 'Event, Accountname, SrcHost, BytesOut' }
             ]
@@ -492,7 +492,7 @@ export class RiskyHostComponent implements OnInit {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 91' },
+                { title: 'Risk', value: '91' },
                 { title: 'Resource', value: 'Guardium' },
                 { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
             ]
@@ -517,7 +517,7 @@ export class RiskyHostComponent implements OnInit {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'adm_RL93, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 87' },
+                { title: 'Risk', value: '87' },
                 { title: 'Resource', value: 'Guardium' },
                 { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
             ]
@@ -542,7 +542,7 @@ export class RiskyHostComponent implements OnInit {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'Steve_Warner, Ross_Liam,adm_RL93, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 81' },
+                { title: 'Risk', value: '81' },
                 { title: 'Resource', value: 'Guardium' },
                 { title: 'Indicators', value: 'Event, Accountname, SrcHost' }
             ]
@@ -567,7 +567,7 @@ export class RiskyHostComponent implements OnInit {
             additionalInfo: [
                 { title: 'Affected Entity', value: 'Chen_Zhang, WK-1929304D' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 63' },
+                { title: 'Risk', value: '63' },
                 { title: 'Resource', value: 'Guardium' },
                 { title: 'Indicators', value: 'Event, Accountname' }
             ]

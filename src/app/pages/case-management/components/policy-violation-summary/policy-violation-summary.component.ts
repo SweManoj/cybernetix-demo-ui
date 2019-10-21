@@ -117,7 +117,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Data Exfiltration' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 97' },
+            { title: 'Risk', value: '97' },
             { title: 'Resources', value: 'DLP' },
             { title: 'Indicators', value: 'URL, Attachment' }],
             description: 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
@@ -138,7 +138,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Abnormal Pattern' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 91' },
+            { title: 'Risk', value: '91' },
             { title: 'Resources', value: 'Fileshare' },
             { title: 'Indicators', value: 'FileName' }],
             description: 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
@@ -159,7 +159,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Risk', value: '87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'EventID' }],
             description: 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
@@ -182,7 +182,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             ],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
-            { title: 'Status', value: 'Risk: 84' },
+            { title: 'Risk', value: '84' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'Category' }],
             description: 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
@@ -203,7 +203,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
-            { title: 'Status', value: 'Risk: 75' },
+            { title: 'Risk', value: '75' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }],
             description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location'
@@ -225,7 +225,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
-            { title: 'Status', value: 'Risk: 75' },
+            { title: 'Risk', value: '75' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }]
         },
@@ -247,7 +247,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
                 { title: 'Sub Category', value: 'Bruce Force Attack' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin, Ukraine' },
-            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Risk', value: '74' },
             { title: 'Resources', value: 'Physical, VPN' },
             { title: 'Indicators', value: 'Location' }]
 
@@ -269,7 +269,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Account Compromise' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
-            { title: 'Status', value: 'Risk: 57' },
+            { title: 'Risk', value: '57' },
             { title: 'Resources', value: 'VPN' },
             { title: 'Indicators', value: 'Location' }]
         },
@@ -313,7 +313,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 87' },
+            { title: 'Risk', value: '87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'Event Code' }],
             description: 'In this Algorithm, User Removed security enabled global group'
@@ -334,7 +334,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Data Export' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 81' },
+            { title: 'Risk', value: '81' },
             { title: 'Resources', value: 'MSQL' },
             { title: 'Indicators', value: 'Action/Tables' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database'
@@ -355,7 +355,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
             { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
             dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
-            { title: 'Status', value: 'Risk: 72/87' },
+            { title: 'Risk', value: '72/87' },
             { title: 'Resources', value: 'Windows' },
             { title: 'Indicators', value: 'Event Code' }],
             description: 'In this Algorithm, User Added security enabled global group'

@@ -113,7 +113,7 @@ export class RiskyIPComponent implements OnInit {
             { title: 'Sub Category', value: 'P2P Traffic' }],
             dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.227' },
             { title: 'Locations', value: 'Indonesia' },
-            { title: 'Status', value: 'Risk: 95' },
+            { title: 'Risk', value: '95' },
             { title: 'Resources', value: 'Proxy' },
             { title: 'Indicators', value: 'DstIP, URL, Category, BytesOut' }],
             description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
@@ -154,7 +154,7 @@ export class RiskyIPComponent implements OnInit {
             { title: 'Sub Category', value: 'Inbound SMB' }],
             dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
             { title: 'Locations', value: 'Indonesia' },
-            { title: 'Status', value: 'Risk: 74' },
+            { title: 'Risk', value: '74' },
             { title: 'Resources', value: 'Netflow' },
             { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
             description: 'This Violation is triggered when there is Inbound SMB traffic from Rare Location'
@@ -174,7 +174,7 @@ export class RiskyIPComponent implements OnInit {
             { title: 'Sub Category', value: 'Inbound Telnet' }],
             dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
             { title: 'Locations', value: 'Indonesia' },
-            { title: 'Status', value: 'Risk: 63' },
+            { title: 'Risk', value: '63' },
             { title: 'Resources', value: 'Netflow' },
             { title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence' }],
             description: 'This Violation is triggered when there is Inbound Telnet traffic from Blacklisted IP'
@@ -194,7 +194,7 @@ export class RiskyIPComponent implements OnInit {
             { title: 'Sub Category', value: 'Inbound Attack' }],
             dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
             { title: 'Locations', value: 'Indonesia' },
-            { title: 'Status', value: 'Risk: 54' },
+            { title: 'Risk', value: '54' },
             { title: 'Resources', value: 'Netflow' },
             { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
             description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
@@ -219,7 +219,7 @@ export class RiskyIPComponent implements OnInit {
             dummyDatas: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 65' },
+                { title: 'Risk', value: '65' },
                 { title: 'Resources', value: 'Firewall' },
                 { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' },
                 { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
@@ -242,7 +242,7 @@ export class RiskyIPComponent implements OnInit {
             dummyDatas: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 81' },
+                { title: 'Risk', value: '81' },
                 { title: 'Resources', value: 'Firewall' },
                 { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, Destination Port' },
                 { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
@@ -265,7 +265,7 @@ export class RiskyIPComponent implements OnInit {
             dummyDatas: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
-                { title: 'Status', value: 'Risk: 93' },
+                { title: 'Risk', value: '93' },
                 { title: 'Resources', value: 'Firewall' },
                 { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, DestinationPort' },
                 { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],

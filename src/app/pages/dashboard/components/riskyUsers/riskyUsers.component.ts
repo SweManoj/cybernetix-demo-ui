@@ -165,6 +165,18 @@ export class RiskyUsersComponent {
             reportingManager: 'Brett Root',
             creationDate: '19th Sep 2018',
             lastWorkDay: '-'
+        },
+        {
+            type: 'user',
+            value: 'Glenn_Roberto',
+            score: 93,
+            img: true,
+            role: 'Sr Technical Consultant',
+            department: 'IT Systems',
+            location: 'San Diego',
+            reportingManager: 'Paul Smith',
+            creationDate: '13 Oct 2018',
+            lastWorkDay: '-'
         }
     ];
 
@@ -332,6 +344,34 @@ export class RiskyUsersComponent {
                 { title: 'Indicators', value: 'Event, Accountname' }
             ]
         },
+    ];
+
+    glenRobertoHardCodeItemDate = [
+        {
+            generatedDateFormat: '29 Sep 2019',
+            generatedTimestamp: '12:05:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 9,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Abnormal logon activity observed from Cloud account'
+            },
+            incId: 'INC-1',
+            description: 'This anomaly is flagged when high number of login activities observed from a Cloud User',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Abnormal Activities' },
+                { title: 'Threat Category', value: 'Abnormal Activities' },
+                { title: 'Sub Category', value: 'Abnormal Activities' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Glenn_Roberto, 18.10.8.1' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'AWS' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcIP' }
+            ]
+        }
     ];
 
     hardCodeItemData: any = [
@@ -1192,6 +1232,14 @@ export class RiskyUsersComponent {
         { image: 'resources@1x.png', value: '04', title: 'Resources' },
         { image: 'Shape@1x.png', value: '01', title: 'Locations' },
         { image: 'violations@1x.png', value: '05', title: 'Insights' },
+        { image: 'incident@1x.png', value: '01', title: 'Incidents' },
+    ];
+
+    glenRobertoActivities = [
+        { image: 'falg@1x.png', value: '2.7K', title: 'Events' },
+        { image: 'resources@1x.png', value: '04', title: 'Resources' },
+        { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+        { image: 'violations@1x.png', value: '03', title: 'Insights' },
         { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 

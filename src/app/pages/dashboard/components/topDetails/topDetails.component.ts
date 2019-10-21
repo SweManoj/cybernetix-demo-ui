@@ -26,9 +26,9 @@ export class TopDetailsComponent implements AfterViewInit {
     ];
 
     topRiskyImpersonations = [
-        { image: 'assets/images/users/Adm-EMoor.jpg', entity: 'Adm-EMoor', incident: 'INC 38', type: 'user', riskScore:95 },
-        { image: 'assets/images/dashboard_icons/Ip@2x.png', entity: '10.82.32.212', incident: 'INC 71', type: 'ip', riskScore:95 },
-        { image: 'assets/images/users/Chen_Zhang.jpg', entity: 'Chen_Zhang', incident: 'INC 44', type: 'user', riskScore:93 }
+        { image: 'assets/images/users/Adm-EMoor.jpg', entity: 'Adm-EMoor', incident: 'INC 38', type: 'user', riskScore: 95 },
+        { image: 'assets/images/dashboard_icons/Ip@2x.png', entity: '10.82.32.212', incident: 'INC 71', type: 'ip', riskScore: 95 },
+        { image: 'assets/images/users/Chen_Zhang.jpg', entity: 'Chen_Zhang', incident: 'INC 44', type: 'user', riskScore: 93 }
     ];
 
     impersonationIncidentRouting(incident) {
@@ -43,12 +43,13 @@ export class TopDetailsComponent implements AfterViewInit {
     }
 
     riskyObjects = [
+        { type: 'user', value: 'Glenn_Roberto', score: 93, img: true },
         { type: 'user', value: 'ADittmer', score: 94, img: true },
         { type: 'user', value: 'Adm-EMoor', score: 95, img: true },
         // { type: 'user', value: 'SSmith1', score: 90, img: true },
         { type: 'user', value: 'AWendler', score: 97, img: true },
         { type: 'user', value: 'Chen_Zhang', score: 93, img: true },
-        { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
+        // { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
         { type: 'ip address', value: '10.82.32.212', score: 95, img: false },
         { type: 'ip address', value: '82.102.21.217', score: 60, img: false },
         { type: 'ip address', value: '95.181.116.77', score: 85, img: false },

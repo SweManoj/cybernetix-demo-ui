@@ -25,18 +25,18 @@ export class PieChartComponent implements OnInit {
         incidents: '3',
         actions: '0'
     }
-    
+
     constructor(private dashboardService: DashboardService) {
     }
 
     ngOnInit() {
         const defaultPieChart = this.dashboardService.defaultPieChart;
-        this.dashboardService.getPieChartsSummary().subscribe((res: any) => {
+        /* this.dashboardService.getPieChartsSummary().subscribe((res: any) => {
             res.actions = 17;
             res.privilegedUserCount = 1125;
             res.serviceAccountsCount = 11530;
             this.dashboardCounts = res;
 
-        });
+        }); */
     }
 }

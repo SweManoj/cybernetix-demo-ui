@@ -47,9 +47,10 @@ export class CaseManagementComponent implements OnInit {
   ];
 
   threatVectorData: Array<any> = [
-    { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', id: 'INC 38', riskScore: 95, incident: 'YES', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'Adm-EMoor', entityType: 'user', type: 'Auto' },
-    { detectedOn: '13/10/2018', threatVectorID: 'TVDE43', priority: 'Critical', id: 'INC 71', riskScore: 93, incident: 'YES', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '10.82.32.212', entityType: 'ip', type: 'Auto' },
-    { detectedOn: '27/06/2018', threatVectorID: 'TVDE21', priority: 'Critical', id: 'INC 44', riskScore: 89, incident: 'YES', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, entity: 'Chen_Zhang', entityType: 'user', type: 'Auto' },
+    { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', id: 'INC 38', riskScore: 95, incident: 'YES', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: '4', type: 'Auto' },
+    { detectedOn: '13/10/2019', threatVectorID: 'TVDE43', priority: 'Critical', id: 'INC 71', riskScore: 93, incident: 'YES', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '5', type: 'Auto' },
+    { detectedOn: '27/06/2019', threatVectorID: 'TVDE21', priority: 'Critical', id: 'INC 44', riskScore: 89, incident: 'YES', status: 'Open', assignee: 'Steve D', alerts: 2, entity: '4', type: 'Auto' },
+    //{ detectedOn: '13/06/2019', threatVectorID: 'TVDE92', priority: 'Critical', id: 'INC 89', riskScore: 97, incident: 'YES', status: 'Open', assignee: 'Steve D', alerts: 2, entity: '1', type: 'Auto' }
   ];
 
   getRiskScoreColor(riskScore: number) {

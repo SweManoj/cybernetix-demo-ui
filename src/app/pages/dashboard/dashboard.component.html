@@ -5,9 +5,10 @@
         </div>
 
         <div class="col-md-2 initialPadding">
-           <a href="https://search-cybernetix-7aladlvxidvs7lovmnvdsmyffm.us-east-2.es.amazonaws.com/_plugin/kibana/app/kibana"
+            <a href="https://search-cybernetix-7aladlvxidvs7lovmnvdsmyffm.us-east-2.es.amazonaws.com/_plugin/kibana/app/kibana"
                 target="_blank">
-               <button mat-raised-button color="primary" class="pull-right">{{'dashboard.liveThreatHunting' | translate}}</button>
+                <button mat-raised-button color="primary"
+                    class="pull-right">{{'dashboard.liveThreatHunting' | translate}}</button>
             </a>
         </div>
     </div>
@@ -19,9 +20,9 @@
     </div>
 
     <div class="top-details row">
-        <top-details class="top-details-container" componentType="riskyUser"></top-details>
-        <top-details class="top-details-container" componentType="topThreats"></top-details>
         <top-details class="top-details-container" componentType="topViolations"></top-details>
+        <top-details class="top-details-container" componentType="topThreats"></top-details>
+        <top-details class="top-details-container" componentType="riskyUser"></top-details>
     </div>
 
     <div class="chart-details row">

@@ -22,7 +22,7 @@ button#dropdownBasic1 {
 
 .cursorPointer {
   cursor: pointer;
-    outline: none;
+  outline: none;
 }
 
 .centerAlign {
@@ -123,6 +123,7 @@ button.btn.btn-sm {
   }
   .user-item {
     margin: 0 10px;
+    max-height: 4.5rem;
     padding-bottom: 15px;
     border-bottom: 1px solid $top-details-border-color;
     color: $text-white;
@@ -285,6 +286,7 @@ button.btn.btn-sm {
     }
     .user-item {
       margin: 0 0 10px;
+      max-height: 4.5rem;
       border-bottom: 1px solid $top-details-border-color;
       .profile-image {
         width: 35px;
@@ -401,6 +403,7 @@ button.btn.btn-sm {
   }
   .user-item {
     margin: 0 10px;
+    max-height: 4.5rem;
     padding-bottom: 15px;
     border-bottom: 1px solid $top-details-border-color;
     color: $text-white;
@@ -558,6 +561,7 @@ button.btn.btn-sm {
     }
     .user-item {
       margin: 0 0 10px;
+      max-height: 4.5rem;
       border-bottom: 1px solid $top-details-border-color;
       .profile-image {
         width: 35px;

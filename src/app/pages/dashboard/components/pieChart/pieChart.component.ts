@@ -10,6 +10,22 @@ export class PieChartComponent implements OnInit {
     dummyTotalList = [1500, 100, 2000];
     dummyCountList = [10, 25, 20];
     dashboardCounts = [];
+
+    pieChartValues = {
+        eventImported: '2.8M',
+        users: '24K',
+        ipAddresses: '11K',
+        hosts: '21K',
+        priviledgeAccounts: '1.1K',
+        serviceAccounts: '1.2K',
+        highRiskyIps: '11',
+        highRiskyUsers: '31',
+        highRiskyHostnames: '16',
+        insights: '41',
+        incidents: '3',
+        actions: '0'
+    }
+    
     constructor(private dashboardService: DashboardService) {
     }
 
@@ -21,6 +37,6 @@ export class PieChartComponent implements OnInit {
             res.serviceAccountsCount = 11530;
             this.dashboardCounts = res;
 
-        });      
+        });
     }
 }

@@ -49,35 +49,23 @@
             </div>
         </div>
     </ng-container>
-    <!--<div class="text-right pull-right view-all-link">
-            <a routerLink="/pages/details/riskyUser/all">View All</a>
-        </div>-->
 </div>
 
 <!-- Top Threats -->
-<div *ngIf="componentType === 'topThreats'" class="header">
+<div *ngIf="componentType === 'topInsights'" class="header">
     <div class="col-md-12">
         <span>TOP INSIGHTS</span>
         <span class="float-right">Entities</span>
     </div>
-    <!-- <div class="col-9 col-md-9 centerAlign">
-        {{'global.topViolations' | translate}}
-    </div>
-    <div class="col-3 col-md-3 centerAlign high">
-        <a href="#">{{'global.viewAll' | translate}}</a>
-        <span class="">Entities</span>
-    </div> -->
 </div>
-<div *ngIf="componentType === 'topThreats'" class="top-threats ">
-    <ng-container *ngFor="let threat of threatsList">
+<div *ngIf="componentType === 'topInsights'" class="top-threats ">
+    <ng-container *ngFor="let insight of insights">
         <div class="threat-item row">
             <div class="col-10 col-md-10 threat-details centerAlign">
-                <span class="cursorPointer" [routerLink]="['/policyViolation', threat.pvId]">{{threat.title}}</span>
-                <!--<span>{{threat.description}}</span>-->
+                <span class="cursorPointer" [routerLink]="['/policyViolation', insight.pvId]">{{insight.title}}</span>
             </div>
             <div class="col-2 col-md-2 risk-count centerAlign">
-                <span [ngStyle]="{'color':'crimson'}">{{threat.count}}</span>
-                <!-- <span class=" risk-type ">Entities</span> -->
+                <span [ngStyle]="{'color':'crimson'}">{{insight.count}}</span>
             </div>
         </div>
     </ng-container>
@@ -88,29 +76,15 @@
         <span>TOP THREAT VECTORS</span>
         <span class="float-right">INSIGHTS</span>
     </div>
-    <!-- <div class="col-9 col-md-9 heading ">
-        {{'global.topThreats' | translate}}
-    </div>
-    <div class="col-3 col-md-3 centerAlign high">
-        <a href="# ">{{'global.viewAll' | translate}}</a>
-        <span class="">Violations</span>
-    </div> -->
 </div>
 <div *ngIf="componentType==='topViolations' " class="top-violations  mt-3">
     <ng-container *ngFor="let threat of threatVectors">
         <div class="threat-item row pt-1 pb-2" *ngIf="threat.id ">
-            <!--<div class="col-sm-3 col-md-3 time-details ">-->
-            <!--<span class="duration ">{{threat.duration}}</span>-->
-            <!--<span>{{threat.date}}</span>-->
-            <!--<span>{{threat.time}}</span>-->
-            <!--</div>-->
             <div class="col-9 col-md-9 centerAlign p-3">
                 <span class="cursorPointer" [routerLink]="['/policyViolation', threat.id]">{{threat.id}}</span>
-                <!--<span>{{threat.description}}</span>-->
             </div>
             <div class="col-3 col-md-3 risk-count centerAlign" style="place-content: center;">
                 <span style="color: crimson;font-size:28px;">{{threat.count}}</span>
-                <!-- <span class="risk-type ">Policy Violations</span> -->
             </div>
         </div>
     </ng-container>

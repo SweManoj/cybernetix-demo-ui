@@ -12,17 +12,17 @@ export class TopDetailsComponent implements AfterViewInit {
 
     selectRiskyType = 'USER';
     riskUsersList;
-    threatsList: any;
+    insights: any;
     violationsList: any[];
 
     @Input() componentType: string;
 
     threatVectors = [
-        { id: 'Beaconing', count: 85 },
-        { id: 'Phishing', count: 69 },
-        { id: 'Data Exfiltration', count: 54 },
-        { id: 'Reconnaissance', count: 12 },
-        { id: 'Lateral Movement', count: 9 }
+        { id: 'Data Exfiltration', count: 3 },
+        { id: 'Reconnaissance', count: 2 },
+        { id: 'Insider Threat', count: 2 },
+        { id: 'Lateral Movement', count: 1 },
+        { id: 'C2', count: 1 }
     ];
 
     topRiskyImpersonations = [
@@ -167,8 +167,8 @@ export class TopDetailsComponent implements AfterViewInit {
             case 'riskyUser':
                 this.getRiskyUser();
                 break;
-            case 'topThreats':
-                this.getThreats();
+            case 'topInsights':
+                this.getInsights();
                 break;
             case 'topViolations':
                 this.getViolations();
@@ -244,7 +244,7 @@ export class TopDetailsComponent implements AfterViewInit {
         this.watchlistedUsers.sort((a, b) => -(a.score - b.score));
     }
 
-    getThreats() {
+    getInsights() {
         /* this.topDetailsService.getTopThreats().subscribe((res: any) => {
             for (const threat of res.data) {
                 const genDate = threat.displaytimestamp.generatedTimestampISODate;
@@ -255,35 +255,35 @@ export class TopDetailsComponent implements AfterViewInit {
             this.threatsList = res.data;  - dynamic value from db
         }); */
 
-        this.threatsList = [
+        this.insights = [
             {
-                title: 'Abnormal Beaconing from Host - Proxy',
-                count: 47,
+                title: 'Failed Login Attempts On Same IP By Multiple Users',
+                count: 13,
                 pvId: 'PV01'
             },
             {
-                title: 'Failed Login Attempts On Same IP By Multiple Users',
-                count: 93,
+                title: 'Abnormal Beaconing from Host - Proxy',
+                count: 11,
                 pvId: 'PV02'
             },
             {
-                title: 'Interactive login attempt by user without badge activity',
-                count: 18,
+                title: 'Interactive login attempt by user without BadgeIN',
+                count: 9,
                 pvId: 'PV03'
+            },
+            {
+                title: 'Rare Host Usage',
+                count: 7,
+                pvId: 'PV04'
             },
             {
                 title: 'Abnormal Outbound Connections From Host',
                 count: 3,
-                pvId: 'PV04'
-            },
-            {
-                title: 'Rare Host Usage',
-                count: 11,
                 pvId: 'PV05'
             }
         ];
 
-        this.threatsList.sort((a, b) => b.count - a.count);
+        this.insights.sort((a, b) => b.count - a.count);
     }
 
     getViolations() {

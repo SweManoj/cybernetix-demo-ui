@@ -85,6 +85,49 @@ export class IncidentSummaryComponent implements OnInit {
             ]
         },
         {
+            description: 'Privileged User escalated self-owned service account and used it for Data Exfiltration',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'TVDE38',
+            viewCount: 1,
+            policyViolationDate: '23 Sep 2019 09:33',
+            incidentCreatedDate: '23 Sep 2019 11:45',
+            priority: 'Critical',
+            indicatorsOfAttack: 5,
+            status: 'Closed',
+            outcome: 'True Positive',
+            caseOwner: 'Martin J',
+            killChainProcess: [
+                {
+                    title: 'Privilege Escalation',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Data Downloads',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Data Exfiltration Attempt',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Proxy Attempts',
+                    icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'connection.png'
+                }
+            ]
+        },
+        {
             description: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
@@ -124,6 +167,45 @@ export class IncidentSummaryComponent implements OnInit {
             ]
         },
         {
+            description: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'TVDE21',
+            viewCount: 1,
+            policyViolationDate: '27 June 2019 12:45',
+            incidentCreatedDate: '27 June 2019 13:58',
+            priority: 'Critical',
+            indicatorsOfAttack: 4,
+            status: 'Open',
+            outcome: 'Investigation In Progress',
+            caseOwner: 'Scott R',
+            killChainProcess: [
+                {
+                    title: 'Port Scanning',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Inbound Telnet',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Inbound SMB',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'P2P Traffic',
+                    icon: 'monitor-code.png'
+                }
+            ]
+        },
+        {
             description: 'Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltrtion',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
@@ -135,6 +217,45 @@ export class IncidentSummaryComponent implements OnInit {
                 title: null
             },
             incId: 'INC 44',
+            viewCount: 1,
+            policyViolationDate: '13 Oct 2019 10:13',
+            incidentCreatedDate: '13 Oct 2019 10:49',
+            priority: 'Critical',
+            indicatorsOfAttack: 5,
+            status: 'Open',
+            outcome: 'Investigation In Progress',
+            caseOwner: 'Steve D',
+            killChainProcess: [
+                {
+                    title: 'Privileged Activity Attempt',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Account Compromise',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Dormant Activity',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'monitor-code.png'
+                }
+            ]
+        },
+        {
+            description: 'Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltrtion',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'TVDE43',
             viewCount: 1,
             policyViolationDate: '13 Oct 2019 10:13',
             incidentCreatedDate: '13 Oct 2019 10:49',
@@ -809,7 +930,8 @@ export class IncidentSummaryComponent implements OnInit {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedIncident = params.get('incID');
-            if (this.selectedIncident == 'INC 38' || this.selectedIncident == 'INC 71' || this.selectedIncident == 'INC 44')
+            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43']
+            if (incidentValues.includes(this.selectedIncident))
                 this.show = false;
             this.incidents.forEach((incident) => {
                 if (incident.incId === this.selectedIncident) {
@@ -818,6 +940,7 @@ export class IncidentSummaryComponent implements OnInit {
                 }
             });
         });
+
         this.filteredOptions = this.myControl.valueChanges
             .pipe(
                 startWith(''),

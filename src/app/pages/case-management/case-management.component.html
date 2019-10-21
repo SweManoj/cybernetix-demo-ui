@@ -339,7 +339,7 @@
                                 (onChange)="incident.filter($event.value.value, 'priority','contains')"></p-dropdown>
                         </div>
 
-                        <div class="mr-4 mb-4">
+                        <!-- <div class="mr-4 mb-4">
                             <p-dropdown [options]="status" placeholder="Status" optionLabel="name"
                                 (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
                         </div>
@@ -347,7 +347,7 @@
                         <div class="mr-4 mb-4">
                             <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
                                 (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
-                        </div>
+                        </div> -->
 
                         <div class="mb-4 mt-2">
                             <span class="topStages Total" style="margin-left: 0rem;">{{threatVectorData.length }}</span>
@@ -409,7 +409,7 @@
                                 <td (click)="redirectToTimeline(threatVectorData.type,threatVectorData.entity)">
                                     {{threatVectorData.entity}}</td>
 
-                                <td style="color:#099bb5;">{{threatVectorData.riskScore}}
+                                <td [ngStyle]="getRiskScoreColor(threatVectorData.riskScore)">{{threatVectorData.riskScore}}
                                 </td>
 
                                 <td>{{threatVectorData.incident}}</td>

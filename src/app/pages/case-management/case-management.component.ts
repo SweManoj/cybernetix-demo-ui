@@ -46,11 +46,20 @@ export class CaseManagementComponent implements OnInit {
     { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-15', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.109' }, */
   ];
 
-  threatVectorData:Array<any> = [
-    { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', id: 'INC 38', riskScore: '95', incident: 'YES', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'Adm-EMoor', type: 'Auto' },
-    { detectedOn: '13/10/2018', threatVectorID: 'TVDE43', priority: 'Critical', id: 'INC 71', riskScore: '93', incident: 'YES', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '10.82.32.212', type: 'Auto' },
-    { detectedOn: '27/06/2018', threatVectorID: 'TVDE21', priority: 'Critical', id: 'INC 44', riskScore: '89', incident: 'YES', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, entity: 'Chen_Zhang', type: 'Auto' },
+  threatVectorData: Array<any> = [
+    { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', id: 'INC 38', riskScore: 95, incident: 'YES', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'Adm-EMoor', type: 'Auto' },
+    { detectedOn: '13/10/2018', threatVectorID: 'TVDE43', priority: 'Critical', id: 'INC 71', riskScore: 93, incident: 'YES', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '10.82.32.212', type: 'Auto' },
+    { detectedOn: '27/06/2018', threatVectorID: 'TVDE21', priority: 'Critical', id: 'INC 44', riskScore: 89, incident: 'YES', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, entity: 'Chen_Zhang', type: 'Auto' },
   ];
+
+  getRiskScoreColor(riskScore: number) {
+    if (riskScore <= 65)
+      return { 'color': 'limegreen', 'font-size': 'initial' };
+    else if (riskScore > 65 && riskScore <= 79)
+      return { 'color': 'darkorange', 'font-size': 'initial' };
+    else
+      return { 'color': 'red', 'font-size': 'initial' };
+  }
 
   redirectToTimeline(type, entity) {
     if (type == 'user')

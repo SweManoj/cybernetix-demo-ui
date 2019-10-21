@@ -1246,6 +1246,22 @@ export class RiskyUsersComponent {
             ]
         },
         {
+            incident: 'TVDE38',
+            affectedEntity: 'Adm-EMoor, SVL-EMoor, WK-38482L, 10.82.30.121',
+            lastUpdatedOn: '23 Sep 2019 09:33',
+            lastUpdatedBy: 'Martin J',
+            currentStauts: 'Closed',
+            outcome: 'True Positive',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '136', title: 'Events' },
+                { image: 'resources@1x.png', value: '04', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+                { image: 'violations@1x.png', value: '05', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
+        },
+        {
             incident: 'INC 71',
             affectedEntity: '10.82.32.212, WK-UKL48503D, 10.82.32.227, 00:0a:95:9d:68:16',
             lastUpdatedOn: '27 June 2019 12:45',
@@ -1262,7 +1278,39 @@ export class RiskyUsersComponent {
             ]
         },
         {
+            incident: 'TVDE21',
+            affectedEntity: '10.82.32.212, WK-UKL48503D, 10.82.32.227, 00:0a:95:9d:68:16',
+            lastUpdatedOn: '27 June 2019 12:45',
+            lastUpdatedBy: 'Scott R',
+            currentStauts: 'Open',
+            outcome: 'Investigation In Progress',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '59', title: 'Events' },
+                { image: 'resources@1x.png', value: '03', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+                { image: 'violations@1x.png', value: '04', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
+        },
+        {
             incident: 'INC 44',
+            affectedEntity: 'Chen_Zhang, Steve_Warner, Ross_Liam, adm_RL93, WK-1929304D',
+            lastUpdatedOn: '13 Oct 2019 10:13',
+            lastUpdatedBy: 'Steve D',
+            currentStauts: 'Open',
+            outcome: 'Investigation In Progress',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '108', title: 'Events' },
+                { image: 'resources@1x.png', value: '02', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+                { image: 'violations@1x.png', value: '05', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
+        },
+        {
+            incident: 'TVDE43',
             affectedEntity: 'Chen_Zhang, Steve_Warner, Ross_Liam, adm_RL93, WK-1929304D',
             lastUpdatedOn: '13 Oct 2019 10:13',
             lastUpdatedBy: 'Steve D',
@@ -1634,22 +1682,24 @@ export class RiskyUsersComponent {
             }
         });
 
-        this.routeParam.paramMap.subscribe(params => {
-            const incident = params.get('incident');
+        if (this.router.url.includes('riskyIncident')) {
+            this.routeParam.paramMap.subscribe(params => {
+                const incident = params.get('incident');
 
-            if (incident == 'INC 38')
-                this.incidentViolations = this.admEmoorHardCodeItemData;
-            else if (incident == 'INC 44')
-                this.incidentViolations = this.chen_ZhangHardCodeItemDate;
-            else if (incident == 'INC 71')
-                this.incidentViolations = this.ipHardCodeItemData;
+                if (incident == 'INC 38' || incident == 'TVDE38')
+                    this.incidentViolations = this.admEmoorHardCodeItemData;
+                else if (incident == 'INC 44' || incident == 'TVDE43')
+                    this.incidentViolations = this.chen_ZhangHardCodeItemDate;
+                else if (incident == 'INC 71' || incident == 'TVDE21')
+                    this.incidentViolations = this.ipHardCodeItemData;
 
-            this.incidentDetails.forEach(incidentDetail => {
-                if (incidentDetail.incident == incident) {
-                    this.incidentDetail = incidentDetail;
-                }
-            });
-        })
+                this.incidentDetails.forEach(incidentDetail => {
+                    if (incidentDetail.incident == incident) {
+                        this.incidentDetail = incidentDetail;
+                    }
+                });
+            })
+        }
     }
 
     ngAfterViewInit() {

@@ -1243,6 +1243,252 @@ export class RiskyUsersComponent {
         { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 
+    AWS_S3_Instance01_data = [
+        {
+            generatedDateFormat: 'Oct 1 2019',
+            generatedTimestamp: '00:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Suspicious activity towards critical cloud data storage"
+            },
+            description: 'This violation is flagged when abnormal access of critical S3 bucket is observed in cloud logs. Rare IP, Spike in number of activities, Un-unusual business time contribute to this Anomaly',
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Sub Category', value: 'Suspicious Database Access' },
+                { title: 'Threat Category', value: '-' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'AWS Access Logs' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, Count of Activities, CloudServer' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '03:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 118,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal access of critical file paths in Cloud storage"
+            },
+            description: 'This anomaly is flagged when a critical/sensitive file paths are accessed – rare file path accessed, spike in accessing file path, file access in un usual or non-business hours , high number of queries',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data exfiltration' },
+                { title: 'Sub Category', value: 'Data exfiltration' },
+                { title: 'Threat Category', value: 'Data exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '92' },
+                { title: 'Resource', value: 'AWS Logs' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, CloudServer, objName' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '03:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 26,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Suspicious/Privileged commands executed in Cloud Instance"
+            },
+            description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Privilege Misuse' },
+                { title: 'Sub Category', value: 'Privilege Misuse' },
+                { title: 'Threat Category', value: 'Privilege Misuse' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '90' },
+                { title: 'Resource', value: 'AWS Logs' },
+                { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 4 2019',
+            generatedTimestamp: '03:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 188,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Excessive Bytes Exfiltrated via HTTPS from a cloud instance"
+            },
+            description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01, 11.3.4.6, 11.3.4.5, 11.3.4.8, 11.3.4.9' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '95' },
+                { title: 'Resource', value: 'AWS Logs' },
+                { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        }
+    ];
+
+    AWS_DomainEC2_Instance07_data = [
+        {
+            generatedDateFormat: 'Sep 17 2019',
+            generatedTimestamp: '07:13:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 7,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Vulnerability Alert"
+            },
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Vulnerability Alert' },
+                { title: 'Sub Category', value: 'Vulnerability Alert' },
+                { title: 'Threat Category', value: 'Vulnerability Alert' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '36' },
+                { title: 'Resource', value: 'Qualys' },
+                { title: 'Indicators', value: 'SourceIP, Signature' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:13:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Potential scanning attempts on Public facing cloud instance"
+            },
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Sub Category', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Reconnaissance' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07,AWS-DomainEC2-Instance13,AWS-DomainEC2-Instance29,AWS-DomainEC2-Instance38' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '65' },
+                { title: 'Resource', value: 'AWS' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Sep 29 2019',
+            generatedTimestamp: '13:07:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 8,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Suspicious cloud IAM activities observed"
+            },
+            description: 'This violation is flagged when unusual (rare, privileged) IAM realted commands executed in cloud instance which can indicate access mining and probable recon activity',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Sub Category', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Reconnaissance' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '83' },
+                { title: 'Resource', value: 'AWS EC2 Logs' },
+                { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        }
+    ];
+
+    ip_18_10_8_1_data = [
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:13:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Potential scanning attempt on public facing cloud instance'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Reconnaissance' },
+                { title: 'Sub Category', value: 'Reconnaissance' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '18.10.8.1' },
+                { title: 'Locations', value: 'San Diego' },
+                { title: 'Risk', value: '65' },
+                { title: 'Resources', value: 'Firewall' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' },
+                { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP Kill Chain: Reconnaissance'
+        },
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:30:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 127,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'High number of Denied traffic followed by Allowed traffic'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Potential Firewall Compromise' },
+                { title: 'Sub Category', value: 'Potential Firewall Compromise' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '18.10.8.1' },
+                { title: 'Locations', value: 'San Diego' },
+                { title: 'Risk', value: '81' },
+                { title: 'Resources', value: 'Firewall' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, Destination Port' },
+                { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+            description: 'This Policy is triggered when high number of Denied Traffic observed in firewall followed by Allowed Traffic from a same Source IP'
+        },
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:30:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 127,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Inbound Allowed traffic on Non-standard ports'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Initial Access' },
+                { title: 'Sub Category', value: 'Compromise' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '18.10.8.1' },
+                { title: 'Locations', value: 'San Diego' },
+                { title: 'Risk', value: '93' },
+                { title: 'Resources', value: 'Firewall' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, DestinationPort' },
+                { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+            description: 'This Policy is triggered when traffic observed towards a nonstandard port'
+        }
+    ];
+
     activities = [
         { image: 'falg@1x.png', value: '9.8K', title: 'Events' },
         { image: 'resources@1x.png', value: '09', title: 'Resources' },
@@ -1618,6 +1864,7 @@ export class RiskyUsersComponent {
     ];
 
     incidentAwender = false;
+    incidentName: any;
 
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
@@ -1729,6 +1976,7 @@ export class RiskyUsersComponent {
         if (this.router.url.includes('riskyIncident')) {
             this.routeParam.paramMap.subscribe(params => {
                 const incident = params.get('incident');
+                this.incidentName = incident;
 
                 if (incident == 'INC 38' || incident == 'TVDE38')
                     this.incidentViolations = this.admEmoorHardCodeItemData;

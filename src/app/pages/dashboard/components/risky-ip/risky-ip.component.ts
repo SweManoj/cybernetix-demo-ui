@@ -25,7 +25,11 @@ export class RiskyIPComponent implements OnInit {
         { value: '82.102.21.217', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 2, lastSeenUser: 'NEI89321' },
         { value: '95.181.116.77', score: 85, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { value: '23.94.213.6', score: 89, location: 'Berlin, Germany', lastSeen: '23 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
-        { value: '69.249.19.217', score: 76, location: 'Paris, France ', lastSeen: '24 Jun 2019 18:38:00', peer: 3, lastSeenUser: 'JRU87122' }];
+        { value: '69.249.19.217', score: 76, location: 'Paris, France', lastSeen: '24 Jun 2019 18:38:00', peer: 3, lastSeenUser: 'JRU87122' },
+
+        { value: '172.168.200.55', score: 93, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+        { value: '10.82.34.101', score: 93, location: '-', lastSeen: '-', peer: '-', lastSeenUser: '-' }
+    ];
 
     hardCodeItemData = [
         {
@@ -95,7 +99,6 @@ export class RiskyIPComponent implements OnInit {
             }
         }
     ];
-
 
     hardCodeItemForDemo = [
         {
@@ -198,6 +201,31 @@ export class RiskyIPComponent implements OnInit {
             { title: 'Resources', value: 'Netflow' },
             { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
             description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
+        }
+    ];
+
+    hardCodeItemFor172IP = [
+        {
+            generatedDateFormat: 'Oct 1 2019',
+            generatedTimestamp: '08:50:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Network scanning activities identified from vendor/partner network subnet'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Recon' },
+                { title: 'Threat Category', value: 'Internal Network Scan' },
+                { title: 'Sub Category', value: 'Internal Network Scan' }],
+            dummyDatas: [
+                { title: 'Affected Entity', value: '172.168.200.55, 10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 192.168.200.55, 192.168.200.57, 10.67.122.136, 10.67.122.132' },
+                { title: 'Locations', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resources', value: 'Windows, NetFlow' },
+                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP Kill Chain: Reconnaissance'
         }
     ];
 

@@ -50,12 +50,17 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'user', value: 'AWendler', score: 97, img: true },
         { type: 'user', value: 'Chen_Zhang', score: 93, img: true },
         // { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
+
         { type: 'ip address', value: '18.10.8.1', score: 93, img: false },
         { type: 'ip address', value: '10.82.32.212', score: 95, img: false },
         // { type: 'ip address', value: '82.102.21.217', score: 60, img: false },
         { type: 'ip address', value: '95.181.116.77', score: 85, img: false },
         { type: 'ip address', value: '23.94.213.6', score: 89, img: false },
         { type: 'ip address', value: '69.249.19.217', score: 76, img: false },
+
+        { type: 'ip address', value: '172.168.200.55', score: 93, img: false },
+        { type: 'ip address', value: '10.82.34.101', score: 93, img: false },
+
         { type: 'host', value: 'AUSLAP4873', score: 90, img: false },
         { type: 'host', value: 'AWS-DomainEC2-Instance07', score: 92, img: false },
         { type: 'host', value: 'AWS-S3-Instance01', score: 98, img: false },
@@ -143,9 +148,8 @@ export class TopDetailsComponent implements AfterViewInit {
     constructor(private topDetailsService: TopDetailsService,
         private router: Router) {
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
-
+        this.selectedRiskies = this.selectedRiskies.splice(0, 5);
         this.riskyObjects.sort((a, b) => -(a.score - b.score)); // desending order
-
     }
 
     getRiskScoreColor(riskScore: number) {
@@ -160,7 +164,8 @@ export class TopDetailsComponent implements AfterViewInit {
     SelectedRiskyType(val: any) {
         this.riskyTypeSelected = val;
         this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == this.riskyTypeSelected);
-        this.selectRiskyType = String(val).toUpperCase();;
+        this.selectedRiskies = this.selectedRiskies.splice(0, 5);
+        this.selectRiskyType = String(val).toUpperCase();
     }
 
     ngAfterViewInit() {

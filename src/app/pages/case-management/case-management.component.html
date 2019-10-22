@@ -266,7 +266,7 @@
                                 </th>
                                 <th [pSortableColumn]="'created'">CREATED <p-sortIcon [field]="'created'"></p-sortIcon>
                                 </th>
-                                <th style="width:33em;" [pSortableColumn]="'name'">Incident Name <p-sortIcon
+                                <th style="width:33em;" [pSortableColumn]="'name'">Incident Description <p-sortIcon
                                         [field]="'name'"></p-sortIcon>
                                 </th>
                                 <th [pSortableColumn]="'entity'">Entity <p-sortIcon [field]="'entity'"></p-sortIcon>
@@ -282,17 +282,17 @@
                                 </th>
                             </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-rowData let-data>
+                        <ng-template pTemplate="body" let-rowData let-data let-rowIndex="rowIndex">
                             <tr [pSelectableRow]="rowData">
                                 <td>
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
                                 <td [routerLink]="['/incidentSummary', data.id]">{{data.id}}</td>
                                 <td>{{data.created}}</td>
-                                <td style="color:#099bb5;">{{data.name}}
+                                <td style="color:#099bb5;white-space: normal;text-align: left;">{{data.name}}
                                 </td>
                                 <td (click)="redirectToTimeline(data.type,data.entity)">{{data.entity}}</td>
-                                <td style="padding-left: 40px">
+                                <td style="padding-left: 20px">
                                     <div class="{{data.priority}} tableStages"></div>
                                     <span class="priority1">{{data.priority}}</span>
                                 </td>

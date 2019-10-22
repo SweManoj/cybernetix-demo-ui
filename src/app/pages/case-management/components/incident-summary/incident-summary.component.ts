@@ -766,7 +766,7 @@ export class IncidentSummaryComponent implements OnInit {
     ];
 
     lastBoxStyles(last: boolean) {
-        return last ? { 'color': '#a0a0a0', 'background': 'red' } : { 'color': 'black', 'background': '#099BB5' };
+        return last ? { 'color': 'white', 'background': 'red' } : { 'color': 'black', 'background': '#099BB5' };
     }
 
     policyComments: Comment[] = [{

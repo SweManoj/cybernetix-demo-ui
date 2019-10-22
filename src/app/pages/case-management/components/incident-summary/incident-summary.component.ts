@@ -42,6 +42,92 @@ export class IncidentSummaryComponent implements OnInit {
 
     incidents = [
         {
+            description: 'Malicious Proxy Activities Followed By Geolocation Follwed By Fileshare Access Followed By Data Exfiltration',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'INC 92',
+            viewCount: 1,
+            policyViolationDate: '13 June 2019 06:22',
+            incidentCreatedDate: '13 June 2019 11:45',
+            priority: 'Critical',
+            indicatorsOfAttack: 5,
+            status: 'Closed',
+            outcome: 'True Positive',
+            caseOwner: 'Martin J',
+            killChainProcess: [
+                {
+                    title: 'Malicious Behavior',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Account Compromise',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Geolocation',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Suspicious Behavior',
+                    icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'connection.png'
+                }
+            ]
+        },
+        {
+            description: 'Malicious Proxy Activities Followed By Geolocation Follwed By Fileshare Access Followed By Data Exfiltration',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'TVDE92',
+            viewCount: 1,
+            policyViolationDate: '13 June 2019 06:22',
+            incidentCreatedDate: '13 June 2019 11:45',
+            priority: 'Critical',
+            indicatorsOfAttack: 5,
+            status: 'Closed',
+            outcome: 'True Positive',
+            caseOwner: 'Martin J',
+            killChainProcess: [
+                {
+                    title: 'Malicious Behavior',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Account Compromise',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Geolocation',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Suspicious Behavior',
+                    icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'connection.png'
+                }
+            ]
+        },
+        {
             description: 'Privileged User escalated self-owned service account and used it for Data Exfiltration',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
@@ -449,14 +535,10 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Abnormal Objects Accessed on Fileshare'
             },
             incId: 'INC-8',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Abnormal Pattern' },
-            { title: 'Sub Category', value: 'Abnormal Pattern' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
-            { title: 'Locations', value: 'Berlin' },
-            { title: 'Risk', value: '91' },
-            { title: 'Resources', value: 'Fileshare' },
-            { title: 'Indicators', value: 'FileName' }],
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Abnormal Pattern' },
+                { title: 'Sub Category', value: 'Abnormal Pattern' }],
             description: 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span',
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
@@ -478,14 +560,10 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Suspicious RDP to Multiple Hosts from Privileged User'
             },
             incId: 'INC-9',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Account Compromise' },
-            { title: 'Sub Category', value: 'Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
-            { title: 'Locations', value: 'Berlin' },
-            { title: 'Risk', value: '87' },
-            { title: 'Resources', value: 'Windows' },
-            { title: 'Indicators', value: 'EventID' }],
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Account Compromise' },
+                { title: 'Sub Category', value: 'Account Compromise' }],
             description: 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping',
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
@@ -512,11 +590,6 @@ export class IncidentSummaryComponent implements OnInit {
                 { title: 'Threat Category', value: 'Suspicious Behavior' },
                 { title: 'Sub Category', value: 'Suspicious Behavior' }
             ],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
-            { title: 'Locations', value: 'Berlin' },
-            { title: 'Risk', value: '84' },
-            { title: 'Resources', value: 'Proxy' },
-            { title: 'Indicators', value: 'Category' }],
             description: 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping',
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
@@ -538,14 +611,10 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Successful Login From Unusual Location - VPN'
             },
             incId: 'INC-12',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Account Compromise' },
-            { title: 'Sub Category', value: 'Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
-            { title: 'Locations', value: 'Ukraine' },
-            { title: 'Risk', value: '75' },
-            { title: 'Resources', value: 'VPN' },
-            { title: 'Indicators', value: 'Location' }],
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Account Compromise' },
+                { title: 'Sub Category', value: 'Account Compromise' }],
             description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location',
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
@@ -568,14 +637,10 @@ export class IncidentSummaryComponent implements OnInit {
             },
             incId: 'INC-13',
             description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Account Compromise' },
-            { title: 'Sub Category', value: 'Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
-            { title: 'Locations', value: 'Ukraine' },
-            { title: 'Risk', value: '75' },
-            { title: 'Resources', value: 'VPN' },
-            { title: 'Indicators', value: 'Location' }],
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Account Compromise' },
+                { title: 'Sub Category', value: 'Account Compromise' }],
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
             incidentCreatedDate: '09 Aug 2019 10:30:00',
@@ -597,15 +662,10 @@ export class IncidentSummaryComponent implements OnInit {
             },
             incId: 'INC-14',
             description: 'In this Algorithm, VPN Activities from User after he/she has physical BadgeIN',
-            threatCategories:
-                [{ title: 'Kill Chain', value: 'Actions/Maintain' },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Access Authentication' },
                 { title: 'Sub Category', value: 'Bruce Force Attack' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
-            { title: 'Locations', value: 'Berlin, Ukraine' },
-            { title: 'Risk', value: '74' },
-            { title: 'Resources', value: 'Physical, VPN' },
-            { title: 'Indicators', value: 'Location' }],
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
             incidentCreatedDate: '09 Aug 2019 10:30:00',
@@ -627,14 +687,10 @@ export class IncidentSummaryComponent implements OnInit {
             },
             incId: 'INC-15',
             description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Account Compromise' },
-            { title: 'Sub Category', value: 'Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
-            { title: 'Locations', value: 'Ukraine' },
-            { title: 'Risk', value: '57' },
-            { title: 'Resources', value: 'VPN' },
-            { title: 'Indicators', value: 'Location' }],
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Account Compromise' },
+                { title: 'Sub Category', value: 'Account Compromise' }],
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
             incidentCreatedDate: '09 Aug 2019 10:30:00',
@@ -656,7 +712,6 @@ export class IncidentSummaryComponent implements OnInit {
             },
             incId: 'INC-16',
             Description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
-
             threatCategories: [
                 { title: 'Kill Chain', 'value': '-' },
                 { title: 'Threat Category', 'value': 'Malicious Behavior' },
@@ -687,14 +742,10 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Self Escalation Removed Security enabled global group'
             },
             incId: 'INC-17',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Privileged misuse' },
-            { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
-            { title: 'Locations', value: 'San Diego' },
-            { title: 'Risk', value: '87' },
-            { title: 'Resources', value: 'Windows' },
-            { title: 'Indicators', value: 'Event Code' }],
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Privileged misuse' },
+                { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
             description: 'In this Algorithm, User Removed security enabled global group',
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
@@ -716,14 +767,10 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Abnormal Data Export on MSQL database'
             },
             incId: 'INC-18',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Data Exfiltration' },
-            { title: 'Sub Category', value: 'Data Export' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
-            { title: 'Locations', value: 'San Diego' },
-            { title: 'Risk', value: '81' },
-            { title: 'Resources', value: 'MSQL' },
-            { title: 'Indicators', value: 'Action/Tables' }],
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Export' }],
             description: 'In this Algorithm, user performed abnormal data export on MSQL database',
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
@@ -745,14 +792,10 @@ export class IncidentSummaryComponent implements OnInit {
                 title: 'Self Escalation Added Security enabled global group'
             },
             incId: 'INC-19',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Privileged misuse' },
-            { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
-            { title: 'Locations', value: 'San Diego' },
-            { title: 'Risk', value: '72/87' },
-            { title: 'Resources', value: 'Windows' },
-            { title: 'Indicators', value: 'Event Code' }],
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Privileged misuse' },
+                { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
             description: 'In this Algorithm, User Added security enabled global group',
             viewCount: 52,
             policyViolationDate: '10 May 2019 11:23:00',
@@ -765,90 +808,97 @@ export class IncidentSummaryComponent implements OnInit {
         }
     ];
 
-    lastBoxStyles(last: boolean) {
-        return last ? { 'color': 'white', 'background': 'red' } : { 'color': 'black', 'background': '#099BB5' };
+    lastBoxStyles(first: boolean, last: boolean, incId: any) {
+        const incidentValues: Array<String> = ['TVDE92', 'INC 92'];
+        if (last && !incidentValues.includes(incId))
+            return { 'color': 'white', 'background': 'red' };
+        else if (first && incidentValues.includes(incId))
+            return { 'color': 'white', 'background': 'red' };
+        else
+            return { 'color': 'black', 'background': '#099BB5' }
     }
 
-    policyComments: Comment[] = [{
-        userId: 'abhishek@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,' +
-            ' when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        timestamp: this.d.setHours(this.d.getHours() - 2),
-        commentId: 1,
-        parentId: 0,
-        reply: false
-    }, {
-        userId: 'chetan@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
-            ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
-        timestamp: this.d.setHours(this.d.getHours() - 4),
-        commentId: 2,
-        parentId: 0,
-        reply: false
-    },
-    {
-        userId: 'chetan@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
-            ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
-        timestamp: this.d.setHours(this.d.getHours() - 3),
-        commentId: 3,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: 'chetan@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
-            ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
-        timestamp: this.d.setHours(this.d.getHours() - 1),
-        commentId: 4,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: 'chetan@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
-            ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
-        timestamp: this.d.setHours(this.d.getHours() - 3),
-        commentId: 3,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: 'chetan@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
-            ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
-        timestamp: this.d.setHours(this.d.getHours() - 1),
-        commentId: 4,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: 'chetan@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
-            ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
-        timestamp: this.d.setHours(this.d.getHours() - 3),
-        commentId: 3,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: 'chetan@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
-            ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
-        timestamp: this.d.setHours(this.d.getHours() - 1),
-        commentId: 4,
-        parentId: 2,
-        reply: false
-    },
-    {
-        userId: 'chetan@123',
-        content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
-            ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
-        timestamp: this.d.setHours(this.d.getHours() - 5),
-        commentId: 5,
-        parentId: 2,
-        reply: false
-    }];
+    policyComments: Comment[] = [
+        {
+            userId: 'abhishek@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,' +
+                ' when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+            timestamp: this.d.setHours(this.d.getHours() - 2),
+            commentId: 1,
+            parentId: 0,
+            reply: false
+        }, {
+            userId: 'chetan@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
+                ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
+            timestamp: this.d.setHours(this.d.getHours() - 4),
+            commentId: 2,
+            parentId: 0,
+            reply: false
+        },
+        {
+            userId: 'chetan@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
+                ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
+            timestamp: this.d.setHours(this.d.getHours() - 3),
+            commentId: 3,
+            parentId: 2,
+            reply: false
+        },
+        {
+            userId: 'chetan@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
+                ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
+            timestamp: this.d.setHours(this.d.getHours() - 1),
+            commentId: 4,
+            parentId: 2,
+            reply: false
+        },
+        {
+            userId: 'chetan@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
+                ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
+            timestamp: this.d.setHours(this.d.getHours() - 3),
+            commentId: 3,
+            parentId: 2,
+            reply: false
+        },
+        {
+            userId: 'chetan@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
+                ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
+            timestamp: this.d.setHours(this.d.getHours() - 1),
+            commentId: 4,
+            parentId: 2,
+            reply: false
+        },
+        {
+            userId: 'chetan@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
+                ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
+            timestamp: this.d.setHours(this.d.getHours() - 3),
+            commentId: 3,
+            parentId: 2,
+            reply: false
+        },
+        {
+            userId: 'chetan@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
+                ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
+            timestamp: this.d.setHours(this.d.getHours() - 1),
+            commentId: 4,
+            parentId: 2,
+            reply: false
+        },
+        {
+            userId: 'chetan@123',
+            content: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown' +
+                ' printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.',
+            timestamp: this.d.setHours(this.d.getHours() - 5),
+            commentId: 5,
+            parentId: 2,
+            reply: false
+        }];
 
     threatCategories = [
         {
@@ -930,7 +980,7 @@ export class IncidentSummaryComponent implements OnInit {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedIncident = params.get('incID');
-            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43']
+            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43', 'TVDE92', 'INC 92']
             if (incidentValues.includes(this.selectedIncident))
                 this.show = false;
             this.incidents.forEach((incident) => {

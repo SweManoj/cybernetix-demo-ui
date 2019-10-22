@@ -42,6 +42,84 @@ export class IncidentSummaryComponent implements OnInit {
 
     incidents = [
         {
+            description: 'Reconnaissance from External Malicious IP for Firewall Misconfig and EC2 Vulnerability Followed By Exploitation of EC2 Followed By Privilege Access Followed By Data Exfiltration from S3',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'TVRC4',
+            viewCount: 1,
+            policyViolationDate: '4 Oct 2019 03:50',
+            incidentCreatedDate: '4 Oct 2019 05:43',
+            priority: 'Critical',
+            indicatorsOfAttack: 12,
+            status: 'Open',
+            outcome: 'Investigation In Progress',
+            caseOwner: 'Martin J',
+            killChainProcess: [
+                {
+                    title: 'reconnaissance',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Exploitation',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Privileged Access',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'monitor-code.png'
+                }
+            ]
+        },
+        {
+            description: 'Reconnaissance from External Malicious IP for Firewall Misconfig and EC2 Vulnerability Followed By Exploitation of EC2 Followed By Privilege Access Followed By Data Exfiltration from S3',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'INC 4',
+            viewCount: 1,
+            policyViolationDate: '4 Oct 2019 03:50',
+            incidentCreatedDate: '4 Oct 2019 05:43',
+            priority: 'Critical',
+            indicatorsOfAttack: 12,
+            status: 'Open',
+            outcome: 'Investigation In Progress',
+            caseOwner: 'Martin J',
+            killChainProcess: [
+                {
+                    title: 'reconnaissance',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Exploitation',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Privileged Access',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'monitor-code.png'
+                }
+            ]
+        },
+        {
             description: 'Malicious Proxy Activities Followed By Geolocation Follwed By Fileshare Access Followed By Data Exfiltration',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
@@ -980,7 +1058,7 @@ export class IncidentSummaryComponent implements OnInit {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedIncident = params.get('incID');
-            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43', 'TVAC92', 'INC 92']
+            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43', 'TVAC92', 'INC 92', 'TVRC4', 'INC 4']
             if (incidentValues.includes(this.selectedIncident))
                 this.show = false;
             this.incidents.forEach((incident) => {

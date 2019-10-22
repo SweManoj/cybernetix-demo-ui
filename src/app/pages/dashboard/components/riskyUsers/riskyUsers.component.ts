@@ -1742,7 +1742,6 @@ export class RiskyUsersComponent {
                 } else if (incident == 'INC 4' || incident == 'TVRC4')
                     this.incidentViolations = this.chen_ZhangHardCodeItemDate;
 
-
                 this.incidentDetails.forEach(incidentDetail => {
                     if (incidentDetail.incident == incident) {
                         this.incidentDetail = incidentDetail;

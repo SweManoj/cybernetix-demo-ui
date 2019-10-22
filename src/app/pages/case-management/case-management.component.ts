@@ -46,11 +46,15 @@ export class CaseManagementComponent implements OnInit {
     { created: '03/15/2018', priority: 'Low', riskscore: 90, id: 'INC-15', name: 'High Risk Alert Reporting Engine for Cyber Sequrities', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.109' }, */
   ];
 
-  threatVectorData: Array<any> = [
-    { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', id: 'INC 38', riskScore: 95, incident: 'YES', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: '4', type: 'Auto' },
-    { detectedOn: '13/10/2019', threatVectorID: 'TVDE43', priority: 'Critical', id: 'INC 71', riskScore: 93, incident: 'YES', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '5', type: 'Auto' },
-    { detectedOn: '27/06/2019', threatVectorID: 'TVDE21', priority: 'Critical', id: 'INC 44', riskScore: 89, incident: 'YES', status: 'Open', assignee: 'Steve D', alerts: 2, entity: '4', type: 'Auto' },
-    //{ detectedOn: '13/06/2019', threatVectorID: 'TVDE92', priority: 'Critical', id: 'INC 89', riskScore: 97, incident: 'YES', status: 'Open', assignee: 'Steve D', alerts: 2, entity: '1', type: 'Auto' }
+  commonThreatVectorData: Array<any> = [
+    { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', riskScore: 95, incident: 'YES', entity: '4', type: 'Auto' },
+    { detectedOn: '13/10/2019', threatVectorID: 'TVDE43', priority: 'Critical', riskScore: 93, incident: 'YES', entity: '5', type: 'Auto' },
+    { detectedOn: '27/06/2019', threatVectorID: 'TVDE21', priority: 'Critical', riskScore: 89, incident: 'YES', entity: '4', type: 'Auto' },
+    { detectedOn: '04/10/2019', threatVectorID: 'TVRC4', priority: 'Critical',   riskScore: 98, incident: 'YES',  entity: '4', type: 'Auto' }
+  ];
+
+  threatVectorDataC2: Array<any> = [
+    { detectedOn: '13/06/2019', threatVectorID: 'TVAC92', priority: 'Critical', riskScore: 97, incident: 'YES', entity: '4', type: 'Auto' },
   ];
 
   getRiskScoreColor(riskScore: number) {
@@ -253,6 +257,9 @@ export class CaseManagementComponent implements OnInit {
     if (this.router.url.includes('threatVectorManagement')) {
       this.route.paramMap.subscribe((params) => {
         this.threatVectorTitle = params.get('threatVector');
+        if (this.threatVectorTitle == 'Account Compromise') {
+          this.commonThreatVectorData = this.threatVectorDataC2;
+        }
       });
     }
 

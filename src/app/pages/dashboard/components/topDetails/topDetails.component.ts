@@ -22,7 +22,7 @@ export class TopDetailsComponent implements AfterViewInit {
         { id: 'Reconnaissance', count: 2 },
         { id: 'Insider Threat', count: 2 },
         { id: 'Lateral Movement', count: 1 },
-        { id: 'C2', count: 1 }
+        { id: 'Account Compromise', count: 1 }
     ];
 
     topRiskyImpersonations = [

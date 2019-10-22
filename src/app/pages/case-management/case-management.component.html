@@ -350,7 +350,8 @@
                         </div> -->
 
                         <div class="mb-4 mt-2">
-                            <span class="topStages Total" style="margin-left: 0rem;">{{threatVectorData.length }}</span>
+                            <span class="topStages Total"
+                                style="margin-left: 0rem;">{{commonThreatVectorData.length }}</span>
                             <span class="labels">&nbsp;&nbsp;Record found</span>
                         </div>
                     </div>
@@ -359,7 +360,7 @@
                 <div class="row ml-auto mr-auto policy-incident-table">
                     <p-table #threatVectorTable
                         [globalFilterFields]="['threatVectorID', 'detectedOn', 'priority', 'entity', 'riskScore', 'incident', 'type']"
-                        [resizableColumns]="true" [value]="threatVectorData" sortMode="multiple"
+                        [resizableColumns]="true" [value]="commonThreatVectorData" sortMode="multiple"
                         [(selection)]="selectedItems" [paginator]="true" [rows]="12" (onRowSelect)="onRowSelect($event)"
                         (onRowUnselect)="onRowUnselect($event)">
                         <ng-template pTemplate="header">
@@ -394,26 +395,26 @@
                                 </th>
                             </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-rowData let-threatVectorData>
+                        <ng-template pTemplate="body" let-rowData let-commonThreatVectorData>
                             <tr [pSelectableRow]="rowData">
                                 <td>
                                     <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                 </td>
-                                <td [routerLink]="['/riskyIncident', threatVectorData.threatVectorID]">
-                                    {{threatVectorData.threatVectorID}}</td>
-                                <td>{{threatVectorData.detectedOn}}</td>
-                                <td style="padding-left: 40px">
-                                    <div class="{{threatVectorData.priority}} tableStages"></div>
-                                    <span class="priority1">{{threatVectorData.priority}}</span>
+                                <td [routerLink]="['/riskyIncident', commonThreatVectorData.threatVectorID]">
+                                    {{commonThreatVectorData.threatVectorID}}</td>
+                                <td>{{commonThreatVectorData.detectedOn}}</td>
+                                <td style="padding-left: 40px;text-align: start;">
+                                    <div class="{{commonThreatVectorData.priority}} tableStages"></div>
+                                    <span class="priority1 ml-3">{{commonThreatVectorData.priority}}</span>
                                 </td>
-                                <td>{{threatVectorData.entity}}</td>
+                                <td>{{commonThreatVectorData.entity}}</td>
 
-                                <td [ngStyle]="getRiskScoreColor(threatVectorData.riskScore)">
-                                    {{threatVectorData.riskScore}}
+                                <td [ngStyle]="getRiskScoreColor(commonThreatVectorData.riskScore)">
+                                    {{commonThreatVectorData.riskScore}}
                                 </td>
 
-                                <td>{{threatVectorData.incident}}</td>
-                                <td>{{threatVectorData.type}}</td>
+                                <td>{{commonThreatVectorData.incident}}</td>
+                                <td>{{commonThreatVectorData.type}}</td>
                             </tr>
                         </ng-template>
                     </p-table>

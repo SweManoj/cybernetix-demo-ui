@@ -1972,7 +1972,6 @@ export class RiskyUsersComponent {
         modalRef.componentInstance.isotimestamp = isotimestamp;
     }
 
-
     gotoSummery() {
         window.open('#/policyViolationSummary', '_blank');
     }

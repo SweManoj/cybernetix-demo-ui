@@ -57,7 +57,6 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'ip address', value: '95.181.116.77', score: 85, img: false },
         { type: 'ip address', value: '23.94.213.6', score: 89, img: false },
         { type: 'ip address', value: '69.249.19.217', score: 76, img: false },
-
         { type: 'ip address', value: '172.168.200.55', score: 93, img: false },
         { type: 'ip address', value: '10.82.34.101', score: 93, img: false },
 
@@ -69,6 +68,9 @@ export class TopDetailsComponent implements AfterViewInit {
         { type: 'host', value: 'USADESK25', score: 89, img: false },
         // { type: 'host', value: 'CHNLAP963', score: 66, img: false },
         // { type: 'host', value: 'LONDESK588', score: 88, img: false }
+        { type: 'host', value: 'DESK-10982', score: 95, img: false },
+        { type: 'host', value: 'DESK-1456', score: 95, img: false },
+        { type: 'host', value: 'DESK-1576', score: 95, img: false }
     ];
 
     topRiskyObjects = {

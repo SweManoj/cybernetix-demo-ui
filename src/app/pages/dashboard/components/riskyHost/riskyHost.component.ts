@@ -19,60 +19,457 @@ export class RiskyHostComponent implements OnInit {
     hostDetails: any;
 
     hostAddressData = [
-        // { type: 'host', value: 'PUNDESK001', score: 30, img: false, location: 'Munich, Germany', lastSeen: '23 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'PAV58329' },
+        { type: 'host', value: 'PUNDESK001', score: 30, img: false, location: 'Munich, Germany', lastSeen: '23 Jun 2019 03:22:00', peer: 2, lastSeenUser: 'PAV58329' },
         { type: 'host', value: 'WK-1929304D', score: 93, img: false, location: 'San Diego', lastSeen: '14 Oct 2019 03:22:00', peer: 212, lastSeenUser: 'Chen_Zhang' },
         { type: 'host', value: 'USADESK25', score: 89, img: false, location: 'Amsterdam, Netherlands ', lastSeen: '21 Jun 2019 17:10:00', peer: 3, lastSeenUser: 'NEI89321' },
         { type: 'host', value: 'CHNLAP963', score: 66, img: false, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { type: 'host', value: 'LONDESK588', score: 95, img: false, location: 'Beijing, China', lastSeen: '27 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
         { type: 'host', value: 'AUSLAP4873', score: 90, img: false, location: 'Sydney, Australia', lastSeen: '14 Aug 2019 17:23:12', peer: 23, lastSeenUser: 'AndrewsStarc1' },
         { type: 'host', value: 'AWS-DomainEC2-Instance07', score: 92, img: false, location: 'San Diego', lastSeen: '7 Oct 2019 11:53:00', peer: 25, lastSeenUser: 'Glenn_Roberto' },
-        { type: 'host', value: 'AWS-S3-Instance01', score: 98, img: false, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' }];
+        { type: 'host', value: 'AWS-S3-Instance01', score: 98, img: false, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+        { type: 'host', value: 'DESK-10982', score: 95, img: false, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+        { type: 'host', value: 'DESK-1456', score: 95, img: false, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+        { type: 'host', value: 'DESK-1576', score: 95, img: false, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' }
+    ];
 
-    hardCodeItemData = [
+    provideData() {
+        if (this.selectedHost == 'DESK-1576')
+            this.hardCodeItemData = this.DESK_1576_data;
+        else if (this.selectedHost == 'DESK-1456')
+            this.hardCodeItemData = this.DESK_1456_data;
+        else if (this.selectedHost == 'DESK-10982')
+            this.hardCodeItemData = this.DESK_10982_data;
+        else if (this.selectedHost == 'AWS-S3-Instance01')
+            this.hardCodeItemData = this.AWS_S3_Instance01_data;
+        else if (this.selectedHost == 'AWS-DomainEC2-Instance07')
+            this.hardCodeItemData = this.AWS_DomainEC2_Instance07_data;
+        else if (this.selectedHost == 'LONDESK588')
+            this.hardCodeItemData = this.LONDESK588_data;
+        else if (this.selectedHost == 'WK-1929304D')
+            this.hardCodeItemData = this.WK_1929304D_data;
+        else if (this.selectedHost == 'AUSLAP4873')
+            this.hardCodeItemData = this.WK_1929304D_data;
+    }
+
+    DESK_1576_data = [
         {
-            generatedTimestamp: '03:22:00',
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '16:10:00',
             accord: false,
-            pv: 'PV 083',
-            riskScore: 579,
+            pv: 'TI 083',
+            riskScore: 40,
             ruleInfo: {
                 ruleId: 1,
-                title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
-            }
+                title: "Outbound traffic to non http/s ports (ftp,ssh,telnet)"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) number of connections are observed to non-standard ports',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'ESK-1576' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
         },
         {
-            generatedTimestamp: '05:30:00',
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '16:00:00',
             accord: false,
-            pv: 'PV 061',
-            riskScore: 483,
+            pv: 'TI 083',
+            riskScore: 40,
             ruleInfo: {
-                ruleId: 2,
-                title: 'Successful Logon from Rare Machine - Windows'
-            }
+                ruleId: 1,
+                title: "Abnormal amount of data exfltration in given time window"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) post activity is observed',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'ESK-1576' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
         },
         {
-            generatedTimestamp: '07:10:00',
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '16:00:00',
             accord: false,
-            pv: 'PV 039',
-            riskScore: 451,
+            pv: 'TI 083',
+            riskScore: 40,
             ruleInfo: {
-                ruleId: 3,
-                title: 'Unusual Data Exfiltration By Service Account - Proxy'
-            }
+                ruleId: 1,
+                title: "Abnormal number of host connection to public IPs"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) number of connections are observed to public IPs',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Traffic towards public IPs' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'ESK-1576' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
         },
         {
-            generatedTimestamp: '09:22:00',
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '16:00:10',
             accord: false,
-            pv: 'PV 041',
-            riskScore: 398,
+            pv: 'TI 083',
+            riskScore: 40,
             ruleInfo: {
-                ruleId: 4,
-                title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
-            }
+                ruleId: 1,
+                title: "Abnormal traffic to public IP on SMB port"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) traffic towards SMB port observed',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-1576' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        }
+    ]
+
+    DESK_10982_data = [
+        {
+            generatedDateFormat: 'Oct 3 2019',
+            generatedTimestamp: '16:10:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Outbound traffic to non http/s ports (ftp,ssh,telnet)"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) number of connections are observed to non-standard ports',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 3 2019',
+            generatedTimestamp: '16:10:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal traffic to public IP on SMB port"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) traffic towards SMB port observed',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 3 2019',
+            generatedTimestamp: '16:00:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal amount of data exfltration in given time window"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) post activity is observed',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 3 2019',
+            generatedTimestamp: '16:00:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal number of host connection to public IPs"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) number of connections are observed to public IPs',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Traffic towards public IPs' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '08:20:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Service creation from temp folder"
+            },
+            description: 'This violation is triggered when a service is triggered from temp floder probable implication of weaponization or malware presence',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Exploitation' },
+                { title: 'Sub Category', value: 'Exploitation' },
+                { title: 'Threat Category', value: 'Suspicious Service Installed' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982, SERV-1234, DESK-1456, DESK-1576, DESK-1877, DESK-1879' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Endpoint Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, ServiceName, folderPath' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '08:20:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Executables from non-standard system location"
+            },
+            description: 'This violation is triggered when an executable is run from non-standard system location, probable implication of weaponization or malware presence',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Exploitation' },
+                { title: 'Sub Category', value: 'Exploitation' },
+                { title: 'Threat Category', value: 'Suspicious Service Installed' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982, SERV-1234, DESK-1456, DESK-1576, DESK-1877, DESK-1879' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Endpoint Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, ServiceName, folderPath, fileName' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '08:20:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Use of windows command line utility"
+            },
+            description: 'This violation is triggered when command line utility is used, probable implication of weaponization or malware presence',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Exploitation' },
+                { title: 'Sub Category', value: 'Exploitation' },
+                { title: 'Threat Category', value: 'Suspicious Commands used' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982, SERV-1234, DESK-1456, DESK-1576, DESK-1877, DESK-1879' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Endpoint Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, ServiceName, folderPath, fileName' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '08:00:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Rare malware alert received - EDR"
+            },
+            description: 'This violation is triggered when a rare malware alert is triggered for a host in EDR',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Weaponization' },
+                { title: 'Sub Category', value: 'Weaponization' },
+                { title: 'Threat Category', value: 'Weaponization' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'FireEye Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, MalwareName' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '08:00:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Suspicious service installed in system"
+            },
+            description: 'This violation is triggered when a suspicious service is installed in the end point probable implication of weaponization or malware presence. This also looks for similar services installed in other machines.',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Exploitation' },
+                { title: 'Sub Category', value: 'Exploitation' },
+                { title: 'Threat Category', value: 'Suspicious Service Installed' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-10982, SERV-1234, DESK-1456, DESK-1576, DESK-1877, DESK-1879' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Endpoint Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, ServiceName' }
+            ]
         },
 
     ];
 
-    hardCodeItemDataForAUS = [
+    DESK_1456_data = [
+        {
+            generatedDateFormat: 'Oct 3 2019',
+            generatedTimestamp: '16:00:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal amount of data exfltration in given time window"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) post activity is observed',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-1456' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 3 2019',
+            generatedTimestamp: '16:00:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal number of host connection to public IPs"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) number of connections are observed to public IPs',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Traffic towards public IPs' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-1456' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 3 2019',
+            generatedTimestamp: '16:10:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Outbound traffic to non http/s ports (ftp,ssh,telnet)"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) number of connections are observed to non-standard ports',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-1456' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 3 2019',
+            generatedTimestamp: '16:10:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal traffic to public IP on SMB port"
+            },
+            description: 'This violation is triggered when abnormal (spike, rare domain, unusual time, low & slow, patterns) traffic towards SMB port observed',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'DESK-1456' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'Proxy Logs' },
+                { title: 'Indicators', value: 'Event, SrcIP, Hostname, DestinationIP, DestinationPort, byteSent, domain' }
+            ]
+        }
+    ]
+
+    AUSLAP4873_data = [
         {
             generatedDateFormat: '13 July 2019',
             generatedTimestamp: '10:45:00',
@@ -160,7 +557,7 @@ export class RiskyHostComponent implements OnInit {
         }
     ]
 
-    hardCodeItemForDemo = [
+    LONDESK588_data = [
         {
             generatedDateFormat: 'June 27 2019',
             generatedTimestamp: '03:22:00',
@@ -229,7 +626,7 @@ export class RiskyHostComponent implements OnInit {
         }
     ];
 
-    hardCodeItemForDomainEC2 = [
+    AWS_DomainEC2_Instance07_data = [
         {
             generatedDateFormat: 'Sep 17 2019',
             generatedTimestamp: '07:13:00',
@@ -304,7 +701,7 @@ export class RiskyHostComponent implements OnInit {
         }
     ];
 
-    hardCodeItemForAWSS3 = [
+    AWS_S3_Instance01_data = [
         {
             generatedDateFormat: 'Oct 1 2019',
             generatedTimestamp: '00:50:00',
@@ -403,50 +800,7 @@ export class RiskyHostComponent implements OnInit {
         }
     ];
 
-
-    threatCategories = [
-        {
-            title: 'Kill Chain',
-            value: 'Actions/Maintain'
-        },
-        {
-            title: 'Threat Category',
-            value: 'Access Authentication'
-        },
-        {
-            title: 'Sub Category',
-            value: 'Bruce Force Attack'
-        }
-    ]
-
-    dummyDatas = [
-        {
-            title: 'Affected Entity',
-            value: ''
-        },
-        {
-            title: 'Locations',
-            value: ''
-        },
-        {
-            title: 'Status',
-            value: ''
-        },
-        {
-            title: 'Resources',
-            value: ''
-        },
-        {
-            title: 'Indicators',
-            value: ''
-        },
-        /* {
-            title: 'Priority',
-            value: 'Be sure to add aria-expanded to the control element. This attribute explicitly conveys the current state of the collapsible'
-        } */
-    ];
-
-    chen_ZhangHardCodeItemDate = [
+    WK_1929304D_data = [
         {
             generatedDateFormat: '27 Sep 2019',
             generatedTimestamp: '10:13:00',
@@ -574,6 +928,92 @@ export class RiskyHostComponent implements OnInit {
         },
     ];
 
+    hardCodeItemData = [
+        {
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV 083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
+            }
+        },
+        {
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 061',
+            riskScore: 483,
+            ruleInfo: {
+                ruleId: 2,
+                title: 'Successful Logon from Rare Machine - Windows'
+            }
+        },
+        {
+            generatedTimestamp: '07:10:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 451,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Unusual Data Exfiltration By Service Account - Proxy'
+            }
+        },
+        {
+            generatedTimestamp: '09:22:00',
+            accord: false,
+            pv: 'PV 041',
+            riskScore: 398,
+            ruleInfo: {
+                ruleId: 4,
+                title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
+            }
+        },
+
+    ];
+
+    threatCategories = [
+        {
+            title: 'Kill Chain',
+            value: 'Actions/Maintain'
+        },
+        {
+            title: 'Threat Category',
+            value: 'Access Authentication'
+        },
+        {
+            title: 'Sub Category',
+            value: 'Bruce Force Attack'
+        }
+    ]
+
+    dummyDatas = [
+        {
+            title: 'Affected Entity',
+            value: ''
+        },
+        {
+            title: 'Locations',
+            value: ''
+        },
+        {
+            title: 'Status',
+            value: ''
+        },
+        {
+            title: 'Resources',
+            value: ''
+        },
+        {
+            title: 'Indicators',
+            value: ''
+        },
+        /* {
+            title: 'Priority',
+            value: 'Be sure to add aria-expanded to the control element. This attribute explicitly conveys the current state of the collapsible'
+        } */
+    ];
+
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router) {
     }
@@ -583,13 +1023,6 @@ export class RiskyHostComponent implements OnInit {
             if (hostData.value === this.selectedHost)
                 this.hostDetails = hostData;
         });
-
-        /* this.hostAddressData.forEach(hostData => {
-            if (hostData.value === 'WK-1929304D')
-                this.hostDetails = this.chen_ZhangHardCodeItemDate;
-            else if (hostData.value === this.selectedHost)
-                this.hostDetails = hostData;
-        }); */
     }
 
     initializeLineChart() {
@@ -664,11 +1097,10 @@ export class RiskyHostComponent implements OnInit {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedHost = params.get('selectedHost');
-            /* if (this.selectedHost == 'WK-1929304D')
-                this.hardCodeItemData = this.chen_ZhangHardCodeItemDate; */
         });
 
         this.getDataByHost();
+        this.provideData();
     }
 
     getRiskScoreColor(riskScore: number) {

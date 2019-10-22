@@ -889,11 +889,11 @@ export class IncidentSummaryComponent implements OnInit {
     lastBoxStyles(index: number, last: boolean, incId: string) {
         const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
         if (last && !incidentValues.includes(incId))
-            return { 'color': 'white', 'background': 'red' };
+            return { 'color': 'white', 'background': 'red', 'word-break': 'break-all' };
         else if (index == 1 && incidentValues.includes(incId))
-            return { 'color': 'white', 'background': 'red' };
+            return { 'color': 'white', 'background': 'red', 'word-break': 'break-all' };
         else
-            return { 'color': 'black', 'background': '#099BB5' }
+            return { 'color': 'black', 'background': '#099BB5', 'word-break': 'break-all' }
     }
 
     policyComments: Comment[] = [

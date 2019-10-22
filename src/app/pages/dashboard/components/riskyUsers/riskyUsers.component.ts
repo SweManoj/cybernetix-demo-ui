@@ -1432,7 +1432,7 @@ export class RiskyUsersComponent {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Reconnaissance' },
                 { title: 'Sub Category', value: 'Reconnaissance' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '65' },
@@ -1455,7 +1455,7 @@ export class RiskyUsersComponent {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Potential Firewall Compromise' },
                 { title: 'Sub Category', value: 'Potential Firewall Compromise' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '81' },
@@ -1478,7 +1478,7 @@ export class RiskyUsersComponent {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Initial Access' },
                 { title: 'Sub Category', value: 'Compromise' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '93' },

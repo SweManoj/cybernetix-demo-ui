@@ -50,11 +50,15 @@ export class CaseManagementComponent implements OnInit {
     { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', riskScore: 95, incident: 'YES', entity: '4', type: 'Auto' },
     { detectedOn: '13/10/2019', threatVectorID: 'TVDE43', priority: 'Critical', riskScore: 93, incident: 'YES', entity: '5', type: 'Auto' },
     { detectedOn: '27/06/2019', threatVectorID: 'TVDE21', priority: 'Critical', riskScore: 89, incident: 'YES', entity: '4', type: 'Auto' },
-    { detectedOn: '04/10/2019', threatVectorID: 'TVRC4', priority: 'Critical',   riskScore: 98, incident: 'YES',  entity: '4', type: 'Auto' }
+    // { detectedOn: '04/10/2019', threatVectorID: 'TVRC4', priority: 'Critical', riskScore: 98, incident: 'YES', entity: '4', type: 'Auto' }
   ];
 
-  threatVectorDataC2: Array<any> = [
-    { detectedOn: '13/06/2019', threatVectorID: 'TVDE92', priority: 'Critical', riskScore: 97, incident: 'YES', entity: '4', type: 'Auto' },
+  threatVetorAccCompromiseData: Array<any> = [
+    { detectedOn: '13/06/2019', threatVectorID: 'TVDE92', priority: 'Critical', riskScore: 97, incident: 'YES', entity: '1', type: 'Auto' },
+  ];
+
+  threatVetorReconData: Array<any> = [
+    { detectedOn: '04/10/2019', threatVectorID: 'TVRC4', priority: 'Critical', riskScore: 98, incident: 'YES', entity: '4', type: 'Auto' },
   ];
 
   getRiskScoreColor(riskScore: number) {
@@ -257,9 +261,10 @@ export class CaseManagementComponent implements OnInit {
     if (this.router.url.includes('threatVectorManagement')) {
       this.route.paramMap.subscribe((params) => {
         this.threatVectorTitle = params.get('threatVector');
-        if (this.threatVectorTitle == 'Account Compromise') {
-          this.commonThreatVectorData = this.threatVectorDataC2;
-        }
+        if (this.threatVectorTitle == 'Account Compromise')
+          this.commonThreatVectorData = this.threatVetorAccCompromiseData;
+        else if (this.threatVectorTitle == 'Reconnaissance')
+          this.commonThreatVectorData = this.threatVetorReconData;
       });
     }
 

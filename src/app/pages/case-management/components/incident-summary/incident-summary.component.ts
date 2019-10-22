@@ -808,7 +808,7 @@ export class IncidentSummaryComponent implements OnInit {
         }
     ];
 
-    lastBoxStyles(first: boolean, last: boolean, incId: any) {
+    lastBoxStyles(first: boolean, last: boolean, incId: string) {
         const incidentValues: Array<String> = ['TVDE92', 'INC 92'];
         if (last && !incidentValues.includes(incId))
             return { 'color': 'white', 'background': 'red' };

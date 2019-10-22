@@ -195,7 +195,7 @@ export class RiskyUsersComponent {
         }
     ];
 
-    dummyDatas = [
+    additionalInfo = [
         {
             title: 'Affected Entity',
             value: ''
@@ -542,7 +542,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
             { title: 'Threat Category', value: 'Network Traversing' },
             { title: 'Sub Category', value: 'Network Traversing' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Adm-ADittmer' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Adm-ADittmer' },
             { title: 'Locations', value: 'San Diego' },
             { title: 'Risk', value: '90' },
             { title: 'Resources', value: 'NetApp' },
@@ -563,7 +563,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: 'Account Compromise' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Successful Logon' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'SSmith' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'SSmith' },
             { title: 'Locations', value: 'San Diego' },
             { title: 'Risk', value: '85' },
             { title: 'Resources', value: 'NetApp' },
@@ -584,7 +584,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: 'Account Compromise' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Failed Attempts' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'SSmith1' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'SSmith1' },
             { title: 'Locations', value: 'San Diego' },
             { title: 'Risk', value: '74' },
             { title: 'Resources', value: 'Windows' },
@@ -605,7 +605,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: 'Insider Threat' },
             { title: 'Threat Category', value: 'Suspicious/Malicious Behavior' },
             { title: 'Sub Category', value: 'Suspicious/Malicious Behavior' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'SSmith1' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'SSmith1' },
             { title: 'Locations', value: 'San Diego' },
             { title: 'Risk', value: '53' },
             { title: 'Resources', value: 'Badge' },
@@ -629,7 +629,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '' },
             { title: 'Threat Category', value: 'Data Exfiltration' },
             { title: 'Sub Category', value: 'Email' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Heidy' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Heidy' },
             { title: 'Locations', value: 'Los Angeles' },
             { title: 'Risk', value: '88' },
             { title: 'Resources', value: 'O365' },
@@ -650,7 +650,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '' },
             { title: 'Threat Category', value: 'Data Exfiltration' },
             { title: 'Sub Category', value: 'Data Export' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Heidy' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Heidy' },
             { title: 'Locations', value: 'Los Angeles' },
             { title: 'Risk', value: '65' },
             { title: 'Resources', value: 'GCP' },
@@ -674,7 +674,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Privileged misuse' },
             { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
             { title: 'Risk', value: '87' },
             { title: 'Resources', value: 'Windows' },
@@ -695,7 +695,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Data Exfiltration' },
             { title: 'Sub Category', value: 'Data Export' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
             { title: 'Risk', value: '81' },
             { title: 'Resources', value: 'Salesforce' },
@@ -716,7 +716,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Privileged misuse' },
             { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'San Diego' },
             { title: 'Risk', value: '72/87' },
             { title: 'Resources', value: 'Windows' },
@@ -740,7 +740,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Suspicious Behavior' },
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Mendelson' },
             { title: 'Locations', value: 'Florida' },
             { title: 'Risk', value: '82' },
             { title: 'Resources', value: 'IIS' },
@@ -761,7 +761,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Potential Account Compromise' },
             { title: 'Sub Category', value: 'Potential Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Mendelson' },
             { title: 'Locations', value: 'Florida' },
             { title: 'Risk', value: '76' },
             { title: 'Resources', value: 'VPN' },
@@ -782,7 +782,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Potential Account Compromise' },
             { title: 'Sub Category', value: 'Potential Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Mendelson' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Mendelson' },
             { title: 'Locations', value: 'Florida' },
             { title: 'Risk', value: '67' },
             { title: 'Resources', value: 'VPN' },
@@ -807,7 +807,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Suspicious Behavior' },
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Risk', value: '87' },
             { title: 'Resources', value: 'Proxy' },
@@ -828,7 +828,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Suspicious Behavior' },
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Risk', value: '83' },
             { title: 'Resources', value: 'SCCM' },
@@ -849,7 +849,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Suspicious Behavior' },
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Risk', value: '70' },
             { title: 'Resources', value: 'SCCM' },
@@ -870,7 +870,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Insider Threat' },
             { title: 'Sub Category', value: 'Insider Threat' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'JohnS' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'JohnS' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Risk', value: '67' },
             { title: 'Resources', value: 'IIS' },
@@ -896,7 +896,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Insider Threat' },
             { title: 'Sub Category', value: 'Insider Threat' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Risk', value: '70' },
             { title: 'Resources', value: 'IIS' },
@@ -921,7 +921,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Insider Threat' },
             { title: 'Sub Category', value: 'Insider Threat' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Maile' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Maile' },
             { title: 'Locations', value: 'Seattle' },
             { title: 'Risk', value: '67' },
             { title: 'Resources', value: 'IIS' },
@@ -945,7 +945,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Data Exfiltration' },
             { title: 'Sub Category', value: 'Data Exfiltration' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
             { title: 'Risk', value: '97' },
             { title: 'Resources', value: 'DLP' },
@@ -966,7 +966,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Abnormal Pattern' },
             { title: 'Sub Category', value: 'Abnormal Pattern' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
             { title: 'Risk', value: '91' },
             { title: 'Resources', value: 'Fileshare' },
@@ -987,7 +987,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
             { title: 'Risk', value: '87' },
             { title: 'Resources', value: 'Windows' },
@@ -1010,7 +1010,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Suspicious Behavior' },
                 { title: 'Sub Category', value: 'Suspicious Behavior' }
             ],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin' },
             { title: 'Risk', value: '84' },
             { title: 'Resources', value: 'Proxy' },
@@ -1031,7 +1031,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
             { title: 'Risk', value: '75' },
             { title: 'Resources', value: 'VPN' },
@@ -1058,7 +1058,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Account Compromise' },
             { title: 'Sub Category', value: 'Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Ukraine' },
             { title: 'Risk', value: '75' },
             { title: 'Resources', value: 'VPN' },
@@ -1080,7 +1080,7 @@ export class RiskyUsersComponent {
                 [{ title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Credentials Compromise' },
                 { title: 'Sub Category', value: 'Credentials Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
             { title: 'Locations', value: 'Berlin, Ukraine' },
             { title: 'Risk', value: '74' },
             { title: 'Resources', value: 'Physical, VPN' },
@@ -1102,14 +1102,16 @@ export class RiskyUsersComponent {
             },
             incId: 'INC-15',
             description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-            threatCategories: [{ title: 'Kill Chain', value: '-' },
-            { title: 'Threat Category', value: 'Account Compromise' },
-            { title: 'Sub Category', value: 'Account Compromise' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'AWendler' },
-            { title: 'Locations', value: 'Ukraine' },
-            { title: 'Risk', value: '57' },
-            { title: 'Resources', value: 'VPN' },
-            { title: 'Indicators', value: 'Location' }]
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Threat Category', value: 'Account Compromise' },
+                { title: 'Sub Category', value: 'Account Compromise' }],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWendler' },
+                { title: 'Locations', value: 'Ukraine' },
+                { title: 'Risk', value: '57' },
+                { title: 'Resources', value: 'VPN' },
+                { title: 'Indicators', value: 'Location' }]
         }
     ];
 
@@ -1132,11 +1134,12 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', 'value': 'Malicious Behavior' },
                 { title: 'SubCategory', 'value': 'Malicious Behavior' }
             ],
-            AffectedEntity: 'AWendler',
-            Locations: 'Ukraine',
-            Risk: 42,
-            Resources: 'Proxy',
-            Indicators: 'Category'
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWendler' },
+                { title: 'Locations', value: 'Ukraine' },
+                { title: 'Risk', value: '42' },
+                { title: 'Resources', value: 'Proxy' },
+                { title: 'Indicators', value: 'Category' }]
         }
     ];
 
@@ -1155,7 +1158,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Suspicious Behavior' },
             { title: 'Sub Category', value: 'Suspicious Behavior' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Alysa' },
             { title: 'Locations', value: 'Berlin' },
             { title: 'Status', value: 'Risk 51' },
             { title: 'Resources', value: 'IIS' },
@@ -1176,7 +1179,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Data Exfiltration' },
             { title: 'Sub Category', value: 'Documents Print' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Alysa' },
             { title: 'Locations', value: 'Berlin' },
             { title: 'Risk', value: '71' },
             { title: 'Resources', value: 'DLP' },
@@ -1197,7 +1200,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Insider Threat' },
             { title: 'Sub Category', value: 'Insider Threat' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Alysa' },
             { title: 'Locations', value: 'Berlin' },
             { title: 'Risk', value: '78' },
             { title: 'Resources', value: 'Email' },
@@ -1218,7 +1221,7 @@ export class RiskyUsersComponent {
             threatCategories: [{ title: 'Kill Chain', value: '-' },
             { title: 'Threat Category', value: 'Insider Threat' },
             { title: 'Sub Category', value: 'Insider Threat' }],
-            dummyDatas: [{ title: 'Affected Entity', value: 'Alysa' },
+            additionalInfo: [{ title: 'Affected Entity', value: 'Alysa' },
             { title: 'Locations', value: 'Berlin' },
             { title: 'Risk', value: '82' },
             { title: 'Resources', value: 'Proxy' },
@@ -1245,30 +1248,6 @@ export class RiskyUsersComponent {
 
     AWS_S3_Instance01_data = [
         {
-            generatedDateFormat: 'Oct 4 2019',
-            generatedTimestamp: '03:50:00',
-            accord: false,
-            pv: 'TI 083',
-            riskScore: 188,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Excessive Bytes Exfiltrated via HTTPS from a cloud instance"
-            },
-            description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Data Exfiltration' },
-                { title: 'Sub Category', value: 'Data Exfiltration' },
-                { title: 'Threat Category', value: 'Data Exfiltration' }
-            ],
-            additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-S3-Instance01, 11.3.4.6, 11.3.4.5, 11.3.4.8, 11.3.4.9' },
-                { title: 'Location', value: 'San Diego' },
-                { title: 'Risk', value: '95' },
-                { title: 'Resource', value: 'AWS Logs' },
-                { title: 'Indicators', value: 'Event, CommandExecuted' }
-            ]
-        },
-        {
             generatedDateFormat: 'Oct 2 2019',
             generatedTimestamp: '03:50:00',
             accord: false,
@@ -1285,7 +1264,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Data exfiltration' }
             ],
             additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01, AWS-DomainEC2-Instance07, 18.10.9.1' },
                 { title: 'Location', value: 'San Diego' },
                 { title: 'Risk', value: '92' },
                 { title: 'Resource', value: 'AWS Logs' },
@@ -1309,33 +1288,9 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Privilege Misuse' }
             ],
             additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01, AWS-DomainEC2-Instance07, 18.10.9.1' },
                 { title: 'Location', value: 'San Diego' },
                 { title: 'Risk', value: '90' },
-                { title: 'Resource', value: 'AWS Logs' },
-                { title: 'Indicators', value: 'Event, CommandExecuted' }
-            ]
-        },
-        {
-            generatedDateFormat: 'Oct 4 2019',
-            generatedTimestamp: '03:50:00',
-            accord: false,
-            pv: 'TI 083',
-            riskScore: 188,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Excessive Bytes Exfiltrated via HTTPS from a cloud instance"
-            },
-            description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Data Exfiltration' },
-                { title: 'Sub Category', value: 'Data Exfiltration' },
-                { title: 'Threat Category', value: 'Data Exfiltration' }
-            ],
-            additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-S3-Instance01, 11.3.4.6, 11.3.4.5, 11.3.4.8, 11.3.4.9' },
-                { title: 'Location', value: 'San Diego' },
-                { title: 'Risk', value: '95' },
                 { title: 'Resource', value: 'AWS Logs' },
                 { title: 'Indicators', value: 'Event, CommandExecuted' }
             ]
@@ -1357,7 +1312,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: '-' }
             ],
             additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01, AWS-DomainEC2-Instance07, 18.10.9.1' },
                 { title: 'Location', value: 'San Diego' },
                 { title: 'Risk', value: '85' },
                 { title: 'Resource', value: 'AWS Access Logs' },

@@ -14,8 +14,13 @@ ngb-modal-window.modal.fade.show.d-block {
   margin-top: 3.8rem;
 }
 
-.greyText{
-  color:#c1b7b7;
+.additionalValue {
+  word-break: break-all;
+  // padding-right: inherit;
+}
+
+.greyText {
+  color: #c1b7b7;
 }
 
 .dhcp {

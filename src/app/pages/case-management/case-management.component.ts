@@ -51,15 +51,20 @@ export class CaseManagementComponent implements OnInit {
     { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', riskScore: 95, incident: 'YES', entity: '4', type: 'Auto' },
     { detectedOn: '13/10/2019', threatVectorID: 'TVDE43', priority: 'Critical', riskScore: 93, incident: 'YES', entity: '5', type: 'Auto' },
     { detectedOn: '27/06/2019', threatVectorID: 'TVDE21', priority: 'Critical', riskScore: 89, incident: 'YES', entity: '4', type: 'Auto' },
-    // { detectedOn: '04/10/2019', threatVectorID: 'TVRC4', priority: 'Critical', riskScore: 98, incident: 'YES', entity: '4', type: 'Auto' }
+    { detectedOn: '27/09/2019', threatVectorID: 'TVDE56', priority: 'Medium', riskScore: 73, incident: 'YES', entity: '2', type: 'Manual' },
+    { detectedOn: '14/07/2019', threatVectorID: 'TVDE09', priority: 'Low', riskScore: 56, incident: 'NO', entity: '1', type: 'Manual' }
   ];
 
   threatVetorAccCompromiseData: Array<any> = [
     { detectedOn: '13/06/2019', threatVectorID: 'TVAC92', priority: 'Critical', riskScore: 97, incident: 'YES', entity: '1', type: 'Auto' },
+    { detectedOn: '13/09/2019', threatVectorID: 'TVAC48', priority: 'High', riskScore: 81, incident: 'YES', entity: '1', type: 'Manual' },
+    { detectedOn: '19/05/2019', threatVectorID: 'TVAC07', priority: 'Low', riskScore: 36, incident: 'NO', entity: '1', type: 'Auto' },
   ];
 
   threatVetorReconData: Array<any> = [
     { detectedOn: '04/10/2019', threatVectorID: 'TVRC4', priority: 'Critical', riskScore: 98, incident: 'YES', entity: '4', type: 'Auto' },
+    { detectedOn: '19/09/2019', threatVectorID: 'TVRC92', priority: 'High', riskScore: 81, incident: 'YES', entity: '3', type: 'Manual' },
+    { detectedOn: '04/08/2019', threatVectorID: 'TVRC53', priority: 'Medium', riskScore: 67, incident: 'NO', entity: '2', type: '-' },
   ];
 
   getRiskScoreColor(riskScore: number) {

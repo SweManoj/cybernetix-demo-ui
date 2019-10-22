@@ -1,11 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {RiskyUserService} from '../dashboard/components/riskyUsers/riskyUser.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {CaseModalComponent} from './components/case-modal/case-modal.component';
-import {CaseManagementService} from './case-management.service';
-import {Table} from 'primeng/table';
-import {ActivatedRoute, Router} from '@angular/router';
-import {environment} from '../../../environments/environment';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { RiskyUserService } from '../dashboard/components/riskyUsers/riskyUser.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CaseModalComponent } from './components/case-modal/case-modal.component';
+import { CaseManagementService } from './case-management.service';
+import { Table } from 'primeng/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-case-management',
@@ -25,16 +25,16 @@ export class CaseManagementComponent implements OnInit {
     private offset: number = 0;
     fetchingPolicyViolationsInProgress = true;
 
-    shows = [{name: 'Last 1 Day', value: '1day'}, {name: 'Last 2 Day', value: '2day'}, {
+    shows = [{ name: 'Last 1 Day', value: '1day' }, { name: 'Last 2 Day', value: '2day' }, {
         name: 'Last 7 Day',
         value: '7day'
-    }, {name: 'Last 1 month', value: 'month'}];
-    assignee = [{name: 'Admin', value: 'admin'}, {name: 'User', value: 'user'}, {name: 'Not Assign', value: 'NA'}];
-    status = [{name: 'Task Requested', value: 'Task Requested'}, {name: 'Completed', value: 'Completed'}, {
+    }, { name: 'Last 1 month', value: 'month' }];
+    assignee = [{ name: 'Admin', value: 'admin' }, { name: 'User', value: 'user' }, { name: 'Not Assign', value: 'NA' }];
+    status = [{ name: 'Task Requested', value: 'Task Requested' }, { name: 'Completed', value: 'Completed' }, {
         name: 'Pending',
         value: 'Pending'
     }];
-    priority = [{name: 'Critical', value: 'Critical'}, {name: 'Medium', value: 'Medium'}, {name: 'High', value: 'High'}, {
+    priority = [{ name: 'Critical', value: 'Critical' }, { name: 'Medium', value: 'Medium' }, { name: 'High', value: 'High' }, {
         name: 'Low',
         value: 'Low'
     }];
@@ -54,7 +54,7 @@ export class CaseManagementComponent implements OnInit {
     path: any;
 
     constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal,
-                private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
+        private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
         this.offset = 0;
         this.recordsReturned = 0;
         this.myDays.push(this.todayDate);
@@ -84,7 +84,7 @@ export class CaseManagementComponent implements OnInit {
 
     covertDateToUTCFormat(inputDate) {
         const date = new Date(inputDate);
-        const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+        const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
         return _utc;
     }
 
@@ -96,7 +96,7 @@ export class CaseManagementComponent implements OnInit {
         this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
             this.policyViolations = res;
             this.policyViolations.forEach((policy: any) => {
-               policy.eventDateTimeFormatted = this.covertDateToUTCFormat(policy.eventDateTime);
+                policy.eventDateTimeFormatted = this.covertDateToUTCFormat(policy.eventDateTime);
                 policy.generationTimeFormatted = this.covertDateToUTCFormat(policy.generationTime);
             });
             this.fetchingPolicyViolationsInProgress = false;
@@ -167,10 +167,10 @@ export class CaseManagementComponent implements OnInit {
 
             this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(),
                 endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
-                this.policyViolations = res;
-                this.fetchingPolicyViolationsInProgress = false;
-                this.getStageValues();
-            });
+                    this.policyViolations = res;
+                    this.fetchingPolicyViolationsInProgress = false;
+                    this.getStageValues();
+                });
         }
     }
 
@@ -188,26 +188,26 @@ export class CaseManagementComponent implements OnInit {
         event ? this.policy.filter('High', 'priority', 'contains') : this.policy.filter('', 'priority', 'contains');
     }
 
-    fetchEnrichIndexKibanaURL(event: any, entityId, violationEventDateTime, ruleId, entityType) {
+    fetchEnrichIndexKibanaURL(violationId) {
         event.stopPropagation();
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId , encodeURIComponent(violationEventDateTime), ruleId, entityType)
+        this.riskyUserService.rawEventCount(violationId)
             .subscribe((res: any) => {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
 
-    redirectToEntityDetailPage(violationType,entityId) {
-       switch(violationType) {
-        case 'USER':  this.router.navigateByUrl('/riskyUser/' + entityId);
-                     break; 
-        case 'IP':  this.router.navigateByUrl('/riskyIP/' + entityId);
-                     break; 
-        case 'HOST':  this.router.navigateByUrl('/riskyHost/' + entityId);
-                     break; 
-       }
+    redirectToEntityDetailPage(violationType, entityId) {
+        switch (violationType) {
+            case 'USER': this.router.navigateByUrl('/riskyUser/' + entityId);
+                break;
+            case 'IP': this.router.navigateByUrl('/riskyIP/' + entityId);
+                break;
+            case 'HOST': this.router.navigateByUrl('/riskyHost/' + entityId);
+                break;
+        }
     }
 
-    redirectToSummaryPage (violationId, eventDateTime, dataAggregated) {
+    redirectToSummaryPage(violationId, eventDateTime, dataAggregated) {
         this.router.navigate(['policyViolationSummary', violationId, eventDateTime, dataAggregated])
     }
 

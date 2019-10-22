@@ -1248,6 +1248,30 @@ export class RiskyUsersComponent {
 
     AWS_S3_Instance01_data = [
         {
+            generatedDateFormat: 'Oct 4 2019',
+            generatedTimestamp: '03:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 188,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Excessive Bytes Exfiltrated via HTTPS from a cloud instance"
+            },
+            description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01, 11.3.4.6, 11.3.4.5, 11.3.4.8, 11.3.4.9' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '95' },
+                { title: 'Resource', value: 'AWS Logs' },
+                { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        },
+        {
             generatedDateFormat: 'Oct 2 2019',
             generatedTimestamp: '03:50:00',
             accord: false,

@@ -888,9 +888,13 @@ export class IncidentSummaryComponent implements OnInit {
 
     lastBoxStyles(index: number, last: boolean, incId: string) {
         const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
-        if (last && !incidentValues.includes(incId))
+        const firstBlockRed: Array<String> = ['TVRC4'];
+
+        if (firstBlockRed.includes(incId) && index == 0)
             return { 'color': 'white', 'background': 'red' };
-        else if (index == 1 && incidentValues.includes(incId))
+        else if (last && !incidentValues.includes(incId) && !firstBlockRed.includes(incId))
+            return { 'color': 'white', 'background': 'red' };
+        else if (index == 1 && incidentValues.includes(incId) && !firstBlockRed.includes(incId))
             return { 'color': 'white', 'background': 'red' };
         else
             return { 'color': 'black', 'background': '#099BB5' }

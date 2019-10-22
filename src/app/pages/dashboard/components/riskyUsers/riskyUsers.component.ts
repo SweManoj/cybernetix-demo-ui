@@ -1245,30 +1245,6 @@ export class RiskyUsersComponent {
 
     AWS_S3_Instance01_data = [
         {
-            generatedDateFormat: 'Oct 1 2019',
-            generatedTimestamp: '00:50:00',
-            accord: false,
-            pv: 'TI 083',
-            riskScore: 40,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Suspicious activity towards critical cloud data storage"
-            },
-            description: 'This violation is flagged when abnormal access of critical S3 bucket is observed in cloud logs. Rare IP, Spike in number of activities, Un-unusual business time contribute to this Anomaly',
-            threatCategories: [
-                { title: 'Kill Chain', value: '-' },
-                { title: 'Sub Category', value: 'Suspicious Database Access' },
-                { title: 'Threat Category', value: '-' }
-            ],
-            additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
-                { title: 'Location', value: 'San Diego' },
-                { title: 'Risk', value: '85' },
-                { title: 'Resource', value: 'AWS Access Logs' },
-                { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, Count of Activities, CloudServer' }
-            ]
-        },
-        {
             generatedDateFormat: 'Oct 2 2019',
             generatedTimestamp: '03:50:00',
             accord: false,
@@ -1338,6 +1314,30 @@ export class RiskyUsersComponent {
                 { title: 'Risk', value: '95' },
                 { title: 'Resource', value: 'AWS Logs' },
                 { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 1 2019',
+            generatedTimestamp: '00:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 40,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Suspicious activity towards critical cloud data storage"
+            },
+            description: 'This violation is flagged when abnormal access of critical S3 bucket is observed in cloud logs. Rare IP, Spike in number of activities, Un-unusual business time contribute to this Anomaly',
+            threatCategories: [
+                { title: 'Kill Chain', value: '-' },
+                { title: 'Sub Category', value: 'Suspicious Database Access' },
+                { title: 'Threat Category', value: '-' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resource', value: 'AWS Access Logs' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, Count of Activities, CloudServer' }
             ]
         }
     ];

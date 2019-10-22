@@ -1665,6 +1665,8 @@ export class RiskyUsersComponent {
         }
     ];
 
+    incidentAwender = false;
+
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedUser = params.get('selectedUser');
@@ -1782,8 +1784,11 @@ export class RiskyUsersComponent {
                     this.incidentViolations = this.chen_ZhangHardCodeItemDate;
                 else if (incident == 'INC 71' || incident == 'TVDE21')
                     this.incidentViolations = this.ipHardCodeItemData;
-                else if (incident == 'INC 92' || incident == 'TVAC92')
+                else if (incident == 'INC 92' || incident == 'TVAC92'){
+                    this.incidentAwender = true;
                     this.incidentViolations = this.hardCodeItemDataForDemo1;
+                }
+                
 
                 this.incidentDetails.forEach(incidentDetail => {
                     if (incidentDetail.incident == incident) {

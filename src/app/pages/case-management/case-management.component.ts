@@ -54,7 +54,7 @@ export class CaseManagementComponent implements OnInit {
   ];
 
   threatVectorDataC2: Array<any> = [
-    { detectedOn: '13/06/2019', threatVectorID: 'TVAC92', priority: 'Critical', riskScore: 97, incident: 'YES', entity: '4', type: 'Auto' },
+    { detectedOn: '13/06/2019', threatVectorID: 'TVDE92', priority: 'Critical', riskScore: 97, incident: 'YES', entity: '4', type: 'Auto' },
   ];
 
   getRiskScoreColor(riskScore: number) {

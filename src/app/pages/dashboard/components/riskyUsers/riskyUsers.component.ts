@@ -1372,6 +1372,38 @@ export class RiskyUsersComponent {
                 { image: 'violations@1x.png', value: '05', title: 'Insights' },
                 { image: 'incident@1x.png', value: '0', title: 'Remediations' },
             ]
+        },
+        {
+            incident: 'TVDE92',
+            affectedEntity: 'AWendler',
+            lastUpdatedOn: '13 June 2019 06:22',
+            lastUpdatedBy: 'Martin J',
+            currentStauts: 'Closed',
+            outcome: 'True Positive',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '351', title: 'Events' },
+                { image: 'resources@1x.png', value: '06', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '02', title: 'Locations' },
+                { image: 'violations@1x.png', value: '09', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
+        },
+        {
+            incident: 'INC 89',
+            affectedEntity: 'AWendler',
+            lastUpdatedOn: '13 June 2019 06:22',
+            lastUpdatedBy: 'Martin J',
+            currentStauts: 'Closed',
+            outcome: 'True Positive',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '351', title: 'Events' },
+                { image: 'resources@1x.png', value: '06', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '02', title: 'Locations' },
+                { image: 'violations@1x.png', value: '09', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
         }
     ];
 
@@ -1750,6 +1782,8 @@ export class RiskyUsersComponent {
                     this.incidentViolations = this.chen_ZhangHardCodeItemDate;
                 else if (incident == 'INC 71' || incident == 'TVDE21')
                     this.incidentViolations = this.ipHardCodeItemData;
+                else if (incident == 'INC 92' || incident == 'TVDE92')
+                    this.incidentViolations = this.hardCodeItemDataForDemo1;
 
                 this.incidentDetails.forEach(incidentDetail => {
                     if (incidentDetail.incident == incident) {

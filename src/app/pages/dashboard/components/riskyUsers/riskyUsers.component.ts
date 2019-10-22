@@ -346,7 +346,7 @@ export class RiskyUsersComponent {
         },
     ];
 
-    glenRobertoHardCodeItemDate = [
+    glenRobertoHardCodeItemData = [
         {
             generatedDateFormat: '29 Sep 2019',
             generatedTimestamp: '12:05:00',
@@ -1740,7 +1740,7 @@ export class RiskyUsersComponent {
                     this.incidentAwender = true;
                     this.incidentViolations = this.hardCodeItemDataForDemo1;
                 } else if (incident == 'INC 4' || incident == 'TVRC4')
-                    this.incidentViolations = this.chen_ZhangHardCodeItemDate;
+                    this.incidentViolations = this.glenRobertoHardCodeItemData;
 
                 this.incidentDetails.forEach(incidentDetail => {
                     if (incidentDetail.incident == incident) {

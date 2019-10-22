@@ -31,6 +31,15 @@ export class RiskyIPComponent implements OnInit {
         { value: '10.82.34.101', score: 93, location: '-', lastSeen: '-', peer: '-', lastSeenUser: '-' }
     ];
 
+    provideDataForIP() {
+        if (this.selectedIP === '10.82.34.101')
+            this.hardCodeItemData = this.ip_10_82_34_101_data;
+        else if (this.selectedIP === '172.168.200.55')
+            this.hardCodeItemData = this.ip_172_168_200_55_data;
+        else if (this.selectedIP === '18.10.8.1')
+            this.hardCodeItemData = this.ip_18_10_8_1_data;
+    }
+
     hardCodeItemData = [
         {
             generatedDateFormat: '10 May 2019',
@@ -41,7 +50,18 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 1,
                 title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
-            }
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Access Authentication' },
+                { title: 'Sub Category', value: 'Bruce Force Attack' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '-' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '-' },
+                { title: 'Resources', value: '-' },
+                { title: 'Indicators', value: '-' }],
+            description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -52,7 +72,18 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 2,
                 title: 'Successful Logon from Rare Machine - Windows'
-            }
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Access Authentication' },
+                { title: 'Sub Category', value: 'Bruce Force Attack' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '-' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '-' },
+                { title: 'Resources', value: '-' },
+                { title: 'Indicators', value: '-' }],
+            description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -63,7 +94,18 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 3,
                 title: 'Unusual Data Exfiltration By Service Account - Proxy'
-            }
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Access Authentication' },
+                { title: 'Sub Category', value: 'Bruce Force Attack' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '-' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '-' },
+                { title: 'Resources', value: '-' },
+                { title: 'Indicators', value: '-' }],
+            description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -74,7 +116,18 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 4,
                 title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
-            }
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Access Authentication' },
+                { title: 'Sub Category', value: 'Bruce Force Attack' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '-' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '-' },
+                { title: 'Resources', value: '-' },
+                { title: 'Indicators', value: '-' }],
+            description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -85,7 +138,18 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 5,
                 title: 'Abnormal Process Executed - Windows'
-            }
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Access Authentication' },
+                { title: 'Sub Category', value: 'Bruce Force Attack' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '-' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '-' },
+                { title: 'Resources', value: '-' },
+                { title: 'Indicators', value: '-' }],
+            description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
         },
         {
             generatedDateFormat: '10 May 2019',
@@ -96,115 +160,22 @@ export class RiskyIPComponent implements OnInit {
             ruleInfo: {
                 ruleId: 6,
                 title: 'Multiple Users Logged-In Successfully From Same IP'
-            }
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Actions/Maintain' },
+                { title: 'Threat Category', value: 'Access Authentication' },
+                { title: 'Sub Category', value: 'Bruce Force Attack' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '-' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '-' },
+                { title: 'Resources', value: '-' },
+                { title: 'Indicators', value: '-' }],
+            description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
         }
     ];
 
-    hardCodeItemForDemo = [
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '12:45:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 4,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Outbound P2P File Sharing Traffic to Rare Host'
-            },
-            threatCategories: [{ title: 'Kill Chain', value: 'C2' },
-            { title: 'Threat Category', value: 'Malicious Behavior' },
-            { title: 'Sub Category', value: 'P2P Traffic' }],
-            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.227' },
-            { title: 'Locations', value: 'Indonesia' },
-            { title: 'Risk', value: '95' },
-            { title: 'Resources', value: 'Proxy' },
-            { title: 'Indicators', value: 'DstIP, URL, Category, BytesOut' }],
-            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '06:43:00',
-            accord: false,
-            pv: 'INFO',
-            riskScore: 2,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'DHCP RENEWAL'
-            },
-            threatCategories: [{ title: 'Kill Chain', value: '' },
-            { title: 'Threat Category', value: '' },
-            { title: 'Sub Category', value: '' }],
-            dummyDatas: [{ title: 'New Hostname', value: 'WK-UKL48503D' },
-            { title: 'New IP', value: '10.82.32.227' },
-            /* { title: 'Locations', value: '' },
-            { title: 'Status', value: '' },
-            { title: 'Resources', value: 'DHCP' },
-            { title: 'Indicators', value: 'AgentIP, AgentMAC, AgentHostname' } */],
-            description: 'This event correlates Dynamic IP with Hostnames / MAC'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 067',
-            riskScore: 13,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Inbound Traffic on SMB Port from Suspicious Location'
-            },
-            threatCategories: [{ title: 'Kill Chain', value: 'Reconnaissance' },
-            { title: 'Threat Category', value: 'Malicious Behavior' },
-            { title: 'Sub Category', value: 'Inbound SMB' }],
-            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
-            { title: 'Locations', value: 'Indonesia' },
-            { title: 'Risk', value: '74' },
-            { title: 'Resources', value: 'Netflow' },
-            { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
-            description: 'This Violation is triggered when there is Inbound SMB traffic from Rare Location'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '03:22:00',
-            accord: false,
-            pv: 'TI 083',
-            riskScore: 6,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Inbound Telnet Traffic From Blacklisted IP's"
-            },
-            threatCategories: [{ title: 'Kill Chain', value: 'Reconnaissance' },
-            { title: 'Threat Category', value: 'Malicious Behavior' },
-            { title: 'Sub Category', value: 'Inbound Telnet' }],
-            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
-            { title: 'Locations', value: 'Indonesia' },
-            { title: 'Risk', value: '63' },
-            { title: 'Resources', value: 'Netflow' },
-            { title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence' }],
-            description: 'This Violation is triggered when there is Inbound Telnet traffic from Blacklisted IP'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '01:17:00',
-            accord: false,
-            pv: 'PV 022',
-            riskScore: 34,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Port Scanning from External IP"
-            },
-            threatCategories: [{ title: 'Kill Chain', value: 'Reconnaissance' },
-            { title: 'Threat Category', value: 'Port Scanning' },
-            { title: 'Sub Category', value: 'Inbound Attack' }],
-            dummyDatas: [{ title: 'Affected Entity', value: '10.82.32.212' },
-            { title: 'Locations', value: 'Indonesia' },
-            { title: 'Risk', value: '54' },
-            { title: 'Resources', value: 'Netflow' },
-            { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
-            description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
-        }
-    ];
-
-    hardCodeItemFor172IP = [
+    ip_172_168_200_55_data = [
         {
             generatedDateFormat: 'Oct 1 2019',
             generatedTimestamp: '08:50:00',
@@ -219,7 +190,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Recon' },
                 { title: 'Threat Category', value: 'Internal Network Scan' },
                 { title: 'Sub Category', value: 'Internal Network Scan' }],
-            dummyDatas: [
+            additionalInfos: [
                 { title: 'Affected Entity', value: '172.168.200.55, 10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 192.168.200.55, 192.168.200.57, 10.67.122.136, 10.67.122.132' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '85' },
@@ -229,7 +200,98 @@ export class RiskyIPComponent implements OnInit {
         }
     ];
 
-    hardCodeItemFor18IP = [
+    ip_10_82_34_101_data = [
+        {
+            generatedDateFormat: 'Oct 1 2019',
+            generatedTimestamp: '10:50:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Network scanning activities identified from an internal IP'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Recon' },
+                { title: 'Threat Category', value: 'Internal Network Scan' },
+                { title: 'Sub Category', value: 'Internal Network Scan' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109, 10.82.34.102, 10.82.34.104, 10.82.34.111, 192.168.200.55' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resources', value: 'NetFlow' },
+                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
+            description: 'This anomaly is flagged when there is potential network scanning activity observed from internal IP'
+        },
+        {
+            generatedDateFormat: 'Oct 1 2019',
+            generatedTimestamp: '10:55:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Network traffic towards rare machines'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Lateral Movement' },
+                { title: 'Threat Category', value: 'Lateral Movement' },
+                { title: 'Sub Category', value: 'Compromise of internal hosts' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 192.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resources', value: 'Windows, NetFlow' },
+                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
+            description: 'This anomaly is flagged when an internal IP communicates with another IP which is a rare connectivity'
+        },
+        {
+            generatedDateFormat: 'Oct 1 2019',
+            generatedTimestamp: '11:00:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Single IP communicating to multiple IPs'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Lateral Movement' },
+                { title: 'Threat Category', value: 'Lateral Movement' },
+                { title: 'Sub Category', value: 'Compromise of internal hosts' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109 DESK-1876, 10.82.34.102 DESK-1879, 10.82.34.104 DESK-1877, 10.82.34.111 DESK-1676, 192.168.200.55 DESK-1576, 92.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resources', value: 'Windows, NetFlow' },
+                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
+            description: 'This anomaly is flagged when one internal IP communicates with multiple other IPs in the network which can indicate probable lateral movement'
+        },
+        {
+            generatedDateFormat: 'Oct 1 2019',
+            generatedTimestamp: '11:00:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Potential Lateral Movement activity observed'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Lateral Movement' },
+                { title: 'Threat Category', value: 'Lateral Movement' },
+                { title: 'Sub Category', value: 'Compromise of internal hosts' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109 DESK-1876, 10.82.34.102 DESK-1879, 10.82.34.104 DESK-1877, 10.82.34.111 DESK-1676, 192.168.200.55 DESK-1576, 92.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
+                { title: 'Locations', value: '-' },
+                { title: 'Risk', value: '85' },
+                { title: 'Resources', value: 'Windows, NetFlow' },
+                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
+            description: 'This anomaly is flagged when one internal IP communicates with multiple other IPs in the network which can indicate probable lateral movement'
+        }
+    ];
+
+    ip_18_10_8_1_data = [
         {
             generatedDateFormat: 'Sep 27 2019',
             generatedTimestamp: '10:13:00',
@@ -244,7 +306,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Reconnaissance' },
                 { title: 'Sub Category', value: 'Reconnaissance' }],
-            dummyDatas: [
+            additionalInfos: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '65' },
@@ -267,7 +329,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Potential Firewall Compromise' },
                 { title: 'Sub Category', value: 'Potential Firewall Compromise' }],
-            dummyDatas: [
+            additionalInfos: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '81' },
@@ -290,7 +352,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Initial Access' },
                 { title: 'Sub Category', value: 'Compromise' }],
-            dummyDatas: [
+            additionalInfos: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '93' },
@@ -301,46 +363,118 @@ export class RiskyIPComponent implements OnInit {
         }
     ];
 
-    threatCategories = [
+    ip_10_82_32_212_data_seperate = [
         {
-            title: 'Kill Chain',
-            value: 'Actions/Maintain'
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '12:45:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 4,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Outbound P2P File Sharing Traffic to Rare Host'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'C2' },
+                { title: 'Threat Category', value: 'Malicious Behavior' },
+                { title: 'Sub Category', value: 'P2P Traffic' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.32.227' },
+                { title: 'Locations', value: 'Indonesia' },
+                { title: 'Risk', value: '95' },
+                { title: 'Resources', value: 'Proxy' },
+                { title: 'Indicators', value: 'DstIP, URL, Category, BytesOut' }],
+            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
         },
         {
-            title: 'Threat Category',
-            value: 'Access Authentication'
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '06:43:00',
+            accord: false,
+            pv: 'INFO',
+            riskScore: 2,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'DHCP RENEWAL'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: '' },
+                { title: 'Threat Category', value: '' },
+                { title: 'Sub Category', value: '' }],
+            additionalInfos: [
+                { title: 'New Hostname', value: 'WK-UKL48503D' },
+                { title: 'New IP', value: '10.82.32.227' },
+            /* { title: 'Locations', value: '' },
+            { title: 'Status', value: '' },
+            { title: 'Resources', value: 'DHCP' },
+            { title: 'Indicators', value: 'AgentIP, AgentMAC, AgentHostname' } */],
+            description: 'This event correlates Dynamic IP with Hostnames / MAC'
         },
         {
-            title: 'Sub Category',
-            value: 'Bruce Force Attack'
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '05:30:00',
+            accord: false,
+            pv: 'PV 067',
+            riskScore: 13,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Inbound Traffic on SMB Port from Suspicious Location'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Malicious Behavior' },
+                { title: 'Sub Category', value: 'Inbound SMB' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.32.212' },
+                { title: 'Locations', value: 'Indonesia' },
+                { title: 'Risk', value: '74' },
+                { title: 'Resources', value: 'Netflow' },
+                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
+            description: 'This Violation is triggered when there is Inbound SMB traffic from Rare Location'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 6,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Inbound Telnet Traffic From Blacklisted IP's"
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Malicious Behavior' },
+                { title: 'Sub Category', value: 'Inbound Telnet' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.32.212' },
+                { title: 'Locations', value: 'Indonesia' },
+                { title: 'Risk', value: '63' },
+                { title: 'Resources', value: 'Netflow' },
+                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence' }],
+            description: 'This Violation is triggered when there is Inbound Telnet traffic from Blacklisted IP'
+        },
+        {
+            generatedDateFormat: 'June 27 2019',
+            generatedTimestamp: '01:17:00',
+            accord: false,
+            pv: 'PV 022',
+            riskScore: 34,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Port Scanning from External IP"
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Port Scanning' },
+                { title: 'Sub Category', value: 'Inbound Attack' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.32.212' },
+                { title: 'Locations', value: 'Indonesia' },
+                { title: 'Risk', value: '54' },
+                { title: 'Resources', value: 'Netflow' },
+                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
+            description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
         }
-    ]
-
-    dummyDatas = [
-        {
-            title: 'Affected Entity',
-            value: ''
-        },
-        {
-            title: 'Locations',
-            value: ''
-        },
-        {
-            title: 'Status',
-            value: ''
-        },
-        {
-            title: 'Resources',
-            value: ''
-        },
-        {
-            title: 'Indicators',
-            value: ''
-        },
-        /* {
-            title: 'Priority',
-            value: 'Be sure to add aria-expanded to the control element. This attribute explicitly conveys the current state of the collapsible'
-        } */
     ];
 
     itemInfo = [{
@@ -362,6 +496,16 @@ export class RiskyIPComponent implements OnInit {
         private zone: NgZone, private router: Router) {
     }
 
+    ngOnInit() {
+
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedIP = params.get('selectedIP');
+            this.provideDataForIP();
+        });
+
+        this.getDataByIP();
+    }
+
     getDataByIP() {
         this.ipaddressesData.forEach(ipData => {
             if (ipData.value === this.selectedIP) {
@@ -375,15 +519,6 @@ export class RiskyIPComponent implements OnInit {
             // Initialize Bubble chart
             this.initializeLineChart();
         });
-    }
-
-    ngOnInit() {
-
-        this.routeParam.paramMap.subscribe((params) => {
-            this.selectedIP = params.get('selectedIP');
-        });
-
-        this.getDataByIP();
     }
 
     getRiskScoreColor(riskScore: number) {

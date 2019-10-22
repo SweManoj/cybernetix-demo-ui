@@ -355,21 +355,21 @@ export class RiskyUsersComponent {
             riskScore: 9,
             ruleInfo: {
                 ruleId: 1,
-                title: 'Abnormal logon activity observed from Cloud account'
+                title: 'Suspicious login activities observed from Contractor/Vendor/Partner'
             },
             incId: 'INC-1',
-            description: 'This anomaly is flagged when high number of login activities observed from a Cloud User',
+            description: 'This anomaly is flagged when there is abnormal number of login activities observed from a Contractor/Vendor/Partner - Spike in login actiity, rare login activity, unusual business time are the key contributors to this anomlay',
             threatCategories: [
                 { title: 'Kill Chain', value: 'Abnormal Activities' },
                 { title: 'Threat Category', value: 'Abnormal Activities' },
                 { title: 'Sub Category', value: 'Abnormal Activities' }
             ],
             additionalInfo: [
-                { title: 'Affected Entity', value: 'Glenn_Roberto, 18.10.8.1' },
-                { title: 'Location', value: 'San Diego' },
+                { title: 'Affected Entity', value: 'Glenn_Roberto, 10.82.34.109, 10.82.34.101, 10.82.34.102, 10.82.34.104, 172.168.200.51, 172.168.200.52, 172.168.200.53, 172.168.200.54' },
+                { title: 'Location', value: '-' },
                 { title: 'Risk', value: '85' },
-                { title: 'Resource', value: 'AWS' },
-                { title: 'Indicators', value: 'Event, Accountname, SrcIP' }
+                { title: 'Resource', value: 'Windows' },
+                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, DeviceIP, SourceIP' }
             ]
         }
     ];

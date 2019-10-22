@@ -19,7 +19,7 @@ export class TopDetailsComponent implements AfterViewInit {
 
     threatVectors = [
         { id: 'Data Exfiltration', count: 3 },
-        { id: 'Reconnaissance', count: 2 },
+        { id: 'Reconnaissance', count: 1 },
         { id: 'Insider Threat', count: 2 },
         { id: 'Lateral Movement', count: 1 },
         { id: 'Account Compromise', count: 1 }

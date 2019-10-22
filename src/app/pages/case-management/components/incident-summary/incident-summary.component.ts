@@ -95,7 +95,7 @@ export class IncidentSummaryComponent implements OnInit {
                 ruleId: 1,
                 title: null
             },
-            incId: 'TVDE92',
+            incId: 'TVAC92',
             viewCount: 1,
             policyViolationDate: '13 June 2019 06:22',
             incidentCreatedDate: '13 June 2019 11:45',
@@ -808,11 +808,11 @@ export class IncidentSummaryComponent implements OnInit {
         }
     ];
 
-    lastBoxStyles(first: boolean, last: boolean, incId: string) {
-        const incidentValues: Array<String> = ['TVDE92', 'INC 92'];
+    lastBoxStyles(index: number, last: boolean, incId: string) {
+        const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
         if (last && !incidentValues.includes(incId))
             return { 'color': 'white', 'background': 'red' };
-        else if (first && incidentValues.includes(incId))
+        else if (index == 1 && incidentValues.includes(incId))
             return { 'color': 'white', 'background': 'red' };
         else
             return { 'color': 'black', 'background': '#099BB5' }
@@ -980,7 +980,7 @@ export class IncidentSummaryComponent implements OnInit {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedIncident = params.get('incID');
-            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43', 'TVDE92', 'INC 92']
+            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43', 'TVAC92', 'INC 92']
             if (incidentValues.includes(this.selectedIncident))
                 this.show = false;
             this.incidents.forEach((incident) => {

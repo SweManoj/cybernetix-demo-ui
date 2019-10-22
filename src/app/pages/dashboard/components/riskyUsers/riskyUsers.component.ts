@@ -1374,7 +1374,7 @@ export class RiskyUsersComponent {
             ]
         },
         {
-            incident: 'TVDE92',
+            incident: 'TVAC92',
             affectedEntity: 'AWendler',
             lastUpdatedOn: '13 June 2019 06:22',
             lastUpdatedBy: 'Martin J',
@@ -1782,7 +1782,7 @@ export class RiskyUsersComponent {
                     this.incidentViolations = this.chen_ZhangHardCodeItemDate;
                 else if (incident == 'INC 71' || incident == 'TVDE21')
                     this.incidentViolations = this.ipHardCodeItemData;
-                else if (incident == 'INC 92' || incident == 'TVDE92')
+                else if (incident == 'INC 92' || incident == 'TVAC92')
                     this.incidentViolations = this.hardCodeItemDataForDemo1;
 
                 this.incidentDetails.forEach(incidentDetail => {

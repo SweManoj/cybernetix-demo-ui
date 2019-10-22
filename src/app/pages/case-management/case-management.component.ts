@@ -26,9 +26,10 @@ export class CaseManagementComponent implements OnInit {
   path: any;
   data = [
     { created: '23/09/2019', priority: 'Critical', riskscore: 90, id: 'INC 38', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'Adm-EMoor', type: 'user' },
-    { created: '27/06/2018', priority: 'Critical', riskscore: 90, id: 'INC 71', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '10.82.32.212', type: 'ip' },
-    { created: '13/10/2018', priority: 'Critical', riskscore: 90, id: 'INC 44', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, entity: 'Chen_Zhang', type: 'user' },
-
+    { created: '27/06/2019', priority: 'Critical', riskscore: 90, id: 'INC 71', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '10.82.32.212', type: 'ip' },
+    { created: '13/10/2019', priority: 'Critical', riskscore: 90, id: 'INC 44', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, entity: 'Chen_Zhang', type: 'user' },
+    { created: '13/06/2019', priority: 'Critical', riskscore: 90, id: 'INC 92', name: 'Malicious Proxy Activities Followed By Geolocation Follwed By Fileshare Access Followed By Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'AWendler', type: 'user' },
+    { created: '04/10/2018', priority: 'Critical', riskscore: 90, id: 'INC 4', name: 'Reconnaissance from External Malicious IP for Firewall Misconfig and EC2 Vulnerability Followed By Exploitation of EC2 Followed By Privilege Access Followed By Data Exfiltration from S3', status: 'Open', assignee: 'Martin J', alerts: 2, entity: '18.10.8.1', type: 'ip' },
     /* { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-1', name: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
     { created: '03/02/2018', priority: 'Medium', riskscore: 90, id: 'INC-2', name: 'Successful Logon from Rare Machine - Windows', status: 'Pending', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
     { created: '03/03/2018', priority: 'High', riskscore: 90, id: 'INC-3', name: 'Unusual Data Exfiltration By Service Account - Proxy', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.106' },
@@ -54,7 +55,7 @@ export class CaseManagementComponent implements OnInit {
   ];
 
   threatVetorAccCompromiseData: Array<any> = [
-    { detectedOn: '13/06/2019', threatVectorID: 'TVDE92', priority: 'Critical', riskScore: 97, incident: 'YES', entity: '1', type: 'Auto' },
+    { detectedOn: '13/06/2019', threatVectorID: 'TVAC92', priority: 'Critical', riskScore: 97, incident: 'YES', entity: '1', type: 'Auto' },
   ];
 
   threatVetorReconData: Array<any> = [

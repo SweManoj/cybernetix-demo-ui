@@ -1245,30 +1245,6 @@ export class RiskyUsersComponent {
 
     AWS_S3_Instance01_data = [
         {
-            generatedDateFormat: 'Oct 2 2019',
-            generatedTimestamp: '03:50:00',
-            accord: false,
-            pv: 'TI 083',
-            riskScore: 118,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Abnormal access of critical file paths in Cloud storage"
-            },
-            description: 'This anomaly is flagged when a critical/sensitive file paths are accessed – rare file path accessed, spike in accessing file path, file access in un usual or non-business hours , high number of queries',
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Data exfiltration' },
-                { title: 'Sub Category', value: 'Data exfiltration' },
-                { title: 'Threat Category', value: 'Data exfiltration' }
-            ],
-            additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
-                { title: 'Location', value: 'San Diego' },
-                { title: 'Risk', value: '92' },
-                { title: 'Resource', value: 'AWS Logs' },
-                { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, CloudServer, objName' }
-            ]
-        },
-        {
             generatedDateFormat: 'Oct 4 2019',
             generatedTimestamp: '03:50:00',
             accord: false,
@@ -1290,6 +1266,30 @@ export class RiskyUsersComponent {
                 { title: 'Risk', value: '95' },
                 { title: 'Resource', value: 'AWS Logs' },
                 { title: 'Indicators', value: 'Event, CommandExecuted' }
+            ]
+        },
+        {
+            generatedDateFormat: 'Oct 2 2019',
+            generatedTimestamp: '03:50:00',
+            accord: false,
+            pv: 'TI 083',
+            riskScore: 118,
+            ruleInfo: {
+                ruleId: 1,
+                title: "Abnormal access of critical file paths in Cloud storage"
+            },
+            description: 'This anomaly is flagged when a critical/sensitive file paths are accessed – rare file path accessed, spike in accessing file path, file access in un usual or non-business hours , high number of queries',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data exfiltration' },
+                { title: 'Sub Category', value: 'Data exfiltration' },
+                { title: 'Threat Category', value: 'Data exfiltration' }
+            ],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'AWS-S3-Instance01' },
+                { title: 'Location', value: 'San Diego' },
+                { title: 'Risk', value: '92' },
+                { title: 'Resource', value: 'AWS Logs' },
+                { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, CloudServer, objName' }
             ]
         },
         {
@@ -1384,7 +1384,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Reconnaissance' }
             ],
             additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
+                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07, 18.10.9.1' },
                 { title: 'Location', value: 'San Diego' },
                 { title: 'Risk', value: '83' },
                 { title: 'Resource', value: 'AWS EC2 Logs' },
@@ -1432,7 +1432,7 @@ export class RiskyUsersComponent {
                 { title: 'Threat Category', value: 'Vulnerability Alert' }
             ],
             additionalInfo: [
-                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
+                { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07, 18.10.9.1' },
                 { title: 'Location', value: 'San Diego' },
                 { title: 'Risk', value: '36' },
                 { title: 'Resource', value: 'Qualys' },
@@ -2012,8 +2012,10 @@ export class RiskyUsersComponent {
                 else if (incident == 'INC 92' || incident == 'TVAC92') {
                     this.incidentAwender = true;
                     this.incidentViolations = this.hardCodeItemDataForDemo1;
-                } else if (incident == 'INC 4' || incident == 'TVRC4')
+                } else if (incident == 'INC 4' || incident == 'TVRC4') {
+                    this.glenRobertoHardCodeItemData = null;
                     this.incidentViolations = this.glenRobertoHardCodeItemData;
+                }
 
                 this.incidentDetails.forEach(incidentDetail => {
                     if (incidentDetail.incident == incident) {

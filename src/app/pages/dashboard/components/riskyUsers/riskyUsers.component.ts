@@ -1344,27 +1344,27 @@ export class RiskyUsersComponent {
 
     AWS_DomainEC2_Instance07_data = [
         {
-            generatedDateFormat: 'Sep 17 2019',
-            generatedTimestamp: '07:13:00',
+            generatedDateFormat: 'Sep 29 2019',
+            generatedTimestamp: '13:07:00',
             accord: false,
             pv: 'TI 083',
-            riskScore: 7,
+            riskScore: 8,
             ruleInfo: {
                 ruleId: 1,
-                title: "Vulnerability Alert"
+                title: "Suspicious cloud IAM activities observed"
             },
-            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+            description: 'This violation is flagged when unusual (rare, privileged) IAM realted commands executed in cloud instance which can indicate access mining and probable recon activity',
             threatCategories: [
-                { title: 'Kill Chain', value: 'Vulnerability Alert' },
-                { title: 'Sub Category', value: 'Vulnerability Alert' },
-                { title: 'Threat Category', value: 'Vulnerability Alert' }
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Sub Category', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Reconnaissance' }
             ],
             additionalInfo: [
                 { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Risk', value: '36' },
-                { title: 'Resource', value: 'Qualys' },
-                { title: 'Indicators', value: 'SourceIP, Signature' }
+                { title: 'Risk', value: '83' },
+                { title: 'Resource', value: 'AWS EC2 Logs' },
+                { title: 'Indicators', value: 'Event, CommandExecuted' }
             ]
         },
         {
@@ -1392,55 +1392,33 @@ export class RiskyUsersComponent {
             ]
         },
         {
-            generatedDateFormat: 'Sep 29 2019',
-            generatedTimestamp: '13:07:00',
+            generatedDateFormat: 'Sep 17 2019',
+            generatedTimestamp: '07:13:00',
             accord: false,
             pv: 'TI 083',
-            riskScore: 8,
+            riskScore: 7,
             ruleInfo: {
                 ruleId: 1,
-                title: "Suspicious cloud IAM activities observed"
+                title: "Vulnerability Alert"
             },
-            description: 'This violation is flagged when unusual (rare, privileged) IAM realted commands executed in cloud instance which can indicate access mining and probable recon activity',
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
             threatCategories: [
-                { title: 'Kill Chain', value: 'Reconnaissance' },
-                { title: 'Sub Category', value: 'Reconnaissance' },
-                { title: 'Threat Category', value: 'Reconnaissance' }
+                { title: 'Kill Chain', value: 'Vulnerability Alert' },
+                { title: 'Sub Category', value: 'Vulnerability Alert' },
+                { title: 'Threat Category', value: 'Vulnerability Alert' }
             ],
             additionalInfo: [
                 { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
                 { title: 'Location', value: 'San Diego' },
-                { title: 'Risk', value: '83' },
-                { title: 'Resource', value: 'AWS EC2 Logs' },
-                { title: 'Indicators', value: 'Event, CommandExecuted' }
+                { title: 'Risk', value: '36' },
+                { title: 'Resource', value: 'Qualys' },
+                { title: 'Indicators', value: 'SourceIP, Signature' }
             ]
-        }
+        },
+
     ];
 
     ip_18_10_8_1_data = [
-        {
-            generatedDateFormat: 'Sep 27 2019',
-            generatedTimestamp: '10:13:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 35,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Potential scanning attempt on public facing cloud instance'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Reconnaissance' },
-                { title: 'Threat Category', value: 'Reconnaissance' },
-                { title: 'Sub Category', value: 'Reconnaissance' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '18.10.8.1' },
-                { title: 'Locations', value: 'San Diego' },
-                { title: 'Risk', value: '65' },
-                { title: 'Resources', value: 'Firewall' },
-                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' },
-                { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
-            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP Kill Chain: Reconnaissance'
-        },
         {
             generatedDateFormat: 'Sep 27 2019',
             generatedTimestamp: '10:30:00',
@@ -1486,6 +1464,29 @@ export class RiskyUsersComponent {
                 { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, DestinationPort' },
                 { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
             description: 'This Policy is triggered when traffic observed towards a nonstandard port'
+        },
+        {
+            generatedDateFormat: 'Sep 27 2019',
+            generatedTimestamp: '10:13:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 35,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Potential scanning attempt on public facing cloud instance'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Reconnaissance' },
+                { title: 'Threat Category', value: 'Reconnaissance' },
+                { title: 'Sub Category', value: 'Reconnaissance' }],
+            additionalInfo: [
+                { title: 'Affected Entity', value: '18.10.8.1' },
+                { title: 'Locations', value: 'San Diego' },
+                { title: 'Risk', value: '65' },
+                { title: 'Resources', value: 'Firewall' },
+                { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' },
+                { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP Kill Chain: Reconnaissance'
         }
     ];
 

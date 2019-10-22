@@ -21,7 +21,7 @@ export class LeftNavComponent {
                 ionIcon: '',
                 faIcon: 'fa fa-lock',
                 img: '',
-                title: 'Policies', // this.translateService.instant('general.menu.dashboard')
+                title: 'Insights', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/policyViolation'
             },
             {

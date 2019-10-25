@@ -886,9 +886,24 @@ export class IncidentSummaryComponent implements OnInit {
         }
     ];
 
+    killChainBoxStyles(index: number, last: boolean, incId) {
+        const firstBlockRed: Array<String> = ['TVRC4', 'INC 4'];
+
+        if (firstBlockRed.includes(incId)) {
+            if (last)
+                return { 'color': 'black', 'background': 'orange' };
+            else if (firstBlockRed.includes(incId) && index == 0)
+                return { 'color': 'white', 'background': 'red' };
+            else if (index == 1)
+                return { 'color': 'white', 'background': 'steelblue' }
+            else if (index == 2)
+                return { 'color': 'black', 'background': 'yellow' }
+        }
+    }
+
     lastBoxStyles(index: number, last: boolean, incId: string) {
         const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
-        const firstBlockRed: Array<String> = ['TVRC4'];
+        const firstBlockRed: Array<String> = ['TVRC4', 'INC 4'];
 
         if (firstBlockRed.includes(incId) && index == 0)
             return { 'color': 'white', 'background': 'red' };
@@ -896,18 +911,20 @@ export class IncidentSummaryComponent implements OnInit {
             return { 'color': 'white', 'background': 'red' };
         else if (index == 1 && incidentValues.includes(incId) && !firstBlockRed.includes(incId))
             return { 'color': 'white', 'background': 'red' };
+        else if (last && firstBlockRed.includes(incId))
+            return { 'color': 'black', 'background': 'orange' };
         else if (index == 0)
-            return { 'color': 'black', 'background': 'orange' }
+            return { 'color': 'black', 'background': 'orange' };
         else if (index == 1)
-            return { 'color': 'white', 'background': 'steelblue' }
+            return { 'color': 'white', 'background': 'steelblue' };
         else if (index == 2)
-            return { 'color': 'black', 'background': 'yellow' }
+            return { 'color': 'black', 'background': 'yellow' };
         else if (index == 3)
-            return { 'color': 'black', 'background': 'green' }
+            return { 'color': 'black', 'background': 'green' };
         else if (index == 4)
-            return { 'color': 'black', 'background': 'purple' }
+            return { 'color': 'black', 'background': 'purple' };
         else if (index == 5)
-            return { 'color': 'black', 'background': 'pink' }
+            return { 'color': 'black', 'background': 'pink' };
     }
 
     policyComments: Comment[] = [

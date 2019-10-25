@@ -230,15 +230,16 @@
                 <div class="block-content mb-3">
                     <div class="listedItem">
                         <div class="block-title"><span>Kill Chain</span> </div>
-                        <div class="row ng-star-inserted mx-auto mt-2" *ngIf="killChainProcess">
+                        <div class="row ng-star-inserted mx-auto mt-2" *ngIf="incidentsKillChainProcess">
                             <ul class="kill-chain-list">
-                                <li *ngFor="let killchain of incidentsKillChainProcess"
+                                <li *ngFor="let killchain of incidentsKillChainProcess;let index=index;let last=last;"
                                     [style.background-image]="'url(../../../../../assets/images/kill-arrow.png)'">
                                     <div class="img-wrap">
                                         <img src="../../../../../assets/images/{{killchain.icon}}"
                                             alt="Complete Mission" />
                                     </div>
                                     <span class="incidentKillChain"
+                                        [ngStyle]="killChainBoxStyles(index,last,incidentDetails.incId)"
                                         style="min-width: 5.5rem;word-break: initial;min-height: 2.4rem;">{{killchain.title}}</span>
                                 </li>
                             </ul>

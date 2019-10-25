@@ -212,7 +212,7 @@
                             </ul>
                             <div class="clear"></div>
                         </div>
-                        <div class="block-description mt-3">
+                        <div class="block-description mt-3" *ngIf="show">
                             <div class="row mt-2 threatRow"
                                 *ngFor="let threatCategory of incidentDetails.threatCategories">
                                 <div class="col-11 col-sm-5 col-lg-3 threatTitle">
@@ -227,16 +227,37 @@
                     </div>
                 </div>
 
+                <div class="block-content mb-3">
+                    <div class="listedItem">
+                        <div class="block-title"><span>Kill Chain</span> </div>
+                        <div class="row ng-star-inserted mx-auto mt-2" *ngIf="killChainProcess">
+                            <ul class="kill-chain-list">
+                                <li *ngFor="let killchain of incidentsKillChainProcess"
+                                    [style.background-image]="'url(../../../../../assets/images/kill-arrow.png)'">
+                                    <div class="img-wrap">
+                                        <img src="../../../../../assets/images/{{killchain.icon}}"
+                                            alt="Complete Mission" />
+                                    </div>
+                                    <span class="incidentKillChain"
+                                        style="min-width: 5.5rem;word-break: initial;min-height: 2.4rem;">{{killchain.title}}</span>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="block-content mb-5" *ngIf="show">
-                    <div class="killChain">
-                        <div class="block-title text-left"><span>Kill Chain</span></div>
-                        <ul class="kill-chain-list">
-                            <li *ngFor="let killchain of killChainProcess"
+                    <div class="killChain initialPadding">
+                        <div class="block-title text-left pt-4 ml-3"><span>Kill Chain</span></div>
+                        <ul class="kill-chain-list mb-4">
+                            <li *ngFor="let killchain of incidentsKillChainProcess"
                                 [style.background-image]="'url(../../../../../assets/images/kill-arrow.png)'">
                                 <div class="img-wrap">
-                                    <img src="../../../../../assets/images/{{killchain.icon}}" alt="Complete Mission" />
+                                    <img class="incidentKillChainImg"
+                                        src="../../../../../assets/images/{{killchain.icon}}" alt="Complete Mission" />
                                 </div>
-                                <span>{{killchain.title}}</span>
+                                <span class="">{{killchain.title}}</span>
                             </li>
                         </ul>
                         <div class="clear"></div>
@@ -313,21 +334,21 @@
 
     <div class="page-footer">
         <div class="row align-items-center">
-            <div class="col-md-3 page-viewer">
+            <div class="col-md page-viewer" *ngIf="show">
                 <img src="../../../../../assets/images/circle.png" />
                 <div class="viewer-info">
                     <span class="view-count">{{incidentDetails.viewCount}}</span>
                     viewing this page now
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="ml-md-5">
+            <div class="col-md">
+                <div class="">
                     <h3>Tagged People</h3>
                     <p>#chetanp, #abhishek, #manish</p>
                 </div>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-md">
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-end">
                         <li class="page-item disabled">

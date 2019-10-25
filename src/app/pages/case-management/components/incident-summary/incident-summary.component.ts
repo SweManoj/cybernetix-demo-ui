@@ -997,6 +997,44 @@ export class IncidentSummaryComponent implements OnInit {
         }
     ];
 
+    incidentsKillChainProcess = [
+        {
+            title: 'Reconnaissance',
+            icon: 'binary-search.png',
+            isKill: 0
+        },
+        {
+            title: 'Weaponization',
+            icon: 'delivery.png',
+            isKill: 1
+        },
+        {
+            title: 'Delivery',
+            icon: 'foothold.png',
+            isKill: 1
+        },
+        {
+            title: 'Exploitation',
+            icon: 'monitor-code.png',
+            isKill: 1
+        },
+        {
+            title: 'Installation',
+            icon: 'connection.png',
+            isKill: 0
+        },
+        {
+            title: 'Command and Control',
+            icon: 'document-approval.png',
+            isKill: 0
+        },
+        {
+            title: 'Actions on Objective',
+            icon: 'document-approval.png',
+            isKill: 0
+        }
+    ];
+
     killChainProcess = [
         {
             title: 'Initial Recon',

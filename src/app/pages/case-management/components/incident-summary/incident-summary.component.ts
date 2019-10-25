@@ -888,16 +888,55 @@ export class IncidentSummaryComponent implements OnInit {
 
     killChainBoxStyles(index: number, last: boolean, incId) {
         const firstBlockRed: Array<String> = ['TVRC4', 'INC 4'];
+        const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
 
-        if (firstBlockRed.includes(incId)) {
+        if (incId == 'INC 4') {
             if (last)
                 return { 'color': 'black', 'background': 'orange' };
-            else if (firstBlockRed.includes(incId) && index == 0)
+            else if (index == 0)
                 return { 'color': 'white', 'background': 'red' };
             else if (index == 1)
                 return { 'color': 'white', 'background': 'steelblue' }
             else if (index == 2)
                 return { 'color': 'black', 'background': 'yellow' }
+        } else if (incId == 'INC 92') {
+            if (last)
+                return { 'color': 'black', 'background': 'purple' }
+            else if (index == 5)
+                return { 'color': 'black', 'background': 'green' };
+            else if (index == 4)
+                return { 'color': 'black', 'background': 'yellow' };
+            else if (index == 2)
+                return { 'color': 'black', 'background': 'yellow' }
+            else if (index == 3)
+                return { 'color': 'white', 'background': 'red' }
+        } else if (incId == 'INC 44') {
+            if (last)
+                return { 'color': 'white', 'background': 'red' }
+            else if (index == 5)
+                return { 'color': 'black', 'background': 'yellow' };
+            else if (index == 3)
+                return { 'color': 'white', 'background': 'steelblue' };
+            else if (index == 2)
+                return { 'color': 'black', 'background': 'orange' }
+        } else if (incId == 'INC 71') {
+            if (index == 5)
+                return { 'color': 'white', 'background': 'red' }
+            else if (index == 0)
+                return { 'color': 'black', 'background': 'orange' };
+            else if (index == 1)
+                return { 'color': 'white', 'background': 'steelblue' };
+            else if (index == 2)
+                return { 'color': 'black', 'background': 'yellow' }
+        } else if (incId == 'INC 38') {
+            if (index == 3)
+                return { 'color': 'black', 'background': 'orange' }
+            else if (last)
+                return { 'color': 'black', 'background': 'orange' };
+            else if (index == 4)
+                return { 'color': 'white', 'background': 'steelblue' };
+            else if (index == 5)
+                return { 'color': 'black', 'background': 'green' }
         }
     }
 

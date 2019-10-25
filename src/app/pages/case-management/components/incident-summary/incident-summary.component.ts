@@ -63,7 +63,7 @@ export class IncidentSummaryComponent implements OnInit {
             caseOwner: 'Martin J',
             killChainProcess: [
                 {
-                    title: 'reconnaissance',
+                    title: 'Reconnaissance',
                     icon: 'binary-search.png'
                 },
                 {
@@ -102,7 +102,7 @@ export class IncidentSummaryComponent implements OnInit {
             caseOwner: 'Martin J',
             killChainProcess: [
                 {
-                    title: 'reconnaissance',
+                    title: 'Reconnaissance',
                     icon: 'binary-search.png'
                 },
                 {
@@ -896,8 +896,18 @@ export class IncidentSummaryComponent implements OnInit {
             return { 'color': 'white', 'background': 'red' };
         else if (index == 1 && incidentValues.includes(incId) && !firstBlockRed.includes(incId))
             return { 'color': 'white', 'background': 'red' };
-        else
-            return { 'color': 'black', 'background': '#099BB5' }
+        else if (index == 0)
+            return { 'color': 'black', 'background': 'orange' }
+        else if (index == 1)
+            return { 'color': 'white', 'background': 'steelblue' }
+        else if (index == 2)
+            return { 'color': 'black', 'background': 'yellow' }
+        else if (index == 3)
+            return { 'color': 'black', 'background': 'green' }
+        else if (index == 4)
+            return { 'color': 'black', 'background': 'purple' }
+        else if (index == 5)
+            return { 'color': 'black', 'background': 'pink' }
     }
 
     policyComments: Comment[] = [
@@ -1103,6 +1113,17 @@ export class IncidentSummaryComponent implements OnInit {
             const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43', 'TVAC92', 'INC 92', 'TVRC4', 'INC 4']
             if (incidentValues.includes(this.selectedIncident))
                 this.show = false;
+            if (this.selectedIncident == 'TVDE38')
+                this.selectedIncident = 'INC 38';
+            else if (this.selectedIncident == 'TVDE43')
+                this.selectedIncident = 'INC 44';
+            else if (this.selectedIncident == 'TVDE21')
+                this.selectedIncident = 'INC 71';
+            else if (this.selectedIncident == 'TVRC4')
+                this.selectedIncident = 'INC 4';
+            else if (this.selectedIncident == 'TVAC92')
+                this.selectedIncident = 'INC 92';
+
             this.incidents.forEach((incident) => {
                 if (incident.incId === this.selectedIncident) {
                     this.incidentDetails = incident;

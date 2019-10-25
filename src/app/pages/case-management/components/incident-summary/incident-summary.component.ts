@@ -895,19 +895,19 @@ export class IncidentSummaryComponent implements OnInit {
                 return { 'color': 'black', 'background': 'orange' };
             else if (index == 0)
                 return { 'color': 'white', 'background': 'red' };
-            else if (index == 1)
+            else if (index == 3)
                 return { 'color': 'white', 'background': 'steelblue' }
-            else if (index == 2)
+            else if (index == 5)
                 return { 'color': 'black', 'background': 'yellow' }
         } else if (incId == 'INC 92') {
+            if (index == 1)
+                return { 'color': 'black', 'background': 'orange' }
             if (last)
                 return { 'color': 'black', 'background': 'purple' }
             else if (index == 5)
                 return { 'color': 'black', 'background': 'green' };
             else if (index == 4)
                 return { 'color': 'black', 'background': 'yellow' };
-            else if (index == 2)
-                return { 'color': 'black', 'background': 'yellow' }
             else if (index == 3)
                 return { 'color': 'white', 'background': 'red' }
         } else if (incId == 'INC 44') {
@@ -932,7 +932,7 @@ export class IncidentSummaryComponent implements OnInit {
             if (index == 3)
                 return { 'color': 'black', 'background': 'orange' }
             else if (last)
-                return { 'color': 'black', 'background': 'orange' };
+                return { 'color': 'black', 'background': 'red' };
             else if (index == 4)
                 return { 'color': 'white', 'background': 'steelblue' };
             else if (index == 5)

@@ -25,11 +25,11 @@ export class CaseManagementComponent implements OnInit {
   private offset: number = 0;
   path: any;
   data = [
-    { created: '23/09/2019', priority: 'Critical', riskscore: 90, id: 'INC 38', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'Adm-EMoor', type: 'user' },
-    { created: '27/06/2019', priority: 'Critical', riskscore: 90, id: 'INC 71', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, entity: '10.82.32.212', type: 'ip' },
-    { created: '13/10/2019', priority: 'Critical', riskscore: 90, id: 'INC 44', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, entity: 'Chen_Zhang', type: 'user' },
-    { created: '13/06/2019', priority: 'Critical', riskscore: 90, id: 'INC 92', name: 'Malicious Proxy Activities Followed By Geolocation Follwed By Fileshare Access Followed By Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, entity: 'AWendler', type: 'user' },
-    { created: '04/10/2018', priority: 'Critical', riskscore: 90, id: 'INC 4', name: 'Reconnaissance from External Malicious IP for Firewall Misconfig and EC2 Vulnerability Followed By Exploitation of EC2 Followed By Privilege Access Followed By Data Exfiltration from S3', status: 'Open', assignee: 'Martin J', alerts: 2, entity: '18.10.8.1', type: 'ip' },
+    { created: '23/09/2019', priority: 'Critical', riskscore: 90, id: 'INC 38', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, threatVector: 'TVDE38', type: 'user' },
+    { created: '27/06/2019', priority: 'Critical', riskscore: 90, id: 'INC 71', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, threatVector: 'TVDE21', type: 'ip' },
+    { created: '13/10/2019', priority: 'Critical', riskscore: 90, id: 'INC 44', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, threatVector: 'TVDE43', type: 'user' },
+    { created: '13/06/2019', priority: 'Critical', riskscore: 90, id: 'INC 92', name: 'Malicious Proxy Activities Followed By Geolocation Follwed By Fileshare Access Followed By Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, threatVector: 'TVAC92', type: 'user' },
+    { created: '04/10/2018', priority: 'Critical', riskscore: 90, id: 'INC 4', name: 'Reconnaissance from External Malicious IP for Firewall Misconfig and EC2 Vulnerability Followed By Exploitation of EC2 Followed By Privilege Access Followed By Data Exfiltration from S3', status: 'Open', assignee: 'Martin J', alerts: 2, threatVector: 'TVRC4', type: 'ip' },
     /* { created: '03/01/2018', priority: 'Critical', riskscore: 90, id: 'INC-1', name: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows', status: 'Task Requested', assignee: 'admin', alerts: 2, entity: '192.168.0.101' },
     { created: '03/02/2018', priority: 'Medium', riskscore: 90, id: 'INC-2', name: 'Successful Logon from Rare Machine - Windows', status: 'Pending', assignee: 'admin', alerts: 2, entity: '192.168.0.102' },
     { created: '03/03/2018', priority: 'High', riskscore: 90, id: 'INC-3', name: 'Unusual Data Exfiltration By Service Account - Proxy', status: 'Task Requested', assignee: 'user', alerts: 2, entity: '192.168.0.106' },
@@ -76,11 +76,12 @@ export class CaseManagementComponent implements OnInit {
       return { 'color': 'red', 'font-size': 'initial' };
   }
 
-  redirectToTimeline(entityType, entity) {
-    if (entityType == 'user')
+  redirectToTimeline(entityType, threatVector) {
+    /* if (entityType == 'user')
       this.router.navigate(['/riskyUser', entity]);
     else if (entityType == 'ip')
-      this.router.navigate(['/riskyIP', entity]);
+      this.router.navigate(['/riskyIP', entity]); */
+    this.router.navigate(['/riskyIncident', threatVector]);
   }
 
   shows = [{ name: 'Last 1 Day', value: '1day' }, { name: 'Last 2 Day', value: '2day' }, { name: 'Last 7 Day', value: '7day' }, { name: 'Last 1 month', value: 'month' }];

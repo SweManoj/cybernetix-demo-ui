@@ -252,7 +252,7 @@
 
                 <div class="row ml-auto mr-auto policy-incident-table">
                     <p-table #incident
-                        [globalFilterFields]="['id', 'created', 'name', 'priority', 'status', 'assignee', 'entity']"
+                        [globalFilterFields]="['id', 'created', 'name', 'priority', 'status', 'assignee', 'threatVector']"
                         [resizableColumns]="true" [value]="data" sortMode="multiple" [(selection)]="selectedItems"
                         [paginator]="true" [rows]="12" (onRowSelect)="onRowSelect($event)"
                         (onRowUnselect)="onRowUnselect($event)">
@@ -269,7 +269,8 @@
                                 <th style="width:33em;" [pSortableColumn]="'name'">Incident Description <p-sortIcon
                                         [field]="'name'"></p-sortIcon>
                                 </th>
-                                <th [pSortableColumn]="'entity'">Entity <p-sortIcon [field]="'entity'"></p-sortIcon>
+                                <th [pSortableColumn]="'threatVector'">Threat Vector Id <p-sortIcon
+                                        [field]="'threatVector'"></p-sortIcon>
                                 </th>
                                 <th [pSortableColumn]="'priority'">PRIORITY <p-sortIcon [field]="'priority'">
                                     </p-sortIcon>
@@ -291,7 +292,7 @@
                                 <td>{{data.created}}</td>
                                 <td style="color:#099bb5;white-space: normal;text-align: left;">{{data.name}}
                                 </td>
-                                <td (click)="redirectToTimeline(data.type,data.entity)">{{data.entity}}</td>
+                                <td (click)="redirectToTimeline(data.type,data.threatVector)">{{data.threatVector}}</td>
                                 <td style="padding-left: 20px;text-align: start;">
                                     <div class="{{data.priority}} tableStages"></div>
                                     <span class="priority1 ml-3">{{data.priority}}</span>

@@ -887,6 +887,8 @@ export class IncidentSummaryComponent implements OnInit {
     ];
 
     killChainBoxStyles(index: number, last: boolean, incId) {
+        return;
+        /*  // Color Code Combinations
         const firstBlockRed: Array<String> = ['TVRC4', 'INC 4'];
         const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
 
@@ -937,10 +939,12 @@ export class IncidentSummaryComponent implements OnInit {
                 return { 'color': 'white', 'background': 'steelblue' };
             else if (index == 5)
                 return { 'color': 'black', 'background': 'green' }
-        }
+        } */
     }
 
     lastBoxStyles(index: number, last: boolean, incId: string) {
+        return;
+        /* Color Code Combinations
         const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
         const firstBlockRed: Array<String> = ['TVRC4', 'INC 4'];
 
@@ -963,7 +967,7 @@ export class IncidentSummaryComponent implements OnInit {
         else if (index == 4)
             return { 'color': 'black', 'background': 'purple' };
         else if (index == 5)
-            return { 'color': 'black', 'background': 'pink' };
+            return { 'color': 'black', 'background': 'pink' }; */
     }
 
     policyComments: Comment[] = [

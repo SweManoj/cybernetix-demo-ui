@@ -943,7 +943,7 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     lastBoxStyles(index: number, last: boolean, incId: string) {
-        return;
+        return { 'background': 'red' };
         /* Color Code Combinations
         const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
         const firstBlockRed: Array<String> = ['TVRC4', 'INC 4'];

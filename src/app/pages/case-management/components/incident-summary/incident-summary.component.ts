@@ -942,8 +942,28 @@ export class IncidentSummaryComponent implements OnInit {
         } */
     }
 
-    lastBoxStyles(index: number, last: boolean, incId: string) {
-        return { 'background': 'red' };
+    lastBoxStyles(index: number, last: boolean, incId: string, killChainTitle: string) {
+        const redBoxes: Array<String> = ['Data Exfiltration', 'P2P Traffic', 'Account Compromise', 'Reconnaissance'];
+        if (redBoxes.includes(killChainTitle)) {
+            if (incId == 'INC 4' && killChainTitle == 'Reconnaissance') {
+                return { 'background': 'red' };
+            }
+
+            const redIncTVDE: Array<String> = ['INC 38', 'INC 44', 'INC 71'];
+            if (redIncTVDE.includes(incId) && killChainTitle == 'Data Exfiltration') {
+                return { 'background': 'red' };
+            }
+
+            const redIncTVAC: Array<String> = ['INC 92'];
+            if (redIncTVAC.includes(incId) && killChainTitle == 'Account Compromise') {
+                return { 'background': 'red' };
+            }
+            if (killChainTitle == 'P2P Traffic') {
+                return { 'background': 'red' };
+            }
+        }
+        else
+            return;
         /* Color Code Combinations
         const incidentValues: Array<String> = ['TVAC92', 'INC 92'];
         const firstBlockRed: Array<String> = ['TVRC4', 'INC 4'];

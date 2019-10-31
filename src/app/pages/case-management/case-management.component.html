@@ -106,7 +106,7 @@
                                         <div class="media-body policy-violation-table">
                                             <p-table #policy class="policy" [value]="policyViolations"
                                                 [(selection)]="selectedPolicyItems"
-                                                [globalFilterFields]="['generationTime','policyName','entity','indicatorsOfAttack','status','priority']"
+                                                [globalFilterFields]="['generationTime','ruleName','eventDateTime','entity','indicatorsOfAttack','status','priority']"
                                                 sortMode="multiple" [paginator]="true" [rows]="10">
                                                 <ng-template pTemplate="header">
                                                     <tr>

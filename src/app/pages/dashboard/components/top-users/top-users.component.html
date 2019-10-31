@@ -25,6 +25,6 @@
     </ng-container>
 </div>
 
-<div *ngIf="topUserDetails.length === 0" class="no-user">
+<div *ngIf="topUserDetails && topUserDetails.length === 0" class="no-user">
     No {{user}} Users found
 </div>

@@ -789,12 +789,12 @@ input:checked + .slider:before {
 // Policy
 .policy .ui-table .ui-table-thead > tr > th {
   background: #243744;
-  padding: 5px 30px;
+  padding: 10px 10px;
 }
 
 .policy .ui-table .ui-table-tbody > tr > td {
   background: #34434e;
-  padding: 5px 30px;
+  padding: 10px 10px;
   border-bottom: 1px solid #5f6e79;
 }
 
@@ -863,25 +863,24 @@ input:checked + .slider:before {
     }
 } */
 
-.tagged-users{
-    margin: 8px 0px 8px -12px;
+.tagged-users {
+  margin: 8px 0px 8px -12px;
 }
 
-.tag-user-chip{
-    color: #fff;
-    background-color: #099BB5;
+.tag-user-chip {
+  color: #fff;
+  background-color: #099bb5;
 }
 
-.tag-user-label{
-    color: #bdbdbd;
-    font-size: 14px;
+.tag-user-label {
+  color: #bdbdbd;
+  font-size: 14px;
 }
 
-
-.example-chip-list{
-    margin-top: -50px;
+.example-chip-list {
+  margin-top: -50px;
 }
 
-.case-owner-input{
-    margin-top: -20px;
+.case-owner-input {
+  margin-top: -20px;
 }

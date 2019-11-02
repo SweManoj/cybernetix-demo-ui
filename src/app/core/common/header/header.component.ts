@@ -63,7 +63,11 @@ export class HeaderComponent implements OnInit {
     }
 
     goToWebSite() {
-        window.open('http://cybernetix.ai')
+        // window.open('http://cybernetix.ai');
+        if (this.router.url.includes('dashboard'))
+            window.location.reload();
+        else
+            this.router.navigate(['dashboard']);
     }
 
     signout() {

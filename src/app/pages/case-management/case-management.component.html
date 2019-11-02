@@ -72,7 +72,7 @@
                         <div class="media">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-md-2 filterRow policy-violation-date-table">
+                                    <!-- <div class="col-md-2 filterRow policy-violation-date-table">
                                         <p-table #day [paginator]="true" [rows]="10" class="policy sortingDate"
                                             [value]="myDays">
                                             <ng-template pTemplate="header">
@@ -92,7 +92,7 @@
                                                 </tr>
                                             </ng-template>
                                         </p-table>
-                                    </div>
+                                    </div> -->
                                     <mat-spinner *ngIf="fetchingPolicyViolationsInProgress" style="margin: 15% 35%;">
                                     </mat-spinner>
                                     <div class="col-md-10"
@@ -101,20 +101,19 @@
                                         <p>No Policy Violations found</p>
                                     </div>
 
-                                    <div class="col-md-10" style="padding: inherit;background:rgb(52, 67, 78);"
+                                    <div class="col-md-12" style="padding: inherit;background:rgb(52, 67, 78);"
                                         *ngIf="policyViolations.length > 0">
                                         <div class="media-body policy-violation-table">
                                             <p-table #policy class="policy" [value]="policyViolations"
                                                 [(selection)]="selectedPolicyItems"
                                                 [globalFilterFields]="['generationTime','ruleName','eventDateTime','entity','indicatorsOfAttack','status','priority']"
-                                                sortMode="multiple" [paginator]="true" [rows]="10">
+                                                sortMode="multiple" [paginator]="true" [rows]="20">
                                                 <ng-template pTemplate="header">
                                                     <tr>
                                                         <!--  <th style="width:10%" [pSortableColumn]="'violationId'">PV ID
                                                             <p-sortIcon [field]="'violationId'"></p-sortIcon></th>-->
                                                         <th style="width:16%" [pSortableColumn]="'generationTime'">
-                                                            Generation
-                                                            Time
+                                                            Policy Violation Date Time
                                                             <p-sortIcon [field]="'generationTime'"></p-sortIcon>
                                                         </th>
                                                         <th style="width:20%" [pSortableColumn]="'ruleName'">Policy
@@ -129,14 +128,14 @@
                                                             <p-sortIcon [field]="'entity'"></p-sortIcon>
                                                         </th>
 
-                                                        <th style="width:13%" [pSortableColumn]="'indicatorsOfAttack'">
+                                                        <th style="width:10%" [pSortableColumn]="'indicatorsOfAttack'">
                                                             Event Count
                                                             <p-sortIcon [field]="'indicatorsOfAttack'"></p-sortIcon>
                                                         </th>
                                                         <th style="width:14%" [pSortableColumn]="'status'">Status
                                                             <p-sortIcon [field]="'status'"></p-sortIcon>
                                                         </th>
-                                                        <th style="width:12%" [pSortableColumn]="'priority'">Priority
+                                                        <th style="width:8%" [pSortableColumn]="'priority'">Priority
                                                             <p-sortIcon [field]="'priority'"></p-sortIcon>
                                                         </th>
                                                     </tr>
@@ -148,7 +147,7 @@
                                                         (click)="goToPolicyViolationSummaryPage()">-->
                                                     <tr [pSelectableRow]="rowData"
                                                         (click)="redirectToSummaryPage(myPolicy.violationId, myPolicy.eventDateTime,myPolicy.dataAggregated)">
-                                                        <td>{{myPolicy.generationTimeFormatted | date: ' hh:mm:ss'}}
+                                                        <td>{{myPolicy.generationTimeFormatted | date: 'dd/MM/yyyy hh:mm:ss'}}
                                                         </td>
                                                         <td style="color:#099bb5;">{{myPolicy.ruleName}}</td>
                                                         <td>{{myPolicy.eventDateTimeFormatted | date: 'dd/MM/yyyy hh:mm:ss'}}

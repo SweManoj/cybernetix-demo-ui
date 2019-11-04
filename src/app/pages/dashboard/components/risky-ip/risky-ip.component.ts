@@ -192,29 +192,6 @@ export class RiskyIPComponent implements OnInit {
             violationDate: '14 Oct 2019',
             violations: [
                 {
-                    generatedTimestamp: '17:23:00',
-                    accord: false,
-                    pv: 'PV 039',
-                    riskScore: 3,
-                    ruleInfo: {
-                        ruleId: 3,
-                        title: 'Potential Data Exfiltration to External IP'
-                    },
-                    threatCategories: [
-                        { title: 'Kill Chain', value: 'Data Exfiltration' },
-                        { title: 'Threat Category', value: 'Data Exfiltration' },
-                        { title: 'Sub Category', value: 'Data Exfiltration' }],
-                    additionalInfos: [
-                        { title: 'SourceIP', value: '10.82.71.192' },
-                        { title: 'DestinationIP', value: '10.82.69.151' },
-                        { title: 'DestinationPort', value: '21' },
-                        { title: 'Packet Size', value: '10.3MB' },
-                        { title: 'Risk', value: '91' },
-                        { title: 'Resources', value: 'NetFlow' },
-                        { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
-                    description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
-                },
-                {
                     generatedDateFormat: 'Oct 14 2019',
                     generatedTimestamp: '21:03:00',
                     accord: false,
@@ -238,6 +215,29 @@ export class RiskyIPComponent implements OnInit {
                         { title: 'Resources', value: 'NetFlow' },
                         { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
                     description: 'This anomaly is flagged when there is Unusual beaconing with External IP'
+                },
+                {
+                    generatedTimestamp: '17:23:00',
+                    accord: false,
+                    pv: 'PV 039',
+                    riskScore: 3,
+                    ruleInfo: {
+                        ruleId: 3,
+                        title: 'Potential Data Exfiltration to External IP'
+                    },
+                    threatCategories: [
+                        { title: 'Kill Chain', value: 'Data Exfiltration' },
+                        { title: 'Threat Category', value: 'Data Exfiltration' },
+                        { title: 'Sub Category', value: 'Data Exfiltration' }],
+                    additionalInfos: [
+                        { title: 'SourceIP', value: '10.82.71.192' },
+                        { title: 'DestinationIP', value: '10.82.69.151' },
+                        { title: 'DestinationPort', value: '21' },
+                        { title: 'Packet Size', value: '10.3MB' },
+                        { title: 'Risk', value: '91' },
+                        { title: 'Resources', value: 'NetFlow' },
+                        { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+                    description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
                 }
             ]
         }

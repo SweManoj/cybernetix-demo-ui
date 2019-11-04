@@ -292,6 +292,52 @@ export class RiskyIPComponent implements OnInit {
 
     ip_10_82_17_192_data = [
         {
+            generatedDateFormat: 'Oct 10 2019',
+            generatedTimestamp: '17:23:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 19,
+            ruleInfo: {
+                ruleId: 19,
+                title: 'Unusual Internal Communication with Rare Port/IP'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+                { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
+                { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
+            additionalInfos: [
+                { title: 'SourceIP', value: '10.82.71.192' },
+                { title: 'DestinationIP', value: '10.82.69.147' },
+                { title: 'DestinationPort', value: '443' },
+                { title: 'Risk', value: '92' },
+                { title: 'Resources', value: 'NetFlow' },
+                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+            description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+        },
+        {
+            generatedDateFormat: 'Oct 9 2019',
+            generatedTimestamp: '17:12:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 17,
+            ruleInfo: {
+                ruleId: 17,
+                title: 'Unusual Internal Communication with Rare Port/IP'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+                { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
+                { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
+            additionalInfos: [
+                { title: 'SourceIP', value: '10.82.71.192' },
+                { title: 'DestinationIP', value: '10.82.68.143' },
+                { title: 'DestinationPort', value: '139' },
+                { title: 'Risk', value: '91' },
+                { title: 'Resources', value: 'NetFlow' },
+                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+            description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+        },
+        {
             generatedDateFormat: 'Oct 6 2019',
             generatedTimestamp: '14:53:00',
             accord: false,
@@ -337,52 +383,6 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Resources', value: 'FireEye' },
                 { title: 'Indicators', value: 'SourceIP, MalwareType, Severity' }],
             description: 'This anomaly is flagged when malware is found on Critical server'
-        },
-        {
-            generatedDateFormat: 'Oct 9 2019',
-            generatedTimestamp: '17:12:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 17,
-            ruleInfo: {
-                ruleId: 17,
-                title: 'Unusual Internal Communication with Rare Port/IP'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
-                { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
-                { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
-            additionalInfos: [
-                { title: 'SourceIP', value: '10.82.71.192' },
-                { title: 'DestinationIP', value: '10.82.68.143' },
-                { title: 'DestinationPort', value: '139' },
-                { title: 'Risk', value: '91' },
-                { title: 'Resources', value: 'NetFlow' },
-                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
-            description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
-        },
-        {
-            generatedDateFormat: 'Oct 10 2019',
-            generatedTimestamp: '17:23:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 19,
-            ruleInfo: {
-                ruleId: 19,
-                title: 'Unusual Internal Communication with Rare Port/IP'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
-                { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
-                { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
-            additionalInfos: [
-                { title: 'SourceIP', value: '10.82.71.192' },
-                { title: 'DestinationIP', value: '10.82.69.147' },
-                { title: 'DestinationPort', value: '443' },
-                { title: 'Risk', value: '92' },
-                { title: 'Resources', value: 'NetFlow' },
-                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
-            description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
         }
     ];
 

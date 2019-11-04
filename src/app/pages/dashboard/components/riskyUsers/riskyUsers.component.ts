@@ -804,78 +804,89 @@ export class RiskyUsersComponent {
 
     ];
 
-    policyViolationForScottEdwin = [
+    difDateViolations;
+    difDateVio_ScottEdwin = [
         {
-            generatedDateFormat: '2 Oct 2019',
-            generatedTimestamp: '03:43:00',
-            accord: false,
-            pv: 'INC_17',
-            riskScore: 1,
-            ruleInfo: {
-                ruleId: 6,
-                title: 'Suspicious Login Activities from Rare Subnet'
-            },
-            incId: 'INC-17',
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Rare Subnet' },
-                { title: 'Threat Category', value: 'Rare Subnet' },
-                { title: 'Sub Category', value: 'Rare Subnet' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
-                { title: 'EventDescription', value: 'Login Successful' },
-                { title: 'Normal Pattern', value: '10.82.x' },
-                { title: 'Risk', value: '92' },
-                { title: 'Resource', value: 'Web Application' },
-                { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],
-            description: 'This anomaly is flagged when login activities are observed from Rare Subnet as per user / system past behavior'
+            violationDate: '02 Oct 2019',
+            violations: [
+                {
+                    generatedDateFormat: '2 Oct 2019',
+                    generatedTimestamp: '03:43:00',
+                    accord: false,
+                    pv: 'INC_17',
+                    riskScore: 1,
+                    ruleInfo: {
+                        ruleId: 6,
+                        title: 'Suspicious Login Activities from Rare Subnet'
+                    },
+                    incId: 'INC-17',
+                    threatCategories: [
+                        { title: 'Kill Chain', value: 'Rare Subnet' },
+                        { title: 'Threat Category', value: 'Rare Subnet' },
+                        { title: 'Sub Category', value: 'Rare Subnet' }],
+                    additionalInfo: [
+                        { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
+                        { title: 'EventDescription', value: 'Login Successful' },
+                        { title: 'Normal Pattern', value: '10.82.x' },
+                        { title: 'Risk', value: '92' },
+                        { title: 'Resource', value: 'Web Application' },
+                        { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],
+                    description: 'This anomaly is flagged when login activities are observed from Rare Subnet as per user / system past behavior'
+                },
+                {
+                    generatedDateFormat: '2 Oct 2019',
+                    generatedTimestamp: '03:43:00',
+                    accord: false,
+                    pv: 'INC_41',
+                    riskScore: 1,
+                    ruleInfo: {
+                        ruleId: 6,
+                        title: 'Suspicious Login Activities during off-hours'
+                    },
+                    incId: 'INC-41',
+                    threatCategories: [
+                        { title: 'Kill Chain', value: 'Off-Hour Activities' },
+                        { title: 'Threat Category', value: 'Off-Hour Activities' },
+                        { title: 'Sub Category', value: 'Off-Hour Activities' }],
+                    additionalInfo: [
+                        { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
+                        { title: 'EventDescription', value: 'Login Successful' },
+                        { title: 'Normal Pattern', value: '9:34am - 5:47pm' },
+                        { title: 'Risk', value: '84' },
+                        { title: 'Resource', value: 'Web Application' },
+                        { title: 'Indicators', value: 'Accountname, EventDescription, EventTime' }],
+                    description: 'This anomaly is flagged when login activities are observed during off-hour as per user / system past behavior'
+                }
+            ]
         },
         {
-            generatedDateFormat: '2 Oct 2019',
-            generatedTimestamp: '03:43:00',
-            accord: false,
-            pv: 'INC_41',
-            riskScore: 1,
-            ruleInfo: {
-                ruleId: 6,
-                title: 'Suspicious Login Activities during off-hours'
-            },
-            incId: 'INC-41',
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Off-Hour Activities' },
-                { title: 'Threat Category', value: 'Off-Hour Activities' },
-                { title: 'Sub Category', value: 'Off-Hour Activities' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
-                { title: 'EventDescription', value: 'Login Successful' },
-                { title: 'Normal Pattern', value: '9:34am - 5:47pm' },
-                { title: 'Risk', value: '84' },
-                { title: 'Resource', value: 'Web Application' },
-                { title: 'Indicators', value: 'Accountname, EventDescription, EventTime' }],
-            description: 'This anomaly is flagged when login activities are observed during off-hour as per user / system past behavior'
-        },
-        {
-            generatedDateFormat: '1 Oct 2019',
-            generatedTimestamp: '02:34:00',
-            accord: false,
-            pv: 'INC_67',
-            riskScore: 1,
-            ruleInfo: {
-                ruleId: 1,
-                title: 'Potential Phishing Email Attack - Ironport'
-            },
-            incId: 'INC-67',
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Phishing Attack' },
-                { title: 'Threat Category', value: 'Phishing Attack' },
-                { title: 'Sub Category', value: 'Phishing Attack' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: 'Scott_Edwin' },
-                { title: 'Sender', value: 'jinvik@web19.profiwk.com' },
-                { title: 'Recipients', value: '37' },
-                { title: 'Risk', value: '81' },
-                { title: 'Resource', value: 'Ironport' },
-                { title: 'Indicators', value: 'Sender, Recipient, Subject, Size' }],
-            description: 'This anomaly is flagged when Inbound email sent from same sender to multiple recipients having same subject and same attachment size'
+            violationDate: '01 Oct 2019',
+            violations: [
+                {
+                    generatedDateFormat: '1 Oct 2019',
+                    generatedTimestamp: '02:34:00',
+                    accord: false,
+                    pv: 'INC_67',
+                    riskScore: 1,
+                    ruleInfo: {
+                        ruleId: 1,
+                        title: 'Potential Phishing Email Attack - Ironport'
+                    },
+                    incId: 'INC-67',
+                    threatCategories: [
+                        { title: 'Kill Chain', value: 'Phishing Attack' },
+                        { title: 'Threat Category', value: 'Phishing Attack' },
+                        { title: 'Sub Category', value: 'Phishing Attack' }],
+                    additionalInfo: [
+                        { title: 'Affected Entity', value: 'Scott_Edwin' },
+                        { title: 'Sender', value: 'jinvik@web19.profiwk.com' },
+                        { title: 'Recipients', value: '37' },
+                        { title: 'Risk', value: '81' },
+                        { title: 'Resource', value: 'Ironport' },
+                        { title: 'Indicators', value: 'Sender, Recipient, Subject, Size' }],
+                    description: 'This anomaly is flagged when Inbound email sent from same sender to multiple recipients having same subject and same attachment size'
+                }
+            ]
         }
     ];
 
@@ -1984,7 +1995,7 @@ export class RiskyUsersComponent {
             } else if (this.selectedUser === 'Mendelson') {
                 this.hardCodeItemDataForDemoForMendelson = this.policyViolationForMendelson;
             } else if (this.selectedUser === 'Scott_Edwin') {
-                this.hardCodeItemDataForDemoForMendelson = this.policyViolationForScottEdwin;
+                this.difDateViolations = this.difDateVio_ScottEdwin;
             }
 
             if (this.selectedUser) {

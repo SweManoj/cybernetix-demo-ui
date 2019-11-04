@@ -28,7 +28,11 @@ export class RiskyIPComponent implements OnInit {
         { value: '69.249.19.217', score: 76, location: 'Paris, France', lastSeen: '24 Jun 2019 18:38:00', peer: 3, lastSeenUser: 'JRU87122' },
 
         { value: '172.168.200.55', score: 93, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
-        { value: '10.82.34.101', score: 93, location: '-', lastSeen: '-', peer: '-', lastSeenUser: '-' }
+        { value: '10.82.34.101', score: 93, location: '-', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+
+        { value: '10.82.34.107', score: 93, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+        { value: '10.82.69.151', score: 94, location: 'New Jersey', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+        { value: '10.82.71.192', score: 96, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
     ];
 
     provideDataForIP() {
@@ -38,6 +42,14 @@ export class RiskyIPComponent implements OnInit {
             this.hardCodeItemData = this.ip_172_168_200_55_data;
         else if (this.selectedIP === '18.10.8.1')
             this.hardCodeItemData = this.ip_18_10_8_1_data;
+        else if (this.selectedIP === '10.82.34.107')
+            this.hardCodeItemData = this.ip_10_82_34_107_data;
+        else if (this.selectedIP === '10.82.71.192')
+            this.hardCodeItemData = this.ip_10_82_17_192_data;
+        else if (this.selectedIP === '10.82.69.151')
+            this.hardCodeItemData = this.ip_10_82_69_151_data;
+        else if (this.selectedIP === '10.82.69.151')
+            this.hardCodeItemData = this.ip_10_82_69_151_data;
     }
 
     hardCodeItemData = [
@@ -172,6 +184,205 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Resources', value: '-' },
                 { title: 'Indicators', value: '-' }],
             description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
+        }
+    ];
+
+    ip_10_82_69_151_data = [
+        {
+            generatedDateFormat: 'Oct 14 2019',
+            generatedTimestamp: '17:23:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 3,
+            ruleInfo: {
+                ruleId: 3,
+                title: 'Potential Data Exfiltration to External IP'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' }],
+            additionalInfos: [
+                { title: 'SourceIP', value: '10.82.71.192' },
+                { title: 'DestinationIP', value: '10.82.69.151' },
+                { title: 'DestinationPort', value: '21' },
+                { title: 'Packet Size', value: '10.3MB' },
+                { title: 'Risk', value: '91' },
+                { title: 'Resources', value: 'NetFlow' },
+                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+            description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+        },
+        {
+            generatedDateFormat: 'Oct 14 2019',
+            generatedTimestamp: '21:03:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 18,
+            ruleInfo: {
+                ruleId: 18,
+                title: 'Potential Beaconing to External IP'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Data Exfiltration' },
+                { title: 'Threat Category', value: 'Data Exfiltration' },
+                { title: 'Sub Category', value: 'Data Exfiltration' }],
+            additionalInfos: [
+                { title: 'SourceIP', value: '10.82.71.192' },
+                { title: 'DestinationIP', value: '10.82.69.151' },
+                { title: 'DestinationPort', value: '21' },
+                { title: 'Packet Size', value: '10.3MB' },
+                { title: 'Risk', value: '94' },
+                { title: 'Packets', value: '18' },
+                { title: 'Resources', value: 'NetFlow' },
+                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+            description: 'This anomaly is flagged when there is Unusual beaconing with External IP'
+        }
+    ];
+
+    ip_10_82_34_107_data = [
+        {
+            generatedDateFormat: 'Oct 4 2019',
+            generatedTimestamp: '17:22:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 93,
+            ruleInfo: {
+                ruleId: 93,
+                title: 'Abnormal SQL Concatenation Patterns Received on Database Server'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Potential SQL Injection' },
+                { title: 'Threat Category', value: 'Potential SQL Injection' },
+                { title: 'Sub Category', value: 'Potential SQL Injection' }],
+            additionalInfos: [
+                { title: 'Source IP', value: '172.34.123.1' },
+                { title: 'Affected Entity', value: '10.82.34.107' },
+                { title: 'Requested File', value: 'dump_database.php, wp-login.php, admin-ajax.php' },
+                { title: 'EventDescription', value: 'Successful' },
+                { title: 'Risk', value: '87' },
+                { title: 'Resources', value: 'Apache Access Logs' },
+                { title: 'Indicators', value: 'SourceIP, DestinationIP, RequestedFile, EventDescription' }],
+            description: 'This anomaly is flagged when there is an attempt to execute rare & unusual SQL queries on Database server'
+        },
+        {
+            generatedDateFormat: 'Oct 5 2019',
+            generatedTimestamp: '08:50:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 47,
+            ruleInfo: {
+                ruleId: 47,
+                title: 'Unusual Network scanning Activities Identified from Server'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Lateral Movement' },
+                { title: 'Threat Category', value: 'Lateral Movement' },
+                { title: 'Sub Category', value: 'Lateral Movement' }],
+            additionalInfos: [
+                { title: 'Source IP', value: '10.82.34.107' },
+                { title: 'DestinationIP', value: '10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 10.82.34.117, 10.82.34.192, 10.82.71.129, 10.82.71.192..' },
+                { title: 'Count of DestinationIP', value: '43' },
+                { title: 'DestinationPort', value: '139, 445' },
+                { title: 'Risk', value: '93' },
+                { title: 'Resources', value: 'NetFlow' },
+                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+            description: 'This anomaly is flagged when there is potential network scanning activity observed from internal IP'
+        }
+    ];
+
+    ip_10_82_17_192_data = [
+        {
+            generatedDateFormat: 'Oct 6 2019',
+            generatedTimestamp: '14:53:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 18,
+            ruleInfo: {
+                ruleId: 18,
+                title: 'Abnormal Batch Process Execution'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Batch Process Execution' },
+                { title: 'Threat Category', value: 'Batch Process Execution' },
+                { title: 'Sub Category', value: 'Batch Process Execution' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.71.192' },
+                { title: 'EventCode', value: '4688' },
+                { title: 'LogonType', value: '4 (Batch)' },
+                { title: 'Risk', value: '87' },
+                { title: 'Process', value: 'Powershell' },
+                { title: 'Resources', value: 'Windows Security' },
+                { title: 'Indicators', value: 'EventCode, LogonType, SourceIP, ProcessName' }],
+            description: 'This anomaly is flagged when abnormal batch process is executed on Server'
+        },
+        {
+            generatedDateFormat: 'Oct 7 2019',
+            generatedTimestamp: '12:33:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 4,
+            ruleInfo: {
+                ruleId: 4,
+                title: 'Malware Found on Critical Server'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Malware Found' },
+                { title: 'Threat Category', value: 'Malware Found' },
+                { title: 'Sub Category', value: 'Malware Found' }],
+            additionalInfos: [
+                { title: 'Affected Entity', value: '10.82.71.192' },
+                { title: 'Severity', value: 'Medium' },
+                { title: 'Malware', value: 'malware.binary' },
+                { title: 'Risk', value: '89' },
+                { title: 'Resources', value: 'FireEye' },
+                { title: 'Indicators', value: 'SourceIP, MalwareType, Severity' }],
+            description: 'This anomaly is flagged when malware is found on Critical server'
+        },
+        {
+            generatedDateFormat: 'Oct 9 2019',
+            generatedTimestamp: '17:12:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 17,
+            ruleInfo: {
+                ruleId: 17,
+                title: 'Unusual Internal Communication with Rare Port/IP'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+                { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
+                { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
+            additionalInfos: [
+                { title: 'SourceIP', value: '10.82.71.192' },
+                { title: 'DestinationIP', value: '10.82.68.143' },
+                { title: 'DestinationPort', value: '139' },
+                { title: 'Risk', value: '91' },
+                { title: 'Resources', value: 'NetFlow' },
+                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+            description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+        },
+        {
+            generatedDateFormat: 'Oct 10 2019',
+            generatedTimestamp: '17:23:00',
+            accord: false,
+            pv: 'PV 039',
+            riskScore: 19,
+            ruleInfo: {
+                ruleId: 19,
+                title: 'Unusual Internal Communication with Rare Port/IP'
+            },
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+                { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
+                { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
+            additionalInfos: [
+                { title: 'SourceIP', value: '10.82.71.192' },
+                { title: 'DestinationIP', value: '10.82.69.147' },
+                { title: 'DestinationPort', value: '443' },
+                { title: 'Risk', value: '92' },
+                { title: 'Resources', value: 'NetFlow' },
+                { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+            description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
         }
     ];
 

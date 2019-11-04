@@ -81,6 +81,92 @@ export class IncidentSummaryComponent implements OnInit {
             ]
         },
         {
+            description: 'Account Compromise followed by Malware Injection followed by Data Exfiltration from Critical Servers',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'TVDE23',
+            viewCount: 1,
+            policyViolationDate: '14 Oct 2019 03:50',
+            incidentCreatedDate: '14 Oct 2019 05:43',
+            priority: 'Critical',
+            indicatorsOfAttack: 10,
+            status: 'Open',
+            outcome: 'Investigation In Progress',
+            caseOwner: 'Scott R',
+            killChainProcess: [
+                {
+                    title: 'Reconnaissance',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Phishing Attack',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Account Compromise',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Malware Injection',
+                    icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'monitor-code.png'
+                }
+            ]
+        },
+        {
+            description: 'Account Compromise followed by Malware Injection followed by Data Exfiltration from Critical Servers',
+            generatedDateFormat: '10 May 2019',
+            generatedTimestamp: '03:22:00',
+            accord: false,
+            pv: 'PV_083',
+            riskScore: 579,
+            ruleInfo: {
+                ruleId: 1,
+                title: null
+            },
+            incId: 'INC 23',
+            viewCount: 1,
+            policyViolationDate: '14 Oct 2019 03:50',
+            incidentCreatedDate: '14 Oct 2019 05:43',
+            priority: 'Critical',
+            indicatorsOfAttack: 10,
+            status: 'Open',
+            outcome: 'Investigation In Progress',
+            caseOwner: 'Scott R',
+            killChainProcess: [
+                {
+                    title: 'Reconnaissance',
+                    icon: 'binary-search.png'
+                },
+                {
+                    title: 'Phishing Attack',
+                    icon: 'delivery.png'
+                },
+                {
+                    title: 'Account Compromise',
+                    icon: 'foothold.png'
+                },
+                {
+                    title: 'Malware Injection',
+                    icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Data Exfiltration',
+                    icon: 'monitor-code.png'
+                }
+            ]
+        },
+        {
             description: 'Reconnaissance from External Malicious IP for Firewall Misconfig and EC2 Vulnerability Followed By Exploitation of EC2 Followed By Privilege Access Followed By Data Exfiltration from S3',
             generatedDateFormat: '10 May 2019',
             generatedTimestamp: '03:22:00',
@@ -949,7 +1035,7 @@ export class IncidentSummaryComponent implements OnInit {
                 return { 'background': 'red' };
             }
 
-            const redIncTVDE: Array<String> = ['INC 38', 'INC 44', 'INC 71'];
+            const redIncTVDE: Array<String> = ['INC 38', 'INC 44', 'INC 71', 'INC 23'];
             if (redIncTVDE.includes(incId) && killChainTitle == 'Data Exfiltration') {
                 return { 'background': 'red' };
             }
@@ -958,6 +1044,7 @@ export class IncidentSummaryComponent implements OnInit {
             if (redIncTVAC.includes(incId) && killChainTitle == 'Account Compromise') {
                 return { 'background': 'red' };
             }
+            
             if (killChainTitle == 'P2P Traffic') {
                 return { 'background': 'red' };
             }
@@ -1190,7 +1277,7 @@ export class IncidentSummaryComponent implements OnInit {
     ngOnInit() {
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedIncident = params.get('incID');
-            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43', 'TVAC92', 'INC 92', 'TVRC4', 'INC 4']
+            const incidentValues: Array<String> = ['INC 38', 'INC 71', 'INC 44', 'TVDE38', 'TVDE21', 'TVDE43', 'TVAC92', 'INC 92', 'TVRC4', 'INC 4', 'INC 23', 'TVDE23']
             if (incidentValues.includes(this.selectedIncident))
                 this.show = false;
             if (this.selectedIncident == 'TVDE38')
@@ -1203,6 +1290,8 @@ export class IncidentSummaryComponent implements OnInit {
                 this.selectedIncident = 'INC 4';
             else if (this.selectedIncident == 'TVAC92')
                 this.selectedIncident = 'INC 92';
+            else if (this.selectedIncident == 'TVDE23')
+                this.selectedIncident = 'INC 23';
 
             this.incidents.forEach((incident) => {
                 if (incident.incId === this.selectedIncident) {

@@ -25,6 +25,7 @@ export class CaseManagementComponent implements OnInit {
   private offset: number = 0;
   path: any;
   data = [
+    { created: '14/10/2019', priority: 'Critical', riskscore: 90, id: 'INC 23', name: 'Account Compromise followed by Malware Injection followed by Data Exfiltration from Critical Servers', status: 'Open', assignee: 'Scott R', alerts: 2, threatVector: 'TVDE23', type: 'user' },
     { created: '23/09/2019', priority: 'Critical', riskscore: 90, id: 'INC 38', name: 'Privileged User escalated self-owned service account and used it for Data Exfiltration', status: 'Closed', assignee: 'Martin J', alerts: 2, threatVector: 'TVDE38', type: 'user' },
     { created: '27/06/2019', priority: 'Critical', riskscore: 90, id: 'INC 71', name: 'Malicious Inbound traffic from External IP followed by outbound P2P traffic', status: 'Open', assignee: 'Scott R', alerts: 2, threatVector: 'TVDE21', type: 'ip' },
     { created: '13/10/2019', priority: 'Critical', riskscore: 90, id: 'INC 44', name: 'Description: Privileged Activity Attempt followed by Account Compromise followed by Excessive Data Exfiltration', status: 'Open', assignee: 'Steve D', alerts: 2, threatVector: 'TVDE43', type: 'user' },

@@ -44,7 +44,7 @@ export class RiskyIPComponent implements OnInit {
             this.hardCodeItemData = this.ip_18_10_8_1_data;
         else if (this.selectedIP === '10.82.34.107')
             this.difDateViolations = this.diffDateVio_ip_10_82_34_107_data;
-        else if (this.difDateViolations === '10.82.71.192')
+        else if (this.selectedIP === '10.82.71.192')
             this.difDateViolations = this.diffDateVio_ip_10_82_17_192_data;
         else if (this.selectedIP === '10.82.69.151') {
             this.difDateViolations = this.diffDateVio_ip_10_82_69_151_data

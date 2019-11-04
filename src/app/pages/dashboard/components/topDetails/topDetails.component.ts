@@ -44,11 +44,12 @@ export class TopDetailsComponent implements AfterViewInit {
 
     riskyObjects = [
         { type: 'user', value: 'Glenn_Roberto', score: 93, img: true },
-        { type: 'user', value: 'ADittmer', score: 94, img: true },
+        // { type: 'user', value: 'ADittmer', score: 94, img: true },
         { type: 'user', value: 'Adm-EMoor', score: 95, img: true },
         // { type: 'user', value: 'SSmith1', score: 90, img: true },
         { type: 'user', value: 'AWendler', score: 97, img: true },
         { type: 'user', value: 'Chen_Zhang', score: 93, img: true },
+        { type: 'user', value: 'Scott_Edwin', score: 92, img: true },
         // { type: 'user', value: 'Svc-ROpitz', score: 54, img: true },
 
         { type: 'ip address', value: '18.10.8.1', score: 93, img: false },
@@ -147,11 +148,11 @@ export class TopDetailsComponent implements AfterViewInit {
     @ViewChild('selectedRiskyType') riskyTypeTable: Table;
     riskyTypeSelected = 'user';
 
-    constructor(private topDetailsService: TopDetailsService,
-        private router: Router) {
-        this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
-        this.selectedRiskies = this.selectedRiskies.splice(0, 5);
+    constructor(private router: Router) {
+
         this.riskyObjects.sort((a, b) => -(a.score - b.score)); // desending order
+        this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
+        this.selectedRiskies = this.selectedRiskies.splice(0, 4);
     }
 
     getRiskScoreColor(riskScore: number) {

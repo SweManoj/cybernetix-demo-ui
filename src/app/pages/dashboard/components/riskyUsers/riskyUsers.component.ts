@@ -48,6 +48,18 @@ export class RiskyUsersComponent {
         },
         {
             type: 'user',
+            value: 'Scott_Edwin',
+            score: 92,
+            img: true,
+            role: 'Vendor',
+            department: 'Infrastructure Monitoring',
+            location: 'Minneapolis',
+            reportingManager: 'John_Smith',
+            creationDate: '13 Jan 2018',
+            lastWorkDay: '-'
+        },
+        {
+            type: 'user',
             value: 'Adm-EMoor',
             score: 95,
             img: true,
@@ -792,6 +804,81 @@ export class RiskyUsersComponent {
 
     ];
 
+    policyViolationForScottEdwin = [
+        {
+            generatedDateFormat: '2 Oct 2019',
+            generatedTimestamp: '03:43:00',
+            accord: false,
+            pv: 'INC_17',
+            riskScore: 1,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Suspicious Login Activities from Rare Subnet'
+            },
+            incId: 'INC-17',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Rare Subnet' },
+                { title: 'Threat Category', value: 'Rare Subnet' },
+                { title: 'Sub Category', value: 'Rare Subnet' }],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
+                { title: 'EventDescription', value: 'Login Successful' },
+                { title: 'Normal Pattern', value: '10.82.x' },
+                { title: 'Risk', value: '92' },
+                { title: 'Resource', value: 'Web Application' },
+                { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],
+            description: 'This anomaly is flagged when login activities are observed from Rare Subnet as per user / system past behavior'
+        },
+        {
+            generatedDateFormat: '2 Oct 2019',
+            generatedTimestamp: '03:43:00',
+            accord: false,
+            pv: 'INC_41',
+            riskScore: 1,
+            ruleInfo: {
+                ruleId: 6,
+                title: 'Suspicious Login Activities during off-hours'
+            },
+            incId: 'INC-41',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Off-Hour Activities' },
+                { title: 'Threat Category', value: 'Off-Hour Activities' },
+                { title: 'Sub Category', value: 'Off-Hour Activities' }],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
+                { title: 'EventDescription', value: 'Login Successful' },
+                { title: 'Normal Pattern', value: '9:34am - 5:47pm' },
+                { title: 'Risk', value: '84' },
+                { title: 'Resource', value: 'Web Application' },
+                { title: 'Indicators', value: 'Accountname, EventDescription, EventTime' }],
+            description: 'This anomaly is flagged when login activities are observed during off-hour as per user / system past behavior'
+        },
+        {
+            generatedDateFormat: '1 Oct 2019',
+            generatedTimestamp: '02:34:00',
+            accord: false,
+            pv: 'INC_67',
+            riskScore: 1,
+            ruleInfo: {
+                ruleId: 1,
+                title: 'Potential Phishing Email Attack - Ironport'
+            },
+            incId: 'INC-67',
+            threatCategories: [
+                { title: 'Kill Chain', value: 'Phishing Attack' },
+                { title: 'Threat Category', value: 'Phishing Attack' },
+                { title: 'Sub Category', value: 'Phishing Attack' }],
+            additionalInfo: [
+                { title: 'Affected Entity', value: 'Scott_Edwin' },
+                { title: 'Sender', value: 'jinvik@web19.profiwk.com' },
+                { title: 'Recipients', value: '37' },
+                { title: 'Risk', value: '81' },
+                { title: 'Resource', value: 'Ironport' },
+                { title: 'Indicators', value: 'Sender, Recipient, Subject, Size' }],
+            description: 'This anomaly is flagged when Inbound email sent from same sender to multiple recipients having same subject and same attachment size'
+        }
+    ];
+
     hardCodeItemDataForDemoForJohn1 = [
         {
             generatedDateFormat: '2 Aug 2019',
@@ -1501,11 +1588,19 @@ export class RiskyUsersComponent {
         { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 
-    activitiesForAdmADittmer = [
+    /* activitiesForAdmADittmer = [
         { image: 'falg@1x.png', value: '1.4K', title: 'Events' },
         { image: 'resources@1x.png', value: '04', title: 'Applications' },
         { image: 'Shape@1x.png', value: '01', title: 'Locations' },
         { image: 'violations@1x.png', value: '04', title: 'Insights' },
+        { image: 'incident@1x.png', value: '01', title: 'Incidents' },
+    ]; */
+
+    activitiesForAdmScottEdwin = [
+        { image: 'falg@1x.png', value: '1.1K', title: 'Events' },
+        { image: 'resources@1x.png', value: '01', title: 'Applications' },
+        { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+        { image: 'violations@1x.png', value: '03', title: 'Insights' },
         { image: 'incident@1x.png', value: '01', title: 'Incidents' },
     ];
 
@@ -1884,14 +1979,12 @@ export class RiskyUsersComponent {
 
             if (this.selectedUser == 'Alysa') {
                 this.hardCodeItemData = this.flightUserHardCodeItemData;
-            }
-
-            if (this.selectedUser === 'Maile') {
+            } else if (this.selectedUser === 'Maile') {
                 this.hardCodeItemDataForDemoForEmoor = this.policyViolationForMaile;
-            }
-
-            if (this.selectedUser === 'Mendelson') {
+            } else if (this.selectedUser === 'Mendelson') {
                 this.hardCodeItemDataForDemoForMendelson = this.policyViolationForMendelson;
+            } else if (this.selectedUser === 'Scott_Edwin') {
+                this.hardCodeItemDataForDemoForMendelson = this.policyViolationForScottEdwin;
             }
 
             if (this.selectedUser) {

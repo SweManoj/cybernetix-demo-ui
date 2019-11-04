@@ -1712,6 +1712,22 @@ export class RiskyUsersComponent {
                 { image: 'violations@1x.png', value: '12', title: 'Insights' },
                 { image: 'incident@1x.png', value: '0', title: 'Remediations' },
             ]
+        },
+        {
+            incident: 'TVDE23',
+            affectedEntity: 'Scott_Edwin,10.82.71.192, 10.82.34.107, 10.82.69.151',
+            lastUpdatedOn: '14 Oct 2019 03:50',
+            lastUpdatedBy: 'Scott R',
+            currentStauts: 'Open',
+            outcome: 'Investigation In Progress',
+            remediation: 'N/A',
+            incidentActivities: [
+                { image: 'falg@1x.png', value: '982', title: 'Events' },
+                { image: 'resources@1x.png', value: '05', title: 'Resources' },
+                { image: 'Shape@1x.png', value: '02', title: 'Locations' },
+                { image: 'violations@1x.png', value: '10', title: 'Insights' },
+                { image: 'incident@1x.png', value: '0', title: 'Remediations' },
+            ]
         }
     ];
 
@@ -2098,6 +2114,8 @@ export class RiskyUsersComponent {
                 } else if (incident == 'INC 4' || incident == 'TVRC4') {
                     this.glenRobertoHardCodeItemData = null;
                     this.incidentViolations = this.glenRobertoHardCodeItemData;
+                } else if (incident == 'TVDE23') {
+                    this.difDateViolations = this.difDateVio_ScottEdwin;
                 }
 
                 this.incidentDetails.forEach(incidentDetail => {

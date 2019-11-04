@@ -48,6 +48,7 @@ export class CaseManagementComponent implements OnInit {
   ];
 
   commonThreatVectorData: Array<any> = [
+    { detectedOn: '14/10/2019', threatVectorID: 'TVDE23', priority: 'Critical', riskScore: 96, incident: 'YES', entity: '4', type: 'Auto' },
     { detectedOn: '23/09/2019', threatVectorID: 'TVDE38', priority: 'Critical', riskScore: 95, incident: 'YES', entity: '4', type: 'Auto' },
     { detectedOn: '13/10/2019', threatVectorID: 'TVDE43', priority: 'Critical', riskScore: 93, incident: 'YES', entity: '5', type: 'Auto' },
     { detectedOn: '27/06/2019', threatVectorID: 'TVDE21', priority: 'Critical', riskScore: 89, incident: 'YES', entity: '4', type: 'Auto' },

@@ -18,7 +18,7 @@ export class TopDetailsComponent implements AfterViewInit {
     @Input() componentType: string;
 
     threatVectors = [
-        { id: 'Data Exfiltration', count: 5 },
+        { id: 'Data Exfiltration', count: 6 },
         { id: 'Reconnaissance', count: 3 },
         { id: 'Account Compromise', count: 3 },
         { id: 'Insider Threat', count: 2 },

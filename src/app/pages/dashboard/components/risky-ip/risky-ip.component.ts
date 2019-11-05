@@ -20,35 +20,32 @@ export class RiskyIPComponent implements OnInit {
     ipDetails: any;
 
     ipaddressesData = [
-        { value: '10.82.32.212', score: 95, location: 'London, UK', lastSeen: '27 Jun 2019 03:22:00', peer: 32, lastSeenUser: 'ChrisM98' },
+        { value: '10.82.71.192', score: 96, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+        { value: '10.82.32.212', score: 95, location: 'London, UK', lastSeen: '27 Jun 2019 03:22:00', peer: 32, lastSeenUser: 'ChrisM98' }, // Special Design
+        { value: '10.82.69.151', score: 94, location: 'New Jersey', lastSeen: '-', peer: '-', lastSeenUser: '-' },
         { value: '18.10.8.1', score: 93, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+        { value: '10.82.34.107', score: 93, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
+
+        // unused IPs
         { value: '82.102.21.217', score: 60, location: 'Beijing, China', lastSeen: '21 Jun 2019 17:10:00', peer: 2, lastSeenUser: 'NEI89321' },
         { value: '95.181.116.77', score: 85, location: 'Banglore, India', lastSeen: '22 Jun 2018 09:17:00', peer: 1, lastSeenUser: 'CAI67248' },
         { value: '23.94.213.6', score: 89, location: 'Berlin, Germany', lastSeen: '23 Jun 2019 13:09:00', peer: 2, lastSeenUser: 'SAU76518' },
         { value: '69.249.19.217', score: 76, location: 'Paris, France', lastSeen: '24 Jun 2019 18:38:00', peer: 3, lastSeenUser: 'JRU87122' },
-
         { value: '172.168.200.55', score: 93, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
         { value: '10.82.34.101', score: 93, location: '-', lastSeen: '-', peer: '-', lastSeenUser: '-' },
-
-        { value: '10.82.34.107', score: 93, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
-        { value: '10.82.69.151', score: 94, location: 'New Jersey', lastSeen: '-', peer: '-', lastSeenUser: '-' },
-        { value: '10.82.71.192', score: 96, location: 'San Diego', lastSeen: '-', peer: '-', lastSeenUser: '-' },
     ];
 
     provideDataForIP() {
-        if (this.selectedIP === '10.82.34.101')
-            this.hardCodeItemData = this.ip_10_82_34_101_data;
-        else if (this.selectedIP === '172.168.200.55')
-            this.hardCodeItemData = this.ip_172_168_200_55_data;
+        if (this.selectedIP === '10.82.71.192')
+            this.difDateViolations = this.diffDateVio_ip_10_82_71_192_data;
+        else if (this.selectedIP === '10.82.69.151')
+            this.difDateViolations = this.diffDateVio_ip_10_82_69_151_data;
         else if (this.selectedIP === '18.10.8.1')
             this.hardCodeItemData = this.ip_18_10_8_1_data;
         else if (this.selectedIP === '10.82.34.107')
             this.difDateViolations = this.diffDateVio_ip_10_82_34_107_data;
-        else if (this.selectedIP === '10.82.71.192')
-            this.difDateViolations = this.diffDateVio_ip_10_82_17_192_data;
-        else if (this.selectedIP === '10.82.69.151') {
-            this.difDateViolations = this.diffDateVio_ip_10_82_69_151_data
-        }
+
+        // 2nd IP - 10.82.32.212 Special Design
     }
 
     hardCodeItemData = [
@@ -245,7 +242,7 @@ export class RiskyIPComponent implements OnInit {
         }
     ];
 
-    diffDateVio_ip_10_82_17_192_data = [
+    diffDateVio_ip_10_82_71_192_data = [
         {
             violationDate: '10 Oct 2019',
             violations: [
@@ -418,121 +415,6 @@ export class RiskyIPComponent implements OnInit {
         }
     ];
 
-    ip_172_168_200_55_data = [
-        {
-            generatedDateFormat: 'Oct 1 2019',
-            generatedTimestamp: '08:50:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 35,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Network scanning activities identified from vendor/partner network subnet'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Recon' },
-                { title: 'Threat Category', value: 'Internal Network Scan' },
-                { title: 'Sub Category', value: 'Internal Network Scan' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '172.168.200.55, 10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 192.168.200.55, 192.168.200.57, 10.67.122.136, 10.67.122.132' },
-                { title: 'Locations', value: 'San Diego' },
-                { title: 'Risk', value: '85' },
-                { title: 'Resources', value: 'Windows, NetFlow' },
-                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
-            description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP Kill Chain: Reconnaissance'
-        }
-    ];
-
-    ip_10_82_34_101_data = [
-        {
-            generatedDateFormat: 'Oct 1 2019',
-            generatedTimestamp: '10:50:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 35,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Network scanning activities identified from an internal IP'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Recon' },
-                { title: 'Threat Category', value: 'Internal Network Scan' },
-                { title: 'Sub Category', value: 'Internal Network Scan' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109, 10.82.34.102, 10.82.34.104, 10.82.34.111, 192.168.200.55' },
-                { title: 'Locations', value: '-' },
-                { title: 'Risk', value: '85' },
-                { title: 'Resources', value: 'NetFlow' },
-                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
-            description: 'This anomaly is flagged when there is potential network scanning activity observed from internal IP'
-        },
-        {
-            generatedDateFormat: 'Oct 1 2019',
-            generatedTimestamp: '10:55:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 35,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Network traffic towards rare machines'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Lateral Movement' },
-                { title: 'Threat Category', value: 'Lateral Movement' },
-                { title: 'Sub Category', value: 'Compromise of internal hosts' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 192.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
-                { title: 'Locations', value: '-' },
-                { title: 'Risk', value: '85' },
-                { title: 'Resources', value: 'Windows, NetFlow' },
-                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
-            description: 'This anomaly is flagged when an internal IP communicates with another IP which is a rare connectivity'
-        },
-        {
-            generatedDateFormat: 'Oct 1 2019',
-            generatedTimestamp: '11:00:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 35,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Single IP communicating to multiple IPs'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Lateral Movement' },
-                { title: 'Threat Category', value: 'Lateral Movement' },
-                { title: 'Sub Category', value: 'Compromise of internal hosts' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109 DESK-1876, 10.82.34.102 DESK-1879, 10.82.34.104 DESK-1877, 10.82.34.111 DESK-1676, 192.168.200.55 DESK-1576, 92.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
-                { title: 'Locations', value: '-' },
-                { title: 'Risk', value: '85' },
-                { title: 'Resources', value: 'Windows, NetFlow' },
-                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
-            description: 'This anomaly is flagged when one internal IP communicates with multiple other IPs in the network which can indicate probable lateral movement'
-        },
-        {
-            generatedDateFormat: 'Oct 1 2019',
-            generatedTimestamp: '11:00:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 35,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Potential Lateral Movement activity observed'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Lateral Movement' },
-                { title: 'Threat Category', value: 'Lateral Movement' },
-                { title: 'Sub Category', value: 'Compromise of internal hosts' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109 DESK-1876, 10.82.34.102 DESK-1879, 10.82.34.104 DESK-1877, 10.82.34.111 DESK-1676, 192.168.200.55 DESK-1576, 92.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
-                { title: 'Locations', value: '-' },
-                { title: 'Risk', value: '85' },
-                { title: 'Resources', value: 'Windows, NetFlow' },
-                { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, SourceIP, DestinationIP, DestinationPort, Hostname' }],
-            description: 'This anomaly is flagged when one internal IP communicates with multiple other IPs in the network which can indicate probable lateral movement'
-        }
-    ];
 
     ip_18_10_8_1_data = [
         {
@@ -606,6 +488,7 @@ export class RiskyIPComponent implements OnInit {
         }
     ];
 
+    // Special Design
     ip_10_82_32_212_data_seperate = [
         {
             generatedDateFormat: 'June 27 2019',

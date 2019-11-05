@@ -36,6 +36,7 @@ export class RiskyIPComponent implements OnInit {
         { value: '10.82.34.101', score: 93, location: '-', lastSeen: '-', peer: '-', lastSeenUser: '-' },
     ];
 
+    hostViolations: any;
     provideDataForIP() {
         if (this.selectedIP === '10.82.71.192')
             this.hostViolations = ip_10_82_71_192_data;
@@ -48,8 +49,6 @@ export class RiskyIPComponent implements OnInit {
 
         // 2nd IP - 10.82.32.212 Special Design
     }
-
-    hostViolations: any;
 
     // Special Design
     ip_10_82_32_212_data_seperate = [
@@ -160,15 +159,6 @@ export class RiskyIPComponent implements OnInit {
             description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
         }
     ];
-
-
-    itemInfo = [{
-        title: 'Last Hostname:',
-        value: 'WK-UKL48503D'
-    }, {
-        title: 'Last IP:',
-        value: '10.82.32.212'
-    }]
 
     infoStyleObject(input): Object {
         if (input == 'INFO')

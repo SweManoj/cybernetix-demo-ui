@@ -666,4 +666,238 @@ export var WK_1929304D_data = [
             },
         ]
     }
+];
+
+
+// ===================== NOT USED DATA =====================
+var AWS_DomainEC2_Instance07_data = [
+    {
+        generatedDateFormat: 'Sep 17 2019',
+        generatedTimestamp: '07:13:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 7,
+        ruleInfo: {
+            ruleId: 1,
+            title: "Vulnerability Alert"
+        },
+        description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Vulnerability Alert' },
+            { title: 'Sub Category', value: 'Vulnerability Alert' },
+            { title: 'Threat Category', value: 'Vulnerability Alert' }
+        ],
+        additionalInfo: [
+            { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
+            { title: 'Location', value: 'San Diego' },
+            { title: 'Risk', value: '36' },
+            { title: 'Resource', value: 'Qualys' },
+            { title: 'Indicators', value: 'SourceIP, Signature' }
+        ]
+    },
+    {
+        generatedDateFormat: 'Sep 27 2019',
+        generatedTimestamp: '10:13:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 35,
+        ruleInfo: {
+            ruleId: 1,
+            title: "Potential scanning attempts on Public facing cloud instance"
+        },
+        description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Reconnaissance' },
+            { title: 'Sub Category', value: 'Reconnaissance' },
+            { title: 'Threat Category', value: 'Reconnaissance' }
+        ],
+        additionalInfo: [
+            { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07,AWS-DomainEC2-Instance13,AWS-DomainEC2-Instance29,AWS-DomainEC2-Instance38' },
+            { title: 'Location', value: 'San Diego' },
+            { title: 'Risk', value: '65' },
+            { title: 'Resource', value: 'AWS' },
+            { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' }
+        ]
+    },
+    {
+        generatedDateFormat: 'Sep 29 2019',
+        generatedTimestamp: '13:07:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 8,
+        ruleInfo: {
+            ruleId: 1,
+            title: "Suspicious cloud IAM activities observed"
+        },
+        description: 'This violation is flagged when unusual (rare, privileged) IAM realted commands executed in cloud instance which can indicate access mining and probable recon activity',
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Reconnaissance' },
+            { title: 'Sub Category', value: 'Reconnaissance' },
+            { title: 'Threat Category', value: 'Reconnaissance' }
+        ],
+        additionalInfo: [
+            { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07' },
+            { title: 'Location', value: 'San Diego' },
+            { title: 'Risk', value: '83' },
+            { title: 'Resource', value: 'AWS EC2 Logs' },
+            { title: 'Indicators', value: 'Event, CommandExecuted' }
+        ]
+    }
+];
+
+var AUSLAP4873_data = [
+    {
+        generatedDateFormat: '13 July 2019',
+        generatedTimestamp: '10:45:00',
+        accord: false,
+        pv: 'PV_014',
+        riskScore: 36,
+        ruleInfo: {
+            ruleId: 6,
+            title: 'Threat Intelligence - Communication with Blacklisted IP'
+        },
+        incId: 'INC-17',
+        threatCategories: [{ title: 'Kill Chain', value: ' Malicious Outbound Communication' },
+        { title: 'Threat Category', value: ' Malicious Outbound Communication' },
+        { title: 'Sub Category', value: ' Malicious Outbound Communication' }],
+        dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
+        { title: 'Locations', value: 'Taipie' },
+        { title: 'Risk', value: '90' },
+        { title: 'Resources', value: 'Firewall' },
+        { title: 'Indicators', value: 'DestIP, DestPort' }],
+        description: 'This violation is flagged when there are high number of outbound connections to Blacklisted hosts as per Threat Intelligence feed'
+    },
+    {
+        generatedDateFormat: '13 July 2019',
+        generatedTimestamp: '10:02:00',
+        accord: false,
+        pv: 'PV_013',
+        riskScore: 45,
+        ruleInfo: {
+            ruleId: 6,
+            title: 'Rare Outbound Connections - Firewall'
+        },
+        incId: 'INC-17',
+        threatCategories: [{ title: 'Kill Chain', value: 'Malicious Outbound Communication' },
+        { title: 'Threat Category', value: ' Malicious Outbound Communication' },
+        { title: 'Sub Category', value: 'Malicious Outbound Communication' }],
+        dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
+        { title: 'Locations', value: 'Taipie' },
+        { title: 'Risk', value: '82' },
+        { title: 'Resources', value: 'Firewall' },
+        { title: 'Indicators', value: 'DestIP, DestPort' }],
+        description: 'This violation is flagged when there are high number of outbound connections to Rare hosts'
+    },
+    {
+        generatedDateFormat: '13 July 2019',
+        generatedTimestamp: '09:42:00',
+        accord: false,
+        pv: 'PV_012',
+        riskScore: 94,
+        ruleInfo: {
+            ruleId: 6,
+            title: 'Spam/Spyware URL Accessed - Proxy'
+        },
+        incId: 'INC-17',
+        threatCategories: [{ title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+        { title: 'Threat Category', value: 'Suspicious/Malicious Behavior' },
+        { title: 'Sub Category', value: 'Spam/Spyware' }],
+        dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
+        { title: 'Locations', value: 'Sydney' },
+        { title: 'Risk', value: '71' },
+        { title: 'Resources', value: 'Proxy' },
+        { title: 'Indicators', value: 'URL' }],
+        description: 'This violation is flagged when there are high number of Spam/Spyware URL’s accessed'
+    },
+
+    {
+        generatedDateFormat: '13 July 2019',
+        generatedTimestamp: '07:13:00',
+        accord: false,
+        pv: 'PV_011',
+        riskScore: 23,
+        ruleInfo: {
+            ruleId: 6,
+            title: 'Abnormal Vulnerability Detected - Qualys'
+        },
+        incId: 'INC-17',
+        threatCategories: [{ title: 'Kill Chain', value: 'Suspicious/Malicious Behavior' },
+        { title: 'Threat Category', value: 'Suspicious/Malicious Behavior' },
+        { title: 'Sub Category', value: 'Vulnerabilities' }],
+        dummyDatas: [{ title: 'Affected Entity', value: 'AUSLAP4873' },
+        { title: 'Locations', value: 'Sydney' },
+        { title: 'Risk', value: '53' },
+        { title: 'Resources', value: 'Qualys' },
+        { title: 'Indicators', value: 'Filenames' }],
+        description: 'This violation is flagged when there are abnormal vulnerabilities found in the host as per baselining.'
+    }
 ]
+
+var LONDESK588_data = [
+    {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '03:22:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 87,
+        ruleInfo: {
+            ruleId: 1,
+            title: "Inbound Telnet Traffic From Blacklisted IP's"
+        }
+    },
+    {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '05:30:00',
+        accord: false,
+        pv: 'PV 061',
+        riskScore: 64,
+        ruleInfo: {
+            ruleId: 2,
+            title: "Inbound Spam Traffic From OFAC Countries"
+        }
+    },
+    {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '05:30:00',
+        accord: false,
+        pv: 'PV 061',
+        riskScore: 11,
+        ruleInfo: {
+            ruleId: 2,
+            title: "Inbound Uncategorized Traffic From Multiple URL's"
+        }
+    },
+    {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '07:10:00',
+        accord: false,
+        pv: 'PV 039',
+        riskScore: 4,
+        ruleInfo: {
+            ruleId: 3,
+            title: 'Outbound P2P File Sharing Traffic to Rare Host'
+        }
+    },
+    {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '09:22:00',
+        accord: false,
+        pv: 'PV 041',
+        riskScore: 36,
+        ruleInfo: {
+            ruleId: 4,
+            title: 'Outbound Malicious Traffic from Multiple Ports'
+        }
+    },
+    {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '14:45:00',
+        accord: false,
+        pv: 'PV 069',
+        riskScore: 82,
+        ruleInfo: {
+            ruleId: 5,
+            title: 'Excessive Bytes Sent to Suspicious External Host via FTP'
+        }
+    }
+];

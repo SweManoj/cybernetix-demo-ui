@@ -78,6 +78,13 @@ export class CaseManagementComponent implements OnInit {
       return { 'color': 'red', 'font-size': 'initial' };
   }
 
+  typeStyle(type: string) {
+    if (type == 'Auto')
+      return { 'background': 'orange', 'border': '2px solid orange' }
+    else
+      return { 'background': 'green', 'border': '2px solid green' };
+  }
+
   redirectToTimeline(entityType, threatVector) {
     /* if (entityType == 'user')
       this.router.navigate(['/riskyUser', entity]);

@@ -895,14 +895,13 @@ export class RiskyUsersComponent {
             violationDate: '14 Oct 2019',
             violations: [
                 {
-                    generatedDateFormat: 'Oct 14 2019',
-                    generatedTimestamp: '21:03:00',
+                    generatedTimestamp: '17:23:00',
                     accord: false,
-                    pv: 'PV 039',
-                    riskScore: 18,
+                    pv: 'IN 039',
+                    riskScore: 3,
                     ruleInfo: {
-                        ruleId: 18,
-                        title: 'Potential Beaconing to External IP'
+                        ruleId: 3,
+                        title: 'Potential Data Exfiltration to External IP'
                     },
                     threatCategories: [
                         { title: 'Kill Chain', value: 'Data Exfiltration' },
@@ -913,16 +912,15 @@ export class RiskyUsersComponent {
                         { title: 'DestinationIP', value: '10.82.69.151' },
                         { title: 'DestinationPort', value: '21' },
                         { title: 'Packet Size', value: '10.3MB' },
-                        { title: 'Risk', value: '94' },
-                        { title: 'Packets', value: '18' },
+                        { title: 'Risk', value: '91' },
                         { title: 'Resources', value: 'NetFlow' },
                         { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
-                    description: 'This anomaly is flagged when there is Unusual beaconing with External IP'
+                    description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
                 },
                 {
                     generatedTimestamp: '17:23:00',
                     accord: false,
-                    pv: 'PV 039',
+                    pv: 'IN 039',
                     riskScore: 3,
                     ruleInfo: {
                         ruleId: 3,
@@ -950,7 +948,7 @@ export class RiskyUsersComponent {
                 {
                     generatedTimestamp: '17:23:00',
                     accord: false,
-                    pv: 'PV 039',
+                    pv: 'IN 021',
                     riskScore: 19,
                     ruleInfo: {
                         ruleId: 19,
@@ -977,7 +975,7 @@ export class RiskyUsersComponent {
                 {
                     generatedTimestamp: '17:12:00',
                     accord: false,
-                    pv: 'PV 039',
+                    pv: 'IN 052',
                     riskScore: 17,
                     ruleInfo: {
                         ruleId: 17,
@@ -1004,7 +1002,7 @@ export class RiskyUsersComponent {
                 {
                     generatedTimestamp: '12:33:00',
                     accord: false,
-                    pv: 'PV 039',
+                    pv: 'IN 019',
                     riskScore: 4,
                     ruleInfo: {
                         ruleId: 4,
@@ -1031,7 +1029,7 @@ export class RiskyUsersComponent {
                 {
                     generatedTimestamp: '14:53:00',
                     accord: false,
-                    pv: 'PV 039',
+                    pv: 'IN 033',
                     riskScore: 18,
                     ruleInfo: {
                         ruleId: 18,
@@ -1060,7 +1058,7 @@ export class RiskyUsersComponent {
                     generatedDateFormat: 'Oct 5 2019',
                     generatedTimestamp: '08:50:00',
                     accord: false,
-                    pv: 'PV 039',
+                    pv: 'IN 0371',
                     riskScore: 47,
                     ruleInfo: {
                         ruleId: 47,
@@ -1089,7 +1087,7 @@ export class RiskyUsersComponent {
                     generatedDateFormat: 'Oct 4 2019',
                     generatedTimestamp: '17:22:00',
                     accord: false,
-                    pv: 'PV 039',
+                    pv: 'IN 011',
                     riskScore: 93,
                     ruleInfo: {
                         ruleId: 93,
@@ -1118,7 +1116,7 @@ export class RiskyUsersComponent {
                     generatedDateFormat: '2 Oct 2019',
                     generatedTimestamp: '03:43:00',
                     accord: false,
-                    pv: 'INC_17',
+                    pv: 'IN 077',
                     riskScore: 1,
                     ruleInfo: {
                         ruleId: 6,
@@ -1142,7 +1140,7 @@ export class RiskyUsersComponent {
                     generatedDateFormat: '2 Oct 2019',
                     generatedTimestamp: '03:43:00',
                     accord: false,
-                    pv: 'INC_41',
+                    pv: 'IN 041',
                     riskScore: 1,
                     ruleInfo: {
                         ruleId: 6,
@@ -1171,13 +1169,13 @@ export class RiskyUsersComponent {
                     generatedDateFormat: '1 Oct 2019',
                     generatedTimestamp: '02:34:00',
                     accord: false,
-                    pv: 'INC_67',
+                    pv: 'IN 067',
                     riskScore: 1,
                     ruleInfo: {
                         ruleId: 1,
                         title: 'Potential Phishing Email Attack - Ironport'
                     },
-                    incId: 'INC-67',
+                    incId: 'IN 091',
                     threatCategories: [
                         { title: 'Kill Chain', value: 'Phishing Attack' },
                         { title: 'Threat Category', value: 'Phishing Attack' },

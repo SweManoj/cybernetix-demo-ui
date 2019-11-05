@@ -2741,7 +2741,7 @@
                                       class="risk-score mr-5">{{item.riskScore}}</span> -->
                                 <span class="risk-score mr-5">{{item.riskScore}}</span>
 
-                                <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
+                                <!-- <span ngbDropdown placement="bottom-right" class="float-right mt-1" *ngIf="item.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
                                     </button>
@@ -2763,7 +2763,12 @@
                                             View Summary
                                         </button>
                                     </div>
-                                </span>
+                                </span> -->
+
+                                <button mat-raised-button color="primary" *ngIf="item.pv=='IN 011'" class="pull-right"
+                                    style="padding: 0px 10px;max-height: 2rem;margin-top: 2px;">AI
+                                    Incident Created</button>
+
                             </div>
                         </div>
 

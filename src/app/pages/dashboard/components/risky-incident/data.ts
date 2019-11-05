@@ -1420,7 +1420,7 @@ export var tvde23SecondData = [
         additionalInfo: [
           { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
           { title: 'EventDescription', value: 'Login Successful' },
-          { title: 'Normal Pattern', value: '10.82.x' },
+          { title: 'Normal Pattern', value: '192.168.x' },
           { title: 'Risk', value: '92' },
           { title: 'Resource', value: 'Web Application' },
           { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],

@@ -498,6 +498,38 @@ export var bubbleDataMonth: any = [
   }
 ];
 
+//=================== USER Activity DATA =======================
+export var normalUserActivities = [
+  { image: 'falg@1x.png', value: '9.8K', title: 'Events' },
+  { image: 'resources@1x.png', value: '09', title: 'Applications' },
+  { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+  { image: 'violations@1x.png', value: '05', title: 'Insights' },
+  { image: 'incident@1x.png', value: '01', title: 'Incidents' },
+];
+
+export var scottEdwinActivities = [
+  { image: 'falg@1x.png', value: '1.1K', title: 'Events' },
+  { image: 'resources@1x.png', value: '01', title: 'Applications' },
+  { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+  { image: 'violations@1x.png', value: '03', title: 'Insights' },
+  { image: 'incident@1x.png', value: '01', title: 'Incidents' },
+];
+
+export var chenZhangActivities = [
+  { image: 'falg@1x.png', value: '2.7K', title: 'Events' },
+  { image: 'resources@1x.png', value: '04', title: 'Resources' },
+  { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+  { image: 'violations@1x.png', value: '05', title: 'Insights' },
+  { image: 'incident@1x.png', value: '01', title: 'Incidents' },
+];
+
+export var glenRobertoActivities = [
+  { image: 'falg@1x.png', value: '2.7K', title: 'Events' },
+  { image: 'resources@1x.png', value: '04', title: 'Resources' },
+  { image: 'Shape@1x.png', value: '01', title: 'Locations' },
+  { image: 'violations@1x.png', value: '03', title: 'Insights' },
+  { image: 'incident@1x.png', value: '01', title: 'Incidents' },
+];
 
 //=================== USER DATA =======================
 export var aWendlerData = [
@@ -611,8 +643,6 @@ export var aWendlerData = [
         { title: 'Indicators', value: 'Location' }],
         description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location'
       }
-
-
     ]
   },
   {
@@ -706,8 +736,7 @@ export var aWendlerData = [
           title: 'Outbound Traffic to Spyware URL’s from Privileged User'
         },
         incId: 'INC-16',
-        Description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
-
+        description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
         threatCategories: [
           { title: 'Kill Chain', 'value': '-' },
           { title: 'Threat Category', 'value': 'Malicious Behavior' },
@@ -739,7 +768,7 @@ export var normalUserData = [
           ruleId: 1,
           title: 'Data Exfiltration via HTTPS'
         },
-        incId: 'INC-1',
+        incId: 'PV_01',
         description: 'This Violation is triggered when user exfiltrates excissive bytes of data via HTTPS',
         threatCategories: [
           { title: 'Kill Chain', value: 'Data Exfiltration' },
@@ -1057,7 +1086,7 @@ export var scottEdwinData = [
         generatedDateFormat: '2 Oct 2019',
         generatedTimestamp: '03:43:00',
         accord: false,
-        pv: 'INC_17',
+        pv: 'PV_017',
         riskScore: 1,
         ruleInfo: {
           ruleId: 6,
@@ -1081,7 +1110,7 @@ export var scottEdwinData = [
         generatedDateFormat: '2 Oct 2019',
         generatedTimestamp: '03:43:00',
         accord: false,
-        pv: 'INC_41',
+        pv: 'PV_041',
         riskScore: 1,
         ruleInfo: {
           ruleId: 6,
@@ -1133,4 +1162,183 @@ export var scottEdwinData = [
     ]
   }
 ];
-//=================== USER DATA =======================
+
+//=================== UN-USED USER DATA =======================
+
+var policyViolationForHeidy = [
+  {
+    generatedDateFormat: '17th Jul 2019',
+    generatedTimestamp: '19:12:00',
+    accord: false,
+    pv: 'PV_034',
+    riskScore: 13,
+    ruleInfo: {
+      ruleId: 6,
+      title: 'Email to Competitors  - O365'
+    },
+    incId: 'INC-17',
+    threatCategories: [{ title: 'Kill Chain', value: '' },
+    { title: 'Threat Category', value: 'Data Exfiltration' },
+    { title: 'Sub Category', value: 'Email' }],
+    additionalInfo: [{ title: 'Affected Entity', value: 'Heidy' },
+    { title: 'Locations', value: 'Los Angeles' },
+    { title: 'Risk', value: '88' },
+    { title: 'Resources', value: 'O365' },
+    { title: 'Indicators', value: 'RecipientID, ThreatIntel' }],
+    description: ' This violation is flagged when there is email sent to competitor domain'
+  },
+  {
+    generatedDateFormat: '17th Jul 2019',
+    generatedTimestamp: '13:42:00',
+    accord: false,
+    pv: 'PV_034',
+    riskScore: 27,
+    ruleInfo: {
+      ruleId: 6,
+      title: 'Unusual Export on Database - GCP'
+    },
+    incId: 'INC-17',
+    threatCategories: [{ title: 'Kill Chain', value: '' },
+    { title: 'Threat Category', value: 'Data Exfiltration' },
+    { title: 'Sub Category', value: 'Data Export' }],
+    additionalInfo: [{ title: 'Affected Entity', value: 'Heidy' },
+    { title: 'Locations', value: 'Los Angeles' },
+    { title: 'Risk', value: '65' },
+    { title: 'Resources', value: 'GCP' },
+    { title: 'Indicators', value: 'Event, Tables' }],
+    description: 'This violation is flagged when there is abnormal export on Database as per User’s past pattern'
+  }
+];
+
+var policyViolationForMaile = [
+  {
+    generatedDateFormat: '18 July 2019',
+    generatedTimestamp: '06:47:00',
+    accord: false,
+    pv: 'PV_014',
+    riskScore: 2,
+    ruleInfo: {
+      ruleId: 6,
+      title: 'Self Escalation Removed Security enabled global group'
+    },
+    incId: 'INC-17',
+    threatCategories: [{ title: 'Kill Chain', value: '-' },
+    { title: 'Threat Category', value: 'Privileged misuse' },
+    { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
+    additionalInfo: [{ title: 'Affected Entity', value: 'Maile' },
+    { title: 'Locations', value: 'San Diego' },
+    { title: 'Risk', value: '87' },
+    { title: 'Resources', value: 'Windows' },
+    { title: 'Indicators', value: 'Event Code' }],
+    description: 'In this Algorithm, User Removed security enabled global group'
+  },
+  {
+    generatedDateFormat: '18 July 2019',
+    generatedTimestamp: '05:43:00',
+    accord: false,
+    pv: 'PV_013',
+    riskScore: 18,
+    ruleInfo: {
+      ruleId: 5,
+      title: 'Abnormal Data Export on MSQL database'
+    },
+    incId: 'INC-18',
+    threatCategories: [{ title: 'Kill Chain', value: '-' },
+    { title: 'Threat Category', value: 'Data Exfiltration' },
+    { title: 'Sub Category', value: 'Data Export' }],
+    additionalInfo: [{ title: 'Affected Entity', value: 'Maile' },
+    { title: 'Locations', value: 'San Diego' },
+    { title: 'Risk', value: '81' },
+    { title: 'Resources', value: 'Salesforce' },
+    { title: 'Indicators', value: 'Action/Tables' }],
+    description: 'In this Algorithm, user performed abnormal data export on MSQL database'
+  },
+  {
+    generatedDateFormat: '18 July 2019',
+    generatedTimestamp: '05:30:00',
+    accord: false,
+    pv: 'PV_010',
+    riskScore: 2,
+    ruleInfo: {
+      ruleId: 6,
+      title: 'Self Escalation Added Security enabled global group'
+    },
+    incId: 'INC-19',
+    threatCategories: [{ title: 'Kill Chain', value: '-' },
+    { title: 'Threat Category', value: 'Privileged misuse' },
+    { title: 'Sub Category', value: 'Self Privileged Elscalation' }],
+    additionalInfo: [{ title: 'Affected Entity', value: 'Maile' },
+    { title: 'Locations', value: 'San Diego' },
+    { title: 'Risk', value: '72/87' },
+    { title: 'Resources', value: 'Windows' },
+    { title: 'Indicators', value: 'Event Code' }],
+    description: 'In this Algorithm, User Added security enabled global group'
+  }
+];
+
+var policyViolationForMendelson = [
+  {
+    generatedDateFormat: '29 July 2019',
+    generatedTimestamp: '17:34:00',
+    accord: false,
+    pv: 'PV_014',
+    riskScore: 2,
+    ruleInfo: {
+      ruleId: 6,
+      title: 'Abnormal Applications Accessed'
+    },
+    incId: 'INC-17',
+    threatCategories: [{ title: 'Kill Chain', value: '-' },
+    { title: 'Threat Category', value: 'Suspicious Behavior' },
+    { title: 'Sub Category', value: 'Suspicious Behavior' }],
+    additionalInfo: [{ title: 'Affected Entity', value: 'Mendelson' },
+    { title: 'Locations', value: 'Florida' },
+    { title: 'Risk', value: '82' },
+    { title: 'Resources', value: 'IIS' },
+    { title: 'Indicators', value: 'AppNames' }],
+    description: 'This Violation is triggered when rare applications has been accessed as per User’s past pattern'
+  },
+  {
+    generatedDateFormat: '29 July 2019',
+    generatedTimestamp: '16:45:00',
+    accord: false,
+    pv: 'PV_014',
+    riskScore: 2,
+    ruleInfo: {
+      ruleId: 6,
+      title: 'Successful Logon from Rare Location- VPN'
+    },
+    incId: 'INC-17',
+    threatCategories: [{ title: 'Kill Chain', value: '-' },
+    { title: 'Threat Category', value: 'Potential Account Compromise' },
+    { title: 'Sub Category', value: 'Potential Account Compromise' }],
+    additionalInfo: [{ title: 'Affected Entity', value: 'Mendelson' },
+    { title: 'Locations', value: 'Florida' },
+    { title: 'Risk', value: '76' },
+    { title: 'Resources', value: 'VPN' },
+    { title: 'Indicators', value: 'Location' }],
+    description: 'This Violation is triggered when VPN activity is observed from rare location'
+  },
+  {
+    generatedDateFormat: '29 July 2019',
+    generatedTimestamp: '14:34:00',
+    accord: false,
+    pv: 'PV_014',
+    riskScore: 2,
+    ruleInfo: {
+      ruleId: 6,
+      title: ' Activity By Dormant Account'
+    },
+    incId: 'INC-17',
+    threatCategories: [{ title: 'Kill Chain', value: '-' },
+    { title: 'Threat Category', value: 'Potential Account Compromise' },
+    { title: 'Sub Category', value: 'Potential Account Compromise' }],
+    additionalInfo: [{ title: 'Affected Entity', value: 'Mendelson' },
+    { title: 'Locations', value: 'Florida' },
+    { title: 'Risk', value: '67' },
+    { title: 'Resources', value: 'VPN' },
+    { title: 'Indicators', value: 'Id' }],
+    description: 'This Violation is triggered when activity is seen for a dormant user'
+  }
+
+];

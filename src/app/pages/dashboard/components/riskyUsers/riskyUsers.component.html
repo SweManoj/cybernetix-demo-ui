@@ -1977,8 +1977,8 @@
                         <span>{{item.generatedTimestamp}}</span>
                     </div>
 
-                    <div class="risky-separator mt-1">
-                        <span class="risk-dot rounded-circle">&nbsp;</span>
+                    <div class="risky-separator mt-1" [ngStyle]="seperatorStyle()">
+                        <span class="risk-dot rounded-circle" [ngStyle]="riskyDotStyle()">&nbsp;</span>
                     </div>
 
                     <div class="violationTitle" [ngClass]="{'dhcp' : item.ruleInfo.title === 'DHCP RENEWAL'}">
@@ -2721,8 +2721,8 @@
                         <span>{{item.generatedTimestamp}}</span>
                     </div>
 
-                    <div class="risky-separator mt-1">
-                        <span class="risk-dot rounded-circle">&nbsp;</span>
+                    <div class="risky-separator mt-1" [ngStyle]="seperatorStyle()">
+                        <span class="risk-dot rounded-circle" [ngStyle]="riskyDotStyle()">&nbsp;</span>
                     </div>
 
                     <div class="violationTitle" [ngClass]="{'data-exfiltaration' : item.pv == 'PV 094'}">

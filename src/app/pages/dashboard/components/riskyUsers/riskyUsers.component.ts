@@ -2430,6 +2430,16 @@ export class RiskyUsersComponent {
         }
     }
 
+    seperatorStyle() {
+        if (this.incidentName)
+            return { 'background-color': 'unset', 'border-right': '3.5px dotted red' }
+    }
+
+    riskyDotStyle() {
+        if (this.incidentName)
+            return { 'background-color': 'red' }
+    }
+
     ngAfterViewInit() {
         if (!this.incidentDetail) {
             this.zone.runOutsideAngular(() => {

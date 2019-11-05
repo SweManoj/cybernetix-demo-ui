@@ -1017,6 +1017,15 @@ export class RiskyHostComponent implements OnInit {
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router) {
     }
+    
+    ngOnInit() {
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedHost = params.get('selectedHost');
+        });
+
+        this.getDataByHost();
+        this.provideData();
+    }
 
     getDataByHost() {
         this.hostAddressData.forEach(hostData => {
@@ -1094,14 +1103,6 @@ export class RiskyHostComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-        this.routeParam.paramMap.subscribe((params) => {
-            this.selectedHost = params.get('selectedHost');
-        });
-
-        this.getDataByHost();
-        this.provideData();
-    }
 
     getRiskScoreColor(riskScore: number) {
         if (riskScore <= 65)

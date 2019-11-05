@@ -303,6 +303,35 @@ export var ip_10_82_34_107_data = [
                 description: 'This anomaly is flagged when there is an attempt to execute rare & unusual SQL queries on Database server'
             }
         ]
+    },
+    {
+        violationDate: '30 Sep 2019',
+        violations: [
+            {
+                generatedDateFormat: '1 Oct 2019',
+                generatedTimestamp: '07:37:00',
+                accord: false,
+                pv: 'IN 067',
+                riskScore: 74,
+                ruleInfo: {
+                    ruleId: 74,
+                    title: 'Potential Password Spray Attack'
+                },
+                incId: 'IN 091',
+                threatCategories: [
+                    { title: 'Kill Chain', value: 'Reconnaissance' },
+                    { title: 'Threat Category', value: 'Password Spray' },
+                    { title: 'Sub Category', value: 'Password Spray' }],
+                additionalInfo: [
+                    { title: 'Affected Entity', value: '10.82.34.107' },
+                    { title: 'EventDescription', value: 'Login Failed' },
+                    { title: 'Combinations', value: '74' },
+                    { title: 'Risk', value: '81' },
+                    { title: 'Resource', value: 'Web Application' },
+                    { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],
+                description: 'This anomaly is flagged when abnormal number of failed logon attempts using different combinations of usernames/passwords'
+            }
+        ]
     }
 ];
 

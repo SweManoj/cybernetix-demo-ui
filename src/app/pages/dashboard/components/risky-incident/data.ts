@@ -314,7 +314,7 @@ export var tvde38Data = [
         generatedDateFormat: '10 May 2019',
         generatedTimestamp: '09:33:00',
         accord: false,
-        pv: 'PV_083',
+        pv: 'IN 083',
         riskScore: 27,
         ruleInfo: {
           ruleId: 1,
@@ -339,7 +339,7 @@ export var tvde38Data = [
         generatedDateFormat: '10 May 2019',
         generatedTimestamp: '09:17:00',
         accord: false,
-        pv: 'PV_061',
+        pv: 'IN 061',
         riskScore: 6,
         ruleInfo: {
           ruleId: 2,
@@ -364,7 +364,7 @@ export var tvde38Data = [
         generatedDateFormat: '10 May 2019',
         generatedTimestamp: '09:13:00',
         accord: false,
-        pv: 'PV_039',
+        pv: 'IN 39',
         riskScore: 13,
         ruleInfo: {
           ruleId: 3,
@@ -389,7 +389,7 @@ export var tvde38Data = [
         generatedDateFormat: '10 May 2019',
         generatedTimestamp: '08:34:00',
         accord: false,
-        pv: 'PV_041',
+        pv: 'IN 041',
         riskScore: 63,
         ruleInfo: {
           ruleId: 4,
@@ -414,7 +414,7 @@ export var tvde38Data = [
         generatedDateFormat: '10 May 2019',
         generatedTimestamp: '07:42:00',
         accord: false,
-        pv: 'PV_069',
+        pv: 'IN 069',
         riskScore: 27,
         ruleInfo: {
           ruleId: 5,
@@ -447,7 +447,7 @@ export var tvde43Data = [
         generatedDateFormat: '27 Sep 2019',
         generatedTimestamp: '10:13:00',
         accord: false,
-        pv: 'PV_083',
+        pv: 'IN 083',
         riskScore: 9,
         ruleInfo: {
           ruleId: 1,
@@ -472,7 +472,7 @@ export var tvde43Data = [
         generatedDateFormat: '27 Sep 2019',
         generatedTimestamp: '09:43:00',
         accord: false,
-        pv: 'PV_056',
+        pv: 'IN 056',
         riskScore: 9,
         ruleInfo: {
           ruleId: 1,
@@ -497,7 +497,7 @@ export var tvde43Data = [
         generatedDateFormat: '27 Sep 2019',
         generatedTimestamp: '09:13:00',
         accord: false,
-        pv: 'PV_017',
+        pv: 'IN 017',
         riskScore: 29,
         ruleInfo: {
           ruleId: 1,
@@ -522,7 +522,7 @@ export var tvde43Data = [
         generatedDateFormat: '27 Sep 2019',
         generatedTimestamp: '07:45:00',
         accord: false,
-        pv: 'PV_069',
+        pv: 'IN 069',
         riskScore: 29,
         ruleInfo: {
           ruleId: 7,
@@ -547,7 +547,7 @@ export var tvde43Data = [
         generatedDateFormat: '27 Sep 2019',
         generatedTimestamp: '07:01:00',
         accord: false,
-        pv: 'PV_071',
+        pv: 'IN 071',
         riskScore: 32,
         ruleInfo: {
           ruleId: 7,
@@ -580,7 +580,7 @@ export var tvde21Data = [
         generatedDateFormat: 'June 27 2019',
         generatedTimestamp: '12:45:00',
         accord: false,
-        pv: 'PV 039',
+        pv: 'IN 039',
         riskScore: 4,
         ruleInfo: {
           ruleId: 3,
@@ -624,7 +624,7 @@ export var tvde21Data = [
         generatedDateFormat: 'June 27 2019',
         generatedTimestamp: '05:30:00',
         accord: false,
-        pv: 'PV 067',
+        pv: 'IN 067',
         riskScore: 13,
         ruleInfo: {
           ruleId: 3,
@@ -648,7 +648,7 @@ export var tvde21Data = [
         generatedDateFormat: 'June 27 2019',
         generatedTimestamp: '03:22:00',
         accord: false,
-        pv: 'TI 083',
+        pv: 'IN 083',
         riskScore: 6,
         ruleInfo: {
           ruleId: 1,
@@ -672,7 +672,7 @@ export var tvde21Data = [
         generatedDateFormat: 'June 27 2019',
         generatedTimestamp: '01:17:00',
         accord: false,
-        pv: 'PV 022',
+        pv: 'IN 022',
         riskScore: 34,
         ruleInfo: {
           ruleId: 1,
@@ -704,7 +704,7 @@ export var tvrc4Data = [
         generatedDateFormat: 'Oct 4 2019',
         generatedTimestamp: '03:50:00',
         accord: false,
-        pv: 'TI 083',
+        pv: 'IN 083',
         riskScore: 188,
         ruleInfo: {
           ruleId: 1,
@@ -728,7 +728,7 @@ export var tvrc4Data = [
         generatedDateFormat: 'Oct 2 2019',
         generatedTimestamp: '03:50:00',
         accord: false,
-        pv: 'TI 083',
+        pv: 'IN 083',
         riskScore: 118,
         ruleInfo: {
           ruleId: 1,
@@ -752,7 +752,7 @@ export var tvrc4Data = [
         generatedDateFormat: 'Oct 2 2019',
         generatedTimestamp: '03:50:00',
         accord: false,
-        pv: 'TI 083',
+        pv: 'IN 083',
         riskScore: 26,
         ruleInfo: {
           ruleId: 1,
@@ -776,7 +776,7 @@ export var tvrc4Data = [
         generatedDateFormat: 'Oct 1 2019',
         generatedTimestamp: '00:50:00',
         accord: false,
-        pv: 'TI 083',
+        pv: 'IN 083',
         riskScore: 40,
         ruleInfo: {
           ruleId: 1,
@@ -805,7 +805,7 @@ export var tvrc4Data = [
         generatedDateFormat: 'Sep 29 2019',
         generatedTimestamp: '13:07:00',
         accord: false,
-        pv: 'TI 083',
+        pv: 'IN 083',
         riskScore: 8,
         ruleInfo: {
           ruleId: 1,
@@ -829,7 +829,7 @@ export var tvrc4Data = [
         generatedDateFormat: 'Sep 27 2019',
         generatedTimestamp: '10:13:00',
         accord: false,
-        pv: 'TI 083',
+        pv: 'IN 083',
         riskScore: 35,
         ruleInfo: {
           ruleId: 1,
@@ -853,7 +853,7 @@ export var tvrc4Data = [
         generatedDateFormat: 'Sep 17 2019',
         generatedTimestamp: '07:13:00',
         accord: false,
-        pv: 'TI 083',
+        pv: 'IN 083',
         riskScore: 7,
         ruleInfo: {
           ruleId: 1,
@@ -1173,4 +1173,342 @@ export var tvac92Data = [
   }
 ];
 
+export var tvde23FirstData = [
+  {
+    violationDate: '14 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: 'Oct 14 2019',
+        generatedTimestamp: '21:03:00',
+        accord: false,
+        pv: 'PV 039',
+        riskScore: 17,
+        ruleInfo: {
+          ruleId: 17,
+          title: 'Potential Data Exfiltration to External IP'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Data Exfiltration' },
+          { title: 'Threat Category', value: 'Data Exfiltration' },
+          { title: 'Sub Category', value: 'Data Exfiltration' }],
+        additionalInfo: [
+          { title: 'SourceIP', value: '10.82.71.192' },
+          { title: 'DestinationIP', value: '195.208.113.97' },
+          { title: 'DestinationPort', value: '21' },
+          { title: 'Packet Size', value: '10.3MB' },
+          { title: 'Location', value: 'Russia' },
+          { title: 'Risk', value: '94' },
+          { title: 'Packets', value: '18' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is Unusual beaconing with External IP'
+      },
+      {
+        generatedTimestamp: '17:23:00',
+        accord: false,
+        pv: 'PV 039',
+        riskScore: 19,
+        ruleInfo: {
+          ruleId: 19,
+          title: 'Potential Data Exfiltration to External IP'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Data Exfiltration' },
+          { title: 'Threat Category', value: 'Data Exfiltration' },
+          { title: 'Sub Category', value: 'Data Exfiltration' }],
+        additionalInfo: [
+          { title: 'SourceIP', value: '10.82.69.151' },
+          { title: 'DestinationIP', value: '195.208.113.97' },
+          { title: 'DestinationPort', value: '21' },
+          { title: 'Packet Size', value: '10.3MB' },
+          { title: 'Location', value: 'Russia' },
+          { title: 'Risk', value: '91' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+      }
+    ]
+  },
+  {
+    violationDate: '10 Oct 2019',
+    violations: [
+      {
+        generatedTimestamp: '17:23:00',
+        accord: false,
+        pv: 'IN 021',
+        riskScore: 19,
+        ruleInfo: {
+          ruleId: 19,
+          title: 'Unusual Internal Communication with Rare Port/IP'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+          { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
+          { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
+        additionalInfo: [
+          { title: 'SourceIP', value: '10.82.71.192' },
+          { title: 'DestinationIP', value: '10.82.69.147' },
+          { title: 'DestinationPort', value: '443' },
+          { title: 'Risk', value: '92' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+      }
+    ]
+  },
+  {
+    violationDate: '09 Oct 2019',
+    violations: [
+      {
+        generatedTimestamp: '17:12:00',
+        accord: false,
+        pv: 'IN 052',
+        riskScore: 17,
+        ruleInfo: {
+          ruleId: 17,
+          title: 'Unusual Internal Communication with Rare Port/IP'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+          { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
+          { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
+        additionalInfo: [
+          { title: 'SourceIP', value: '10.82.71.192' },
+          { title: 'DestinationIP', value: '10.82.68.143' },
+          { title: 'DestinationPort', value: '139' },
+          { title: 'Risk', value: '91' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+      }
+    ]
+  },
+  {
+    violationDate: '07 Oct 2019',
+    violations: [
+      {
+        generatedTimestamp: '12:33:00',
+        accord: false,
+        pv: 'IN 019',
+        riskScore: 4,
+        ruleInfo: {
+          ruleId: 4,
+          title: 'Malware Found on Critical Server'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Malware Found' },
+          { title: 'Threat Category', value: 'Malware Found' },
+          { title: 'Sub Category', value: 'Malware Found' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '10.82.71.192' },
+          { title: 'Severity', value: 'Medium' },
+          { title: 'Malware', value: 'malware.binary' },
+          { title: 'Risk', value: '89' },
+          { title: 'Resources', value: 'FireEye' },
+          { title: 'Indicators', value: 'SourceIP, MalwareType, Severity' }],
+        description: 'This anomaly is flagged when malware is found on Critical server'
+      }
+    ]
+  },
+  {
+    violationDate: '06 Oct 2019',
+    violations: [
+      {
+        generatedTimestamp: '14:53:00',
+        accord: false,
+        pv: 'IN 033',
+        riskScore: 18,
+        ruleInfo: {
+          ruleId: 18,
+          title: 'Abnormal Batch Process Execution'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Batch Process Execution' },
+          { title: 'Threat Category', value: 'Batch Process Execution' },
+          { title: 'Sub Category', value: 'Batch Process Execution' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '10.82.71.192' },
+          { title: 'EventCode', value: '4688' },
+          { title: 'LogonType', value: '4 (Batch)' },
+          { title: 'Risk', value: '87' },
+          { title: 'Process', value: 'Powershell' },
+          { title: 'Resources', value: 'Windows Security' },
+          { title: 'Indicators', value: 'EventCode, LogonType, SourceIP, ProcessName' }],
+        description: 'This anomaly is flagged when abnormal batch process is executed on Server'
+      }
+    ]
+  },
+  {
+    violationDate: '05 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: 'Oct 5 2019',
+        generatedTimestamp: '08:50:00',
+        accord: false,
+        pv: 'IN 0371',
+        riskScore: 47,
+        ruleInfo: {
+          ruleId: 47,
+          title: 'Unusual Network scanning Activities Identified from Server'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Lateral Movement' },
+          { title: 'Threat Category', value: 'Lateral Movement' },
+          { title: 'Sub Category', value: 'Lateral Movement' }],
+        additionalInfo: [
+          { title: 'Source IP', value: '10.82.34.107' },
+          { title: 'DestinationIP', value: '10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 10.82.34.117, 10.82.34.192, 10.82.71.129, 10.82.71.192..' },
+          { title: 'Count of DestinationIP', value: '43' },
+          { title: 'DestinationPort', value: '139, 445' },
+          { title: 'Risk', value: '93' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is potential network scanning activity observed from internal IP'
+      }
+    ]
+  }
+];
+
+export var tvde23SecondData = [
+  {
+    violationDate: '04 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: 'Oct 4 2019',
+        generatedTimestamp: '17:22:00',
+        accord: false,
+        pv: 'IN 011',
+        riskScore: 93,
+        ruleInfo: {
+          ruleId: 93,
+          title: 'Abnormal SQL Concatenation Patterns Received on Database Server'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Potential SQL Injection' },
+          { title: 'Threat Category', value: 'Potential SQL Injection' },
+          { title: 'Sub Category', value: 'Potential SQL Injection' }],
+        additionalInfo: [
+          { title: 'Source IP', value: '172.34.123.1' },
+          { title: 'Affected Entity', value: '10.82.34.107' },
+          { title: 'Requested File', value: 'dump_database.php, wp-login.php, admin-ajax.php' },
+          { title: 'EventDescription', value: 'Successful' },
+          { title: 'Risk', value: '87' },
+          { title: 'Resources', value: 'Apache Access Logs' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, RequestedFile, EventDescription' }],
+        description: 'This anomaly is flagged when there is an attempt to execute rare & unusual SQL queries on Database server'
+      }
+    ]
+  },
+  {
+    violationDate: '02 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: '2 Oct 2019',
+        generatedTimestamp: '03:43:00',
+        accord: false,
+        pv: 'IN 077',
+        riskScore: 1,
+        ruleInfo: {
+          ruleId: 6,
+          title: 'Suspicious Login Activities from Rare Subnet'
+        },
+        incId: 'INC-17',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Rare Subnet' },
+          { title: 'Threat Category', value: 'Rare Subnet' },
+          { title: 'Sub Category', value: 'Rare Subnet' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
+          { title: 'EventDescription', value: 'Login Successful' },
+          { title: 'Normal Pattern', value: '10.82.x' },
+          { title: 'Risk', value: '92' },
+          { title: 'Resource', value: 'Web Application' },
+          { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],
+        description: 'This anomaly is flagged when login activities are observed from Rare Subnet as per user / system past behavior'
+      },
+      {
+        generatedDateFormat: '2 Oct 2019',
+        generatedTimestamp: '03:43:00',
+        accord: false,
+        pv: 'IN 041',
+        riskScore: 1,
+        ruleInfo: {
+          ruleId: 6,
+          title: 'Suspicious Login Activities during off-hours'
+        },
+        incId: 'INC-41',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Off-Hour Activities' },
+          { title: 'Threat Category', value: 'Off-Hour Activities' },
+          { title: 'Sub Category', value: 'Off-Hour Activities' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
+          { title: 'EventDescription', value: 'Login Successful' },
+          { title: 'Normal Pattern', value: '9:34am - 5:47pm' },
+          { title: 'Risk', value: '84' },
+          { title: 'Resource', value: 'Web Application' },
+          { title: 'Indicators', value: 'Accountname, EventDescription, EventTime' }],
+        description: 'This anomaly is flagged when login activities are observed during off-hour as per user / system past behavior'
+      }
+    ]
+  },
+  {
+    violationDate: '01 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: '1 Oct 2019',
+        generatedTimestamp: '02:34:00',
+        accord: false,
+        pv: 'IN 067',
+        riskScore: 1,
+        ruleInfo: {
+          ruleId: 1,
+          title: 'Potential Phishing Email Attack - Ironport'
+        },
+        incId: 'IN 091',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Phishing Attack' },
+          { title: 'Threat Category', value: 'Phishing Attack' },
+          { title: 'Sub Category', value: 'Phishing Attack' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'Scott_Edwin' },
+          { title: 'Sender', value: 'jinvik@web19.profiwk.com' },
+          { title: 'Recipients', value: '37' },
+          { title: 'Risk', value: '81' },
+          { title: 'Resource', value: 'Ironport' },
+          { title: 'Indicators', value: 'Sender, Recipient, Subject, Size' }],
+        description: 'This anomaly is flagged when Inbound email sent from same sender to multiple recipients having same subject and same attachment size'
+      }
+    ]
+  },
+  {
+    violationDate: '30 Sep 2019',
+    violations: [
+      {
+        generatedDateFormat: '1 Oct 2019',
+        generatedTimestamp: '07:37:00',
+        accord: false,
+        pv: 'IN 067',
+        riskScore: 74,
+        ruleInfo: {
+          ruleId: 74,
+          title: 'Potential Password Spray Attack'
+        },
+        incId: 'IN 091',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Password Spray' },
+          { title: 'Sub Category', value: 'Password Spray' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '10.82.34.107' },
+          { title: 'EventDescription', value: 'Login Failed' },
+          { title: 'Combinations', value: '74' },
+          { title: 'Risk', value: '81' },
+          { title: 'Resource', value: 'Web Application' },
+          { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],
+        description: 'This anomaly is flagged when abnormal number of failed logon attempts using different combinations of usernames/passwords'
+      }
+    ]
+  }
+]
 //=================== UNUSED Risky Threat Vector DATA =======================

@@ -908,7 +908,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Data Exfiltration' },
                         { title: 'Threat Category', value: 'Data Exfiltration' },
                         { title: 'Sub Category', value: 'Data Exfiltration' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'SourceIP', value: '10.82.71.192' },
                         { title: 'DestinationIP', value: '10.82.69.151' },
                         { title: 'DestinationPort', value: '21' },
@@ -932,7 +932,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Data Exfiltration' },
                         { title: 'Threat Category', value: 'Data Exfiltration' },
                         { title: 'Sub Category', value: 'Data Exfiltration' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'SourceIP', value: '10.82.71.192' },
                         { title: 'DestinationIP', value: '10.82.69.151' },
                         { title: 'DestinationPort', value: '21' },
@@ -960,7 +960,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
                         { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
                         { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'SourceIP', value: '10.82.71.192' },
                         { title: 'DestinationIP', value: '10.82.69.147' },
                         { title: 'DestinationPort', value: '443' },
@@ -987,7 +987,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
                         { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
                         { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'SourceIP', value: '10.82.71.192' },
                         { title: 'DestinationIP', value: '10.82.68.143' },
                         { title: 'DestinationPort', value: '139' },
@@ -1014,7 +1014,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Malware Found' },
                         { title: 'Threat Category', value: 'Malware Found' },
                         { title: 'Sub Category', value: 'Malware Found' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Affected Entity', value: '10.82.71.192' },
                         { title: 'Severity', value: 'Medium' },
                         { title: 'Malware', value: 'malware.binary' },
@@ -1041,7 +1041,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Batch Process Execution' },
                         { title: 'Threat Category', value: 'Batch Process Execution' },
                         { title: 'Sub Category', value: 'Batch Process Execution' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Affected Entity', value: '10.82.71.192' },
                         { title: 'EventCode', value: '4688' },
                         { title: 'LogonType', value: '4 (Batch)' },
@@ -1070,7 +1070,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Lateral Movement' },
                         { title: 'Threat Category', value: 'Lateral Movement' },
                         { title: 'Sub Category', value: 'Lateral Movement' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Source IP', value: '10.82.34.107' },
                         { title: 'DestinationIP', value: '10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 10.82.34.117, 10.82.34.192, 10.82.71.129, 10.82.71.192..' },
                         { title: 'Count of DestinationIP', value: '43' },
@@ -1099,7 +1099,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Potential SQL Injection' },
                         { title: 'Threat Category', value: 'Potential SQL Injection' },
                         { title: 'Sub Category', value: 'Potential SQL Injection' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Source IP', value: '172.34.123.1' },
                         { title: 'Affected Entity', value: '10.82.34.107' },
                         { title: 'Requested File', value: 'dump_database.php, wp-login.php, admin-ajax.php' },
@@ -1129,7 +1129,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Rare Subnet' },
                         { title: 'Threat Category', value: 'Rare Subnet' },
                         { title: 'Sub Category', value: 'Rare Subnet' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
                         { title: 'EventDescription', value: 'Login Successful' },
                         { title: 'Normal Pattern', value: '10.82.x' },
@@ -1153,7 +1153,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Off-Hour Activities' },
                         { title: 'Threat Category', value: 'Off-Hour Activities' },
                         { title: 'Sub Category', value: 'Off-Hour Activities' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
                         { title: 'EventDescription', value: 'Login Successful' },
                         { title: 'Normal Pattern', value: '9:34am - 5:47pm' },
@@ -1182,7 +1182,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Phishing Attack' },
                         { title: 'Threat Category', value: 'Phishing Attack' },
                         { title: 'Sub Category', value: 'Phishing Attack' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Affected Entity', value: 'Scott_Edwin' },
                         { title: 'Sender', value: 'jinvik@web19.profiwk.com' },
                         { title: 'Recipients', value: '37' },

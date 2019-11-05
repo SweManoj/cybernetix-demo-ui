@@ -20,6 +20,7 @@ import { RiskyIPComponent } from './pages/dashboard/components/risky-ip/risky-ip
 import { RiskyHostComponent } from './pages/dashboard/components/riskyHost/riskyHost.component';
 import { PerformRemediationComponent } from './pages/case-management/components/perform-remediation/perform-remediation.component';
 import { PolicyViolatedUsersComponent } from './pages/case-management/components/policy-violated-users/policy-violated-users.component';
+import { RiskyIncidentComponent } from './pages/dashboard/components/risky-incident/riskyIncident.component';
 
 export const routes: Routes = [
     {
@@ -54,7 +55,7 @@ export const routes: Routes = [
             },
             {
                 path: 'riskyIncident/:incident',
-                component: RiskyUsersComponent
+                component: RiskyIncidentComponent
             },
             {
                 path: 'filteredRiskyUsers/:riskyUser',

@@ -424,3 +424,138 @@ var ip_172_168_200_55_data = [
     }
 ];
 
+var hardCodeItemData = [
+    {
+        generatedDateFormat: '10 May 2019',
+        generatedTimestamp: '03:22:00',
+        accord: false,
+        pv: 'PV 083',
+        riskScore: 579,
+        ruleInfo: {
+            ruleId: 1,
+            title: 'Abnormal Failed Logon Attempts on Multiple Machines - Windows'
+        },
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Actions/Maintain' },
+            { title: 'Threat Category', value: 'Access Authentication' },
+            { title: 'Sub Category', value: 'Bruce Force Attack' }],
+        additionalInfo: [
+            { title: 'Affected Entity', value: '-' },
+            { title: 'Locations', value: '-' },
+            { title: 'Risk', value: '-' },
+            { title: 'Resources', value: '-' },
+            { title: 'Indicators', value: '-' }],
+        description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
+    },
+    {
+        generatedDateFormat: '10 May 2019',
+        generatedTimestamp: '05:30:00',
+        accord: false,
+        pv: 'PV 061',
+        riskScore: 483,
+        ruleInfo: {
+            ruleId: 2,
+            title: 'Successful Logon from Rare Machine - Windows'
+        },
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Actions/Maintain' },
+            { title: 'Threat Category', value: 'Access Authentication' },
+            { title: 'Sub Category', value: 'Bruce Force Attack' }],
+        additionalInfo: [
+            { title: 'Affected Entity', value: '-' },
+            { title: 'Locations', value: '-' },
+            { title: 'Risk', value: '-' },
+            { title: 'Resources', value: '-' },
+            { title: 'Indicators', value: '-' }],
+        description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
+    },
+    {
+        generatedDateFormat: '10 May 2019',
+        generatedTimestamp: '07:10:00',
+        accord: false,
+        pv: 'PV 039',
+        riskScore: 451,
+        ruleInfo: {
+            ruleId: 3,
+            title: 'Unusual Data Exfiltration By Service Account - Proxy'
+        },
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Actions/Maintain' },
+            { title: 'Threat Category', value: 'Access Authentication' },
+            { title: 'Sub Category', value: 'Bruce Force Attack' }],
+        additionalInfo: [
+            { title: 'Affected Entity', value: '-' },
+            { title: 'Locations', value: '-' },
+            { title: 'Risk', value: '-' },
+            { title: 'Resources', value: '-' },
+            { title: 'Indicators', value: '-' }],
+        description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
+    },
+    {
+        generatedDateFormat: '10 May 2019',
+        generatedTimestamp: '09:22:00',
+        accord: false,
+        pv: 'PV 041',
+        riskScore: 398,
+        ruleInfo: {
+            ruleId: 4,
+            title: 'Suspicious Data Objects Downloaded By Service Account - Fileshare'
+        },
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Actions/Maintain' },
+            { title: 'Threat Category', value: 'Access Authentication' },
+            { title: 'Sub Category', value: 'Bruce Force Attack' }],
+        additionalInfo: [
+            { title: 'Affected Entity', value: '-' },
+            { title: 'Locations', value: '-' },
+            { title: 'Risk', value: '-' },
+            { title: 'Resources', value: '-' },
+            { title: 'Indicators', value: '-' }],
+        description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
+    },
+    {
+        generatedDateFormat: '10 May 2019',
+        generatedTimestamp: '14:45:00',
+        accord: false,
+        pv: 'PV 069',
+        riskScore: 243,
+        ruleInfo: {
+            ruleId: 5,
+            title: 'Abnormal Process Executed - Windows'
+        },
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Actions/Maintain' },
+            { title: 'Threat Category', value: 'Access Authentication' },
+            { title: 'Sub Category', value: 'Bruce Force Attack' }],
+        additionalInfo: [
+            { title: 'Affected Entity', value: '-' },
+            { title: 'Locations', value: '-' },
+            { title: 'Risk', value: '-' },
+            { title: 'Resources', value: '-' },
+            { title: 'Indicators', value: '-' }],
+        description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
+    },
+    {
+        generatedDateFormat: '10 May 2019',
+        generatedTimestamp: '17:14:00',
+        accord: false,
+        pv: 'PV 094',
+        riskScore: 149,
+        ruleInfo: {
+            ruleId: 6,
+            title: 'Multiple Users Logged-In Successfully From Same IP'
+        },
+        threatCategories: [
+            { title: 'Kill Chain', value: 'Actions/Maintain' },
+            { title: 'Threat Category', value: 'Access Authentication' },
+            { title: 'Sub Category', value: 'Bruce Force Attack' }],
+        additionalInfo: [
+            { title: 'Affected Entity', value: '-' },
+            { title: 'Locations', value: '-' },
+            { title: 'Risk', value: '-' },
+            { title: 'Resources', value: '-' },
+            { title: 'Indicators', value: '-' }],
+        description: 'In this policy violation, user was trying to access machine which is restricted to access by group policy'
+    }
+];
+

@@ -182,7 +182,7 @@
                     <span class="risk-dot rounded-circle">&nbsp;</span>
                 </div>
 
-                <div class="violationTitle" [ngClass]="{'data-exfiltaration' : item.pv == 'PV 094'}">
+                <div class="violationTitle" [ngClass]="{'dhcp' : item.ruleInfo.title === 'DHCP RENEWAL'}">
                     <div class="row mt-1 mb-2 ml-3 mr-1">
                         <div class="col-sm-12">
                             <span class="pointerCursor" (click)="item.accord = !item.accord">
@@ -208,10 +208,17 @@
                                     <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Description</dt>
                                     <dd class="mt-2"> {{item.description}}</dd>
                                 </dl>
+
+                                <dl *ngIf="item.pv=='INFO'">
+                                    <dt><i class="fa fa-caret-right"
+                                            [ngClass]="{'greyText':item.pv =='INFO'}"></i>&nbsp;&nbsp;MAC</dt>
+                                    <dd class="mt-2" [ngClass]="{'whiteText':item.pv =='INFO'}"> 00:0a:95:9d:68:16
+                                    </dd>
+                                </dl>
                             </div>
 
                             <div class="col-5 col-sm-5 riskAccordBorder">
-                                <dl *ngIf="">
+                                <dl *ngIf="item.pv !=='INFO'">
                                     <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Threat Categorisation</dt>
                                 </dl>
 
@@ -229,7 +236,7 @@
                             </div>
 
                             <div class="col-4 col-sm-4">
-                                <dl>
+                                <dl *ngIf="item.pv !=='INFO'">
                                     <dt><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Additional Info</dt>
                                 </dl>
                                 <div class="ml-4">

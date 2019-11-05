@@ -101,7 +101,7 @@ export class RiskyIncidentComponent {
                 { image: 'falg@1x.png', value: '982', title: 'Events' },
                 { image: 'resources@1x.png', value: '05', title: 'Resources' },
                 { image: 'Shape@1x.png', value: '02', title: 'Locations' },
-                { image: 'violations@1x.png', value: '10', title: 'Insights' },
+                { image: 'violations@1x.png', value: '11', title: 'Insights' },
                 { image: 'incident@1x.png', value: '0', title: 'Remediations' },
             ]
         }

@@ -96,7 +96,7 @@ export class IncidentSummaryComponent implements OnInit {
             policyViolationDate: '14 Oct 2019 03:50',
             incidentCreatedDate: '14 Oct 2019 05:43',
             priority: 'Critical',
-            indicatorsOfAttack: 10,
+            indicatorsOfAttack: 11,
             status: 'Open',
             outcome: 'Investigation In Progress',
             caseOwner: 'Scott R',
@@ -110,12 +110,20 @@ export class IncidentSummaryComponent implements OnInit {
                     icon: 'delivery.png'
                 },
                 {
-                    title: 'Account Compromise',
+                    title: 'Suspicious Login',
                     icon: 'foothold.png'
                 },
                 {
-                    title: 'Malware Injection',
+                    title: 'Powershell Obfuscation',
                     icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Lateral Movement',
+                    icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Command and Control',
+                    icon: 'foothold.png'
                 },
                 {
                     title: 'Data Exfiltration',
@@ -139,7 +147,7 @@ export class IncidentSummaryComponent implements OnInit {
             policyViolationDate: '14 Oct 2019 03:50',
             incidentCreatedDate: '14 Oct 2019 05:43',
             priority: 'Critical',
-            indicatorsOfAttack: 10,
+            indicatorsOfAttack: 11,
             status: 'Open',
             outcome: 'Investigation In Progress',
             caseOwner: 'Scott R',
@@ -153,12 +161,20 @@ export class IncidentSummaryComponent implements OnInit {
                     icon: 'delivery.png'
                 },
                 {
-                    title: 'Account Compromise',
+                    title: 'Suspicious Login',
                     icon: 'foothold.png'
                 },
                 {
-                    title: 'Malware Injection',
+                    title: 'Powershell Obfuscation',
                     icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Lateral Movement',
+                    icon: 'monitor-code.png'
+                },
+                {
+                    title: 'Command and Control',
+                    icon: 'foothold.png'
                 },
                 {
                     title: 'Data Exfiltration',
@@ -1044,7 +1060,7 @@ export class IncidentSummaryComponent implements OnInit {
             if (redIncTVAC.includes(incId) && killChainTitle == 'Account Compromise') {
                 return { 'background': 'red' };
             }
-            
+
             if (killChainTitle == 'P2P Traffic') {
                 return { 'background': 'red' };
             }

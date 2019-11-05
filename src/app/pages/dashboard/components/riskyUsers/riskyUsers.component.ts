@@ -1934,6 +1934,141 @@ export class RiskyUsersComponent {
         this.selectedDateRange = '1 Week';
     }
 
+    ngOnInit() {
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedUser = params.get('selectedUser');
+
+            this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
+            this.selectedUserInfo.forEach(res => {
+
+                if (res.value == this.selectedUser) {
+                    this.userData = res;
+                }
+            });
+
+            if (this.selectedUser == 'Alysa') {
+                this.hardCodeItemData = this.flightUserHardCodeItemData;
+            } else if (this.selectedUser === 'Maile') {
+                this.hardCodeItemDataForDemoForEmoor = this.policyViolationForMaile;
+            } else if (this.selectedUser === 'Mendelson') {
+                this.hardCodeItemDataForDemoForMendelson = this.policyViolationForMendelson;
+            } else if (this.selectedUser === 'Scott_Edwin') {
+                this.difDateViolations = this.difDateVio_ScottEdwin;
+            }
+
+            if (this.selectedUser) {
+                const dotIndex = this.selectedUser.indexOf('.');
+                const isResource = dotIndex !== -1;
+                const selectedUserData = this.riskyUserService.getSelectedUserData(this.selectedUser, isResource);
+                const selectedUserDataFromModel = this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource);
+                forkJoin([selectedUserData, selectedUserDataFromModel]).subscribe((results: any) => {
+                    const userData = results[0],
+                        userDataFromModel = results[1];
+                    this.selectedUserDetails.userInfo = userData.userInfo && userData.userInfo[0] || {};
+                    this.selectedUserDetails.totalScore = userData.totalScore && userData.totalScore.total_riskscore || 0;
+                    /* this.selectedUserDetails.data = [];
+    
+                    let data = userData && userData.data,
+                        len = data && data.length, date;
+    
+                    let j = 1;
+                    for (let i = 0; i < len; i++) {
+                        const item = data[i];
+                        date = moment(item.isotimestamp);
+                        let pv = 'PV000';
+                        const info = {
+                            generatedTimestamp: date.utc().format('HH:mm:ss a'), // item.isotimestamp
+                            riskScore: item.riskscore,
+                            ruleInfo: item.ruleInfo[0],
+                            userId: item.userid,
+                            isotimestamp: item.isotimestamp,
+                            accord: false,
+                            pv: pv + j
+                        };
+                        this.selectedUserDetails.data.push(info);
+                        j++;
+                    }
+    
+                    if (userDataFromModel.totalScore && userDataFromModel.totalScore.total_riskscore) {
+                        this.selectedUserDetails.totalScore = userDataFromModel.totalScore.total_riskscore + this.selectedUserDetails.totalScore;
+                    }
+                    data = userDataFromModel && userDataFromModel.data;
+                    len = data && data.length;
+                    for (let i = 0; i < len; i++) {
+                        const item = data[i];
+                        const info = {
+                            generatedTimestamp: moment(item.isotimestamp).utc().format('HH:mm:ss a'), //moment(item.isotimestamp, 'YYYYMMDD'),
+                            riskScore: item.riskscore,
+                            ruleInfo: item.ruleInfo[0]
+                        };
+                        this.selectedUserDetails.data.push(info);
+                    } */
+                });
+                /*this.riskyUserService.getSelectedUserData(this.selectedUser, isResource).subscribe((res: any) => {
+                    const data = res.data,
+                        len = data.length;
+                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
+                    this.selectedUserDetails.data = [];
+                    for (let i = 0; i < len; i++) {
+                        const item = data[i];
+                        const info = {
+                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
+                            riskScore: item.riskscore,
+                            ruleInfo: item.ruleInfo[0]
+                        };
+                        this.selectedUserDetails.data.push(info);
+                    }
+                });*/
+                /*this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource).subscribe((res: any) => {
+                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
+                    this.selectedUserDetails.data = [];
+                    const data = res && res.data,
+                        len = data && data.length;
+                    for (let i = 0; i < len; i++) {
+                        const item = data[i];
+                        const info = {
+                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
+                            riskScore: item.riskscore,
+                            ruleInfo: item.ruleInfo[0]
+                        };
+                        this.selectedUserDetails.data.push(info);
+                    }
+                });*/
+            } else {
+                this.getAllUsers();
+            }
+        });
+
+        if (this.router.url.includes('riskyIncident')) {
+            this.routeParam.paramMap.subscribe(params => {
+                const incident = params.get('incident');
+                this.incidentName = incident;
+
+                if (incident == 'INC 38' || incident == 'TVDE38')
+                    this.incidentViolations = this.admEmoorHardCodeItemData;
+                else if (incident == 'INC 44' || incident == 'TVDE43')
+                    this.incidentViolations = this.chen_ZhangHardCodeItemDate;
+                else if (incident == 'INC 71' || incident == 'TVDE21')
+                    this.incidentViolations = this.ipHardCodeItemData;
+                else if (incident == 'INC 92' || incident == 'TVAC92') {
+                    this.incidentAwender = true;
+                    this.incidentViolations = this.hardCodeItemDataForDemo1;
+                } else if (incident == 'INC 4' || incident == 'TVRC4') {
+                    this.glenRobertoHardCodeItemData = null;
+                    this.incidentViolations = this.glenRobertoHardCodeItemData;
+                } else if (incident == 'TVDE23') {
+                    this.difDateViolations = this.difDateVio_TVDE23;
+                }
+
+                this.incidentDetails.forEach(incidentDetail => {
+                    if (incidentDetail.incident == incident) {
+                        this.incidentDetail = incidentDetail;
+                    }
+                });
+            })
+        }
+    }
+
     incidentDetail: any;
     incidentDetails = [
         {
@@ -2294,141 +2429,6 @@ export class RiskyUsersComponent {
 
     incidentAwender = false;
     incidentName: any;
-
-    ngOnInit() {
-        this.routeParam.paramMap.subscribe((params) => {
-            this.selectedUser = params.get('selectedUser');
-
-            this.selectedUserInfo = this.riskyObjects.filter(riskyObj => riskyObj.type == 'user');
-            this.selectedUserInfo.forEach(res => {
-
-                if (res.value == this.selectedUser) {
-                    this.userData = res;
-                }
-            });
-
-            if (this.selectedUser == 'Alysa') {
-                this.hardCodeItemData = this.flightUserHardCodeItemData;
-            } else if (this.selectedUser === 'Maile') {
-                this.hardCodeItemDataForDemoForEmoor = this.policyViolationForMaile;
-            } else if (this.selectedUser === 'Mendelson') {
-                this.hardCodeItemDataForDemoForMendelson = this.policyViolationForMendelson;
-            } else if (this.selectedUser === 'Scott_Edwin') {
-                this.difDateViolations = this.difDateVio_ScottEdwin;
-            }
-
-            if (this.selectedUser) {
-                const dotIndex = this.selectedUser.indexOf('.');
-                const isResource = dotIndex !== -1;
-                const selectedUserData = this.riskyUserService.getSelectedUserData(this.selectedUser, isResource);
-                const selectedUserDataFromModel = this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource);
-                forkJoin([selectedUserData, selectedUserDataFromModel]).subscribe((results: any) => {
-                    const userData = results[0],
-                        userDataFromModel = results[1];
-                    this.selectedUserDetails.userInfo = userData.userInfo && userData.userInfo[0] || {};
-                    this.selectedUserDetails.totalScore = userData.totalScore && userData.totalScore.total_riskscore || 0;
-                    /* this.selectedUserDetails.data = [];
-    
-                    let data = userData && userData.data,
-                        len = data && data.length, date;
-    
-                    let j = 1;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        date = moment(item.isotimestamp);
-                        let pv = 'PV000';
-                        const info = {
-                            generatedTimestamp: date.utc().format('HH:mm:ss a'), // item.isotimestamp
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0],
-                            userId: item.userid,
-                            isotimestamp: item.isotimestamp,
-                            accord: false,
-                            pv: pv + j
-                        };
-                        this.selectedUserDetails.data.push(info);
-                        j++;
-                    }
-    
-                    if (userDataFromModel.totalScore && userDataFromModel.totalScore.total_riskscore) {
-                        this.selectedUserDetails.totalScore = userDataFromModel.totalScore.total_riskscore + this.selectedUserDetails.totalScore;
-                    }
-                    data = userDataFromModel && userDataFromModel.data;
-                    len = data && data.length;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: moment(item.isotimestamp).utc().format('HH:mm:ss a'), //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    } */
-                });
-                /*this.riskyUserService.getSelectedUserData(this.selectedUser, isResource).subscribe((res: any) => {
-                    const data = res.data,
-                        len = data.length;
-                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
-                    this.selectedUserDetails.data = [];
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    }
-                });*/
-                /*this.riskyUserService.getSelectedUserDataFromModel(this.selectedUser, isResource).subscribe((res: any) => {
-                    this.selectedUserDetails.userInfo = res.userInfo && res.userInfo[0] || {};
-                    this.selectedUserDetails.data = [];
-                    const data = res && res.data,
-                        len = data && data.length;
-                    for (let i = 0; i < len; i++) {
-                        const item = data[i];
-                        const info = {
-                            generatedTimestamp: item.isotimestamp, //moment(item.isotimestamp, 'YYYYMMDD'),
-                            riskScore: item.riskscore,
-                            ruleInfo: item.ruleInfo[0]
-                        };
-                        this.selectedUserDetails.data.push(info);
-                    }
-                });*/
-            } else {
-                this.getAllUsers();
-            }
-        });
-
-        if (this.router.url.includes('riskyIncident')) {
-            this.routeParam.paramMap.subscribe(params => {
-                const incident = params.get('incident');
-                this.incidentName = incident;
-
-                if (incident == 'INC 38' || incident == 'TVDE38')
-                    this.incidentViolations = this.admEmoorHardCodeItemData;
-                else if (incident == 'INC 44' || incident == 'TVDE43')
-                    this.incidentViolations = this.chen_ZhangHardCodeItemDate;
-                else if (incident == 'INC 71' || incident == 'TVDE21')
-                    this.incidentViolations = this.ipHardCodeItemData;
-                else if (incident == 'INC 92' || incident == 'TVAC92') {
-                    this.incidentAwender = true;
-                    this.incidentViolations = this.hardCodeItemDataForDemo1;
-                } else if (incident == 'INC 4' || incident == 'TVRC4') {
-                    this.glenRobertoHardCodeItemData = null;
-                    this.incidentViolations = this.glenRobertoHardCodeItemData;
-                } else if (incident == 'TVDE23') {
-                    this.difDateViolations = this.difDateVio_TVDE23;
-                }
-
-                this.incidentDetails.forEach(incidentDetail => {
-                    if (incidentDetail.incident == incident) {
-                        this.incidentDetail = incidentDetail;
-                    }
-                });
-            })
-        }
-    }
 
     seperatorStyle() {
         if (this.incidentName)

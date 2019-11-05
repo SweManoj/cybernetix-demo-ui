@@ -1129,7 +1129,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Rare Subnet' },
                         { title: 'Threat Category', value: 'Rare Subnet' },
                         { title: 'Sub Category', value: 'Rare Subnet' }],
-                    additionalInfo: [
+                    additionalInfos: [
                         { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
                         { title: 'EventDescription', value: 'Login Successful' },
                         { title: 'Normal Pattern', value: '10.82.x' },
@@ -1153,7 +1153,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Off-Hour Activities' },
                         { title: 'Threat Category', value: 'Off-Hour Activities' },
                         { title: 'Sub Category', value: 'Off-Hour Activities' }],
-                    additionalInfo: [
+                    additionalInfos: [
                         { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
                         { title: 'EventDescription', value: 'Login Successful' },
                         { title: 'Normal Pattern', value: '9:34am - 5:47pm' },
@@ -1182,7 +1182,7 @@ export class RiskyUsersComponent {
                         { title: 'Kill Chain', value: 'Phishing Attack' },
                         { title: 'Threat Category', value: 'Phishing Attack' },
                         { title: 'Sub Category', value: 'Phishing Attack' }],
-                    additionalInfo: [
+                    additionalInfos: [
                         { title: 'Affected Entity', value: 'Scott_Edwin' },
                         { title: 'Sender', value: 'jinvik@web19.profiwk.com' },
                         { title: 'Recipients', value: '37' },

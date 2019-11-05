@@ -1242,7 +1242,7 @@ export var tvde23FirstData = [
           title: 'Unusual Internal Communication with Rare Port/IP'
         },
         threatCategories: [
-          { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+          { title: 'Kill Chain', value: 'Command and Control' },
           { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
           { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
         additionalInfo: [
@@ -1269,7 +1269,7 @@ export var tvde23FirstData = [
           title: 'Unusual Internal Communication with Rare Port/IP'
         },
         threatCategories: [
-          { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+          { title: 'Kill Chain', value: 'Command and Control' },
           { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
           { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
         additionalInfo: [
@@ -1384,7 +1384,7 @@ export var tvde23SecondData = [
           title: 'Abnormal SQL Concatenation Patterns Received on Database Server'
         },
         threatCategories: [
-          { title: 'Kill Chain', value: 'Potential SQL Injection' },
+          { title: 'Kill Chain', value: 'Powershell Obfuscation' },
           { title: 'Threat Category', value: 'Potential SQL Injection' },
           { title: 'Sub Category', value: 'Potential SQL Injection' }],
         additionalInfo: [
@@ -1414,8 +1414,8 @@ export var tvde23SecondData = [
         },
         incId: 'INC-17',
         threatCategories: [
-          { title: 'Kill Chain', value: 'Rare Subnet' },
-          { title: 'Threat Category', value: 'Rare Subnet' },
+          { title: 'Kill Chain', value: 'Suspicious Login' },
+          { title: 'Threat Category', value: 'Suspicious Login' },
           { title: 'Sub Category', value: 'Rare Subnet' }],
         additionalInfo: [
           { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
@@ -1438,8 +1438,8 @@ export var tvde23SecondData = [
         },
         incId: 'INC-41',
         threatCategories: [
-          { title: 'Kill Chain', value: 'Off-Hour Activities' },
-          { title: 'Threat Category', value: 'Off-Hour Activities' },
+          { title: 'Kill Chain', value: 'Suspicious Login' },
+          { title: 'Threat Category', value: 'Suspicious Login' },
           { title: 'Sub Category', value: 'Off-Hour Activities' }],
         additionalInfo: [
           { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },

@@ -1,733 +1,314 @@
-export var bubbleDataMonth: any = [
+//=================== Risky Threat Vector DATA =======================
+export var tvde23Data = [
   {
-    "hour": "12pm",
-    "date": "2019-05-04",
-    "value": 1,
-    "policyViolated": "Multiple users logged-in successfully from same IP"
-  },
-  {
-    "hour": "1am",
-    "date": "2019-05-11",
-    "value": 2,
-    "policyViolated": "Multiple users logged-in successfully from same IP"
-  },
-  {
-    "hour": "2am",
-    "date": "2019-05-10",
-    "value": 1,
-    "policyViolated": "Multiple users logged-in successfully from same IP"
-  },
-  {
-    "hour": "3am",
-    "weekday": "2019-05-15",
-    "value": 2,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "4am",
-    "date": "2019-05-07",
-    "value": 4,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "5am",
-    "date": "2019-05-16",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "6am",
-    "date": "2019-05-18",
-    "value": 2,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "7am",
-    "date": "2019-05-22",
-    "value": 3,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "8am",
-    "date": "2019-04-30",
-    "value": 2,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "9am",
-    "date": "2019-04-28",
-    "value": 1,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "3pm",
-    "date": "2019-05-29",
-    "value": 6,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "4pm",
-    "date": "2019-05-27",
-    "value": 6,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "5pm",
-    "date": "2019-06-06",
-    "value": 10,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "6pm",
-    "date": "2019-06-07",
-    "value": 1,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "7pm",
-    "date": "2019-06-08",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "1am",
-    "date": "2019-06-08",
-    "value": 3,
-    "policyViolated": "Uploded More Data"
-  },
-  {
-    "hour": "3am",
-    "date": "2019-06-09",
-    "value": 1,
-    "policyViolated": "Uploded More Data"
-  },
-  {
-    "hour": "4am",
-    "date": "2019-06-08",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "5am",
-    "date": "2019-06-08",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "6am",
-    "date": "2019-06-08",
-    "value": 3,
-    "policyViolated": "Uploded More Data"
-  },
-  {
-    "hour": "8am",
-    "date": "2019-05-28",
-    "value": 1,
-    "policyViolated": "Uploded More Data"
-  },
-  {
-    "hour": "9am",
-    "date": "2019-05-28",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "3pm",
-    "date": "2019-05-28",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "4pm",
-    "date": "2019-04-30",
-    "value": 4,
-    "policyViolated": "Multiple users logged-in successfully from same IP",
-  },
-  {
-    "hour": "10pm",
-    "date": "2019-05-28",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "4am",
-    "date": "2019-07-23",
-    "value": 2,
-    "policyViolated": "Multiple users logged-in successfully from same IP",
-  },
-  {
-    "hour": "5am",
-    "date": "2019-05-29",
-    "value": 1,
-    "policyViolated": "Multiple users logged-in successfully from same IP",
-  },
-  {
-    "hour": "6am",
-    "date": "2019-04-01",
-    "value": 4,
-    "policyViolated": "Multiple users logged-in successfully from same IP",
-  },
-  {
-    "hour": "7am",
-    "date": "2019-04-02",
-    "value": 3,
-    "policyViolated": "Multiple users logged-in successfully from same IP",
-  },
-  {
-    "hour": "8am",
-    "date": "2019-04-03",
-    "value": 5,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "11am",
-    "date": "2019-05-29",
-    "value": 6,
-    "policyViolated": "Downloding More Data From File Sharing Sites",
-  },
-  {
-    "hour": "12am",
-    "date": "2019-05-29",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites",
-  },
-  {
-    "hour": "1pm",
-    "date": "2019-05-29",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites",
-  },
-  {
-    "hour": "2pm",
-    "date": "2019-05-29",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites",
-  },
-  {
-    "hour": "3pm",
-    "date": "2019-05-29",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites",
-  },
-  {
-    "hour": "9pm",
-    "date": "2019-05-29",
-    "value": 3,
-    "policyViolated": "Multiple users logged-in successfully from same IP"
-  },
-  {
-    "hour": "4am",
-    "date": "2019-04-30",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "6am",
-    "date": "2019-07-30",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "7am",
-    "date": "2019-04-30",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "8am",
-    "date": "2019-04-30",
-    "value": 1,
-    "policyViolated": "Interactive login attempt by user without badge activity"
-  },
-  {
-    "hour": "9am",
-    "date": "2019-07-30",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "3pm",
-    "date": "2019-04-25",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "11pm",
-    "date": "2019-05-30",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "12pm",
-    "date": "2019-05-31",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "6am",
-    "date": "2019-05-31",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "12am",
-    "date": "2019-05-31",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "1pm",
-    "date": "2019-05-31",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "2pm",
-    "date": "2019-05-31",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "7am",
-    "date": "2019-05-26",
-    "value": 2
-  },
-  {
-    "hour": "8am",
-    "date": "2019-05-26",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "2pm",
-    "date": "2019-05-26",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "3pm",
-    "date": "2019-04-20",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "4pm",
-    "date": "2019-05-26",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "11pm",
-    "date": "2019-05-26",
-    "value": 1,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "8pm",
-    "date": "2019-05-25",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "9pm",
-    "date": "2019-05-25",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "5am",
-    "date": "2019-06-11",
-    "value": 17,
-    "policyViolated": "Outbound Traffic to Spyware URL’s from Privileged User"
-  },
-  {
-    "hour": "6am",
-    "date": "2019-06-13",
-    "value": 6,
-    "policyViolated": "Successful Login From Unusual Location - VPN"
-  },
-  {
-    "hour": "5am",
-    "date": "2019-06-13",
-    "value": 17,
-    "policyViolated": "Abnormal Remote Access Tools Usage"
-  },
-  {
-    "hour": "4am",
-    "date": "2019-06-13",
-    "value": 23,
-    "policyViolated": "Suspicious RDP to Multiple Hosts from Privileged User"
-  },
-  {
-    "hour": "3am",
-    "date": "2019-06-13",
-    "value": 118,
-    "policyViolated": "Abnormal Objects Accessed on Fileshare"
-  },
-  {
-    "hour": "2am",
-    "date": "2019-06-13",
-    "value": 19,
-    "policyViolated": "Data Exfiltration to Cloud via HTTPS"
-  },
-  {
-    "hour": "8am",
-    "date": "2019-06-12",
-    "value": 9,
-    "policyViolated": "Multiple Failed Login Attempts From Unusual Location - VPN"
-  },
-  {
-    "hour": "7am",
-    "date": "2019-06-12",
-    "value": 13,
-    "policyViolated": "Abnormal VPN Activities after BadgeIN"
-  },
-  {
-    "hour": "4am",
-    "date": "2019-06-10",
-    "value": 83,
-    "policyViolated": "Outbound Traffic to Spyware URL’s from Privileged User"
-  },
-  {
-    "hour": "5am",
-    "date": "2019-06-15",
-    "value": 7,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "6am",
-    "date": "2019-07-03",
-    "value": 8,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "7am",
-    "date": "2019-07-06",
-    "value": 4,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "8am",
-    "date": "2019-07-05",
-    "value": 18,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "9am",
-    "date": "2019-07-01",
-    "value": 12,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "10am",
-    "date": "2019-07-11",
-    "value": 2,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "12am",
-    "date": "2019-07-13",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "1pm",
-    "date": "2019-07-15",
-    "value": 10,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "2pm",
-    "date": "2019-07-25",
-    "value": 7,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "3pm",
-    "date": "2019-07-05",
-    "value": 3,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "4pm",
-    "date": "2019-05-25",
-    "value": 5,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "5pm",
-    "date": "2019-04-18",
-    "value": 4,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "6pm",
-    "date": "2019-04-26",
-    "value": 7,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "7pm",
-    "date": "2019-04-21",
-    "value": 6,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "8pm",
-    "date": "2019-04-20",
-    "value": 8,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  },
-  {
-    "hour": "9pm",
-    "date": "2019-04-25",
-    "value": 6,
-    "policyViolated": "Uploded More Data"
-  },
-  {
-    "hour": "10pm",
-    "date": "2019-04-23",
-    "value": 3,
-    "policyViolated": "Uploded More Data"
-  },
-  {
-    "hour": "11pm",
-    "date": "2019-04-22",
-    "value": 4,
-    "policyViolated": "Downloding More Data From File Sharing Sites"
-  }
-];
-
-
-//=================== USER DATA =======================
-export var aWendlerData = [
-  {
-    violationDate: '13 June 2019',
+    violationDate: '14 Oct 2019',
     violations: [
       {
-        generatedDateFormat: '13 June 2019',
-        generatedTimestamp: '06:22:00',
+        generatedDateFormat: 'Oct 14 2019',
+        generatedTimestamp: '21:03:00',
         accord: false,
-        pv: 'PV_092',
+        pv: 'PV 039',
+        riskScore: 17,
+        ruleInfo: {
+          ruleId: 17,
+          title: 'Potential Data Exfiltration to External IP'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Data Exfiltration' },
+          { title: 'Threat Category', value: 'Data Exfiltration' },
+          { title: 'Sub Category', value: 'Data Exfiltration' }],
+        additionalInfo: [
+          { title: 'SourceIP', value: '10.82.71.192' },
+          { title: 'DestinationIP', value: '195.208.113.97' },
+          { title: 'DestinationPort', value: '21' },
+          { title: 'Packet Size', value: '10.3MB' },
+          { title: 'Location', value: 'Russia' },
+          { title: 'Risk', value: '94' },
+          { title: 'Packets', value: '18' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is Unusual beaconing with External IP'
+      },
+      {
+        generatedTimestamp: '17:23:00',
+        accord: false,
+        pv: 'PV 039',
         riskScore: 19,
         ruleInfo: {
-          ruleId: 6,
-          title: 'Data Exfiltration to Cloud via HTTPS'
+          ruleId: 19,
+          title: 'Potential Data Exfiltration to External IP'
         },
-        incId: 'INC-7',
-        threatCategories: [{ title: 'Kill Chain', value: '-' },
-        { title: 'Threat Category', value: 'Data Exfiltration' },
-        { title: 'Sub Category', value: 'Data Exfiltration' }],
-        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
-        { title: 'Locations', value: 'Berlin' },
-        { title: 'Risk', value: '97' },
-        { title: 'Resources', value: 'DLP' },
-        { title: 'Indicators', value: 'URL, Attachment' }],
-        description: 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
-      },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Data Exfiltration' },
+          { title: 'Threat Category', value: 'Data Exfiltration' },
+          { title: 'Sub Category', value: 'Data Exfiltration' }],
+        additionalInfo: [
+          { title: 'SourceIP', value: '10.82.69.151' },
+          { title: 'DestinationIP', value: '195.208.113.97' },
+          { title: 'DestinationPort', value: '21' },
+          { title: 'Packet Size', value: '10.3MB' },
+          { title: 'Location', value: 'Russia' },
+          { title: 'Risk', value: '91' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+      }
+    ]
+  },
+  {
+    violationDate: '10 Oct 2019',
+    violations: [
       {
-        generatedDateFormat: '13 June 2019',
-        generatedTimestamp: '05:30:00',
+        generatedTimestamp: '17:23:00',
         accord: false,
-        pv: 'PV_059',
-        riskScore: 118,
+        pv: 'IN 021',
+        riskScore: 19,
         ruleInfo: {
-          ruleId: 5,
-          title: 'Abnormal Objects Accessed on Fileshare'
+          ruleId: 19,
+          title: 'Unusual Internal Communication with Rare Port/IP'
         },
-        incId: 'INC-8',
-        threatCategories: [{ title: 'Kill Chain', value: '-' },
-        { title: 'Threat Category', value: 'Abnormal Pattern' },
-        { title: 'Sub Category', value: 'Abnormal Pattern' }],
-        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
-        { title: 'Locations', value: 'Berlin' },
-        { title: 'Risk', value: '91' },
-        { title: 'Resources', value: 'Fileshare' },
-        { title: 'Indicators', value: 'FileName' }],
-        description: 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
-      },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+          { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
+          { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
+        additionalInfo: [
+          { title: 'SourceIP', value: '10.82.71.192' },
+          { title: 'DestinationIP', value: '10.82.69.147' },
+          { title: 'DestinationPort', value: '443' },
+          { title: 'Risk', value: '92' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+      }
+    ]
+  },
+  {
+    violationDate: '09 Oct 2019',
+    violations: [
       {
-        generatedDateFormat: '13 June 2019',
-        generatedTimestamp: '03:22:00',
+        generatedTimestamp: '17:12:00',
         accord: false,
-        pv: 'PV_041',
-        riskScore: 23,
+        pv: 'IN 052',
+        riskScore: 17,
+        ruleInfo: {
+          ruleId: 17,
+          title: 'Unusual Internal Communication with Rare Port/IP'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
+          { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
+          { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
+        additionalInfo: [
+          { title: 'SourceIP', value: '10.82.71.192' },
+          { title: 'DestinationIP', value: '10.82.68.143' },
+          { title: 'DestinationPort', value: '139' },
+          { title: 'Risk', value: '91' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+      }
+    ]
+  },
+  {
+    violationDate: '07 Oct 2019',
+    violations: [
+      {
+        generatedTimestamp: '12:33:00',
+        accord: false,
+        pv: 'IN 019',
+        riskScore: 4,
         ruleInfo: {
           ruleId: 4,
-          title: 'Suspicious RDP to Multiple Hosts from Privileged User'
+          title: 'Malware Found on Critical Server'
         },
-        incId: 'INC-9',
-        threatCategories: [{ title: 'Kill Chain', value: '-' },
-        { title: 'Threat Category', value: 'Account Compromise' },
-        { title: 'Sub Category', value: 'Account Compromise' }],
-        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
-        { title: 'Locations', value: 'Berlin' },
-        { title: 'Risk', value: '87' },
-        { title: 'Resources', value: 'Windows' },
-        { title: 'Indicators', value: 'EventID' }],
-        description: 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
-      },
-      {
-        generatedDateFormat: '13 June 2019',
-        generatedTimestamp: '02:45:00',
-        accord: false,
-        pv: 'PV_021',
-        riskScore: 17,
-        ruleInfo: {
-          ruleId: 2,
-          title: 'Abnormal Remote Access Tools Usage'
-        },
-        incId: 'INC-11',
         threatCategories: [
-          { title: 'Kill Chain', value: '-' },
-          { title: 'Threat Category', value: 'Suspicious Behavior' },
-          { title: 'Sub Category', value: 'Suspicious Behavior' }
-        ],
-        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
-        { title: 'Locations', value: 'Berlin' },
-        { title: 'Risk', value: '84' },
-        { title: 'Resources', value: 'Proxy' },
-        { title: 'Indicators', value: 'Category' }],
-        description: 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
-      },
-      {
-        generatedDateFormat: '13 June 2019',
-        generatedTimestamp: '01:14:00',
-        accord: false,
-        pv: 'PV_033',
-        riskScore: 2,
-        ruleInfo: {
-          ruleId: 1,
-          title: 'Successful Login From Unusual Location - VPN'
-        },
-        incId: 'INC-12',
-        threatCategories: [{ title: 'Kill Chain', value: '-' },
-        { title: 'Threat Category', value: 'Account Compromise' },
-        { title: 'Sub Category', value: 'Account Compromise' }],
-        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
-        { title: 'Locations', value: 'Ukraine' },
-        { title: 'Risk', value: '75' },
-        { title: 'Resources', value: 'VPN' },
-        { title: 'Indicators', value: 'Location' }],
-        description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location'
-      }
-
-
-    ]
-  },
-  {
-    violationDate: '12 June 2019',
-    violations: [
-      {
-        generatedDateFormat: '12 June 2019',
-        generatedTimestamp: '08:02:00',
-        accord: false,
-        pv: 'PV_043',
-        riskScore: 9,
-        ruleInfo: {
-          ruleId: 1,
-          title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
-        },
-        incId: 'INC-13',
-        description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-        threatCategories: [{ title: 'Kill Chain', value: '-' },
-        { title: 'Threat Category', value: 'Account Compromise' },
-        { title: 'Sub Category', value: 'Account Compromise' }],
-        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
-        { title: 'Locations', value: 'Ukraine' },
-        { title: 'Risk', value: '75' },
-        { title: 'Resources', value: 'VPN' },
-        { title: 'Indicators', value: 'Location' }]
-      },
-      {
-        generatedDateFormat: '12 June 2019',
-        generatedTimestamp: '07:30:00',
-        accord: false,
-        pv: 'PV_088',
-        riskScore: 13,
-        ruleInfo: {
-          ruleId: 2,
-          title: 'Abnormal VPN Activities after BadgeIN'
-        },
-        incId: 'INC-14',
-        description: 'In this Algorithm, VPN Activities are observerd for User after Physical Badge IN',
-        threatCategories:
-          [{ title: 'Kill Chain', value: 'Actions/Maintain' },
-          { title: 'Threat Category', value: 'Credentials Compromise' },
-          { title: 'Sub Category', value: 'Credentials Compromise' }],
-        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
-        { title: 'Locations', value: 'Berlin, Ukraine' },
-        { title: 'Risk', value: '74' },
-        { title: 'Resources', value: 'Physical, VPN' },
-        { title: 'Indicators', value: 'Location' }]
-
-      }
-    ]
-  },
-  {
-    violationDate: '11 June 2019',
-    violations: [
-      {
-        generatedDateFormat: '11 June 2019',
-        generatedTimestamp: '05:20:00',
-        accord: false,
-        pv: 'PV_073',
-        riskScore: 17,
-        ruleInfo: {
-          ruleId: 1,
-          title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
-        },
-        incId: 'INC-15',
-        description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
-        threatCategories: [
-          { title: 'Kill Chain', value: '-' },
-          { title: 'Threat Category', value: 'Account Compromise' },
-          { title: 'Sub Category', value: 'Account Compromise' }],
+          { title: 'Kill Chain', value: 'Malware Found' },
+          { title: 'Threat Category', value: 'Malware Found' },
+          { title: 'Sub Category', value: 'Malware Found' }],
         additionalInfo: [
-          { title: 'Affected Entity', value: 'AWendler' },
-          { title: 'Locations', value: 'Ukraine' },
-          { title: 'Risk', value: '57' },
-          { title: 'Resources', value: 'VPN' },
-          { title: 'Indicators', value: 'Location' }]
+          { title: 'Affected Entity', value: '10.82.71.192' },
+          { title: 'Severity', value: 'Medium' },
+          { title: 'Malware', value: 'malware.binary' },
+          { title: 'Risk', value: '89' },
+          { title: 'Resources', value: 'FireEye' },
+          { title: 'Indicators', value: 'SourceIP, MalwareType, Severity' }],
+        description: 'This anomaly is flagged when malware is found on Critical server'
       }
     ]
   },
   {
-    violationDate: '10 June 2019',
+    violationDate: '06 Oct 2019',
     violations: [
       {
-        generatedDateFormat: '10 June 2019',
-        generatedTimestamp: '03:22:00',
+        generatedTimestamp: '14:53:00',
         accord: false,
-        pv: 'PV_023',
-        riskScore: 83,
+        pv: 'IN 033',
+        riskScore: 18,
+        ruleInfo: {
+          ruleId: 18,
+          title: 'Abnormal Batch Process Execution'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Batch Process Execution' },
+          { title: 'Threat Category', value: 'Batch Process Execution' },
+          { title: 'Sub Category', value: 'Batch Process Execution' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '10.82.71.192' },
+          { title: 'EventCode', value: '4688' },
+          { title: 'LogonType', value: '4 (Batch)' },
+          { title: 'Risk', value: '87' },
+          { title: 'Process', value: 'Powershell' },
+          { title: 'Resources', value: 'Windows Security' },
+          { title: 'Indicators', value: 'EventCode, LogonType, SourceIP, ProcessName' }],
+        description: 'This anomaly is flagged when abnormal batch process is executed on Server'
+      }
+    ]
+  },
+  {
+    violationDate: '05 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: 'Oct 5 2019',
+        generatedTimestamp: '08:50:00',
+        accord: false,
+        pv: 'IN 0371',
+        riskScore: 47,
+        ruleInfo: {
+          ruleId: 47,
+          title: 'Unusual Network scanning Activities Identified from Server'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Lateral Movement' },
+          { title: 'Threat Category', value: 'Lateral Movement' },
+          { title: 'Sub Category', value: 'Lateral Movement' }],
+        additionalInfo: [
+          { title: 'Source IP', value: '10.82.34.107' },
+          { title: 'DestinationIP', value: '10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 10.82.34.117, 10.82.34.192, 10.82.71.129, 10.82.71.192..' },
+          { title: 'Count of DestinationIP', value: '43' },
+          { title: 'DestinationPort', value: '139, 445' },
+          { title: 'Risk', value: '93' },
+          { title: 'Resources', value: 'NetFlow' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
+        description: 'This anomaly is flagged when there is potential network scanning activity observed from internal IP'
+      }
+    ]
+  },
+  {
+    violationDate: '04 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: 'Oct 4 2019',
+        generatedTimestamp: '17:22:00',
+        accord: false,
+        pv: 'IN 011',
+        riskScore: 93,
+        ruleInfo: {
+          ruleId: 93,
+          title: 'Abnormal SQL Concatenation Patterns Received on Database Server'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Potential SQL Injection' },
+          { title: 'Threat Category', value: 'Potential SQL Injection' },
+          { title: 'Sub Category', value: 'Potential SQL Injection' }],
+        additionalInfo: [
+          { title: 'Source IP', value: '172.34.123.1' },
+          { title: 'Affected Entity', value: '10.82.34.107' },
+          { title: 'Requested File', value: 'dump_database.php, wp-login.php, admin-ajax.php' },
+          { title: 'EventDescription', value: 'Successful' },
+          { title: 'Risk', value: '87' },
+          { title: 'Resources', value: 'Apache Access Logs' },
+          { title: 'Indicators', value: 'SourceIP, DestinationIP, RequestedFile, EventDescription' }],
+        description: 'This anomaly is flagged when there is an attempt to execute rare & unusual SQL queries on Database server'
+      }
+    ]
+  },
+  {
+    violationDate: '02 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: '2 Oct 2019',
+        generatedTimestamp: '03:43:00',
+        accord: false,
+        pv: 'IN 077',
+        riskScore: 1,
+        ruleInfo: {
+          ruleId: 6,
+          title: 'Suspicious Login Activities from Rare Subnet'
+        },
+        incId: 'INC-17',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Rare Subnet' },
+          { title: 'Threat Category', value: 'Rare Subnet' },
+          { title: 'Sub Category', value: 'Rare Subnet' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
+          { title: 'EventDescription', value: 'Login Successful' },
+          { title: 'Normal Pattern', value: '10.82.x' },
+          { title: 'Risk', value: '92' },
+          { title: 'Resource', value: 'Web Application' },
+          { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],
+        description: 'This anomaly is flagged when login activities are observed from Rare Subnet as per user / system past behavior'
+      },
+      {
+        generatedDateFormat: '2 Oct 2019',
+        generatedTimestamp: '03:43:00',
+        accord: false,
+        pv: 'IN 041',
+        riskScore: 1,
+        ruleInfo: {
+          ruleId: 6,
+          title: 'Suspicious Login Activities during off-hours'
+        },
+        incId: 'INC-41',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Off-Hour Activities' },
+          { title: 'Threat Category', value: 'Off-Hour Activities' },
+          { title: 'Sub Category', value: 'Off-Hour Activities' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
+          { title: 'EventDescription', value: 'Login Successful' },
+          { title: 'Normal Pattern', value: '9:34am - 5:47pm' },
+          { title: 'Risk', value: '84' },
+          { title: 'Resource', value: 'Web Application' },
+          { title: 'Indicators', value: 'Accountname, EventDescription, EventTime' }],
+        description: 'This anomaly is flagged when login activities are observed during off-hour as per user / system past behavior'
+      }
+    ]
+  },
+  {
+    violationDate: '01 Oct 2019',
+    violations: [
+      {
+        generatedDateFormat: '1 Oct 2019',
+        generatedTimestamp: '02:34:00',
+        accord: false,
+        pv: 'IN 067',
+        riskScore: 1,
         ruleInfo: {
           ruleId: 1,
-          title: 'Outbound Traffic to Spyware URL’s from Privileged User'
+          title: 'Potential Phishing Email Attack - Ironport'
         },
-        incId: 'INC-16',
-        Description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
-
+        incId: 'IN 091',
         threatCategories: [
-          { title: 'Kill Chain', 'value': '-' },
-          { title: 'Threat Category', 'value': 'Malicious Behavior' },
-          { title: 'SubCategory', 'value': 'Malicious Behavior' }
-        ],
+          { title: 'Kill Chain', value: 'Phishing Attack' },
+          { title: 'Threat Category', value: 'Phishing Attack' },
+          { title: 'Sub Category', value: 'Phishing Attack' }],
         additionalInfo: [
-          { title: 'Affected Entity', value: 'AWendler' },
-          { title: 'Locations', value: 'Ukraine' },
-          { title: 'Risk', value: '42' },
-          { title: 'Resources', value: 'Proxy' },
-          { title: 'Indicators', value: 'Category' }]
+          { title: 'Affected Entity', value: 'Scott_Edwin' },
+          { title: 'Sender', value: 'jinvik@web19.profiwk.com' },
+          { title: 'Recipients', value: '37' },
+          { title: 'Risk', value: '81' },
+          { title: 'Resource', value: 'Ironport' },
+          { title: 'Indicators', value: 'Sender, Recipient, Subject, Size' }],
+        description: 'This anomaly is flagged when Inbound email sent from same sender to multiple recipients having same subject and same attachment size'
       }
     ]
   }
 ];
 
-// Adm-Emoor
-export var normalUserData = [
+export var tvde38Data = [
   {
-    violationDate: '23 Sep 2019',
+    violationDate: '13 Sep 2019',
     violations: [
       {
         generatedDateFormat: '10 May 2019',
@@ -853,72 +434,14 @@ export var normalUserData = [
           { title: 'Resource', value: 'Windows' },
           { title: 'Indicators', value: 'TargetAccount, Groups, Event' }
         ]
-      }/* ,
-      {
-          generatedDateFormat: '10 May 2019',
-          generatedTimestamp: '17:14:00',
-          accord: false,
-          pv: 'PV_094',
-          riskScore: 149,
-          ruleInfo: {
-              ruleId: 6,
-              title: 'Multiple Users Logged-In Successfully From Same IP'
-          },
-          incId: 'INC-6',
-          description: 'This Violation is triggered when user exfiltrates excissive bytes of data via HTTPS',
-          threatCategories: {
-              'Kill Chain': 'Data Exfiltration',
-              'Threat Category': 'Data Exfiltration',
-              'Sub Category': 'Data Exfiltration via HTTPS'
-          },
-          additionalInfo: {
-              'Affected Entity': 'SVL-EMoor, WK-38482L',
-              'Location': 'San Diego',
-              'Status': 'Risk: 95',
-              'Resource': 'Proxy',
-              'Indicators': 'URL, BytesOut, Event'
-          }
-      } */
-    ]
-  }
-];
-
-export var glenRobertData = [
-  {
-    violationDate: '23 Sep 2019',
-    violations: [
-      {
-        generatedDateFormat: '29 Sep 2019',
-        generatedTimestamp: '12:05:00',
-        accord: false,
-        pv: 'PV_083',
-        riskScore: 9,
-        ruleInfo: {
-          ruleId: 1,
-          title: 'Suspicious login activities observed from Contractor/Vendor/Partner'
-        },
-        incId: 'INC-1',
-        description: 'This anomaly is flagged when there is abnormal number of login activities observed from a Contractor/Vendor/Partner - Spike in login actiity, rare login activity, unusual business time are the key contributors to this anomlay',
-        threatCategories: [
-          { title: 'Kill Chain', value: 'Abnormal Activities' },
-          { title: 'Threat Category', value: 'Abnormal Activities' },
-          { title: 'Sub Category', value: 'Abnormal Activities' }
-        ],
-        additionalInfo: [
-          { title: 'Affected Entity', value: 'Glenn_Roberto, 10.82.34.109, 10.82.34.101, 10.82.34.102, 10.82.34.104, 172.168.200.51, 172.168.200.52, 172.168.200.53, 172.168.200.54' },
-          { title: 'Location', value: '-' },
-          { title: 'Risk', value: '85' },
-          { title: 'Resource', value: 'Windows' },
-          { title: 'Indicators', value: 'Event, Accountname, LogonType, Result, DeviceIP, SourceIP' }
-        ]
       }
     ]
   }
 ];
 
-export var chenZhangData = [
+export var tvde43Data = [
   {
-    violationDate: '23 Sep 2019',
+    violationDate: '13 Sep 2019',
     violations: [
       {
         generatedDateFormat: '27 Sep 2019',
@@ -1044,93 +567,610 @@ export var chenZhangData = [
           { title: 'Resource', value: 'Guardium' },
           { title: 'Indicators', value: 'Event, Accountname' }
         ]
-      },
+      }
     ]
   }
 ];
 
-export var scottEdwinData = [
+export var tvde21Data = [
   {
-    violationDate: '02 Oct 2019',
+    violationDate: '13 Sep 2019',
     violations: [
       {
-        generatedDateFormat: '2 Oct 2019',
-        generatedTimestamp: '03:43:00',
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '12:45:00',
         accord: false,
-        pv: 'INC_17',
-        riskScore: 1,
+        pv: 'PV 039',
+        riskScore: 4,
         ruleInfo: {
-          ruleId: 6,
-          title: 'Suspicious Login Activities from Rare Subnet'
+          ruleId: 3,
+          title: 'Outbound P2P File Sharing Traffic to Rare Host'
         },
-        incId: 'INC-17',
         threatCategories: [
-          { title: 'Kill Chain', value: 'Rare Subnet' },
-          { title: 'Threat Category', value: 'Rare Subnet' },
-          { title: 'Sub Category', value: 'Rare Subnet' }],
+          { title: 'Kill Chain', value: 'C2' },
+          { title: 'Threat Category', value: 'Malicious Behavior' },
+          { title: 'Sub Category', value: 'P2P Traffic' }
+        ],
         additionalInfo: [
-          { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
-          { title: 'EventDescription', value: 'Login Successful' },
-          { title: 'Normal Pattern', value: '10.82.x' },
-          { title: 'Risk', value: '92' },
-          { title: 'Resource', value: 'Web Application' },
-          { title: 'Indicators', value: 'Accountname, EventDescription, SourceIP' }],
-        description: 'This anomaly is flagged when login activities are observed from Rare Subnet as per user / system past behavior'
+          { title: 'Affected Entity', value: '10.82.32.227' },
+          { title: 'Locations', value: 'Indonesia' },
+          { title: 'Risk', value: '95' },
+          { title: 'Resources', value: 'Proxy' },
+          { title: 'Indicators', value: 'DstIP, URL, Category, BytesOut' }
+        ],
+        description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
       },
       {
-        generatedDateFormat: '2 Oct 2019',
-        generatedTimestamp: '03:43:00',
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '06:43:00',
         accord: false,
-        pv: 'INC_41',
-        riskScore: 1,
+        pv: 'INFO',
+        riskScore: 2,
         ruleInfo: {
-          ruleId: 6,
-          title: 'Suspicious Login Activities during off-hours'
+          ruleId: 3,
+          title: 'DHCP RENEWAL'
         },
-        incId: 'INC-41',
         threatCategories: [
-          { title: 'Kill Chain', value: 'Off-Hour Activities' },
-          { title: 'Threat Category', value: 'Off-Hour Activities' },
-          { title: 'Sub Category', value: 'Off-Hour Activities' }],
+          { title: 'Last Hostname', value: 'WK-UKL48503D' },
+          { title: 'Last IP', value: '10.82.32.212' }
+        ],
         additionalInfo: [
-          { title: 'Affected Entity', value: 'Scott_Edwin, 172.34.123.1' },
-          { title: 'EventDescription', value: 'Login Successful' },
-          { title: 'Normal Pattern', value: '9:34am - 5:47pm' },
-          { title: 'Risk', value: '84' },
-          { title: 'Resource', value: 'Web Application' },
-          { title: 'Indicators', value: 'Accountname, EventDescription, EventTime' }],
-        description: 'This anomaly is flagged when login activities are observed during off-hour as per user / system past behavior'
+          { title: 'New Hostname', value: 'WK-UKL48503D' },
+          { title: 'New IP', value: '10.82.32.227' }
+        ],
+        description: 'This event correlates Dynamic IP with Hostnames / MAC'
+      },
+      {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '05:30:00',
+        accord: false,
+        pv: 'PV 067',
+        riskScore: 13,
+        ruleInfo: {
+          ruleId: 3,
+          title: 'Inbound Traffic on SMB Port from Suspicious Location'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Malicious Behavior' },
+          { title: 'Sub Category', value: 'Inbound SMB' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '10.82.32.212' },
+          { title: 'Locations', value: 'Indonesia' },
+          { title: 'Risk', value: '74' },
+          { title: 'Resources', value: 'Netflow' },
+          { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }
+        ],
+        description: 'This Violation is triggered when there is Inbound SMB traffic from Rare Location'
+      },
+      {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '03:22:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 6,
+        ruleInfo: {
+          ruleId: 1,
+          title: "Inbound Telnet Traffic From Blacklisted IP's"
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Malicious Behavior' },
+          { title: 'Sub Category', value: 'Inbound Telnet' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '10.82.32.212' },
+          { title: 'Locations', value: 'Indonesia' },
+          { title: 'Risk', value: '63' },
+          { title: 'Resources', value: 'Netflow' },
+          { title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence' }
+        ],
+        description: 'This Violation is triggered when there is Inbound Telnet traffic from Blacklisted IP'
+      },
+      {
+        generatedDateFormat: 'June 27 2019',
+        generatedTimestamp: '01:17:00',
+        accord: false,
+        pv: 'PV 022',
+        riskScore: 34,
+        ruleInfo: {
+          ruleId: 1,
+          title: "Port Scanning from External IP"
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Port Scanning' },
+          { title: 'Sub Category', value: 'Inbound Attack' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '10.82.32.212' },
+          { title: 'Locations', value: 'Indonesia' },
+          { title: 'Risk', value: '54' },
+          { title: 'Resources', value: 'Netflow' },
+          { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }
+        ],
+        description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
+      }
+    ]
+  }
+]
+
+export var tvrc4Data = [
+  {
+    violationDate: '13 Sep 2019',
+    violations: [
+      {
+        generatedDateFormat: 'Oct 4 2019',
+        generatedTimestamp: '03:50:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 188,
+        ruleInfo: {
+          ruleId: 1,
+          title: "Excessive Bytes Exfiltrated via HTTPS from a cloud instance"
+        },
+        description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Data Exfiltration' },
+          { title: 'Sub Category', value: 'Data Exfiltration' },
+          { title: 'Threat Category', value: 'Data Exfiltration' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'AWS-S3-Instance01, 11.3.4.6, 11.3.4.5, 11.3.4.8, 11.3.4.9' },
+          { title: 'Location', value: 'San Diego' },
+          { title: 'Risk', value: '95' },
+          { title: 'Resource', value: 'AWS Logs' },
+          { title: 'Indicators', value: 'Event, CommandExecuted' }
+        ]
+      },
+      {
+        generatedDateFormat: 'Oct 2 2019',
+        generatedTimestamp: '03:50:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 118,
+        ruleInfo: {
+          ruleId: 1,
+          title: "Abnormal access of critical file paths in Cloud storage"
+        },
+        description: 'This anomaly is flagged when a critical/sensitive file paths are accessed – rare file path accessed, spike in accessing file path, file access in un usual or non-business hours , high number of queries',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Data exfiltration' },
+          { title: 'Sub Category', value: 'Data exfiltration' },
+          { title: 'Threat Category', value: 'Data exfiltration' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'AWS-S3-Instance01, AWS-DomainEC2-Instance07, 18.10.9.1' },
+          { title: 'Location', value: 'San Diego' },
+          { title: 'Risk', value: '92' },
+          { title: 'Resource', value: 'AWS Logs' },
+          { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, CloudServer, objName' }
+        ]
+      },
+      {
+        generatedDateFormat: 'Oct 2 2019',
+        generatedTimestamp: '03:50:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 26,
+        ruleInfo: {
+          ruleId: 1,
+          title: "Suspicious/Privileged commands executed in Cloud Instance"
+        },
+        description: 'This violation is flagged when unusual (rare, privileged, spike) CLI commands executed in cloud instance',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Privilege Misuse' },
+          { title: 'Sub Category', value: 'Privilege Misuse' },
+          { title: 'Threat Category', value: 'Privilege Misuse' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'AWS-S3-Instance01, AWS-DomainEC2-Instance07, 18.10.9.1' },
+          { title: 'Location', value: 'San Diego' },
+          { title: 'Risk', value: '90' },
+          { title: 'Resource', value: 'AWS Logs' },
+          { title: 'Indicators', value: 'Event, CommandExecuted' }
+        ]
+      },
+      {
+        generatedDateFormat: 'Oct 1 2019',
+        generatedTimestamp: '00:50:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 40,
+        ruleInfo: {
+          ruleId: 1,
+          title: "Suspicious activity towards critical cloud data storage"
+        },
+        description: 'This violation is flagged when abnormal access of critical S3 bucket is observed in cloud logs. Rare IP, Spike in number of activities, Un-unusual business time contribute to this Anomaly',
+        threatCategories: [
+          { title: 'Kill Chain', value: '-' },
+          { title: 'Sub Category', value: 'Suspicious Database Access' },
+          { title: 'Threat Category', value: '-' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'AWS-S3-Instance01, AWS-DomainEC2-Instance07, 18.10.9.1' },
+          { title: 'Location', value: 'San Diego' },
+          { title: 'Risk', value: '85' },
+          { title: 'Resource', value: 'AWS Access Logs' },
+          { title: 'Indicators', value: 'Event, Accountname, SrcIP, DestinationIP, Count of Activities, CloudServer' }
+        ]
       }
     ]
   },
   {
-    violationDate: '01 Oct 2019',
+    violationDate: '12 Sep 2019',
     violations: [
       {
-        generatedDateFormat: '1 Oct 2019',
-        generatedTimestamp: '02:34:00',
+        generatedDateFormat: 'Sep 29 2019',
+        generatedTimestamp: '13:07:00',
         accord: false,
-        pv: 'INC_67',
-        riskScore: 1,
+        pv: 'TI 083',
+        riskScore: 8,
         ruleInfo: {
           ruleId: 1,
-          title: 'Potential Phishing Email Attack - Ironport'
+          title: "Suspicious cloud IAM activities observed"
         },
-        incId: 'INC-67',
+        description: 'This violation is flagged when unusual (rare, privileged) IAM realted commands executed in cloud instance which can indicate access mining and probable recon activity',
         threatCategories: [
-          { title: 'Kill Chain', value: 'Phishing Attack' },
-          { title: 'Threat Category', value: 'Phishing Attack' },
-          { title: 'Sub Category', value: 'Phishing Attack' }],
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Sub Category', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Reconnaissance' }
+        ],
         additionalInfo: [
-          { title: 'Affected Entity', value: 'Scott_Edwin' },
-          { title: 'Sender', value: 'jinvik@web19.profiwk.com' },
-          { title: 'Recipients', value: '37' },
+          { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07, 18.10.9.1' },
+          { title: 'Location', value: 'San Diego' },
+          { title: 'Risk', value: '83' },
+          { title: 'Resource', value: 'AWS EC2 Logs' },
+          { title: 'Indicators', value: 'Event, CommandExecuted' }
+        ]
+      },
+      {
+        generatedDateFormat: 'Sep 27 2019',
+        generatedTimestamp: '10:13:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 35,
+        ruleInfo: {
+          ruleId: 1,
+          title: "Potential scanning attempts on Public facing cloud instance"
+        },
+        description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Sub Category', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Reconnaissance' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07,AWS-DomainEC2-Instance13,AWS-DomainEC2-Instance29,AWS-DomainEC2-Instance38' },
+          { title: 'Location', value: 'San Diego' },
+          { title: 'Risk', value: '65' },
+          { title: 'Resource', value: 'AWS' },
+          { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' }
+        ]
+      },
+      {
+        generatedDateFormat: 'Sep 17 2019',
+        generatedTimestamp: '07:13:00',
+        accord: false,
+        pv: 'TI 083',
+        riskScore: 7,
+        ruleInfo: {
+          ruleId: 1,
+          title: "Vulnerability Alert"
+        },
+        description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP',
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Vulnerability Alert' },
+          { title: 'Sub Category', value: 'Vulnerability Alert' },
+          { title: 'Threat Category', value: 'Vulnerability Alert' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'AWS-DomainEC2-Instance07, 18.10.9.1' },
+          { title: 'Location', value: 'San Diego' },
+          { title: 'Risk', value: '36' },
+          { title: 'Resource', value: 'Qualys' },
+          { title: 'Indicators', value: 'SourceIP, Signature' }
+        ]
+      },
+
+    ]
+  },
+  {
+    violationDate: '11 Sep 2019',
+    violations: [
+      {
+        generatedDateFormat: 'Sep 27 2019',
+        generatedTimestamp: '10:30:00',
+        accord: false,
+        pv: 'PV 039',
+        riskScore: 127,
+        ruleInfo: {
+          ruleId: 3,
+          title: 'High number of Denied traffic followed by Allowed traffic'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Potential Firewall Compromise' },
+          { title: 'Sub Category', value: 'Potential Firewall Compromise' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '18.10.8.1' },
+          { title: 'Locations', value: 'San Diego' },
           { title: 'Risk', value: '81' },
-          { title: 'Resource', value: 'Ironport' },
-          { title: 'Indicators', value: 'Sender, Recipient, Subject, Size' }],
-        description: 'This anomaly is flagged when Inbound email sent from same sender to multiple recipients having same subject and same attachment size'
+          { title: 'Resources', value: 'Firewall' },
+          { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, Destination Port' },
+          { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+        description: 'This Policy is triggered when high number of Denied Traffic observed in firewall followed by Allowed Traffic from a same Source IP'
+      },
+      {
+        generatedDateFormat: 'Sep 27 2019',
+        generatedTimestamp: '10:30:00',
+        accord: false,
+        pv: 'PV 039',
+        riskScore: 127,
+        ruleInfo: {
+          ruleId: 3,
+          title: 'Inbound Allowed traffic on Non-standard ports'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Initial Access' },
+          { title: 'Sub Category', value: 'Compromise' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '18.10.8.1' },
+          { title: 'Locations', value: 'San Diego' },
+          { title: 'Risk', value: '93' },
+          { title: 'Resources', value: 'Firewall' },
+          { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action, DestinationPort' },
+          { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+        description: 'This Policy is triggered when traffic observed towards a nonstandard port'
+      },
+      {
+        generatedDateFormat: 'Sep 27 2019',
+        generatedTimestamp: '10:13:00',
+        accord: false,
+        pv: 'PV 039',
+        riskScore: 35,
+        ruleInfo: {
+          ruleId: 3,
+          title: 'Potential scanning attempt on public facing cloud instance'
+        },
+        threatCategories: [
+          { title: 'Kill Chain', value: 'Reconnaissance' },
+          { title: 'Threat Category', value: 'Reconnaissance' },
+          { title: 'Sub Category', value: 'Reconnaissance' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: '18.10.8.1' },
+          { title: 'Locations', value: 'San Diego' },
+          { title: 'Risk', value: '65' },
+          { title: 'Resources', value: 'Firewall' },
+          { title: 'Indicators', value: 'Event, SourceIP, DestinationIP, SrcHost, Action' },
+          { title: 'IOC Reputation', value: 'TOR IP / Malicious IP' }],
+        description: 'This anomaly is triggered when abnormal behaviour seen from Malicious External IP Kill Chain: Reconnaissance'
       }
     ]
   }
 ];
-//=================== USER DATA =======================
+
+export var tvac92Data = [
+  {
+    violationDate: '13 June 2019',
+    violations: [
+      {
+        generatedDateFormat: '13 June 2019',
+        generatedTimestamp: '06:22:00',
+        accord: false,
+        pv: 'PV_092',
+        riskScore: 19,
+        ruleInfo: {
+          ruleId: 6,
+          title: 'Data Exfiltration to Cloud via HTTPS'
+        },
+        incId: 'INC-7',
+        threatCategories: [{ title: 'Kill Chain', value: '-' },
+        { title: 'Threat Category', value: 'Data Exfiltration' },
+        { title: 'Sub Category', value: 'Data Exfiltration' }],
+        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
+        { title: 'Locations', value: 'Berlin' },
+        { title: 'Risk', value: '97' },
+        { title: 'Resources', value: 'DLP' },
+        { title: 'Indicators', value: 'URL, Attachment' }],
+        description: 'In this Algorithm, User attempted to exfiltrate excessive data to Cloud via HTTPS'
+      },
+      {
+        generatedDateFormat: '13 June 2019',
+        generatedTimestamp: '05:30:00',
+        accord: false,
+        pv: 'PV_059',
+        riskScore: 118,
+        ruleInfo: {
+          ruleId: 5,
+          title: 'Abnormal Objects Accessed on Fileshare'
+        },
+        incId: 'INC-8',
+        threatCategories: [{ title: 'Kill Chain', value: '-' },
+        { title: 'Threat Category', value: 'Abnormal Pattern' },
+        { title: 'Sub Category', value: 'Abnormal Pattern' }],
+        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
+        { title: 'Locations', value: 'Berlin' },
+        { title: 'Risk', value: '91' },
+        { title: 'Resources', value: 'Fileshare' },
+        { title: 'Indicators', value: 'FileName' }],
+        description: 'In this Algorithm, Multiple Objects Accessed or Downloaded By User on Fileshare in short span'
+      },
+      {
+        generatedDateFormat: '13 June 2019',
+        generatedTimestamp: '03:22:00',
+        accord: false,
+        pv: 'PV_041',
+        riskScore: 23,
+        ruleInfo: {
+          ruleId: 4,
+          title: 'Suspicious RDP to Multiple Hosts from Privileged User'
+        },
+        incId: 'INC-9',
+        threatCategories: [{ title: 'Kill Chain', value: '-' },
+        { title: 'Threat Category', value: 'Account Compromise' },
+        { title: 'Sub Category', value: 'Account Compromise' }],
+        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
+        { title: 'Locations', value: 'Berlin' },
+        { title: 'Risk', value: '87' },
+        { title: 'Resources', value: 'Windows' },
+        { title: 'Indicators', value: 'EventID' }],
+        description: 'In this Algorithm, Suspicious RDP to Multiple Hosts from Single Host as per historical baselining & Static Peer Grouping'
+      },
+      {
+        generatedDateFormat: '13 June 2019',
+        generatedTimestamp: '02:45:00',
+        accord: false,
+        pv: 'PV_021',
+        riskScore: 17,
+        ruleInfo: {
+          ruleId: 2,
+          title: 'Abnormal Remote Access Tools Usage'
+        },
+        incId: 'INC-11',
+        threatCategories: [
+          { title: 'Kill Chain', value: '-' },
+          { title: 'Threat Category', value: 'Suspicious Behavior' },
+          { title: 'Sub Category', value: 'Suspicious Behavior' }
+        ],
+        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
+        { title: 'Locations', value: 'Berlin' },
+        { title: 'Risk', value: '84' },
+        { title: 'Resources', value: 'Proxy' },
+        { title: 'Indicators', value: 'Category' }],
+        description: 'In this Algorithm, Suspicious Remote Access Tools Usage By User as per historical baselining & Static Peer Grouping'
+      },
+      {
+        generatedDateFormat: '13 June 2019',
+        generatedTimestamp: '01:14:00',
+        accord: false,
+        pv: 'PV_033',
+        riskScore: 2,
+        ruleInfo: {
+          ruleId: 1,
+          title: 'Successful Login From Unusual Location - VPN'
+        },
+        incId: 'INC-12',
+        threatCategories: [{ title: 'Kill Chain', value: '-' },
+        { title: 'Threat Category', value: 'Account Compromise' },
+        { title: 'Sub Category', value: 'Account Compromise' }],
+        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
+        { title: 'Locations', value: 'Ukraine' },
+        { title: 'Risk', value: '75' },
+        { title: 'Resources', value: 'VPN' },
+        { title: 'Indicators', value: 'Location' }],
+        description: 'In this Algorithm, Successful Login Attempts on VPN from Unusual Location'
+      }
+    ]
+  },
+  {
+    violationDate: '12 June 2019',
+    violations: [
+      {
+        generatedDateFormat: '12 June 2019',
+        generatedTimestamp: '08:02:00',
+        accord: false,
+        pv: 'PV_043',
+        riskScore: 9,
+        ruleInfo: {
+          ruleId: 1,
+          title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
+        },
+        incId: 'INC-13',
+        description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+        threatCategories: [{ title: 'Kill Chain', value: '-' },
+        { title: 'Threat Category', value: 'Account Compromise' },
+        { title: 'Sub Category', value: 'Account Compromise' }],
+        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
+        { title: 'Locations', value: 'Ukraine' },
+        { title: 'Risk', value: '75' },
+        { title: 'Resources', value: 'VPN' },
+        { title: 'Indicators', value: 'Location' }]
+      },
+      {
+        generatedDateFormat: '12 June 2019',
+        generatedTimestamp: '07:30:00',
+        accord: false,
+        pv: 'PV_088',
+        riskScore: 13,
+        ruleInfo: {
+          ruleId: 2,
+          title: 'Abnormal VPN Activities after BadgeIN'
+        },
+        incId: 'INC-14',
+        description: 'In this Algorithm, VPN Activities are observerd for User after Physical Badge IN',
+        threatCategories:
+          [{ title: 'Kill Chain', value: 'Actions/Maintain' },
+          { title: 'Threat Category', value: 'Credentials Compromise' },
+          { title: 'Sub Category', value: 'Credentials Compromise' }],
+        additionalInfo: [{ title: 'Affected Entity', value: 'AWendler' },
+        { title: 'Locations', value: 'Berlin, Ukraine' },
+        { title: 'Risk', value: '74' },
+        { title: 'Resources', value: 'Physical, VPN' },
+        { title: 'Indicators', value: 'Location' }]
+      }
+    ]
+  },
+  {
+    violationDate: '11 June 2019',
+    violations: [
+      {
+        generatedDateFormat: '11 June 2019',
+        generatedTimestamp: '05:20:00',
+        accord: false,
+        pv: 'PV_073',
+        riskScore: 17,
+        ruleInfo: {
+          ruleId: 1,
+          title: 'Multiple Failed Login Attempts From Unusual Location - VPN'
+        },
+        incId: 'INC-15',
+        description: 'In this Algorithm, Multiple Failed Login Attempts on VPN from Unusual Location',
+        threatCategories: [
+          { title: 'Kill Chain', value: '-' },
+          { title: 'Threat Category', value: 'Account Compromise' },
+          { title: 'Sub Category', value: 'Account Compromise' }],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'AWendler' },
+          { title: 'Locations', value: 'Ukraine' },
+          { title: 'Risk', value: '57' },
+          { title: 'Resources', value: 'VPN' },
+          { title: 'Indicators', value: 'Location' }]
+      }
+    ]
+  },
+  {
+    violationDate: '10 June 2019',
+    violations: [
+      {
+        generatedDateFormat: '10 June 2019',
+        generatedTimestamp: '03:22:00',
+        accord: false,
+        pv: 'PV_023',
+        riskScore: 83,
+        ruleInfo: {
+          ruleId: 1,
+          title: 'Outbound Traffic to Spyware URL’s from Privileged User'
+        },
+        incId: 'INC-16',
+        description: 'In this policy violation, User was trying to access URL(s) with Category: Malicious or Spyware',
+
+        threatCategories: [
+          { title: 'Kill Chain', 'value': '-' },
+          { title: 'Threat Category', 'value': 'Malicious Behavior' },
+          { title: 'SubCategory', 'value': 'Malicious Behavior' }
+        ],
+        additionalInfo: [
+          { title: 'Affected Entity', value: 'AWendler' },
+          { title: 'Locations', value: 'Ukraine' },
+          { title: 'Risk', value: '42' },
+          { title: 'Resources', value: 'Proxy' },
+          { title: 'Indicators', value: 'Category' }]
+      }
+    ]
+  }
+];
+
+//=================== UNUSED Risky Threat Vector DATA =======================

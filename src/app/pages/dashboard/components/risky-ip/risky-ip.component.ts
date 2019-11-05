@@ -66,7 +66,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Access Authentication' },
                 { title: 'Sub Category', value: 'Bruce Force Attack' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '-' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '-' },
@@ -88,7 +88,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Access Authentication' },
                 { title: 'Sub Category', value: 'Bruce Force Attack' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '-' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '-' },
@@ -110,7 +110,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Access Authentication' },
                 { title: 'Sub Category', value: 'Bruce Force Attack' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '-' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '-' },
@@ -132,7 +132,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Access Authentication' },
                 { title: 'Sub Category', value: 'Bruce Force Attack' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '-' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '-' },
@@ -154,7 +154,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Access Authentication' },
                 { title: 'Sub Category', value: 'Bruce Force Attack' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '-' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '-' },
@@ -176,7 +176,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Actions/Maintain' },
                 { title: 'Threat Category', value: 'Access Authentication' },
                 { title: 'Sub Category', value: 'Bruce Force Attack' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '-' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '-' },
@@ -196,20 +196,21 @@ export class RiskyIPComponent implements OnInit {
                     generatedTimestamp: '21:03:00',
                     accord: false,
                     pv: 'PV 039',
-                    riskScore: 18,
+                    riskScore: 17,
                     ruleInfo: {
-                        ruleId: 18,
-                        title: 'Potential Beaconing to External IP'
+                        ruleId: 17,
+                        title: 'Potential Data Exfiltration to External IP'
                     },
                     threatCategories: [
                         { title: 'Kill Chain', value: 'Data Exfiltration' },
                         { title: 'Threat Category', value: 'Data Exfiltration' },
                         { title: 'Sub Category', value: 'Data Exfiltration' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'SourceIP', value: '10.82.71.192' },
-                        { title: 'DestinationIP', value: '10.82.69.151' },
+                        { title: 'DestinationIP', value: '195.208.113.97' },
                         { title: 'DestinationPort', value: '21' },
                         { title: 'Packet Size', value: '10.3MB' },
+                        { title: 'Location', value: 'Russia' },
                         { title: 'Risk', value: '94' },
                         { title: 'Packets', value: '18' },
                         { title: 'Resources', value: 'NetFlow' },
@@ -220,20 +221,21 @@ export class RiskyIPComponent implements OnInit {
                     generatedTimestamp: '17:23:00',
                     accord: false,
                     pv: 'PV 039',
-                    riskScore: 3,
+                    riskScore: 19,
                     ruleInfo: {
-                        ruleId: 3,
+                        ruleId: 19,
                         title: 'Potential Data Exfiltration to External IP'
                     },
                     threatCategories: [
                         { title: 'Kill Chain', value: 'Data Exfiltration' },
                         { title: 'Threat Category', value: 'Data Exfiltration' },
                         { title: 'Sub Category', value: 'Data Exfiltration' }],
-                    additionalInfos: [
-                        { title: 'SourceIP', value: '10.82.71.192' },
-                        { title: 'DestinationIP', value: '10.82.69.151' },
+                    additionalInfo: [
+                        { title: 'SourceIP', value: '10.82.69.151' },
+                        { title: 'DestinationIP', value: '195.208.113.97' },
                         { title: 'DestinationPort', value: '21' },
                         { title: 'Packet Size', value: '10.3MB' },
+                        { title: 'Location', value: 'Russia' },
                         { title: 'Risk', value: '91' },
                         { title: 'Resources', value: 'NetFlow' },
                         { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
@@ -260,7 +262,7 @@ export class RiskyIPComponent implements OnInit {
                         { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
                         { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
                         { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'SourceIP', value: '10.82.71.192' },
                         { title: 'DestinationIP', value: '10.82.69.147' },
                         { title: 'DestinationPort', value: '443' },
@@ -287,7 +289,7 @@ export class RiskyIPComponent implements OnInit {
                         { title: 'Kill Chain', value: 'Communication with Rare Port/IP' },
                         { title: 'Threat Category', value: 'Communication with Rare Port/IP' },
                         { title: 'Sub Category', value: 'Communication with Rare Port/IP' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'SourceIP', value: '10.82.71.192' },
                         { title: 'DestinationIP', value: '10.82.68.143' },
                         { title: 'DestinationPort', value: '139' },
@@ -314,7 +316,7 @@ export class RiskyIPComponent implements OnInit {
                         { title: 'Kill Chain', value: 'Malware Found' },
                         { title: 'Threat Category', value: 'Malware Found' },
                         { title: 'Sub Category', value: 'Malware Found' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Affected Entity', value: '10.82.71.192' },
                         { title: 'Severity', value: 'Medium' },
                         { title: 'Malware', value: 'malware.binary' },
@@ -341,7 +343,7 @@ export class RiskyIPComponent implements OnInit {
                         { title: 'Kill Chain', value: 'Batch Process Execution' },
                         { title: 'Threat Category', value: 'Batch Process Execution' },
                         { title: 'Sub Category', value: 'Batch Process Execution' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Affected Entity', value: '10.82.71.192' },
                         { title: 'EventCode', value: '4688' },
                         { title: 'LogonType', value: '4 (Batch)' },
@@ -373,7 +375,7 @@ export class RiskyIPComponent implements OnInit {
                         { title: 'Kill Chain', value: 'Lateral Movement' },
                         { title: 'Threat Category', value: 'Lateral Movement' },
                         { title: 'Sub Category', value: 'Lateral Movement' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Source IP', value: '10.82.34.107' },
                         { title: 'DestinationIP', value: '10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 10.82.34.117, 10.82.34.192, 10.82.71.129, 10.82.71.192..' },
                         { title: 'Count of DestinationIP', value: '43' },
@@ -402,7 +404,7 @@ export class RiskyIPComponent implements OnInit {
                         { title: 'Kill Chain', value: 'Potential SQL Injection' },
                         { title: 'Threat Category', value: 'Potential SQL Injection' },
                         { title: 'Sub Category', value: 'Potential SQL Injection' }],
-                    additionalInfos: [
+                    additionalInfo: [
                         { title: 'Source IP', value: '172.34.123.1' },
                         { title: 'Affected Entity', value: '10.82.34.107' },
                         { title: 'Requested File', value: 'dump_database.php, wp-login.php, admin-ajax.php' },
@@ -431,7 +433,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Recon' },
                 { title: 'Threat Category', value: 'Internal Network Scan' },
                 { title: 'Sub Category', value: 'Internal Network Scan' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '172.168.200.55, 10.82.34.101, 10.82.34.102, 10.82.34.104, 10.82.34.111, 192.168.200.55, 192.168.200.57, 10.67.122.136, 10.67.122.132' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '85' },
@@ -456,7 +458,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Recon' },
                 { title: 'Threat Category', value: 'Internal Network Scan' },
                 { title: 'Sub Category', value: 'Internal Network Scan' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109, 10.82.34.102, 10.82.34.104, 10.82.34.111, 192.168.200.55' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '85' },
@@ -478,7 +480,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Lateral Movement' },
                 { title: 'Threat Category', value: 'Lateral Movement' },
                 { title: 'Sub Category', value: 'Compromise of internal hosts' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 192.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '85' },
@@ -500,7 +502,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Lateral Movement' },
                 { title: 'Threat Category', value: 'Lateral Movement' },
                 { title: 'Sub Category', value: 'Compromise of internal hosts' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109 DESK-1876, 10.82.34.102 DESK-1879, 10.82.34.104 DESK-1877, 10.82.34.111 DESK-1676, 192.168.200.55 DESK-1576, 92.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '85' },
@@ -522,7 +524,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Lateral Movement' },
                 { title: 'Threat Category', value: 'Lateral Movement' },
                 { title: 'Sub Category', value: 'Compromise of internal hosts' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.34.101 DESK-10982, 10.82.34.109 DESK-1876, 10.82.34.102 DESK-1879, 10.82.34.104 DESK-1877, 10.82.34.111 DESK-1676, 192.168.200.55 DESK-1576, 92.168.200.57 SERV-1234, 10.67.122.136 DESK-1456, 10.67.122.132 VSERV-6743' },
                 { title: 'Locations', value: '-' },
                 { title: 'Risk', value: '85' },
@@ -547,7 +549,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Reconnaissance' },
                 { title: 'Sub Category', value: 'Reconnaissance' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '65' },
@@ -570,7 +572,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Potential Firewall Compromise' },
                 { title: 'Sub Category', value: 'Potential Firewall Compromise' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '81' },
@@ -593,7 +595,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Initial Access' },
                 { title: 'Sub Category', value: 'Compromise' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '18.10.8.1' },
                 { title: 'Locations', value: 'San Diego' },
                 { title: 'Risk', value: '93' },
@@ -619,7 +621,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'C2' },
                 { title: 'Threat Category', value: 'Malicious Behavior' },
                 { title: 'Sub Category', value: 'P2P Traffic' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.227' },
                 { title: 'Locations', value: 'Indonesia' },
                 { title: 'Risk', value: '95' },
@@ -641,7 +643,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: '' },
                 { title: 'Threat Category', value: '' },
                 { title: 'Sub Category', value: '' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'New Hostname', value: 'WK-UKL48503D' },
                 { title: 'New IP', value: '10.82.32.227' },
             /* { title: 'Locations', value: '' },
@@ -664,7 +666,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Malicious Behavior' },
                 { title: 'Sub Category', value: 'Inbound SMB' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
                 { title: 'Risk', value: '74' },
@@ -686,7 +688,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Malicious Behavior' },
                 { title: 'Sub Category', value: 'Inbound Telnet' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
                 { title: 'Risk', value: '63' },
@@ -708,7 +710,7 @@ export class RiskyIPComponent implements OnInit {
                 { title: 'Kill Chain', value: 'Reconnaissance' },
                 { title: 'Threat Category', value: 'Port Scanning' },
                 { title: 'Sub Category', value: 'Inbound Attack' }],
-            additionalInfos: [
+            additionalInfo: [
                 { title: 'Affected Entity', value: '10.82.32.212' },
                 { title: 'Locations', value: 'Indonesia' },
                 { title: 'Risk', value: '54' },

@@ -895,12 +895,13 @@ export class RiskyUsersComponent {
             violationDate: '14 Oct 2019',
             violations: [
                 {
-                    generatedTimestamp: '17:23:00',
+                    generatedDateFormat: 'Oct 14 2019',
+                    generatedTimestamp: '21:03:00',
                     accord: false,
-                    pv: 'IN 039',
-                    riskScore: 3,
+                    pv: 'PV 039',
+                    riskScore: 17,
                     ruleInfo: {
-                        ruleId: 3,
+                        ruleId: 17,
                         title: 'Potential Data Exfiltration to External IP'
                     },
                     threatCategories: [
@@ -909,21 +910,23 @@ export class RiskyUsersComponent {
                         { title: 'Sub Category', value: 'Data Exfiltration' }],
                     additionalInfo: [
                         { title: 'SourceIP', value: '10.82.71.192' },
-                        { title: 'DestinationIP', value: '10.82.69.151' },
+                        { title: 'DestinationIP', value: '195.208.113.97' },
                         { title: 'DestinationPort', value: '21' },
                         { title: 'Packet Size', value: '10.3MB' },
-                        { title: 'Risk', value: '91' },
+                        { title: 'Location', value: 'Russia' },
+                        { title: 'Risk', value: '94' },
+                        { title: 'Packets', value: '18' },
                         { title: 'Resources', value: 'NetFlow' },
                         { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],
-                    description: 'This anomaly is flagged when there is Unusual Communication with Rare Port/IP'
+                    description: 'This anomaly is flagged when there is Unusual beaconing with External IP'
                 },
                 {
                     generatedTimestamp: '17:23:00',
                     accord: false,
-                    pv: 'IN 039',
-                    riskScore: 3,
+                    pv: 'PV 039',
+                    riskScore: 19,
                     ruleInfo: {
-                        ruleId: 3,
+                        ruleId: 19,
                         title: 'Potential Data Exfiltration to External IP'
                     },
                     threatCategories: [
@@ -931,10 +934,11 @@ export class RiskyUsersComponent {
                         { title: 'Threat Category', value: 'Data Exfiltration' },
                         { title: 'Sub Category', value: 'Data Exfiltration' }],
                     additionalInfo: [
-                        { title: 'SourceIP', value: '10.82.71.192' },
-                        { title: 'DestinationIP', value: '10.82.69.151' },
+                        { title: 'SourceIP', value: '10.82.69.151' },
+                        { title: 'DestinationIP', value: '195.208.113.97' },
                         { title: 'DestinationPort', value: '21' },
                         { title: 'Packet Size', value: '10.3MB' },
+                        { title: 'Location', value: 'Russia' },
                         { title: 'Risk', value: '91' },
                         { title: 'Resources', value: 'NetFlow' },
                         { title: 'Indicators', value: 'SourceIP, DestinationIP, DestinationPort, Service' }],

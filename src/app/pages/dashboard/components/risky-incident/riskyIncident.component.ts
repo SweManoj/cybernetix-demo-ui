@@ -4,7 +4,8 @@ import { tvde23Data, tvde38Data, tvde43Data, tvde21Data, tvrc4Data, tvac92Data, 
 
 @Component({
     selector: 'risky-incident',
-    templateUrl: './riskyIncident.component.html'
+    templateUrl: './riskyIncident.component.html',
+    // styleUrls: ['./riskyIncident.component.scss']
 })
 export class RiskyIncidentComponent {
 
@@ -109,6 +110,13 @@ export class RiskyIncidentComponent {
 
     constructor(private routeParam: ActivatedRoute, private router: Router) {
         window.scrollTo(0, 0);
+    }
+
+    infoStyleObject(input): Object {
+        if (input == 'INFO')
+            return { 'color': 'yellow', 'margin-right': '2rem' }
+
+        return { 'color': 'red' }
     }
 
     threatVectorViolations: any;

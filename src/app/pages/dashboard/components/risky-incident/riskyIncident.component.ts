@@ -123,8 +123,8 @@ export class RiskyIncidentComponent {
     dottedThreatVectorViolations: any;
     setThreatVectorViolation() {
         if (this.incidentName == 'TVDE23') {
-            this.threatVectorViolations = tvde23SecondData;
-            this.dottedThreatVectorViolations = tvde23FirstData;
+            this.threatVectorViolations = tvde23Data;
+            // this.dottedThreatVectorViolations = tvde23FirstData;
         }
         else if (this.incidentName == 'TVDE38')
             this.threatVectorViolations = tvde38Data;
@@ -166,14 +166,9 @@ export class RiskyIncidentComponent {
             return { 'color': 'white' };
     }
 
-    seperatorStyle() {
-        if (this.incidentName)
+    seperatorStyle(dottedLine: boolean) {
+        if (dottedLine)
             return { 'background-color': 'unset', 'border-right': '3.5px dotted #0891a9' }
-    }
-
-    riskyDotStyle() {
-        if (this.incidentName)
-            return { 'background-color': 'red' }
     }
 
     routeToIncident(incident) {

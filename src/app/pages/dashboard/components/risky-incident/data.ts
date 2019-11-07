@@ -2,6 +2,7 @@
 export var tvde23Data = [
   {
     violationDate: '14 Oct 2019',
+    dottedLine: true,
     violations: [
       {
         generatedDateFormat: 'Oct 14 2019',
@@ -57,6 +58,7 @@ export var tvde23Data = [
   },
   {
     violationDate: '10 Oct 2019',
+    dottedLine: true,
     violations: [
       {
         generatedTimestamp: '17:23:00',
@@ -84,6 +86,7 @@ export var tvde23Data = [
   },
   {
     violationDate: '09 Oct 2019',
+    dottedLine: true,
     violations: [
       {
         generatedTimestamp: '17:12:00',
@@ -111,6 +114,7 @@ export var tvde23Data = [
   },
   {
     violationDate: '07 Oct 2019',
+    dottedLine: true,
     violations: [
       {
         generatedTimestamp: '12:33:00',
@@ -138,6 +142,7 @@ export var tvde23Data = [
   },
   {
     violationDate: '06 Oct 2019',
+    dottedLine: true,
     violations: [
       {
         generatedTimestamp: '14:53:00',
@@ -166,6 +171,7 @@ export var tvde23Data = [
   },
   {
     violationDate: '05 Oct 2019',
+    dottedLine: true,
     violations: [
       {
         generatedDateFormat: 'Oct 5 2019',
@@ -195,6 +201,7 @@ export var tvde23Data = [
   },
   {
     violationDate: '04 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: 'Oct 4 2019',
@@ -224,6 +231,7 @@ export var tvde23Data = [
   },
   {
     violationDate: '02 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '2 Oct 2019',
@@ -277,6 +285,7 @@ export var tvde23Data = [
   },
   {
     violationDate: '01 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '1 Oct 2019',
@@ -309,6 +318,7 @@ export var tvde23Data = [
 export var tvde38Data = [
   {
     violationDate: '13 Sep 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '10 May 2019',
@@ -442,6 +452,7 @@ export var tvde38Data = [
 export var tvde43Data = [
   {
     violationDate: '13 Sep 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '27 Sep 2019',
@@ -575,6 +586,7 @@ export var tvde43Data = [
 export var tvde21Data = [
   {
     violationDate: '13 Sep 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: 'June 27 2019',
@@ -699,6 +711,7 @@ export var tvde21Data = [
 export var tvrc4Data = [
   {
     violationDate: '13 Sep 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: 'Oct 4 2019',
@@ -800,6 +813,7 @@ export var tvrc4Data = [
   },
   {
     violationDate: '12 Sep 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: 'Sep 29 2019',
@@ -878,6 +892,7 @@ export var tvrc4Data = [
   },
   {
     violationDate: '11 Sep 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: 'Sep 27 2019',
@@ -955,6 +970,7 @@ export var tvrc4Data = [
 export var tvac92Data = [
   {
     violationDate: '13 June 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '13 June 2019',
@@ -1067,6 +1083,7 @@ export var tvac92Data = [
   },
   {
     violationDate: '12 June 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '12 June 2019',
@@ -1115,6 +1132,7 @@ export var tvac92Data = [
   },
   {
     violationDate: '11 June 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '11 June 2019',
@@ -1143,6 +1161,7 @@ export var tvac92Data = [
   },
   {
     violationDate: '10 June 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '10 June 2019',
@@ -1176,6 +1195,7 @@ export var tvac92Data = [
 export var tvde23FirstData = [
   {
     violationDate: '14 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: 'Oct 14 2019',
@@ -1231,6 +1251,7 @@ export var tvde23FirstData = [
   },
   {
     violationDate: '10 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedTimestamp: '17:23:00',
@@ -1258,6 +1279,7 @@ export var tvde23FirstData = [
   },
   {
     violationDate: '09 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedTimestamp: '17:12:00',
@@ -1285,6 +1307,7 @@ export var tvde23FirstData = [
   },
   {
     violationDate: '07 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedTimestamp: '12:33:00',
@@ -1312,6 +1335,7 @@ export var tvde23FirstData = [
   },
   {
     violationDate: '06 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedTimestamp: '14:53:00',
@@ -1340,6 +1364,7 @@ export var tvde23FirstData = [
   },
   {
     violationDate: '05 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: 'Oct 5 2019',
@@ -1372,6 +1397,7 @@ export var tvde23FirstData = [
 export var tvde23SecondData = [
   {
     violationDate: '04 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: 'Oct 4 2019',
@@ -1401,6 +1427,7 @@ export var tvde23SecondData = [
   },
   {
     violationDate: '02 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '2 Oct 2019',
@@ -1454,6 +1481,7 @@ export var tvde23SecondData = [
   },
   {
     violationDate: '01 Oct 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '1 Oct 2019',
@@ -1483,6 +1511,7 @@ export var tvde23SecondData = [
   },
   {
     violationDate: '30 Sep 2019',
+    dottedLine: false,
     violations: [
       {
         generatedDateFormat: '1 Oct 2019',

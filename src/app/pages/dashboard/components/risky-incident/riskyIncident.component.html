@@ -77,7 +77,7 @@
     </div>
 
     <!-- Dotted lines - TVDE23 -->
-    <ng-container *ngIf="dottedThreatVectorViolations">
+    <!--  <ng-container *ngIf="dottedThreatVectorViolations">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4"
             *ngFor="let threatVectorViolations of dottedThreatVectorViolations">
             <div class="risk-date-stamp">
@@ -164,21 +164,21 @@
                 </div>
             </div>
         </div>
-    </ng-container>
+    </ng-container> -->
 
     <!-- Solid lines-->
     <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4"
-        *ngFor="let threatVectorViolations of threatVectorViolations">
+        *ngFor="let threatVectorViolation of threatVectorViolations">
         <div class="risk-date-stamp">
-            <span>{{threatVectorViolations.violationDate}}</span>
+            <span>{{threatVectorViolation.violationDate}}</span>
         </div>
-        <div class="row initialPadding" *ngFor="let item of threatVectorViolations.violations">
+        <div class="row initialPadding" *ngFor="let item of threatVectorViolation.violations">
             <div class="col-md-12 d-flex">
                 <div class="risk-time-stamp">
                     <span>{{item.generatedTimestamp}}</span>
                 </div>
 
-                <div class="risky-separator mt-1">
+                <div class="risky-separator mt-1" [ngStyle]="seperatorStyle(threatVectorViolation.dottedLine)">
                     <span class="risk-dot rounded-circle">&nbsp;</span>
                 </div>
 

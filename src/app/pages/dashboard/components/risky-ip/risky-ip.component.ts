@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit, AfterContentInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { RiskyUserService } from '../riskyUsers/riskyUser.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,7 +8,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { bubbleDataMonth } from '../riskyUsers/data';
 import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-score-modal.component';
-import { ip_10_82_69_151_data, ip_18_10_8_1_data, ip_10_82_34_107_data, ip_10_82_71_192_data } from './data';
+import { ip_10_82_69_151_data, ip_18_10_8_1_data, ip_10_82_34_107_data, ip_10_82_71_192_data, ip_10_82_32_212_data } from './data';
 
 @Component({
     selector: 'app-risky-ip',
@@ -40,125 +40,15 @@ export class RiskyIPComponent implements OnInit {
     provideDataForIP() {
         if (this.selectedIP === '10.82.71.192')
             this.hostViolations = ip_10_82_71_192_data;
+        if (this.selectedIP === '10.82.32.212')  // 2nd IP - 10.82.32.212 Special Design
+            this.hostViolations = ip_10_82_32_212_data;
         else if (this.selectedIP === '10.82.69.151')
             this.hostViolations = ip_10_82_69_151_data;
         else if (this.selectedIP === '18.10.8.1')
             this.hostViolations = ip_18_10_8_1_data;
         else if (this.selectedIP === '10.82.34.107')
             this.hostViolations = ip_10_82_34_107_data;
-
-        // 2nd IP - 10.82.32.212 Special Design
     }
-
-    // Special Design
-    ip_10_82_32_212_data_seperate = [
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '12:45:00',
-            accord: false,
-            pv: 'PV 039',
-            riskScore: 4,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Outbound P2P File Sharing Traffic to Rare Host'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'C2' },
-                { title: 'Threat Category', value: 'Malicious Behavior' },
-                { title: 'Sub Category', value: 'P2P Traffic' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '10.82.32.227' },
-                { title: 'Locations', value: 'Indonesia' },
-                { title: 'Risk', value: '95' },
-                { title: 'Resources', value: 'Proxy' },
-                { title: 'Indicators', value: 'DstIP, URL, Category, BytesOut' }],
-            description: 'This Violation is triggered when there is suspicious Outbound traffic with P2P Category to Rare URL'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '06:43:00',
-            accord: false,
-            pv: 'INFO',
-            riskScore: 2,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'DHCP RENEWAL'
-            },
-            threatCategories: [
-                { title: 'Last Hostname', value: 'WK-UKL48503D' },
-                { title: 'Last IP', value: '10.82.32.212' }],
-            additionalInfo: [
-                { title: 'New Hostname', value: 'WK-UKL48503D' },
-                { title: 'New IP', value: '10.82.32.227' }],
-            description: 'This event correlates Dynamic IP with Hostnames / MAC'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '05:30:00',
-            accord: false,
-            pv: 'PV 067',
-            riskScore: 13,
-            ruleInfo: {
-                ruleId: 3,
-                title: 'Inbound Traffic on SMB Port from Suspicious Location'
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Reconnaissance' },
-                { title: 'Threat Category', value: 'Malicious Behavior' },
-                { title: 'Sub Category', value: 'Inbound SMB' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '10.82.32.212' },
-                { title: 'Locations', value: 'Indonesia' },
-                { title: 'Risk', value: '74' },
-                { title: 'Resources', value: 'Netflow' },
-                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
-            description: 'This Violation is triggered when there is Inbound SMB traffic from Rare Location'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '03:22:00',
-            accord: false,
-            pv: 'TI 083',
-            riskScore: 6,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Inbound Telnet Traffic From Blacklisted IP's"
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Reconnaissance' },
-                { title: 'Threat Category', value: 'Malicious Behavior' },
-                { title: 'Sub Category', value: 'Inbound Telnet' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '10.82.32.212' },
-                { title: 'Locations', value: 'Indonesia' },
-                { title: 'Risk', value: '63' },
-                { title: 'Resources', value: 'Netflow' },
-                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort, Threat Intelligence' }],
-            description: 'This Violation is triggered when there is Inbound Telnet traffic from Blacklisted IP'
-        },
-        {
-            generatedDateFormat: 'June 27 2019',
-            generatedTimestamp: '01:17:00',
-            accord: false,
-            pv: 'PV 022',
-            riskScore: 34,
-            ruleInfo: {
-                ruleId: 1,
-                title: "Port Scanning from External IP"
-            },
-            threatCategories: [
-                { title: 'Kill Chain', value: 'Reconnaissance' },
-                { title: 'Threat Category', value: 'Port Scanning' },
-                { title: 'Sub Category', value: 'Inbound Attack' }],
-            additionalInfo: [
-                { title: 'Affected Entity', value: '10.82.32.212' },
-                { title: 'Locations', value: 'Indonesia' },
-                { title: 'Risk', value: '54' },
-                { title: 'Resources', value: 'Netflow' },
-                { title: 'Indicators', value: 'SrcIP, DstIP, DstPort' }],
-            description: 'This Violation is triggered when Port Scanning operation is detected from External IP'
-        }
-    ];
 
     infoStyleObject(input): Object {
         if (input == 'INFO')

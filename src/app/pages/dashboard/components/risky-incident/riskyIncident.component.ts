@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { tvde23Data, tvde38Data, tvde43Data, tvde21Data, tvrc4Data, tvac92Data, tvde23FirstData, tvde23SecondData } from './data';
+import { tvde23Data, tvde38Data, tvde43Data, tvde21Data, tvrc4Data, tvac92Data } from './data';
 
 @Component({
     selector: 'risky-incident',
@@ -122,10 +122,8 @@ export class RiskyIncidentComponent {
     threatVectorViolations: any;
     dottedThreatVectorViolations: any;
     setThreatVectorViolation() {
-        if (this.incidentName == 'TVDE23') {
+        if (this.incidentName == 'TVDE23')
             this.threatVectorViolations = tvde23Data;
-            // this.dottedThreatVectorViolations = tvde23FirstData;
-        }
         else if (this.incidentName == 'TVDE38')
             this.threatVectorViolations = tvde38Data;
         else if (this.incidentName == 'TVDE43')

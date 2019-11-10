@@ -26,6 +26,7 @@ export class RiskyHostComponent implements OnInit {
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private _snackBar: MatSnackBar,
         private routeParam: ActivatedRoute, private modalService: NgbModal, private caseManagementService: CaseManagementService,
         private zone: NgZone, private router: Router) {
+            window.scrollTo(0, 0);
     }
 
 

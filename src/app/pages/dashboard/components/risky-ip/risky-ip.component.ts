@@ -27,6 +27,7 @@ export class RiskyIPComponent implements OnInit {
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private caseManagementService: CaseManagementService
         , private _snackBar: MatSnackBar) {
+        window.scrollTo(0, 0);
     }
 
     ngOnInit() {

@@ -54,6 +54,7 @@ export class RiskyUsersComponent {
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
+        window.scrollTo(0, 0);
     }
 
     ngOnInit() {

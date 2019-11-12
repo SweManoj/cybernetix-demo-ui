@@ -135,6 +135,7 @@ export class CaseManagementComponent implements OnInit {
 
             response.forEach(element => {
                 element.priority = element.priority ? element.priority : '-';
+                element.ownerName = element.ownerName ? element.ownerName : '-';
             });
             this.incidents = response;
         });

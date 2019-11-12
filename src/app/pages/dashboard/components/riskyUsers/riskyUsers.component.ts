@@ -391,6 +391,8 @@ export class RiskyUsersComponent {
 
         this.caseManagementService.timelineCreateIncident(timeline.lastViolationId, encodeURIComponent(timeline.violationEventTime), loggedInUser)
             .subscribe((res: any) => {
+                ++this.activities[4].value;  // update Incident value count
+
                 this._snackBar.open('Created Incident successfully', null, {
                     duration: 2000,
                 });

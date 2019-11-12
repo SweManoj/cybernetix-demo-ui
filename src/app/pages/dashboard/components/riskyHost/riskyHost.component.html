@@ -9,7 +9,7 @@
                             src='./../../../../../assets/images/dashboard_icons/hostname@2x.png' style="width: 4rem;" />
                         <div class="user-info m-t-sm">
                             <span style="color:#D3D3D3;font-size:20px;font-weight: 600"
-                                class="wordWrap">{{hostDetails.entityId}}</span>
+                                class="wordWrap">{{hostDetails?.entityId}}</span>
                         </div>
                     </div>
                     <div class="col-md-8 mt-1 d-flex initialPadding">
@@ -19,7 +19,8 @@
                                 <p></p>
                             </div>
                             <div class="user-info m-t-sm">
-                                <span style="color:#D3D3D3;size:30px;">{{hostDetails.lastSeenTime}}</span>
+                                <span
+                                    style="color:#D3D3D3;size:30px;">{{hostDetails?.lastSeenTime | date : 'dd/MM/yyyy HH:mm:ss'}}</span>
                                 <p></p>
                             </div>
                         </div>
@@ -29,7 +30,8 @@
                                 <p></p>
                             </div>
                             <div class="user-info m-t-sm">
-                                <span style="color:#D3D3D3;size:30px;">{{hostDetails.firstSeenTime}}</span>
+                                <span
+                                    style="color:#D3D3D3;size:30px;">{{hostDetails?.firstSeenTime | date : 'dd/MM/yyyy HH:mm:ss'}}</span>
                                 <p></p>
                             </div>
                         </div>
@@ -39,7 +41,7 @@
                                 <p></p>
                             </div>
                             <div class="user-info m-t-sm">
-                                <span style="color:#D3D3D3;size:30px;">{{hostDetails.location}}</span>
+                                <span style="color:#D3D3D3;size:30px;">{{hostDetails?.location}}</span>
                                 <p></p>
                             </div>
                         </div>
@@ -49,14 +51,14 @@
                                 <p></p>
                             </div>
                             <div class="user-info m-t-sm">
-                                <span style="color:#D3D3D3;size:30px;">{{hostDetails.peers}}</span>
+                                <span style="color:#D3D3D3;size:30px;">{{hostDetails?.peers}}</span>
                                 <p></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2" style="text-align: center;background: #041421;">
-                        <p [ngStyle]="{'color':getRiskScoreColor(hostDetails.riskScore)}" class="rscore">
-                            {{hostDetails.riskScore}}
+                        <p [ngStyle]="{'color':getRiskScoreColor(hostDetails?.riskScore)}" class="rscore">
+                            {{hostDetails?.riskScore}}
                         </p>
                         <div class="user-info m-t-sm">
                             <span class="riskscore text-center">Risk Score</span>

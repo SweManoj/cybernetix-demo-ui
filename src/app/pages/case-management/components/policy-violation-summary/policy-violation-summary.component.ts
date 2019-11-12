@@ -357,6 +357,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         comment.deleted = true;
         this.policyViolationSummaryService.deleteComment(comment.cmtId).subscribe((res: any) => {
             this.savePolicyViolationActivity('deleted a comment', 'COMMENT_DELETED');
+            this.getTaggedUsers();
         });
     }
 

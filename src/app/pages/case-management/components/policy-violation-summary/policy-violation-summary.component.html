@@ -73,7 +73,8 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Affected Entity</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            <a [routerLink]="" (click)="redirectToEntityDetailPage(policyDetails.entity, policyDetails.violatorId)">{{policyDetails.violatorId | uppercase}}</a>
+                            <a [routerLink]=""
+                                (click)="redirectToEntityDetailPage(policyDetails.entity, policyDetails.violatorId)">{{policyDetails.violatorId | uppercase}}</a>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -218,8 +219,8 @@
                                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                             [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
                                     </mat-chip-list>
-                                    <mat-autocomplete #autoForTaggedUser="matAutocomplete" *ngIf="isUpdate"
-                                        (optionSelected)="selected()">
+                                    <mat-autocomplete #autoForTaggedUser="matAutocomplete"
+                                        (optionSelected)="selected($event)">
                                         <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
                                             {{user.userName}}
                                         </mat-option>
@@ -246,7 +247,8 @@
                                 <div class="comment-content">
                                     <div class="row mb-1">
                                         <div class="col-md-12 comment user-info">
-                                            <span class="commentUser">{{comment.caseCommentor.userName}}</span> &emsp;&emsp;
+                                            <span class="commentUser">{{comment.caseCommentor.userName}}</span>
+                                            &emsp;&emsp;
                                             {{comment.commentTime | timeAgo}}
                                         </div>
                                     </div>
@@ -290,7 +292,8 @@
                                     <div class="comment-content">
                                         <div class="row mb-1">
                                             <div class="col-md-12 comment user-info">
-                                                <span class="commentUser">{{childComment.caseCommentor.userName}}</span> &emsp;&emsp;
+                                                <span class="commentUser">{{childComment.caseCommentor.userName}}</span>
+                                                &emsp;&emsp;
                                                 {{childComment.commentTime | timeAgo}}
                                             </div>
                                         </div>

@@ -1,8 +1,8 @@
-import {Component, Input, NgZone, OnInit} from '@angular/core';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
 import * as am4core from '@amcharts/amcharts4/core';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as Highcharts from 'highcharts';
-import {DashboardService} from '../../dashboard.service';
+import { DashboardService } from '../../dashboard.service';
 import * as am4maps from '@amcharts/amcharts4/maps';
 import am4geodata_worldLow from '@amcharts/amcharts4-geodata/worldLow';
 
@@ -39,7 +39,7 @@ export class GlobeChartComponent implements OnInit {
         },
         title: {
             align: 'left',
-            style: {color: '#a0a0a0', fontWeight: 'bold', fontFamily: 'roboto'},
+            style: { color: '#a0a0a0', fontWeight: 'bold', fontFamily: 'roboto' },
             text: 'RISK BY DEPARTMENT',
             x: 8,
             y: 24
@@ -76,11 +76,11 @@ export class GlobeChartComponent implements OnInit {
                     name: 'IT Security', y: 61, sliced: true,
                     selected: true
                 },
-                {name: 'Infrastructure', y: 12},
-                {name: 'IT Support', y: 11},
-                {name: 'Quality Testing', y: 5},
-                {name: 'Development', y: 5},
-                {name: 'HR', y: 7}
+                { name: 'Infrastructure', y: 12 },
+                { name: 'IT Support', y: 11 },
+                { name: 'Quality Testing', y: 5 },
+                { name: 'Development', y: 5 },
+                { name: 'HR', y: 7 }
             ]
         }]
     }; // required
@@ -96,7 +96,7 @@ export class GlobeChartComponent implements OnInit {
         },
         title: {
             align: 'left',
-            style: {color: '#a0a0a0', fontWeight: 'bold', fontFamily: 'roboto'},
+            style: { color: '#a0a0a0', fontWeight: 'bold', fontFamily: 'roboto' },
             text: 'RISK BY TITLE',
             x: 8,
             y: 24
@@ -108,7 +108,7 @@ export class GlobeChartComponent implements OnInit {
             labels: {
                 step: 1,
                 width: '20px',
-                style: {color: '#fff'}
+                style: { color: '#fff' }
             }
         },
         yAxis: {
@@ -117,11 +117,11 @@ export class GlobeChartComponent implements OnInit {
             minorGridLineWidth: 0,
             gridLineColor: 'transparent',
             title: {
-                style: {color: '#fff'},
+                style: { color: '#fff' },
                 text: 'User Count'
             },
             labels: {
-                style: {color: '#fff'},
+                style: { color: '#fff' },
             }
         },
         tooltip: {
@@ -149,16 +149,17 @@ export class GlobeChartComponent implements OnInit {
         series: [{
             showInLegend: false,
             name: 'User Count',
-            data: [{y: 65, color: '#2b908f'},
-                {y: 80, color: '#90ee7e'},
-                {y: 75, color: '#7798BF'},
-                {y: 35, color: '#55BF3B'},
-                {y: 65, color: '#DF5353'}]
+            data: [{ y: 65, color: '#2b908f' },
+            { y: 80, color: '#90ee7e' },
+            { y: 75, color: '#7798BF' },
+            { y: 35, color: '#55BF3B' },
+            { y: 65, color: '#DF5353' }]
 
         }]
     };
 
     constructor(private zone: NgZone, private dashboardService: DashboardService) {
+        window.scrollTo(0, 0);
     }
 
     ngOnInit(): void {
@@ -177,32 +178,32 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByTitle() {
         this.dashboardService.getRiskCountByTitle().subscribe((res: any) => {
-           if(res && res.length > 0){
+            if (res && res.length > 0) {
                 let i = 0;
                 res.forEach(riskScoreByTitleObj => {
                     this.riskScoreByTitles.push(riskScoreByTitleObj.title);
-                    this.riskScoreByTitleCount.push({y: riskScoreByTitleObj.riskScoreCount, color: this.color[i]});
+                    this.riskScoreByTitleCount.push({ y: riskScoreByTitleObj.riskScoreCount, color: this.color[i] });
                     i++;
                 });
                 this.riskByTitleOptions.xAxis.categories = this.riskScoreByTitles;
                 this.riskByTitleOptions.series[0].data = this.riskScoreByTitleCount;
                 Highcharts.chart('riskByTitleContainer', this.riskByTitleOptions);
-            }else{
-                  this.noRiskByTitle = true;
+            } else {
+                this.noRiskByTitle = true;
             }
-       
+
         });
     }
 
     initializeRiskByDept() {
         this.dashboardService.getRiskCountByDepartment().subscribe((res: any) => {
-            if(res && res.length > 0){
+            if (res && res.length > 0) {
                 res.forEach(riskScoreByDept => {
-                    this.riskScoreByDepartments.push({'name': riskScoreByDept.departName, 'y': riskScoreByDept.riskScoreCount});
+                    this.riskScoreByDepartments.push({ 'name': riskScoreByDept.departName, 'y': riskScoreByDept.riskScoreCount });
                 });
                 this.options.series[0].data = this.riskScoreByDepartments;
                 Highcharts.chart('container', this.options);
-            }else{
+            } else {
                 this.noRiskByDept = true;
             }
         });
@@ -210,17 +211,17 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByLocation() {
         this.dashboardService.getRiskCountByLocation().subscribe((res: any) => {
-            if(res && res.length > 0){
+            if (res && res.length > 0) {
                 res.forEach(countryData => {
                     this.riskCountByLocation[countryData.countryCode.toUpperCase()] = countryData.riskScoreCount;
                 });
                 this.zone.runOutsideAngular(() => {
                     this.initializeGlobeChart();
                 });
-            }else{
+            } else {
                 this.noRiskByLocation = true;
             }
-            
+
         });
     }
 

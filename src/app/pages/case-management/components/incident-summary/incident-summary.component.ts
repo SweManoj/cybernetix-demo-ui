@@ -119,6 +119,7 @@ export class IncidentSummaryComponent implements OnInit {
     constructor(private formBuilder: FormBuilder, private routeParam: ActivatedRoute,
         private router: Router, private _snackBar: MatSnackBar, private incidentSummaryService: IncidentSummaryService,
         private loginService: LoginService, private utilDataService: UtilDataService) {
+        window.scrollTo(0, 0);
         this.initForm();
     }
 

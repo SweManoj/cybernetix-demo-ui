@@ -90,6 +90,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     constructor(private formBuilder: FormBuilder, private policyViolationSummaryService: PolicyViolationSummaryService,
         private routeParam: ActivatedRoute, private router: Router,
         private _snackBar: MatSnackBar, private loginService: LoginService, private utilDataService: UtilDataService) {
+        window.scrollTo(0, 0);
         this.initForm();
     }
 

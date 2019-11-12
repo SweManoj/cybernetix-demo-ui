@@ -13,11 +13,12 @@ export class CaseModalComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
-    debugger
-    console.log(this.data);
+    window.scrollTo(0, 0);
   }
-  onAssignClick(){
 
+  onAssignClick() {
   }
-  onBlockClick(){}
+
+  onBlockClick() { }
+  
 }

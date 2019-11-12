@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
-import {UtilDataService} from '../../../../../core/services/util.data.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { UtilDataService } from '../../../../../core/services/util.data.service';
 
 @Component({
     selector: 'app-filter-risk-entity',
@@ -15,7 +15,7 @@ export class FilterRiskEntityComponent implements OnInit {
     filteredRiskyIPAddress: any[] = [];
 
     constructor(private route: ActivatedRoute, private utilDataService: UtilDataService) {
-
+        window.scrollTo(0, 0);
         this.route.params.subscribe((params: Params) => {
             this.foundEntityName = params['riskyUser'];
 

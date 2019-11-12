@@ -89,6 +89,7 @@ export class PolicyViolationDetailViewComponent implements OnInit {
   remainingCardObjects: any;
 
   constructor() {
+    window.scrollTo(0, 0);
     this.firstCardShowObject = this.cardObjects[0];
     this.remainingCardObjects = this.cardObjects.slice(1, this.cardObjects.length);
   }

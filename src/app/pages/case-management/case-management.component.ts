@@ -25,19 +25,29 @@ export class CaseManagementComponent implements OnInit {
     private offset: number = 0;
     fetchingPolicyViolationsInProgress = true;
 
-    shows = [{ name: 'Last 1 Day', value: '1day' }, { name: 'Last 2 Day', value: '2day' }, {
-        name: 'Last 7 Day',
-        value: '7day'
-    }, { name: 'Last 1 month', value: 'month' }];
-    assignee = [{ name: 'Admin', value: 'admin' }, { name: 'User', value: 'user' }, { name: 'Not Assign', value: 'NA' }];
-    status = [{ name: 'Task Requested', value: 'Task Requested' }, { name: 'Completed', value: 'Completed' }, {
-        name: 'Pending',
-        value: 'Pending'
-    }];
-    priority = [{ name: 'Critical', value: 'Critical' }, { name: 'Medium', value: 'Medium' }, { name: 'High', value: 'High' }, {
-        name: 'Low',
-        value: 'Low'
-    }];
+    shows = [
+        { name: 'Last 1 Day', value: '1day' },
+        { name: 'Last 2 Day', value: '2day' },
+        { name: 'Last 7 Day', value: '7day' },
+        { name: 'Last 1 month', value: 'month' }
+    ];
+    assignee = [
+        { name: 'Admin', value: 'admin' },
+        { name: 'User', value: 'user' },
+        { name: 'Not Assign', value: 'NA' }
+    ];
+    status = [
+        { name: 'New', value: 'NEW' },
+        { name: 'Closed', value: 'CLOSED' },
+        { name: 'Perform Remediation', value: 'Perform Remediation' },
+        { name: 'In Progress', value: 'In Progress' }
+    ];
+    priority = [
+        { name: 'Medium', value: 'MEDIUM' },
+        { name: 'High', value: 'HIGH' },
+        { name: 'Low', value: 'LOW' },
+        { name: 'None', value: '-' }
+    ];
 
     @ViewChild('policy') policy: Table;
     @ViewChild('day') day: Table;
@@ -55,6 +65,7 @@ export class CaseManagementComponent implements OnInit {
 
     constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal,
         private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
+        window.scrollTo(0, 0);
         this.offset = 0;
         this.recordsReturned = 0;
         this.myDays.push(this.todayDate);
@@ -121,6 +132,10 @@ export class CaseManagementComponent implements OnInit {
             ':' + (quaterDate.getUTCSeconds());
 
         this.caseManagmentService.getAllIncidents(0, 1000, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
+
+            response.forEach(element => {
+                element.priority = element.priority ? element.priority : '-';
+            });
             this.incidents = response;
         });
     }
@@ -142,7 +157,6 @@ export class CaseManagementComponent implements OnInit {
             });
             this.getStageValues();
         });
-
     }
 
     setDateRange() {

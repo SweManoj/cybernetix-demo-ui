@@ -410,6 +410,7 @@ export class IncidentSummaryComponent implements OnInit {
         comment.deleted = true;
         this.incidentSummaryService.deleteComment(comment.incCmtId).subscribe((res: any) => {
             this.saveIncidentActivity('deleted a comment', 'COMMENT_DELETED');
+            this.getTaggedUsersForIncident();
         });
     }
 

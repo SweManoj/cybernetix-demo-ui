@@ -245,8 +245,8 @@
                                 </div>
                                 <div class="comment-content">
                                     <div class="row mb-1">
-                                        <div class="col-md-12 comment user-info"><a
-                                                href="#">{{comment.caseCommentor.userName}}</a> &emsp;&emsp;
+                                        <div class="col-md-12 comment user-info">
+                                            <span class="commentUser">{{comment.caseCommentor.userName}}</span> &emsp;&emsp;
                                             {{comment.commentTime | timeAgo}}
                                         </div>
                                     </div>
@@ -289,8 +289,8 @@
                                     </div>
                                     <div class="comment-content">
                                         <div class="row mb-1">
-                                            <div class="col-md-12 comment user-info"><a
-                                                    href="#">{{childComment.caseCommentor.userName}}</a> &emsp;&emsp;
+                                            <div class="col-md-12 comment user-info">
+                                                <span class="commentUser">{{childComment.caseCommentor.userName}}</span> &emsp;&emsp;
                                                 {{childComment.commentTime | timeAgo}}
                                             </div>
                                         </div>

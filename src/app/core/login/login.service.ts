@@ -83,5 +83,5 @@ export class LoginService {
     const url = `${environment.serverUrl}/v1/incident/notification/markasread/${incId}`;
     return this.http.get(url);
   }
-  
+
 }

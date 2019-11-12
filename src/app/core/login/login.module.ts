@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { LoginComponent } from './login';
 import { LoginService } from './login.service';
-import { MaterialModule } from './../../material'; 
+import { MaterialModule } from './../../material';
 
 @NgModule({
     declarations: [
@@ -22,4 +22,4 @@ import { MaterialModule } from './../../material';
         LoginService
     ]
 })
-export class LoginModule {}
+export class LoginModule { }

@@ -57,13 +57,17 @@ export class LoginComponent {
                 this.router.navigateByUrl(redirectURL);
                 this.sessionStorage.remove('redirectURL');
             }, error => {
-                this.token.setValue('');
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;
                 if (this.showSecurityTokenInput) {
                     this.loginService.getSecreteKey(this.username.value).subscribe(res => {
                         this.secreteKey = res['SecreteKey'];
                         this.secreteKeyQRUrl = res['SecreteKeyQRURL'];
                     });
+
+                    if (this.token.value)
+                        this.openSecreteKeyPupup();
+                    this.token.setValue('');
+
                     return;
                 }
                 this.isError = true;

@@ -24,7 +24,7 @@ export class DashboardCountComponent implements OnInit {
     { title: 'High Risky IPs', image: 'entities@1x', value: 0, valueControl: 'highRiskyIPCount' },
     { title: 'High Risky Users', image: 'risky@2x', value: 0, valueControl: 'highRiskyUserCount' },
     { title: 'High Risky Host', image: 'hostname@2x', value: 0, valueControl: 'highRiskyHostnameCount' },
-    { title: 'Policy Violations', image: 'violations@2x', value: 0, valueControl: 'policyViolation' },
+    { title: 'Insights', image: 'violations@2x', value: 0, valueControl: 'policyViolation' },
     { title: 'Incidents', image: 'incident@2x', value: 0, valueControl: 'incidents' },
     { title: 'Actions', image: 'actions@1x', value: 0, valueControl: 'actions' },
   ]

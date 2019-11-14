@@ -6,6 +6,8 @@ import { CaseManagementService } from './case-management.service';
 import { Table } from 'primeng/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { json } from 'd3';
+import { getUniqueObjectsInArray } from '../../shared/utils/util-functions';
 
 @Component({
     selector: 'app-case-management',
@@ -31,16 +33,12 @@ export class CaseManagementComponent implements OnInit {
         { name: 'Last 7 Day', value: '7day' },
         { name: 'Last 1 month', value: 'month' }
     ];
-    assignee = [
-        { name: 'Admin', value: 'admin' },
-        { name: 'User', value: 'user' },
-        { name: 'Not Assign', value: 'NA' }
-    ];
+    assignee: Array<any> = [];
     status = [
         { name: 'New', value: 'NEW' },
         { name: 'Closed', value: 'CLOSED' },
-        { name: 'Perform Remediation', value: 'Perform Remediation' },
-        { name: 'In Progress', value: 'In Progress' }
+        { name: 'Perform Remediation', value: 'PERFORM_REMIDIATION' },
+        { name: 'In Progress', value: 'IN_PROGRESS' }
     ];
     priority = [
         { name: 'Medium', value: 'MEDIUM' },
@@ -131,13 +129,17 @@ export class CaseManagementComponent implements OnInit {
             ':' + (quaterDate.getUTCMinutes()) +
             ':' + (quaterDate.getUTCSeconds());
 
-        this.caseManagmentService.getAllIncidents(0, 1000, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
 
+        this.caseManagmentService.getAllIncidents(0, 1000, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
+            let caseOwners: Array<{ name: '', value: '' }> = [];
             response.forEach(element => {
                 element.priority = element.priority ? element.priority : '-';
-                element.ownerName = element.ownerName ? element.ownerName : '-';
+                element.ownerName = element.ownerName ? element.ownerName : 'Not Assigned';
+                caseOwners.push({ name: element.ownerName, value: element.ownerName });
             });
+
             this.incidents = response;
+            this.assignee = getUniqueObjectsInArray(caseOwners, 'name');
         });
     }
 

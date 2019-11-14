@@ -1,7 +1,6 @@
 <div class="container-fluid">
     <div class="row mt-2 title-main ml-0">
-
-        <div *ngIf="path == 'policyViolation'"><span class="h5">Policy Violation</span></div>
+        <div *ngIf="path == 'policyViolation'"><span class="h5">Insights</span></div>
         <div *ngIf="path == 'caseManagement'"><span class="h5">Incident Management</span></div>
     </div>
 </div>
@@ -205,6 +204,7 @@
 
                         <div class="width-200 mr-4 mb-4">
                             <p-dropdown [options]="priority" placeholder="Priority" optionLabel="name"
+                                [showClear]="true"
                                 (onChange)="incident.filter($event.value.value, 'priority','contains')"></p-dropdown>
                         </div>
 
@@ -215,7 +215,7 @@
 
                         <div class="width-200 mr-4 mb-4">
                             <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
-                                (onChange)="incident.filter($event.value.value, 'assignee','contains')"></p-dropdown>
+                                (onChange)="incident.filter($event.value.value, 'ownerName','contains')"></p-dropdown>
                         </div>
 
                         <div class="width-200 mr-4 mb-4 mx-auto mt-2">
@@ -227,7 +227,7 @@
 
                 <div class="row ml-auto mr-auto policy-incident-table">
                     <p-table #incident
-                        [globalFilterFields]="['id', 'created', 'name', 'priority', 'status', 'assignee', 'entity']"
+                        [globalFilterFields]="['incId', 'incidentCreatedTime', 'incidentName', 'entity', 'priority', 'status', 'ownerName']"
                         [resizableColumns]="true" [value]="incidents" sortMode="multiple" [(selection)]="selectedItems"
                         [paginator]="true" [rows]="12">
                         <ng-template pTemplate="header">
@@ -270,8 +270,8 @@
                                 <td>{{incident.incidentCreatedTime | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
                                 <td style="color:#099bb5;">{{incident.incidentName}}</td>
                                 <td>{{incident.entity}}</td>
-                                <td style="padding-left: 40px">
-                                    <div class="{{incident.entity}} tableStages"></div>
+                                <td>
+                                    <!-- <div class="{{incident.entity}} tableStages"></div> -->
                                     <span class="priority1">{{incident.priority}}</span>
                                 </td>
                                 <td>{{incident.status}}</td>
@@ -284,121 +284,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- <ngb-tabset type="pills">
-  <ngb-tab title="All Case">
-    <ng-template ngbTabContent>
-        <div class="case-management-container">
-            <div class="risky-users-list">
-                <div class="row header-row">
-                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">Case No.</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-sm">User Name</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-sm">Rule Id</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-sm">Rule Description</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-sm">Violation Occurrence</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-sm">Action</div>
-                </div>
-                <div class="row data-row" *ngFor="let user of allUsers; let i = index">
-                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{user.caseid}}</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-sm">
-                        <a *ngIf="user.userid" href="javascript:void(0);">{{user.userid}}</a>
-                        <a *ngIf="!user.userid" href="javascript:void(0);">{{user.sourceAddress}}</a>
-                    </div>
-                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{user.ruleid}}</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{user.ruledesc}}</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{user.violationoccurence}}</div>
-                    <div class="col-2 col-sm-2 col-md-2 p-sm text-center">
-                          <div ngbDropdown class="d-inline-block">
-                            <button class="btn" id="action" ngbDropdownToggle>Action</button>
-                            <div ngbDropdownMenu aria-labelledby="action">
-                                <button class="dropdown-item" (click)="onActionClick('Assign', user)">Assign</button>
-                                <button class="dropdown-item" (click)="onActionClick('Block', user)">Block</button>
-                                <button class="dropdown-item" (click)="onActionClick('Close as Risk Accepted', user)">Close as Risk Accepted</button>
-                                <button class="dropdown-item" (click)="onActionClick('Close the Case', user)">Close the Case</button>
-                          </div>
-                          </div>
-                        </div>
-                </div>
-            </div>
-            <div class="load-more-link" *ngIf="recordsReturned < totalRecords">
-                <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
-            </div>
-          </div>
-      </ng-template>
-    </ngb-tab>
-
-    <ngb-tab title="Process Case">
-        <ng-template ngbTabContent>
-            <div class="case-management-container">
-                <div class="risky-users-list">
-                    <div class="row header-row">
-                        <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{'global.sno' | translate}}</div>
-                        <div class="col-6 col-sm-6 col-md-6 p-sm">{{'global.userInfo' | translate}}</div>
-                        <div class="col-2 col-sm-2 col-md-2 p-sm">{{'global.bytes' | translate}}</div>
-                        <div class="col-2 col-sm-2 col-md-2 p-sm">Action</div>
-                    </div>
-                    <div class="row data-row" *ngFor="let user of allUsers; let i = index">
-                        <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{ i + 1}}</div>
-                        <div class="col-6 col-sm-6 col-md-6 p-sm">
-                            <a *ngIf="user.userid" href="javascript:void(0);"></a>
-                            <a *ngIf="!user.userid" href="javascript:void(0);"></a>
-                        </div>
-                        <div class="col-2 col-sm-2 col-md-2 p-sm"></div>
-                        <div class="col-2 col-sm-2 col-md-2 p-sm text-center">
-                              <div ngbDropdown class="d-inline-block">
-                                <button class="btn" id="action" ngbDropdownToggle>Action</button>
-                                <div ngbDropdownMenu aria-labelledby="action">
-                                  <button class="dropdown-item" (click)="onActionClick('Assign', user)">Assign</button>
-                                  <button class="dropdown-item" (click)="onActionClick('Block', user)">Block</button>
-                                  <button class="dropdown-item" (click)="onActionClick('Close as Risk Accepted', user)">Close as Risk Accepted</button>
-                                  <button class="dropdown-item" (click)="onActionClick('Close the Case', user)">Close the Case</button>
-                                </div>
-                              </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="load-more-link" *ngIf="recordsReturned < totalRecords">
-                    <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
-                </div>
-              </div>
-          </ng-template>
-        </ngb-tab>
-
-        <ngb-tab title="Completed Case">
-            <ng-template ngbTabContent>
-                <div class="case-management-container">
-                    <div class="risky-users-list">
-                        <div class="row header-row">
-                            <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{'global.sno' | translate}}</div>
-                            <div class="col-6 col-sm-6 col-md-6 p-sm">{{'global.userInfo' | translate}}</div>
-                            <div class="col-2 col-sm-2 col-md-2 p-sm">{{'global.bytes' | translate}}</div>
-                            <div class="col-2 col-sm-2 col-md-2 p-sm">Action</div>
-                        </div>
-                        <div class="row data-row" *ngFor="let user of allUsers; let i = index">
-                            <div class="col-2 col-sm-2 col-md-2 p-l-md p-t-sm">{{ i + 1}}</div>
-                            <div class="col-6 col-sm-6 col-md-6 p-sm">
-                                <a *ngIf="user.userid" href="javascript:void(0);">{{user.userid}}</a>
-                                <a *ngIf="!user.userid" href="javascript:void(0);">{{user.sourceAddress}}</a>
-                            </div>
-                            <div class="col-2 col-sm-2 col-md-2 p-sm">{{user.riskscore}}</div>
-                            <div class="col-2 col-sm-2 col-md-2 p-sm text-center">
-                                  <div ngbDropdown class="d-inline-block">
-                                    <button class="btn" id="action" ngbDropdownToggle>Action</button>
-                                    <div ngbDropdownMenu aria-labelledby="action">
-                                        <button class="dropdown-item" (click)="onActionClick('Assign', user)">Assign</button>
-                                        <button class="dropdown-item" (click)="onActionClick('Block', user)">Block</button>
-                                        <button class="dropdown-item" (click)="onActionClick('Close as Risk Accepted', user)">Close as Risk Accepted</button>
-                                        <button class="dropdown-item" (click)="onActionClick('Close the Case', user)">Close the Case</button>
-                                          </div>
-                                  </div>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="load-more-link" *ngIf="recordsReturned < totalRecords">
-                        <a href="javascript:void(0);" (click)="loadMoreUsers()">Load More</a>
-                    </div>
-                  </div>
-              </ng-template>
-            </ngb-tab>
-    </ngb-tabset> -->

@@ -42,8 +42,9 @@
                                 <div class="mt-2" style="min-height: 4.5rem;">
                                     <span class="captionTitle">Outcome</span>
                                     <br />
-                                    <span
-                                        [ngStyle]="outcomeStyle(incidentDetail.outcome)">{{incidentDetail.outcome}}</span>
+                                    <button mat-raised-button color="primary" [ngStyle]="outcomeStyle(incidentDetail.outcome)">{{incidentDetail.outcome}}</button>
+                                   <!--  <span
+                                        [ngStyle]="outcomeStyle(incidentDetail.outcome)">{{incidentDetail.outcome}}</span> -->
                                 </div>
                                 <div class="mt-2">
                                     <span class="captionTitle">Remediation</span>

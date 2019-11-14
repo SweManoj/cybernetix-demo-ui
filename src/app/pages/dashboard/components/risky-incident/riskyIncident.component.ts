@@ -32,7 +32,7 @@ export class RiskyIncidentComponent {
             lastUpdatedOn: '27 June 2019 12:45',
             lastUpdatedBy: 'Scott R',
             currentStauts: 'Open',
-            outcome: 'Investigation In Progress',
+            outcome: 'In Progress',
             remediation: 'N/A',
             incidentActivities: [
                 { image: 'falg@1x.png', value: '59', title: 'Events' },
@@ -48,7 +48,7 @@ export class RiskyIncidentComponent {
             lastUpdatedOn: '13 Oct 2019 10:13',
             lastUpdatedBy: 'Steve D',
             currentStauts: 'Open',
-            outcome: 'Investigation In Progress',
+            outcome: 'In Progress',
             remediation: 'N/A',
             incidentActivities: [
                 { image: 'falg@1x.png', value: '108', title: 'Events' },
@@ -80,7 +80,7 @@ export class RiskyIncidentComponent {
             lastUpdatedOn: '4 Oct 2019 03:50',
             lastUpdatedBy: 'Martin J',
             currentStauts: 'Open',
-            outcome: 'Investigation In Progress',
+            outcome: 'In Progress',
             remediation: 'N/A',
             incidentActivities: [
                 { image: 'falg@1x.png', value: '482', title: 'Events' },
@@ -96,7 +96,7 @@ export class RiskyIncidentComponent {
             lastUpdatedOn: '14 Oct 2019 03:50',
             lastUpdatedBy: 'Scott R',
             currentStauts: 'Open',
-            outcome: 'Investigation In Progress',
+            outcome: 'In Progress',
             remediation: 'N/A',
             incidentActivities: [
                 { image: 'falg@1x.png', value: '982', title: 'Events' },
@@ -158,7 +158,7 @@ export class RiskyIncidentComponent {
     outcomeStyle(outcome: string) {
         if (outcome.includes('True Positive'))
             return { 'color': 'white', 'background-color': 'red' }
-        else if (outcome.includes('Investigation In Progress'))
+        else if (outcome.includes('In Progress'))
             return { 'color': 'white', 'background-color': 'orange' }
         else
             return { 'color': 'white' };

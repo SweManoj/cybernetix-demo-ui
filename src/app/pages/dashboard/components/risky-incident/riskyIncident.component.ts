@@ -157,9 +157,9 @@ export class RiskyIncidentComponent {
 
     outcomeStyle(outcome: string) {
         if (outcome.includes('True Positive'))
-            return { 'color': 'white', 'background-color': 'red' }
+            return { 'color': 'white', 'background-color': 'red', 'cursor': 'context-menu' }
         else if (outcome.includes('In Progress'))
-            return { 'color': 'white', 'background-color': 'orange' }
+            return { 'color': 'white', 'background-color': 'orange', 'cursor': 'context-menu' }
         else
             return { 'color': 'white' };
     }

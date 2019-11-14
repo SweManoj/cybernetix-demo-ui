@@ -885,3 +885,15 @@ input:checked + .slider:before {
 .case-owner-input {
   margin-top: -20px;
 }
+
+.ui-button.ui-button-text-only .ui-button-text {
+  padding: 0.429em 1em;
+  background-color: #116fbf;
+  color: #ffffff;
+  border-color: #116fbf !important;
+}
+
+.ui-button.ui-state-default.ui-button-secondary,
+body .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default {
+  border-color: #116fbf !important;
+}

@@ -193,7 +193,9 @@
                         <div class="width-200 mr-4 mb-4">
                             <div class="input-group">
                                 <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range"
-                                    selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                    showButtonBar="true" dateFormat="dd/mm/yy"
+                                    clearButtonStyleClass="ui-secondary-button" selectionMode="range"
+                                    [readonlyInput]="true"></p-calendar>
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fa fa-search"></i>

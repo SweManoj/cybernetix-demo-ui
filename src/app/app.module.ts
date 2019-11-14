@@ -26,6 +26,7 @@ import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
+import { PerformRemediationService } from './core/services/perform-remediation.service';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,7 @@ import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
         HighchartsChartModule,
         SharedPipesModule
     ],
-    exports:[
+    exports: [
         MaterialModule
     ],
     providers: [
@@ -61,7 +62,8 @@ import { SharedPipesModule } from './shared/pipes/shared-pipes.module';
         UserContext,
         SessionStorage,
         UtilService,
-        UtilDataService
+        UtilDataService,
+        PerformRemediationService
     ],
     bootstrap: [AppComponent],
     entryComponents: [ModalUtilComponent]

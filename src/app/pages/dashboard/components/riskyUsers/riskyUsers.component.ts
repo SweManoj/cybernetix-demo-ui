@@ -11,6 +11,7 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { RiskScoreModalComponent } from './risk-score-modal/risk-score-modal.component';
 import { TopDetailsService } from '../topDetails/topDetails.service';
+import { PerformRemediationService } from '../../../../core/services/perform-remediation.service';
 
 @Component({
     selector: 'risky-users',
@@ -179,7 +180,7 @@ export class RiskyUsersComponent {
     ];
 
     constructor(private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-        private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService) {
+        private zone: NgZone, private router: Router, private topDetailsService: TopDetailsService, private performRemediationService: PerformRemediationService) {
         window.scrollTo(0, 0);
         this.offset = 0;
         this.recordsReturned = 0;
@@ -784,6 +785,11 @@ export class RiskyUsersComponent {
 
     routeToIncident(incident) {
         this.router.navigate(['/incidentSummary', incident]);
+    }
+
+    routeToPerformRemediation(performRemediationTitle: string) {
+        this.performRemediationService.performRemediationTitle = performRemediationTitle;
+        this.router.navigate(['/performRemediation'])
     }
 
     switchView(view) {

@@ -8,6 +8,7 @@ import * as am4core from '@amcharts/amcharts4/core';
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { AWS_S3_Instance01_data, DESK_10982_data, DESK_1456_data, DESK_1576_data, WK_1929304D_data } from './data';
+import { PerformRemediationService } from '../../../../core/services/perform-remediation.service';
 
 @Component({
     selector: 'app-riskyHost',
@@ -50,7 +51,7 @@ export class RiskyHostComponent implements OnInit {
     }
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-        private zone: NgZone, private router: Router) {
+        private zone: NgZone, private router: Router, private performRemediationService: PerformRemediationService) {
     }
 
     ngOnInit() {
@@ -67,6 +68,11 @@ export class RiskyHostComponent implements OnInit {
             if (hostData.value === this.selectedHost)
                 this.hostDetails = hostData;
         });
+    }
+
+    routeToPerformRemediation(performRemediationTitle: string) {
+        this.performRemediationService.performRemediationTitle = performRemediationTitle;
+        this.router.navigate(['/performRemediation'])
     }
 
     initializeLineChart() {

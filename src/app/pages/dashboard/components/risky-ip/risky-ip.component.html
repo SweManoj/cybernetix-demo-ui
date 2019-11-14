@@ -120,7 +120,7 @@
                                         <button ngbDropdownItem class="greyBackground">
                                             Create an Incident
                                         </button>
-                                        <button ngbDropdownItem class="greyBackground">
+                                        <button ngbDropdownItem class="greyBackground" (click)="routeToPerformRemediation(item.ruleInfo.title)">
                                             Perform Remediaion
                                         </button>
                                         <button (click)="gotoSummery()" ngbDropdownItem class="greyBackground">

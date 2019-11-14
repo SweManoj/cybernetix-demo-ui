@@ -9,6 +9,7 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import { bubbleDataMonth } from '../riskyUsers/data';
 import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-score-modal.component';
 import { ip_10_82_69_151_data, ip_18_10_8_1_data, ip_10_82_34_107_data, ip_10_82_71_192_data, ip_10_82_32_212_data } from './data';
+import { PerformRemediationService } from '../../../../core/services/perform-remediation.service';
 
 @Component({
     selector: 'app-risky-ip',
@@ -58,7 +59,7 @@ export class RiskyIPComponent implements OnInit {
     }
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
-        private zone: NgZone, private router: Router) {
+        private zone: NgZone, private router: Router, private performRemediationService: PerformRemediationService) {
     }
 
     ngOnInit() {
@@ -76,6 +77,11 @@ export class RiskyIPComponent implements OnInit {
                 this.ipDetails = ipData;
             }
         });
+    }
+
+    routeToPerformRemediation(performRemediationTitle: string) {
+        this.performRemediationService.performRemediationTitle = performRemediationTitle;
+        this.router.navigate(['/performRemediation'])
     }
 
     ngAfterViewInit() {

@@ -169,7 +169,7 @@
                                             Create an Incident
                                         </button>
                                         <button ngbDropdownItem class="greyBackground"
-                                            [routerLink]="['/performRemediation']">
+                                            (click)="routeToPerformRemediation(item.ruleInfo.title)">
                                             Perform Remediation
                                         </button>
                                         <button [routerLink]="['/policyViolationSummary', item.pv]" ngbDropdownItem

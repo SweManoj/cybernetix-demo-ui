@@ -177,11 +177,12 @@
             <div *ngIf="path == 'caseManagement'" role="tabpanel">
                 <div class="col-md-12 mb-3">
                     <div class="row incident-filter-row">
-                        <div class="mr-4 mb-4">
-                            <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name"></p-dropdown>
+                        <div class="mr-4 mb-4 mt-2">
+                            <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name" [showClear]="true">
+                            </p-dropdown>
                         </div>
 
-                        <div class="width-200 mr-4 mb-4">
+                        <div class="mt-1 mr-4 mb-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search by Keyword"
                                     (keyup)="incident.filterGlobal($event.target.value, 'contains')">
@@ -204,20 +205,19 @@
                             </div>
                         </div>
 
-                        <div class="width-200 mr-4 mb-4">
+                        <div class="mt-1 mr-4 mb-4">
                             <p-dropdown [options]="priority" placeholder="Priority" optionLabel="name"
-                                [showClear]="true"
-                                (onChange)="incident.filter($event.value.value, 'priority','contains')"></p-dropdown>
+                                [showClear]="true" (onChange)="incidentFilter($event,'priority')"></p-dropdown>
                         </div>
 
-                        <div class="width-200 mr-4 mb-4">
-                            <p-dropdown [options]="status" placeholder="Status" optionLabel="name"
-                                (onChange)="incident.filter($event.value.value, 'status','contains')"></p-dropdown>
+                        <div class="mt-1 mr-4 mb-4">
+                            <p-dropdown [options]="status" placeholder="Status" optionLabel="name" [showClear]="true"
+                                (onChange)="incidentFilter($event,'status')"></p-dropdown>
                         </div>
 
-                        <div class="width-200 mr-4 mb-4">
+                        <div class="mt-1 mr-4 mb-4">
                             <p-dropdown [options]="assignee" placeholder="Case Owner" optionLabel="name"
-                                (onChange)="incident.filter($event.value.value, 'ownerName','contains')"></p-dropdown>
+                                [showClear]="true" (onChange)="incidentFilter($event,'ownerName')"></p-dropdown>
                         </div>
 
                         <div class="width-200 mr-4 mb-4 mx-auto mt-2">

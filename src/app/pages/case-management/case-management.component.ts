@@ -41,6 +41,7 @@ export class CaseManagementComponent implements OnInit {
         { name: 'In Progress', value: 'IN_PROGRESS' }
     ];
     priority = [
+        // { name: 'All', value: 'All' },
         { name: 'Medium', value: 'MEDIUM' },
         { name: 'High', value: 'HIGH' },
         { name: 'Low', value: 'LOW' },
@@ -160,6 +161,13 @@ export class CaseManagementComponent implements OnInit {
             });
             this.getStageValues();
         });
+    }
+
+    incidentFilter(priorityValue: any, filterType: string) {
+        if (priorityValue.value)
+            this.incident.filter(priorityValue.value.value, filterType, 'contains')
+        else
+            this.incident.filter('', filterType, 'contains')
     }
 
     setDateRange() {

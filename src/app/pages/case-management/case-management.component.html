@@ -177,12 +177,12 @@
             <div *ngIf="path == 'caseManagement'" role="tabpanel">
                 <div class="col-md-12 mb-3">
                     <div class="row incident-filter-row">
-                        <div class="mr-4 mb-4 mt-2">
+                        <div class="mr-4 mb-4 mt-1">
                             <p-dropdown [options]="shows" placeholder="Show All" optionLabel="name" [showClear]="true">
                             </p-dropdown>
                         </div>
 
-                        <div class="mt-1 mr-4 mb-4">
+                        <div class="mr-4 mb-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search by Keyword"
                                     (keyup)="incident.filterGlobal($event.target.value, 'contains')">

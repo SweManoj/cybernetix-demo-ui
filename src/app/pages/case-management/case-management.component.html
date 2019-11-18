@@ -36,7 +36,9 @@
                                 <div class="col-md-5 rightPaddingInitial text-center">
                                     <div class="input-group">
                                         <p-calendar [(ngModel)]="policyRangeDates" placeholder="Date Range"
-                                            selectionMode="range" [readonlyInput]="true"></p-calendar>
+                                            selectionMode="range" [readonlyInput]="true" showButtonBar="true"
+                                            dateFormat="dd/mm/yy" clearButtonStyleClass="ui-secondary-button">
+                                        </p-calendar>
                                         <div class="input-group-append" (click)="setDateRange()">
                                             <span class="input-group-text">
                                                 <i class="fa fa-search"></i>

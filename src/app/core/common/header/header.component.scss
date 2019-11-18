@@ -1,39 +1,38 @@
-  /* The popup chat - hidden by default */
-  .chat-popup {
-    position: absolute;
-    border: 3px solid #4a97b0;
-    left: -220px;
-    min-width: 300px;
-    padding: 10px;
-    background-color: #4a97b0;
-  }
-  
-
-.initialPadding {
-    padding: initial !important;
+/* The popup chat - hidden by default */
+.chat-popup {
+  position: absolute;
+  border: 3px solid #4a97b0;
+  left: -220px;
+  min-width: 300px;
+  padding: 10px;
+  background-color: #4a97b0;
 }
 
-.notify-badge{
-    position: absolute;
-    top:-20px;
-    background:red !important;
-    text-align: center;
-    border-radius: 30px 30px 30px 30px;
-    color:white;
-    padding:5px 10px;
+.initialPadding {
+  padding: initial !important;
+}
+
+.notify-badge {
+  position: absolute;
+  top: -20px;
+  background: red !important;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color: white;
+  padding: 5px 10px;
 }
 
 input.form-control {
-    background: unset;
-    border-radius: 24px;
-    padding: 0px 1.2rem;
-    border-right-color: #041421;
-    max-height: 2.5rem;
+  background: unset;
+  border-radius: 24px;
+  padding: 0px 1.2rem;
+  border-right-color: #041421;
+  max-height: 2.5rem;
 }
 
 input.form-control::-webkit-input-placeholder {
-    font-size: smaller;
-    // padding-left: .5rem;
+  font-size: smaller;
+  // padding-left: .5rem;
 }
 
 /* .dropdown-menu.show {
@@ -51,78 +50,78 @@ input.form-control::-webkit-input-placeholder {
 } */
 
 img.notify {
-    width: 1.9rem;
+  width: 1.9rem;
 }
 
 span.input-group-text {
-    background: unset;
-    border-radius: 5rem;
-    color: #0aadc8;
-    cursor: pointer;
-    border-left: none;
+  background: unset;
+  border-radius: 5rem;
+  color: #0aadc8;
+  cursor: pointer;
+  border-left: none;
 }
 
 input.form-control:focus {
-    box-shadow: none;
-    border-color: unset;
-    border-right-color: #041421;
+  box-shadow: none;
+  border-color: unset;
+  border-right-color: #041421;
 }
 
 .header-container {
-    background-color: $header-bg-color;
-    // border-bottom: 7px solid $header-border-bottom;
-    position: fixed;
-    width: 100%;
-    z-index: 10;
-    .menu {
-        color: $menu-color;
-        font-size: 30px;
-        vertical-align: middle;
+  background-color: $header-bg-color;
+  // border-bottom: 7px solid $header-border-bottom;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  .menu {
+    color: $menu-color;
+    font-size: 30px;
+    vertical-align: middle;
+  }
+  .user-profile {
+    float: right;
+    margin-right: 1.3rem;
+    border-left: 1px solid $top-detail-seperator-color;
+  }
+  .al-user-profile {
+    float: right;
+    transition: all 0.15s ease-in-out;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    border: 0;
+    opacity: 1;
+    position: relative;
+    cursor: pointer;
+    ul.profile-dropdown:after {
+      bottom: 100%;
+      right: 0;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: $header-profile-dropdown-arrow;
+      border-width: 10px;
+      margin-right: 25px;
     }
-    .user-profile {
-        float: right;
-        margin-right: 1.3rem;
-        border-left: 1px solid $top-detail-seperator-color;
+    a {
+      display: block;
     }
-    .al-user-profile {
-        float: right;
-        transition: all .15s ease-in-out;
-        padding: 0;
-        width: 45px;
-        height: 45px;
-        border: 0;
-        opacity: 1;
-        position: relative;
-        cursor: pointer;
-        ul.profile-dropdown:after {
-            bottom: 100%;
-            right: 0;
-            border: solid transparent;
-            content: " ";
-            height: 0;
-            width: 0;
-            position: absolute;
-            pointer-events: none;
-            border-color: rgba(255, 255, 255, 0);
-            border-bottom-color: $header-profile-dropdown-arrow;
-            border-width: 10px;
-            margin-right: 25px;
-        }
-        a {
-            display: block;
-        }
-        img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-        }
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
     }
-    .profile-toggle-link {
-        &:after {
-            display: none;
-        }
+  }
+  .profile-toggle-link {
+    &:after {
+      display: none;
     }
-   /*  .top-dropdown-menu {
+  }
+  /*  .top-dropdown-menu {
         right: -25px;
         left: auto;
         top: 55px;
@@ -142,63 +141,67 @@ input.form-control:focus {
             }
         }
     } */
-    .al-logo {
-        display: inline-block;
-        margin-left: 30px;
-    }
+  .al-logo {
+    display: inline-block;
+    margin-left: 30px;
+  }
+  .dropdown-menu {
+    top: 3.5rem;
+    left: -5.7rem;
+    padding: 0.6rem;
+  }
 }
 
-.logged-user-img{
-    height: 35px !important;
-    width: 35px !important;
-    margin-left: 4px;
+.logged-user-img {
+  height: 35px !important;
+  width: 35px !important;
+  margin-left: 4px;
 }
 
-.logged-user-name{
-    color: #a0a0a0;
-    font-size: 15px;
-    padding-top: 10px;
-    text-transform: capitalize;
+.logged-user-name {
+  color: #a0a0a0;
+  font-size: 15px;
+  padding-top: 10px;
+  text-transform: capitalize;
 }
 
-.notification-btn{
-    margin-left: 100%;
-    outline: none;
+.notification-btn {
+  margin-left: 100%;
+  outline: none;
 }
 
-.mat-menu-panel{
-    max-width: 450px;
-    background-color: rgb(52, 67, 78);
+.mat-menu-panel {
+  max-width: 450px;
+  background-color: rgb(52, 67, 78);
 }
 
-.mat-menu-item{
-    white-space: initial; 
-    overflow: hidden;
-    text-overflow: initial;
-    display: block;
-    line-height: 22px;
-    height: 48px;
-    color: #a0a0a0;
+.mat-menu-item {
+  white-space: initial;
+  overflow: hidden;
+  text-overflow: initial;
+  display: block;
+  line-height: 22px;
+  height: 48px;
+  color: #a0a0a0;
 }
 
-.notification-username{
-    color: #007ad9
+.notification-username {
+  color: #007ad9;
 }
 
-
-.search-box{
-    border-right: none;
+.search-box {
+  border-right: none;
 }
 
-.search-icon-container{
-    margin-bottom: 0px;
+.search-icon-container {
+  margin-bottom: 0px;
 }
 
-.notification-list{
-    max-height: 250px !important;
+.notification-list {
+  max-height: 250px !important;
 }
-.notification-container{
-    .ng-scroll-view-container{
-        margin-right: -1px!important;
-    }
+.notification-container {
+  .ng-scroll-view-container {
+    margin-right: -1px !important;
+  }
 }

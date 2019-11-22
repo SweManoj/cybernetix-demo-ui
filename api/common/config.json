@@ -1,5 +1,0 @@
-{
-    "production": false,
-    "connectionString": "localhost:27017/paloalto",
-    "prodConnectionString": "ec2-52-91-41-1.compute-1.amazonaws.com:27017/paloalto"
-}

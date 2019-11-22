@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 
 @Injectable()
 export class LoginService {
@@ -10,11 +10,13 @@ export class LoginService {
     }
 
     login(loginData) {
-        const url = `/api/auth/authLog`;
-        return this.http.post(url, loginData);
+        const username = 'DemoSvcAccCnetx';
+        const password = 'CNetix20875sai@$';
+        return of(loginData.username == username && loginData.password == password);
     }
 
     get isLoggedIn() {
         return this.loggedIn.asObservable();
     }
+
 }

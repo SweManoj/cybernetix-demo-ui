@@ -14,7 +14,7 @@ export class LoginComponent {
     username: AbstractControl;
     password: AbstractControl;
     themeName: string;
-    isError:boolean = false;
+    isError: boolean = false;
 
     constructor(private fb: FormBuilder, private loginService: LoginService, private userContext: UserContext,
         private sessionStorage: SessionStorage, private router: Router) {
@@ -26,21 +26,16 @@ export class LoginComponent {
         this.username = this.form.controls['username'];
         this.password = this.form.controls['password'];
     }
+
     onSubmit(): void {
         if (this.form.valid) {
-            this.loginService.login(this.form.value).subscribe((res: any) => {
-                if (res.status == 'true') {
-                    const authInfo = {
-                        authToken: res.authToken
-                    };
-                    this.userContext.setAuthToken(res.authToken);
-                    this.sessionStorage.setItem(null, authInfo);
+            this.loginService.login(this.form.value).subscribe((res: boolean) => {
+                if (res == true) {
                     this.loginService.loggedIn.next(true);
                     this.router.navigate(['/dashboard']);
                 }
-                else{
+                else
                     this.isError = true;
-                }
             });
         }
     }

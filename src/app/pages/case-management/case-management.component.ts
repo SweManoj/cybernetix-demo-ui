@@ -309,11 +309,10 @@ export class CaseManagementComponent implements OnInit {
     //     this.recordsReturned = this.allUsers.length;
     // });
 
-    this.caseManagmentService.getAllCases().subscribe((res: any) => {
-      //debugger
+    /* this.caseManagmentService.getAllCases().subscribe((res: any) => {
       this.allUsers = res.data;
       console.log(res)
-    });
+    }); */
   }
 
   loadMoreUsers() {

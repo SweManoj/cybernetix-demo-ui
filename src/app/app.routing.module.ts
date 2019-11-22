@@ -17,6 +17,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUsers/filter-risk-entity/filter-risk-entity.component';
 import { RiskyIPComponent } from './pages/dashboard/components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './pages/dashboard/components/riskyHost/riskyHost.component';
+import { PolicyConfigurationComponent } from './pages/policy-configuration/policy-configuration.component';
 
 export const routes: Routes = [
     {
@@ -80,6 +81,10 @@ export const routes: Routes = [
             {
                 path: 'cyberNetixPulse',
                 component: PulseGlobeComponent
+            },
+            {
+                path: 'policyConfiguration',
+                component: PolicyConfigurationComponent
             }
         ]
     },

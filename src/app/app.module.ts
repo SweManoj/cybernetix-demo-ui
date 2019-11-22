@@ -34,6 +34,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import {SecreteKeyPupupComponent} from './core/login/secrete-key-popup/secrete-key-popup.component';
+import { PolicyConfigurationModule } from './pages/policy-configuration/policy-configuration.module';
 
 @NgModule({
     declarations: [
@@ -68,7 +69,8 @@ import {SecreteKeyPupupComponent} from './core/login/secrete-key-popup/secrete-k
         MatTooltipModule,
         MatBadgeModule,
         MatIconModule,
-        NgScrollbarModule
+        NgScrollbarModule,
+        PolicyConfigurationModule
     ],
     exports: [
         MaterialModule

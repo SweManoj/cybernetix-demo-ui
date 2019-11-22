@@ -33,6 +33,13 @@ export class LeftNavComponent {
             },
             {
                 ionIcon: '',
+                faIcon: 'fa fa-pencil-square-o',
+                img: '',
+                title: 'Policy Config', // this.translateService.instant('general.menu.dashboard')
+                navLink: '/policyConfiguration'
+            },
+            {
+                ionIcon: '',
                 faIcon: 'fa fa-globe',
                 img: '',
                 title: 'Pulse', // this.translateService.instant('general.menu.dashboard')

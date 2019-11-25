@@ -17,7 +17,7 @@ export class DashboardCountComponent implements OnInit {
     { title: 'Users', image: 'users@2x', value: 0, valueControl: 'importedUserCount' },
     { title: 'IP Address', image: 'Ip@2x', value: 0, valueControl: 'importedIpAddressCount' },
     { title: 'Hosts', image: 'hostname@2x', value: 0, valueControl: 'importedHostCount' },
-    { title: 'Priviledged Accounts', image: 'previledged users@2x', value: 0, valueControl: 'privilegedUserCount' },
+    { title: 'Privileged Accounts', image: 'previledged users@2x', value: 0, valueControl: 'privilegedUserCount' },
     { title: 'Service Accounts', image: 'service@2x', value: 0, valueControl: 'serviceAccountsCount' }];
 
   violationCountsSecondHalf = [

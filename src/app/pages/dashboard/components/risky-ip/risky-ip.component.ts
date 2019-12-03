@@ -8,9 +8,10 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { bubbleDataMonth } from '../riskyUsers/data';
 import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-score-modal.component';
-import { environment } from '../../../../../environments/environment';
+import { environment, API_KEY, API_CIPHER } from '../../../../../environments/environment';
 import { CaseManagementService } from '../../../case-management/case-management.service';
 import { MatSnackBar } from '@angular/material';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
     selector: 'app-risky-ip',
@@ -41,10 +42,12 @@ export class RiskyIPComponent implements OnInit {
 
     getRiskyIPDetails() {
         this.riskyUserService.getRiskyEntityDetails(this.selectedIP, 'IP').subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.ipDetails = res;
         });
         const date = new Date();
         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedIP, 0, date.getTime(), 0).subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
             if (res && res.length > 0) {
                 res.forEach((policyViolation) => {
                     policyViolation.timeLines.forEach((timeLine) => {
@@ -55,6 +58,7 @@ export class RiskyIPComponent implements OnInit {
             }
         });
         this.riskyUserService.getDayBasisRiskScore(this.selectedIP).subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.graphData = res;
             this.zone.runOutsideAngular(() => {
                 // Initialize Bubble chart
@@ -135,6 +139,7 @@ export class RiskyIPComponent implements OnInit {
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
         this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDateTime), ruleId, 'IP')
             .subscribe((res: any) => {
+                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
@@ -147,6 +152,7 @@ export class RiskyIPComponent implements OnInit {
 
         this.riskyUserService.rawEventCount(lastViolationId)
             .subscribe((res: any) => {
+                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
@@ -166,6 +172,8 @@ export class RiskyIPComponent implements OnInit {
         };
 
         this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+            
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });

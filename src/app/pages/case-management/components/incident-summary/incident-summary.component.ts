@@ -10,13 +10,13 @@ import { IncidentSummaryService } from './incident-summary.service';
 import { LoginService } from '../../../../core/login/login.service';
 import { MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent } from '@angular/material';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { environment } from '../../../../../environments/environment';
+import { environment, API_KEY, API_CIPHER } from '../../../../../environments/environment';
 import { UtilDataService } from '../../../../core/services/util.data.service';
+import * as CryptoJS from 'crypto-js';
 
 export interface User {
     name: string;
 }
-
 @Component({
     selector: 'app-policy-violation-summary',
     templateUrl: './incident-summary.component.html'
@@ -175,7 +175,7 @@ export class IncidentSummaryComponent implements OnInit {
 
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
-
+            users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.users = users;
             const loggedInUser = this.utilDataService.getLoggedInUser();
 

@@ -11,14 +11,14 @@ import { LoginService } from '../../../../core/login/login.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { environment } from '../../../../../environments/environment';
+import { environment, API_CIPHER, API_KEY } from '../../../../../environments/environment';
 import { UtilDataService } from '../../../../core/services/util.data.service';
+import * as CryptoJS from 'crypto-js';
 
 export interface User {
     name: string;
     value: string;
 }
-
 @Component({
     selector: 'app-policy-violation-summary',
     templateUrl: './policy-violation-summary.component.html'
@@ -161,6 +161,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     getTaggedUsers() {
         this.policyViolationSummaryService.getTaggedUsers(this.policyDetails.pv_ID).subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.taggedUsersForViolation = res;
         });
     }
@@ -209,6 +210,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     getUsers() {
         this.loginService.getUsers().subscribe((users: any) => {
+            users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             this.users = users;
             const loggedInUser = this.utilDataService.getLoggedInUser();
             if (this.users.find(user => user.userName === loggedInUser.userName)) {
@@ -234,6 +237,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     getViolatedPolicy() {
         this.policyViolationSummaryService.getPolicyDetails(this.selectedPolicy, encodeURIComponent(this.eventDateTime), this.dataAggregated).subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             if (res) {
                 this.policyDetails = res;
                 this.getTaggedUsers();

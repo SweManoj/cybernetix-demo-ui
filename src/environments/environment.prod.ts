@@ -1,3 +1,5 @@
+import * as CryptoJS from 'crypto-js';
+
 export const environment = {
     production: true,
     theme: 'black',
@@ -10,3 +12,11 @@ export const environment = {
     encryptionParsePhrase: '6726376763767452',
     kibanaLink: 'http://ec2-3-15-116-184.us-east-2.compute.amazonaws.com:5601'
 };
+
+export var key = CryptoJS.enc.Utf8.parse('123456$#@$^@ANIL');
+export var cipherOptions: CryptoJS.CipherOption = {
+    keySize: 128 / 8,
+    iv: CryptoJS.enc.Utf8.parse('123456$#@$^@ANIL'),  // Initialization Vector
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7
+}

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment.prod';
 import { string } from '@amcharts/amcharts4/core';
 import { intToString, getRiskScoreColor } from '../../../../shared/utils/util-functions';
+import { API_KEY, API_CIPHER } from '../../../../../environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 // import {routerTransition} from '../../router.animations';
 
@@ -55,21 +57,27 @@ export class TopDetailsComponent implements OnInit {
 
     getRiskyEntities() {
         this.topDetailsService.getTopRiskyUsers('USER').subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             res.forEach(data => {
-                const userObj = {
-                    type: 'user',
-                    entityId: data.u_employeeId,
-                    score: Math.round(data.totalRiskScore),
-                    img: true,
-                    value: data.u_employeeId
-                };
-                this.riskyObjects.push(userObj);
+                if (data) {
+                    const userObj = {
+                        type: 'user',
+                        entityId: data.u_employeeId,
+                        score: Math.round(data.totalRiskScore),
+                        img: true,
+                        value: data.u_employeeId
+                    };
+                    this.riskyObjects.push(userObj);
+                }
             });
             this.selectedRiskies = this.riskyObjects.filter(riskyObj => riskyObj.type === 'user');
             this.selectedRiskies.sort((a, b) => -(a.score - b.score)); // desending order
         });
 
         this.topDetailsService.getTopRiskyUsers('IP').subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             res.forEach(data => {
                 this.riskyObjects.push({
                     type: 'ip address',
@@ -83,6 +91,8 @@ export class TopDetailsComponent implements OnInit {
         });
 
         this.topDetailsService.getTopRiskyUsers('HOST').subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             res.forEach(data => {
                 this.riskyObjects.push({
                     type: 'host',
@@ -98,12 +108,14 @@ export class TopDetailsComponent implements OnInit {
 
     getThreats() {
         this.topDetailsService.getTopThreats().subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.threats = res;
         });
     }
 
     getViolations() {
         this.topDetailsService.getTopViolations().subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.violations = res;
         });
     }

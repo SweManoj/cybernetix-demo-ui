@@ -5,7 +5,8 @@ import * as Highcharts from 'highcharts';
 import { DashboardService } from '../../dashboard.service';
 import * as am4maps from '@amcharts/amcharts4/maps';
 import am4geodata_worldLow from '@amcharts/amcharts4-geodata/worldLow';
-
+import { API_KEY, API_CIPHER } from '../../../../../environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 am4core.useTheme(am4themes_animated);
 
@@ -178,6 +179,8 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByTitle() {
         this.dashboardService.getRiskCountByTitle().subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             if (res && res.length > 0) {
                 let i = 0;
                 res.forEach(riskScoreByTitleObj => {
@@ -197,6 +200,8 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByDept() {
         this.dashboardService.getRiskCountByDepartment().subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             if (res && res.length > 0) {
                 res.forEach(riskScoreByDept => {
                     this.riskScoreByDepartments.push({ 'name': riskScoreByDept.departName, 'y': riskScoreByDept.riskScoreCount });
@@ -211,6 +216,8 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByLocation() {
         this.dashboardService.getRiskCountByLocation().subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             if (res && res.length > 0) {
                 res.forEach(countryData => {
                     this.riskCountByLocation[countryData.countryCode.toUpperCase()] = countryData.riskScoreCount;

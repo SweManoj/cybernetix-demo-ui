@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../dashboard.service';
 import { intToString } from '../../../../shared/utils/util-functions';
+import { API_KEY, API_CIPHER } from '../../../../../environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-dashboard-count',
@@ -33,6 +35,8 @@ export class DashboardCountComponent implements OnInit {
 
   ngOnInit() {
     this.dashboardService.getDashboardCounts().subscribe((res: any) => {
+      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
       this.loadingInProgress = false;
       this.violationCountsFirstHalf.forEach(count => {
         count.value = res[count.valueControl]

@@ -5,9 +5,11 @@ import { CaseModalComponent } from './components/case-modal/case-modal.component
 import { CaseManagementService } from './case-management.service';
 import { Table } from 'primeng/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
+import { environment, API_KEY, API_CIPHER } from '../../../environments/environment';
 import { json } from 'd3';
 import { getUniqueObjectsInArray } from '../../shared/utils/util-functions';
+import * as CryptoJS from 'crypto-js';
+
 
 @Component({
     selector: 'app-case-management',
@@ -104,6 +106,8 @@ export class CaseManagementComponent implements OnInit {
         selectedDate.setHours(0, 0, 0, 0);
         endDate.setHours(23, 59, 59, 999);
         this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             this.policyViolations = res;
             this.policyViolations.forEach((policy: any) => {
                 policy.eventDateTimeFormatted = this.covertDateToUTCFormat(policy.eventDateTime);
@@ -132,6 +136,8 @@ export class CaseManagementComponent implements OnInit {
 
 
         this.caseManagmentService.getAllIncidents(0, 1000, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
+            response = JSON.parse(CryptoJS.AES.decrypt(response.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             let caseOwners: Array<{ name: '', value: '' }> = [];
             response.forEach(element => {
                 element.priority = element.priority ? element.priority : '-';
@@ -153,6 +159,8 @@ export class CaseManagementComponent implements OnInit {
         selectedDate.setHours(0, 0, 0, 0);
         endDate.setHours(23, 59, 59, 999);
         this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
             this.fetchingPolicyViolationsInProgress = false;
             this.policyViolations = res;
             this.policyViolations.forEach((policy: any) => {
@@ -192,6 +200,8 @@ export class CaseManagementComponent implements OnInit {
 
             this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(),
                 endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
+                    res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+
                     this.policyViolations = res;
                     this.fetchingPolicyViolationsInProgress = false;
                     this.getStageValues();

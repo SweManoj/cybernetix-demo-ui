@@ -115,8 +115,8 @@
   background-color: transparent;
 }
 
-// Policy Configure
-.policyConfig {
+// Insight Configure
+.insightConfig {
   // header title row
   /* .ag-header-cell.ag-header-cell-sortable {
     background: teal;
@@ -133,6 +133,7 @@
   // filter values
   .ag-theme-material .ag-input-wrapper input:not([type="date | text"]) {
     color: white;
+    padding-top: 8px !important;
   }
 
   // header & filter hover style
@@ -144,15 +145,44 @@
 
   // body record
   .ag-theme-material .ag-center-cols-viewport {
-    background: #e0c5c5;
+    background: #34434e;
+    border-bottom: 1px solid #5f6e79;
+    color: black;
+    font-weight: 500;
+    font-size: small;
   }
+
+  // all data row hover
+  .ag-row.ag-row-position-absolute {
+    background: #34434e !important;
+    border-top: none !important;
+    border-bottom: 1px solid #5f6e79 !important;
+  }
+
+  // last row
+  /* .ag-row.ag-row-position-absolute.ag-row-last {
+    border: none !important;
+  } */
 
   // footer with pagination
   .ag-theme-material .ag-paging-panel {
-    background: #efef9e;
+    background: rgba(0, 0, 0, 0.6);
+    color: black;
+    border: none !important;
   }
 }
 
+/* .ag-theme-material .ag-floating-filter-full-body input[type="date"] {
+  margin-top: 45px;
+} */
+
+.ion-arrow-graph-up-left:before {
+  color: white;
+}
+
+.ion-ios-list-outline:before {
+  color: white;
+}
 /* .ag-theme-material .ag-floating-filter-full-body input {
   margin-top: 35px;
   padding-bottom: 0;

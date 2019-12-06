@@ -1,6 +1,6 @@
 // @import "../../../styles.scss";
 
-.policyConfig {
+.insightConfig {
   width: 99%;
 
   input.form-control {
@@ -8,21 +8,15 @@
     border-radius: 5px !important;
   }
 
-  .policyConfigHeader {
+  .insightConfigHeader {
     color: #b5b5b5;
   }
 }
 
-/* .has-search .form-control-feedback {
-  right: initial;
-  left: 0;
-  color: #ccc;
+button.btn {
+  margin: 5px !important;
+  margin-top: 0px !important;
 }
-
-.has-search .form-control {
-  padding-right: 12px;
-  padding-left: 34px;
-} */
 
 .has-search .form-control {
   padding-left: 2.375rem;

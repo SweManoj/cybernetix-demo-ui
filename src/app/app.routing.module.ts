@@ -83,7 +83,7 @@ export const routes: Routes = [
                 component: PulseGlobeComponent
             },
             {
-                path: 'policyConfiguration',
+                path: 'insightConfiguration',
                 component: PolicyConfigurationComponent
             }
         ]

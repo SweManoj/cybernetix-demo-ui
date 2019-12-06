@@ -1,19 +1,25 @@
-<div class="d-inline-block policyConfig mt-2 ml-2">
-  <h4 class="policyConfigHeader mb-3 pull-left">Policy Configurations</h4>
+<div class="d-inline-block insightConfig mt-2 ml-2">
+  <h4 class="insightConfigHeader mb-3 pull-left">Insight Configurations</h4>
 
-  <button type="button" class="btn btn-primary pull-right">Add Policy Config</button>
+  <span class="pull-right">
+    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom"
+      title="Add Insight Config"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <button type="button" class="btn btn-primary ml-2" data-toggle="tooltip" data-placement="bottom"
+      title="Import Insight Config"><i class="fa fa-upload" aria-hidden="true"></i></button>
+  </span>
 
   <div class="form-group has-search pull-right mr-4 w-25">
     <span class="fa fa-search form-control-feedback m-auto"></span>
-    <input type="text" class="form-control" placeholder="Search By PolicyConfig Keywords" (keyup)="globalSearchPC()" [(ngModel)]="globalSearchPCKey">
+    <input type="text" class="form-control" placeholder="Search By PolicyConfig Keywords" (keyup)="globalSearchPC()"
+      [(ngModel)]="globalSearchPCKey">
   </div>
 </div>
 
-<div class="policyConfig ml-2 mr-1">
+<div class="insightConfig ml-2 mr-1">
   <ag-grid-angular #grid [rowData]="rowData$ |async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
     [floatingFilter]="true" style="width: 100%; height: calc(100vh - 160px);" (gridReady)="onGridReady($event)"
     [rowHeight]="38" [headerHeight]="40" [enableColResize]="true" [enableSorting]="true" [enableColResize]="true"
-    [context]="context" [pagination]="true" [paginationPageSize]="60" [suppressCellSelection]="true"
+    [context]="context" [pagination]="true" [paginationAutoPageSize]="true" [suppressCellSelection]="true"
     [frameworkComponents]="frameworkComponents" (rowSelected)="onRowSelected()" [rowSelection]="'multiple'"
     [suppressRowClickSelection]="true">
   </ag-grid-angular>

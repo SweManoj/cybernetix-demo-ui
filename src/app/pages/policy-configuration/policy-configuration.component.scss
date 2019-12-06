@@ -1,0 +1,41 @@
+// @import "../../../styles.scss";
+
+.policyConfig {
+  width: 99%;
+
+  input.form-control {
+    border-right-color: unset !important;
+    border-radius: 5px !important;
+  }
+
+  .policyConfigHeader {
+    color: #b5b5b5;
+  }
+}
+
+/* .has-search .form-control-feedback {
+  right: initial;
+  left: 0;
+  color: #ccc;
+}
+
+.has-search .form-control {
+  padding-right: 12px;
+  padding-left: 34px;
+} */
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}

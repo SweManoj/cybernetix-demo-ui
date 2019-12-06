@@ -1,0 +1,11 @@
+<a *ngIf="viewButton" (click)="view($event)" ngbPopover="View" triggers="mouseenter:mouseleave" container="body">
+    <i class="fa-lg fa fa-eye"></i>
+</a>
+
+<a *ngIf="editButton" (click)="edit($event)" ngbPopover="Edit" triggers="mouseenter:mouseleave" container="body">
+    <i class="fa-lg fa fa-pencil"></i>
+</a>
+
+<a *ngIf="deleteButton" (click)="delete($event)" ngbPopover="Delete" triggers="mouseenter:mouseleave" container="body">
+    <i class="fa-lg fa fa-trash-o"></i>
+</a>

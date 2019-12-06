@@ -26,7 +26,6 @@ import { MaterialModule } from './../../material';
 import { RiskyIPComponent } from './components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './components/riskyHost/riskyHost.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { ShortNumberPipe } from '../../shared/pipes/filters/filter.pipe';
 import { DashboardCountComponent } from './components/dashboard-count/dashboard-count.component';
 import { TopUsersComponent } from './components/top-users/top-users.component';
 
@@ -43,7 +42,6 @@ import { TopUsersComponent } from './components/top-users/top-users.component';
         FilterRiskEntityComponent,
         RiskyIPComponent,
         RiskyHostComponent,
-        ShortNumberPipe,
         DashboardCountComponent,
         TopUsersComponent
     ],

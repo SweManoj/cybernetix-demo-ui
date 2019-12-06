@@ -1,3 +1,20 @@
-<p>
-  policy-configuration works!
-</p>
+<div class="d-inline-block policyConfig mt-2 ml-2">
+  <h4 class="policyConfigHeader mb-3 pull-left">Policy Configurations</h4>
+
+  <button type="button" class="btn btn-primary pull-right">Add Policy Config</button>
+
+  <div class="form-group has-search pull-right mr-4 w-25">
+    <span class="fa fa-search form-control-feedback m-auto"></span>
+    <input type="text" class="form-control" placeholder="Search By PolicyConfig Keywords" (keyup)="globalSearchPC()" [(ngModel)]="globalSearchPCKey">
+  </div>
+</div>
+
+<div class="policyConfig ml-2 mr-1">
+  <ag-grid-angular #grid [rowData]="rowData$ |async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
+    [floatingFilter]="true" style="width: 100%; height: calc(100vh - 160px);" (gridReady)="onGridReady($event)"
+    [rowHeight]="38" [headerHeight]="40" [enableColResize]="true" [enableSorting]="true" [enableColResize]="true"
+    [context]="context" [pagination]="true" [paginationPageSize]="60" [suppressCellSelection]="true"
+    [frameworkComponents]="frameworkComponents" (rowSelected)="onRowSelected()" [rowSelection]="'multiple'"
+    [suppressRowClickSelection]="true">
+  </ag-grid-angular>
+</div>

@@ -30,11 +30,12 @@ import { NgIdleModule } from '@ng-idle/core';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatIconModule} from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-import {SecreteKeyPupupComponent} from './core/login/secrete-key-popup/secrete-key-popup.component';
+import { SecreteKeyPupupComponent } from './core/login/secrete-key-popup/secrete-key-popup.component';
 import { PolicyConfigurationModule } from './pages/policy-configuration/policy-configuration.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,7 @@ import { PolicyConfigurationModule } from './pages/policy-configuration/policy-c
         BrowserAnimationsModule,
         MaterialModule,
         HighchartsChartModule,
-        SharedPipesModule,
+        SharedModule,
         StorageServiceModule,
         NgIdleModule.forRoot(),
         NgProgressModule.forRoot(),
@@ -83,7 +84,7 @@ import { PolicyConfigurationModule } from './pages/policy-configuration/policy-c
         UtilDataService
     ],
     bootstrap: [AppComponent],
-    entryComponents: [ModalUtilComponent,SecreteKeyPupupComponent]
+    entryComponents: [ModalUtilComponent, SecreteKeyPupupComponent]
 })
 export class AppModule {
 }

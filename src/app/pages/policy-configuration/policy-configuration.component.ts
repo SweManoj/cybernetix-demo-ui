@@ -4,6 +4,8 @@ import { GridApi } from 'ag-grid-community';
 import { CrudActionComponent } from '../../shared/renderers/crud-action/crud-action.component';
 import { AgCellRendererEvent } from '../../shared/renderers/ag-cell-rendere.event';
 import { dateComparator, filterAgGridDates } from '../../shared/ag-grid-date-filters/date-filters';
+import { ConfirmationModalComponent } from '../../shared/confirmation-modal/confirmation-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-policy-configuration',
@@ -12,7 +14,7 @@ import { dateComparator, filterAgGridDates } from '../../shared/ag-grid-date-fil
 })
 export class PolicyConfigurationComponent implements OnInit {
 
-  //ag grid  
+  //ag grid 
   gridApi: GridApi;
   columnDefs;
   context;
@@ -43,7 +45,7 @@ export class PolicyConfigurationComponent implements OnInit {
     this.gridApi.setQuickFilter(this.globalSearchPCKey);
   }
 
-  constructor() {
+  constructor(private ngbModal: NgbModal) {
     this.context = {
       componentParent: this,
       viewButton: true,
@@ -130,11 +132,18 @@ export class PolicyConfigurationComponent implements OnInit {
       case AgCellRendererEvent.EDIT_EVENT:
         break;
       case AgCellRendererEvent.DELETE_EVENT:
+        this.deletePolicyConfig(data.insightId);
         break;
     }
   }
 
   onRowSelected() {
+  }
+
+  deletePolicyConfig(insightId: number) {
+    const activeModal = this.ngbModal.open(ConfirmationModalComponent, { size: 'sm' });
+    activeModal.componentInstance.message = 'Are you sure you want to delete?';
+    activeModal.result;
   }
 
 }

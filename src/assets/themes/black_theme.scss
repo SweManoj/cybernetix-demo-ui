@@ -5,47 +5,45 @@ $fa-font-path: "../../../node_modules/font-awesome/fonts";
 @import "../sass/mixins";
 @import "black_theme_variables";
 @import "../sass/font";
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 @include mat-core();
 
-
 $mat-light-blue: (
-    50: #0AADC8,
-    100: #0AADC8,
-    200: #0AADC8,
-    300: #0AADC8,
-    400: #0AADC8,
-    500: #0AADC8,
-    600: #0AADC8,
-    700: #0AADC8,
-    800: #0AADC8,
-    900: #0AADC8,
-    A100: #0AADC8,
-    A200: #0AADC8,
-    A400: #0AADC8,
-    A700: #0AADC8,
-    contrast: (
-        50: $black-87-opacity,
-        100: $black-87-opacity,
-        200: $black-87-opacity,
-        300: $black-87-opacity,
-        400: $black-87-opacity,
-        500: white,
-        600: white,
-        700: white,
-        800: $white-87-opacity,
-        900: $white-87-opacity,
-        A100: $black-87-opacity,
-        A200: white,
-        A400: white,
-        A700: white,
-    )
+  50: #0aadc8,
+  100: #0aadc8,
+  200: #0aadc8,
+  300: #0aadc8,
+  400: #0aadc8,
+  500: #0aadc8,
+  600: #0aadc8,
+  700: #0aadc8,
+  800: #0aadc8,
+  900: #0aadc8,
+  A100: #0aadc8,
+  A200: #0aadc8,
+  A400: #0aadc8,
+  A700: #0aadc8,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white
+  )
 );
 
 $cyber-app-primary: mat-palette($mat-light-blue);
-$cyber-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-$cyber-app-theme:   mat-light-theme($cyber-app-primary, $cyber-app-accent);
-
+$cyber-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$cyber-app-theme: mat-light-theme($cyber-app-primary, $cyber-app-accent);
 
 @include mat-core-theme($cyber-app-theme);
 @include mat-button-theme($cyber-app-theme);

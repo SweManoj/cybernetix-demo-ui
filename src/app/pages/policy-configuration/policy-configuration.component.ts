@@ -12,7 +12,7 @@ import { dateComparator, filterAgGridDates } from '../../shared/ag-grid-date-fil
 })
 export class PolicyConfigurationComponent implements OnInit {
 
-  //ag grid 
+  //ag grid  
   gridApi: GridApi;
   columnDefs;
   context;

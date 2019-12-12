@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../dashboard.service';
 import { intToString } from '../../../../shared/utils/util-functions';
-import { API_KEY, API_CIPHER } from '../../../../../environments/environment';
 import * as CryptoJS from 'crypto-js';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard-count',
   templateUrl: './dashboard-count.component.html'
 })
 export class DashboardCountComponent implements OnInit {
+
+  API_KEY: any;
+  API_CIPHER: any;
 
   loadingInProgress = true;
   dashboardCounts = [];
@@ -31,11 +34,14 @@ export class DashboardCountComponent implements OnInit {
     { title: 'Actions', image: 'actions@1x', value: 0, valueControl: 'actions' },
   ]
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService) {
+    this.API_KEY = environment.API_KEY;
+    this.API_CIPHER = environment.API_CIPHER;
+  }
 
   ngOnInit() {
     this.dashboardService.getDashboardCounts().subscribe((res: any) => {
-      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
       this.loadingInProgress = false;
       this.violationCountsFirstHalf.forEach(count => {

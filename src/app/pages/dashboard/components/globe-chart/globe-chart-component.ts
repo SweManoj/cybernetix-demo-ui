@@ -5,8 +5,8 @@ import * as Highcharts from 'highcharts';
 import { DashboardService } from '../../dashboard.service';
 import * as am4maps from '@amcharts/amcharts4/maps';
 import am4geodata_worldLow from '@amcharts/amcharts4-geodata/worldLow';
-import { API_KEY, API_CIPHER } from '../../../../../environments/environment';
 import * as CryptoJS from 'crypto-js';
+import { environment } from '../../../../../environments/environment';
 
 am4core.useTheme(am4themes_animated);
 
@@ -15,6 +15,10 @@ am4core.useTheme(am4themes_animated);
     templateUrl: './globe-chart.component.html'
 })
 export class GlobeChartComponent implements OnInit {
+
+    API_KEY: any;
+    API_CIPHER: any;
+
     @Input() componentType: string;
     riskScoreByDepartments = [];
     riskScoreByTitles = [];
@@ -160,6 +164,9 @@ export class GlobeChartComponent implements OnInit {
     };
 
     constructor(private zone: NgZone, private dashboardService: DashboardService) {
+        this.API_KEY = environment.API_KEY;
+        this.API_CIPHER = environment.API_CIPHER;
+        
         window.scrollTo(0, 0);
     }
 
@@ -179,7 +186,7 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByTitle() {
         this.dashboardService.getRiskCountByTitle().subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             if (res && res.length > 0) {
                 let i = 0;
@@ -200,7 +207,7 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByDept() {
         this.dashboardService.getRiskCountByDepartment().subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             if (res && res.length > 0) {
                 res.forEach(riskScoreByDept => {
@@ -216,7 +223,7 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByLocation() {
         this.dashboardService.getRiskCountByLocation().subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, API_KEY, API_CIPHER).toString(CryptoJS.enc.Utf8));
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             if (res && res.length > 0) {
                 res.forEach(countryData => {

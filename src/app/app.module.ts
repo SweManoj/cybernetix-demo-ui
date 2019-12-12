@@ -34,8 +34,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { SecreteKeyPupupComponent } from './core/login/secrete-key-popup/secrete-key-popup.component';
-import { PolicyConfigurationModule } from './pages/policy-configuration/policy-configuration.module';
 import { SharedModule } from './shared/shared.module';
+import { InsightConfigurationModule } from './pages/insight-configuration/insight-configuration.module';
 
 @NgModule({
     declarations: [
@@ -71,7 +71,7 @@ import { SharedModule } from './shared/shared.module';
         MatBadgeModule,
         MatIconModule,
         NgScrollbarModule,
-        PolicyConfigurationModule
+        InsightConfigurationModule
     ],
     exports: [
         MaterialModule

@@ -8,11 +8,11 @@ import { ConfirmationModalComponent } from '../../shared/confirmation-modal/conf
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-policy-configuration',
-  templateUrl: './policy-configuration.component.html',
-  styleUrls: ['./policy-configuration.component.scss']
+  selector: 'app-insight-configuration',
+  templateUrl: './insight-configuration.component.html',
+  styleUrls: ['./insight-configuration.component.scss']
 })
-export class PolicyConfigurationComponent implements OnInit {
+export class InsightConfigurationComponent implements OnInit {
 
   //ag grid 
   gridApi: GridApi;

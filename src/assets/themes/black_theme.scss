@@ -71,4 +71,6 @@ $cyber-app-theme: mat-light-theme($cyber-app-primary, $cyber-app-accent);
   @import "../../app/pages/case-management/components/pulse-globe/pulse-globe.component";
   @import "../../app/pages/case-management/components/policy-violation-summary/policy-violation-summary.component";
   @import "../../app/pages/case-management/components/pulse-globe/pulse-globe.component";
+  // @import "../../app/pages/insight-configuration/insight-configuration.component";
+  // @import "../../app/pages/insight-configuration/action-insight-configuration/action-insight-configuration.component";
 }

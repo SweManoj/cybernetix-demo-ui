@@ -18,6 +18,7 @@ import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUse
 import { RiskyIPComponent } from './pages/dashboard/components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './pages/dashboard/components/riskyHost/riskyHost.component';
 import { InsightConfigurationComponent } from './pages/insight-configuration/insight-configuration.component';
+import { ActionInsightConfigurationComponent } from './pages/insight-configuration/action-insight-configuration/action-insight-configuration.component';
 
 export const routes: Routes = [
     {
@@ -85,6 +86,18 @@ export const routes: Routes = [
             {
                 path: 'insightConfiguration',
                 component: InsightConfigurationComponent
+            },
+            {
+                path: 'addInsightConfiguration',
+                component: ActionInsightConfigurationComponent
+            },
+            {
+                path: 'editInsightConfiguration/:insightConfId',
+                component: ActionInsightConfigurationComponent
+            },
+            {
+                path: 'viewtInsightConfiguration/:insightConfId',
+                component: ActionInsightConfigurationComponent
             }
         ]
     },

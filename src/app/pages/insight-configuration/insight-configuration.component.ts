@@ -6,6 +6,7 @@ import { AgCellRendererEvent } from '../../shared/renderers/ag-cell-rendere.even
 import { dateComparator, filterAgGridDates } from '../../shared/ag-grid-date-filters/date-filters';
 import { ConfirmationModalComponent } from '../../shared/confirmation-modal/confirmation-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-insight-configuration',
@@ -45,7 +46,7 @@ export class InsightConfigurationComponent implements OnInit {
     this.gridApi.setQuickFilter(this.globalSearchPCKey);
   }
 
-  constructor(private ngbModal: NgbModal) {
+  constructor(private ngbModal: NgbModal, private router: Router) {
     this.context = {
       componentParent: this,
       viewButton: true,
@@ -125,11 +126,15 @@ export class InsightConfigurationComponent implements OnInit {
 
   handleAgRendererEvent(event: AgCellRendererEvent) {
     const data = event.params.data;
+    const insightId = data.insightId;
     console.log(event.type + " event type" + 'data id is : ' + data.insightId);
+
     switch (event.type) {
       case AgCellRendererEvent.VIEW_EVENT:
+        this.viewInsightConfiguration(insightId);
         break;
       case AgCellRendererEvent.EDIT_EVENT:
+        this.editInsightConfiguration(insightId);
         break;
       case AgCellRendererEvent.DELETE_EVENT:
         this.deletePolicyConfig(data.insightId);
@@ -140,10 +145,36 @@ export class InsightConfigurationComponent implements OnInit {
   onRowSelected() {
   }
 
+  addInsightConfiguration() {
+    this.router.navigate(['/addInsightConfiguration'])
+  }
+
+  editInsightConfiguration(insightId) {
+    this.router.navigateByUrl('/editInsightConfiguration/' + insightId);
+  }
+
+  viewInsightConfiguration(insightId) {
+    this.router.navigate(['/viewtInsightConfiguration', insightId]);
+  }
+
   deletePolicyConfig(insightId: number) {
     const activeModal = this.ngbModal.open(ConfirmationModalComponent, { size: 'sm' });
     activeModal.componentInstance.message = 'Are you sure you want to delete?';
     activeModal.result;
+  }
+
+  uploadFile(files: FileList) {
+    // console.log('item name : ' + files.item.name);
+    const fileName = files.item[0];
+    window.alert('file name is : ' + fileName);
+    /*  const policyStringifiedData = JSON.stringify({ 'incidentEntityId': this.incidentDetails.incId });
+     this.incidentSummaryService.uploadIncidentSummaryAttachment(this.fileToUpload, policyStringifiedData).subscribe((res: any) => {
+         this.incidentDetails.attachFiles.push(res);
+         this.saveIncidentActivity('uploaded ' + res.fileName + ' file.', 'FILE_UPLOADED');
+         this._snackBar.open('File uploaded successfully', null, {
+             duration: 2000,
+         });
+     }); */
   }
 
 }

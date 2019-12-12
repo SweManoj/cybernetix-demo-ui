@@ -36,6 +36,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { SecreteKeyPupupComponent } from './core/login/secrete-key-popup/secrete-key-popup.component';
 import { SharedModule } from './shared/shared.module';
 import { InsightConfigurationModule } from './pages/insight-configuration/insight-configuration.module';
+import { ActionInsightConfigurationComponent } from './pages/insight-configuration/action-insight-configuration/action-insight-configuration.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { InsightConfigurationModule } from './pages/insight-configuration/insigh
         MenuLayoutComponent,
         LeftNavComponent,
         SecreteKeyPupupComponent,
-        ModalUtilComponent
+        ModalUtilComponent,
+        ActionInsightConfigurationComponent
     ],
     imports: [
         BrowserModule,

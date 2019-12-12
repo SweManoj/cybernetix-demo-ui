@@ -36,7 +36,7 @@ export class LeftNavComponent {
                 faIcon: 'fa fa-pencil-square-o',
                 img: '',
                 title: 'Insight Config', // this.translateService.instant('general.menu.dashboard')
-                navLink: '/insightConfiguration'
+                navLink: '/insightConfigurations'
             },
             {
                 ionIcon: '',

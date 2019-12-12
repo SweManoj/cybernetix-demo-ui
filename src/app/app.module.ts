@@ -46,8 +46,7 @@ import { ActionInsightConfigurationComponent } from './pages/insight-configurati
         MenuLayoutComponent,
         LeftNavComponent,
         SecreteKeyPupupComponent,
-        ModalUtilComponent,
-        ActionInsightConfigurationComponent
+        ModalUtilComponent
     ],
     imports: [
         BrowserModule,
@@ -73,7 +72,7 @@ import { ActionInsightConfigurationComponent } from './pages/insight-configurati
         MatBadgeModule,
         MatIconModule,
         NgScrollbarModule,
-        InsightConfigurationModule
+        InsightConfigurationModule,
     ],
     exports: [
         MaterialModule

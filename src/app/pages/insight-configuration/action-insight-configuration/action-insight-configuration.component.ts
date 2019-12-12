@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { InsightConfigurationService } from '../insight-configuration.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -17,7 +16,7 @@ export class ActionInsightConfigurationComponent implements OnInit {
   pageTitle = 'Add Insight Configurations';
 
   constructor(private activeRoute: ActivatedRoute, private router: Router,
-    private insightConfService: InsightConfigurationService, private location: Location) {
+    private location: Location) {
   }
 
   ngOnInit() {

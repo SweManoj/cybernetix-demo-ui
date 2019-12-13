@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { of, Observable } from 'rxjs';
-import { GridApi } from 'ag-grid-community';
+import { GridApi, ColumnApi } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CrudActionComponent } from '../../../shared/renderers/crud-action/crud-action.component';
@@ -17,6 +17,7 @@ export class InsightConfigurationListComponent implements OnInit {
 
     //ag grid 
     gridApi: GridApi;
+    gridColumnApi: ColumnApi;
     columnDefs;
     context;
     frameworkComponents;
@@ -43,10 +44,13 @@ export class InsightConfigurationListComponent implements OnInit {
     // Ag-Grid Global Filtering
     globalSearchPCKey = '';
     globalSearchPC() {
+        // this.gridColumnApi.autoSizeAllColumns(['Action']);
+        this.gridColumnApi.autoSizeColumn('Action');
         this.gridApi.setQuickFilter(this.globalSearchPCKey);
     }
 
-    constructor(private ngbModal: NgbModal, private router: Router, private activateRoute: ActivatedRoute) {
+    constructor(private ngbModal: NgbModal, private router: Router, private activateRoute: ActivatedRoute,
+        private ngZone: NgZone) {
         this.context = {
             componentParent: this,
             viewButton: true,
@@ -69,6 +73,8 @@ export class InsightConfigurationListComponent implements OnInit {
         this.columnDefs = [{
             headerName: 'Insight Name',
             field: 'insightName',
+            sortable: true,  // by default false
+            resizable: false,  // by default false
             filter: 'agTextColumnFilter',
             suppressMenu: true,   // filter condition in the header
             floatingFilterComponentParams: { suppressFilterButton: true }  // filter symbol remove
@@ -76,6 +82,7 @@ export class InsightConfigurationListComponent implements OnInit {
         {
             headerName: 'Severity',
             field: 'severity',
+            // sortable: true,
             filter: 'agTextColumnFilter',
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true }
@@ -83,6 +90,7 @@ export class InsightConfigurationListComponent implements OnInit {
         {
             headerName: 'Threat Category',
             field: 'threatCategory',
+            sortable: true,
             filter: 'agTextColumnFilter',
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true }
@@ -90,6 +98,7 @@ export class InsightConfigurationListComponent implements OnInit {
         {
             headerName: 'Insight Type',
             field: 'insightType',
+            sortable: true,
             filter: 'agTextColumnFilter',
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true }
@@ -97,6 +106,7 @@ export class InsightConfigurationListComponent implements OnInit {
         {
             headerName: 'Author',
             field: 'author',
+            sortable: true,
             filter: 'agTextColumnFilter',
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true }
@@ -104,6 +114,8 @@ export class InsightConfigurationListComponent implements OnInit {
         {
             headerName: 'Created On',
             field: 'createdOn',
+            sortable: true,
+            resizable: false,
             comparator: dateComparator,
             filter: "agDateColumnFilter",
             suppressMenu: true,
@@ -121,13 +133,17 @@ export class InsightConfigurationListComponent implements OnInit {
 
     onGridReady(params) {
         this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+        this.gridApi.hideOverlay();
+
         params.api.sizeColumnsToFit();
+        this.gridColumnApi.autoSizeColumn('Action');
+        // this.gridColumnApi.autoSizeColumns(['Action']);
     }
 
     handleAgRendererEvent(event: AgCellRendererEvent) {
         const data = event.params.data;
         const insightId = data.insightId;
-        console.log(event.type + " event type" + 'data id is : ' + data.insightId);
 
         switch (event.type) {
             case AgCellRendererEvent.VIEW_EVENT:
@@ -146,18 +162,21 @@ export class InsightConfigurationListComponent implements OnInit {
     }
 
     addInsightConfiguration() {
-        this.router.navigate(['addInsightConfiguration'], { relativeTo: this.activateRoute });
-        // this.router.navigate(['../addInsightConfiguration']);
+        this.ngZone.run(() => {
+            this.router.navigate(['addInsightConfiguration'], { relativeTo: this.activateRoute });
+        })
     }
 
     editInsightConfiguration(insightId) {
-        this.router.navigate(['editInsightConfiguration', insightId], { relativeTo: this.activateRoute });
-        // this.router.navigateByUrl('/editInsightConfiguration/' + insightId);
+        this.ngZone.run(() => {
+            this.router.navigate(['editInsightConfiguration', insightId], { relativeTo: this.activateRoute });
+        })
     }
 
     viewInsightConfiguration(insightId) {
-        this.router.navigate(['viewInsightConfiguration', insightId], { relativeTo: this.activateRoute });
-        // this.router.navigate(['/viewInsightConfiguration', insightId]);
+        this.ngZone.run(() => {
+            this.router.navigate(['viewInsightConfiguration', insightId], { relativeTo: this.activateRoute });
+        })
     }
 
     deletePolicyConfig(insightId: number) {

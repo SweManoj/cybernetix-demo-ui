@@ -21,9 +21,8 @@
 <div class="insightConfig ml-2 mr-1">
     <ag-grid-angular #grid [rowData]="rowData$ |async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
         [floatingFilter]="true" style="width: 100%; height: calc(100vh - 160px);" (gridReady)="onGridReady($event)"
-        [rowHeight]="38" [headerHeight]="40" [enableColResize]="true" [enableSorting]="true" [enableColResize]="true"
-        [context]="context" [pagination]="true" [paginationAutoPageSize]="true" [suppressCellSelection]="true"
-        [frameworkComponents]="frameworkComponents" (rowSelected)="onRowSelected()" [rowSelection]="'multiple'"
-        [suppressRowClickSelection]="true">
+        [rowHeight]="38" [headerHeight]="40" [context]="context" [pagination]="true" [paginationAutoPageSize]="true"
+        [suppressCellSelection]="true" [frameworkComponents]="frameworkComponents" (rowSelected)="onRowSelected()"
+        [rowSelection]="'multiple'" [suppressRowClickSelection]="true">
     </ag-grid-angular>
 </div>

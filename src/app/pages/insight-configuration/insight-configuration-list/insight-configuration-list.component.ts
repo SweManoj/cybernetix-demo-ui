@@ -44,8 +44,6 @@ export class InsightConfigurationListComponent implements OnInit {
     // Ag-Grid Global Filtering
     globalSearchPCKey = '';
     globalSearchPC() {
-        // this.gridColumnApi.autoSizeAllColumns(['Action']);
-        this.gridColumnApi.autoSizeColumn('Action');
         this.gridApi.setQuickFilter(this.globalSearchPCKey);
     }
 

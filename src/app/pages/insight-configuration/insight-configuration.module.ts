@@ -13,7 +13,7 @@ import { MenuLayoutComponent } from '../../core/layout/menu.layout.component';
 @NgModule({
   imports: [
     CommonModule, AgGridModule.withComponents([]), FormsModule, ReactiveFormsModule, NgbModalModule.forRoot(),
-    InsightConfigurationRoutingModule
+    // InsightConfigurationRoutingModule
   ],
   declarations: [InsightConfigurationComponent, InsightConfigurationListComponent, ActionInsightConfigurationComponent],
   providers: []

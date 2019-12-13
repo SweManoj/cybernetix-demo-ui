@@ -18,13 +18,34 @@ import { FilterRiskEntityComponent } from './pages/dashboard/components/riskyUse
 import { RiskyIPComponent } from './pages/dashboard/components/risky-ip/risky-ip.component';
 import { RiskyHostComponent } from './pages/dashboard/components/riskyHost/riskyHost.component';
 import { InsightConfigurationComponent } from './pages/insight-configuration/insight-configuration.component';
+import { InsightConfigurationListComponent } from './pages/insight-configuration/insight-configuration-list/insight-configuration-list.component';
+import { ActionInsightConfigurationComponent } from './pages/insight-configuration/action-insight-configuration/action-insight-configuration.component';
 // import { ActionInsightConfigurationComponent } from './pages/insight-configuration/action-insight-configuration/action-insight-configuration.component';
 
 export const routes: Routes = [
+    /* {
+        path: 'insightConfigurations',
+        component: MenuLayoutComponent,
+        canActivate: [AuthGuard],
+        loadChildren: () => import(`./pages/insight-configuration/insight-configuration.module`).then(m => m.InsightConfigurationModule)
+        ,children: [{
+            path: '',
+            loadChildren: () => import(`./pages/insight-configuration/insight-configuration.module`).then(m => m.InsightConfigurationModule)
+            // loadChildren: './pages/insight-configuration/insight-configuration.module#InsightConfigurationModule'
+        },
+        ] 
+    }, */
     {
         path: 'insightConfigurations',
         component: MenuLayoutComponent,
-        loadChildren: () => import(`./pages/insight-configuration/insight-configuration.module`).then(m => m.InsightConfigurationModule)
+        canActivate: [AuthGuard],
+        children: [
+            { path: '', component: InsightConfigurationListComponent },
+            { path: 'addInsightConfiguration', component: ActionInsightConfigurationComponent },
+            { path: 'editInsightConfiguration/:insightConfId', component: ActionInsightConfigurationComponent },
+            { path: 'viewInsightConfiguration/:insightConfId', component: ActionInsightConfigurationComponent },
+            { path: '**', redirectTo: '', pathMatch: 'full' }
+        ]
     },
     {
         path: '',
@@ -88,11 +109,11 @@ export const routes: Routes = [
                 path: 'cyberNetixPulse',
                 component: PulseGlobeComponent
             },
-            {
+            /* {
                 path: 'insightConfigurations',
                 loadChildren: () => import(`./pages/insight-configuration/insight-configuration.module`).then(m => m.InsightConfigurationModule)
                 // loadChildren: () => import(`./pages/insight-configuration/insight-configuration.module`).then(m => m.InsightConfigurationModule)
-            },
+            }, */
             /* ,
             {
                 path: 'insightConfiguration',

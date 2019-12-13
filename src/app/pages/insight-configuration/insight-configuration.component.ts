@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-insight-configuration',
-  template: `<router-outlet></router-outlet>`
+  template: ``
 })
 export class InsightConfigurationComponent implements OnInit {
 

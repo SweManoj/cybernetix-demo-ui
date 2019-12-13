@@ -12,7 +12,8 @@ const routes: Routes = [
             { path: '', component: InsightConfigurationListComponent },
             { path: 'addInsightConfiguration', component: ActionInsightConfigurationComponent },
             { path: 'editInsightConfiguration/:insightConfId', component: ActionInsightConfigurationComponent },
-            { path: 'viewInsightConfiguration/:insightConfId', component: ActionInsightConfigurationComponent }
+            { path: 'viewInsightConfiguration/:insightConfId', component: ActionInsightConfigurationComponent },
+            { path: '**', redirectTo: 'addInsightConfiguration', pathMatch: 'full' }
         ]
     },
     {

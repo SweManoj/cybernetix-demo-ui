@@ -15,18 +15,18 @@
   </div>
   <form class="" [formGroup]="insightConfForm">
     <div class="row ml-4 mr-2">
-      <div class="" [ngClass]="addPage?'col-10':'col-6'">
+      <div class="" [ngClass]="addPage?'col-10':'col-7'">
         <div class="form-group row mb-4">
-          <label for="insightName" class="col-form-label" [ngClass]="addPage?'col-2':'col-4'">Insight Name</label>
-          <div class="" [ngClass]="addPage?'col-10':'col-8'">
+          <label for="insightName" class="col-form-label" [ngClass]="addPage?'col-2':'col-3'">Insight Name</label>
+          <div class="" [ngClass]="addPage?'col-10':'col-9'">
             <input type="text" class="form-control" id="insightName" formControlName="insightName">
           </div>
         </div>
       </div>
-      <div class="offset-1 col-5" *ngIf="!addPage">
+      <div class="col-5" *ngIf="!addPage">
         <div class="form-group row mb-4">
-          <label for="author" class="col-4 col-form-label">Author</label>
-          <div class="col-sm-8">
+          <label for="author" class="offset-1 col-5 col-form-label pl-4">Author</label>
+          <div class="col-6">
             <input type="text" class="form-control" id="author" formControlName="author" disabled>
           </div>
         </div>
@@ -34,51 +34,35 @@
     </div>
 
     <div class="row ml-4 mr-2">
-      <div class="" [ngClass]="addPage?'col-10':'col-6'">
+      <div class="" [ngClass]="addPage?'col-10':'col-7'">
         <div class="form-group row mt-1">
-          <label for="insightName" class="col-form-label" [ngClass]="addPage?'col-2':'col-4'">Insight
+          <label for="insightName" class="col-form-label" [ngClass]="addPage?'col-2':'col-3'">Insight
             Description</label>
-          <div class="" [ngClass]="addPage?'col-10':'col-8'">
+          <div class="" [ngClass]="addPage?'col-10':'col-9'">
             <textarea class="form-control" id="insightDescription" [rows]="addPage ? 2 : 3"
               formControlName="insightDescription"></textarea>
           </div>
         </div>
       </div>
-      <div class="offset-1 col-5" *ngIf="!addPage">
+      <div class="col-5" *ngIf="!addPage">
         <div class="form-group row mb-4">
-          <label for="author" class="col-4 col-form-label">Last Modified By</label>
-          <div class="col-sm-8">
+          <label for="author" class="offset-1 col-5 col-form-label pl-4">Last Modified By</label>
+          <div class="col-sm-6">
             <input type="text" class="form-control" id="author" formControlName="author" disabled>
           </div>
         </div>
 
         <div class="form-group row mb-4">
-          <label for="author" class="col-4 col-form-label">Last Modified On</label>
-          <div class="col-sm-8">
+          <label for="author" class="offset-1 col-5 col-form-label pl-4">Last Modified On</label>
+          <div class="col-sm-6">
             <input type="text" class="form-control" id="author" formControlName="author" disabled>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- <div class="row ml-4 mr-2" [ngClass]="addPage?'col-10':'col-6'">
-      <div class="form-group row">
-        <label for="insightDescription" class="col-form-label" [ngClass]="addPage?'col-2':'col-4'">Insight
-          Description</label>
-        <div class="" [ngClass]="addPage?'col-10':'col-8'">
-          <textarea class="form-control" id="insightDescription" rows="2"
-            formControlName="insightDescription"></textarea>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="form-group row ml-4 mr-2 pt-2">
-      <label for="insightDescription" class="col-sm-2 col-form-label">Insight Description</label>
-      <div class="col-sm-8">
-        <textarea class="form-control" id="insightDescription" rows="2" formControlName="insightDescription"></textarea>
-      </div>
-    </div> -->
     <hr />
+
     <div class="h5 basicColor mb-4">
       Insight Mapping
     </div>
@@ -94,7 +78,7 @@
           </div>
         </div>
       </div>
-      <div class="offset-1 col-5">
+      <div class="offset-2 col-5">
         <div class="form-group row">
           <label for="insightName" class="col-4 col-form-label">Insight Name</label>
           <div class="col-sm-8">

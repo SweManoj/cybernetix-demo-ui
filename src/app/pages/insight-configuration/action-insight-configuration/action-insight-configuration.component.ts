@@ -16,6 +16,8 @@ export class ActionInsightConfigurationComponent implements OnInit {
   insightConfigId: number;
   pageTitle = 'Add Insight Configuration';
   addPage = true;
+  updatePage = false;
+  viewPage = false;
 
   optionsSelect: Array<any> = [
     { value: '1', label: 'Option 1' },
@@ -51,9 +53,21 @@ export class ActionInsightConfigurationComponent implements OnInit {
       this.addPage = false;
       this.activeRoute.paramMap.subscribe((params: Params) => {
         this.insightConfigId = params.get('insightConfId');
-        this.pageTitle = (url.includes('edit') ? 'Edit ' : 'View ') + 'Insight Configuration';
+        if (url.includes('edit')) {
+          this.pageTitle = 'Edit Insight Configuration';
+          this.updatePage = true;
+        } else {
+          this.pageTitle = 'View Insight Configuration';
+          this.viewPage = true;
+        }
       });
     }
+  }
+
+  addInsightConfiguration() {
+  }
+
+  testInsightConfig() {
   }
 
   previousPage() {

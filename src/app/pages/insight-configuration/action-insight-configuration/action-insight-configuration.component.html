@@ -35,7 +35,7 @@
 
     <div class="row ml-4 mr-2">
       <div class="" [ngClass]="addPage?'col-10':'col-6'">
-        <div class="form-group row mb-4">
+        <div class="form-group row mt-1">
           <label for="insightName" class="col-form-label" [ngClass]="addPage?'col-2':'col-4'">Insight
             Description</label>
           <div class="" [ngClass]="addPage?'col-10':'col-8'">
@@ -46,7 +46,7 @@
       </div>
       <div class="offset-1 col-5" *ngIf="!addPage">
         <div class="form-group row mb-4">
-          <label for="author" class="col-4 col-form-label">Last Modifier</label>
+          <label for="author" class="col-4 col-form-label">Last Modified By</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" id="author" formControlName="author" disabled>
           </div>
@@ -102,6 +102,19 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="mt-2 ml-2">
+      <span class="mr-3" *ngIf="!viewPage">
+        <button type="button" class="btn btn-primary"
+          (click)="addInsightConfiguration()">{{addPage?'Save':'Update'}}</button>
+      </span>
+      <span class="ml-1" *ngIf="!viewPage">
+        <button type="button" class="btn btn-success" (click)="testInsightConfig()">Test</button>
+      </span>
+      <span>
+        <button *ngIf="viewPage" type="button" class="btn btn-warning" (click)="previousPage()">Cancel</button>
+      </span>
     </div>
   </form>
 </div>

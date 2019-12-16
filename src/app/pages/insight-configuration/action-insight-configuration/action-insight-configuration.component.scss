@@ -25,6 +25,11 @@
     border-radius: 5px !important;
   }
 
+  input[type="radio"]:checked ~ .custom-control-label::after {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-radius: 50%;
+  }
+
   textarea.form-control {
     height: auto;
     background: transparent;

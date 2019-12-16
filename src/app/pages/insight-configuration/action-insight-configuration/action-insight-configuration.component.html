@@ -142,6 +142,95 @@
       </div>
     </div>
 
+    <hr />
+
+    <div class="row ml-4 mr-2">
+      <div class="col-12">
+        <div class="row">
+          <label for="" class="col-2">Insight Definition</label>
+          <div class="ml-2 col-7">
+            <div class="custom-control custom-radio custom-control-inline col-3">
+              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio1">Basic </label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline col-3">
+              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio2">Expert</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-group row mt-3">
+          <label for="insightName" class="col-2 col-form-label">Insight Logic</label>
+          <div class="col-9">
+            <textarea class="form-control" id="insightDescription" rows="4"
+              formControlName="insightDescription"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="h5 mb-4">
+      Output Suppression
+    </div>
+
+    <div class="row ml-4 mr-2">
+      <div class="col-12">
+        <div class="form-group row">
+          <label for="insightName" class="col-2 col-form-label">Expression</label>
+          <div class="col-9">
+            <select class="form-control" id="insightName" formControlName="insightName">
+              <option value="" disabled selected>Open this select menu</option>
+              <option value="1">One</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row ml-4 mr-2">
+      <div class="col-12 mb-3">
+        <div class="row">
+          <label for="" class="col-2">Output Mechanism</label>
+          <div class="ml-2 col-7">
+            <div class="custom-control custom-radio custom-control-inline col-3">
+              <input type="radio" id="email" name="emailSyslog" class="custom-control-input">
+              <label class="custom-control-label" for="email">Email </label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline col-3">
+              <input type="radio" id="syslog" name="emailSyslog" class="custom-control-input">
+              <label class="custom-control-label" for="syslog">Syslog</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="col-5">
+          <div class="form-group row mb-4">
+            <label for="author" class="col-5 col-form-label">Email To</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="author" formControlName="author" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-5">
+          <div class="form-group row mb-4">
+            <label for="author" class="offset-1 col-4 col-form-label">Syslog Receiver</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="author" formControlName="author" disabled>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="mt-2 ml-2">
       <span class="mr-3" *ngIf="!viewPage">

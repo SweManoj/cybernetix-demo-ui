@@ -171,4 +171,9 @@
     border: none !important;
     max-height: 2.8rem;
   }
+
+  // list selection box
+  .ag-icon-checkbox-checked:before {
+    color: #b5b5b5;
+  }
 }

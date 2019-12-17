@@ -23,22 +23,24 @@ export class InsightConfigurationListComponent implements OnInit {
     frameworkComponents;
     rowData$: Observable<any[]> = of([]);
 
+    selectedInsightsIds: number[] = [];
+
     myData = [
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018' }
+        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
+        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
+        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'false' },
+        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'false' },
+        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
+        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
+        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
+        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
+        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' }
     ];
 
     // Ag-Grid Global Filtering
@@ -60,17 +62,26 @@ export class InsightConfigurationListComponent implements OnInit {
             crudActionRenderer: CrudActionComponent
         }
 
+        this.myData.forEach(data => {
+            data.enable = data.enable == 'true' ? 'YES' : 'NO';
+        })
         this.initGrid();
         this.rowData$ = of(this.myData);
     }
 
     ngOnInit() {
+        console.log('count is : ' + this.selectedInsightsIds.length);
     }
 
     initGrid() {
         this.columnDefs = [{
             headerName: 'Insight Name',
             field: 'insightName',
+            headerCheckboxSelection: true,
+            headerCheckboxSelectionFilteredOnly: true,
+            checkboxSelection: true,
+            /* cellRenderer: "agGroupCellRenderer",
+            cellRendererParams: { checkbox: true }, */
             sortable: true,  // by default false
             resizable: false,  // by default false
             filter: 'agTextColumnFilter',
@@ -80,7 +91,7 @@ export class InsightConfigurationListComponent implements OnInit {
         {
             headerName: 'Severity',
             field: 'severity',
-            // sortable: true,
+            sortable: true,
             filter: 'agTextColumnFilter',
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true }
@@ -123,6 +134,15 @@ export class InsightConfigurationListComponent implements OnInit {
             }
         },
         {
+            headerName: 'Enable',
+            field: 'enable',
+            sortable: true,
+            filter: 'agTextColumnFilter',
+            suppressMenu: true,
+            floatingFilterComponentParams: { suppressFilterButton: true },
+            // valueFormatter: params => params.value ? 'YES' : 'NO',
+        },
+        {
             headerName: 'Action',
             cellRenderer: 'crudActionRenderer'
         }
@@ -157,24 +177,31 @@ export class InsightConfigurationListComponent implements OnInit {
     }
 
     onRowSelected() {
+        this.ngZone.run(() => {
+            this.selectedInsightsIds = [];
+            const selectedInsights: any[] = this.gridApi.getSelectedRows();
+
+            for (let i = 0; i < selectedInsights.length; i++)
+                this.selectedInsightsIds.push(selectedInsights[i].insightId);
+        });
     }
 
     addInsightConfiguration() {
         this.ngZone.run(() => {
             this.router.navigate(['addInsightConfiguration'], { relativeTo: this.activateRoute });
-        })
+        });
     }
 
     editInsightConfiguration(insightId) {
         this.ngZone.run(() => {
             this.router.navigate(['editInsightConfiguration', insightId], { relativeTo: this.activateRoute });
-        })
+        });
     }
 
     viewInsightConfiguration(insightId) {
         this.ngZone.run(() => {
             this.router.navigate(['viewInsightConfiguration', insightId], { relativeTo: this.activateRoute });
-        })
+        });
     }
 
     deletePolicyConfig(insightId: number) {

@@ -6,11 +6,12 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActionInsightConfigurationComponent } from './action-insight-configuration/action-insight-configuration.component';
 import { InsightConfigurationListComponent } from './insight-configuration-list/insight-configuration-list.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule, AgGridModule.withComponents([]), FormsModule, ReactiveFormsModule, NgbModalModule.forRoot(),
-    AngularMultiSelectModule
+    AngularMultiSelectModule, BrowserAnimationsModule
   ],
   declarations: [InsightConfigurationListComponent, ActionInsightConfigurationComponent],
   providers: []

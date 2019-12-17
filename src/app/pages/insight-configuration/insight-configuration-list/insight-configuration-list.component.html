@@ -4,11 +4,13 @@
     <span class="pull-right">
         <input hidden type="file" #uploader (change)="uploadFile($event)" />
         <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom"
-            title="Add Insight Config" (click)="addInsightConfiguration()"><i class="fa fa-plus"
-                aria-hidden="false"></i></button>
+            title="Add Insight Config" (click)="addInsightConfiguration()"><i class="fa fa-plus"></i></button>
         <button type="button" class="btn btn-primary ml-2" data-toggle="tooltip" data-placement="bottom"
-            title="Import Insight Config" (click)="uploader.click()"><i class="fa fa-upload"
-                aria-hidden="true"></i></button>
+            title="Import Insight Config" (click)="uploader.click()"><i class="fa fa-upload"></i></button>
+        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Enable"
+            [disabled]="selectedInsightsIds.length==0"><i class="fa fa-unlock-alt"></i></button>
+        <button type="button" [disabled]="selectedInsightsIds.length==0" class="btn btn-primary ml-2"
+            data-toggle="tooltip" data-placement="bottom" title="Disable"><i class="fa fa-lock"></i></button>
     </span>
 
     <div class="form-group has-search pull-right mr-4 w-25">
@@ -23,6 +25,6 @@
         [floatingFilter]="true" style="width: 100%; height: calc(100vh - 160px);" (gridReady)="onGridReady($event)"
         [rowHeight]="38" [headerHeight]="40" [context]="context" [pagination]="true" [paginationAutoPageSize]="true"
         [suppressCellSelection]="true" [frameworkComponents]="frameworkComponents" (rowSelected)="onRowSelected()"
-        [rowSelection]="'multiple'" [suppressRowClickSelection]="true">
+        [rowSelection]="'multiple'" [suppressRowClickSelection]="true" (firstDataRendered)="onGridReady($event)">
     </ag-grid-angular>
 </div>

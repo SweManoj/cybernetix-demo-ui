@@ -27,7 +27,7 @@
         <div class="form-group row mb-4">
           <label for="author" class="offset-1 col-5 col-form-label pl-4">Author</label>
           <div class="col-6">
-            <input type="text" class="form-control" id="author" formControlName="author" disabled>
+            <input type="text" class="form-control" id="author" formControlName="author">
           </div>
         </div>
       </div>
@@ -48,14 +48,14 @@
         <div class="form-group row mb-4">
           <label for="lastModifiedBy" class="offset-1 col-5 col-form-label pl-4">Last Modified By</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="lastModifiedBy" formControlName="lastModifiedBy" disabled>
+            <input type="text" class="form-control" id="lastModifiedBy" formControlName="lastModifiedBy">
           </div>
         </div>
 
         <div class="form-group row mb-4">
           <label for="lastModifiedOn" class="offset-1 col-5 col-form-label pl-4">Last Modified On</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="lastModifiedOn" formControlName="lastModifiedOn" disabled>
+            <input type="text" class="form-control" id="lastModifiedOn" formControlName="lastModifiedOn">
           </div>
         </div>
       </div>
@@ -208,19 +208,19 @@
       </div>
 
       <div class="col-md-12">
-        <div class="col-5">
+        <div class="col-5" *ngIf="outputMechanism.value=='emailOutput'">
           <div class="form-group row mb-4">
             <label for="emailTo" class="col-5 col-form-label">Email To</label>
-            <div class="col-sm-6">
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="emailTo" formControlName="emailTo">
             </div>
           </div>
         </div>
 
-        <div class="col-5">
+        <div class="col-5" *ngIf="outputMechanism.value=='syslogOutput'">
           <div class="form-group row mb-4">
-            <label for="syslogReceiver" class="offset-1 col-4 col-form-label">Syslog Receiver</label>
-            <div class="col-sm-6">
+            <label for="syslogReceiver" class="col-5 col-form-label">Syslog Receiver</label>
+            <div class="col-sm-7">
               <input type="text" class="form-control" id="syslogReceiver" formControlName="syslogReceiver">
             </div>
           </div>

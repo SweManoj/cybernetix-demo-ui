@@ -36,7 +36,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { SecreteKeyPupupComponent } from './core/login/secrete-key-popup/secrete-key-popup.component';
 import { SharedModule } from './shared/shared.module';
 import { InsightConfigurationModule } from './pages/insight-configuration/insight-configuration.module';
-import { ActionInsightConfigurationComponent } from './pages/insight-configuration/action-insight-configuration/action-insight-configuration.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 @NgModule({
     declarations: [
@@ -73,6 +73,7 @@ import { ActionInsightConfigurationComponent } from './pages/insight-configurati
         MatIconModule,
         NgScrollbarModule,
         InsightConfigurationModule,
+        AngularMultiSelectModule
     ],
     exports: [
         MaterialModule

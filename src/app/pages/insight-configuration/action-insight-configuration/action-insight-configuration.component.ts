@@ -19,28 +19,92 @@ export class ActionInsightConfigurationComponent implements OnInit {
   updatePage = false;
   viewPage = false;
 
-  optionsSelect: Array<any> = [
-    { value: '1', label: 'Option 1' },
-    { value: '2', label: 'Option 2' },
-    { value: '3', label: 'Option 3' },
-  ];
 
   insightConfForm: FormGroup;
   insightName: AbstractControl;
   insightDescription: AbstractControl;
   author: AbstractControl;
+  lastModifiedBy: AbstractControl;
+  lastModifiedOn: AbstractControl;
+  severity: AbstractControl;
+  threatCategory: AbstractControl;
+  threatSubCategory: AbstractControl;
+  mitreTactic: AbstractControl;
+  mitreTechnique: AbstractControl;
+  nistControl: AbstractControl;
+  insightDefinition: AbstractControl;
+  insightLogic: AbstractControl;
+  expressions: AbstractControl;
+  outputMechanism: AbstractControl;
+  emailTo: AbstractControl;
+  syslogReceiver: AbstractControl;
 
   initInsightConfForm() {
     this.insightConfForm = this.formBuilder.group({
       insightName: ['', Validators.compose([Validators.required])],
       insightDescription: ['', Validators.compose([Validators.required])],
-      author: ['']
+      author: [''],
+      lastModifiedBy: [''],
+      lastModifiedOn: [''],
+      severity: [''],
+      threatCategory: [''],
+      threatSubCategory: [''],
+      mitreTactic: [''],
+      mitreTechnique: [''],
+      nistControl: [''],
+      insightDefinition: [''],
+      insightLogic: [''],
+      expressions: [''],
+      outputMechanism: [''],
+      emailTo: [''],
+      syslogReceiver: ['']
     });
 
     this.insightName = this.insightConfForm.controls['insightName'];
     this.insightDescription = this.insightConfForm.controls['insightDescription'];
     this.author = this.insightConfForm.controls['author'];
+    this.lastModifiedBy = this.insightConfForm.controls['lastModifiedBy'];
+    this.lastModifiedOn = this.insightConfForm.controls['lastModifiedOn'];
+    this.severity = this.insightConfForm.controls['severity'];
+    this.threatCategory = this.insightConfForm.controls['threatCategory'];
+    this.threatSubCategory = this.insightConfForm.controls['threatSubCategory'];
+    this.mitreTactic = this.insightConfForm.controls['mitreTactic'];
+    this.mitreTechnique = this.insightConfForm.controls['mitreTechnique'];
+    this.nistControl = this.insightConfForm.controls['nistControl'];
+    this.insightDefinition = this.insightConfForm.controls['insightDefinition'];
+    this.insightLogic = this.insightConfForm.controls['insightLogic'];
+    this.expressions = this.insightConfForm.controls['expressions'];
+    this.outputMechanism = this.insightConfForm.controls['outputMechanism'];
+    this.emailTo = this.insightConfForm.controls['emailTo'];
+    this.syslogReceiver = this.insightConfForm.controls['syslogReceiver'];
   }
+
+  severityItemList = [
+    { "id": 1, "itemName": "Low" },
+    { "id": 2, "itemName": "Medium" },
+    { "id": 3, "itemName": "High" }
+  ];
+
+  expressionsItemList = [
+    { "id": 1, "itemName": "India" },
+    { "id": 2, "itemName": "Singapore" },
+    { "id": 3, "itemName": "Australia" },
+    { "id": 4, "itemName": "Canada" },
+    { "id": 5, "itemName": "South Korea" },
+    { "id": 6, "itemName": "Brazil" },
+    { "id": 11, "itemName": "India" },
+    { "id": 21, "itemName": "Singapore" },
+    { "id": 31, "itemName": "Australia" },
+    { "id": 41, "itemName": "Canada" },
+    { "id": 51, "itemName": "South Korea" },
+    { "id": 61, "itemName": "Brazil" },
+    { "id": 12, "itemName": "India" },
+    { "id": 22, "itemName": "Singapore" },
+    { "id": 32, "itemName": "Australia" },
+    { "id": 42, "itemName": "Canada" },
+    { "id": 52, "itemName": "South Korea" },
+    { "id": 62, "itemName": "Brazil" }
+  ]
 
   constructor(private activeRoute: ActivatedRoute, private router: Router,
     private location: Location, private formBuilder: FormBuilder) {

@@ -36,7 +36,7 @@
     <div class="row ml-4 mr-2">
       <div class="" [ngClass]="addPage?'col-10':'col-7'">
         <div class="form-group row mt-1">
-          <label for="insightName" class="col-form-label" [ngClass]="addPage?'col-2':'col-3'">Insight
+          <label for="insightDescription" class="col-form-label" [ngClass]="addPage?'col-2':'col-3'">Insight
             Description</label>
           <div class="" [ngClass]="addPage?'col-10':'col-9'">
             <textarea class="form-control" id="insightDescription" [rows]="addPage ? 2 : 3"
@@ -46,16 +46,16 @@
       </div>
       <div class="col-5" *ngIf="!addPage">
         <div class="form-group row mb-4">
-          <label for="author" class="offset-1 col-5 col-form-label pl-4">Last Modified By</label>
+          <label for="lastModifiedBy" class="offset-1 col-5 col-form-label pl-4">Last Modified By</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="author" formControlName="author" disabled>
+            <input type="text" class="form-control" id="lastModifiedBy" formControlName="lastModifiedBy" disabled>
           </div>
         </div>
 
         <div class="form-group row mb-4">
-          <label for="author" class="offset-1 col-5 col-form-label pl-4">Last Modified On</label>
+          <label for="lastModifiedOn" class="offset-1 col-5 col-form-label pl-4">Last Modified On</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="author" formControlName="author" disabled>
+            <input type="text" class="form-control" id="lastModifiedOn" formControlName="lastModifiedOn" disabled>
           </div>
         </div>
       </div>
@@ -70,23 +70,21 @@
     <div class="row ml-4 mr-2">
       <div class="col-5 contentCenter">
         <div class="form-group row">
-          <label for="insightName" class="col-5 col-form-label">Severity</label>
+          <label for="severity" class="col-5 col-form-label">Severity</label>
           <div class="col-sm-7">
-            <select class="form-control" id="insightName" formControlName="insightName">
-              <option value="" disabled selected>Open this select menu</option>
-              <option value="1">One</option>
-            </select>
+            <angular2-multiselect [data]="severityItemList" formControlName="severity"
+              [settings]="{ singleSelection: 'true', text: 'Select Severity' }">
+            </angular2-multiselect>
           </div>
         </div>
       </div>
       <div class="offset-1 col-5">
         <div class="form-group row">
-          <label for="insightName" class="col-5 col-form-label">MITRE Tactic Name</label>
+          <label for="mitreTactic" class="col-5 col-form-label">MITRE Tactic Name</label>
           <div class="col-sm-7 contentCenter">
-            <select class="form-control" id="insightName" formControlName="insightName">
-              <option value="" disabled selected>Open this select menu</option>
-              <option value="1">One</option>
-            </select>
+            <angular2-multiselect [data]="severityItemList" formControlName="mitreTactic"
+              [settings]="{ singleSelection: 'true', text: 'Select MITRE Tactic' }">
+            </angular2-multiselect>
           </div>
         </div>
       </div>
@@ -95,23 +93,21 @@
     <div class="row ml-4 mr-2">
       <div class="col-5 contentCenter">
         <div class="form-group row">
-          <label for="insightName" class="col-5 col-form-label">Threat Category</label>
+          <label for="threatCategory" class="col-5 col-form-label">Threat Category</label>
           <div class="col-sm-7 contentCenter">
-            <select class="form-control" id="insightName" formControlName="insightName">
-              <option value="" disabled selected>Open this select menu</option>
-              <option value="1">One</option>
-            </select>
+            <angular2-multiselect [data]="severityItemList" formControlName="threatCategory"
+              [settings]="{ singleSelection: 'true', text: 'Select Threat Category' }">
+            </angular2-multiselect>
           </div>
         </div>
       </div>
       <div class="offset-1 col-5">
         <div class="form-group row">
-          <label for="insightName" class="col-5 col-form-label">MITRE Technique Name</label>
+          <label for="mitreTechnique" class="col-5 col-form-label">MITRE Technique Name</label>
           <div class="col-sm-7 contentCenter">
-            <select class="form-control" id="insightName" formControlName="insightName">
-              <option value="" disabled selected>Open this select menu</option>
-              <option value="1">One</option>
-            </select>
+            <angular2-multiselect [data]="severityItemList" formControlName="mitreTechnique"
+              [settings]="{ singleSelection: 'true', text: 'Select MITRE Technique' }">
+            </angular2-multiselect>
           </div>
         </div>
       </div>
@@ -120,23 +116,21 @@
     <div class="row ml-4 mr-2">
       <div class="col-5 contentCenter">
         <div class="form-group row">
-          <label for="insightName" class="col-5 col-form-label">Threat Sub-Category</label>
+          <label for="threatSubCategory" class="col-5 col-form-label">Threat Sub-Category</label>
           <div class="col-sm-7 contentCenter">
-            <select class="form-control" id="insightName" formControlName="insightName">
-              <option value="" disabled selected>Open this select menu</option>
-              <option value="1">One</option>
-            </select>
+            <angular2-multiselect [data]="severityItemList" formControlName="threatSubCategory"
+              [settings]="{ singleSelection: 'true', text: 'Select Threat Sub-Category' }">
+            </angular2-multiselect>
           </div>
         </div>
       </div>
       <div class="offset-1 col-5">
         <div class="form-group row">
-          <label for="insightName" class="col-5 col-form-label">NIST Control Name</label>
+          <label for="nistControl" class="col-5 col-form-label">NIST Control Name</label>
           <div class="col-sm-7 contentCenter">
-            <select class="form-control" id="insightName" formControlName="insightName">
-              <option value="" disabled selected>Open this select menu</option>
-              <option value="1">One</option>
-            </select>
+            <angular2-multiselect [data]="severityItemList" formControlName="nistControl"
+              [settings]="{ singleSelection: 'true', text: 'Select NIST Control' }">
+            </angular2-multiselect>
           </div>
         </div>
       </div>
@@ -147,15 +141,17 @@
     <div class="row ml-4 mr-2">
       <div class="col-12">
         <div class="row">
-          <label for="" class="col-2">Insight Definition</label>
+          <label for="insightDefinition" class="col-2">Insight Definition</label>
           <div class="ml-2 col-7">
             <div class="custom-control custom-radio custom-control-inline col-3">
-              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio1">Basic </label>
+              <input type="radio" id="basic" class="custom-control-input" formControlName="insightDefinition"
+                value="basicInsight">
+              <label class="custom-control-label" for="basic">Basic </label>
             </div>
             <div class="custom-control custom-radio custom-control-inline col-3">
-              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio2">Expert</label>
+              <input type="radio" id="expert" class="custom-control-input" formControlName="insightDefinition"
+                value="expertInsight">
+              <label class="custom-control-label" for="expert">Expert</label>
             </div>
           </div>
         </div>
@@ -163,10 +159,9 @@
 
       <div class="col-12">
         <div class="form-group row mt-3">
-          <label for="insightName" class="col-2 col-form-label">Insight Logic</label>
+          <label for="insightLogic" class="col-2 col-form-label">Insight Logic</label>
           <div class="col-9">
-            <textarea class="form-control" id="insightDescription" rows="4"
-              formControlName="insightDescription"></textarea>
+            <textarea class="form-control" id="insightLogic" rows="4" formControlName="insightLogic"></textarea>
           </div>
         </div>
       </div>
@@ -181,12 +176,11 @@
     <div class="row ml-4 mr-2">
       <div class="col-12">
         <div class="form-group row">
-          <label for="insightName" class="col-2 col-form-label">Expression</label>
+          <label for="expressions" class="col-2 col-form-label">Expression</label>
           <div class="col-9">
-            <select class="form-control" id="insightName" formControlName="insightName">
-              <option value="" disabled selected>Open this select menu</option>
-              <option value="1">One</option>
-            </select>
+            <angular2-multiselect [data]="expressionsItemList" formControlName="expressions" [settings]="{ text: 'Select Expressions', selectAllText: 'Select All' , unSelectAllText: 'UnSelect All' ,
+            enableSearchFilter: true, singleSelection: false, searchPlaceholderText: 'Search Expressions'  }">
+            </angular2-multiselect>
           </div>
         </div>
       </div>
@@ -197,14 +191,16 @@
     <div class="row ml-4 mr-2">
       <div class="col-12 mb-3">
         <div class="row">
-          <label for="" class="col-2">Output Mechanism</label>
+          <label for="outputMechanism" class="col-2">Output Mechanism</label>
           <div class="ml-2 col-7">
             <div class="custom-control custom-radio custom-control-inline col-3">
-              <input type="radio" id="email" name="emailSyslog" class="custom-control-input">
+              <input type="radio" id="email" class="custom-control-input" formControlName="outputMechanism"
+                value="emailOutput">
               <label class="custom-control-label" for="email">Email </label>
             </div>
             <div class="custom-control custom-radio custom-control-inline col-3">
-              <input type="radio" id="syslog" name="emailSyslog" class="custom-control-input">
+              <input type="radio" id="syslog" class="custom-control-input" formControlName="outputMechanism"
+                value="syslogOutput">
               <label class="custom-control-label" for="syslog">Syslog</label>
             </div>
           </div>
@@ -214,18 +210,18 @@
       <div class="col-md-12">
         <div class="col-5">
           <div class="form-group row mb-4">
-            <label for="author" class="col-5 col-form-label">Email To</label>
+            <label for="emailTo" class="col-5 col-form-label">Email To</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="author" formControlName="author" disabled>
+              <input type="text" class="form-control" id="emailTo" formControlName="emailTo">
             </div>
           </div>
         </div>
 
         <div class="col-5">
           <div class="form-group row mb-4">
-            <label for="author" class="offset-1 col-4 col-form-label">Syslog Receiver</label>
+            <label for="syslogReceiver" class="offset-1 col-4 col-form-label">Syslog Receiver</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="author" formControlName="author" disabled>
+              <input type="text" class="form-control" id="syslogReceiver" formControlName="syslogReceiver">
             </div>
           </div>
         </div>

@@ -3,6 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, AbstractControl, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { InsightConfigureService } from '../insight-configuration.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalComponent } from '../../../shared/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-action-insight-configuration',
@@ -116,8 +118,10 @@ export class ActionInsightConfigurationComponent implements OnInit {
 
   mitreTacticList: any[] = [];
   mitreTechniqueList: any[] = [];
-  constructor(private activeRoute: ActivatedRoute, private router: Router,
+  constructor(private activeRoute: ActivatedRoute, private router: Router, private ngbModal: NgbModal,
     private location: Location, private formBuilder: FormBuilder, private insightConfService: InsightConfigureService) {
+
+    window.scrollTo(0, 0);
     this.initInsightConfForm();
 
     this.insightConfService.getAllMitreTactics()
@@ -154,6 +158,14 @@ export class ActionInsightConfigurationComponent implements OnInit {
 
   addInsightConfiguration() {
     this.formSubmitted = true;
+    if (this.insightConfForm.invalid) {
+      const activeModal = this.ngbModal.open(ConfirmationModalComponent, { size: 'sm' });
+      activeModal.componentInstance.message = 'Please Fill the Required Fields';
+      activeModal.componentInstance.footer = false;
+      activeModal.result.then(() => window.scrollTo(0, 0));
+
+    } else {
+    }
   }
 
   testInsightConfig() {

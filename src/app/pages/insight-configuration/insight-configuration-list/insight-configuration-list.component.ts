@@ -52,11 +52,13 @@ export class InsightConfigurationListComponent implements OnInit {
 
     constructor(private ngbModal: NgbModal, private router: Router, private activateRoute: ActivatedRoute,
         private ngZone: NgZone) {
+
+        window.scrollTo(0, 0);
         this.context = {
             componentParent: this,
             viewButton: true,
             editButton: true,
-            deleteButton: true,
+            deleteButton: true
         }
 
         this.frameworkComponents = {

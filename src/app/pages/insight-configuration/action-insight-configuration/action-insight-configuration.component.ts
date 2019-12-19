@@ -44,7 +44,6 @@ export class ActionInsightConfigurationComponent implements OnInit {
   emailTo: AbstractControl;
   syslogReceiver: AbstractControl;
 
-
   initInsightConfForm() {
     this.insightConfForm = this.formBuilder.group({
       insightStatus: ['disable'],
@@ -108,31 +107,12 @@ export class ActionInsightConfigurationComponent implements OnInit {
     { "id": 1, "itemName": "Execute" },
     { "id": 1, "itemName": "Maintain" },
     { "id": 1, "itemName": "Actions on Objectives" }
-  ]
-
-  expressionsItemList = [
-    { "id": 1, "itemName": "India" },
-    { "id": 2, "itemName": "Singapore" },
-    { "id": 3, "itemName": "Australia" },
-    { "id": 4, "itemName": "Canada" },
-    { "id": 5, "itemName": "South Korea" },
-    { "id": 6, "itemName": "Brazil" },
-    { "id": 11, "itemName": "India" },
-    { "id": 21, "itemName": "Singapore" },
-    { "id": 31, "itemName": "Australia" },
-    { "id": 41, "itemName": "Canada" },
-    { "id": 51, "itemName": "South Korea" },
-    { "id": 61, "itemName": "Brazil" },
-    { "id": 12, "itemName": "India" },
-    { "id": 22, "itemName": "Singapore" },
-    { "id": 32, "itemName": "Australia" },
-    { "id": 42, "itemName": "Canada" },
-    { "id": 52, "itemName": "South Korea" },
-    { "id": 62, "itemName": "Brazil" }
-  ]
+  ];
 
   mitreTacticList: any[] = [];
   mitreTechniqueList: any[] = [];
+  NISTList: any[] = [];
+
   constructor(private activeRoute: ActivatedRoute, private router: Router, private ngbModal: NgbModal,
     private location: Location, private formBuilder: FormBuilder, private insightConfService: InsightConfigureService) {
 
@@ -141,6 +121,10 @@ export class ActionInsightConfigurationComponent implements OnInit {
 
     this.insightConfService.getAllMitreTactics()
       .subscribe(mitreTactics => this.mitreTacticList = <any[]>mitreTactics
+        , error => console.log(error));
+
+    this.insightConfService.getAllNistValues()
+      .subscribe(nists => this.NISTList = <any[]>nists
         , error => console.log(error));
   }
 
@@ -156,14 +140,15 @@ export class ActionInsightConfigurationComponent implements OnInit {
         } else {
           this.pageTitle = 'View Insight Configuration';
           this.viewPage = true;
+          this.insightConfForm.disable();
         }
       });
     }
   }
 
   onMitreTacticSelect(event) {
-    this.mitreTechniqueList = [];
-    this.insightConfService.getMitreTechniquesByMitreTacticId(event.mitreId)
+    this.mitreTechnique.setValue([]);
+    this.insightConfService.getMitreTechniquesByMitreTacticId(event.id)
       .subscribe(mitreTechniques => this.mitreTechniqueList = <any[]>mitreTechniques);
   }
 
@@ -186,6 +171,7 @@ export class ActionInsightConfigurationComponent implements OnInit {
     this.location.back();
   }
 
+  // angular2-multiselect formcontrolName not make as touched itself, so we do manually
   markAsTouched(controlName: string) {
     this.insightConfForm.controls[controlName].markAsTouched();
   }
@@ -193,6 +179,14 @@ export class ActionInsightConfigurationComponent implements OnInit {
   // value cancel time, manually clear the values or else it wont get clear
   clearValues(controlName: string) {
     this.insightConfForm.controls[controlName].setValue([]);
+    if (controlName === 'mitreTactic') {
+      this.insightConfForm.controls['mitreTechnique'].setValue([]);
+      this.mitreTechniqueList = [];
+    }
+    else if (controlName === 'threatCategory') {
+      this.insightConfForm.controls['threatSubCategory'].setValue([]);
+      this.mitreTechniqueList = [];
+    }
   }
 
 }

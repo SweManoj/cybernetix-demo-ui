@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="col-5" *ngIf="!addPage">
+      <div class="col-5 mb-1" *ngIf="!addPage">
         <div class="form-group row">
           <label for="author" class="offset-1 col-5 col-form-label pl-4">Author</label>
           <div class="col-6">
@@ -80,13 +80,13 @@
     </div>
 
     <div class="row ml-4 mr-2 mb-3">
-      <div class="col-5 contentCenter">
+      <div class="col-5">
         <div class="form-group row mb-0">
           <label for="severity" class="col-5 col-form-label">Severity</label>
-          <div class="col-sm-7 contentCenter">
+          <div class="col-sm-7">
             <angular2-multiselect [data]="severityItemList" (onDeSelectAll)="clearValues('severity')"
               (click)="markAsTouched('severity')"
-              [settings]="{ singleSelection: 'true', text: 'Select Severity', formControlName:'severity' }"
+              [settings]="{ singleSelection: 'true', text: 'Select Severity', formControlName:'severity'}"
               formControlName="severity">
             </angular2-multiselect>
           </div>
@@ -99,11 +99,11 @@
       <div class="offset-1 col-5">
         <div class="form-group row mb-0">
           <label for="mitreTactic" class="col-5 col-form-label">MITRE Tactic Name</label>
-          <div class="col-sm-7 contentCenter">
+          <div class="col-sm-7 ">
             <angular2-multiselect [data]="mitreTacticList" formControlName="mitreTactic"
               (onDeSelectAll)="clearValues('mitreTactic')" (click)="markAsTouched('mitreTactic')"
               (onSelect)="onMitreTacticSelect($event)"
-              [settings]="{ singleSelection: 'true', text: 'Select MITRE Tactic', primaryKey:'mitreId', labelKey:'mitre' }">
+              [settings]="{ singleSelection: 'true', text: 'Select MITRE Tactic', primaryKey:'id', labelKey:'value' }">
             </angular2-multiselect>
           </div>
         </div>
@@ -115,13 +115,14 @@
     </div>
 
     <div class="row ml-4 mr-2 mb-3">
-      <div class="col-5 contentCenter">
+      <div class="col-5 ">
         <div class="form-group row mb-0">
           <label for="threatCategory" class="col-5 col-form-label">Threat Category</label>
-          <div class="col-sm-7 contentCenter">
-            <angular2-multiselect [data]="severityItemList" formControlName="threatCategory"
-              (onDeSelectAll)="clearValues('threatCategory')" (click)="markAsTouched('threatCategory')"
-              [settings]="{ singleSelection: 'true', text: 'Select Threat Category' }">
+          <div class="col-sm-7 ">
+            <angular2-multiselect [data]="mitreTacticList" formControlName="threatCategory"
+              (onSelect)="onMitreTacticSelect($event)" (onDeSelectAll)="clearValues('threatCategory')"
+              (click)="markAsTouched('threatCategory')"
+              [settings]="{ singleSelection: 'true', text: 'Select Threat Category' , primaryKey:'id', labelKey:'value'}">
             </angular2-multiselect>
           </div>
         </div>
@@ -132,10 +133,10 @@
       <div class="offset-1 col-5">
         <div class="form-group row mb-0">
           <label for="mitreTechnique" class="col-5 col-form-label">MITRE Technique Name</label>
-          <div class="col-sm-7 contentCenter">
+          <div class="col-sm-7 ">
             <angular2-multiselect [data]="mitreTechniqueList" formControlName="mitreTechnique"
               (onDeSelectAll)="clearValues('mitreTechnique')" (click)="markAsTouched('mitreTechnique')"
-              [settings]="{ singleSelection: 'true', text: 'Select MITRE Technique', primaryKey:'mitreId', labelKey:'mitre' }">
+              [settings]="{ singleSelection: 'true', text: 'Select MITRE Technique', primaryKey:'id', labelKey:'value' }">
             </angular2-multiselect>
           </div>
         </div>
@@ -146,13 +147,13 @@
     </div>
 
     <div class="row ml-4 mr-2 mb-3">
-      <div class="col-5 contentCenter">
+      <div class="col-5 ">
         <div class="form-group row mb-0">
           <label for="threatSubCategory" class="col-5 col-form-label">Threat Sub-Category</label>
-          <div class="col-sm-7 contentCenter">
-            <angular2-multiselect [data]="severityItemList" formControlName="threatSubCategory"
+          <div class="col-sm-7 ">
+            <angular2-multiselect [data]="mitreTechniqueList" formControlName="threatSubCategory"
               (onDeSelectAll)="clearValues('threatSubCategory')" (click)="markAsTouched('threatSubCategory')"
-              [settings]="{ singleSelection: 'true', text: 'Select Threat Sub-Category' }">
+              [settings]="{ singleSelection: 'true', text: 'Select Threat Sub-Category' , primaryKey:'id', labelKey:'value' }">
             </angular2-multiselect>
           </div>
         </div>
@@ -163,10 +164,10 @@
       <div class="offset-1 col-5">
         <div class="form-group row mb-0">
           <label for="nistControl" class="col-5 col-form-label">NIST Control Name</label>
-          <div class="col-sm-7 contentCenter">
-            <angular2-multiselect [data]="severityItemList" formControlName="nistControl"
+          <div class="col-sm-7">
+            <angular2-multiselect [data]="NISTList" formControlName="nistControl"
               (onDeSelectAll)="clearValues('nistControl')" (click)="markAsTouched('nistControl')"
-              [settings]="{ singleSelection: 'true', text: 'Select NIST Control' }">
+              [settings]="{ singleSelection: 'true', text: 'Select NIST Control', primaryKey:'id', labelKey:'value' }">
             </angular2-multiselect>
           </div>
         </div>
@@ -177,10 +178,10 @@
     </div>
 
     <div class="row ml-4 mr-2">
-      <div class="col-5 contentCenter">
+      <div class="col-5 ">
         <div class="form-group row mb-0">
           <label for="cyberKillChain" class="col-5 col-form-label">Cyber Kill Chain</label>
-          <div class="col-sm-7 contentCenter">
+          <div class="col-sm-7">
             <angular2-multiselect [data]="cyberKillChainItemList" formControlName="cyberKillChain"
               (onDeSelectAll)="clearValues('cyberKillChain')" (click)="markAsTouched('cyberKillChain')"
               [settings]="{ singleSelection: 'true', text: 'Select Cyber Kill Chain' }">

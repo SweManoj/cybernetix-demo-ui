@@ -11,6 +11,11 @@ export class InsightConfigureService {
         this.mainURl = `${environment.serverUrl}`;
     }
 
+    getAllNistValues() {
+        const url = `${this.mainURl}/getAllNistValues`;
+        return this.http.get(url);
+    }
+
     getAllMitreTactics() {
         const url = `${this.mainURl}/getAllMitreTactics`;
         return this.http.get(url);

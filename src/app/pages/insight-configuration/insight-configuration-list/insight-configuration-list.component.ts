@@ -27,21 +27,21 @@ export class InsightConfigurationListComponent implements OnInit {
     selectedInsightsIds: number[] = [];
 
     myData = [
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'false' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'false' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
-        { insightId: 1, insightName: "IN1", severity: 'SE1', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
-        { insightId: 2, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
-        { insightId: 3, insightName: "IN2", severity: 'SE2', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' }
+        { insightId: 1, insightName: "IN1", mitreTactic: 'Initial Access', severity: 'Low', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
+        { insightId: 2, insightName: "IN2", mitreTactic: 'Execution', severity: 'Medium', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
+        { insightId: 3, insightName: "IN2", mitreTactic: 'Persistence', severity: 'High', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 1, insightName: "IN1", mitreTactic: 'Privilege Escalation', severity: 'Critical', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'false' },
+        { insightId: 2, insightName: "IN2", mitreTactic: 'Defense Evasion', severity: 'High', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 3, insightName: "IN2", mitreTactic: 'Credential Access', severity: 'Medium', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 1, insightName: "IN1", mitreTactic: 'Discovery', severity: 'Low', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'false' },
+        { insightId: 2, insightName: "IN2", mitreTactic: 'Lateral Movement', severity: 'Medium', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 3, insightName: "IN2", mitreTactic: 'Collection', severity: 'High', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
+        { insightId: 1, insightName: "IN1", mitreTactic: 'Command and Control', severity: 'Low', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
+        { insightId: 2, insightName: "IN2", mitreTactic: 'Exfiltration', severity: 'Critical', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 3, insightName: "IN2", mitreTactic: 'Impact', severity: 'High', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
+        { insightId: 1, insightName: "IN1", mitreTactic: 'Lateral Movement', severity: 'Low', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
+        { insightId: 2, insightName: "IN2", mitreTactic: 'Defense Evasion', severity: 'Medium', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
+        { insightId: 3, insightName: "IN2", mitreTactic: 'Persistence', severity: 'Critical', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' }
     ];
 
     // Ag-Grid Global Filtering
@@ -66,7 +66,7 @@ export class InsightConfigurationListComponent implements OnInit {
         }
 
         this.myData.forEach(data => {
-            data.enable = data.enable == 'true' ? 'YES' : 'NO';
+            data.enable = data.enable == 'true' ? 'Enable' : 'Disable';
         })
         this.initGrid();
         this.rowData$ = of(this.myData);
@@ -90,7 +90,7 @@ export class InsightConfigurationListComponent implements OnInit {
             /* cellRenderer: "agGroupCellRenderer",
             cellRendererParams: { checkbox: true }, */
             sortable: true,  // by default false
-            resizable: false,  // by default false
+            resizable: true,  // by default false
             filter: 'agTextColumnFilter',
             suppressMenu: true,   // filter condition in the header
             floatingFilterComponentParams: { suppressFilterButton: true }  // filter symbol remove
@@ -104,9 +104,19 @@ export class InsightConfigurationListComponent implements OnInit {
             floatingFilterComponentParams: { suppressFilterButton: true }
         },
         {
+            headerName: 'Mitre Tactic',
+            field: 'mitreTactic',
+            sortable: true,
+            resizable: true,
+            filter: 'agTextColumnFilter',
+            suppressMenu: true,
+            floatingFilterComponentParams: { suppressFilterButton: true }
+        },
+        {
             headerName: 'Threat Category',
             field: 'threatCategory',
             sortable: true,
+            resizable: true,
             filter: 'agTextColumnFilter',
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true }
@@ -115,6 +125,7 @@ export class InsightConfigurationListComponent implements OnInit {
             headerName: 'Insight Type',
             field: 'insightType',
             sortable: true,
+            resizable: true,
             filter: 'agTextColumnFilter',
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true }
@@ -123,6 +134,7 @@ export class InsightConfigurationListComponent implements OnInit {
             headerName: 'Author',
             field: 'author',
             sortable: true,
+            resizable: true,
             filter: 'agTextColumnFilter',
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true }
@@ -145,6 +157,7 @@ export class InsightConfigurationListComponent implements OnInit {
             field: 'enable',
             sortable: true,
             filter: 'agTextColumnFilter',
+            resizable: true,
             suppressMenu: true,
             floatingFilterComponentParams: { suppressFilterButton: true },
             // valueFormatter: params => params.value ? 'YES' : 'NO',

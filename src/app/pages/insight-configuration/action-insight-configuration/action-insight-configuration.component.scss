@@ -134,3 +134,25 @@
 :host ::ng-deep.c-token {
   background: #455454d1;
 }
+
+// all group (entire buttons)
+.mat-button-toggle-group {
+  height: 2.2rem;
+  align-items: center;
+}
+
+// not-selected
+.mat-button-toggle {
+  background: white;
+  color: red;
+}
+
+// selected
+.mat-button-toggle-checked {
+  background: green;
+  color: black !important;
+}
+
+.btn {
+  height: 2.1rem !important;
+}

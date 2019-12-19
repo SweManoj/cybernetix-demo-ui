@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, AbstractControl, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { InsightConfigureService } from '../insight-configuration.service';
 
 @Component({
   selector: 'app-action-insight-configuration',
@@ -18,9 +19,10 @@ export class ActionInsightConfigurationComponent implements OnInit {
   addPage = true;
   updatePage = false;
   viewPage = false;
-
+  formSubmitted = false;
 
   insightConfForm: FormGroup;
+  insightStatus: AbstractControl;
   insightName: AbstractControl;
   insightDescription: AbstractControl;
   author: AbstractControl;
@@ -32,6 +34,7 @@ export class ActionInsightConfigurationComponent implements OnInit {
   mitreTactic: AbstractControl;
   mitreTechnique: AbstractControl;
   nistControl: AbstractControl;
+  cyberKillChain: AbstractControl;
   insightDefinition: AbstractControl;
   insightLogic: AbstractControl;
   expressions: AbstractControl;
@@ -41,6 +44,7 @@ export class ActionInsightConfigurationComponent implements OnInit {
 
   initInsightConfForm() {
     this.insightConfForm = this.formBuilder.group({
+      insightStatus: ['disable'],
       insightName: ['', Validators.compose([Validators.required])],
       insightDescription: ['', Validators.compose([Validators.required])],
       author: [{ value: '', disabled: true }],
@@ -52,7 +56,8 @@ export class ActionInsightConfigurationComponent implements OnInit {
       mitreTactic: [''],
       mitreTechnique: [''],
       nistControl: [''],
-      insightDefinition: [{ value: 'expertInsight', disabled: true }],
+      cyberKillChain: [''],
+      insightDefinition: [{ value: 'advance', disabled: true }],
       insightLogic: [''],
       expressions: [''],
       outputMechanism: ['emailOutput'],
@@ -60,6 +65,7 @@ export class ActionInsightConfigurationComponent implements OnInit {
       syslogReceiver: ['']
     });
 
+    this.insightStatus = this.insightConfForm.controls['insightStatus'];
     this.insightName = this.insightConfForm.controls['insightName'];
     this.insightDescription = this.insightConfForm.controls['insightDescription'];
     this.author = this.insightConfForm.controls['author'];
@@ -71,6 +77,7 @@ export class ActionInsightConfigurationComponent implements OnInit {
     this.mitreTactic = this.insightConfForm.controls['mitreTactic'];
     this.mitreTechnique = this.insightConfForm.controls['mitreTechnique'];
     this.nistControl = this.insightConfForm.controls['nistControl'];
+    this.cyberKillChain = this.insightConfForm.controls['cyberKillChain'];
     this.insightDefinition = this.insightConfForm.controls['insightDefinition'];
     this.insightLogic = this.insightConfForm.controls['insightLogic'];
     this.expressions = this.insightConfForm.controls['expressions'];
@@ -82,7 +89,8 @@ export class ActionInsightConfigurationComponent implements OnInit {
   severityItemList = [
     { "id": 1, "itemName": "Low" },
     { "id": 2, "itemName": "Medium" },
-    { "id": 3, "itemName": "High" }
+    { "id": 3, "itemName": "High" },
+    { "id": 4, "itemName": "Critical" }
   ];
 
   expressionsItemList = [
@@ -106,9 +114,15 @@ export class ActionInsightConfigurationComponent implements OnInit {
     { "id": 62, "itemName": "Brazil" }
   ]
 
+  mitreTacticList: any[] = [];
+  mitreTechniqueList: any[] = [];
   constructor(private activeRoute: ActivatedRoute, private router: Router,
-    private location: Location, private formBuilder: FormBuilder) {
+    private location: Location, private formBuilder: FormBuilder, private insightConfService: InsightConfigureService) {
     this.initInsightConfForm();
+
+    this.insightConfService.getAllMitreTactics()
+      .subscribe(mitreTactics => this.mitreTacticList = <any[]>mitreTactics
+        , error => console.log(error));
   }
 
   ngOnInit() {
@@ -128,7 +142,18 @@ export class ActionInsightConfigurationComponent implements OnInit {
     }
   }
 
+  onMitreTacticSelect(event) {
+    this.mitreTechniqueList = [];
+    this.insightConfService.getMitreTechniquesByMitreTacticId(event.mitreId)
+      .subscribe(mitreTechniques => this.mitreTechniqueList = <any[]>mitreTechniques);
+  }
+
+  onDeSelectMitreTactic() {
+    this.mitreTechnique.setValue([]);
+  }
+
   addInsightConfiguration() {
+    this.formSubmitted = true;
   }
 
   testInsightConfig() {

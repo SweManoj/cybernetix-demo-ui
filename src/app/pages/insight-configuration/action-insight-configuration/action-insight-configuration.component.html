@@ -1,30 +1,39 @@
-<div class="ml-2 mr-1 mt-2 mb-2">
-  <div class="d-inline-block w-100">
-    <h4 class="basicColor pull-left">{{pageTitle}}</h4>
+<form class="" [formGroup]="insightConfForm">
+  <div class="ml-2 mr-1 mt-2 mb-2">
+    <div class="d-inline-block w-100">
+      <h4 class="basicColor pull-left">{{pageTitle}}</h4>
 
-    <span class="pull-right">
-      <button type="button" class="btn btn-primary btn-sm" (click)="previousPage()"><i class="fa fa-chevron-left"
-          aria-hidden="false"></i> &nbsp;Back</button>
-    </span>
+      <span class="pull-right">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="mr-3" formControlName="insightStatus">
+          <mat-button-toggle value="enable">Enable</mat-button-toggle>
+          <mat-button-toggle value="disable">Disable</mat-button-toggle>
+        </mat-button-toggle-group>
+        <button type="button" class="btn btn-primary btn-sm" (click)="previousPage()"><i class="fa fa-chevron-left"
+            aria-hidden="false"></i> &nbsp;Back</button>
+      </span>
+    </div>
   </div>
-</div>
 
-<div class="ml-2 mr-1 mt-2 mb-2 rounded insightConfigForm basicColor">
-  <div class="h5  mb-4">
-    Insight Definition
-  </div>
-  <form class="" [formGroup]="insightConfForm">
+  <div class="ml-2 mr-1 mt-2 mb-2 rounded insightConfigForm basicColor">
+    <div class="h5  mb-4">
+      Insight Details
+    </div>
+
     <div class="row ml-4 mr-2">
       <div class="" [ngClass]="addPage?'col-10':'col-7'">
-        <div class="form-group row mb-4">
+        <div class="form-group row">
           <label for="insightName" class="col-form-label" [ngClass]="addPage?'col-2':'col-3'">Insight Name</label>
           <div class="" [ngClass]="addPage?'col-10':'col-9'">
             <input type="text" class="form-control" id="insightName" formControlName="insightName">
+            <small class="text-danger"
+              *ngIf="(insightName.touched || formSubmitted) && (insightName.errors?.required || insightName.value.trim()=='')">Insight
+              Name
+              is required</small>
           </div>
         </div>
       </div>
       <div class="col-5" *ngIf="!addPage">
-        <div class="form-group row mb-4">
+        <div class="form-group row">
           <label for="author" class="offset-1 col-5 col-form-label pl-4">Author</label>
           <div class="col-6">
             <input type="text" class="form-control" id="author" formControlName="author">
@@ -41,6 +50,9 @@
           <div class="" [ngClass]="addPage?'col-10':'col-9'">
             <textarea class="form-control" id="insightDescription" [rows]="addPage ? 2 : 3"
               formControlName="insightDescription"></textarea>
+            <small class="text-danger"
+              *ngIf="(insightDescription.touched || formSubmitted) && (insightDescription.errors?.required || insightDescription.value.trim()=='')">Insight
+              Description is required</small>
           </div>
         </div>
       </div>
@@ -69,30 +81,34 @@
 
     <div class="row ml-4 mr-2">
       <div class="col-5 contentCenter">
-        <div class="form-group row">
+        <div class="form-group row mb-1">
           <label for="severity" class="col-5 col-form-label">Severity</label>
-          <div class="col-sm-7">
+          <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="severityItemList" formControlName="severity"
               [settings]="{ singleSelection: 'true', text: 'Select Severity' }">
             </angular2-multiselect>
           </div>
         </div>
+        <small class="text-danger offset-5 col mb-1">Severity Name is required</small>
       </div>
       <div class="offset-1 col-5">
-        <div class="form-group row">
+        <div class="form-group row mb-1">
           <label for="mitreTactic" class="col-5 col-form-label">MITRE Tactic Name</label>
           <div class="col-sm-7 contentCenter">
-            <angular2-multiselect [data]="severityItemList" formControlName="mitreTactic"
-              [settings]="{ singleSelection: 'true', text: 'Select MITRE Tactic' }">
+            <angular2-multiselect [data]="mitreTacticList" formControlName="mitreTactic"
+              (onSelect)="onMitreTacticSelect($event)" (onDeSelectAll)="onDeSelectMitreTactic()"
+              [settings]="{ singleSelection: 'true', text: 'Select MITRE Tactic', primaryKey:'mitreId', labelKey:'mitre' }">
             </angular2-multiselect>
           </div>
         </div>
+        <small class="text-danger offset-5 col mb-1">MITRE Tactic is
+          required</small>
       </div>
     </div>
 
     <div class="row ml-4 mr-2">
       <div class="col-5 contentCenter">
-        <div class="form-group row">
+        <div class="form-group row mb-1">
           <label for="threatCategory" class="col-5 col-form-label">Threat Category</label>
           <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="severityItemList" formControlName="threatCategory"
@@ -100,22 +116,24 @@
             </angular2-multiselect>
           </div>
         </div>
+        <small class="text-danger offset-5 col mb-1">Threat Category is required</small>
       </div>
       <div class="offset-1 col-5">
-        <div class="form-group row">
+        <div class="form-group row mb-1">
           <label for="mitreTechnique" class="col-5 col-form-label">MITRE Technique Name</label>
           <div class="col-sm-7 contentCenter">
-            <angular2-multiselect [data]="severityItemList" formControlName="mitreTechnique"
-              [settings]="{ singleSelection: 'true', text: 'Select MITRE Technique' }">
+            <angular2-multiselect [data]="mitreTechniqueList" formControlName="mitreTechnique"
+              [settings]="{ singleSelection: 'true', text: 'Select MITRE Technique', primaryKey:'mitreId', labelKey:'mitre' }">
             </angular2-multiselect>
           </div>
         </div>
+        <small class="text-danger offset-5 col mb-1">MITRE Technique is required</small>
       </div>
     </div>
 
     <div class="row ml-4 mr-2">
       <div class="col-5 contentCenter">
-        <div class="form-group row">
+        <div class="form-group row mb-1">
           <label for="threatSubCategory" class="col-5 col-form-label">Threat Sub-Category</label>
           <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="severityItemList" formControlName="threatSubCategory"
@@ -123,9 +141,10 @@
             </angular2-multiselect>
           </div>
         </div>
+        <small class="text-danger mt-1 offset-5 col mb-1">Threat Sub-Category is required</small>
       </div>
       <div class="offset-1 col-5">
-        <div class="form-group row">
+        <div class="form-group row mb-1">
           <label for="nistControl" class="col-5 col-form-label">NIST Control Name</label>
           <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="severityItemList" formControlName="nistControl"
@@ -133,15 +152,34 @@
             </angular2-multiselect>
           </div>
         </div>
+        <small class="text-danger offset-5 col mb-1">NIST Control is required</small>
       </div>
     </div>
 
-    <hr />
+    <div class="row ml-4 mr-2">
+      <div class="col-5 contentCenter">
+        <div class="form-group row mb-1">
+          <label for="cyberKillChain" class="col-5 col-form-label">Cyber Kill Chain</label>
+          <div class="col-sm-7 contentCenter">
+            <angular2-multiselect [data]="severityItemList" formControlName="cyberKillChain"
+              [settings]="{ singleSelection: 'true', text: 'Select Cyber Kill Chain' }">
+            </angular2-multiselect>
+          </div>
+        </div>
+        <small class="text-danger mt-1 offset-5 col mb-1">Threat Sub-Category is required</small>
+      </div>
+    </div>
+
+    <hr class="mt-2" />
+
+    <div class="h5 basicColor mb-4">
+      Insight Definition
+    </div>
 
     <div class="row ml-4 mr-2">
       <div class="col-12">
         <div class="row">
-          <label for="insightDefinition" class="col-2">Insight Definition</label>
+          <label for="insightDefinition" class="col-2">Insight Builder</label>
           <div class="ml-2 col-7">
             <div class="custom-control custom-radio custom-control-inline col-3">
               <input type="radio" id="basic" class="custom-control-input" formControlName="insightDefinition"
@@ -149,9 +187,9 @@
               <label class="custom-control-label" for="basic">Basic </label>
             </div>
             <div class="custom-control custom-radio custom-control-inline col-3">
-              <input type="radio" id="expert" class="custom-control-input" formControlName="insightDefinition"
-                value="expertInsight">
-              <label class="custom-control-label" for="expert">Expert</label>
+              <input type="radio" id="advance" class="custom-control-input" formControlName="insightDefinition"
+                value="advance">
+              <label class="custom-control-label" for="advance">Advance</label>
             </div>
           </div>
         </div>
@@ -162,6 +200,7 @@
           <label for="insightLogic" class="col-2 col-form-label">Insight Logic</label>
           <div class="col-9">
             <textarea class="form-control" id="insightLogic" rows="4" formControlName="insightLogic"></textarea>
+            <small class="text-danger">Insight Logic is required</small>
           </div>
         </div>
       </div>
@@ -170,17 +209,15 @@
     <hr />
 
     <div class="h5 mb-4">
-      Output Suppression
+      Output
     </div>
 
     <div class="row ml-4 mr-2">
       <div class="col-12">
         <div class="form-group row">
-          <label for="expressions" class="col-2 col-form-label">Expression</label>
+          <label for="expressions" class="col-2 col-form-label">Suppression</label>
           <div class="col-9">
-            <angular2-multiselect [data]="expressionsItemList" formControlName="expressions" [settings]="{ text: 'Select Expressions', selectAllText: 'Select All' , unSelectAllText: 'UnSelect All' ,
-            enableSearchFilter: true, singleSelection: false, searchPlaceholderText: 'Search Expressions'  }">
-            </angular2-multiselect>
+            <textarea class="form-control" id="expressions" rows="2" formControlName="expressions"></textarea>
           </div>
         </div>
       </div>
@@ -240,5 +277,6 @@
         <button *ngIf="viewPage" type="button" class="btn btn-warning" (click)="previousPage()">Cancel</button>
       </span>
     </div>
-  </form>
-</div>
+
+  </div>
+</form>

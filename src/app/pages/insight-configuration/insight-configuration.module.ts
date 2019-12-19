@@ -7,13 +7,16 @@ import { ActionInsightConfigurationComponent } from './action-insight-configurat
 import { InsightConfigurationListComponent } from './insight-configuration-list/insight-configuration-list.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InsightConfigureService } from './insight-configuration.service';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   imports: [
     CommonModule, AgGridModule.withComponents([]), FormsModule, ReactiveFormsModule, NgbModalModule.forRoot(),
-    AngularMultiSelectModule, BrowserAnimationsModule
+    AngularMultiSelectModule, BrowserAnimationsModule,
+    MatButtonToggleModule
   ],
   declarations: [InsightConfigurationListComponent, ActionInsightConfigurationComponent],
-  providers: []
+  providers: [InsightConfigureService]
 })
 export class InsightConfigurationModule { }

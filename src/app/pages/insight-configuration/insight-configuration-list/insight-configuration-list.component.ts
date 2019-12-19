@@ -21,6 +21,7 @@ export class InsightConfigurationListComponent implements OnInit {
     columnDefs;
     context;
     frameworkComponents;
+    getRowHeight;
     rowData$: Observable<any[]> = of([]);
 
     selectedInsightsIds: number[] = [];
@@ -67,6 +68,10 @@ export class InsightConfigurationListComponent implements OnInit {
         })
         this.initGrid();
         this.rowData$ = of(this.myData);
+
+        this.getRowHeight = function (params) {
+            return 28 * (Math.floor(params.data.author.length / 60) + 3);
+        };
     }
 
     ngOnInit() {

@@ -50,6 +50,7 @@ export class RiskyIPComponent implements OnInit {
     getRiskyIPDetails() {
         this.riskyUserService.getRiskyEntityDetails(this.selectedIP, 'IP').subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            res.riskScore = Math.round(res.riskScore);
             this.ipDetails = res;
         });
         const date = new Date();

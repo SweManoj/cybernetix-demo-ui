@@ -44,6 +44,7 @@ export class ActionInsightConfigurationComponent implements OnInit {
   emailTo: AbstractControl;
   syslogReceiver: AbstractControl;
 
+
   initInsightConfForm() {
     this.insightConfForm = this.formBuilder.group({
       insightStatus: ['disable'],
@@ -52,16 +53,16 @@ export class ActionInsightConfigurationComponent implements OnInit {
       author: [{ value: '', disabled: true }],
       lastModifiedBy: [{ value: '', disabled: true }],
       lastModifiedOn: [{ value: '', disabled: true }],
-      severity: [''],
-      threatCategory: [''],
-      threatSubCategory: [''],
-      mitreTactic: [''],
-      mitreTechnique: [''],
-      nistControl: [''],
-      cyberKillChain: [''],
+      severity: ['', Validators.compose([Validators.required])],
+      threatCategory: ['', Validators.compose([Validators.required])],
+      threatSubCategory: ['', Validators.compose([Validators.required])],
+      mitreTactic: ['', Validators.compose([Validators.required])],
+      mitreTechnique: ['', Validators.compose([Validators.required])],
+      nistControl: ['', Validators.compose([Validators.required])],
+      cyberKillChain: ['', Validators.compose([Validators.required])],
       insightDefinition: [{ value: 'advance', disabled: true }],
-      insightLogic: [''],
-      expressions: [''],
+      insightLogic: ['', Validators.compose([Validators.required])],
+      expressions: ['', Validators.compose([Validators.required])],
       outputMechanism: ['emailOutput'],
       emailTo: [''],
       syslogReceiver: ['']
@@ -94,6 +95,20 @@ export class ActionInsightConfigurationComponent implements OnInit {
     { "id": 3, "itemName": "High" },
     { "id": 4, "itemName": "Critical" }
   ];
+
+  cyberKillChainItemList = [
+    { "id": 1, "itemName": "Reconnaissance" },
+    { "id": 1, "itemName": "Weaponization" },
+    { "id": 1, "itemName": "Delivery" },
+    { "id": 1, "itemName": "Exploitation" },
+    { "id": 1, "itemName": "Privilege Escalation" },
+    { "id": 1, "itemName": "Installation" },
+    { "id": 1, "itemName": "Command & Control" },
+    { "id": 1, "itemName": "Lateral Movement" },
+    { "id": 1, "itemName": "Execute" },
+    { "id": 1, "itemName": "Maintain" },
+    { "id": 1, "itemName": "Actions on Objectives" }
+  ]
 
   expressionsItemList = [
     { "id": 1, "itemName": "India" },
@@ -152,10 +167,6 @@ export class ActionInsightConfigurationComponent implements OnInit {
       .subscribe(mitreTechniques => this.mitreTechniqueList = <any[]>mitreTechniques);
   }
 
-  onDeSelectMitreTactic() {
-    this.mitreTechnique.setValue([]);
-  }
-
   addInsightConfiguration() {
     this.formSubmitted = true;
     if (this.insightConfForm.invalid) {
@@ -173,6 +184,15 @@ export class ActionInsightConfigurationComponent implements OnInit {
 
   previousPage() {
     this.location.back();
+  }
+
+  markAsTouched(controlName: string) {
+    this.insightConfForm.controls[controlName].markAsTouched();
+  }
+
+  // value cancel time, manually clear the values or else it wont get clear
+  clearValues(controlName: string) {
+    this.insightConfForm.controls[controlName].setValue([]);
   }
 
 }

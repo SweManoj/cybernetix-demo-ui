@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="row ml-4 mr-2">
+    <div class="row ml-4 mr-2 mb-3">
       <div class="" [ngClass]="addPage?'col-10':'col-7'">
         <div class="form-group row mt-1">
           <label for="insightDescription" class="col-form-label" [ngClass]="addPage?'col-2':'col-3'">Insight
@@ -79,94 +79,117 @@
       Insight Mapping
     </div>
 
-    <div class="row ml-4 mr-2">
+    <div class="row ml-4 mr-2 mb-3">
       <div class="col-5 contentCenter">
-        <div class="form-group row mb-1">
+        <div class="form-group row mb-0">
           <label for="severity" class="col-5 col-form-label">Severity</label>
           <div class="col-sm-7 contentCenter">
-            <angular2-multiselect [data]="severityItemList" formControlName="severity"
-              [settings]="{ singleSelection: 'true', text: 'Select Severity' }">
+            <angular2-multiselect [data]="severityItemList" (onDeSelectAll)="clearValues('severity')"
+              (click)="markAsTouched('severity')"
+              [settings]="{ singleSelection: 'true', text: 'Select Severity', formControlName:'severity' }"
+              formControlName="severity">
             </angular2-multiselect>
           </div>
         </div>
-        <small class="text-danger offset-5 col mb-1">Severity Name is required</small>
+        <small class="text-danger offset-5 col mb-1"
+          *ngIf="(severity.touched || formSubmitted) && (severity.errors?.required || severity.value=='')">Severity
+          is
+          required</small>
       </div>
       <div class="offset-1 col-5">
-        <div class="form-group row mb-1">
+        <div class="form-group row mb-0">
           <label for="mitreTactic" class="col-5 col-form-label">MITRE Tactic Name</label>
           <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="mitreTacticList" formControlName="mitreTactic"
-              (onSelect)="onMitreTacticSelect($event)" (onDeSelectAll)="onDeSelectMitreTactic()"
+              (onDeSelectAll)="clearValues('mitreTactic')" (click)="markAsTouched('mitreTactic')"
+              (onSelect)="onMitreTacticSelect($event)"
               [settings]="{ singleSelection: 'true', text: 'Select MITRE Tactic', primaryKey:'mitreId', labelKey:'mitre' }">
             </angular2-multiselect>
           </div>
         </div>
-        <small class="text-danger offset-5 col mb-1">MITRE Tactic is
+        <small class="text-danger offset-5 col mb-1"
+          *ngIf="(mitreTactic.touched || formSubmitted) && (mitreTactic.errors?.required || mitreTactic.value=='')">MITRE
+          Tactic is
           required</small>
       </div>
     </div>
 
-    <div class="row ml-4 mr-2">
+    <div class="row ml-4 mr-2 mb-3">
       <div class="col-5 contentCenter">
-        <div class="form-group row mb-1">
+        <div class="form-group row mb-0">
           <label for="threatCategory" class="col-5 col-form-label">Threat Category</label>
           <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="severityItemList" formControlName="threatCategory"
+              (onDeSelectAll)="clearValues('threatCategory')" (click)="markAsTouched('threatCategory')"
               [settings]="{ singleSelection: 'true', text: 'Select Threat Category' }">
             </angular2-multiselect>
           </div>
         </div>
-        <small class="text-danger offset-5 col mb-1">Threat Category is required</small>
+        <small class="text-danger offset-5 col mb-1"
+          *ngIf="(threatCategory.touched || formSubmitted) && (threatCategory.errors?.required || threatCategory.value=='')">Threat
+          Category is required</small>
       </div>
       <div class="offset-1 col-5">
-        <div class="form-group row mb-1">
+        <div class="form-group row mb-0">
           <label for="mitreTechnique" class="col-5 col-form-label">MITRE Technique Name</label>
           <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="mitreTechniqueList" formControlName="mitreTechnique"
+              (onDeSelectAll)="clearValues('mitreTechnique')" (click)="markAsTouched('mitreTechnique')"
               [settings]="{ singleSelection: 'true', text: 'Select MITRE Technique', primaryKey:'mitreId', labelKey:'mitre' }">
             </angular2-multiselect>
           </div>
         </div>
-        <small class="text-danger offset-5 col mb-1">MITRE Technique is required</small>
+        <small class="text-danger offset-5 col mb-1"
+          *ngIf="(mitreTechnique.touched || formSubmitted) && (mitreTechnique.errors?.required || mitreTechnique.value=='')">MITRE
+          Technique is required</small>
       </div>
     </div>
 
-    <div class="row ml-4 mr-2">
+    <div class="row ml-4 mr-2 mb-3">
       <div class="col-5 contentCenter">
-        <div class="form-group row mb-1">
+        <div class="form-group row mb-0">
           <label for="threatSubCategory" class="col-5 col-form-label">Threat Sub-Category</label>
           <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="severityItemList" formControlName="threatSubCategory"
+              (onDeSelectAll)="clearValues('threatSubCategory')" (click)="markAsTouched('threatSubCategory')"
               [settings]="{ singleSelection: 'true', text: 'Select Threat Sub-Category' }">
             </angular2-multiselect>
           </div>
         </div>
-        <small class="text-danger mt-1 offset-5 col mb-1">Threat Sub-Category is required</small>
+        <small class="text-danger mt-1 offset-5 col mb-1"
+          *ngIf="(threatSubCategory.touched || formSubmitted) && (threatSubCategory.errors?.required || threatSubCategory.value=='')">Threat
+          Sub-Category is required</small>
       </div>
       <div class="offset-1 col-5">
-        <div class="form-group row mb-1">
+        <div class="form-group row mb-0">
           <label for="nistControl" class="col-5 col-form-label">NIST Control Name</label>
           <div class="col-sm-7 contentCenter">
             <angular2-multiselect [data]="severityItemList" formControlName="nistControl"
+              (onDeSelectAll)="clearValues('nistControl')" (click)="markAsTouched('nistControl')"
               [settings]="{ singleSelection: 'true', text: 'Select NIST Control' }">
             </angular2-multiselect>
           </div>
         </div>
-        <small class="text-danger offset-5 col mb-1">NIST Control is required</small>
+        <small class="text-danger offset-5 col mb-1"
+          *ngIf="(nistControl.touched || formSubmitted) && (nistControl.errors?.required || nistControl.value=='')">NIST
+          Control is required</small>
       </div>
     </div>
 
     <div class="row ml-4 mr-2">
       <div class="col-5 contentCenter">
-        <div class="form-group row mb-1">
+        <div class="form-group row mb-0">
           <label for="cyberKillChain" class="col-5 col-form-label">Cyber Kill Chain</label>
           <div class="col-sm-7 contentCenter">
-            <angular2-multiselect [data]="severityItemList" formControlName="cyberKillChain"
+            <angular2-multiselect [data]="cyberKillChainItemList" formControlName="cyberKillChain"
+              (onDeSelectAll)="clearValues('cyberKillChain')" (click)="markAsTouched('cyberKillChain')"
               [settings]="{ singleSelection: 'true', text: 'Select Cyber Kill Chain' }">
             </angular2-multiselect>
           </div>
         </div>
-        <small class="text-danger mt-1 offset-5 col mb-1">Threat Sub-Category is required</small>
+        <small class="text-danger mt-1 offset-5 col mb-1"
+          *ngIf="(cyberKillChain.touched || formSubmitted) && (cyberKillChain.errors?.required || cyberKillChain.value=='')">Cyber
+          Kill Chain is required</small>
       </div>
     </div>
 
@@ -200,7 +223,9 @@
           <label for="insightLogic" class="col-2 col-form-label">Insight Logic</label>
           <div class="col-9">
             <textarea class="form-control" id="insightLogic" rows="4" formControlName="insightLogic"></textarea>
-            <small class="text-danger">Insight Logic is required</small>
+            <small class="text-danger"
+              *ngIf="(insightLogic.touched || formSubmitted) && (insightLogic.errors?.required || insightLogic.value.trim()=='')">Insight
+              Logic is required</small>
           </div>
         </div>
       </div>

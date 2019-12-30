@@ -8,6 +8,8 @@ import { UtilService } from '../../services/util.service';
 })
 export class LeftNavComponent {
     menuList = [];
+    RBackList = [];
+
     constructor(private translateService: TranslateService, private util: UtilService) {
         this.menuList = [
             {
@@ -46,8 +48,24 @@ export class LeftNavComponent {
                 navLink: '/cyberNetixPulse'
             }
         ];
-    }
 
+        this.RBackList = [
+            {
+                ionIcon: '',
+                faIcon: '',
+                img: 'user-roles.png',
+                title: 'Roles',
+                navLink: '/rback'
+            },
+            {
+                ionIcon: '',
+                faIcon: 'fa fa-users',
+                img: '',
+                title: 'Users',
+                navLink: '/rback/userList'
+            }
+        ];
+    }
 
     isMenuOpened() {
         return this.util.isMenuOpened;

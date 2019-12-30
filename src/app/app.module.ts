@@ -37,6 +37,7 @@ import { SecreteKeyPupupComponent } from './core/login/secrete-key-popup/secrete
 import { SharedModule } from './shared/shared.module';
 import { InsightConfigurationModule } from './pages/insight-configuration/insight-configuration.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { RbackConfigurationModule } from './pages/rback-configuration/rback-configuration.module';
 
 @NgModule({
     declarations: [
@@ -73,7 +74,8 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
         MatIconModule,
         NgScrollbarModule,
         InsightConfigurationModule,
-        AngularMultiSelectModule
+        AngularMultiSelectModule,
+        RbackConfigurationModule
     ],
     exports: [
         MaterialModule

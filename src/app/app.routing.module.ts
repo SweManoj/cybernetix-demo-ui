@@ -19,6 +19,10 @@ import { RiskyIPComponent } from './pages/dashboard/components/risky-ip/risky-ip
 import { RiskyHostComponent } from './pages/dashboard/components/riskyHost/riskyHost.component';
 import { InsightConfigurationListComponent } from './pages/insight-configuration/insight-configuration-list/insight-configuration-list.component';
 import { ActionInsightConfigurationComponent } from './pages/insight-configuration/action-insight-configuration/action-insight-configuration.component';
+import { RoleListComponent } from './pages/rback-configuration/role/role-list/role-list.component';
+import { RoleActionComponent } from './pages/rback-configuration/role/role-action/role-action.component';
+import { UserListComponent } from './pages/rback-configuration/user/user-list/user-list.component';
+import { UserActionComponent } from './pages/rback-configuration/user/user-action/user-action.component';
 
 export const routes: Routes = [
     {
@@ -30,6 +34,24 @@ export const routes: Routes = [
             { path: 'addInsightConfiguration', component: ActionInsightConfigurationComponent },
             { path: 'editInsightConfiguration/:insightConfId', component: ActionInsightConfigurationComponent },
             { path: 'viewInsightConfiguration/:insightConfId', component: ActionInsightConfigurationComponent },
+            { path: '**', redirectTo: '', pathMatch: 'full' }
+        ]
+    },
+    {
+        path: 'rback',
+        component: MenuLayoutComponent,
+        canActivate: [AuthGuard],
+        children: [
+            { path: '', redirectTo: 'roleList', pathMatch: 'full' },
+            { path: 'roleList', component: RoleListComponent },
+            { path: 'addRole', component: RoleActionComponent },
+            { path: 'editRole/:roleId', component: RoleActionComponent },
+            { path: 'viewRole/:roleId', component: RoleActionComponent },
+
+            { path: 'userList', component: UserListComponent },
+            { path: 'addUser', component: UserActionComponent },
+            { path: 'editUser/:userId', component: UserActionComponent },
+            { path: 'viewUser/:userId', component: UserActionComponent },
             { path: '**', redirectTo: '', pathMatch: 'full' }
         ]
     },

@@ -59,6 +59,11 @@
       }
     }
   }
+
+  ul.RoleBackList {
+    bottom: 0;
+    position: fixed;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -112,4 +117,15 @@
 .fa-pencil-square-o:before {
   color: #029fb9;
   font-size: x-large;
+}
+
+.fa-users:before {
+  color: #029fb9;
+  font-size: 1.4rem;
+  padding-left: 0.15rem;
+}
+
+img.rBack {
+  width: 1.8rem;
+  height: 1.6rem;
 }

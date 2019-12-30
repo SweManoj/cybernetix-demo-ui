@@ -8,12 +8,6 @@ import { dateComparator, filterAgGridDates } from '../../../shared/ag-grid-date-
 import { AgCellRendererEvent } from '../../../shared/renderers/ag-cell-rendere.event';
 import { ConfirmationModalComponent } from '../../../shared/confirmation-modal/confirmation-modal.component';
 
-function isFirstColumn(params) {
-    var displayedColumns = params.columnApi.getAllDisplayedColumns();
-    var thisIsFirstColumn = displayedColumns[0] === params.column;
-    return thisIsFirstColumn;
-}
-
 @Component({
     selector: 'app-insight-configuration',
     templateUrl: './insight-configuration-list.component.html',
@@ -162,7 +156,7 @@ export class InsightConfigurationListComponent implements OnInit {
             }
         },
         {
-            headerName: 'Enable',
+            headerName: 'Status',
             field: 'enable',
             sortable: true,
             filter: 'agTextColumnFilter',

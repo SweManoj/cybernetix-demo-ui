@@ -3,14 +3,14 @@
 
     <span class="pull-right">
         <input hidden type="file" #uploader (change)="uploadFile($event)" />
-        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom"
-            title="Add Insight Config" (click)="addInsightConfiguration()"><i class="fa fa-plus"></i></button>
-        <button type="button" class="btn btn-primary ml-2" data-toggle="tooltip" data-placement="bottom"
-            title="Import Insight Config" (click)="uploader.click()"><i class="fa fa-upload"></i></button>
-        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Enable"
+        <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Add Insight Config"
+            (click)="addInsightConfiguration()"><i class="fa fa-plus"></i></button>
+        <button type="button" class="btn btn-primary ml-2" placement="bottom" ngbTooltip="Import Insight Config"
+            (click)="uploader.click()"><i class="fa fa-upload"></i></button>
+        <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Enable"
             [disabled]="selectedInsightsIds.length==0"><i class="fa fa-unlock-alt"></i></button>
-        <button type="button" [disabled]="selectedInsightsIds.length==0" class="btn btn-primary ml-2"
-            data-toggle="tooltip" data-placement="bottom" title="Disable"><i class="fa fa-lock"></i></button>
+        <button type="button" [disabled]="selectedInsightsIds.length==0" class="btn btn-primary ml-2" placement="bottom"
+            ngbTooltip="Disable"><i class="fa fa-lock"></i></button>
     </span>
 
     <div class="form-group has-search pull-right mr-4 w-25">

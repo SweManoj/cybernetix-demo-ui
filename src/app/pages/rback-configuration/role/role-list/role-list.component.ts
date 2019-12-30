@@ -168,13 +168,13 @@ export class RoleListComponent implements OnInit {
 
   editRole(roleId) {
     this.ngZone.run(() => {
-      this.router.navigate(['editRole', roleId], { relativeTo: this.activateRoute });
+      this.router.navigate(['../editRole', roleId], { relativeTo: this.activateRoute });
     });
   }
 
   viewRole(roleId) {
     this.ngZone.run(() => {
-      this.router.navigate(['viewRole', roleId], { relativeTo: this.activateRoute });
+      this.router.navigate(['../viewRole', roleId], { relativeTo: this.activateRoute });
     });
   }
 

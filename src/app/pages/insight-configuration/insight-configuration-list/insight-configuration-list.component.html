@@ -1,5 +1,5 @@
 <div class="d-inline-block insightConfig mt-2 ml-2">
-    <h4 class="insightConfigHeader mb-3 pull-left">Insight Configurations</h4>
+    <h4 class="commonHeader mb-3 pull-left">Insight Configurations</h4>
 
     <span class="pull-right">
         <input hidden type="file" #uploader (change)="uploadFile($event)" />
@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="insightConfig ml-2 mr-1">
+<div class="commonAgGrid ml-2 mr-1">
     <ag-grid-angular #grid [rowData]="rowData$ |async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
         [floatingFilter]="true" style="width: 100%; height: calc(100vh - 160px);" (gridReady)="onGridReady($event)"
         [rowHeight]="38" [headerHeight]="40" [context]="context" [pagination]="true" [paginationAutoPageSize]="true"

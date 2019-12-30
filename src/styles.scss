@@ -115,8 +115,13 @@
   background-color: transparent;
 }
 
-// Insight Configure
-.insightConfig {
+// Common Header Color
+.commonHeader {
+  color: #b5b5b5;
+}
+
+// Common Ag-Grid Styles
+.commonAgGrid {
   // header title row
   /* .ag-header-cell.ag-header-cell-sortable {
     background: teal;

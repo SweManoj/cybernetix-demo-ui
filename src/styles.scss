@@ -123,6 +123,12 @@
     color: tomato;
   } */
 
+  // sorting icon
+  .ag-theme-material .ag-icon-asc:before,
+  .ag-theme-material .ag-icon-desc:before {
+    color: white;
+  }
+
   // header & filter row
   .ag-theme-material .ag-header-cell {
     text-transform: uppercase;
@@ -143,6 +149,11 @@
     color: white !important;
   }
 
+  // last cell action column - align into center
+  .ag-theme-material .ag-header-cell:last-child {
+    padding-left: 2.8rem;
+  }
+
   // body record
   .ag-theme-material .ag-center-cols-viewport {
     background: #34434e;
@@ -150,6 +161,9 @@
     color: black;
     font-weight: 500;
     font-size: small;
+    color: #a0a0a0;
+    background-color: #34434e;
+    font-family: sans-serif;
   }
 
   // all data row hover
@@ -157,6 +171,10 @@
     background: #34434e !important;
     border-top: none !important;
     border-bottom: 1px solid #5f6e79 !important;
+    word-break: break-all !important;
+
+    /* color: #a0a0a0;
+    background-color: #34434e; */
   }
 
   // last row

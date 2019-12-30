@@ -8,6 +8,12 @@ import { dateComparator, filterAgGridDates } from '../../../shared/ag-grid-date-
 import { AgCellRendererEvent } from '../../../shared/renderers/ag-cell-rendere.event';
 import { ConfirmationModalComponent } from '../../../shared/confirmation-modal/confirmation-modal.component';
 
+function isFirstColumn(params) {
+    var displayedColumns = params.columnApi.getAllDisplayedColumns();
+    var thisIsFirstColumn = displayedColumns[0] === params.column;
+    return thisIsFirstColumn;
+}
+
 @Component({
     selector: 'app-insight-configuration',
     templateUrl: './insight-configuration-list.component.html',
@@ -27,8 +33,8 @@ export class InsightConfigurationListComponent implements OnInit {
     selectedInsightsIds: number[] = [];
 
     myData = [
-        { insightId: 1, insightName: "IN1", mitreTactic: 'Initial Access', severity: 'Low', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
-        { insightId: 2, insightName: "IN2", mitreTactic: 'Execution', severity: 'Medium', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
+        { insightId: 1, insightName: "IN1", mitreTactic: 'Initial AccessInitial AccessInitial Access', severity: 'Low', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'true' },
+        { insightId: 2, insightName: "IN2", mitreTactic: 'Execution Persistence Persistence', severity: 'Medium', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'false' },
         { insightId: 3, insightName: "IN2", mitreTactic: 'Persistence', severity: 'High', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
         { insightId: 1, insightName: "IN1", mitreTactic: 'Privilege Escalation', severity: 'Critical', threatCategory: 'TC1', insightType: 'Basic', author: 'Manoj Kumar', createdOn: '01-12-2018', enable: 'false' },
         { insightId: 2, insightName: "IN2", mitreTactic: 'Defense Evasion', severity: 'High', threatCategory: 'TC2', insightType: 'Expert', author: 'Sachin Shetty', createdOn: '02-12-2018', enable: 'true' },
@@ -58,7 +64,8 @@ export class InsightConfigurationListComponent implements OnInit {
             componentParent: this,
             viewButton: true,
             editButton: true,
-            deleteButton: true
+            deleteButton: true,
+            copyButton: true
         }
 
         this.frameworkComponents = {
@@ -69,6 +76,7 @@ export class InsightConfigurationListComponent implements OnInit {
             data.enable = data.enable == 'true' ? 'Enable' : 'Disable';
         })
         this.initGrid();
+
         this.rowData$ = of(this.myData);
 
         this.getRowHeight = function (params) {
@@ -93,7 +101,8 @@ export class InsightConfigurationListComponent implements OnInit {
             resizable: true,  // by default false
             filter: 'agTextColumnFilter',
             suppressMenu: true,   // filter condition in the header
-            floatingFilterComponentParams: { suppressFilterButton: true }  // filter symbol remove
+            floatingFilterComponentParams: { suppressFilterButton: true },  // filter symbol remove
+            cellStyle: () => ({ color: '#099bb5' })
         },
         {
             headerName: 'Severity',
@@ -191,7 +200,10 @@ export class InsightConfigurationListComponent implements OnInit {
                 this.editInsightConfiguration(insightId);
                 break;
             case AgCellRendererEvent.DELETE_EVENT:
-                this.deletePolicyConfig(data.insightId);
+                this.deleteInsightConfig(data.insightId);
+                break;
+            case AgCellRendererEvent.COPY_EVENT:
+                this.copyInsightConfiguration(data.insightId);
                 break;
         }
     }
@@ -224,10 +236,13 @@ export class InsightConfigurationListComponent implements OnInit {
         });
     }
 
-    deletePolicyConfig(insightId: number) {
+    deleteInsightConfig(insightId: number) {
         const activeModal = this.ngbModal.open(ConfirmationModalComponent, { size: 'sm' });
         activeModal.componentInstance.message = 'Are you sure you want to delete?';
         activeModal.result;
+    }
+
+    copyInsightConfiguration(insightId: number) {
     }
 
     uploadFile(files: FileList) {

@@ -21,4 +21,8 @@ export class CrudActionComponent extends AgCellRendererBase {
     this.sendEvent(AgCellRendererEvent.DELETE_EVENT);
   }
 
+  copy(event: any) {
+    this.sendEvent(AgCellRendererEvent.COPY_EVENT);
+  }
+
 }

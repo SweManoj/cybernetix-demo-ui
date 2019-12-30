@@ -1,3 +1,23 @@
-<p>
-  role-list works!
-</p>
+<div class="d-inline-block insightConfig mt-2 ml-2">
+  <h4 class="insightConfigHeader mb-3 pull-left">Role List</h4>
+
+  <span class="pull-right">
+    <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Create Role" (click)="addRole()">Create
+      Role</button>
+  </span>
+
+  <div class="form-group has-search pull-right mr-4 w-25">
+    <span class="fa fa-search form-control-feedback m-auto"></span>
+    <input type="text" class="form-control" placeholder="Search By Roles Keywords" (keyup)="globalSearchRole()"
+      [(ngModel)]="globalSearchRoleKey">
+  </div>
+</div>
+
+<div class="insightConfig ml-2 mr-1">
+  <ag-grid-angular #grid [rowData]="rowData$ |async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
+    [floatingFilter]="true" style="width: 100%; height: calc(100vh - 160px);" (gridReady)="onGridReady($event)"
+    [rowHeight]="38" [headerHeight]="40" [context]="context" [pagination]="true" [paginationAutoPageSize]="true"
+    [suppressCellSelection]="true" [frameworkComponents]="frameworkComponents" (rowSelected)="onRowSelected()"
+    [rowSelection]="'multiple'" [suppressRowClickSelection]="true" (firstDataRendered)="onGridReady($event)">
+  </ag-grid-angular>
+</div>

@@ -114,7 +114,7 @@
                                     (click)="fetchKibanaRawEventindex(timeLine.lastViolationId)">{{timeLine.noOfEvents}}</span>
                                 <a [routerLink]="['/incidentSummary', timeLine.pvId]"
                                     *ngIf="timeLine.incId !== 0">INC-{{timeLine.incId}}</a>
-                                <span ngbDropdown placement="bottom-right" class="float-right mt-1"
+                                <!-- <span ngbDropdown placement="bottom-right" class="float-right mt-1"
                                     *ngIf="timeLine.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>
                                         Actions
@@ -129,16 +129,17 @@
                                             (click)="createIncident(timeLine)" *ngIf="timeLine.incId === 0">
                                             Create an Incident
                                         </button>
-                                        <!--         <button ngbDropdownItem class="greyBackground">
+                                        // comment this button - Manoj
+                                        <button ngbDropdownItem class="greyBackground">
                                             Perform Remediation
-                                        </button> -->
+                                        </button>
                                         <button [routerLink]="['/policyViolationSummary', timeLine.lastViolationId]"
                                             ngbDropdownItem class="greyBackground"
                                             *ngIf="!policyViolation.dataAggregated">
                                             View Summary
                                         </button>
                                     </div>
-                                </span>
+                                </span> -->
                             </div>
                         </div>
 

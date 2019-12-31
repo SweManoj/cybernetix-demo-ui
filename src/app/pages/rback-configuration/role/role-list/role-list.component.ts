@@ -72,8 +72,8 @@ export class RoleListComponent implements OnInit {
 
   initGrid() {
     this.columnDefs = [{
-      headerName: 'Role Id',
-      field: 'roleId',
+      headerName: 'Role Name',
+      field: 'roleName',
       headerCheckboxSelection: true,
       headerCheckboxSelectionFilteredOnly: true,
       checkboxSelection: true,
@@ -85,14 +85,6 @@ export class RoleListComponent implements OnInit {
       suppressMenu: true,   // filter condition in the header
       floatingFilterComponentParams: { suppressFilterButton: true },  // filter symbol remove
       cellStyle: () => ({ color: '#099bb5' })
-    },
-    {
-      headerName: 'Role Name',
-      field: 'roleName',
-      sortable: true,
-      filter: 'agTextColumnFilter',
-      suppressMenu: true,
-      floatingFilterComponentParams: { suppressFilterButton: true }
     },
     {
       headerName: 'Created By',

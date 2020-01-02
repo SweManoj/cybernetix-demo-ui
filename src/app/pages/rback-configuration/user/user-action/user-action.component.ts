@@ -51,12 +51,41 @@ export class UserActionComponent implements OnInit {
     'permissions': ''
   };
 
+  roleList = [
+    { "id": 1, "itemName": "ROLE_ADMIN" },
+    { "id": 2, "itemName": "ROLE_ANALYST" },
+    { "id": 3, "itemName": "ROLE_USER" },
+    { "id": 4, "itemName": "ROLE_DIRECTIVE" }
+  ];
+
+  roleSetting = {
+    text: "Select Roles",
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    enableSearchFilter: true,
+    disabled: false
+  };
+
+  roleClick() {
+    setTimeout(() => {
+      this.userForm.get('roles').markAsTouched();
+      // this.logValidationErrors();
+    }, 1000);
+  }
+
   initUserForm() {
     this.userForm = this.fb.group({
+      userName: ['', [Validators.required, Validators.minLength(4)]],
       firstName: ['', [Validators.required, Validators.minLength(4)]],
       lastName: ['', [Validators.required]],
-      userName: ['', [Validators.required, Validators.minLength(4)]],
-      phoneNumber: ['', [Validators.required]]
+      email: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
+      userStatus: ['deactivate'],
+      passwordGroup: this.fb.group({
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]]
+      }),
+      roles: ['']
     });
   }
 
@@ -77,12 +106,15 @@ export class UserActionComponent implements OnInit {
           this.pageTitle = 'View User';
           this.viewUser = true;
           this.userForm.disable();
-          // this.roleSettings.disabled = true;
+          this.roleSetting.disabled = true;
         }
       });
     }
   }
 
+  submitUser() {
+
+  }
 
   previousPage() {
     this.location.back();

@@ -6,12 +6,17 @@ import { Router } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { SecreteKeyPupupComponent } from '../login/secrete-key-popup/secrete-key-popup.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { environment } from '../../../environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
     selector: 'app-login',
     templateUrl: 'login.html'
 })
 export class LoginComponent {
+
+    API_KEY: any;
+    API_CIPHER: any;
 
     form: FormGroup;
     username: AbstractControl;
@@ -25,6 +30,9 @@ export class LoginComponent {
 
     constructor(private fb: FormBuilder, private loginService: LoginService, private userContext: UserContext,
         private router: Router, @Inject(SESSION_STORAGE) private sessionStorage: StorageService, public dialog: MatDialog) {
+
+        this.API_KEY = environment.API_KEY;
+        this.API_CIPHER = environment.API_CIPHER;
 
         this.themeName = this.userContext.themeName;
         this.form = this.fb.group({
@@ -59,7 +67,8 @@ export class LoginComponent {
             }, error => {
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;
                 if (this.showSecurityTokenInput) {
-                    this.loginService.getSecreteKey(this.username.value).subscribe(res => {
+                    this.loginService.getSecreteKey(this.username.value).subscribe((res: any) => {
+                        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
                         this.secreteKey = res['SecreteKey'];
                         this.secreteKeyQRUrl = res['SecreteKeyQRURL'];
                     });

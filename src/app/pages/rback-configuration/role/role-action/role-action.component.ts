@@ -78,7 +78,7 @@ export class RoleActionComponent implements OnInit {
   initRoleForm() {
     this.roleForm = this.fb.group({
       roleName: ['', [Validators.required, Validators.minLength(4)]],
-      permissions: ['', [Validators.required]]
+      permissions: [[], [Validators.required]]
     });
 
     this.roleForm.valueChanges.subscribe((data) => {
@@ -111,6 +111,12 @@ export class RoleActionComponent implements OnInit {
 
   ngOnInit() {
     this.initRoleForm();
+
+    // default assign values
+    this.roleForm.get('permissions').setValue([
+      { "id": 1, "itemName": "ROLE_ADMIN" },
+      { "id": 2, "itemName": "ROLE_ANALYST" }
+    ]);
 
     const url = this.router.url;
     if (!url.includes('add')) {

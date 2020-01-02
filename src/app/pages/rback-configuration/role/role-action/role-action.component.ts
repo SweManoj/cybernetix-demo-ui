@@ -107,7 +107,7 @@ export class RoleActionComponent implements OnInit {
   }
 
   constructor(private location: Location, private fb: FormBuilder,
-    private activeRoute: ActivatedRoute, private router: Router, private ngbModal: NgbModal) { }
+    private activeRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.initRoleForm();

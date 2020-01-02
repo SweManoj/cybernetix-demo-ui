@@ -1,7 +1,23 @@
-<div class="container-fluid">
+<div class="d-inline-block mt-2 ml-2" style="width: 99%;">
+    <h5 class="commonHeader mb-3 mt-1 pull-left">INC-{{incidentDetails.incId}}</h5>
+
+    <span class="pull-right">
+        <button type="button" class="btn btn-primary ml-2" placement="bottom" ngbTooltip="Disable">
+            Investigate </button>
+    </span>
+</div>
+
+<!-- <div class="d-inline-block mr-2 ml-2 mb-2 mt-1">
+    <span class="commonHeader h5">INC-{{incidentDetails.incId}}</span>
+
+    <span class="pull-right">
+        <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Investigate    "
+            (click)="addInsightConfiguration()">Investigate</button>
+    </span>
     <div class="row">
         <div class="col-md-9">
-            <h3 class="title">INC-{{incidentDetails.incId}} <span>- {{incidentDetails.incidentName}}</span></h3>
+            <h3 class="title">INC-{{incidentDetails.incId}} <span>- {{incidentDetails.incidentName}}</span>
+            </h3>
         </div>
         <div class="col-md-3 btn-block text-right">
             <button class="assign-btn" *ngIf="showAssigMeButton" mat-raised-button
@@ -15,41 +31,42 @@
             </mat-menu>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="container-fluid">
-    <div class="page-content summary-page">
+<div class="d-inline-block mr-2 ml-2">
+    <div class="page-content summary-page mt-1">
         <div class="row">
-            <div class="col-md-6 left-block">
-                <div class="block-content">
+            <div class="col-md-6 left-block" style="padding-top: .8rem;">
+                <!-- <div class="block-content">
                     <div class="block-title"><i class="fa fa-caret-right"></i> <span>Description</span></div>
                     <div class="block-description">
                         {{incidentDetails.elasticPolicyDescription}}
                     </div>
-                </div>
+                </div> -->
                 <!--     <div class="block-content mb-4">
                         <div class="block-title "><i class="fa fa-caret-right"></i> <span class="recommendation-text"><a
                                     href="#">Recommendation</a></span></div>
                     </div> -->
 
-                <div class="data-list mb-4">
-                    <div class="row mt-2">
-                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Policy Violation Date</div>
+                <div class="data-list mb-4" style="border-top: none;padding-top: 0px;">
+                    <div class="row mt-1">
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Event Date</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">{{incidentDetails.violationTime | date: 'dd/MM/yyy HH:mm:ss'}}
                         </div>
                     </div>
-                    <div class="row mt-2">
-                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Incident Created Date</div>
+                    <div class="row mt-3">
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Incident Creation Date</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            {{incidentDetails.incidentCreatedTime | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
+                            {{incidentDetails.incidentCreatedTime | date: 'dd/MM/yyyy HH:mm:ss'}}
+                        </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Priority</div>
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Risk Score</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
-                            <mat-form-field class="dropdown-priority">
+                            <mat-form-field class="dropdown-priority" style="margin-top: -1rem;">
                                 <mat-select [(ngModel)]="incidentDetails.priority"
                                     (ngModelChange)="incidentDataChange()" name="priority"
                                     placeholder="Select Priority">
@@ -61,11 +78,11 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Indicators of attack</div>
+                        <div class="col-11 col-sm-5 col-xl-4 dataTitle">Number of Models</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">{{incidentDetails.indicatorsCount}}</div>
                     </div>
-                    <div class="row mt-3">
+                    <!-- <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Status</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
@@ -79,8 +96,9 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                    </div>
-                    <div class="row mt-3" [hidden]="incidentDetails.status !== 'CLOSED'">
+                    </div> -->
+                    <div class="row mt-3">
+                        <!-- [hidden]="incidentDetails.status !== 'CLOSED'" -->
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Outcome</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
@@ -88,8 +106,9 @@
                                 <mat-select [(ngModel)]="incidentDetails.outcome" (ngModelChange)="incidentDataChange()"
                                     name="outcome" placeholder="Select Outcome">
                                     <mat-option value="True_POSITIVE">True Positive</mat-option>
-                                    <mat-option value="BENIGN_POSITIVE">Benign Positive</mat-option>
-                                    <mat-option value="FALSE_POSITIVE">False Positive</mat-option>
+                                    <mat-option value="BENIGN_POSITIVE">False Positive Correct Detection</mat-option>
+                                    <mat-option value="FALSE_POSITIVE">False Positive Wrong Detection</mat-option>
+                                    <mat-option value="FALSE_POSITIVE">Open</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -138,7 +157,7 @@
 
                 </div>
 
-                <!--            <div class="block-content mb-1">
+                <!-- <div class="block-content mb-1">
                     <div class="block-title "><i class="fa fa-caret-right"></i> <span>Attachments</span></div>
                     <div class="block-description mt-3 attachments">
                         <div *ngFor="let attachedFile of incidentDetails.attachFiles"
@@ -160,7 +179,7 @@
                 <div class="block-content mb-3">
                     <div class="listedItem">
                         <div class="block-title"><span>Threat Categorization</span></div>
-                        <div class="block-description mt-3">
+                        <!-- <div class="block-description mt-3">
                             <div class="row mt-2 threatRow">
                                 <div class="col-11 col-sm-5 col-lg-3 threatTitle">
                                     Kill Chain
@@ -188,6 +207,20 @@
                                     {{ incidentDetails.elasticSubCategory }}
                                 </div>
                             </div>
+                        </div> -->
+                        <div class="row ng-star-inserted mx-auto mt-2">
+                            <ul class="kill-chain-list">
+                                <li class="mr-2" *ngFor="let threatCategorizationImage of threatCategorizationImages"
+                                    [style.background-image]="'url(../../../../../assets/images/kill-arrow.png)'">
+                                    <div class="img-wrap">
+                                        <img src="../../../../../assets/images/{{threatCategorizationImage.icon}}"
+                                            alt="Complete Mission" />
+                                    </div>
+                                    <span
+                                        style="min-width: 5.5rem;word-break: initial;min-height: 2.4rem;">{{threatCategorizationImage.title}}</span>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
                         </div>
                     </div>
                 </div>
@@ -196,12 +229,14 @@
                     <div class="killChain">
                         <div class="block-title text-left"><span>Kill Chain</span></div>
                         <ul class="kill-chain-list">
-                            <li *ngFor="let killchain of killChainProcess"
+                            <li class="mr-2" *ngFor="let killchainImage of killChainImages"
                                 [style.background-image]="'url(../../../../../assets/images/kill-arrow.png)'">
                                 <div class="img-wrap">
-                                    <img src="../../../../../assets/images/{{killchain.icon}}" alt="Complete Mission" />
+                                    <img src="../../../../../assets/images/{{killchainImage.icon}}"
+                                        alt="Complete Mission" />
                                 </div>
-                                <span>{{killchain.title}}</span>
+                                <span
+                                    style="min-width: 5.5rem;word-break: initial;min-height: 2.4rem;background: grey;color: white;">{{killchainImage.title}}</span>
                             </li>
                         </ul>
                         <div class="clear"></div>
@@ -212,7 +247,6 @@
                             </div>
                         </div> -->
                     </div>
-
                 </div>
 
                 <form [formGroup]="commentFormGroup" class="row user-item pt-2">
@@ -269,7 +303,8 @@
                                 <div class="comment-content">
                                     <div class="row mb-1">
                                         <div class="col-md-12 comment user-info">
-                                            <span class="commentUser">{{comment.incCommentor.userName}}</span> &emsp;&emsp;
+                                            <span class="commentUser">{{comment.incCommentor.userName}}</span>
+                                            &emsp;&emsp;
                                             {{comment.commentTime | timeAgo}}
                                         </div>
                                     </div>
@@ -313,7 +348,8 @@
                                     <div class="comment-content">
                                         <div class="row mb-1">
                                             <div class="col-md-12 comment user-info">
-                                                <span class="commentUser">{{childComment.incCommentor.userName}}</span> &emsp;&emsp;
+                                                <span class="commentUser">{{childComment.incCommentor.userName}}</span>
+                                                &emsp;&emsp;
                                                 {{childComment.commentTime | timeAgo}}
                                             </div>
                                         </div>
@@ -359,7 +395,8 @@
                     viewing this page now
                 </div>
             </div> -->
-            <div class="col-md-4">
+            <!-- Tagged People -->
+            <!-- <div class="col-md-4">
                 <div class="ml-md-5">
                     <h3>Tagged People</h3>
                     <p>
@@ -368,7 +405,7 @@
                         </span>
                     </p>
                 </div>
-            </div>
+            </div> -->
             <!-- 
             <div class="col-md-5">
                 <nav aria-label="Page navigation">

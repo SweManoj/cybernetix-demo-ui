@@ -1,0 +1,88 @@
+.roleForm {
+  padding: 0.8rem;
+
+  .basicColor {
+    color: #a0a0a0;
+  }
+
+  button.btn {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #050606;
+  }
+
+  .btn:focus {
+    outline: 1px solid blue !important;
+  }
+
+  input[type="text"] {
+    border-right-color: #6e7a86 !important;
+    border-radius: 5px !important;
+  }
+
+  .form-control {
+    color: #bdbdbd !important;
+    border: 1px solid #6e7a86;
+  }
+
+  .form-control:focus {
+    color: #bdbdbd;
+    background-color: transparent;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  .contentCenter {
+    display: inline-grid;
+    align-items: center;
+  }
+}
+
+// angular2-multiselect-dropdown box
+:host ::ng-deep.c-btn {
+  border: 1px solid #6e7a86 !important;
+  border-radius: 5px !important;
+  color: #bdbdbd !important;
+  font-size: 1rem;
+}
+
+:host ::ng-deep.c-btn:focus {
+  color: #bdbdbd;
+  background-color: transparent;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+}
+
+:host ::ng-deep.selected-list .c-angle-down svg,
+:host ::ng-deep.selected-list .c-angle-up svg {
+  fill: #bdbdbd !important;
+  display: flex;
+  align-items: center;
+}
+
+// selected box clear icon
+:host ::ng-deep c-icon {
+  fill: #6e7a86 !important;
+}
+
+// search icon on filter
+:host ::ng-deep.list-filter .c-search svg {
+  display: flex;
+  align-items: center;
+}
+
+// selected items
+:host ::ng-deep.selected-list .c-list .c-token {
+  background: #524a4a8c;
+  color: white;
+  margin-right: 0.5rem;
+}
+
+// space b/w selected items and clear button
+:host ::ng-deep.selected-list .c-list .c-token .c-label {
+  display: block;
+  float: left;
+  margin-right: 0.4rem;
+}

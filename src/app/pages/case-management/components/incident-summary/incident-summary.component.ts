@@ -79,43 +79,36 @@ export class IncidentSummaryComponent implements OnInit {
 
     d = new Date();
 
-    killChainProcess = [
-        {
-            title: 'Recon',
-            icon: 'binary-search.png',
-            isKill: 0
-        },
-        {
-            title: 'Weaponization',
-            icon: 'foothold.png',
-            isKill: 1
-        },
-        {
-            title: 'Delivery',
-            icon: 'delivery.png',
-            isKill: 1
-        },
-        {
-            title: 'Exploitation',
-            icon: 'foothold.png',
-            isKill: 1
-        },
-        {
-            title: 'Installation',
-            icon: 'monitor-code.png',
-            isKill: 1
-        },
-        {
-            title: 'Command and Control',
-            icon: 'connection.png',
-            isKill: 0
-        },
-        {
-            title: 'Actions on objective',
-            icon: 'document-approval.png',
-            isKill: 0
-        }
+    threatCategorizationImages = [
+        { title: 'Reconnaissance', icon: 'binary-search.png' },
+        { title: 'Phishing Attack', icon: 'delivery.png' },
+        { title: 'Suspicious Login', icon: 'foothold.png' },
+        { title: 'Powershell Obfuscation', icon: 'monitor-code.png' },
+        { title: 'Lateral Movement', icon: 'document-approval.png' },
+        { title: 'Command and Control', icon: 'foothold.png' },
+        { title: 'Data Exfiltration', icon: 'monitor-code.png' }
     ];
+
+    killChainImages = [
+        { title: 'Reconnaissance', icon: 'binary-search.png' },
+        { title: 'Weaponization', icon: 'foothold.png' },
+        { title: 'Delivery', icon: 'delivery.png' },
+        { title: 'Exploitation', icon: 'monitor-code.png' },
+        { title: 'Installation', icon: 'connection.png' },
+        { title: 'Command and Control', icon: 'document-approval.png' },
+        { title: 'Actions on Objective', icon: 'foothold.png' }
+    ];
+
+    killChainProcess = [
+        { title: 'Recon', icon: 'binary-search.png', isKill: 0 },
+        { title: 'Weaponization', icon: 'foothold.png', isKill: 1 },
+        { title: 'Delivery', icon: 'delivery.png', isKill: 1 },
+        { title: 'Exploitation', icon: 'foothold.png', isKill: 1 },
+        { title: 'Installation', icon: 'monitor-code.png', isKill: 1 },
+        { title: 'Command and Control', icon: 'connection.png', isKill: 0 },
+        { title: 'Actions on objective', icon: 'document-approval.png', isKill: 0 }
+    ];
+
     commentFormGroup: FormGroup;
     commentValue: AbstractControl;
 

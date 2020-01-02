@@ -4,19 +4,22 @@ import { RoleListComponent } from './role/role-list/role-list.component';
 import { RoleActionComponent } from './role/role-action/role-action.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserActionComponent } from './user/user-action/user-action.component';
-import { RbackConfigurationService } from './rback-configuration.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatButtonToggleModule } from '@angular/material';
 import { AgGridModule } from 'ag-grid-angular';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { RoleService } from './role/role-service';
+import { UserService } from './user/user-service';
 
 @NgModule({
   imports: [
     CommonModule, AgGridModule.withComponents([]), FormsModule, ReactiveFormsModule, NgbModalModule.forRoot(),
-    BrowserAnimationsModule, MatButtonToggleModule, NgbModule
+    BrowserAnimationsModule, MatButtonToggleModule, NgbModule,
+    AngularMultiSelectModule
   ],
   declarations: [RoleListComponent, RoleActionComponent, UserListComponent, UserActionComponent],
-  providers: [RbackConfigurationService]
+  providers: [RoleService, UserService]
 })
 export class RbackConfigurationModule { }

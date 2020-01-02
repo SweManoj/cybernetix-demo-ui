@@ -333,7 +333,7 @@ app-policy-violation-summary {
 
       .comment-wrap {
         padding: 0 15px;
-        height: 395px;
+        // height: 395px;
 
         @media (max-width: 576px) {
           padding: 0;
@@ -457,7 +457,7 @@ app-policy-violation-summary {
     border: 1.2px solid #099bb5;
     color: #099bb5;
   }
-  /* .dropdown-priority {
+  .dropdown-priority {
     color: #bdbdbd;
     height: 30px;
     margin-top: -5px;
@@ -467,6 +467,7 @@ app-policy-violation-summary {
     }
     .mat-form-field-infix {
       border-top: none;
+      border-bottom: none;
     }
     .mat-form-field-underline {
       display: none;
@@ -475,7 +476,7 @@ app-policy-violation-summary {
       color: #bdbdbd;
       height: 20px;
     }
-  } */
+  }
   .case-owner-box {
     margin-top: -20px;
     .mat-form-field-label {
@@ -536,6 +537,15 @@ button.btn.btn-sm.buttonBg {
 .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
   display: none !important;
 }
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: #bdbdbd;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  border-bottom: 0.09rem solid #bdbdbd;
+}
+
 .mat-form-field.mat-focused .mat-form-field-ripple {
   background-color: #099bb5;
 }
@@ -751,8 +761,8 @@ div.wizard :nth-child(1) .chain-reaction {
       line-height: 1.2;
       border-radius: 5px;
       text-align: center;
-      width: 74px;
-      height: 41px;
+      width: 70px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;

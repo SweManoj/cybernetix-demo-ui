@@ -41,15 +41,18 @@ export class RoleActionComponent implements OnInit {
   ];
 
   permissionSettings = {
-    singleSelection: false,
     text: "Select Permissions",
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     enableSearchFilter: true,
+    disabled: false
   };
 
-  onSelectItem(event) {
-    this.roleForm.get('permissions').markAsTouched()
+  permissionClick() {
+    setTimeout(() => {
+      this.roleForm.get('permissions').markAsTouched();
+      this.logValidationErrors();
+    }, 1000);
   }
 
   logValidationErrors(group: FormGroup = this.roleForm): void {
@@ -120,6 +123,7 @@ export class RoleActionComponent implements OnInit {
           this.pageTitle = 'View Role';
           this.viewRole = true;
           this.roleForm.disable();
+          this.permissionSettings.disabled = true;
         }
       });
     }

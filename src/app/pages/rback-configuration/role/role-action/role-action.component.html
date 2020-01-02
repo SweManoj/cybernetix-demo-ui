@@ -27,7 +27,8 @@
           <label for="permissions" class="col-form-label col-2 basicColor">Role Permissions</label>
           <div class="col-8">
             <angular2-multiselect [data]="permissionList" [settings]="permissionSettings" formControlName="permissions"
-              (onSelect)="onSelectItem($event)">
+              (focusout)="permissionClick()"
+              (onDeSelectAll)="roleForm.get('permissions').setValue([])">
             </angular2-multiselect>
             <small class="text-danger" *ngIf="formErrors.permissions"> {{formErrors.permissions}}</small>
           </div>

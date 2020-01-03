@@ -31,15 +31,22 @@ export class UserActionComponent implements OnInit {
     },
     email: {
       required: 'Email is required',
+      pattern: 'Invalid Email Pattern'
     },
     phoneNumber: {
       required: 'Phone Number is required',
     },
     password: {
       required: 'Password is required',
+      passwordShortLength: 'Password must be atleast 8 Characters',
+      passwordLongLength: 'Password must not contains more than 20 Characters',
+      passwordNotDigit: 'Password Must contain atleast 1 number',
+      passwordNotSmallLetter: 'Password Must contain atleast 1 small letter',
+      passwordNotCapsLetter: 'Password Must contain atleast 1 capital letter',
+      passwordNotSpecialLetter: 'Password Must contain atleast 1 special character $@$!%*?&#^_+.,:;'
     },
     confirmPassword: {
-      required: 'Confirm Password is required',
+      required: 'Confirm Password is required'
     },
     passwordGroup: {
       passwordMismatch: 'Password and Confirm Password do not Match'
@@ -115,11 +122,11 @@ export class UserActionComponent implements OnInit {
       userName: ['', [Validators.required, Validators.minLength(4)]],
       firstName: ['', [Validators.required, Validators.minLength(4)]],
       lastName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
       userStatus: ['deactivate'],
       passwordGroup: this.fb.group({
-        password: ['', [Validators.required]],
+        password: ['', [Validators.required, passwordCustomPattern]],
         confirmPassword: ['', [Validators.required]]
       }, { validator: matchPasswords }),
       roles: ['', [Validators.required]]
@@ -182,4 +189,26 @@ function matchPasswords(group: AbstractControl): { [key: string]: any } | null {
     return null;
   else
     return { 'passwordMismatch': true };
+}
+
+function passwordCustomPattern(group: AbstractControl): { [key: string]: any } | null {
+
+  const passwordValue = group.value;
+  if (passwordValue.length > 0) {
+    if (passwordValue.length < 8)
+      return { 'passwordShortLength': true };
+    else if (passwordValue.length > 50)
+      return { 'passwordLongLength': true };
+    else if (passwordValue.search(/\d/) == -1)
+      return { 'passwordNotDigit': true };
+    else if (passwordValue.search(/[a-z]/) == -1)
+      return { 'passwordNotSmallLetter': true };
+    else if (passwordValue.search(/[A-Z]/) == -1)
+      return { 'passwordNotCapsLetter': true };
+    else if (passwordValue.search(/[\!\@\#\$\%\^\&\*\(\)\_\+\.\,\;\:]/) == -1)
+      return { 'passwordNotSpecialLetter': true };
+    else
+      return null;
+  } else
+    return null;
 }

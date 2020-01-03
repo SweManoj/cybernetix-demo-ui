@@ -35,6 +35,8 @@ export class UserActionComponent implements OnInit {
     },
     phoneNumber: {
       required: 'Phone Number is required',
+      pattern: 'Invalid Phone Number',
+      minlength: 'Phone Number must be atleast 8 numbers'
     },
     password: {
       required: 'Password is required',
@@ -123,7 +125,7 @@ export class UserActionComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(4)]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(8)]], // (0 | 91)?[6-9][0-9]{9}
       userStatus: ['deactivate'],
       passwordGroup: this.fb.group({
         password: ['', [Validators.required, passwordCustomPattern]],
@@ -141,12 +143,14 @@ export class UserActionComponent implements OnInit {
     this.location.back();
   }
 
-  // manually invoke the error of role select box, if not select anythings
+  // manually invoke the error of role select box at 1st time only, if not select anythings
   roleClick() {
-    setTimeout(() => {
-      this.userForm.get('roles').markAsTouched();
-      this.logValidationErrors();
-    }, 500);
+    if (!this.userForm.get('roles').touched) {
+      setTimeout(() => {
+        this.userForm.get('roles').markAsTouched();
+        this.logValidationErrors();
+      }, 500);
+    }
   }
 
   logValidationErrors(group: FormGroup = this.userForm): void {
@@ -158,7 +162,8 @@ export class UserActionComponent implements OnInit {
         && (abstractControl.touched || abstractControl.dirty)) {
         const messages = this.validationMessages[key];
         for (const errorKey in abstractControl.errors) {
-          if (errorKey) {
+          // only add the first error msg, or else it will print entire error object - this.formErrors[key] == ''
+          if (errorKey && this.formErrors[key] == '') {
             this.formErrors[key] += messages[errorKey] + ' ';
           }
         }

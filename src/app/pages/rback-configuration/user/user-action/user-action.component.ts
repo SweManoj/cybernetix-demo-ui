@@ -36,7 +36,8 @@ export class UserActionComponent implements OnInit {
     phoneNumber: {
       required: 'Phone Number is required',
       pattern: 'Invalid Phone Number',
-      minlength: 'Phone Number must be atleast 8 numbers'
+      minlength: 'Phone Number must be atleast 10 numbers',
+      maxlength: 'Phone Number must not contains more than 14 numbers'
     },
     password: {
       required: 'Password is required',
@@ -125,7 +126,7 @@ export class UserActionComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(4)]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(8)]], // (0 | 91)?[6-9][0-9]{9}
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(14)]], // (0 | 91)?[6-9][0-9]{9}
       userStatus: ['deactivate'],
       passwordGroup: this.fb.group({
         password: ['', [Validators.required, passwordCustomPattern]],

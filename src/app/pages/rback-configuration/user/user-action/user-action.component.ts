@@ -25,7 +25,9 @@ export class UserActionComponent implements OnInit {
   submittedButtonDisabled = false;
   existUserNames = [];
 
-  changePasswordButton = false;
+  showPasswordGroup = true;
+  changePasswordButtonVisible = false;
+  changePasswordButtonLable = 'Change Password';
 
   roleList = [];
   roleSetting = {
@@ -139,12 +141,16 @@ export class UserActionComponent implements OnInit {
         if (url.includes('edit')) {
           this.pageTitle = 'Edit User';
           this.editUser = true;
-          this.changePasswordButton = true;
+          this.changePasswordButtonVisible = true;
+          this.showPasswordGroup = false;
+          this.userForm.get('passwordGroup')
         } else {
           this.pageTitle = 'View User';
           this.viewUser = true;
           this.userForm.disable();
           this.roleSetting.disabled = true;
+          this.showPasswordGroup = false;
+          this.changePasswordButtonVisible = false;
         }
       });
     }
@@ -167,6 +173,18 @@ export class UserActionComponent implements OnInit {
           });
         });
       });
+    }
+  }
+
+  changePasswordButtonClick() {
+    this.showPasswordGroup = !this.showPasswordGroup;
+
+    this.changePasswordButtonLable = this.showPasswordGroup ? 'Hide Password' : 'Change Password';
+
+    if (this.showPasswordGroup) {
+
+    } else {
+
     }
   }
 

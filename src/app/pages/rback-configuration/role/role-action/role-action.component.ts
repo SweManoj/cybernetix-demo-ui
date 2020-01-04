@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RoleService } from '../role-service';
+import * as CryptoJS from 'crypto-js';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-role-action',
@@ -11,48 +13,116 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class RoleActionComponent implements OnInit {
 
+  API_KEY: any;
+  API_CIPHER: any;
+
   pageTitle = 'Add Role';
   editRole = false;
   viewRole = false;
 
-  roleId: number;
   roleForm: FormGroup;
+  existRoleNames = [];
+  submitDisabled = false;
 
-  validationMessages = {
-    'roleName': {
-      'required': 'Role Name is required',
-      'minlength': 'Role Name must be greater than 4 characters'
-    },
-    'permissions': {
-      'required': 'Please Select the Permissions'
-    }
-  };
-
-  formErrors = {
-    'roleName': '',
-    'permissions': ''
-  };
-
-  permissionList = [
-    { "id": 1, "itemName": "ROLE_ADMIN" },
-    { "id": 2, "itemName": "ROLE_ANALYST" },
-    { "id": 3, "itemName": "ROLE_USER" },
-    { "id": 4, "itemName": "ROLE_DIRECTIVE" }
-  ];
-
+  permissionList = [];
   permissionSettings = {
     text: "Select Permissions",
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     enableSearchFilter: true,
-    disabled: false
+    disabled: false,
+    primaryKey: "id", // default - id
+    labelKey: "permissionName",  // default - itemName
+  };
+
+  constructor(private location: Location, private fb: FormBuilder,
+    private activeRoute: ActivatedRoute, private router: Router, private roleService: RoleService) {
+
+    this.API_KEY = environment.API_KEY;
+    this.API_CIPHER = environment.API_CIPHER;
+  }
+
+  ngOnInit() {
+    this.initRoleForm();
+
+    this.roleService.getAllPermissions().subscribe((res: any) => {
+      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+      this.permissionList = res;
+    });
+
+    const url = this.router.url;
+    if (!url.includes('add')) {
+      this.activeRoute.paramMap.subscribe((params: Params) => {
+        const roleId = params.get('roleId');
+
+        this.roleService.getRoleMasterById(roleId).subscribe((res: any) => {
+          res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+
+          this.roleForm.setValue({
+            roleId: res.roleId,
+            roleName: res.roleName,
+            displayRoleName: res.displayRoleName,
+            permissions: res.permissions,
+            permissionIds: []
+          });
+        });
+
+        if (url.includes('edit')) {
+          this.pageTitle = 'Edit Role';
+          this.editRole = true;
+        } else {
+          this.pageTitle = 'View Role';
+          this.viewRole = true;
+          this.roleForm.disable();
+          this.permissionSettings.disabled = true;
+        }
+      });
+    }
+
+    // preventing duplicate role names -- after set value (for getting roleName)
+    if (!url.includes('view')) {
+      this.roleService.getAllRoleMasterNames().subscribe((res: any) => {
+        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+        this.existRoleNames = res;
+        const existRoleNameIndex = this.existRoleNames.indexOf(this.roleForm.get('roleName').value, 0);
+        this.existRoleNames.splice(existRoleNameIndex, 1);
+
+        this.roleForm.get('roleName').valueChanges.subscribe(value => {
+          this.existRoleNames.forEach(existRoleName => {
+            if (new String(existRoleName).toLowerCase() == new String(value).toLowerCase())
+              this.roleForm.get('roleName').setErrors({ duplicateRoleName: true });
+          });
+        });
+      });
+    }
+  }
+
+  validationMessages = {
+    roleName: {
+      required: 'Role Name is required',
+      minlength: 'Role Name must be greater than 4 characters',
+      duplicateRoleName: 'Role Name already Exist'
+    },
+    displayRoleName: {
+      required: 'Role Display Name is required',
+      minlength: 'Role Display Name must be greater than 4 characters'
+    },
+    permissions: {
+      required: 'Please Select the Permissions'
+    }
+  };
+
+  formErrors = {
+    roleName: '',
+    displayRoleName: '',
+    permissions: ''
   };
 
   permissionClick() {
     setTimeout(() => {
       this.roleForm.get('permissions').markAsTouched();
       this.logValidationErrors();
-    }, 1000);
+    }, 500);
   }
 
   logValidationErrors(group: FormGroup = this.roleForm): void {
@@ -77,8 +147,11 @@ export class RoleActionComponent implements OnInit {
 
   initRoleForm() {
     this.roleForm = this.fb.group({
+      roleId: [],
       roleName: ['', [Validators.required, Validators.minLength(4)]],
-      permissions: [[], [Validators.required]]
+      displayRoleName: ['', [Validators.required, Validators.minLength(4)]],
+      permissions: ['', [Validators.required]],
+      permissionIds: []
     });
 
     this.roleForm.valueChanges.subscribe((data) => {
@@ -87,12 +160,28 @@ export class RoleActionComponent implements OnInit {
   }
 
   submitRole() {
+    this.submitDisabled = true;
     this.allFormTouched(this.roleForm);
     this.logValidationErrors(this.roleForm);
     if (this.roleForm.invalid)
       return;
     else {
-      console.log('valid data');
+      var permissionValues = this.roleForm.get('permissions').value;
+      var permissionIds: Array<number[]> = [];
+      permissionValues.forEach(permissionValue => {
+        permissionIds.push(permissionValue.id);
+      });
+      this.roleForm.get('permissionIds').setValue(permissionIds);
+
+      if (this.editRole) {
+        this.roleService.updateRoleMaster(this.roleForm.value).subscribe((res) => {
+          this.previousPage();
+        });
+      } else {
+        this.roleService.addRoleMaster(this.roleForm.value).subscribe((res) => {
+          this.previousPage();
+        });
+      }
     }
   }
 
@@ -104,35 +193,6 @@ export class RoleActionComponent implements OnInit {
       else
         abstractControl.markAsTouched();
     });
-  }
-
-  constructor(private location: Location, private fb: FormBuilder,
-    private activeRoute: ActivatedRoute, private router: Router) { }
-
-  ngOnInit() {
-    this.initRoleForm();
-
-    // default assign values
-    this.roleForm.get('permissions').setValue([
-      { "id": 1, "itemName": "ROLE_ADMIN" },
-      { "id": 2, "itemName": "ROLE_ANALYST" }
-    ]);
-
-    const url = this.router.url;
-    if (!url.includes('add')) {
-      this.activeRoute.paramMap.subscribe((params: Params) => {
-        this.roleId = params.get('roleId');
-        if (url.includes('edit')) {
-          this.pageTitle = 'Edit Role';
-          this.editRole = true;
-        } else {
-          this.pageTitle = 'View Role';
-          this.viewRole = true;
-          this.roleForm.disable();
-          this.permissionSettings.disabled = true;
-        }
-      });
-    }
   }
 
   previousPage() {

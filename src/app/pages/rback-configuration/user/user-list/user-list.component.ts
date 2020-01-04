@@ -7,6 +7,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CrudActionComponent } from '../../../../shared/renderers/crud-action/crud-action.component';
 import { AgCellRendererEvent } from '../../../../shared/renderers/ag-cell-rendere.event';
 import { filterAgGridDates, dateComparator } from '../../../../shared/ag-grid-date-filters/date-filters';
+import { UserService } from '../user-service';
+import { environment } from '../../../../../environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-user-list',
@@ -15,6 +18,9 @@ import { filterAgGridDates, dateComparator } from '../../../../shared/ag-grid-da
 })
 export class UserListComponent implements OnInit {
 
+  API_KEY: any;
+  API_CIPHER: any;
+
   //ag grid 
   gridApi: GridApi;
   gridColumnApi: ColumnApi;
@@ -22,18 +28,9 @@ export class UserListComponent implements OnInit {
   context;
   frameworkComponents;
   getRowHeight;
-  rowData$: Observable<any[]> = of([]);
+  userList: Observable<any[]> = of([]);
 
   selectedUserIds: number[] = [];
-
-  userList = [
-    { userId: 1, userName: "Anil_Erla", email: 'anil.erla@cybernetix.ai', status: 'Activate', createdBy: 'Anil Erla', createdOn: '12-12-2019' },
-    { userId: 2, userName: "Abhi M", email: 'abhiM@cybernetix.ai', status: 'Activate', createdBy: 'Abhi M', createdOn: '26-12-2018' },
-    { userId: 3, userName: "Nitin Tyagi", email: 'nitin.tyagi@cybernetix.ai', status: 'Activate', createdBy: 'Vivek', createdOn: '01-05-2018' },
-    { userId: 4, userName: "Sachin Shetty", email: 'sachin.shetty@cybernetix.ai', status: 'Deactivate', createdBy: 'Abhi M', createdOn: '01-05-2018' },
-    { userId: 5, userName: "Shilpha", email: 'shilpa@cybernetix.ai', status: 'Activate', createdBy: 'Abhi M', createdOn: '19-12-2018' },
-    { userId: 6, userName: "Vivek", email: 'vivek@cybernetix.ai', status: 'Deactivate', createdBy: 'Anil Erla', createdOn: '01-12-2019' }
-  ];
 
   // Ag-Grid Global Filtering
   globalSearchUserKey = '';
@@ -42,9 +39,12 @@ export class UserListComponent implements OnInit {
   }
 
   constructor(private ngbModal: NgbModal, private router: Router, private activateRoute: ActivatedRoute,
-    private ngZone: NgZone) {
+    private ngZone: NgZone, private userService: UserService) {
 
     window.scrollTo(0, 0);
+    this.API_KEY = environment.API_KEY;
+    this.API_CIPHER = environment.API_CIPHER;
+
     this.context = {
       componentParent: this,
       viewButton: true,
@@ -58,10 +58,23 @@ export class UserListComponent implements OnInit {
     }
 
     this.initGrid();
-    this.rowData$ = of(this.userList);
   }
 
   ngOnInit() {
+    this.userService.getAllUsers().subscribe((res: any) => {
+      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+
+      if (res.userRoleDTOSet) {
+        const userRoles = res.userRoleDTOSet;
+        console.log('user roles : ' + userRoles);
+        userRoles.forEach(roleDTO => {
+          console.log('role name is : ' + roleDTO.roleName);
+          res.roles += roleDTO.roleName + ' , ';
+        });
+      }
+      console.log('roles are : ' + res.roles);
+      this.userList = of(res);
+    });
   }
 
   initGrid() {
@@ -87,8 +100,16 @@ export class UserListComponent implements OnInit {
       floatingFilterComponentParams: { suppressFilterButton: true }
     },
     {
+      headerName: 'Roles',
+      field: 'roles',
+      sortable: true,
+      filter: 'agTextColumnFilter',
+      suppressMenu: true,
+      floatingFilterComponentParams: { suppressFilterButton: true }
+    },
+    {
       headerName: 'Status',
-      field: 'status',
+      field: 'enabled',
       sortable: true,
       resizable: true,
       filter: 'agTextColumnFilter',
@@ -106,7 +127,7 @@ export class UserListComponent implements OnInit {
     },
     {
       headerName: 'Created On',
-      field: 'createdOn',
+      field: 'createdDate',
       sortable: true,
       resizable: false,
       comparator: dateComparator,

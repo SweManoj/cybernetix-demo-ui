@@ -7,6 +7,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GridApi, ColumnApi } from 'ag-grid-community';
 import { of, Observable } from 'rxjs';
+import { RoleService } from '../role-service';
+import { environment } from '../../../../../environments/environment';
+import * as CryptoJS from 'crypto-js';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-role-list',
@@ -15,6 +19,9 @@ import { of, Observable } from 'rxjs';
 })
 export class RoleListComponent implements OnInit {
 
+  API_KEY: any;
+  API_CIPHER: any;
+
   //ag grid 
   gridApi: GridApi;
   gridColumnApi: ColumnApi;
@@ -22,24 +29,9 @@ export class RoleListComponent implements OnInit {
   context;
   frameworkComponents;
   getRowHeight;
-  rowData$: Observable<any[]> = of([]);
+  roleList: Observable<any[]> = of([]);
 
   selectedRoleIds: number[] = [];
-
-  roleList = [
-    { roleId: 1, roleName: "ROLE_ADMIN", createdBy: 'Anil Erla', createdOn: '12-12-2019' },
-    { roleId: 2, roleName: "ROLE_USER", createdBy: 'Sachin Shetty', createdOn: '01-12-2019' },
-    { roleId: 3, roleName: "ROLE_ANALYST", createdBy: 'Nitin Tyagi', createdOn: '11-12-2018' },
-    { roleId: 4, roleName: "ROLE_USER", createdBy: 'Abhishek M', createdOn: '19-12-2018' },
-    { roleId: 5, roleName: "ROLE_ADMIN", createdBy: 'Vivek', createdOn: '23-12-2018' },
-    { roleId: 6, roleName: "ROLE_ANALYSTN1", createdBy: 'Shilpha', createdOn: '17-10-2018' },
-    { roleId: 7, roleName: "ROLE_USER", createdBy: 'Agarwal', createdOn: '24-08-2018' },
-    { roleId: 8, roleName: "ROLE_ADMIN", createdBy: 'Anil Erla', createdOn: '01-05-2018' },
-    { roleId: 9, roleName: "ROLE_USER", createdBy: 'Manoj Kumar', createdOn: '29-09-2018' },
-    { roleId: 10, roleName: "ROLE_ANALYST", createdBy: 'Nitin Tyagi', createdOn: '26-12-2018' },
-    { roleId: 11, roleName: "ROLE_ADMIN", createdBy: 'Sachin Shetty', createdOn: '12-03-2018' },
-    { roleId: 12, roleName: "ROLE_USER", createdBy: 'Rohit', createdOn: '24-08-2018' }
-  ];
 
   // Ag-Grid Global Filtering PC-PolicyConfiguration
   globalSearchRoleKey = '';
@@ -48,9 +40,12 @@ export class RoleListComponent implements OnInit {
   }
 
   constructor(private ngbModal: NgbModal, private router: Router, private activateRoute: ActivatedRoute,
-    private ngZone: NgZone) {
+    private ngZone: NgZone, private roleService: RoleService, private _snackBar: MatSnackBar) {
 
     window.scrollTo(0, 0);
+    this.API_KEY = environment.API_KEY;
+    this.API_CIPHER = environment.API_CIPHER;
+
     this.context = {
       componentParent: this,
       viewButton: true,
@@ -64,19 +59,22 @@ export class RoleListComponent implements OnInit {
     }
 
     this.initGrid();
-    this.rowData$ = of(this.roleList);
   }
 
   ngOnInit() {
+    this.roleService.getAllRoleMasters().subscribe((res: any) => {
+      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+      this.roleList = of(res);
+    });
   }
 
   initGrid() {
     this.columnDefs = [{
       headerName: 'Role Name',
       field: 'roleName',
-      headerCheckboxSelection: true,
+      /* headerCheckboxSelection: true,
       headerCheckboxSelectionFilteredOnly: true,
-      checkboxSelection: true,
+      checkboxSelection: true, */
       /* cellRenderer: "agGroupCellRenderer",
       cellRendererParams: { checkbox: true }, */
       sortable: true,  // by default false
@@ -85,6 +83,15 @@ export class RoleListComponent implements OnInit {
       suppressMenu: true,   // filter condition in the header
       floatingFilterComponentParams: { suppressFilterButton: true },  // filter symbol remove
       cellStyle: () => ({ color: '#099bb5' })
+    },
+    {
+      headerName: 'Role Display Name',
+      field: 'displayRoleName',
+      sortable: true,  // by default false
+      resizable: true,  // by default false
+      filter: 'agTextColumnFilter',
+      suppressMenu: true,   // filter condition in the header
+      floatingFilterComponentParams: { suppressFilterButton: true },  // filter symbol remove
     },
     {
       headerName: 'Created By',
@@ -97,7 +104,7 @@ export class RoleListComponent implements OnInit {
     },
     {
       headerName: 'Created On',
-      field: 'createdOn',
+      field: 'createdDate',
       sortable: true,
       resizable: false,
       comparator: dateComparator,
@@ -142,6 +149,7 @@ export class RoleListComponent implements OnInit {
     }
   }
 
+  //  (rowSelected)="onRowSelected()"
   onRowSelected() {
     this.ngZone.run(() => {
       this.selectedRoleIds = [];
@@ -158,13 +166,13 @@ export class RoleListComponent implements OnInit {
     });
   }
 
-  editRole(roleId) {
+  editRole(roleId: number) {
     this.ngZone.run(() => {
       this.router.navigate(['../editRole', roleId], { relativeTo: this.activateRoute });
     });
   }
 
-  viewRole(roleId) {
+  viewRole(roleId: number) {
     this.ngZone.run(() => {
       this.router.navigate(['../viewRole', roleId], { relativeTo: this.activateRoute });
     });
@@ -173,7 +181,16 @@ export class RoleListComponent implements OnInit {
   deleteRole(roleId: number) {
     const activeModal = this.ngbModal.open(ConfirmationModalComponent, { size: 'sm' });
     activeModal.componentInstance.message = 'Are you sure you want to delete?';
-    activeModal.result;
+    activeModal.result.then(res => {
+      if (res == 'Y') {
+        this.roleService.deleteRoleMasterByRoleMasterId(roleId).subscribe(res => {
+          this._snackBar.open('Role Deleted Successfully', null, {
+            duration: 4000,
+          });
+          this.ngOnInit();
+        })
+      }
+    });
   }
 
 }

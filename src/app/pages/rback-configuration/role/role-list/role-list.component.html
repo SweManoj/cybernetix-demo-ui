@@ -14,10 +14,10 @@
 </div>
 
 <div class="commonAgGrid ml-2 mr-1">
-  <ag-grid-angular #grid [rowData]="rowData$ |async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
+  <ag-grid-angular #grid [rowData]="roleList | async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
     [floatingFilter]="true" style="width: 100%; height: calc(100vh - 160px);" (gridReady)="onGridReady($event)"
     [rowHeight]="38" [headerHeight]="40" [context]="context" [pagination]="true" [paginationAutoPageSize]="true"
-    [suppressCellSelection]="true" [frameworkComponents]="frameworkComponents" (rowSelected)="onRowSelected()"
-    [rowSelection]="'multiple'" [suppressRowClickSelection]="true" (firstDataRendered)="onGridReady($event)">
+    [suppressCellSelection]="true" [frameworkComponents]="frameworkComponents" [rowSelection]="'multiple'"
+    [suppressRowClickSelection]="true" (firstDataRendered)="onGridReady($event)">
   </ag-grid-angular>
 </div>

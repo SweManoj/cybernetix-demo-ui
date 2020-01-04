@@ -2,8 +2,8 @@
   <h4 class="commonHeader mb-3 pull-left">User List</h4>
 
   <span class="pull-right">
-    <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Add User"
-      (click)="addUser()">Add User</button>
+    <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Add User" (click)="addUser()">Add
+      User</button>
     <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Activate"
       [disabled]="selectedUserIds.length==0"><i class="fa fa-unlock-alt"></i></button>
     <button type="button" [disabled]="selectedUserIds.length==0" class="btn btn-primary ml-2" placement="bottom"
@@ -18,7 +18,7 @@
 </div>
 
 <div class="commonAgGrid ml-2 mr-1">
-  <ag-grid-angular #grid [rowData]="rowData$ |async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
+  <ag-grid-angular #grid [rowData]="userList |async" [columnDefs]="columnDefs" class="ag-theme-material manoj"
     [floatingFilter]="true" style="width: 100%; height: calc(100vh - 160px);" (gridReady)="onGridReady($event)"
     [rowHeight]="38" [headerHeight]="40" [context]="context" [pagination]="true" [paginationAutoPageSize]="true"
     [suppressCellSelection]="true" [frameworkComponents]="frameworkComponents" (rowSelected)="onRowSelected()"

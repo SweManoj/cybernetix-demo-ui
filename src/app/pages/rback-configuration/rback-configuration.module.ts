@@ -12,12 +12,13 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { RoleService } from './role/role-service';
 import { UserService } from './user/user-service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
     CommonModule, AgGridModule.withComponents([]), FormsModule, ReactiveFormsModule, NgbModalModule.forRoot(),
     BrowserAnimationsModule, MatButtonToggleModule, NgbModule,
-    AngularMultiSelectModule
+    AngularMultiSelectModule, MatSnackBarModule
   ],
   declarations: [RoleListComponent, RoleActionComponent, UserListComponent, UserActionComponent],
   providers: [RoleService, UserService]

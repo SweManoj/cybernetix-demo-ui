@@ -25,6 +25,8 @@ export class UserActionComponent implements OnInit {
   submittedButtonDisabled = false;
   existUserNames = [];
 
+  changePasswordButton = false;
+
   roleList = [];
   roleSetting = {
     text: "Select Roles",
@@ -129,6 +131,7 @@ export class UserActionComponent implements OnInit {
               password: '',
               confirmPassword: ''
             },
+            password: '',
             roles: user.userRoleDTOSet
           });
         });
@@ -136,6 +139,7 @@ export class UserActionComponent implements OnInit {
         if (url.includes('edit')) {
           this.pageTitle = 'Edit User';
           this.editUser = true;
+          this.changePasswordButton = true;
         } else {
           this.pageTitle = 'View User';
           this.viewUser = true;
@@ -190,6 +194,7 @@ export class UserActionComponent implements OnInit {
         password: ['', [Validators.required, passwordCustomPattern]],
         confirmPassword: ['', [Validators.required]]
       }, { validator: matchPasswords }),
+      password: '',  // for adding the final password
       roles: ['', [Validators.required]]
     });
 

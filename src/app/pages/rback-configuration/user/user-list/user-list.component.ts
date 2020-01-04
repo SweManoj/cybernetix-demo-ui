@@ -10,6 +10,7 @@ import { filterAgGridDates, dateComparator } from '../../../../shared/ag-grid-da
 import { UserService } from '../user-service';
 import { environment } from '../../../../../environments/environment';
 import * as CryptoJS from 'crypto-js';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-list',
@@ -39,7 +40,7 @@ export class UserListComponent implements OnInit {
   }
 
   constructor(private ngbModal: NgbModal, private router: Router, private activateRoute: ActivatedRoute,
-    private ngZone: NgZone, private userService: UserService) {
+    private ngZone: NgZone, private userService: UserService, private _snackBar: MatSnackBar) {
 
     window.scrollTo(0, 0);
     this.API_KEY = environment.API_KEY;
@@ -61,10 +62,10 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getAllUsers().subscribe((res: any) => {
-      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+    this.userService.getAllUsers().subscribe((users: any) => {
+      users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
-      if (res.userRoleDTOSet) {
+      /* if (res.userRoleDTOSet) {
         const userRoles = res.userRoleDTOSet;
         console.log('user roles : ' + userRoles);
         userRoles.forEach(roleDTO => {
@@ -72,8 +73,11 @@ export class UserListComponent implements OnInit {
           res.roles += roleDTO.roleName + ' , ';
         });
       }
-      console.log('roles are : ' + res.roles);
-      this.userList = of(res);
+      console.log('roles are : ' + res.roles); */
+      users.forEach(user => {
+        user.createdby = user.createdby ? user.createdby : '-'
+      });
+      this.userList = of(users);
     });
   }
 
@@ -101,7 +105,7 @@ export class UserListComponent implements OnInit {
     },
     {
       headerName: 'Roles',
-      field: 'roles',
+      field: 'distinctRoles',
       sortable: true,
       filter: 'agTextColumnFilter',
       suppressMenu: true,
@@ -118,7 +122,7 @@ export class UserListComponent implements OnInit {
     },
     {
       headerName: 'Created By',
-      field: 'createdBy',
+      field: 'createdby',
       sortable: true,
       resizable: true,
       filter: 'agTextColumnFilter',
@@ -200,10 +204,19 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  deleteUser(insightId: number) {
+  deleteUser(userId: number) {
     const activeModal = this.ngbModal.open(ConfirmationModalComponent, { size: 'sm' });
     activeModal.componentInstance.message = 'Are you sure you want to delete?';
-    activeModal.result;
+    activeModal.result.then(res => {
+      if (res == 'Y') {
+        this.userService.deleteUserByAdmin(userId).subscribe(res => {
+          this._snackBar.open('User Deleted Successfully', null, {
+            duration: 4000,
+          });
+          this.ngOnInit();
+        })
+      }
+    });
   }
 
 }

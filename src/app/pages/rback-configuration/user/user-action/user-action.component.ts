@@ -53,11 +53,11 @@ export class UserActionComponent implements OnInit {
       required: 'Email is required',
       pattern: 'Invalid Email Pattern'
     },
-    phoneNumber: {
-      required: 'Phone Number is required',
-      pattern: 'Invalid Phone Number',
-      minlength: 'Phone Number must be atleast 10 numbers',
-      maxlength: 'Phone Number must not contains more than 14 numbers'
+    mobileNumber: {
+      required: 'Mobile Number is required',
+      pattern: 'Invalid Mobile Number',
+      minlength: 'Mobile Number must be atleast 10 numbers',
+      maxlength: 'Mobile Number must not contains more than 14 numbers'
     },
     password: {
       required: 'Password is required',
@@ -84,7 +84,7 @@ export class UserActionComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: '',
+    mobileNumber: '',
     password: '',
     confirmPassword: '',
     passwordGroup: '',
@@ -118,18 +118,19 @@ export class UserActionComponent implements OnInit {
           user = JSON.parse(CryptoJS.AES.decrypt(user.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
           this.userForm.setValue({
-            userName: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            phoneNumber: '',
-            userStatus: '',
+            userId: user.userId,
+            userName: user.userName,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            mobileNumber: user.mobileNumber,
+            enabled: user.enabled ? "true" : "false",
             passwordGroup: {
               password: '',
               confirmPassword: ''
             },
-            roles: ''
-          })
+            roles: user.userRoleDTOSet
+          });
         });
 
         if (url.includes('edit')) {
@@ -178,12 +179,13 @@ export class UserActionComponent implements OnInit {
 
   initUserForm() {
     this.userForm = this.fb.group({
+      userId: '',
       userName: ['', [Validators.required, Validators.minLength(4)]],
       firstName: ['', [Validators.required, Validators.minLength(4)]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(14)]], // (0 | 91)?[6-9][0-9]{9}
-      userStatus: ['deactivate'],
+      mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(14)]], // (0 | 91)?[6-9][0-9]{9}
+      enabled: ['false'],
       passwordGroup: this.fb.group({
         password: ['', [Validators.required, passwordCustomPattern]],
         confirmPassword: ['', [Validators.required]]

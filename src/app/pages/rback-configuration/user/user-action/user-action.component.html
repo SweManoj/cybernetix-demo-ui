@@ -43,18 +43,17 @@
       </div>
 
       <div class="form-group col-4">
-        <label for="phoneNumber" class="basicColor mb-1">Phone Number</label>
-        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber"
-          placeholder="Enter Phone Number" (blur)="logValidationErrors()">
-        <small class="text-danger" *ngIf="formErrors.phoneNumber"> {{formErrors.phoneNumber}}</small>
+        <label for="mobileNumber" class="basicColor mb-1">Mobile Number</label>
+        <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber"
+          placeholder="Enter Mobile Number" (blur)="logValidationErrors()">
+        <small class="text-danger" *ngIf="formErrors.mobileNumber"> {{formErrors.mobileNumber}}</small>
       </div>
 
       <div class="form-group col-4">
-        <label for="userStatus" class="basicColor mb-1 w-100">User Status</label>
-        <mat-button-toggle-group name="fontStyle" appearance="legacy" aria-label="Font Style"
-          formControlName="userStatus">
-          <mat-button-toggle value="activate">Activate</mat-button-toggle>
-          <mat-button-toggle value="deactivate">Deactivate</mat-button-toggle>
+        <label for="enabled" class="basicColor mb-1 w-100">User Status</label>
+        <mat-button-toggle-group name="fontStyle" appearance="legacy" aria-label="Font Style" formControlName="enabled">
+          <mat-button-toggle value="true">Activate</mat-button-toggle>
+          <mat-button-toggle value="false">Deactivate</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
     </div>

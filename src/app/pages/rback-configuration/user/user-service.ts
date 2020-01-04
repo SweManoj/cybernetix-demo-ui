@@ -18,8 +18,8 @@ export class UserService {
     return this.http.get(url);
   }
 
-  getAllUserMasterNames() {
-    const url = `${this.mainURL}/getAllUserMasterNames`;
+  getAllUserNames() {
+    const url = `${this.mainURL}/getAllUserNames`;
     return this.http.get(url);
   }
 

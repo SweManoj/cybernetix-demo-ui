@@ -66,7 +66,8 @@ export class UserListComponent implements OnInit {
       users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
       users.forEach(user => {
         user.createdby = user.createdby ? user.createdby : '-';
-        user.distinctRoles = user.distinctRoles.length > 0 ? user.distinctRoles : '-'
+        user.distinctRoles = user.distinctRoles.length > 0 ? user.distinctRoles : '-';
+        user.email = user.email ? user.email : '-'
       });
       this.userList = of(users);
     });

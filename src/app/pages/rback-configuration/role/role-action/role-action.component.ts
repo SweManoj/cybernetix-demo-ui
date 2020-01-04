@@ -87,8 +87,10 @@ export class RoleActionComponent implements OnInit {
       this.roleService.getAllRoleMasterNames().subscribe((res: any) => {
         res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
         this.existRoleNames = res;
-        const existRoleNameIndex = this.existRoleNames.indexOf(this.roleForm.get('roleName').value, 0);
-        this.existRoleNames.splice(existRoleNameIndex, 1);
+        if (!url.includes('add')) {
+          const existRoleNameIndex = this.existRoleNames.indexOf(this.roleForm.get('roleName').value, 0);
+          this.existRoleNames.splice(existRoleNameIndex, 1);
+        }
 
         this.roleForm.get('roleName').valueChanges.subscribe(value => {
           this.existRoleNames.forEach(existRoleName => {

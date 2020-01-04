@@ -31,7 +31,9 @@ export class UserActionComponent implements OnInit {
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     enableSearchFilter: true,
-    disabled: false
+    disabled: false,
+    primaryKey: "roleId", // default - id
+    labelKey: "roleName",  // default - itemName
   };
 
   validationMessages = {
@@ -116,7 +118,17 @@ export class UserActionComponent implements OnInit {
           user = JSON.parse(CryptoJS.AES.decrypt(user.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
           this.userForm.setValue({
-            
+            userName: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+            userStatus: '',
+            passwordGroup: {
+              password: '',
+              confirmPassword: ''
+            },
+            roles: ''
           })
         });
 
@@ -129,6 +141,26 @@ export class UserActionComponent implements OnInit {
           this.userForm.disable();
           this.roleSetting.disabled = true;
         }
+      });
+    }
+
+    // preventing duplicate role names -- after set value (for getting roleName)
+    if (!url.includes('view')) {
+      this.userService.getAllUserNames().subscribe((res: any) => {
+        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+        this.existUserNames = res;
+
+        if (!url.includes('add')) {
+          const existUserNameIndex = this.existUserNames.indexOf(this.userForm.get('userName').value, 0);
+          this.existUserNames.splice(existUserNameIndex, 1);
+        }
+
+        this.userForm.get('userName').valueChanges.subscribe(value => {
+          this.existUserNames.forEach(existUserName => {
+            if (new String(existUserName).toLowerCase() == new String(value).toLowerCase())
+              this.userForm.get('userName').setErrors({ duplicateUserName: true });
+          });
+        });
       });
     }
   }

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
+import { UserService } from '../user-service';
+import { RoleService } from '../../role/role-service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-user-action',
@@ -10,17 +14,31 @@ import { Location } from '@angular/common';
 })
 export class UserActionComponent implements OnInit {
 
+  API_KEY: any;
+  API_CIPHER: any;
+
   pageTitle = 'Add User';
   editUser = false;
   viewUser = false;
 
-  userId: number;
   userForm: FormGroup;
+  submittedButtonDisabled = false;
+  existUserNames = [];
+
+  roleList = [];
+  roleSetting = {
+    text: "Select Roles",
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    enableSearchFilter: true,
+    disabled: false
+  };
 
   validationMessages = {
     userName: {
       required: 'User Name is required',
-      minlength: 'User Name must be greater than 4 characters'
+      minlength: 'User Name must be greater than 4 characters',
+      duplicateUserName: 'User Name already Exist'
     },
     firstName: {
       required: 'First Name is required',
@@ -71,31 +89,37 @@ export class UserActionComponent implements OnInit {
     roles: ''
   };
 
-  roleList = [
-    { "id": 1, "itemName": "ROLE_ADMIN" },
-    { "id": 2, "itemName": "ROLE_ANALYST" },
-    { "id": 3, "itemName": "ROLE_USER" },
-    { "id": 4, "itemName": "ROLE_DIRECTIVE" }
-  ];
+  constructor(private location: Location, private fb: FormBuilder, private activeRoute: ActivatedRoute,
+    private router: Router, private userService: UserService, private roleService: RoleService) {
 
-  roleSetting = {
-    text: "Select Roles",
-    selectAllText: 'Select All',
-    unSelectAllText: 'UnSelect All',
-    enableSearchFilter: true,
-    disabled: false
-  };
-
-  constructor(private location: Location, private fb: FormBuilder,
-    private activeRoute: ActivatedRoute, private router: Router) { }
+    this.API_KEY = environment.API_KEY;
+    this.API_CIPHER = environment.API_CIPHER;
+  }
 
   ngOnInit() {
     this.initUserForm();
-
     const url = this.router.url;
+
+    // not getting all permissions at view time
+    if (!url.includes('view')) {
+      this.roleService.getAllRoleMasters().subscribe((allRoles: any) => {
+        allRoles = JSON.parse(CryptoJS.AES.decrypt(allRoles.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+        this.roleList = allRoles;
+      });
+    }
+
     if (!url.includes('add')) {
       this.activeRoute.paramMap.subscribe((params: Params) => {
-        this.userId = params.get('userId');
+        const userId = params.get('userId');
+
+        this.userService.getUserByUserId(userId).subscribe((user: any) => {
+          user = JSON.parse(CryptoJS.AES.decrypt(user.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+
+          this.userForm.setValue({
+            
+          })
+        });
+
         if (url.includes('edit')) {
           this.pageTitle = 'Edit User';
           this.editUser = true;

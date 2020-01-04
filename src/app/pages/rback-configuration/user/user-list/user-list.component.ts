@@ -64,18 +64,9 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.userService.getAllUsers().subscribe((users: any) => {
       users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-
-      /* if (res.userRoleDTOSet) {
-        const userRoles = res.userRoleDTOSet;
-        console.log('user roles : ' + userRoles);
-        userRoles.forEach(roleDTO => {
-          console.log('role name is : ' + roleDTO.roleName);
-          res.roles += roleDTO.roleName + ' , ';
-        });
-      }
-      console.log('roles are : ' + res.roles); */
       users.forEach(user => {
-        user.createdby = user.createdby ? user.createdby : '-'
+        user.createdby = user.createdby ? user.createdby : '-';
+        user.distinctRoles = user.distinctRoles.length > 0 ? user.distinctRoles : '-'
       });
       this.userList = of(users);
     });

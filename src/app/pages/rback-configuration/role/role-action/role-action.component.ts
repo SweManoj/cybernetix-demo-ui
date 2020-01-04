@@ -44,13 +44,16 @@ export class RoleActionComponent implements OnInit {
 
   ngOnInit() {
     this.initRoleForm();
-
-    this.roleService.getAllPermissions().subscribe((res: any) => {
-      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-      this.permissionList = res;
-    });
-
     const url = this.router.url;
+
+    // not getting all permissions at view time
+    if (!url.includes('view')) {
+      this.roleService.getAllPermissions().subscribe((res: any) => {
+        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+        this.permissionList = res;
+      });
+    }
+
     if (!url.includes('add')) {
       this.activeRoute.paramMap.subscribe((params: Params) => {
         const roleId = params.get('roleId');

@@ -25,10 +25,6 @@ export class UserActionComponent implements OnInit {
   submittedButtonDisabled = false;
   existUserNames = [];
 
-  showPasswordGroup = true;
-  changePasswordButtonVisible = false;
-  changePasswordButtonLable = 'Change Password';
-
   roleList = [];
   roleSetting = {
     text: "Select Roles",
@@ -115,6 +111,11 @@ export class UserActionComponent implements OnInit {
     }
 
     if (!url.includes('add')) {
+
+      // PasswordGroup disabled on Edit & View Page
+      this.userForm.get('passwordGroup').disable({ onlySelf: true });
+      this.userForm.updateValueAndValidity();
+
       this.activeRoute.paramMap.subscribe((params: Params) => {
         const userId = params.get('userId');
 
@@ -133,7 +134,6 @@ export class UserActionComponent implements OnInit {
               password: '',
               confirmPassword: ''
             },
-            password: '',
             roles: user.userRoleDTOSet
           });
         });
@@ -141,16 +141,12 @@ export class UserActionComponent implements OnInit {
         if (url.includes('edit')) {
           this.pageTitle = 'Edit User';
           this.editUser = true;
-          this.changePasswordButtonVisible = true;
-          this.showPasswordGroup = false;
           this.userForm.get('passwordGroup')
         } else {
           this.pageTitle = 'View User';
           this.viewUser = true;
           this.userForm.disable();
           this.roleSetting.disabled = true;
-          this.showPasswordGroup = false;
-          this.changePasswordButtonVisible = false;
         }
       });
     }
@@ -173,18 +169,6 @@ export class UserActionComponent implements OnInit {
           });
         });
       });
-    }
-  }
-
-  changePasswordButtonClick() {
-    this.showPasswordGroup = !this.showPasswordGroup;
-
-    this.changePasswordButtonLable = this.showPasswordGroup ? 'Hide Password' : 'Change Password';
-
-    if (this.showPasswordGroup) {
-
-    } else {
-
     }
   }
 
@@ -212,7 +196,6 @@ export class UserActionComponent implements OnInit {
         password: ['', [Validators.required, passwordCustomPattern]],
         confirmPassword: ['', [Validators.required]]
       }, { validator: matchPasswords }),
-      password: '',  // for adding the final password
       roles: ['', [Validators.required]]
     });
 

@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <div class="row mt-1" formGroupName="passwordGroup" *ngIf="showPasswordGroup">
+    <div *ngIf="router.url.includes('add')" class="row mt-1" formGroupName="passwordGroup">
       <div class="form-group col-4">
         <label for="password" class="basicColor mb-1">Password</label>
         <input type="password" class="form-control" id="password" formControlName="password"
@@ -82,12 +82,6 @@
           (focusout)="roleClick()" (onDeSelectAll)="userForm.get('roles').setValue([])">
         </angular2-multiselect>
         <small class="text-danger" *ngIf="formErrors.roles"> {{formErrors.roles}}</small>
-      </div>
-
-      <div class="form-group col-4 align-self-end" *ngIf="changePasswordButtonVisible">
-        <!-- text-center  ml-auto -->
-        <button type="button" class="btn btn-primary" (click)="changePasswordButtonClick()">
-          &emsp;{{changePasswordButtonLable}}&emsp; </button>
       </div>
     </div>
 

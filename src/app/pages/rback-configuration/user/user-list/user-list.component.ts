@@ -51,7 +51,8 @@ export class UserListComponent implements OnInit {
       viewButton: true,
       editButton: true,
       deleteButton: true,
-      copyButton: false
+      copyButton: false,
+      changePasswordButton: true
     }
 
     this.frameworkComponents = {
@@ -165,7 +166,14 @@ export class UserListComponent implements OnInit {
       case AgCellRendererEvent.DELETE_EVENT:
         this.deleteUser(data.userId);
         break;
+      case AgCellRendererEvent.CHANGE_PASSWORD:
+        this.changePassword(data);
+        break;
     }
+  }
+
+  changePassword(data) {
+
   }
 
   onRowSelected() {

@@ -51,7 +51,8 @@ export class RoleListComponent implements OnInit {
       viewButton: true,
       editButton: true,
       deleteButton: true,
-      copyButton: false
+      copyButton: false,
+      changePasswordButton: false
     }
 
     this.frameworkComponents = {
@@ -159,6 +160,8 @@ export class RoleListComponent implements OnInit {
         this.selectedRoleIds.push(selectedRoles[i].roleId);
     });
   }
+
+
 
   addRole() {
     this.ngZone.run(() => {

@@ -25,4 +25,8 @@ export class CrudActionComponent extends AgCellRendererBase {
     this.sendEvent(AgCellRendererEvent.COPY_EVENT);
   }
 
+  changePassword(event: any) {
+    this.sendEvent(AgCellRendererEvent.CHANGE_PASSWORD);
+  }
+
 }

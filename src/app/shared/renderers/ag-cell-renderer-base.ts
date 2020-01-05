@@ -11,6 +11,7 @@ export abstract class AgCellRendererBase implements ICellRendererAngularComp {
     viewButton = false;
     deleteButton = false;
     copyButton = false;
+    changePasswordButton = false;
     actionColor = '#099bb5';
 
     agInit(params: any): void {
@@ -21,6 +22,7 @@ export abstract class AgCellRendererBase implements ICellRendererAngularComp {
         this.viewButton = context.viewButton;
         this.deleteButton = context.deleteButton;
         this.copyButton = context.copyButton;
+        this.changePasswordButton = context.changePasswordButton;
 
         if (!params.context || !params.context.componentParent) {
             const errMsg = `Hosting component must implement AgCellRendererEventHandler.

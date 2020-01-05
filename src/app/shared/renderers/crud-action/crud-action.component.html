@@ -13,3 +13,8 @@
 <a *ngIf="copyButton" (click)="copy($event)" ngbPopover="Copy" triggers="mouseenter:mouseleave" container="body">
     <i class="fa-lg fa fa-clone" [ngStyle]="{'color':actionColor, 'font-size': '.95rem' }"></i>
 </a>
+
+<a *ngIf="changePasswordButton" (click)="changePassword($event)" ngbPopover="Change Password"
+    triggers="mouseenter:mouseleave" container="body">
+    <i class="fa fa-key" [ngStyle]="{'color':actionColor, 'font-size': '.95rem' }"></i>
+</a>

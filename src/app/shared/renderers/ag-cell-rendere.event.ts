@@ -12,6 +12,7 @@ export namespace AgCellRendererEvent {
     export const EDIT_EVENT = 'EDIT_EVENT';
     export const DELETE_EVENT = 'DELETE_EVENT';
     export const COPY_EVENT = 'COPY_EVENT';
+    export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 }
 
 export interface AgCellRendererEventHandler {

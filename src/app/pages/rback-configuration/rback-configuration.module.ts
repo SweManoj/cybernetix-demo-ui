@@ -13,6 +13,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { RoleService } from './role/role-service';
 import { UserService } from './user/user-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule, MatButtonToggleModule, NgbModule,
     AngularMultiSelectModule, MatSnackBarModule
   ],
-  declarations: [RoleListComponent, RoleActionComponent, UserListComponent, UserActionComponent],
-  providers: [RoleService, UserService]
+  declarations: [RoleListComponent, RoleActionComponent, UserListComponent, UserActionComponent,
+    ChangePasswordComponent],
+  providers: [RoleService, UserService],
+  entryComponents: [ChangePasswordComponent]
 })
 export class RbackConfigurationModule { }

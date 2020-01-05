@@ -11,6 +11,7 @@ import { UserService } from '../user-service';
 import { environment } from '../../../../../environments/environment';
 import * as CryptoJS from 'crypto-js';
 import { MatSnackBar } from '@angular/material';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-user-list',
@@ -173,7 +174,20 @@ export class UserListComponent implements OnInit {
   }
 
   changePassword(data) {
-
+    const activeModal = this.ngbModal.open(ChangePasswordComponent, { size: 'lg' });
+    activeModal.componentInstance.userName = data.userName;
+    activeModal.componentInstance.initForm();
+    activeModal.result.then(res => {
+      if (res == 'Y') {
+        this._snackBar.open('User Password Changed Successfully', null, {
+          duration: 4000,
+        });
+      } else {
+        this._snackBar.open('User Password Changed Failed', null, {
+          duration: 4000,
+        });
+      }
+    });
   }
 
   onRowSelected() {

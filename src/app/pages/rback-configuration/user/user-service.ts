@@ -18,6 +18,11 @@ export class UserService {
     return this.http.get(url);
   }
 
+  changePasswordByAdmin(requestBody) {
+    const url = `${this.mainURL}/changePasswordByAdmin`;
+    return this.http.put(url, requestBody);
+  }
+
   getAllUserNames() {
     const url = `${this.mainURL}/getAllUserNames`;
     return this.http.get(url);

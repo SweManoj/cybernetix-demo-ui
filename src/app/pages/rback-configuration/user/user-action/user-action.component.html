@@ -77,17 +77,17 @@
 
     <div class="row mt-1">
       <div class="form-group col-8">
-        <label for="permissions" class="basicColor">Roles</label>
-        <angular2-multiselect [data]="roleList" [settings]="roleSetting" formControlName="roles"
-          (focusout)="roleClick()" (onDeSelectAll)="userForm.get('roles').setValue([])">
+        <label for="userSelectedRoles" class="basicColor">Roles</label>
+        <angular2-multiselect [data]="roleList" [settings]="roleSetting" formControlName="userSelectedRoles"
+          (focusout)="roleClick()" (onDeSelectAll)="userForm.get('userSelectedRoles').setValue([])">
         </angular2-multiselect>
-        <small class="text-danger" *ngIf="formErrors.roles"> {{formErrors.roles}}</small>
+        <small class="text-danger" *ngIf="formErrors.userSelectedRoles"> {{formErrors.userSelectedRoles}}</small>
       </div>
     </div>
 
     <div class="row d-inline-block m-auto pt-3">
-      <button type="button" *ngIf="!viewUser" class="btn btn-primary"
-        (click)="submitUser()">{{editUser?'Edit':'Add'}}</button>
+      <button type="button" *ngIf="!viewUser" class="btn btn-primary" (click)="submitUser()"
+        [disabled]="submittedButtonDisabled">{{editUser?'Edit':'Add'}}</button>
       <span [ngClass]="viewUser?'ml-0':'ml-3'">
         <button type="button" class="btn btn-warning" (click)="previousPage()">Cancel</button>
       </span>

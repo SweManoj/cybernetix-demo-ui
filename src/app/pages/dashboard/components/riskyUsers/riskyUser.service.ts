@@ -36,6 +36,11 @@ export class RiskyUserService {
         return this.http.get(url);
     }
 
+    newIncidentCreation(incidentBody) {
+        const url = `${this.mainURL}/caseMgmt/entity/newIncident`;
+        return this.http.post(url, incidentBody);
+    }
+
     getDayBasisRiskScore(entityId) {
         const url = `${this.mainURL}/entity/linegraph?entityId=${entityId}`;
         return this.http.get(url);

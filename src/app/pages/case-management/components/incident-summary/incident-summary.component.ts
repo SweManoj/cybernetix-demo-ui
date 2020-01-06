@@ -223,7 +223,9 @@ export class IncidentSummaryComponent implements OnInit {
     getIncident(pvId) {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
             if (res) {
+                res.elasticRiskScore = res.elasticRiskScore ? res.elasticRiskScore.toFixed(2) : 0;
                 this.incidentDetails = res;
+
                 this.getTaggedUsersForIncident();
                 this.incidentDetailsCopy = Object.assign({}, res);
                 if (this.incidentDetails.incOwner) {

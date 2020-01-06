@@ -28,6 +28,8 @@ export class RiskyIPComponent implements OnInit {
     policyViolations: any;
     graphData: any;
 
+    actionButtonName = '';
+
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private caseManagementService: CaseManagementService
         , private _snackBar: MatSnackBar) {
@@ -56,6 +58,17 @@ export class RiskyIPComponent implements OnInit {
         const date = new Date();
         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedIP, 0, date.getTime(), 0).subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+
+            if (res.shouldShowIncidentCreationOption) {
+                if (res.autoIncidentCreated) {
+                    this.actionButtonName = "AI Incident Created"
+                } else if (res.incidentCreated) {
+                    this.actionButtonName = "Manual Incident Created"
+                } else {
+                    this.actionButtonName = "Create an Incident"
+                }
+            }
+
             if (res && res.length > 0) {
                 res.forEach((policyViolation) => {
                     policyViolation.timeLines.forEach((timeLine) => {
@@ -65,6 +78,7 @@ export class RiskyIPComponent implements OnInit {
                 this.policyViolations = res.reverse();
             }
         });
+
         this.riskyUserService.getDayBasisRiskScore(this.selectedIP).subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.graphData = res;
@@ -72,6 +86,34 @@ export class RiskyIPComponent implements OnInit {
                 // Initialize Bubble chart
                 this.initializeLineChart();
             });
+        });
+    }
+
+    actionButtonClick(policyViolation: any) {
+        if (this.actionButtonName != "Create an Incident")
+            this.router.navigate(['/incidentSummary', policyViolation.incidentId]);
+
+        var categories: Array<string[]> = [];
+        var ruleIds: Array<number[]> = [];
+        var violationIds: Array<number[]> = [];
+
+        policyViolation.timeLines.forEach(timeLine => {
+            categories.push(timeLine.subCategory);
+            ruleIds.push(timeLine.ruleId);
+            violationIds.push(timeLine.lastViolationId);
+        });
+
+        const requestBody = {
+            category: categories,
+            entityId: policyViolation.entityId,
+            entityType: 'IP',
+            eventDate: policyViolation.violationEventDate,
+            ruleIds: ruleIds,
+            violationIds: violationIds
+        };
+        console.log('request body : ' + requestBody);
+        this.riskyUserService.newIncidentCreation(requestBody).subscribe(res => {
+
         });
     }
 

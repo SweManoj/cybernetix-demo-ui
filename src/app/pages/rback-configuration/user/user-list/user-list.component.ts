@@ -175,6 +175,7 @@ export class UserListComponent implements OnInit {
 
   changePassword(data) {
     const activeModal = this.ngbModal.open(ChangePasswordComponent, { size: 'lg' });
+    activeModal.componentInstance.userId = data.userId;
     activeModal.componentInstance.userName = data.userName;
     activeModal.componentInstance.initForm();
     activeModal.result.then(res => {
@@ -182,7 +183,7 @@ export class UserListComponent implements OnInit {
         this._snackBar.open('User Password Changed Successfully', null, {
           duration: 4000,
         });
-      } else {
+      } else if ('N') {
         this._snackBar.open('User Password Changed Failed', null, {
           duration: 4000,
         });

@@ -27,6 +27,8 @@ export class RiskyHostComponent implements OnInit {
     policyViolations: any;
     graphData: any;
 
+    actionButtonName = '';
+
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private _snackBar: MatSnackBar,
         private routeParam: ActivatedRoute, private modalService: NgbModal, private caseManagementService: CaseManagementService,
         private zone: NgZone, private router: Router) {
@@ -35,6 +37,43 @@ export class RiskyHostComponent implements OnInit {
         this.API_CIPHER = environment.API_CIPHER;
 
         window.scrollTo(0, 0);
+    }
+
+
+
+    ngOnInit() {
+        this.routeParam.paramMap.subscribe((params) => {
+            this.selectedHost = params.get('selectedHost');
+            this.getRiskyHostDetails();
+        });
+    }
+
+    actionButtonClick(policyViolation: any) {
+        if (this.actionButtonName != "Create an Incident")
+            this.router.navigate(['/incidentSummary', policyViolation.incidentId]);
+
+        var categories: Array<string[]> = [];
+        var ruleIds: Array<number[]> = [];
+        var violationIds: Array<number[]> = [];
+
+        policyViolation.timeLines.forEach(timeLine => {
+            categories.push(timeLine.subCategory);
+            ruleIds.push(timeLine.ruleId);
+            violationIds.push(timeLine.lastViolationId);
+        });
+
+        const requestBody = {
+            category: categories,
+            entityId: policyViolation.entityId,
+            entityType: 'IP',
+            eventDate: policyViolation.violationEventDate,
+            ruleIds: ruleIds,
+            violationIds: violationIds
+        };
+        console.log('request body : ' + requestBody);
+        this.riskyUserService.newIncidentCreation(requestBody).subscribe(res => {
+
+        });
     }
 
     initializeLineChart() {
@@ -73,13 +112,6 @@ export class RiskyHostComponent implements OnInit {
 
     }
 
-    ngOnInit() {
-        this.routeParam.paramMap.subscribe((params) => {
-            this.selectedHost = params.get('selectedHost');
-            this.getRiskyHostDetails();
-        });
-    }
-
     getRiskyHostDetails() {
         this.riskyUserService.getRiskyEntityDetails(this.selectedHost, 'HOST').subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
@@ -88,6 +120,17 @@ export class RiskyHostComponent implements OnInit {
         const date = new Date()
         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, date.getTime(), 0).subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+
+            if (res.shouldShowIncidentCreationOption) {
+                if (res.autoIncidentCreated) {
+                    this.actionButtonName = "AI Incident Created"
+                } else if (res.incidentCreated) {
+                    this.actionButtonName = "Manual Incident Created"
+                } else {
+                    this.actionButtonName = "Create an Incident"
+                }
+            }
+
             if (res && res.length > 0) {
                 res.forEach((policyViolation) => {
                     policyViolation.timeLines.forEach((timeLine) => {
@@ -97,6 +140,7 @@ export class RiskyHostComponent implements OnInit {
                 this.policyViolations = res.reverse();
             }
         });
+        
         this.riskyUserService.getDayBasisRiskScore(this.selectedHost).subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.graphData = res;

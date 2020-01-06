@@ -11,6 +11,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ChangePasswordComponent implements OnInit {
 
   pageTitle = 'Change Password';
+  userId:number;
   userName: string;
 
   changePasswordForm: FormGroup;
@@ -50,23 +51,26 @@ export class ChangePasswordComponent implements OnInit {
     this.allFormTouched(this.changePasswordForm);
     this.logValidationErrors();
 
-    if (this.changePasswordForm.invalid) {
-
-    }
-    else {
-      console.log('Form Valid...');
-      this.activeModal.close('Y');
+    if (this.changePasswordForm.valid) {
+      const password = this.changePasswordForm.get('passwordGroup').get('userPassword');
+      this.changePasswordForm.get('password').setValue(password);
+      this.userService.changePasswordByAdmin(this.changePasswordForm.value).subscribe(res => {
+        this.activeModal.close('Y');
+      }, error => {
+        this.activeModal.close('N');
+      });
     }
   }
 
   initForm() {
     this.changePasswordForm = this.fb.group({
-      userId: '',
+      userId: [this.userId],
       userName: [this.userName],
       passwordGroup: this.fb.group({
         userPassword: ['', [Validators.required, passwordCustomPattern]],
         confirmPassword: ['', [Validators.required]]
-      }, { validator: matchPasswords })
+      }, { validator: matchPasswords }),
+      password: ['']
     });
 
     this.changePasswordForm.valueChanges.subscribe((data) => {
@@ -76,7 +80,7 @@ export class ChangePasswordComponent implements OnInit {
 
   cancel() {
     this.userName = '';
-    this.activeModal.close('N');
+    this.activeModal.close('');
   }
 
   logValidationErrors(group: FormGroup = this.changePasswordForm): void {

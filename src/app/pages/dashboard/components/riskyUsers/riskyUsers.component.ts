@@ -151,8 +151,32 @@ export class RiskyUsersComponent {
         });
     }
 
-    actionButtonClick() {
-        this.policyViolations;
+    actionButtonClick(policyViolation: any) {
+        if (this.actionButtonName != "Create an Incident")
+            return;
+        console.log('values are : ' + policyViolation);
+        var categories: Array<string[]> = [];
+        var ruleIds: Array<number[]> = [];
+        var violationIds: Array<number[]> = [];
+
+        policyViolation.timeLines.forEach(timeLine => {
+            categories.push(timeLine.subCategory);
+            ruleIds.push(timeLine.ruleId);
+            violationIds.push(timeLine.lastViolationId);
+        });
+
+        const requestBody = {
+            category: categories,
+            entityId: policyViolation.entityId,
+            entityType: 'USER',
+            eventDate: policyViolation.violationEventDate,
+            ruleIds: ruleIds,
+            violationIds: violationIds
+        };
+        console.log('request body : ' + requestBody);
+        this.riskyUserService.newIncidentCreation(requestBody).subscribe(res => {
+
+        });
     }
 
     initializeGuageMeterChart() {

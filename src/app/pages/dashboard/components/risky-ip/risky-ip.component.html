@@ -81,8 +81,11 @@
 
     <ng-container *ngFor="let policyViolation of policyViolations">
         <div class="risky-user-violations container-fluid initialPadding mt-3 mb-4">
-            <div class="risk-date-stamp">
+            <div class="risk-date-stamp w-100 d-inline-block">
                 <span>{{policyViolation.violationEventDate | date: 'dd MMM yyyy'}}</span>
+
+                <button *ngIf="actionButtonName!=''" class="btn btn-primary pull-right"
+                    (click)="actionButtonClick(policyViolation)">{{actionButtonName}}</button>
             </div>
             <div class="row initialPadding" *ngFor="let timeLine of policyViolation.timeLines">
                 <div class="col-md-12 d-flex">
@@ -112,8 +115,8 @@
 
                                 <span class="risk-score mr-5"
                                     (click)="fetchKibanaRawEventindex(timeLine.lastViolationId)">{{timeLine.noOfEvents}}</span>
-                                <a [routerLink]="['/incidentSummary', timeLine.pvId]"
-                                    *ngIf="timeLine.incId !== 0">INC-{{timeLine.incId}}</a>
+                                <!-- <a [routerLink]="['/incidentSummary', timeLine.pvId]"
+                                    *ngIf="timeLine.incId !== 0">INC-{{timeLine.incId}}</a> -->
                                 <!-- <span ngbDropdown placement="bottom-right" class="float-right mt-1"
                                     *ngIf="timeLine.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>

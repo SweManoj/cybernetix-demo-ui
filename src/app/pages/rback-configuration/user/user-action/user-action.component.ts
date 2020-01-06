@@ -6,6 +6,7 @@ import { environment } from '../../../../../environments/environment';
 import { UserService } from '../user-service';
 import { RoleService } from '../../role/role-service';
 import * as CryptoJS from 'crypto-js';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-action',
@@ -74,7 +75,7 @@ export class UserActionComponent implements OnInit {
     passwordGroup: {
       passwordMismatch: 'Password and Confirm Password do not Match'
     },
-    roles: {
+    userSelectedRoles: {
       required: 'Roles required'
     }
   };
@@ -88,11 +89,12 @@ export class UserActionComponent implements OnInit {
     userPassword: '',
     confirmPassword: '',
     passwordGroup: '',
-    roles: ''
+    userSelectedRoles: ''
   };
 
   constructor(private location: Location, private fb: FormBuilder, private activeRoute: ActivatedRoute,
-    private router: Router, private userService: UserService, private roleService: RoleService) {
+    private router: Router, private userService: UserService, private roleService: RoleService
+    , private _snackBar: MatSnackBar) {
 
     this.API_KEY = environment.API_KEY;
     this.API_CIPHER = environment.API_CIPHER;
@@ -134,8 +136,9 @@ export class UserActionComponent implements OnInit {
               userPassword: '',
               confirmPassword: ''
             },
-            password:'',
-            roles: user.userRoleDTOSet
+            password: '',
+            roles: '',
+            userSelectedRoles: user.userRoleDTOSet
           });
         });
 
@@ -180,16 +183,35 @@ export class UserActionComponent implements OnInit {
     if (this.userForm.invalid)
       return;
     else {
-      this.submittedButtonDisabled = false;
+      this.submittedButtonDisabled = true;
       this.userForm.get('password').setValue(this.userForm.get('passwordGroup').get('userPassword').value);
-      console.log(this.userForm.get('password'));
-      this.userService.createUser(this.userForm.value).subscribe(res => {
-        this.previousPage();
-      }, error => {
-        this.submittedButtonDisabled = false;
-      })
-      console.log('Form Valid...');
+      const userRoles: Array<number[]> = [];
+      this.userForm.get('userSelectedRoles').value.forEach(userSelectedRole => {
+        userRoles.push(userSelectedRole.roleId);
+      });
+      this.userForm.get('roles').setValue(userRoles);
+
+      if (this.viewUser) {
+        this.userService.createUser(this.userForm.value).subscribe(res => {
+          this.previousPage();
+        }, error => {
+          this.submitError('Updated');
+        });
+      } else {
+        this.userService.updateUser(this.userForm.value).subscribe(res => {
+          this.previousPage();
+        }, error => {
+          this.submitError('Saved');
+        });
+      }
     }
+  }
+
+  submitError(msg: string) {
+    this.submittedButtonDisabled = false;
+    this._snackBar.open('User Not ' + msg + ' Successfully', null, {
+      duration: 4000,
+    });
   }
 
   initUserForm() {
@@ -206,7 +228,8 @@ export class UserActionComponent implements OnInit {
         userPassword: ['', [Validators.required, passwordCustomPattern]],
         confirmPassword: ['', [Validators.required]]
       }, { validator: matchPasswords }),
-      roles: ['', [Validators.required]]
+      roles: '',
+      userSelectedRoles: ['', [Validators.required]]
     });
 
     this.userForm.valueChanges.subscribe((data) => {
@@ -220,9 +243,9 @@ export class UserActionComponent implements OnInit {
 
   // manually invoke the error of role select box at 1st time only, if not select anythings
   roleClick() {
-    if (!this.userForm.get('roles').touched) {
+    if (!this.userForm.get('userSelectedRoles').touched) {
       setTimeout(() => {
-        this.userForm.get('roles').markAsTouched();
+        this.userForm.get('userSelectedRoles').markAsTouched();
         this.logValidationErrors();
       }, 500);
     }

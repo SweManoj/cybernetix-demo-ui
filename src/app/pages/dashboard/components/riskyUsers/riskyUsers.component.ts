@@ -49,6 +49,8 @@ export class RiskyUsersComponent {
         violations: 0
     };
 
+    actionButtonName = '';
+
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService,
         private caseManagementService: CaseManagementService, private utilService: UtilDataService) {
@@ -93,6 +95,17 @@ export class RiskyUsersComponent {
             const date = new Date();
             this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, date.getTime(), 0).subscribe((res: any) => {
                 res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+
+                if (res.shouldShowIncidentCreationOption) {
+                    if (res.autoIncidentCreated) {
+                        this.actionButtonName = "AI Incident Created"
+                    } else if (res.incidentCreated) {
+                        this.actionButtonName = "Manual Incident Created"
+                    } else {
+                        this.actionButtonName = "Create an Incident"
+                    }
+                }
+
                 if (res && res.length > 0) {
                     res.forEach((policyViolation) => {
                         if (policyViolation.timeLines && policyViolation.timeLines.length > 0) {
@@ -136,6 +149,10 @@ export class RiskyUsersComponent {
                 this.initializeBubbleChart();
             });
         });
+    }
+
+    actionButtonClick() {
+        this.policyViolations;
     }
 
     initializeGuageMeterChart() {

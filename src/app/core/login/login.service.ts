@@ -54,8 +54,8 @@ export class LoginService {
     return this.http.post(`${environment.serverUrl}/oauth/token?grant_type=refresh_token&refresh_token=${refreshtoken}`, null);
   }
 
-  getUsers() {
-    const url = `${environment.serverUrl}/v1/user/getUsers`;
+  getAllUsers() {
+    const url = `${environment.serverUrl}/v1/user/getAllUsers`;
     return this.http.get(url);
   }
 

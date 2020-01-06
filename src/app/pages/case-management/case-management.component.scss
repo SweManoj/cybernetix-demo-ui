@@ -39,7 +39,7 @@
       border: 1px solid #4b5965;
       width: auto;
       float: left;
-      margin: 15px 10px;
+      margin: 15px 0px;
       font-size: 14px;
 
       .ui-paginator-pages .ui-paginator-page.ui-state-active {
@@ -831,4 +831,8 @@ body
       text-decoration: none;
     }
   }
+}
+
+.ui-table p-sorticon {
+  display: none;
 }

@@ -157,7 +157,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getUsers();
+        this.getAllUsers();
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedPolicy = params.get('violationId');
             this.eventDateTime = params.get('eventDateTime');
@@ -215,8 +215,8 @@ export class PolicyViolationSummaryComponent implements OnInit {
         }
     }
 
-    getUsers() {
-        this.loginService.getUsers().subscribe((users: any) => {
+    getAllUsers() {
+        this.loginService.getAllUsers().subscribe((users: any) => {
             users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             this.users = users;

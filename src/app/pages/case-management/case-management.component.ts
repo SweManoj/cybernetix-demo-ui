@@ -38,18 +38,16 @@ export class CaseManagementComponent implements OnInit {
         { name: 'Last 1 month', value: 'month' }
     ];
     assignee: Array<any> = [];
-    status = [
-        { name: 'New', value: 'NEW' },
-        { name: 'Closed', value: 'CLOSED' },
-        { name: 'Perform Remediation', value: 'PERFORM_REMIDIATION' },
-        { name: 'In Progress', value: 'IN_PROGRESS' }
+    outcome = [
+        { name: 'True Positive', value: 'True Positive' },
+        { name: 'False Positive Correct Detection', value: 'False Positive Correct Detection' },
+        { name: 'False Positive Wrong Detection', value: 'False Positive Wrong Detection' },
+        { name: 'OPEN', value: 'Open' }
     ];
-    priority = [
-        // { name: 'All', value: 'All' },
-        { name: 'Medium', value: 'MEDIUM' },
-        { name: 'High', value: 'HIGH' },
-        { name: 'Low', value: 'LOW' },
-        { name: 'None', value: '-' }
+
+    incidentType = [
+        { name: 'AutoIncident', value: 'AutoIncident' },
+        { name: 'ManualIncident', value: 'ManualIncident' }
     ];
 
     @ViewChild('policy') policy: Table;
@@ -90,6 +88,13 @@ export class CaseManagementComponent implements OnInit {
         this.highItem = this.policyViolations.filter(myPolicy => myPolicy.priority === 'HIGH').length;
         this.lowItem = this.policyViolations.filter(myPolicy => myPolicy.priority === 'LOW').length;
         this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
+    }
+
+
+    onIncidentDataSelect($event) {
+        debugger;
+        console.log('fo...' + this.incidentRangeDates);
+
     }
 
     ngOnInit() {
@@ -141,7 +146,7 @@ export class CaseManagementComponent implements OnInit {
             ':' + (quaterDate.getUTCSeconds());
 
 
-        this.caseManagmentService.getAllIncidents(0, 1000, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
+        this.caseManagmentService.getAllIncidents(0, 5000, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
             response = JSON.parse(CryptoJS.AES.decrypt(response.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             let caseOwners: Array<{ name: '', value: '' }> = [];
@@ -153,6 +158,8 @@ export class CaseManagementComponent implements OnInit {
 
             this.incidents = response;
             this.assignee = getUniqueObjectsInArray(caseOwners, 'name');
+        }, errro => {
+            console.log('Get Incidents Error..')
         });
     }
 

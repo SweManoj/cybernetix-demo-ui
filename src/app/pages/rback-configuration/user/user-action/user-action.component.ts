@@ -59,7 +59,7 @@ export class UserActionComponent implements OnInit {
       minlength: 'Mobile Number must be atleast 10 numbers',
       maxlength: 'Mobile Number must not contains more than 14 numbers'
     },
-    password: {
+    userPassword: {
       required: 'Password is required',
       passwordShortLength: 'Password must be atleast 8 Characters',
       passwordLongLength: 'Password must not contains more than 20 Characters',
@@ -85,7 +85,7 @@ export class UserActionComponent implements OnInit {
     lastName: '',
     email: '',
     mobileNumber: '',
-    password: '',
+    userPassword: '',
     confirmPassword: '',
     passwordGroup: '',
     roles: ''
@@ -131,9 +131,10 @@ export class UserActionComponent implements OnInit {
             mobileNumber: user.mobileNumber,
             enabled: user.enabled ? "true" : "false",
             passwordGroup: {
-              password: '',
+              userPassword: '',
               confirmPassword: ''
             },
+            password:'',
             roles: user.userRoleDTOSet
           });
         });
@@ -180,6 +181,8 @@ export class UserActionComponent implements OnInit {
       return;
     else {
       this.submittedButtonDisabled = false;
+      this.userForm.get('password').setValue(this.userForm.get('passwordGroup').get('userPassword').value);
+      console.log(this.userForm.get('password'));
       this.userService.createUser(this.userForm.value).subscribe(res => {
         this.previousPage();
       }, error => {
@@ -198,8 +201,9 @@ export class UserActionComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
       mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(14)]], // (0 | 91)?[6-9][0-9]{9}
       enabled: ['false'],
+      password: [''],
       passwordGroup: this.fb.group({
-        password: ['', [Validators.required, passwordCustomPattern]],
+        userPassword: ['', [Validators.required, passwordCustomPattern]],
         confirmPassword: ['', [Validators.required]]
       }, { validator: matchPasswords }),
       roles: ['', [Validators.required]]
@@ -258,7 +262,7 @@ export class UserActionComponent implements OnInit {
 }
 
 function matchPasswords(group: AbstractControl): { [key: string]: any } | null {
-  const passwordControl = group.get('password');
+  const passwordControl = group.get('userPassword');
   const confirmPasswordControl = group.get('confirmPassword');
 
   if (passwordControl.value === confirmPasswordControl.value || confirmPasswordControl.pristine)

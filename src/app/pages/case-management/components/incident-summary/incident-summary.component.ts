@@ -124,7 +124,7 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getUsers();
+        this.getAllUsers();
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedPolicy = params.get('policyViolationId');
             this.getIncident(this.selectedPolicy);
@@ -173,8 +173,12 @@ export class IncidentSummaryComponent implements OnInit {
         return this.users.filter(user => user.userName.toLowerCase().indexOf(this.filteredTaggedValue) === 0);
     }
 
-    getUsers() {
-        this.loginService.getUsers().subscribe((users: any) => {
+    investigateClick() {
+        window.open(`${environment.kibanaLink}/goto/${this.incidentDetails.shortenUrl}`);
+    }
+
+    getAllUsers() {
+        this.loginService.getAllUsers().subscribe((users: any) => {
             users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.users = users;
             const loggedInUser = this.utilDataService.getLoggedInUser();
@@ -186,9 +190,10 @@ export class IncidentSummaryComponent implements OnInit {
                 startWith(null),
                 map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
             users.forEach(user => {
-                if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
+                this.caseowners.push({ name: user.firstName, value: user.userName });
+                /* if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
                     this.caseowners.push({ name: user.firstName, value: user.userName });
-                }
+                } */
             });
             this.filteredOptions = this.myControl.valueChanges
                 .pipe(

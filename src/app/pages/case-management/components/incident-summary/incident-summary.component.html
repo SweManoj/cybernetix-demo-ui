@@ -2,7 +2,8 @@
     <h5 class="commonHeader mb-3 mt-1 pull-left">INC-{{incidentDetails.incId}}</h5>
 
     <span class="pull-right">
-        <button type="button" class="btn btn-primary ml-2" placement="bottom" ngbTooltip="Disable">
+        <button type="button" class="btn btn-primary ml-2" placement="bottom" ngbTooltip="Disable"
+            (click)="investigateClick()">
             Investigate </button>
     </span>
 </div>
@@ -52,7 +53,7 @@
                     <div class="row mt-1">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Event Date</div>
                         <b>&nbsp;:&nbsp;</b>
-                        <div class="col-sm-6 dataValue">{{incidentDetails.violationTime | date: 'dd/MM/yyy HH:mm:ss'}}
+                        <div class="col-sm-6 dataValue">{{incidentDetails.eventDate | date: 'dd/MM/yyy HH:mm:ss'}}
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -66,6 +67,9 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Risk Score</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
+                            {{incidentDetails.elasticRiskScore}}
+                        </div>
+                        <!-- <div class="col-sm-6 dataValue">
                             <mat-form-field class="dropdown-priority" style="margin-top: -1rem;">
                                 <mat-select [(ngModel)]="incidentDetails.priority"
                                     (ngModelChange)="incidentDataChange()" name="priority"
@@ -75,9 +79,9 @@
                                     <mat-option value="LOW">Low</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="row mt-2">
+                    <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">Number of Models</div>
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">{{incidentDetails.indicatorsCount}}</div>
@@ -106,9 +110,11 @@
                                 <mat-select [(ngModel)]="incidentDetails.outcome" (ngModelChange)="incidentDataChange()"
                                     name="outcome" placeholder="Select Outcome">
                                     <mat-option value="True_POSITIVE">True Positive</mat-option>
-                                    <mat-option value="BENIGN_POSITIVE">False Positive Correct Detection</mat-option>
-                                    <mat-option value="FALSE_POSITIVE">False Positive Wrong Detection</mat-option>
-                                    <mat-option value="FALSE_POSITIVE">Open</mat-option>
+                                    <mat-option value="False Positive Correct Detection">False Positive Correct
+                                        Detection</mat-option>
+                                    <mat-option value="False Positive Wrong Detection">False Positive Wrong Detection
+                                    </mat-option>
+                                    <mat-option value="OPEN">Open</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>

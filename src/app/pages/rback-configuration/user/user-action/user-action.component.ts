@@ -179,6 +179,12 @@ export class UserActionComponent implements OnInit {
     if (this.userForm.invalid)
       return;
     else {
+      this.submittedButtonDisabled = false;
+      this.userService.createUser(this.userForm.value).subscribe(res => {
+        this.previousPage();
+      }, error => {
+        this.submittedButtonDisabled = false;
+      })
       console.log('Form Valid...');
     }
   }

@@ -16,7 +16,7 @@ export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
 
   validationMessages = {
-    password: {
+    userPassword: {
       required: 'Password is required',
       passwordShortLength: 'Password must be atleast 8 Characters',
       passwordLongLength: 'Password must not contains more than 20 Characters',
@@ -34,7 +34,7 @@ export class ChangePasswordComponent implements OnInit {
   };
 
   formErrors = {
-    password: '',
+    userPassword: '',
     confirmPassword: '',
     passwordGroup: ''
   };
@@ -64,7 +64,7 @@ export class ChangePasswordComponent implements OnInit {
       userId: '',
       userName: [this.userName],
       passwordGroup: this.fb.group({
-        password: ['', [Validators.required, passwordCustomPattern]],
+        userPassword: ['', [Validators.required, passwordCustomPattern]],
         confirmPassword: ['', [Validators.required]]
       }, { validator: matchPasswords })
     });
@@ -112,7 +112,7 @@ export class ChangePasswordComponent implements OnInit {
 }
 
 function matchPasswords(group: AbstractControl): { [key: string]: any } | null {
-  const passwordControl = group.get('password');
+  const passwordControl = group.get('userPassword');
   const confirmPasswordControl = group.get('confirmPassword');
 
   if (passwordControl.value === confirmPasswordControl.value || confirmPasswordControl.pristine)

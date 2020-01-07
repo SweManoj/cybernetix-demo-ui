@@ -121,18 +121,17 @@ export class RiskyHostComponent implements OnInit {
         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, date.getTime(), 0).subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
-            if (res.shouldShowIncidentCreationOption) {
-                if (res.autoIncidentCreated) {
-                    this.actionButtonName = "AI Incident Created"
-                } else if (res.incidentCreated) {
-                    this.actionButtonName = "Manual Incident Created"
-                } else {
-                    this.actionButtonName = "Create an Incident"
-                }
-            }
-
             if (res && res.length > 0) {
                 res.forEach((policyViolation) => {
+                    if (policyViolation.shouldShowIncidentCreationOption) {
+                        if (policyViolation.autoIncidentCreated) {
+                            policyViolation.actionButtonName = "AI Incident Created";
+                        } else if (policyViolation.incidentCreated) {
+                            policyViolation.actionButtonName = "Manual Incident Created";
+                        } else {
+                            policyViolation.actionButtonName = "Create an Incident";
+                        }
+                    }
                     policyViolation.timeLines.forEach((timeLine) => {
                         timeLine['accord'] = false;
                     });
@@ -140,7 +139,7 @@ export class RiskyHostComponent implements OnInit {
                 this.policyViolations = res.reverse();
             }
         });
-        
+
         this.riskyUserService.getDayBasisRiskScore(this.selectedHost).subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.graphData = res;

@@ -151,8 +151,11 @@ export class RiskyUsersComponent {
     }
 
     actionButtonClick(policyViolation: any) {
-        if (this.actionButtonName != "Create an Incident")
+        if (this.actionButtonName != "Create an Incident") {
+            this.router.navigate(['/incidentSummary', policyViolation.incidentId]);
             return;
+        }
+
         console.log('values are : ' + policyViolation);
         var categories: Array<string[]> = [];
         var ruleIds: Array<number[]> = [];

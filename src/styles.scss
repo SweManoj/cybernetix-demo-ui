@@ -218,13 +218,15 @@
   }
 }
 
-:host ::ng-deep input#daterangepicker_input {
+.e-control input.e-input {
   color: #bdbdbd !important;
 }
-:host ::ng-deep span.e-input-group-icon.e-range-icon.e-icons.e-input-btn-ripple {
+
+.e-input-group-icon.e-range-icon,
+.e-control-wrapper .e-input-group-icon.e-range-icon {
   color: #0aadc8 !important;
 }
 
-:host ::ng-deep span.e-input-group.e-control-wrapper.e-date-range-wrapper.e-valid-input {
+.e-input-in-wrap {
   border-color: #bfbfbf !important;
 }

@@ -38,6 +38,7 @@ import { SharedModule } from './shared/shared.module';
 import { InsightConfigurationModule } from './pages/insight-configuration/insight-configuration.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { RbackConfigurationModule } from './pages/rback-configuration/rback-configuration.module';
+import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
     declarations: [
@@ -75,7 +76,8 @@ import { RbackConfigurationModule } from './pages/rback-configuration/rback-conf
         NgScrollbarModule,
         InsightConfigurationModule,
         AngularMultiSelectModule,
-        RbackConfigurationModule
+        RbackConfigurationModule,
+        DateRangePickerModule
     ],
     exports: [
         MaterialModule

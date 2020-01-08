@@ -200,3 +200,20 @@
     color: #b5b5b5;
   }
 }
+
+:host ::ng-deep {
+  // selected date color
+  input#daterangepicker_input {
+    color: #bdbdbd !important;
+  }
+
+  // calendar color
+  span.e-input-group-icon.e-range-icon.e-icons.e-input-btn-ripple {
+    color: #0aadc8 !important;
+  }
+
+  // border color
+  span.e-input-group.e-control-wrapper.e-date-range-wrapper.e-valid-input {
+    border-color: #bfbfbf !important;
+  }
+}

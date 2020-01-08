@@ -32,10 +32,10 @@ export class CaseManagementComponent implements OnInit {
     fetchingPolicyViolationsInProgress = true;
 
     shows = [
-        { name: 'Last 1 Day', value: '1day' },
-        { name: 'Last 2 Day', value: '2day' },
-        { name: 'Last 7 Day', value: '7day' },
-        { name: 'Last 1 month', value: 'month' }
+        { name: 'Last 1 Day', value: '1' },
+        { name: 'Last 2 Day', value: '2' },
+        { name: 'Last 7 Day', value: '7' },
+        { name: 'Last 1 month', value: '30' }
     ];
     assignee: Array<any> = [];
     outcome = [
@@ -90,19 +90,25 @@ export class CaseManagementComponent implements OnInit {
         this.totalItem = this.criticalItem + this.mediumItem + this.lowItem + this.highItem;
     }
 
-
-    onIncidentDataSelect($event) {
-        debugger;
-        console.log('fo...' + this.incidentRangeDates);
-
-    }
-
     ngOnInit() {
         this.route.url.subscribe(url => {
             this.path = (url[0].path);
         });
         this.getPolicyViolations();
-        this.getAllIncidents();
+        this.getAllIncidents(90, 5000);  // getting before 3month from current date
+    }
+
+
+    onIncidentDataSelect($event) {
+        debugger;
+        console.log('fo...' + this.incidentRangeDates);
+    }
+
+    selectFilterDate(selectedBeforeDate) {
+        if (selectedBeforeDate)
+            this.getAllIncidents(selectedBeforeDate.value, 5000);
+        else
+            this.getAllIncidents(90, 5000);
     }
 
     covertDateToUTCFormat(inputDate) {
@@ -129,9 +135,11 @@ export class CaseManagementComponent implements OnInit {
         });
     }
 
-    getAllIncidents() {
+    getAllIncidents(previousDates: number, incidentCount: number) {
         const date = new Date();
-        const quaterDate = new Date(date.getMonth() - 3);
+        const quaterDate = new Date();
+        // const quaterDate = new Date(date.getMonth() - 3);   -> from 1970 year
+        quaterDate.setDate(quaterDate.getDate() - previousDates); // goto previous given number of month
         const formattedEndDate = date.getUTCFullYear() +
             '-' + (date.getUTCMonth() + 1) +
             '-' + (date.getUTCDate()) +
@@ -146,7 +154,7 @@ export class CaseManagementComponent implements OnInit {
             ':' + (quaterDate.getUTCSeconds());
 
 
-        this.caseManagmentService.getAllIncidents(0, 5000, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
+        this.caseManagmentService.getAllIncidents(0, incidentCount, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
             response = JSON.parse(CryptoJS.AES.decrypt(response.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             let caseOwners: Array<{ name: '', value: '' }> = [];
@@ -158,7 +166,7 @@ export class CaseManagementComponent implements OnInit {
 
             this.incidents = response;
             this.assignee = getUniqueObjectsInArray(caseOwners, 'name');
-        }, errro => {
+        }, error => {
             console.log('Get Incidents Error..')
         });
     }

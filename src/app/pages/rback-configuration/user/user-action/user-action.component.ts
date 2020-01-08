@@ -93,7 +93,7 @@ export class UserActionComponent implements OnInit {
   };
 
   constructor(private location: Location, private fb: FormBuilder, private activeRoute: ActivatedRoute,
-    private router: Router, private userService: UserService, private roleService: RoleService
+    public router: Router, private userService: UserService, private roleService: RoleService
     , private _snackBar: MatSnackBar) {
 
     this.API_KEY = environment.API_KEY;

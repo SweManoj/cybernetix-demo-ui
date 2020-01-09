@@ -126,8 +126,11 @@ export class IncidentSummaryComponent implements OnInit {
         this.initForm();
     }
 
+    loggedInUser: any;
     ngOnInit() {
         this.getAllUsers();
+
+        this.loggedInUser = Object.assign({}, this.utilDataService.getLoggedInUser());
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedPolicy = params.get('policyViolationId');
             this.getIncident(this.selectedPolicy);
@@ -150,7 +153,7 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.addComment(comment).subscribe((res: any) => {
             this.incidentDetails.incidentComments.unshift(res);
             this.taggedUsers = [];
-            this.saveIncidentActivity('added a comment', 'COMMENT_POSTED');
+            this.saveIncidentActivity(this.loggedInUser.userName + ' added a comment', 'COMMENT_POSTED');
             this.getTaggedUsersForIncident();
         });
         this.commentValue.setValue('');
@@ -481,7 +484,7 @@ export class IncidentSummaryComponent implements OnInit {
     deleteComment(comment) {
         comment.deleted = true;
         this.incidentSummaryService.deleteComment(comment.incCmtId).subscribe((res: any) => {
-            this.saveIncidentActivity(this.myControl.value.value + 'deleted a comment', 'COMMENT_DELETED');
+            this.saveIncidentActivity(this.loggedInUser.userName + ' deleted a comment', 'COMMENT_DELETED');
             this.getTaggedUsersForIncident();
         });
     }

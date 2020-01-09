@@ -43,8 +43,8 @@ export class IncidentSummaryComponent implements OnInit {
         indicatorsCount: '',
         elasticKillChainName: '',
         shortenUrl: '',
-        eventDate:'',
-        elasticRiskScore:'',
+        eventDate: '',
+        elasticRiskScore: '',
         elasticCategory: '',
         elasticSubCategory: '',
         incId: 0,
@@ -340,6 +340,13 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.setIncidentOutcome(outcomeData).subscribe((res: any) => {
             this.saveIncidentActivity('changed the outcome to ' + this.incidentDetails.outcome, 'INCIDENT_OUTCOME');
         });
+    }
+
+    closeIncident() {
+        this.incidentSummaryService.closeIncident(this.myControl.value, this.incidentDetails.incId, this.incidentDetails.outcome)
+            .subscribe(res => {
+
+            });
     }
 
     updateIncident() {

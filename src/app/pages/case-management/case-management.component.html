@@ -191,7 +191,8 @@
                         </div>
                     </div>
                     <div class="width-200 mr-4 mb-4 mt-1">
-                        <ejs-daterangepicker id='daterangepicker' placeholder='Select a range'>
+                        <ejs-daterangepicker  #ejDateRangePicker id='daterangepicker' placeholder='Select a range' (open)="onOpen($event)"
+                            [startDate]='startDate' [endDate]='endDate'>
                         </ejs-daterangepicker>
                         <!-- <div class="input-group">
                             <p-calendar [(ngModel)]="incidentRangeDates" placeholder="Date Range" showButtonBar="true"

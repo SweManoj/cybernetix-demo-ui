@@ -21,30 +21,35 @@ export class IncidentSummaryService {
 
     assignIncidentToUser(incidentId) {
         const url = `${this.apiPath}/incident/assigntoMeIncident/${incidentId}`;
-        return this.http.patch(url, {}, {responseType: 'text'});
+        return this.http.patch(url, {}, { responseType: 'text' });
     }
 
     uploadIncidentSummaryAttachment(fileData, attachedFileDetails) {
-            const url = `${this.apiPath}/uploadIncidentSummaryAttachment`;
-            const formData: FormData = new FormData();
-            formData.append('attachFile', fileData);
-            formData.append('attachFileDetails', attachedFileDetails);
-            return this.http.post(url, formData, {responseType: 'json'});
+        const url = `${this.apiPath}/uploadIncidentSummaryAttachment`;
+        const formData: FormData = new FormData();
+        formData.append('attachFile', fileData);
+        formData.append('attachFileDetails', attachedFileDetails);
+        return this.http.post(url, formData, { responseType: 'json' });
     }
 
     downloadIncidentSummaryAttachment(attachementId) {
         const url = `${this.apiPath}/downloadIncidentUploadedFileByAttachId/${attachementId}`;
-        return this.http.get(url, {responseType: 'blob'});
+        return this.http.get(url, { responseType: 'blob' });
     }
 
     updateIncident(incidentData, incId) {
         const url = `${this.apiPath}/incident/updateIncident/${incId}`;
-        return this.http.patch(url, incidentData, {responseType: 'text'});
+        return this.http.patch(url, incidentData, { responseType: 'text' });
+    }
+
+    closeIncident(owner: string, incidentId: number, outcome: string) {
+        const url = `${this.apiPath}/caseMgmt/entity/closeIncident/${owner}/${incidentId}/${outcome}`;
+        return this.http.get(url);
     }
 
     saveIncidentActivity(activity) {
         const url = `${this.apiPath}/incident/save/incidentactivity`;
-        return this.http.post(url, activity, {responseType: 'json'});
+        return this.http.post(url, activity, { responseType: 'json' });
     }
 
     setIncidentOutcome(outcomeData) {
@@ -54,12 +59,12 @@ export class IncidentSummaryService {
 
     addComment(comment) {
         const url = `${this.apiPath}/incident/save/incidentcomment`;
-        return this.http.post(url, comment, {responseType: 'json'});
+        return this.http.post(url, comment, { responseType: 'json' });
     }
 
     deleteComment(commentId) {
         const url = `${this.apiPath}/incident/deletePolicyComment/${commentId}`;
-        return this.http.delete(url,{responseType: 'text'});
+        return this.http.delete(url, { responseType: 'text' });
     }
 
     getTaggedUsersforIncident(incId) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { RiskyUserService } from '../dashboard/components/riskyUsers/riskyUser.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CaseModalComponent } from './components/case-modal/case-modal.component';
@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment';
 import { json } from 'd3';
 import { getUniqueObjectsInArray } from '../../shared/utils/util-functions';
 import * as CryptoJS from 'crypto-js';
+import { CalendarComponent } from '@syncfusion/ej2-angular-calendars';
 
 @Component({
     selector: 'app-case-management',
@@ -95,7 +96,7 @@ export class CaseManagementComponent implements OnInit {
             this.path = (url[0].path);
         });
         this.getPolicyViolations();
-        this.getAllIncidents(90, 5000);  // getting before 3month from current date
+        this.getAllIncidents(5000, 90);  // getting before 3month from current date
     }
 
 
@@ -106,15 +107,35 @@ export class CaseManagementComponent implements OnInit {
 
     selectFilterDate(selectedBeforeDate) {
         if (selectedBeforeDate)
-            this.getAllIncidents(selectedBeforeDate.value, 5000);
+            this.getAllIncidents(5000, selectedBeforeDate.value);
         else
-            this.getAllIncidents(90, 5000);
+            this.getAllIncidents(5000, 90);
     }
 
     covertDateToUTCFormat(inputDate) {
         const date = new Date(inputDate);
         const _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
         return _utc;
+    }
+
+    onOpen(args) {
+
+        var startDate: Date;
+        var endDate: Date;
+        args.popup.element.querySelector('.e-daterangepicker .e-footer .e-apply').addEventListener('click', function () {
+            console.log('Apply button is clicked!!');
+            console.log(args.model.startDate + '...' + args.model.endDate + '...' + args.model.value + '...' + args.model.start + '...' + args.model.end);
+            startDate = new Date(args.model.startDate);
+            endDate = new Date(args.model.endDate);
+            console.log('start :' + startDate + '..End : ' + endDate);
+
+        }).getAllIncidents(5000, null, startDate, endDate);
+        args.popup.element.querySelector('.e-daterangepicker .e-footer .e-cancel').addEventListener('click', function () {
+            console.log('Cancel button is clicked!!');
+        });
+        console.log('after function start :' + startDate + '..End : ' + endDate);
+        // console.log('after function start :' + this.startDate + '..End : ' + this.endDate);
+        this.getAllIncidents(5000, null, startDate, endDate);
     }
 
     getPolicyViolations() {
@@ -135,24 +156,29 @@ export class CaseManagementComponent implements OnInit {
         });
     }
 
-    getAllIncidents(previousDates: number, incidentCount: number) {
-        const date = new Date();
-        const quaterDate = new Date();
-        // const quaterDate = new Date(date.getMonth() - 3);   -> from 1970 year
-        quaterDate.setDate(quaterDate.getDate() - previousDates); // goto previous given number of month
-        const formattedEndDate = date.getUTCFullYear() +
-            '-' + (date.getUTCMonth() + 1) +
-            '-' + (date.getUTCDate()) +
-            ' ' + (date.getUTCHours()) +
-            ':' + (date.getUTCMinutes()) +
-            ':' + (date.getUTCSeconds());
-        const formattedStartDate = quaterDate.getUTCFullYear() +
-            '-' + (quaterDate.getUTCMonth() + 1) +
-            '-' + (quaterDate.getUTCDate()) +
-            ' ' + (quaterDate.getUTCHours()) +
-            ':' + (quaterDate.getUTCMinutes()) +
-            ':' + (quaterDate.getUTCSeconds());
+    getAllIncidents(incidentCount: number, previousDates?: number, startDate?: Date, endDate?: Date) {
+        if (!endDate)
+            var endDate = new Date();
 
+        if (!startDate)
+            var startDate = new Date();
+        // const quaterDate = new Date(date.getMonth() - 3);   -> from 1970 year
+
+        if (previousDates)
+            startDate.setDate(startDate.getDate() - previousDates); // goto previous given number of month
+
+        const formattedEndDate = endDate.getUTCFullYear() +
+            '-' + (endDate.getUTCMonth() + 1) +
+            '-' + (endDate.getUTCDate()) +
+            ' ' + (endDate.getUTCHours()) +
+            ':' + (endDate.getUTCMinutes()) +
+            ':' + (endDate.getUTCSeconds());
+        const formattedStartDate = startDate.getUTCFullYear() +
+            '-' + (startDate.getUTCMonth() + 1) +
+            '-' + (startDate.getUTCDate()) +
+            ' ' + (startDate.getUTCHours()) +
+            ':' + (startDate.getUTCMinutes()) +
+            ':' + (startDate.getUTCSeconds());
 
         this.caseManagmentService.getAllIncidents(0, incidentCount, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
             response = JSON.parse(CryptoJS.AES.decrypt(response.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));

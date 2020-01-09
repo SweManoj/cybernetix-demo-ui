@@ -3,7 +3,7 @@
     [ease]="options.ease">
 </ng-progress>
 <nav class="navbar row header-container">
-    <div class="col-md-9 initialPadding">
+    <div class="col-md-8 initialPadding">
         <a href (click)="changeMenuOpen()" class="menu ion-navicon" href="javascript:void(0)">
             <span class="ion ion-md-menu"></span>
         </a>
@@ -14,7 +14,7 @@
         </a>
     </div>
 
-    <div class="col-md-2 row">
+    <div class="col-md-3 row">
         <div class="col-md-12 input-group initialPadding">
             <input type="text" class="form-control search-box" [(ngModel)]="searchEntity"
                 placeholder="Search Risky Entities" (keyup.enter)="filterRiskEntities()">
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <!--        <div class="col-md-1 input-group initialPadding"
+        <!-- <div class="col-md-1 input-group initialPadding"
              style="display: flex;align-items:center; position:relative;padding-top:20px;display:inline-block;">&lt;!&ndash;
             <a class="al-logo clearfix" (click)="displayNotifications()">                
                 <span *ngIf="notificationCount > 0" class="notify-badge">{{notificationCount}}</span>

@@ -343,7 +343,7 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     closeIncident() {
-        this.incidentSummaryService.closeIncident(this.myControl.value, this.incidentDetails.incId, this.incidentDetails.outcome)
+        this.incidentSummaryService.closeIncident(this.myControl.value.value, this.incidentDetails.incId, this.incidentDetails.outcome)
             .subscribe(res => {
 
             });

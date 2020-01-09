@@ -150,6 +150,14 @@ export class RiskyUsersComponent {
         });
     }
 
+    stylePolicyActionButton(policyButtonName: string) {
+        // AI Incident Created, Manual Incident Created, Create an Incident  - Incident Button Name Possibilities
+        if (policyButtonName == 'AI Incident Created')
+            return { background: 'darkblue', color: 'white' };
+        else
+            return { background: 'darkyellow', color: 'white' };
+    }
+
     actionButtonClick(policyViolation: any) {
         if (this.actionButtonName != "Create an Incident") {
             this.router.navigate(['/incidentSummary', policyViolation.incidentId]);

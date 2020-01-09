@@ -164,7 +164,7 @@
                 <span>{{policyViolation.violationEventDate | date: 'dd MMM yyyy' }}</span>
 
                 <button *ngIf="policyViolation.actionButtonName" class="btn btn-primary pull-right"
-                    (click)="actionButtonClick(policyViolation)">{{policyViolation.actionButtonName}}</button>
+                    (click)="actionButtonClick(policyViolation)" [ngStyle]="stylePolicyActionButton(policyViolation.actionButtonName)">{{policyViolation.actionButtonName}}</button>
             </div>
             <div class="row initialPadding" *ngFor="let timeLine of policyViolation.timeLines">
                 <div class="col-md-12 d-flex">

@@ -234,8 +234,10 @@ export class IncidentSummaryComponent implements OnInit {
                 res.elasticRiskScore = res.elasticRiskScore ? res.elasticRiskScore.toFixed(2) : 0;
                 this.incidentDetails = res;
 
-                this.initialOutcome = new String(res.outcome);
-                this.initialCaseOwner = new String(res.incOwner.userName);
+                if (res.incOwner != null) {
+                    this.initialOutcome = new String(res.outcome);
+                    this.initialCaseOwner = new String(res.incOwner.userName);
+                }
 
                 this.getTaggedUsersForIncident();
                 this.incidentDetailsCopy = Object.assign({}, res);

@@ -139,7 +139,7 @@
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">&nbsp;</div>
                         <div class="col-sm-6 dataValue">
                             <button class="update-btn"
-                                *ngIf="(initialOutcome!=incidentDetails.outcome) || (initialCaseOwner!=myControl.value.value)"
+                                *ngIf="((initialOutcome!=incidentDetails.outcome) || (initialCaseOwner!=myControl.value.value))"
                                 mat-raised-button (click)="closeIncident()">Update
                             </button>
                         </div>

@@ -17,6 +17,7 @@ import * as CryptoJS from 'crypto-js';
 export interface User {
     name: string;
 }
+
 @Component({
     selector: 'app-policy-violation-summary',
     templateUrl: './incident-summary.component.html'
@@ -50,7 +51,7 @@ export class IncidentSummaryComponent implements OnInit {
         incId: 0,
         priority: '',
         status: '',
-        outcome: '',
+        outcome: 'OPEN',
         pvID: '',
         attachFiles: [],
         incidentactivities: [],
@@ -185,9 +186,9 @@ export class IncidentSummaryComponent implements OnInit {
             this.users = users;
             const loggedInUser = this.utilDataService.getLoggedInUser();
 
-            if (this.users.find(user => user.userName === loggedInUser.userName)) {
+            /* if (this.users.find(user => user.userName === loggedInUser.userName)) {
                 this.users.splice(this.users.findIndex(user => user.userName === loggedInUser.userName), 1);
-            }
+            } */
             this.filteredUsers = this.taggedUserCtrl.valueChanges.pipe(
                 startWith(null),
                 map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
@@ -207,9 +208,14 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     selectedCaseOwner() {
-        if (!this.incidentDetailsCopy.incOwner || this.myControl.value.value !== this.incidentDetailsCopy.incOwner.userName)
+        /* if (!this.incidentDetailsCopy.incOwner || this.myControl.value.value !== this.incidentDetailsCopy.incOwner.userName)
             this.isUpdate = true;
         else {
+            this._snackBar.open('Please assign to other user', null, {
+                duration: 4000,
+            });
+        } */
+        if (this.initialCaseOwner == this.myControl.value.value) {
             this._snackBar.open('Please assign to other user', null, {
                 duration: 4000,
             });
@@ -227,6 +233,9 @@ export class IncidentSummaryComponent implements OnInit {
             if (res) {
                 res.elasticRiskScore = res.elasticRiskScore ? res.elasticRiskScore.toFixed(2) : 0;
                 this.incidentDetails = res;
+
+                this.initialOutcome = new String(res.outcome);
+                this.initialCaseOwner = new String(res.incOwner.userName);
 
                 this.getTaggedUsersForIncident();
                 this.incidentDetailsCopy = Object.assign({}, res);
@@ -304,7 +313,6 @@ export class IncidentSummaryComponent implements OnInit {
             const input = event.input;
             const value = event.value;
 
-
             if ((value || '').trim()) {
                 this.taggedUsers.push(value);
             }
@@ -342,11 +350,68 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
+    initialOutcome: String = '';
+    initialCaseOwner: String = '';
+
     closeIncident() {
         this.incidentSummaryService.closeIncident(this.myControl.value.value, this.incidentDetails.incId, this.incidentDetails.outcome)
             .subscribe(res => {
 
             });
+
+        var feedMessage = '';
+        var actionType = '';
+        const loggedInUser = this.utilDataService.getLoggedInUser();
+        const assingedToMe = this.myControl.value.value === loggedInUser.userName;
+        const outcomeChanged = this.incidentDetails.outcome != this.initialOutcome;
+        const ownerChanged = this.myControl.value.value != this.initialCaseOwner;
+
+        console.log('assigned to him : ' + assingedToMe);
+        if (outcomeChanged && ownerChanged && assingedToMe) {
+            feedMessage = loggedInUser.userName + ' changed outcome to ' + this.incidentDetails.outcome + ' and assigned the incident to himself';
+            actionType = 'OWNER_OUTCOME_ASSIGNED';
+        } else if (outcomeChanged && ownerChanged && !assingedToMe) {
+            feedMessage = loggedInUser.userName + ' changed outcome to ' + this.incidentDetails.outcome + ' and assigned the incident to ' + this.myControl.value.value;
+            actionType = 'OWNER_OUTCOME_ASSIGNED';
+        }
+        else if (outcomeChanged && !ownerChanged) {
+            feedMessage = loggedInUser.userName + ' changed outcome to ' + this.incidentDetails.outcome;
+            actionType = 'INCIDENT_OUTCOME';
+        } else if (ownerChanged && !outcomeChanged && !assingedToMe) {
+            feedMessage = loggedInUser.userName + ' assigned the incident to ' + this.myControl.value.value;
+            actionType = 'CASE_OWNER_ASSIGNED';
+        }
+
+        const activityData = {
+            'feed': feedMessage,
+            'actionType': actionType,
+            'incID': this.incidentDetails.incId
+        };
+
+        this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) => {
+            this.incidentDetails.incidentactivities.unshift(res);
+
+        });
+
+        this.initialCaseOwner = new String(this.myControl.value.value);
+        this.initialOutcome = new String(this.incidentDetails.outcome);
+        debugger
+        console.log(activityData + '...');
+    }
+
+    saveIncidentActivity(feed, action) {
+        const activityData = {
+            'feed': feed,
+            'actionType': action,
+            'incID': this.incidentDetails.incId
+        };
+        this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) => {
+            this.incidentDetails.incidentactivities.unshift(res);
+        });
+    }
+
+    updateIncidentNew() {
+
     }
 
     updateIncident() {
@@ -409,17 +474,6 @@ export class IncidentSummaryComponent implements OnInit {
         const filterValue = name.toLowerCase();
 
         return this.caseowners.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
-    }
-
-    saveIncidentActivity(feed, action) {
-        const activityData = {
-            'feed': feed,
-            'actionType': action,
-            'incID': this.incidentDetails.incId
-        };
-        this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) => {
-            this.incidentDetails.incidentactivities.unshift(res);
-        });
     }
 
     deleteComment(comment) {

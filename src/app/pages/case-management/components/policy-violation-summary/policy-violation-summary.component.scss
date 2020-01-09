@@ -125,12 +125,12 @@ app-policy-violation-summary {
       li {
         font-size: 15px;
         display: flex;
-        padding: 15px 0;
+        padding: 10px 0;
         flex-wrap: wrap;
         align-items: flex-start;
         position: relative;
         z-index: 0;
-        height: 60px;
+        height: fit-content;
 
         &:first-child {
           padding-top: 25px;

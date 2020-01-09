@@ -169,16 +169,16 @@ export class CaseManagementComponent implements OnInit {
 
         const formattedEndDate = endDate.getUTCFullYear() +
             '-' + (endDate.getUTCMonth() + 1) +
-            '-' + (endDate.getUTCDate()) +
-            ' ' + (endDate.getUTCHours()) +
-            ':' + (endDate.getUTCMinutes()) +
-            ':' + (endDate.getUTCSeconds());
+            '-' + (endDate.getUTCDate()) + " 23:59:59";
+        /* ' ' + (endDate.getUTCHours()) +
+        ':' + (endDate.getUTCMinutes()) +
+        ':' + (endDate.getUTCSeconds()); */
         const formattedStartDate = startDate.getUTCFullYear() +
             '-' + (startDate.getUTCMonth() + 1) +
-            '-' + (startDate.getUTCDate()) +
-            ' ' + (startDate.getUTCHours()) +
-            ':' + (startDate.getUTCMinutes()) +
-            ':' + (startDate.getUTCSeconds());
+            '-' + (startDate.getUTCDate()) + " 00:00:00";
+        /* ' ' + (startDate.getUTCHours()) +
+        ':' + (startDate.getUTCMinutes()) +
+        ':' + (startDate.getUTCSeconds()); */
 
         this.caseManagmentService.getAllIncidents(0, incidentCount, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
             response = JSON.parse(CryptoJS.AES.decrypt(response.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));

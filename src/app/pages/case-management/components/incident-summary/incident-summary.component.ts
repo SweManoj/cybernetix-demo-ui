@@ -428,6 +428,14 @@ export class IncidentSummaryComponent implements OnInit {
             this.showUpdateButton = false;
             this.initialCaseOwner = this.myControl.value ? this.myControl.value.value : '';
 
+            if (res.feed.includes('FALSE_POSITIVE_WRONG_DETECTION'))
+                res.feed = res.feed.replace('FALSE_POSITIVE_WRONG_DETECTION', 'False Positive Wrong Detection');
+            else if (res.feed.includes('FALSE_POSITIVE_RIGHT_DETECTION'))
+                res.feed = res.feed.replace('FALSE_POSITIVE_RIGHT_DETECTION', 'False Positive Correct Detection');
+            else if (res.feed.includes('OPEN'))
+                res.feed = res.feed.replace('OPEN', 'Open');
+            else if (res.feed.includes('TRUE_POSITIVE'))
+                res.feed = res.feed.replace('TRUE_POSITIVE', 'True Positive');
             this.incidentDetails.incidentactivities.unshift(res);
 
             this._snackBar.open('Updated successfully', null, {

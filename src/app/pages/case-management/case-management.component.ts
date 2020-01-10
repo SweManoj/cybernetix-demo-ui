@@ -187,6 +187,15 @@ export class CaseManagementComponent implements OnInit {
             response.forEach(element => {
                 element.priority = element.priority ? element.priority : '-';
                 element.ownerName = element.ownerName ? element.ownerName : 'Not Assigned';
+                if (element.outcome == 'OPEN')
+                    element.outcome = 'Open';
+                else if (element.outcome == 'FALSE_POSITIVE_WRONG_DETECTION')
+                    element.outcome = 'False Positive Wrong Detection';
+                else if (element.outcome == 'FALSE_POSITIVE_RIGHT_DETECTION')
+                    element.outcome = 'False Positive Correct Detection';
+                else if (element.outcome == 'FTRUE_POSITIVE')
+                    element.outcome = 'True Positive';
+
                 caseOwners.push({ name: element.ownerName, value: element.ownerName });
             });
 

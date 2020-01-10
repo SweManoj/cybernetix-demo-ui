@@ -130,7 +130,11 @@ export class IncidentSummaryComponent implements OnInit {
     ngOnInit() {
         this.getAllUsers();
 
-        this.loggedInUser = Object.assign({}, this.utilDataService.getLoggedInUser());
+        this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
+            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            this.loggedInUser = res;
+        });
+
         this.routeParam.paramMap.subscribe((params) => {
             this.selectedPolicy = params.get('policyViolationId');
             this.getIncident(this.selectedPolicy);
@@ -366,7 +370,7 @@ export class IncidentSummaryComponent implements OnInit {
 
         var feedMessage = '';
         var actionType = '';
-        const loggedInUser = this.utilDataService.getLoggedInUser();
+        const loggedInUser = this.loggedInUser;
         const assingedToMe = this.myControl.value.value === loggedInUser.userName;
         const outcomeChanged = this.incidentDetails.outcome != this.initialOutcome;
         const ownerChanged = this.myControl.value.value != this.initialCaseOwner;
@@ -378,8 +382,7 @@ export class IncidentSummaryComponent implements OnInit {
         } else if (outcomeChanged && ownerChanged && !assingedToMe) {
             feedMessage = loggedInUser.userName + ' changed outcome to ' + this.incidentDetails.outcome + ' and assigned the incident to ' + this.myControl.value.value;
             actionType = 'OWNER_OUTCOME_ASSIGNED';
-        }
-        else if (outcomeChanged && !ownerChanged) {
+        } else if (outcomeChanged && !ownerChanged) {
             feedMessage = loggedInUser.userName + ' changed outcome to ' + this.incidentDetails.outcome;
             actionType = 'INCIDENT_OUTCOME';
         } else if (ownerChanged && !outcomeChanged && !assingedToMe) {
@@ -396,6 +399,13 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) => {
             this.incidentDetails.incidentactivities.unshift(res);
 
+            this._snackBar.open('Updated successfully', null, {
+                duration: 2000,
+            });
+        }, error => {
+            this._snackBar.open('Updated Failed', null, {
+                duration: 2000,
+            });
         });
 
         this.initialCaseOwner = new String(this.myControl.value.value);
@@ -413,10 +423,6 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) => {
             this.incidentDetails.incidentactivities.unshift(res);
         });
-    }
-
-    updateIncidentNew() {
-
     }
 
     updateIncident() {

@@ -426,7 +426,7 @@ export class IncidentSummaryComponent implements OnInit {
         this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) => {
             this.initialOutcome = this.incidentDetails.outcome;
             this.showUpdateButton = false;
-            this.initialCaseOwner = this.myControl.value.value;
+            this.initialCaseOwner = this.myControl.value ? this.myControl.value.value : '';
 
             this.incidentDetails.incidentactivities.unshift(res);
 
@@ -439,8 +439,8 @@ export class IncidentSummaryComponent implements OnInit {
             });
         });
 
-        this.initialCaseOwner = new String(this.myControl.value.value);
-        this.initialOutcome = new String(this.incidentDetails.outcome);
+        /* this.initialCaseOwner = new String(this.myControl.value.value);
+        this.initialOutcome = new String(this.incidentDetails.outcome); */
         debugger
         console.log(activityData + '...');
     }

@@ -107,8 +107,8 @@
                         <b>&nbsp;:&nbsp;</b>
                         <div class="col-sm-6 dataValue">
                             <mat-form-field class="dropdown-priority w-100">
-                                <mat-select [(ngModel)]="incidentDetails.outcome" (ngModelChange)="incidentDataChange()"
-                                    name="outcome" placeholder="Select Outcome">
+                                <mat-select [(ngModel)]="incidentDetails.outcome" name="outcome" (ngModelChange)="incidentOutcomeChange()"
+                                    placeholder="Select Outcome" [disabled]="initialOutcome!='OPEN'">
                                     <mat-option value="TRUE_POSITIVE">True Positive</mat-option>
                                     <mat-option value="FALSE_POSITIVE_RIGHT_DETECTION">False Positive Correct
                                         Detection</mat-option>
@@ -138,9 +138,8 @@
                     <div class="row mt-3">
                         <div class="col-11 col-sm-5 col-xl-4 dataTitle">&nbsp;</div>
                         <div class="col-sm-6 dataValue">
-                            <button class="update-btn"
-                                *ngIf="((initialOutcome!=incidentDetails.outcome) || (initialCaseOwner!=myControl.value.value))"
-                                mat-raised-button (click)="closeIncident()">Update
+                            <button class="update-btn" *ngIf="showUpdateButton" mat-raised-button
+                                (click)="closeIncident()">Update
                             </button>
                         </div>
                     </div>

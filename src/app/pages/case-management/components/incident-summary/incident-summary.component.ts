@@ -141,11 +141,13 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
-    incidentDataChange() {
-        if (this.incidentDetails.priority !== '' || this.incidentDetails.status !== '' || this.incidentDetails.outcome !== ''
+    incidentOutcomeChange() {
+        /* if (this.incidentDetails.priority !== '' || this.incidentDetails.status !== '' || this.incidentDetails.outcome !== ''
             || this.myControl.value.name != null) {
             this.isUpdate = true;
-        }
+        } */
+
+        this.showUpdateButton = this.initialOutcome == 'OPEN' && this.initialOutcome != this.incidentDetails.outcome;
     }
 
     submitComment(parentId) {
@@ -222,7 +224,12 @@ export class IncidentSummaryComponent implements OnInit {
                 duration: 4000,
             });
         } */
-        if (this.initialCaseOwner == this.myControl.value.value) {
+        console.log('initial owner : ' + this.initialCaseOwner);
+        console.log('value is : ' + this.myControl.value.value);
+        if (this.initialCaseOwner == '' || this.initialCaseOwner != this.myControl.value.value) {
+            this.showUpdateButton = true;
+        } else {
+            this.showUpdateButton = false;
             this._snackBar.open('Please assign to other user', null, {
                 duration: 4000,
             });
@@ -234,12 +241,28 @@ export class IncidentSummaryComponent implements OnInit {
     }
 
     showAssigMeButton = true;
+    showUpdateButton = false;
 
     getIncident(pvId) {
         this.incidentSummaryService.getIncidentDetials(pvId).subscribe((res: any) => {
             if (res) {
                 res.elasticRiskScore = res.elasticRiskScore ? res.elasticRiskScore.toFixed(2) : 0;
+                res.outcome = res && res.outcome ? res.outcome : 'OPEN';
+                this.initialCaseOwner = res && res.incOwner && res.incOwner.userName ? res && res.incOwner.userName : '';
+
+                this.initialOutcome = res.outcome;
                 this.incidentDetails = res;
+
+                res.incidentactivities.forEach(incActivity => {
+                    if (incActivity.feed.includes('FALSE_POSITIVE_WRONG_DETECTION'))
+                        incActivity.feed = incActivity.feed.replace('FALSE_POSITIVE_WRONG_DETECTION', 'False Positive Wrong Detection');
+                    else if (incActivity.feed.includes('FALSE_POSITIVE_RIGHT_DETECTION'))
+                        incActivity.feed = incActivity.feed.replace('FALSE_POSITIVE_RIGHT_DETECTION', 'False Positive Correct Detection');
+                    else if (incActivity.feed.includes('OPEN'))
+                        incActivity.feed = incActivity.feed.replace('OPEN', 'Open');
+                    else if (incActivity.feed.includes('TRUE_POSITIVE'))
+                        incActivity.feed = incActivity.feed.replace('TRUE_POSITIVE', 'True Positive');
+                });
 
                 if (res.incOwner != null) {
                     this.initialOutcome = new String(res.outcome);
@@ -359,11 +382,13 @@ export class IncidentSummaryComponent implements OnInit {
         });
     }
 
-    initialOutcome: String = '';
+    initialOutcome: String = 'OPEN';
     initialCaseOwner: String = '';
 
     closeIncident() {
-        this.incidentSummaryService.closeIncident(this.myControl.value.value, this.incidentDetails.incId, this.incidentDetails.outcome)
+        const userName = this.myControl.value ? this.myControl.value.value : '';
+        const userNameReq = userName == '' ? this.loggedInUser.userName : userName;
+        this.incidentSummaryService.closeIncident(userNameReq, this.incidentDetails.incId, this.incidentDetails.outcome)
             .subscribe(res => {
 
             });
@@ -371,11 +396,10 @@ export class IncidentSummaryComponent implements OnInit {
         var feedMessage = '';
         var actionType = '';
         const loggedInUser = this.loggedInUser;
-        const assingedToMe = this.myControl.value.value === loggedInUser.userName;
-        const outcomeChanged = this.incidentDetails.outcome != this.initialOutcome;
-        const ownerChanged = this.myControl.value.value != this.initialCaseOwner;
+        const assingedToMe = userName && userName === loggedInUser.userName ? true : false;
+        const outcomeChanged = this.incidentDetails.outcome != this.initialOutcome ? true : false;
+        const ownerChanged = userName != this.initialCaseOwner ? true : false;
 
-        console.log('assigned to him : ' + assingedToMe);
         if (outcomeChanged && ownerChanged && assingedToMe) {
             feedMessage = loggedInUser.userName + ' changed outcome to ' + this.incidentDetails.outcome + ' and assigned the incident to himself';
             actionType = 'OWNER_OUTCOME_ASSIGNED';
@@ -386,8 +410,11 @@ export class IncidentSummaryComponent implements OnInit {
             feedMessage = loggedInUser.userName + ' changed outcome to ' + this.incidentDetails.outcome;
             actionType = 'INCIDENT_OUTCOME';
         } else if (ownerChanged && !outcomeChanged && !assingedToMe) {
-            feedMessage = loggedInUser.userName + ' assigned the incident to ' + this.myControl.value.value;
+            feedMessage = loggedInUser.userName + ' assigned the incident to ' + userName;
             actionType = 'CASE_OWNER_ASSIGNED';
+        } else if (!outcomeChanged && ownerChanged && assingedToMe) {
+            feedMessage = loggedInUser.userName + ' assigned the incident to himself';
+            actionType = 'ASSIGN_TO_ME';
         }
 
         const activityData = {
@@ -397,6 +424,10 @@ export class IncidentSummaryComponent implements OnInit {
         };
 
         this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) => {
+            this.initialOutcome = this.incidentDetails.outcome;
+            this.showUpdateButton = false;
+            this.initialCaseOwner = this.myControl.value.value;
+
             this.incidentDetails.incidentactivities.unshift(res);
 
             this._snackBar.open('Updated successfully', null, {
@@ -421,6 +452,14 @@ export class IncidentSummaryComponent implements OnInit {
             'incID': this.incidentDetails.incId
         };
         this.incidentSummaryService.saveIncidentActivity(activityData).subscribe((res: any) => {
+            if (res.feed.includes('FALSE_POSITIVE_WRONG_DETECTION'))
+                res.feed = res.feed.replace('FALSE_POSITIVE_WRONG_DETECTION', 'False Positive Wrong Detection');
+            else if (res.feed.includes('FALSE_POSITIVE_RIGHT_DETECTION'))
+                res.feed = res.feed.replace('FALSE_POSITIVE_RIGHT_DETECTION', 'False Positive Correct Detection');
+            else if (res.feed.includes('OPEN'))
+                res.feed = res.feed.replace('OPEN', 'Open');
+            else if (res.feed.includes('TRUE_POSITIVE'))
+                res.feed = res.feed.replace('TRUE_POSITIVE', 'True Positive')
             this.incidentDetails.incidentactivities.unshift(res);
         });
     }

@@ -119,10 +119,11 @@ export class RiskyHostComponent implements OnInit {
         else
             return { background: 'darkyellow', color: 'white' };
     }
-    
+
     getRiskyHostDetails() {
         this.riskyUserService.getRiskyEntityDetails(this.selectedHost, 'HOST').subscribe((res: any) => {
             res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            res.riskScore = Math.round(res.riskScore);
             this.hostDetails = res;
         });
         const date = new Date()

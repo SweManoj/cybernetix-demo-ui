@@ -52,9 +52,7 @@ export class TopUsersComponent implements OnInit {
     fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntityId) {
         this.topDetailService.fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntityId)
             .subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-
-                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+              window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
 

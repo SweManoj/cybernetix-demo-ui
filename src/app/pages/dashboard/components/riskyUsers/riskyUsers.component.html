@@ -36,7 +36,7 @@
                                 src='./../../../../../assets/images/users/service_user.jpeg' style="width: 4rem;" />
                             <div style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.user.u_employeeId}}</div>
                         </div> -->
-                        <img (click)="openUserInfo(selectedUserDetails.userInfo)"
+                        <img (click)="openUserInfo(userData?.user)"
                             class="profile-image rounded-circle mt-4"
                             src='./../../../../../assets/images/users/service_user.jpeg' style="width: 4rem;" />
                         <div class="user-info m-t-sm">
@@ -214,7 +214,7 @@
                                         // comment this button - Manoj
                                         <button ngbDropdownItem class="greyBackground">
                                             Perform Remediation
-                                        </button> 
+                                        </button>
                                         <button [routerLink]="['/policyViolationSummary', timeLine.lastViolationId]"
                                             ngbDropdownItem class="greyBackground"
                                             *ngIf="!policyViolation.dataAggregated">

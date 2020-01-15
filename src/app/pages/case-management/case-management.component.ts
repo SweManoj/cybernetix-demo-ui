@@ -235,7 +235,18 @@ export class CaseManagementComponent implements OnInit {
     }
 
     setDateRange() {
-        if (this.policyRangeDates.length > 0) {
+        if (this.policyRangeDates == null) {
+            let newEndDay;
+            for (let dayIndex = 1; dayIndex < 14; dayIndex++) {
+                const date = new Date();
+                date.setDate(date.getDate() - dayIndex);
+                newEndDay =date;
+            }
+            this.policyRangeDates = [];
+            this.policyRangeDates.push(newEndDay);
+            this.policyRangeDates.push(this.todayDate);
+        }
+
             this.myDays = [];
             const endDate = new Date(this.policyRangeDates[1]);
             const startDate = new Date(this.policyRangeDates[0]);
@@ -262,7 +273,6 @@ export class CaseManagementComponent implements OnInit {
                     this.fetchingPolicyViolationsInProgress = false;
                     this.getStageValues();
                 });
-        }
     }
 
     onActionClick(name, data) {

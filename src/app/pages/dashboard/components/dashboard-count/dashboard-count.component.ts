@@ -47,7 +47,6 @@ export class DashboardCountComponent implements OnInit {
       this.violationCountsFirstHalf.forEach(count => {
         count.value = res[count.valueControl]
       });
-      this.violationCountsFirstHalf[0]['value'] = 69000000;
 
       this.violationCountsSecondHalf.forEach(count => {
         count.value = res[count.valueControl]

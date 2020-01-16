@@ -6,7 +6,7 @@ export function intToString(value) {
         if (shortValue % 1 != 0) {
             var shortNum = shortValue.toFixed(1);
         }
-        return shortValue + suffixes[suffixNum];
+        return shortValue.toFixed(2) + suffixes[suffixNum];
     } else
         return value;
 }

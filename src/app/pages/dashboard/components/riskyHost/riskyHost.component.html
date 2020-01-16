@@ -114,8 +114,8 @@
 
                                 <span class="risk-score mr-5"
                                     (click)="fetchKibanaRawEventindex(timeLine.lastViolationId)">{{timeLine.noOfEvents}}</span>
-                                <a [routerLink]="['/incidentSummary', timeLine.pvId]"
-                                    *ngIf="timeLine.incId !== 0">INC-{{timeLine.incId}}</a>
+                                <!-- <a [routerLink]="['/incidentSummary', timeLine.pvId]"
+                                    *ngIf="timeLine.incId !== 0">INC-{{timeLine.incId}}</a> -->
                                 <!-- <span ngbDropdown placement="bottom-right" class="float-right mt-1"
                                     *ngIf="timeLine.accord">
                                     <button class="btn btn-sm greyBackground" id="dropdownBasic1" ngbDropdownToggle>

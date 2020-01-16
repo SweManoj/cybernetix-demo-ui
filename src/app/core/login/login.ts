@@ -31,6 +31,8 @@ export class LoginComponent {
     constructor(private fb: FormBuilder, private loginService: LoginService, private userContext: UserContext,
         private router: Router, @Inject(SESSION_STORAGE) private sessionStorage: StorageService, public dialog: MatDialog) {
 
+        this.loginService.logout();
+
         this.API_KEY = environment.API_KEY;
         this.API_CIPHER = environment.API_CIPHER;
 
@@ -64,6 +66,7 @@ export class LoginComponent {
                 const redirectURL = this.sessionStorage.get('redirectURL');
                 this.router.navigateByUrl(redirectURL);
                 this.sessionStorage.remove('redirectURL');
+
             }, error => {
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;
                 if (this.showSecurityTokenInput) {

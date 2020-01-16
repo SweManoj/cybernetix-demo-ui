@@ -33,14 +33,17 @@ export class LoginService {
   }
 
   logout() {
-    const requestHeaders = {
-      headers: new HttpHeaders({
-        accessToken: this.sessionStorage.get('accessToken'),
-        refreshToken: this.sessionStorage.get('refreshToken')
-      })
-    };
 
-    this.http.delete(`${environment.serverUrl}/removeTokens`, requestHeaders).toPromise();
+    if (this.sessionStorage.get('accessToken')) {
+      const requestHeaders = {
+        headers: new HttpHeaders({
+          accessToken: this.sessionStorage.get('accessToken'),
+          refreshToken: this.sessionStorage.get('refreshToken')
+        })
+      };
+
+      this.http.delete(`${environment.serverUrl}/removeTokens`, requestHeaders).toPromise();
+    }
 
     if (isStorageAvailable) {
       this.sessionStorage.remove('accessToken');

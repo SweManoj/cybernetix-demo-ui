@@ -71,7 +71,7 @@ export class LoginComponent {
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;
                 if (this.showSecurityTokenInput) {
                     this.loginService.getSecreteKey(this.username.value).subscribe((res: any) => {
-                        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+                        // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
                         this.secreteKey = res['SecreteKey'];
                         this.secreteKeyQRUrl = res['SecreteKeyQRURL'];
                     });

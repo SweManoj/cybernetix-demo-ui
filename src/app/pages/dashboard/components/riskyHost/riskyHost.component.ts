@@ -122,13 +122,13 @@ export class RiskyHostComponent implements OnInit {
 
     getRiskyHostDetails() {
         this.riskyUserService.getRiskyEntityDetails(this.selectedHost, 'HOST').subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             res.riskScore = Math.round(res.riskScore);
             this.hostDetails = res;
         });
         const date = new Date()
         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedHost, 0, date.getTime(), 0).subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             if (res && res.length > 0) {
                 res.forEach((policyViolation) => {
@@ -150,7 +150,7 @@ export class RiskyHostComponent implements OnInit {
         });
 
         this.riskyUserService.getDayBasisRiskScore(this.selectedHost).subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.graphData = res;
             this.zone.runOutsideAngular(() => {
                 this.initializeLineChart();
@@ -181,7 +181,7 @@ export class RiskyHostComponent implements OnInit {
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
         this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDateTime), ruleId, 'HOST')
             .subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+                // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
@@ -194,7 +194,7 @@ export class RiskyHostComponent implements OnInit {
 
         this.riskyUserService.rawEventCount(lastViolationId)
             .subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+                // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
@@ -210,7 +210,7 @@ export class RiskyHostComponent implements OnInit {
             "violationEventTime": date.toISOString().substring(0, 19)
         };
         this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../dashboard.service';
 import { intToString } from '../../../../shared/utils/util-functions';
-import * as CryptoJS from 'crypto-js';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -9,9 +8,6 @@ import { environment } from '../../../../../environments/environment';
   templateUrl: './dashboard-count.component.html'
 })
 export class DashboardCountComponent implements OnInit {
-
-  API_KEY: any;
-  API_CIPHER: any;
 
   loadingInProgress = true;
   dashboardCounts = [];
@@ -35,13 +31,10 @@ export class DashboardCountComponent implements OnInit {
   ]
 
   constructor(private dashboardService: DashboardService) {
-    this.API_KEY = environment.API_KEY;
-    this.API_CIPHER = environment.API_CIPHER;
   }
 
   ngOnInit() {
     this.dashboardService.getDashboardCounts().subscribe((res: any) => {
-      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
       this.loadingInProgress = false;
       this.violationCountsFirstHalf.forEach(count => {
@@ -50,7 +43,7 @@ export class DashboardCountComponent implements OnInit {
 
       this.violationCountsSecondHalf.forEach(count => {
         count.value = res[count.valueControl]
-      })
+      });
     });
   }
 

@@ -32,7 +32,7 @@ export class TopUsersComponent implements OnInit {
 
     getTopUsers() {
         this.topDetailService.getTopUsers(this.user).subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.topUserDetails = <Array<User>>res;
         });
     }

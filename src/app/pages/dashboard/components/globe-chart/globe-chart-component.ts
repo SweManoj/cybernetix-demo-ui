@@ -186,7 +186,7 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByTitle() {
         this.dashboardService.getRiskCountByTitle().subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             if (res && res.length > 0) {
                 let i = 0;
@@ -207,7 +207,7 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByDept() {
         this.dashboardService.getRiskCountByDepartment().subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             if (res && res.length > 0) {
                 res.forEach(riskScoreByDept => {
@@ -223,7 +223,7 @@ export class GlobeChartComponent implements OnInit {
 
     initializeRiskByLocation() {
         this.dashboardService.getRiskCountByLocation().subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             if (res && res.length > 0) {
                 res.forEach(countryData => {

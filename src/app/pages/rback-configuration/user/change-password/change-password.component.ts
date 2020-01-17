@@ -11,7 +11,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ChangePasswordComponent implements OnInit {
 
   pageTitle = 'Change Password';
-  userId:number;
+  userId: number;
   userName: string;
 
   changePasswordForm: FormGroup;
@@ -52,7 +52,7 @@ export class ChangePasswordComponent implements OnInit {
     this.logValidationErrors();
 
     if (this.changePasswordForm.valid) {
-      const password = this.changePasswordForm.get('passwordGroup').get('userPassword');
+      const password = this.changePasswordForm.get('passwordGroup').get('userPassword').value;
       this.changePasswordForm.get('password').setValue(password);
       this.userService.changePasswordByAdmin(this.changePasswordForm.value).subscribe(res => {
         this.activeModal.close('Y');

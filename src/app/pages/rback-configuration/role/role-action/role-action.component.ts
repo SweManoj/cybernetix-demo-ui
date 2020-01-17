@@ -169,9 +169,10 @@ export class RoleActionComponent implements OnInit {
     this.submitDisabled = true;
     this.allFormTouched(this.roleForm);
     this.logValidationErrors(this.roleForm);
-    if (this.roleForm.invalid)
+    if (this.roleForm.invalid) {
+      this.submitDisabled = false;
       return;
-    else {
+    } else {
       var permissionValues = this.roleForm.get('permissions').value;
       var permissionIds: Array<number[]> = [];
       permissionValues.forEach(permissionValue => {
@@ -182,6 +183,8 @@ export class RoleActionComponent implements OnInit {
       if (this.editRole) {
         this.roleService.updateRoleMaster(this.roleForm.value).subscribe((res) => {
           this.previousPage();
+        }, error => {
+          this.submitDisabled = false;
         });
       } else {
         this.roleService.addRoleMaster(this.roleForm.value).subscribe((res) => {

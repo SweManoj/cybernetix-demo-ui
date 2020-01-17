@@ -19,13 +19,13 @@ export class LeftNavComponent {
                 title: 'Dashboard', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/dashboard'
             },
-            {
+            /* {
                 ionIcon: '',
                 faIcon: 'fa fa-lock',
                 img: '',
                 title: 'Violations', // this.translateService.instant('general.menu.dashboard')
                 navLink: '/policyViolation'
-            },
+            }, */
             {
                 ionIcon: '',
                 faIcon: 'fa fa-cogs',

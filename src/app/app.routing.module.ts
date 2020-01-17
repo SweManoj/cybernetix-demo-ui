@@ -89,10 +89,10 @@ export const routes: Routes = [
                 path: 'filteredRiskyUsers/:riskyUser',
                 component: FilterRiskEntityComponent
             },
-            {
+            /* {
                 path: 'policyViolation',
                 component: CaseManagementComponent
-            },
+            }, */
             {
                 path: 'caseManagement',
                 component: CaseManagementComponent

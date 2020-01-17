@@ -13,7 +13,6 @@ import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { notifications } from 'ionicons/icons';
-import * as CryptoJS from 'crypto-js';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -21,9 +20,6 @@ import { environment } from '../../../../environments/environment';
     templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-
-    API_KEY: any;
-    API_CIPHER: any;
 
     options = {
         ease: 'linear',
@@ -47,9 +43,6 @@ export class HeaderComponent implements OnInit {
     constructor(private userContext: UserContext, private router: Router, private _snackBar: MatSnackBar, idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
         private utilDataService: UtilDataService, private ngbModal: NgbModal, private dashboardService: DashboardService) {
-
-        this.API_KEY = environment.API_KEY;
-        this.API_CIPHER = environment.API_CIPHER;
 
         this.themeName = this.userContext.themeName;
         this.prevThemeName = this.themeName;
@@ -116,8 +109,7 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+        this.loginService.getLoggedInUserDetails().subscribe((res: any) => {            
             this.loggedInUserDetails = res;
             this.utilDataService.setLoggedInUser(res);
         });
@@ -144,8 +136,6 @@ export class HeaderComponent implements OnInit {
                     this.utilDataService.filteredRiskyIPAddress = this.riskyIPAddress;
                     this.router.navigate(['/filteredRiskyUsers', this.searchEntity.toString()]);
                 }
-
-
 
                 if (res.users.length === 0 && res.hosts.length === 0 && res.ipAddresses.length === 0) {
                     this._snackBar.open('No records found', null, {

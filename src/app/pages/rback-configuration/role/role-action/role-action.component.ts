@@ -3,7 +3,6 @@ import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { RoleService } from '../role-service';
-import * as CryptoJS from 'crypto-js';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -12,9 +11,6 @@ import { environment } from '../../../../../environments/environment';
   styleUrls: ['./role-action.component.scss']
 })
 export class RoleActionComponent implements OnInit {
-
-  API_KEY: any;
-  API_CIPHER: any;
 
   pageTitle = 'Add Role';
   editRole = false;
@@ -38,8 +34,7 @@ export class RoleActionComponent implements OnInit {
   constructor(private location: Location, private fb: FormBuilder,
     private activeRoute: ActivatedRoute, private router: Router, private roleService: RoleService) {
 
-    this.API_KEY = environment.API_KEY;
-    this.API_CIPHER = environment.API_CIPHER;
+ 
   }
 
   ngOnInit() {
@@ -49,7 +44,6 @@ export class RoleActionComponent implements OnInit {
     // not getting all permissions at view time
     if (!url.includes('view')) {
       this.roleService.getAllPermissions().subscribe((res: any) => {
-        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
         this.permissionList = res;
       });
     }
@@ -59,8 +53,7 @@ export class RoleActionComponent implements OnInit {
         const roleId = params.get('roleId');
 
         this.roleService.getRoleMasterById(roleId).subscribe((res: any) => {
-          res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-
+     
           this.roleForm.setValue({
             roleId: res.roleId,
             roleName: res.roleName,
@@ -85,7 +78,7 @@ export class RoleActionComponent implements OnInit {
     // preventing duplicate role names -- after set value (for getting roleName)
     if (!url.includes('view')) {
       this.roleService.getAllRoleMasterNames().subscribe((res: any) => {
-        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+    
         this.existRoleNames = res;
         if (!url.includes('add')) {
           const existRoleNameIndex = this.existRoleNames.indexOf(this.roleForm.get('roleName').value, 0);

@@ -9,7 +9,6 @@ import { GridApi, ColumnApi } from 'ag-grid-community';
 import { of, Observable } from 'rxjs';
 import { RoleService } from '../role-service';
 import { environment } from '../../../../../environments/environment';
-import * as CryptoJS from 'crypto-js';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -18,9 +17,6 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./role-list.component.scss']
 })
 export class RoleListComponent implements OnInit {
-
-  API_KEY: any;
-  API_CIPHER: any;
 
   //ag grid 
   gridApi: GridApi;
@@ -43,9 +39,7 @@ export class RoleListComponent implements OnInit {
     private ngZone: NgZone, private roleService: RoleService, private _snackBar: MatSnackBar) {
 
     window.scrollTo(0, 0);
-    this.API_KEY = environment.API_KEY;
-    this.API_CIPHER = environment.API_CIPHER;
-
+ 
     this.context = {
       componentParent: this,
       viewButton: true,
@@ -64,7 +58,6 @@ export class RoleListComponent implements OnInit {
 
   ngOnInit() {
     this.roleService.getAllRoleMasters().subscribe((res: any) => {
-      res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
       this.roleList = of(res);
     });
   }
@@ -160,7 +153,6 @@ export class RoleListComponent implements OnInit {
         this.selectedRoleIds.push(selectedRoles[i].roleId);
     });
   }
-
 
 
   addRole() {

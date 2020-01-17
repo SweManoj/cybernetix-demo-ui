@@ -5,7 +5,6 @@ import { Location } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
 import { UserService } from '../user-service';
 import { RoleService } from '../../role/role-service';
-import * as CryptoJS from 'crypto-js';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -14,9 +13,6 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./user-action.component.scss']
 })
 export class UserActionComponent implements OnInit {
-
-  API_KEY: any;
-  API_CIPHER: any;
 
   pageTitle = 'Add User';
   editUser = false;
@@ -96,8 +92,7 @@ export class UserActionComponent implements OnInit {
     public router: Router, private userService: UserService, private roleService: RoleService
     , private _snackBar: MatSnackBar) {
 
-    this.API_KEY = environment.API_KEY;
-    this.API_CIPHER = environment.API_CIPHER;
+   
   }
 
   ngOnInit() {
@@ -107,7 +102,7 @@ export class UserActionComponent implements OnInit {
     // not getting all permissions at view time
     if (!url.includes('view')) {
       this.roleService.getAllRoleMasters().subscribe((allRoles: any) => {
-        allRoles = JSON.parse(CryptoJS.AES.decrypt(allRoles.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+       
         this.roleList = allRoles;
       });
     }
@@ -122,8 +117,7 @@ export class UserActionComponent implements OnInit {
         const userId = params.get('userId');
 
         this.userService.getUserByUserId(userId).subscribe((user: any) => {
-          user = JSON.parse(CryptoJS.AES.decrypt(user.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-
+         
           this.userForm.setValue({
             userId: user.userId,
             userName: user.userName,
@@ -158,8 +152,7 @@ export class UserActionComponent implements OnInit {
     // preventing duplicate role names -- after set value (for getting roleName)
     if (!url.includes('view')) {
       this.userService.getAllUserNames().subscribe((res: any) => {
-        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-        this.existUserNames = res;
+         this.existUserNames = res;
 
         if (!url.includes('add')) {
           const existUserNameIndex = this.existUserNames.indexOf(this.userForm.get('userName').value, 0);

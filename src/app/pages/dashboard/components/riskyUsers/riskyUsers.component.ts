@@ -13,7 +13,6 @@ import { TopDetailsService } from '../topDetails/topDetails.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../../../environments/environment';
 import { UtilDataService } from '../../../../core/services/util.data.service';
-import * as CryptoJS from 'crypto-js';
 
 @Component({
     selector: 'risky-users',
@@ -21,9 +20,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class RiskyUsersComponent {
 
-    API_KEY: any;
-    API_CIPHER: any;
-
+   
     selectedUser: string = null;
     allUsers: any = [];
     selectedDateRange: string;
@@ -55,9 +52,7 @@ export class RiskyUsersComponent {
         private zone: NgZone, private router: Router, private _snackBar: MatSnackBar, private topDetailsService: TopDetailsService,
         private caseManagementService: CaseManagementService, private utilService: UtilDataService) {
 
-        this.API_KEY = environment.API_KEY;
-        this.API_CIPHER = environment.API_CIPHER;
-
+       
         this.offset = 0;
         this.recordsReturned = 0;
         this.selectedDateRange = '1 Week';
@@ -68,8 +63,7 @@ export class RiskyUsersComponent {
         this.routeParam.paramMap.subscribe((params: any) => {
             this.selectedUser = params.get('selectedUser');
             this.riskyUserService.getRiskyEntityDetails(this.selectedUser, 'USER').subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-
+               
                 res.riskScore = Math.round(res.riskScore);
                 this.userData = res;
 
@@ -80,7 +74,7 @@ export class RiskyUsersComponent {
             });
 
             this.riskyUserService.getRiskyUserCountDetails(this.selectedUser).subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+               
                 if (res) {
                     this.eventCounts = res;
                 }
@@ -94,8 +88,7 @@ export class RiskyUsersComponent {
 
             const date = new Date();
             this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, 0, date.getTime(), 0).subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-
+      
                 if (res && res.length > 0) {
                     res.forEach((policyViolation) => {
                         if (policyViolation.shouldShowIncidentCreationOption) {
@@ -131,7 +124,6 @@ export class RiskyUsersComponent {
         const startDate = 0;
         const endDate = new Date();
         this.riskyUserService.getPolicyViolationsForEntity(this.selectedUser, startDate, endDate.getTime()).subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
             this.policyViolationData = res;
             if (this.policyViolationData.length > 0) {
                 this.policyViolationData = this.policyViolationData.sort((a, b) => -(a.hourOfDay - b.hourOfDay))
@@ -327,7 +319,7 @@ export class RiskyUsersComponent {
                 const item = ev.target.dataItem['dataContext'];
                 this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedUser, item['startDateTime'],
                     item['endDateTime'], 0).subscribe((res: any) => {
-                        res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+      
                         if (res && res.length > 0) {
                             res.forEach((policyViolation) => {
                                 policyViolation.timeLines.forEach((timeLine) => {
@@ -409,7 +401,7 @@ export class RiskyUsersComponent {
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
         this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDateTime), ruleId, 'USER')
             .subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+      
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
@@ -422,7 +414,7 @@ export class RiskyUsersComponent {
 
         this.riskyUserService.rawEventCount(lastViolationId)
             .subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+      
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
@@ -455,7 +447,7 @@ export class RiskyUsersComponent {
 
         this.caseManagementService.timelineCreateIncident(timeline.lastViolationId, encodeURIComponent(timeline.violationEventTime), loggedInUser)
             .subscribe((res: any) => {
-                res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+      
                 ++this.activities[4].value;  // update Incident value count
 
                 this._snackBar.open('Created Incident successfully', null, {
@@ -482,7 +474,7 @@ export class RiskyUsersComponent {
             "violationEventTime": date.toISOString().substring(0, 19)
         };
         this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+      
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });

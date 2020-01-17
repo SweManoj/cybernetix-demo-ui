@@ -9,7 +9,6 @@ import { AgCellRendererEvent } from '../../../../shared/renderers/ag-cell-render
 import { filterAgGridDates, dateComparator } from '../../../../shared/ag-grid-date-filters/date-filters';
 import { UserService } from '../user-service';
 import { environment } from '../../../../../environments/environment';
-import * as CryptoJS from 'crypto-js';
 import { MatSnackBar } from '@angular/material';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 
@@ -20,10 +19,7 @@ import { ChangePasswordComponent } from '../change-password/change-password.comp
 })
 export class UserListComponent implements OnInit {
 
-  API_KEY: any;
-  API_CIPHER: any;
-
-  //ag grid 
+   //ag grid 
   gridApi: GridApi;
   gridColumnApi: ColumnApi;
   columnDefs;
@@ -44,9 +40,7 @@ export class UserListComponent implements OnInit {
     private ngZone: NgZone, private userService: UserService, private _snackBar: MatSnackBar) {
 
     window.scrollTo(0, 0);
-    this.API_KEY = environment.API_KEY;
-    this.API_CIPHER = environment.API_CIPHER;
-
+   
     this.context = {
       componentParent: this,
       viewButton: true,
@@ -65,7 +59,6 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe((users: any) => {
-      users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
       users.forEach(user => {
         user.createdby = user.createdby ? user.createdby : '-';
         user.distinctRoles = user.distinctRoles.length > 0 ? user.distinctRoles : '-';

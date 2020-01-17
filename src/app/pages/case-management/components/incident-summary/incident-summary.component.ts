@@ -12,7 +12,6 @@ import { MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent } from
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { environment } from '../../../../../environments/environment';
 import { UtilDataService } from '../../../../core/services/util.data.service';
-import * as CryptoJS from 'crypto-js';
 
 export interface User {
     name: string;
@@ -24,9 +23,7 @@ export interface User {
 })
 export class IncidentSummaryComponent implements OnInit {
 
-    API_KEY: any;
-    API_CIPHER: any;
-
+   
     status: any = '';
     isUpdate: boolean = false;
     selectedPolicy: any;
@@ -119,9 +116,6 @@ export class IncidentSummaryComponent implements OnInit {
         private router: Router, private _snackBar: MatSnackBar, private incidentSummaryService: IncidentSummaryService,
         private loginService: LoginService, private utilDataService: UtilDataService) {
 
-        this.API_KEY = environment.API_KEY;
-        this.API_CIPHER = environment.API_CIPHER;
-
         window.scrollTo(0, 0);
         this.initForm();
     }
@@ -131,8 +125,7 @@ export class IncidentSummaryComponent implements OnInit {
         this.getAllUsers();
 
         this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-            this.loggedInUser = res;
+           this.loggedInUser = res;
         });
 
         this.routeParam.paramMap.subscribe((params) => {
@@ -191,21 +184,15 @@ export class IncidentSummaryComponent implements OnInit {
 
     getAllUsers() {
         this.loginService.getAllUsers().subscribe((users: any) => {
-            users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+   
             this.users = users;
-            const loggedInUser = this.utilDataService.getLoggedInUser();
-
-            /* if (this.users.find(user => user.userName === loggedInUser.userName)) {
-                this.users.splice(this.users.findIndex(user => user.userName === loggedInUser.userName), 1);
-            } */
+            const loggedInUser = this.utilDataService.getLoggedInUser();            
             this.filteredUsers = this.taggedUserCtrl.valueChanges.pipe(
                 startWith(null),
                 map((user: string | null) => user ? this._taggedUserFilter(user) : this.users.slice()));
             users.forEach(user => {
                 this.caseowners.push({ name: user.firstName, value: user.userName });
-                /* if (user.userRoleDTOSet.length > 0 && user.userRoleDTOSet[0].roleName === 'ROLE_ADMIN') {
-                    this.caseowners.push({ name: user.firstName, value: user.userName });
-                } */
+               
             });
             this.filteredOptions = this.myControl.valueChanges
                 .pipe(

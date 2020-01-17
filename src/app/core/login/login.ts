@@ -7,7 +7,6 @@ import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { SecreteKeyPupupComponent } from '../login/secrete-key-popup/secrete-key-popup.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { environment } from '../../../environments/environment';
-import * as CryptoJS from 'crypto-js';
 
 @Component({
     selector: 'app-login',
@@ -15,9 +14,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class LoginComponent {
 
-    API_KEY: any;
-    API_CIPHER: any;
-
+    
     form: FormGroup;
     username: AbstractControl;
     password: AbstractControl;
@@ -32,10 +29,6 @@ export class LoginComponent {
         private router: Router, @Inject(SESSION_STORAGE) private sessionStorage: StorageService, public dialog: MatDialog) {
 
         this.loginService.logout();
-
-        this.API_KEY = environment.API_KEY;
-        this.API_CIPHER = environment.API_CIPHER;
-
         this.themeName = this.userContext.themeName;
         this.form = this.fb.group({
             'username': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -71,7 +64,6 @@ export class LoginComponent {
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;
                 if (this.showSecurityTokenInput) {
                     this.loginService.getSecreteKey(this.username.value).subscribe((res: any) => {
-                        // res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
                         this.secreteKey = res['SecreteKey'];
                         this.secreteKeyQRUrl = res['SecreteKeyQRURL'];
                     });

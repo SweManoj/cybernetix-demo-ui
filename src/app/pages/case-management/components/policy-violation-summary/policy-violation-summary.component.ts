@@ -13,7 +13,6 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { environment } from '../../../../../environments/environment';
 import { UtilDataService } from '../../../../core/services/util.data.service';
-import * as CryptoJS from 'crypto-js';
 
 export interface User {
     name: string;
@@ -24,9 +23,6 @@ export interface User {
     templateUrl: './policy-violation-summary.component.html'
 })
 export class PolicyViolationSummaryComponent implements OnInit {
-
-    API_KEY: any;
-    API_CIPHER: any;
 
     priority: any = '';
     status: any = '';
@@ -94,9 +90,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
         private routeParam: ActivatedRoute, private router: Router,
         private _snackBar: MatSnackBar, private loginService: LoginService, private utilDataService: UtilDataService) {
 
-        this.API_KEY = environment.API_KEY;
-        this.API_CIPHER = environment.API_CIPHER;
-
+        
         window.scrollTo(0, 0);
         this.initForm();
     }
@@ -168,7 +162,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     getTaggedUsers() {
         this.policyViolationSummaryService.getTaggedUsers(this.policyDetails.pv_ID).subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
+            
             this.taggedUsersForViolation = res;
         });
     }
@@ -217,7 +211,6 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     getAllUsers() {
         this.loginService.getAllUsers().subscribe((users: any) => {
-            users = JSON.parse(CryptoJS.AES.decrypt(users.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
 
             this.users = users;
             const loggedInUser = this.utilDataService.getLoggedInUser();
@@ -244,8 +237,7 @@ export class PolicyViolationSummaryComponent implements OnInit {
 
     getViolatedPolicy() {
         this.policyViolationSummaryService.getPolicyDetails(this.selectedPolicy, encodeURIComponent(this.eventDateTime), this.dataAggregated).subscribe((res: any) => {
-            res = JSON.parse(CryptoJS.AES.decrypt(res.encryptedData, this.API_KEY, this.API_CIPHER).toString(CryptoJS.enc.Utf8));
-
+           
             if (res) {
                 this.policyDetails = res;
                 this.getTaggedUsers();

@@ -36,8 +36,7 @@
                                 src='./../../../../../assets/images/users/service_user.jpeg' style="width: 4rem;" />
                             <div style="color:#D3D3D3;size:26px;font-weight: 600">{{userData.user.u_employeeId}}</div>
                         </div> -->
-                        <img (click)="openUserInfo(userData?.user)"
-                            class="profile-image rounded-circle mt-4"
+                        <img (click)="openUserInfo(userData?.user)" class="profile-image rounded-circle mt-4"
                             src='./../../../../../assets/images/users/service_user.jpeg' style="width: 4rem;" />
                         <div class="user-info m-t-sm">
                             <span class="wordWrap"
@@ -163,8 +162,8 @@
             <div class="risk-date-stamp w-100 d-inline-block">
                 <span>{{policyViolation.violationEventDate | date: 'dd MMM yyyy' }}</span>
 
-                <button *ngIf="policyViolation.actionButtonName" class="btn btn-primary pull-right"
-                    (click)="actionButtonClick(policyViolation)"
+                <button *ngIf="policyViolation.actionButtonName"
+                    class="btn btn-primary pull-right" (click)="actionButtonClick(policyViolation)"
                     [ngStyle]="stylePolicyActionButton(policyViolation.actionButtonName)">{{policyViolation.actionButtonName}}</button>
             </div>
             <div class="row initialPadding" *ngFor="let timeLine of policyViolation.timeLines">

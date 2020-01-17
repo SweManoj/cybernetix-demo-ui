@@ -34,7 +34,7 @@ export class RoleActionComponent implements OnInit {
   constructor(private location: Location, private fb: FormBuilder,
     private activeRoute: ActivatedRoute, private router: Router, private roleService: RoleService) {
 
- 
+
   }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class RoleActionComponent implements OnInit {
         const roleId = params.get('roleId');
 
         this.roleService.getRoleMasterById(roleId).subscribe((res: any) => {
-     
+
           this.roleForm.setValue({
             roleId: res.roleId,
             roleName: res.roleName,
@@ -78,7 +78,7 @@ export class RoleActionComponent implements OnInit {
     // preventing duplicate role names -- after set value (for getting roleName)
     if (!url.includes('view')) {
       this.roleService.getAllRoleMasterNames().subscribe((res: any) => {
-    
+
         this.existRoleNames = res;
         if (!url.includes('add')) {
           const existRoleNameIndex = this.existRoleNames.indexOf(this.roleForm.get('roleName').value, 0);
@@ -98,8 +98,9 @@ export class RoleActionComponent implements OnInit {
   validationMessages = {
     roleName: {
       required: 'Role Name is required',
-      minlength: 'Role Name must be greater than 4 characters',
-      duplicateRoleName: 'Role Name already Exist'
+      minlength: 'Role Name is required',
+      duplicateRoleName: 'Role Name already Exist',
+      notValid: 'Role Name must be prefix with ROLE_'
     },
     displayRoleName: {
       required: 'Role Display Name is required',
@@ -146,7 +147,7 @@ export class RoleActionComponent implements OnInit {
   initRoleForm() {
     this.roleForm = this.fb.group({
       roleId: [],
-      roleName: ['', [Validators.required, Validators.minLength(4)]],
+      roleName: ['ROLE_', [Validators.required, Validators.minLength(6)]],
       displayRoleName: ['', [Validators.required, Validators.minLength(4)]],
       permissions: ['', [Validators.required]],
       permissionIds: []
@@ -154,6 +155,13 @@ export class RoleActionComponent implements OnInit {
 
     this.roleForm.valueChanges.subscribe((data) => {
       this.logValidationErrors(this.roleForm);
+    });
+
+    this.roleForm.get('roleName').valueChanges.subscribe((roleName: string) => {
+      if (!roleName.startsWith('ROLE_'))
+        this.roleForm.get('roleName').setErrors({ 'notValid': true });
+      /* else if (roleName == 'ROLE_')
+        this.roleForm.get('roleName').setErrors({ 'required': true }); */
     });
   }
 

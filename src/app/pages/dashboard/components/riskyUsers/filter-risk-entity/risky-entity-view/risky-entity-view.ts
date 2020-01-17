@@ -24,13 +24,13 @@ export class RiskyEntityViewComponent {
   }
 
   getRiskScoreColor(riskScore: number) {
-        if (riskScore <= 65)
-            return "limegreen";
-        else if (riskScore > 65 && riskScore <= 79)
-            return "darkorange";
-        else
-            return "crimson";
-    }
+    if (riskScore <= 65)
+      return "limegreen";
+    else if (riskScore > 65 && riskScore <= 79)
+      return "darkorange";
+    else
+      return "crimson";
+  }
 
   initializeGuageMeterChart() {
     //console.log('Chart Init');

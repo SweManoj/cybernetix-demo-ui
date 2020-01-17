@@ -14,7 +14,6 @@ import { environment } from '../../../environments/environment';
 })
 export class LoginComponent {
 
-    
     form: FormGroup;
     username: AbstractControl;
     password: AbstractControl;
@@ -56,9 +55,14 @@ export class LoginComponent {
                 this.dialog.closeAll();
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;
 
-                const redirectURL = this.sessionStorage.get('redirectURL');
-                this.router.navigateByUrl(redirectURL);
-                this.sessionStorage.remove('redirectURL');
+                this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
+                    this.sessionStorage.set('userRoles', JSON.stringify(res.distinctRoles));
+                    this.sessionStorage.set('userPermissions', JSON.stringify(res.distinctPermissions));
+
+                    const redirectURL = this.sessionStorage.get('redirectURL');
+                    this.router.navigateByUrl(redirectURL);
+                    this.sessionStorage.remove('redirectURL');
+                });
 
             }, error => {
                 this.showSecurityTokenInput = this.loginService.showSecurityTokenInput;

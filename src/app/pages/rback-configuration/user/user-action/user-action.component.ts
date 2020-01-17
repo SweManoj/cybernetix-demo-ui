@@ -92,7 +92,7 @@ export class UserActionComponent implements OnInit {
     public router: Router, private userService: UserService, private roleService: RoleService
     , private _snackBar: MatSnackBar) {
 
-   
+
   }
 
   ngOnInit() {
@@ -102,7 +102,7 @@ export class UserActionComponent implements OnInit {
     // not getting all permissions at view time
     if (!url.includes('view')) {
       this.roleService.getAllRoleMasters().subscribe((allRoles: any) => {
-       
+
         this.roleList = allRoles;
       });
     }
@@ -117,7 +117,7 @@ export class UserActionComponent implements OnInit {
         const userId = params.get('userId');
 
         this.userService.getUserByUserId(userId).subscribe((user: any) => {
-         
+
           this.userForm.setValue({
             userId: user.userId,
             userName: user.userName,
@@ -152,7 +152,7 @@ export class UserActionComponent implements OnInit {
     // preventing duplicate role names -- after set value (for getting roleName)
     if (!url.includes('view')) {
       this.userService.getAllUserNames().subscribe((res: any) => {
-         this.existUserNames = res;
+        this.existUserNames = res;
 
         if (!url.includes('add')) {
           const existUserNameIndex = this.existUserNames.indexOf(this.userForm.get('userName').value, 0);
@@ -184,17 +184,17 @@ export class UserActionComponent implements OnInit {
       });
       this.userForm.get('roles').setValue(userRoles);
 
-      if (this.viewUser) {
+      if (!this.editUser) {
         this.userService.createUser(this.userForm.value).subscribe(res => {
           this.previousPage();
         }, error => {
-          this.submitError('Updated');
+          this.submitError('Saved');
         });
       } else {
         this.userService.updateUser(this.userForm.value).subscribe(res => {
           this.previousPage();
         }, error => {
-          this.submitError('Saved');
+          this.submitError('Updated');
         });
       }
     }
@@ -211,10 +211,10 @@ export class UserActionComponent implements OnInit {
     this.userForm = this.fb.group({
       userId: '',
       userName: ['', [Validators.required, Validators.minLength(4)]],
-      firstName: ['', [Validators.required, Validators.minLength(4)]],
+      firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
-      mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(14)]], // (0 | 91)?[6-9][0-9]{9}
+      mobileNumber: [''], // (0 | 91)?[6-9][0-9]{9}  , [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(14)]
       enabled: ['false'],
       password: [''],
       passwordGroup: this.fb.group({

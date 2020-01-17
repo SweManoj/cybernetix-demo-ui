@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild, } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild, Inject, } from '@angular/core';
 import { TopDetailsService } from './topDetails.service';
 import { Table } from 'primeng/table';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment.prod';
 import { string } from '@amcharts/amcharts4/core';
 import { intToString, getRiskScoreColor } from '../../../../shared/utils/util-functions';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 
 // import {routerTransition} from '../../router.animations';
@@ -14,6 +15,8 @@ import { intToString, getRiskScoreColor } from '../../../../shared/utils/util-fu
     templateUrl: './topDetails.component.html'
 })
 export class TopDetailsComponent implements OnInit {
+
+    userPermissions = [];
 
     selectRiskyType = 'USER';
     threats: any;
@@ -28,8 +31,9 @@ export class TopDetailsComponent implements OnInit {
     @ViewChild('selectedRiskyType') riskyTypeTable: Table;
     riskyTypeSelected = 'user';
 
-    constructor(private topDetailsService: TopDetailsService, private router: Router) {
-      
+    constructor(private topDetailsService: TopDetailsService, private router: Router,
+        @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
+        this.userPermissions = JSON.parse(this.sessionStorage.get('userPermissions'));
     }
 
     changeRiskyType(val: any) {
@@ -57,7 +61,7 @@ export class TopDetailsComponent implements OnInit {
 
     getRiskyEntities() {
         this.topDetailsService.getTopRiskyUsers('USER').subscribe((res: any) => {
-       
+
             res.forEach(data => {
                 if (data) {
                     const userObj = {
@@ -75,7 +79,7 @@ export class TopDetailsComponent implements OnInit {
         });
 
         this.topDetailsService.getTopRiskyUsers('IP').subscribe((res: any) => {
-   
+
             res.forEach(data => {
                 this.riskyObjects.push({
                     type: 'ip address',
@@ -105,26 +109,30 @@ export class TopDetailsComponent implements OnInit {
 
     getThreats() {
         this.topDetailsService.getTopThreats().subscribe((res: any) => {
-             this.threats = res;
+            this.threats = res;
         });
     }
 
     getViolations() {
         this.topDetailsService.getTopViolations().subscribe((res: any) => {
-              this.violations = res;
+            this.violations = res;
         });
     }
 
     viewRiskyEntityDetails(selectedEntity: any) {
+
         switch (this.selectRiskyType) {
             case 'IP ADDRESS':
-                this.router.navigateByUrl('/riskyIP/' + selectedEntity);
+                if (this.userPermissions && this.userPermissions.includes('Iptimeline_Control'))
+                    this.router.navigateByUrl('/riskyIP/' + selectedEntity);
                 break;
             case 'USER':
-                this.router.navigateByUrl('/riskyUser/' + selectedEntity);
+                if (this.userPermissions && this.userPermissions.includes('Usertimeline_Control'))
+                    this.router.navigateByUrl('/riskyUser/' + selectedEntity);
                 break;
             case 'HOST':
-                this.router.navigateByUrl('/riskyHost/' + selectedEntity);
+                if (this.userPermissions && this.userPermissions.includes('Hosttimeline_Control'))
+                    this.router.navigateByUrl('/riskyHost/' + selectedEntity);
                 break;
         }
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, Inject } from '@angular/core';
 import { ConfirmationModalComponent } from '../../../../shared/confirmation-modal/confirmation-modal.component';
 import { AgCellRendererEvent } from '../../../../shared/renderers/ag-cell-rendere.event';
 import { dateComparator, filterAgGridDates } from '../../../../shared/ag-grid-date-filters/date-filters';
@@ -10,6 +10,7 @@ import { of, Observable } from 'rxjs';
 import { RoleService } from '../role-service';
 import { environment } from '../../../../../environments/environment';
 import { MatSnackBar } from '@angular/material';
+import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-role-list',
@@ -17,6 +18,9 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./role-list.component.scss']
 })
 export class RoleListComponent implements OnInit {
+
+  userPermissions = [];
+  userRoles = [];
 
   //ag grid 
   gridApi: GridApi;
@@ -36,15 +40,18 @@ export class RoleListComponent implements OnInit {
   }
 
   constructor(private ngbModal: NgbModal, private router: Router, private activateRoute: ActivatedRoute,
-    private ngZone: NgZone, private roleService: RoleService, private _snackBar: MatSnackBar) {
+    private ngZone: NgZone, private roleService: RoleService, private _snackBar: MatSnackBar,
+    @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
 
     window.scrollTo(0, 0);
- 
+    this.userPermissions = JSON.parse(this.sessionStorage.get('userPermissions'));
+    this.userRoles = JSON.parse(this.sessionStorage.get('userRoles'));
+
     this.context = {
       componentParent: this,
-      viewButton: true,
-      editButton: true,
-      deleteButton: true,
+      viewButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('View_Profile'),
+      editButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Edit_Profile'),
+      deleteButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Delete_Profile'),
       copyButton: false,
       changePasswordButton: false
     }

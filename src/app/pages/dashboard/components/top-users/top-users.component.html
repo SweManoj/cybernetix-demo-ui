@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-3 risk-count initialPadding align-self-center">
                 <span [ngStyle]="{'color':getRiskScoreColor(topUserDetail.riskscorebygrp)}">
-                    {{intToString(topUserDetail.riskscorebygrp)}}</span>
+                    {{user=='Orphan'?intToString(topUserDetail.riskscorebygrp):scoreRounder(topUserDetail.riskscorebygrp)}}</span>
             </div>
         </div>
         <div class="ml-1 mr-1 borderLine" *ngIf="!last">

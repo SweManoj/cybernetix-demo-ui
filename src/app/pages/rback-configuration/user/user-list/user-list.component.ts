@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, Inject } from '@angular/core';
 import { ConfirmationModalComponent } from '../../../../shared/confirmation-modal/confirmation-modal.component';
 import { Observable, of } from 'rxjs';
 import { GridApi, ColumnApi } from 'ag-grid-community';
@@ -11,6 +11,7 @@ import { UserService } from '../user-service';
 import { environment } from '../../../../../environments/environment';
 import { MatSnackBar } from '@angular/material';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +20,10 @@ import { ChangePasswordComponent } from '../change-password/change-password.comp
 })
 export class UserListComponent implements OnInit {
 
-   //ag grid 
+  userPermissions = [];
+  userRoles = [];
+
+  //ag grid 
   gridApi: GridApi;
   gridColumnApi: ColumnApi;
   columnDefs;
@@ -37,17 +41,20 @@ export class UserListComponent implements OnInit {
   }
 
   constructor(private ngbModal: NgbModal, private router: Router, private activateRoute: ActivatedRoute,
-    private ngZone: NgZone, private userService: UserService, private _snackBar: MatSnackBar) {
+    private ngZone: NgZone, private userService: UserService, private _snackBar: MatSnackBar,
+    @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
 
     window.scrollTo(0, 0);
-   
+    this.userPermissions = JSON.parse(this.sessionStorage.get('userPermissions'));
+    this.userRoles = JSON.parse(this.sessionStorage.get('userRoles'));
+
     this.context = {
       componentParent: this,
-      viewButton: true,
-      editButton: true,
-      deleteButton: true,
+      viewButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('View_Profile'),
+      editButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Edit_Profile'),
+      deleteButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Delete_Profile'),
       copyButton: false,
-      changePasswordButton: true
+      changePasswordButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Edit_Profile')
     }
 
     this.frameworkComponents = {

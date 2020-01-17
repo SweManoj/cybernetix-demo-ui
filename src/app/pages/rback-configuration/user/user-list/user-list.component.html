@@ -1,7 +1,7 @@
 <div class="d-inline-block userList mt-2 ml-2">
   <h4 class="commonHeader mb-3 pull-left">User List</h4>
 
-  <span class="pull-right">
+  <span class="pull-right" *ngIf="userRoles.includes('ROLE_ADMIN') && userPermissions.includes('Create_Profile')">
     <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Add User" (click)="addUser()">Add
       User</button>
     <button type="button" class="btn btn-primary" placement="bottom" ngbTooltip="Activate"

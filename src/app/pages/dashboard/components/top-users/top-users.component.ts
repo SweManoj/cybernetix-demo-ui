@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import { TopDetailsService } from '../topDetails/topDetails.service';
 import { getRiskScoreColor, User, intToString } from '../../../../shared/utils/util-functions';
 import { environment } from '../../../../../environments/environment';
 import { Router } from '@angular/router';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 @Component({
     selector: 'app-top-users',
@@ -14,10 +15,19 @@ export class TopUsersComponent implements OnInit {
     @Input() user: string;
     topUserDetails: Array<User> = [];
     getRiskScoreColor = getRiskScoreColor;
+
+    userPermissions = [];
+
     intToString = intToString;
 
-    constructor(private topDetailService: TopDetailsService, private router: Router) {
+    scoreRounder(value: any) {
+        return Math.round(<number>value);
+    }
 
+    constructor(private topDetailService: TopDetailsService, private router: Router,
+        @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
+
+        this.userPermissions = JSON.parse(this.sessionStorage.get('userPermissions'));
     }
 
     ngOnInit() {
@@ -38,16 +48,20 @@ export class TopUsersComponent implements OnInit {
     }
 
     redirect(entityId) {
-        if (this.user === 'Orphan')
-            this.fetchOrphanUserEnrichIndexKibanaURL(entityId);
-        else
-            this.router.navigate(['/riskyUser', entityId])
+        if (this.user === 'Orphan') {
+            if (this.userPermissions && this.userPermissions.includes('Kibanaaccess_Control'))
+                this.fetchOrphanUserEnrichIndexKibanaURL(entityId);
+        } else {
+            if (this.userPermissions && this.userPermissions.includes('Usertimeline_Control'))
+                this.router.navigate(['/riskyUser', entityId])
+        }
+
     }
 
     fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntityId) {
         this.topDetailService.fetchOrphanUserEnrichIndexKibanaURL(orphanUserEntityId)
             .subscribe((res: any) => {
-              window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+                window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             });
     }
 

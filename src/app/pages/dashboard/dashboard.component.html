@@ -4,8 +4,8 @@
             <span>{{'general.menu.dashboard' | translate}}</span>
         </div>
 
-        <div class="col-md-2 initialPadding">
-            <a href="{{kibanaUrl}}" target="_blank">
+        <div class="col-md-2 initialPadding" *ngIf="userPermissions.includes('Kibanaaccess_Control')">
+            <a href=" {{kibanaUrl}}" target="_blank">
                 <button mat-raised-button color="primary"
                     class="pull-right">{{'dashboard.liveThreatHunting' | translate}}</button>
             </a>

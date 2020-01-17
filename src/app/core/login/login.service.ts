@@ -72,15 +72,15 @@ export class LoginService {
     return this.http.get(url);
   }
 
-  getNotificationCount() {
+  /* getNotificationCount() {
     const url = `${environment.serverUrl}/v1/incident/notificationcount`;
     return this.http.get(url);
-  }
+  } */
 
-  getUnreadNotifications() {
+  /* getUnreadNotifications() {
     const url = `${environment.serverUrl}/v1/incident/unreadnotification`;
     return this.http.get(url);
-  }
+  } */
 
   markNotificationAsRead(incId) {
     const url = `${environment.serverUrl}/v1/incident/notification/markasread/${incId}`;

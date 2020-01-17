@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit, AfterContentInit } from '@angular/core';
+import { Component, NgZone, OnInit, AfterContentInit, Inject } from '@angular/core';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { RiskyUserService } from '../riskyUsers/riskyUser.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { RiskScoreModalComponent } from '../riskyUsers/risk-score-modal/risk-sco
 import { environment } from '../../../../../environments/environment';
 import { CaseManagementService } from '../../../case-management/case-management.service';
 import { MatSnackBar } from '@angular/material';
+import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 
 @Component({
     selector: 'app-risky-ip',
@@ -25,12 +26,13 @@ export class RiskyIPComponent implements OnInit {
     graphData: any;
 
     actionButtonName = '';
+    userPermissions = [];
 
     constructor(private amChartService: AmChartsService, private riskyUserService: RiskyUserService, private routeParam: ActivatedRoute, private modalService: NgbModal,
         private zone: NgZone, private router: Router, private caseManagementService: CaseManagementService
-        , private _snackBar: MatSnackBar) {
+        , private _snackBar: MatSnackBar, @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {
 
-       
+        this.userPermissions = JSON.parse(this.sessionStorage.get('userPermissions'));
         window.scrollTo(0, 0);
     }
 
@@ -50,16 +52,16 @@ export class RiskyIPComponent implements OnInit {
         else
             return { background: 'darkyellow', color: 'white' };
     }
-    
+
     getRiskyIPDetails() {
         this.riskyUserService.getRiskyEntityDetails(this.selectedIP, 'IP').subscribe((res: any) => {
-           
+
             res.riskScore = Math.round(res.riskScore);
             this.ipDetails = res;
         });
         const date = new Date();
         this.riskyUserService.getPolicyViolationForGivenPeriod(this.selectedIP, 0, date.getTime(), 0).subscribe((res: any) => {
-            
+
             if (res && res.length > 0) {
                 res.forEach((policyViolation) => {
                     if (policyViolation.shouldShowIncidentCreationOption) {
@@ -80,7 +82,7 @@ export class RiskyIPComponent implements OnInit {
         });
 
         this.riskyUserService.getDayBasisRiskScore(this.selectedIP).subscribe((res: any) => {
-           
+
             this.graphData = res;
             this.zone.runOutsideAngular(() => {
                 // Initialize Bubble chart
@@ -90,31 +92,36 @@ export class RiskyIPComponent implements OnInit {
     }
 
     actionButtonClick(policyViolation: any) {
-        if (this.actionButtonName != "Create an Incident")
-            this.router.navigate(['/incidentSummary', policyViolation.incidentId]);
 
-        var categories: Array<string[]> = [];
-        var ruleIds: Array<number[]> = [];
-        var violationIds: Array<number[]> = [];
+        if (this.userPermissions.includes('Incidentsummary_Control')) {
+            if (this.actionButtonName != "Create an Incident")
+                this.router.navigate(['/incidentSummary', policyViolation.incidentId]);
+        }
+        else {
+            var categories: Array<string[]> = [];
+            var ruleIds: Array<number[]> = [];
+            var violationIds: Array<number[]> = [];
 
-        policyViolation.timeLines.forEach(timeLine => {
-            categories.push(timeLine.subCategory);
-            ruleIds.push(timeLine.ruleId);
-            violationIds.push(timeLine.lastViolationId);
-        });
+            policyViolation.timeLines.forEach(timeLine => {
+                categories.push(timeLine.subCategory);
+                ruleIds.push(timeLine.ruleId);
+                violationIds.push(timeLine.lastViolationId);
+            });
 
-        const requestBody = {
-            category: categories,
-            entityId: policyViolation.entityId,
-            entityType: 'IP',
-            eventDate: policyViolation.violationEventDate,
-            ruleIds: ruleIds,
-            violationIds: violationIds
-        };
-        console.log('request body : ' + requestBody);
-        this.riskyUserService.newIncidentCreation(requestBody).subscribe(res => {
+            const requestBody = {
+                category: categories,
+                entityId: policyViolation.entityId,
+                entityType: 'IP',
+                eventDate: policyViolation.violationEventDate,
+                ruleIds: ruleIds,
+                violationIds: violationIds
+            };
+            console.log('request body : ' + requestBody);
+            this.riskyUserService.newIncidentCreation(requestBody).subscribe(res => {
 
-        });
+            });
+        }
+
     }
 
     getRiskScoreColor(riskScore: number) {
@@ -187,10 +194,12 @@ export class RiskyIPComponent implements OnInit {
     }
 
     fetchEnrichIndexKibanaURL(entityId, violationEventDateTime, ruleId) {
-        this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDateTime), ruleId, 'IP')
-            .subscribe((res: any) => {
-              window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
-            });
+        if (this.userPermissions.includes('Dashboard_Control')) {
+            this.riskyUserService.fetchEnrichIndexKibanaURL(entityId, encodeURIComponent(violationEventDateTime), ruleId, 'IP')
+                .subscribe((res: any) => {
+                    window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+                });
+        }
     }
 
     fetchKibanaRawEventindex(lastViolationId) {
@@ -199,10 +208,12 @@ export class RiskyIPComponent implements OnInit {
                 window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
             }); */
 
-        this.riskyUserService.rawEventCount(lastViolationId)
-            .subscribe((res: any) => {
-               window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
-            });
+        if (this.userPermissions.includes('Dashboard_Control')) {
+            this.riskyUserService.rawEventCount(lastViolationId)
+                .subscribe((res: any) => {
+                    window.open(`${environment.kibanaLink}/goto/${res.urlId}`);
+                });
+        }
     }
 
     createIncident(violation) {
@@ -220,7 +231,7 @@ export class RiskyIPComponent implements OnInit {
         };
 
         this.caseManagementService.createIncident(incidentData).subscribe((res: any) => {
-           
+
             this._snackBar.open('Created Incident successfully', null, {
                 duration: 2000,
             });

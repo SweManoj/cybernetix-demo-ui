@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
     riskyIPAddress = [];
     riskyHosts = [];
     loggedInUserDetails = { firstName: '', lastName: '' };
-    notificationCount: Object = 0;
+    // notificationCount: Object = 0;
 
     constructor(private userContext: UserContext, private router: Router, private _snackBar: MatSnackBar, idle: Idle, @Inject(SESSION_STORAGE) private sessionStorage: StorageService,
         private loginService: LoginService, private utilService: UtilService, public modal: NgbModal,
@@ -102,22 +102,22 @@ export class HeaderComponent implements OnInit {
     searchEntity: any = '';
     allEntitiesNames: string[] = [];
 
-    getAllUnreadNotifications() {
-        this.loginService.getUnreadNotifications().subscribe((res: any) => {
-            this.notifications = res;
-        });
-    }
+    /*  getAllUnreadNotifications() {
+         this.loginService.getUnreadNotifications().subscribe((res: any) => {
+             this.notifications = res;
+         });
+     } */
 
     ngOnInit() {
-        this.loginService.getLoggedInUserDetails().subscribe((res: any) => {            
+        this.loginService.getLoggedInUserDetails().subscribe((res: any) => {
             this.loggedInUserDetails = res;
             this.utilDataService.setLoggedInUser(res);
         });
 
-        this.loginService.getNotificationCount().subscribe((count: any) => {
+        /* this.loginService.getNotificationCount().subscribe((count: any) => {
             this.notificationCount = count;
-        });
-        this.getAllUnreadNotifications();
+        }); */
+        // this.getAllUnreadNotifications();
     }
 
     filterRiskEntities() {
@@ -165,11 +165,11 @@ export class HeaderComponent implements OnInit {
             });
         });
         const that = this;
-        setTimeout(function () {
+        /* setTimeout(function () {
             that.loginService.getNotificationCount().subscribe((count: any) => {
                 that.notificationCount = count;
             });
-        }, 200);
+        }, 200); */
     }
 
     search = (text$: Observable<string>) =>

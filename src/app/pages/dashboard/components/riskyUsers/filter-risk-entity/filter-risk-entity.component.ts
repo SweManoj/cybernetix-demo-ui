@@ -20,8 +20,19 @@ export class FilterRiskEntityComponent implements OnInit {
             this.foundEntityName = params['riskyUser'];
 
             this.filteredRiskyEntities = this.utilDataService.getFilteredRiskyUsers();
+            this.filteredRiskyEntities.forEach(entity => {
+                entity.totalRiskScore = Math.round(entity.totalRiskScore);
+            });
+
             this.filteredRiskyHosts = this.utilDataService.getFilteredRiskyHosts();
+            this.filteredRiskyHosts.forEach(entity => {
+                entity.totalRiskScore = Math.round(entity.totalRiskScore);
+            });
+
             this.filteredRiskyIPAddress = this.utilDataService.getFilteredRiskyIPAddresses();
+            this.filteredRiskyIPAddress.forEach(entity => {
+                entity.totalRiskScore = Math.round(entity.totalRiskScore);
+            });
         });
     }
 

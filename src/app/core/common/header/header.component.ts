@@ -123,7 +123,7 @@ export class HeaderComponent implements OnInit {
     filterRiskEntities() {
 
         if (this.searchEntity !== '') {
-            this.utilDataService.filteredRiskyUsers = [];
+            this.utilDataService.filteredRiskyUsers = []; 
 
             this.dashboardService.searchUserByName(this.searchEntity).subscribe((res: any) => {
                 this.riskyUsers = res.users;

@@ -42,3 +42,7 @@ export function getUniqueObjectsInArray(arr, comp) {
 
     return unique;
 }
+
+export function scoreRounder(value: any) {
+    return Math.round(<number>value);
+}

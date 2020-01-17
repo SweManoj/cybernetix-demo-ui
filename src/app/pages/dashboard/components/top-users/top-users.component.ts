@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Inject } from '@angular/core';
 import { TopDetailsService } from '../topDetails/topDetails.service';
-import { getRiskScoreColor, User, intToString } from '../../../../shared/utils/util-functions';
+import { getRiskScoreColor, User, intToString, scoreRounder } from '../../../../shared/utils/util-functions';
 import { environment } from '../../../../../environments/environment';
 import { Router } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
@@ -20,9 +20,7 @@ export class TopUsersComponent implements OnInit {
 
     intToString = intToString;
 
-    scoreRounder(value: any) {
-        return Math.round(<number>value);
-    }
+    scoreRounder = scoreRounder;
 
     constructor(private topDetailService: TopDetailsService, private router: Router,
         @Inject(SESSION_STORAGE) private sessionStorage: StorageService) {

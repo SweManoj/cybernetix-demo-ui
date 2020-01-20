@@ -24,7 +24,7 @@ export const environment = {
         mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.Pkcs7
     }
-};
+}
 
 /* export var API_KEY = CryptoJS.enc.Utf8.parse('123456$#@$^@ANIL');
 export var API_CIPHER: CryptoJS.CipherOption = {

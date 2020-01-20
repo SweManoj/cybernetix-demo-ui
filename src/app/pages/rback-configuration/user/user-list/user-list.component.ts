@@ -54,7 +54,8 @@ export class UserListComponent implements OnInit {
       editButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Edit_Profile'),
       deleteButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Delete_Profile'),
       copyButton: false,
-      changePasswordButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Edit_Profile')
+      changePasswordButton: this.userRoles.includes('ROLE_ADMIN') && this.userPermissions.includes('Edit_Profile'),
+      rowData: 'UserMaster'
     }
 
     this.frameworkComponents = {

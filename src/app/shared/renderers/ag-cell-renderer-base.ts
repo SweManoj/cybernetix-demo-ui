@@ -14,6 +14,7 @@ export abstract class AgCellRendererBase implements ICellRendererAngularComp {
     changePasswordButton = false;
     actionColor = '#099bb5';
 
+    // each row will call this function and create an object
     agInit(params: any): void {
         this.params = params;
 
@@ -23,6 +24,14 @@ export abstract class AgCellRendererBase implements ICellRendererAngularComp {
         this.deleteButton = context.deleteButton;
         this.copyButton = context.copyButton;
         this.changePasswordButton = context.changePasswordButton;
+
+        if (context.rowData && (context.rowData == 'UserMaster' || context.rowData == 'RoleMaster')) {
+            if ((params.data.userId && params.data.userId == 1) || (params.data.roleId && params.data.roleId == 1)) {
+                this.editButton = false;
+                this.deleteButton = false;
+                this.changePasswordButton = false;
+            }
+        }
 
         if (!params.context || !params.context.componentParent) {
             const errMsg = `Hosting component must implement AgCellRendererEventHandler.

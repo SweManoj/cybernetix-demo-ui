@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import { environment } from '../../../../../environments/environment';
 import { UserService } from '../user-service';
 import { RoleService } from '../../role/role-service';
 import { MatSnackBar } from '@angular/material';
@@ -37,14 +36,17 @@ export class UserActionComponent implements OnInit {
     userName: {
       required: 'User Name is required',
       minlength: 'User Name must be greater than 4 characters',
-      duplicateUserName: 'User Name already Exist'
+      duplicateUserName: 'User Name already Exist',
+      maxlength: 'User Name must not contains more than 15 characters'
     },
     firstName: {
       required: 'First Name is required',
-      minlength: 'First Name must be greater than 4 characters'
+      minlength: 'First Name must be greater than 4 characters',
+      maxlength: 'First Name must not contains more than 15 characters'
     },
     lastName: {
       required: 'Last Name is required',
+      maxlength: 'Last Name must not contains more than 15 characters'
     },
     email: {
       required: 'Email is required',
@@ -54,7 +56,7 @@ export class UserActionComponent implements OnInit {
       required: 'Mobile Number is required',
       pattern: 'Invalid Mobile Number',
       minlength: 'Mobile Number must be atleast 10 numbers',
-      maxlength: 'Mobile Number must not contains more than 14 numbers'
+      maxlength: 'Mobile Number must not contains more than 15 numbers'
     },
     userPassword: {
       required: 'Password is required',
@@ -63,10 +65,12 @@ export class UserActionComponent implements OnInit {
       passwordNotDigit: 'Password Must contain atleast 1 number',
       passwordNotSmallLetter: 'Password Must contain atleast 1 small letter',
       passwordNotCapsLetter: 'Password Must contain atleast 1 capital letter',
-      passwordNotSpecialLetter: 'Password Must contain atleast 1 special character $@$!%*?&#^_+.,:;'
+      passwordNotSpecialLetter: 'Password Must contain atleast 1 special character $@$!%*?&#^_+.,:;',
+      maxlength: 'Password must not contains more than 20 characters'
     },
     confirmPassword: {
-      required: 'Confirm Password is required'
+      required: 'Confirm Password is required',
+      maxlength: 'Confirm Password must not contains more than 20 characters'
     },
     passwordGroup: {
       passwordMismatch: 'Password and Confirm Password do not Match'
@@ -91,7 +95,6 @@ export class UserActionComponent implements OnInit {
   constructor(private location: Location, private fb: FormBuilder, private activeRoute: ActivatedRoute,
     public router: Router, private userService: UserService, private roleService: RoleService
     , private _snackBar: MatSnackBar) {
-
 
   }
 
@@ -210,16 +213,16 @@ export class UserActionComponent implements OnInit {
   initUserForm() {
     this.userForm = this.fb.group({
       userId: '',
-      userName: ['', [Validators.required, Validators.minLength(4)]],
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
+      userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
+      firstName: ['', [Validators.required, Validators.maxLength(15)]],
+      lastName: ['', [Validators.required, Validators.maxLength(15)]],
       email: ['', [Validators.required, Validators.pattern('([A-Za-z0-9._%-]{3,})+@([A-Za-z0-9._%-]{2,})+\\.[a-z]{2,3}')]],
-      mobileNumber: [''], // (0 | 91)?[6-9][0-9]{9}  , [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(14)]
+      mobileNumber: ['', [Validators.pattern('^[0-9]*$'), Validators.minLength(10), Validators.maxLength(15)]], // (0 | 91)?[6-9][0-9]{9}  , [Validators.required, ]
       enabled: ['false'],
       password: [''],
       passwordGroup: this.fb.group({
-        userPassword: ['', [Validators.required, passwordCustomPattern]],
-        confirmPassword: ['', [Validators.required]]
+        userPassword: ['', [Validators.required, passwordCustomPattern, Validators.maxLength(20)]],
+        confirmPassword: ['', [Validators.required, Validators.maxLength(20)]]
       }, { validator: matchPasswords }),
       roles: '',
       userSelectedRoles: ['', [Validators.required]]

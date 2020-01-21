@@ -50,12 +50,12 @@
                     <mat-card-content>
                         <div class="row-block">
                             <p class="text-style-1">First Seen Timestamp</p>
-                            <p class="text-style-2">{{entity.first_seen_at}}</p>
+                            <p class="text-style-2">{{entity.first_seen_at | date: 'dd/MM/yyyy hh:mm:ss'}}</p>
                         </div>
 
                         <div class="row-block">
                             <p class="text-style-1">Last Seen Timestamp</p>
-                            <p class="text-style-2">{{entity.last_seen_at}}</p>
+                            <p class="text-style-2">{{entity.last_seen_at | date: 'dd/MM/yyyy hh:mm:ss'}}</p>
                         </div>
                     </mat-card-content>
                 </mat-card>
@@ -97,12 +97,12 @@
                     <mat-card-content>
                         <div class="row-block">
                             <p class="text-style-1">First Seen Timestamp</p>
-                            <p class="text-style-2">{{entity.first_seen_at}}</p>
+                            <p class="text-style-2">{{entity.first_seen_at | date: 'dd/MM/yyyy hh:mm:ss'}}</p>
                         </div>
 
                         <div class="row-block">
                             <p class="text-style-1">Last Seen Timestamp</p>
-                            <p class="text-style-2">{{entity.last_seen_at}}</p>
+                            <p class="text-style-2">{{entity.last_seen_at | date: 'dd/MM/yyyy hh:mm:ss'}}</p>
                         </div>
                     </mat-card-content>
                 </mat-card>

@@ -19,12 +19,14 @@
             <div class="text-center logo-container">
                 <img src="../../../assets/images/{{themeName}}-logo.png" alt="CyberNetiz Logo" />
             </div>
-            <div *ngIf="isError && !showSecurityTokenInput" class="alert alert-error">
+            <div *ngIf="isError && !showSecurityTokenInput && !inValidPermissionUserError" class="alert alert-error">
                 <p>Invalid Username or password!</p>
             </div>
-
             <div *ngIf="showSecurityTokenInput" class="alert alert-error">
                 <p>Please enter 2FA secret token!</p>
+            </div>
+            <div *ngIf="inValidPermissionUserError" class="alert alert-error">
+                <p>Permissions Not Allowed!</p>
             </div>
             <form [formGroup]="form" (ngSubmit)="loginSubmit()" class="form-horizontal">
 

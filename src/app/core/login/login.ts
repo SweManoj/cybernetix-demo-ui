@@ -24,6 +24,8 @@ export class LoginComponent {
     secreteKey: string;
     secreteKeyQRUrl: string;
 
+    inValidPermissionUserError = false;
+
     constructor(private fb: FormBuilder, private loginService: LoginService, private userContext: UserContext,
         private router: Router, @Inject(SESSION_STORAGE) private sessionStorage: StorageService, public dialog: MatDialog) {
 
@@ -60,8 +62,30 @@ export class LoginComponent {
                     this.sessionStorage.set('userPermissions', JSON.stringify(res.distinctPermissions));
 
                     const redirectURL = this.sessionStorage.get('redirectURL');
-                    this.router.navigateByUrl(redirectURL);
-                    this.sessionStorage.remove('redirectURL');
+                    if (redirectURL && redirectURL != '') {
+                        this.router.navigateByUrl(redirectURL);
+                        this.sessionStorage.remove('redirectURL');
+                    } else if (res.distinctPermissions.includes('Dashboard_Control')) {
+                        this.router.navigateByUrl('/dashboard');
+                        return;
+                    } else if (res.distinctPermissions.includes('Insight_Control')) {
+                        this.router.navigateByUrl('/caseManagement');
+                        return;
+                    } else if (res.distinctPermissions.includes('Insightconfiguration_Control')) {
+                        this.router.navigateByUrl('/insightConfigurations');
+                        return;
+                    } else if (res.distinctPermissions.includes('Pulse_Control')) {
+                        this.router.navigateByUrl('/cyberNetixPulse');
+                        return;
+                    } else if (res.distinctRoles.includes('ROLE_ADMIN') && res.distinctPermissions.includes('View_Profile')) {
+                        this.router.navigateByUrl('/rback');
+                        return;
+                    } else if (res.distinctRoles.includes('ROLE_ADMIN') && res.distinctPermissions.includes('View_Profile')) {
+                        this.router.navigateByUrl('/rback/userList');
+                        return;
+                    } else {
+                        this.inValidPermissionUserError = true;
+                    }
                 });
 
             }, error => {

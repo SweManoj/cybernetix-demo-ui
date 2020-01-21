@@ -17,7 +17,7 @@ import { CalendarComponent } from '@syncfusion/ej2-angular-calendars';
 })
 export class CaseManagementComponent implements OnInit {
 
-  
+
     @ViewChild('incident') incident: Table;
     policyRangeDates: any;
     incidentRangeDates: any;
@@ -66,7 +66,6 @@ export class CaseManagementComponent implements OnInit {
     constructor(private riskyUserService: RiskyUserService, private modalService: NgbModal,
         private caseManagmentService: CaseManagementService, private router: Router, private route: ActivatedRoute) {
 
-        
         window.scrollTo(0, 0);
         this.offset = 0;
         this.recordsReturned = 0;
@@ -91,10 +90,11 @@ export class CaseManagementComponent implements OnInit {
         this.route.url.subscribe(url => {
             this.path = (url[0].path);
         });
-        this.getPolicyViolations();
-        this.getAllIncidents(5000, 90);  // getting before 3month from current date
-    }
 
+        this.router.url.includes('caseManagement') ? this.getAllIncidents(5000, 90) : this.getPolicyViolations();
+        // this.getPolicyViolations();
+        // this.getAllIncidents(5000, 90);  // getting before 3month from current date
+    }
 
     onIncidentDataSelect($event) {
         debugger;
@@ -140,7 +140,7 @@ export class CaseManagementComponent implements OnInit {
         selectedDate.setHours(0, 0, 0, 0);
         endDate.setHours(23, 59, 59, 999);
         this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
-           
+
 
             this.policyViolations = res;
             this.policyViolations.forEach((policy: any) => {
@@ -177,7 +177,7 @@ export class CaseManagementComponent implements OnInit {
         ':' + (startDate.getUTCSeconds()); */
 
         this.caseManagmentService.getAllIncidents(0, incidentCount, encodeURIComponent(formattedStartDate), encodeURIComponent(formattedEndDate)).subscribe((response: any) => {
-            
+
 
             let caseOwners: Array<{ name: '', value: '' }> = [];
             response.forEach(element => {
@@ -211,7 +211,7 @@ export class CaseManagementComponent implements OnInit {
         selectedDate.setHours(0, 0, 0, 0);
         endDate.setHours(23, 59, 59, 999);
         this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(), endDate.getTime(), 0, 1000).subscribe((res: any) => {
-           
+
 
             this.fetchingPolicyViolationsInProgress = false;
             this.policyViolations = res;
@@ -236,39 +236,39 @@ export class CaseManagementComponent implements OnInit {
             for (let dayIndex = 1; dayIndex < 14; dayIndex++) {
                 const date = new Date();
                 date.setDate(date.getDate() - dayIndex);
-                newEndDay =date;
+                newEndDay = date;
             }
             this.policyRangeDates = [];
             this.policyRangeDates.push(newEndDay);
             this.policyRangeDates.push(this.todayDate);
         }
 
-            this.myDays = [];
-            const endDate = new Date(this.policyRangeDates[1]);
-            const startDate = new Date(this.policyRangeDates[0]);
-            const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        this.myDays = [];
+        const endDate = new Date(this.policyRangeDates[1]);
+        const startDate = new Date(this.policyRangeDates[0]);
+        const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-            this.myDays.push(endDate);
+        this.myDays.push(endDate);
 
-            for (let dayIndex = 1; dayIndex <= diffDays; dayIndex++) {
-                const date = new Date(endDate);
-                date.setDate(date.getDate() - dayIndex);
-                this.myDays.push(date);
-            }
-            const selectedDate = new Date(this.policyRangeDates[1]);
-            const endDateForService = new Date(this.policyRangeDates[1]);
-            selectedDate.setHours(0, 0, 0, 0);
-            endDateForService.setHours(23, 59, 59, 999);
+        for (let dayIndex = 1; dayIndex <= diffDays; dayIndex++) {
+            const date = new Date(endDate);
+            date.setDate(date.getDate() - dayIndex);
+            this.myDays.push(date);
+        }
+        const selectedDate = new Date(this.policyRangeDates[1]);
+        const endDateForService = new Date(this.policyRangeDates[1]);
+        selectedDate.setHours(0, 0, 0, 0);
+        endDateForService.setHours(23, 59, 59, 999);
 
-            this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(),
-                endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
-                    
+        this.caseManagmentService.getAllPolicyViolations(selectedDate.getTime(),
+            endDateForService.getTime(), 0, 1000).subscribe((res: any) => {
 
-                    this.policyViolations = res;
-                    this.fetchingPolicyViolationsInProgress = false;
-                    this.getStageValues();
-                });
+
+                this.policyViolations = res;
+                this.fetchingPolicyViolationsInProgress = false;
+                this.getStageValues();
+            });
     }
 
     onActionClick(name, data) {

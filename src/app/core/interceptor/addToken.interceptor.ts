@@ -57,7 +57,8 @@ export class AddTokenInterceptor implements HttpInterceptor {
                     this.loginService.setSecurityTokenInput(true);
                 }
 
-                if (error.status == 401) {
+                // 401 - UnAuthorized, 403 - Access Denied
+                if (error.status == 401 || error.status == 403) {
                     if (isStorageAvailable) {
                         this.sessionStorage.remove('accessToken');
                         this.sessionStorage.remove('refreshToken');

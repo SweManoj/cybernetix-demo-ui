@@ -29,7 +29,11 @@ export class LoginComponent {
     constructor(private fb: FormBuilder, private loginService: LoginService, private userContext: UserContext,
         private router: Router, @Inject(SESSION_STORAGE) private sessionStorage: StorageService, public dialog: MatDialog) {
 
-        this.loginService.logout();
+        this.sessionStorage.remove('accessToken');
+        this.sessionStorage.remove('refreshToken');
+        this.sessionStorage.remove('userRoles');
+        this.sessionStorage.remove('userPermissions');
+
         this.themeName = this.userContext.themeName;
         this.form = this.fb.group({
             'username': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -63,7 +67,9 @@ export class LoginComponent {
                     this.sessionStorage.set('userPermissions', JSON.stringify(res.distinctPermissions));
 
                     const redirectURL = this.sessionStorage.get('redirectURL');
-                    if (redirectURL && redirectURL != '') {
+                    const redirectFlag = res.distinctPermissions.includes('Dashboard_Control') && res.distinctPermissions.includes('Insight_Control') && res.distinctPermissions.includes('Insightconfiguration_Control')
+                        && res.distinctPermissions.includes('Pulse_Control');
+                    if (redirectURL && redirectURL != '' && redirectFlag) {
                         this.router.navigateByUrl(redirectURL);
                         this.sessionStorage.remove('redirectURL');
                     } else if (res.distinctPermissions.includes('Dashboard_Control')) {

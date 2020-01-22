@@ -49,6 +49,8 @@ export class LoginService {
       this.sessionStorage.remove('accessToken');
       this.sessionStorage.remove('refreshToken');
       this.sessionStorage.remove('redirectURL');
+      this.sessionStorage.remove('userRoles');
+      this.sessionStorage.remove('userPermissions');
     }
   }
 

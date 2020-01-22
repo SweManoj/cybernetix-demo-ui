@@ -49,6 +49,7 @@ export class LoginComponent {
     }
 
     loginSubmit(): void {
+        this.inValidPermissionUserError = false;
 
         if (this.form.valid) {
             this.loginService.login(this.form.value).subscribe(res => {

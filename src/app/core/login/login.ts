@@ -31,11 +31,13 @@ export class LoginComponent {
         if (this.form.valid) {
             this.loginService.login(this.form.value).subscribe((res: boolean) => {
                 if (res == true) {
-                    this.loginService.loggedIn.next(true);
+                    this.sessionStorage.setItem('authorized', true);
                     this.router.navigate(['/dashboard']);
                 }
-                else
+                else {
+                    this.sessionStorage.setItem('authorized', true);
                     this.isError = true;
+                }
             });
         }
     }

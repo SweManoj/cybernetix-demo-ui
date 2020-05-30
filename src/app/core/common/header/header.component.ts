@@ -31,6 +31,7 @@ export class HeaderComponent {
     }
 
     signout() {
+        this.sessionStorage.removeItem('authorized');
         this.sessionStorage.removeItem(null);
         this.userContext.setAuthToken(null);
         this.loginService.loggedIn.next(false);
@@ -59,7 +60,7 @@ export class HeaderComponent {
     }
 
     // searchEntityAvailable
-    searchEntity: any='';
+    searchEntity: any = '';
     allEntitiesNames: string[] = [];
 
     ngOnInit() {
